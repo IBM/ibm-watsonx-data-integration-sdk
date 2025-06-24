@@ -1,0 +1,483 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Datasource Type &#8212; ibm-watsonx-data-integration SDK for Python Version 0.0.1b</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=17f7287f"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=30646c52"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/05_preparing_data/datasources';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Connections" href="connections.html" />
+    <link rel="prev" title="Flows" href="flows.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.1b</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_welcome/prereqs.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_overview/release_notes.html">What’s new</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_overview/overview.html">Overview of wx.DI SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_overview/known_issues_and_limitations.html">Known Issues and limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_overview/faq.html">Get Help</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_getting_started_and_tutorials/index.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/platform.html">Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Projects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_projects/jobs.html">Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_projects/environments.html">Environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_projects/engines.html">Engines</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Preparing Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="flows.html">Flows</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Datasource Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="connections.html">Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files.html">Files</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06_administration/index.html">Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06_administration/accounts.html">Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_administration/users.html">Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_administration/access_groups.html">AccessGroups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_administration/roles.html">Roles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/models.html">Models</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Datasource Type</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Section Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-a-datasourcetype">Retrieving a DatasourceType</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-a-datasourcetype-connection-properties">Retrieving a DatasourceType connection properties</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="datasource-type">
+<span id="projects-preparing-data-datasources-datasource-type"></span><span id="preparing-data-datasources"></span><h1>Datasource Type<a class="headerlink" href="#datasource-type" title="Link to this heading">#</a></h1>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>A <code class="docutils literal notranslate"><span class="pre">datasource</span> <span class="pre">type</span></code> is an object that represents a source of the data. This can be a database (MongoDB, MySQL), file storage (Dropbox, Google Cloud Storage), generic protocol or API (FTP, HTTP).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the full list, get all DatasourceTypes objects (<a class="reference internal" href="#retrieving-a-datasourcetype">Retrieving a DatasourceType</a>) or refer to the IBM documentation.</p>
+</div>
+<p>Datasource objects are used as arguments when creating <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.Connection" title="ibm_watsonx_data_integration.cpd_models.connections_model.Connection"><code class="xref py py-class docutils literal notranslate"><span class="pre">Connection</span></code></a> objects.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To read more about connections see <a class="reference internal" href="connections.html#preparing-data-connections"><span class="std std-ref">Connections</span></a>.</p>
+</div>
+<p>The SDK provides functionality to interact with datasource types.</p>
+<dl class="simple">
+<dt>This includes operations such as:</dt><dd><ul class="simple">
+<li><p>Retrieving DatasourceType(s)</p></li>
+</ul>
+</dd>
+</dl>
+<section id="retrieving-a-datasourcetype">
+<span id="preparing-data-datasources-retrieving-an-datasourcetype"></span><h2>Retrieving a DatasourceType<a class="headerlink" href="#retrieving-a-datasourcetype" title="Link to this heading">#</a></h2>
+<p>In the UI, the list of all DatasourceType objects is displayed during creation of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.Connection" title="ibm_watsonx_data_integration.cpd_models.connections_model.Connection"><code class="xref py py-class docutils literal notranslate"><span class="pre">Connection</span></code></a>
+(See: <a class="reference internal" href="connections.html#preparing-data-connections-creating-a-connection"><span class="std std-ref">Creating a Connection</span></a>).</p>
+<p>In the WatsonX DI SDK, a Connection can be retrieved using <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.connections" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.connections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project.connections</span></code></a> property.
+You can also further filter and refine the connections returned based on attributes including
+<code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">context</span></code>, <code class="docutils literal notranslate"><span class="pre">properties</span></code> and <code class="docutils literal notranslate"><span class="pre">datasource_type</span></code>.</p>
+<p>A DatasourceType can be retrieved using <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.datasources" title="ibm_watsonx_data_integration.platform.Platform.datasources"><code class="xref py py-class docutils literal notranslate"><span class="pre">Platform.datasources</span></code></a> property.
+You can also further filter and refine the connections returned based on attributes including
+<code class="docutils literal notranslate"><span class="pre">environment</span></code>, <code class="docutils literal notranslate"><span class="pre">perspective</span></code> and <code class="docutils literal notranslate"><span class="pre">product</span></code>.</p>
+<p>This property returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypes" title="ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypes"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasourceTypes</span></code></a> object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Return first datasource type matching given `perspective`</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datasource</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">datasources</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">perspective</span><span class="o">=</span><span class="s2">&quot;wx&quot;</span><span class="p">)</span>
+<span class="go">DatasourceType(name=&#39;informix&#39;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Return a list of all datasource types that match `perspective`</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datasources</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">datasources</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">perspective</span><span class="o">=</span><span class="s2">&quot;wx&quot;</span><span class="p">)</span>
+<span class="go">[</span>
+<span class="go">    DatasourceType(name=&#39;informix&#39;),</span>
+<span class="go">    DatasourceType(name=&#39;postgresql-ibmcloud&#39;),</span>
+<span class="go">    (...)</span>
+<span class="go">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Return a list of all datasource types</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datasources</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">datasources</span>
+<span class="go">[</span>
+<span class="go">    DatasourceType(name=&#39;informix&#39;),</span>
+<span class="go">    DatasourceType(name=&#39;postgresql-ibmcloud&#39;),</span>
+<span class="go">    (...)</span>
+<span class="go">]</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For detailed information about parameters and values refer to <a class="reference external" href="https://cloud.ibm.com/apidocs/data-ai-common-core#listdatasourcetypes">https://cloud.ibm.com/apidocs/data-ai-common-core#listdatasourcetypes</a>.</p>
+</div>
+</section>
+<section id="retrieving-a-datasourcetype-connection-properties">
+<span id="preparing-data-datasources-retrieving-a-datasourcetype-connection-properties"></span><h2>Retrieving a DatasourceType connection properties<a class="headerlink" href="#retrieving-a-datasourcetype-connection-properties" title="Link to this heading">#</a></h2>
+<p>To list all properties available for a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType" title="ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasourceType</span></code></a> object use <code class="xref py py-class docutils literal notranslate"><span class="pre">DatasourceType.properties.connection</span></code> property.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get datasource object</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datasource</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">datasources</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">DatasourceType(name=&#39;informix&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">properties</span> <span class="o">=</span> <span class="n">datasource</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">connection</span>
+<span class="go">[</span>
+<span class="go">    DatasourceTypeProperty(name=&#39;cluster_access_token&#39;),</span>
+<span class="go">    DatasourceTypeProperty(name=&#39;cluster_user_name&#39;),</span>
+<span class="go">    (...)</span>
+<span class="go">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># You can get list of all required properties</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">required_properties</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">properties</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">required</span><span class="p">]</span>
+<span class="go">[</span>
+<span class="go">    DatasourceTypeProperty(name=&#39;host&#39;),</span>
+<span class="go">    DatasourceTypeProperty(name=&#39;password&#39;),</span>
+<span class="go">    (...)</span>
+<span class="go">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Or get details about the property</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reqired_property_1</span> <span class="o">=</span> <span class="n">required_properties</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">DatasourceTypeProperty(name=&#39;host&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">required_property_1</span><span class="o">.</span><span class="n">type</span>
+<span class="go">&#39;string&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">required_property_1</span><span class="o">.</span><span class="n">label</span>
+<span class="go">&#39;Hostname or IP address&#39;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="flows.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Flows</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="connections.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Connections</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Section Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-a-datasourcetype">Retrieving a DatasourceType</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-a-datasourcetype-connection-properties">Retrieving a DatasourceType connection properties</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, IBM.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

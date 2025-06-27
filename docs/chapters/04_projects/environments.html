@@ -7,8 +7,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Environments &#8212; ibm-watsonx-data-integration SDK for Python Version 0.0.1b</title>
+    <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
+    <title>Environments &#8212; ibm-watsonx-data-integration 0.0.1b documentation</title>
   
   
   
@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=77435cf2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -134,6 +135,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
   
     <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.1b</p>
   
@@ -159,7 +168,6 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../02_overview/release_notes.html">What’s new</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../02_overview/overview.html">Overview of wx.DI SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../02_overview/known_issues_and_limitations.html">Known Issues and limitations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../02_overview/faq.html">Get Help</a></li>
 </ul>
@@ -170,7 +178,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Projects</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Integration Assets</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jobs.html">Jobs</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="engines.html">Engines</a></li>
@@ -178,6 +187,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/flows.html">Flows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/stages.html">Stages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/files.html">Files</a></li>
@@ -186,7 +196,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../06_administration/index.html">Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/accounts.html">Accounts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/users.html">Users</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../06_administration/access_groups.html">AccessGroups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_administration/access_groups.html">Access Groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/roles.html">Roles</a></li>
 </ul>
 </details></li>
@@ -285,8 +295,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-an-environment">Deleting an Environment</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-a-docker-run-command">Retrieving a Docker Run Command</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Retrieving Available Engine Versions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-the-engine-installation-command">Retrieving the Engine Installation Command</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-available-engine-versions">Retrieving Available Engine Versions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-engine-version-details">Retrieving Engine Version Details</a></li>
 </ul>
             </nav>
@@ -301,15 +311,12 @@ document.write(`
                   
   <section id="environments">
 <span id="projects-environments"></span><h1>Environments<a class="headerlink" href="#environments" title="Link to this heading">#</a></h1>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>An environment defines the execution context for running flows.
 It specifies the engine to be used, the libraries to be installed, and additional runtime parameters such as the number of CPU cores, memory allocation, and the maximum number of concurrent flow runs.</p>
 <p>When configuring an environment, a command is generated that can be used to launch the environment.
 This command typically runs a Docker container with the selected engine version, all required libraries, and the specified parameters.</p>
 <section id="creating-an-environment">
-<h2>Creating an Environment<a class="headerlink" href="#creating-an-environment" title="Link to this heading">#</a></h2>
+<span id="projects-environments-creating-an-environment"></span><h2>Creating an Environment<a class="headerlink" href="#creating-an-environment" title="Link to this heading">#</a></h2>
 <p>In the UI, you can create a new Environment by navigating to <strong>Manage -&gt; StreamSets -&gt; New environment.</strong></p>
 <a class="reference internal image-reference" href="../../_images/create_environment.png"><img alt="Screenshot of the Environment creation form in the UI" class="align-center" src="../../_images/create_environment.png" style="width: 100%;" />
 </a>
@@ -324,7 +331,7 @@ This method returns a <a class="reference internal" href="../../api/models.html#
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">environment</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_environment</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Sample&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">engine_version</span><span class="o">=</span><span class="s2">&quot;6.3.0-SNAPSHOT&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="c1"># Optional parameters</span>
+<span class="gp">... </span>    <span class="c1"># Optional parameters - see API Reference for more optional parameters</span>
 <span class="gp">... </span>    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Basic env.&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">stage_libs</span><span class="o">=</span><span class="p">[</span>
 <span class="gp">... </span>        <span class="s1">&#39;streamsets-datacollector-basic-lib&#39;</span><span class="p">,</span>
@@ -332,7 +339,6 @@ This method returns a <a class="reference internal" href="../../api/models.html#
 <span class="gp">... </span>        <span class="s1">&#39;streamsets-datacollector-dev-lib&#39;</span>
 <span class="gp">... </span>        <span class="p">],</span>
 <span class="gp">... </span>    <span class="n">cpu_cores</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="o">...</span> <span class="c1"># see API Reference for more optional parameters</span>
 <span class="gp">... </span>    <span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">environment</span>
 <span class="go">Environment(name=&#39;Sample&#39;, description=&#39;Basic env.&#39;, asset_id=&#39;c383b27a-eab8-4214-a6f2-c9eb522d1efb&#39;, engine_version=&#39;6.3.0-SNAPSHOT&#39;)</span>
@@ -376,7 +382,7 @@ which requires the <code class="docutils literal notranslate"><span class="pre">
 </a>
 <section id="updating-an-environment">
 <h3>Updating an Environment<a class="headerlink" href="#updating-an-environment" title="Link to this heading">#</a></h3>
-<p>Similar to environment creation, environemnt can also be updated using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> object.
+<p>Similar to environment creation, environment can also be updated using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> object.
 First, modify properties of the environment instance, then update it using the
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_environment" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_environment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_environment()</span></code></a> method.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Modify environment settings</span>
@@ -402,9 +408,10 @@ The delete method returns an API response, which you can insepct to verify the s
 </div>
 </section>
 </section>
-<section id="retrieving-a-docker-run-command">
-<span id="retrieving-available-engine-versions"></span><h2>Retrieving a Docker Run Command<a class="headerlink" href="#retrieving-a-docker-run-command" title="Link to this heading">#</a></h2>
-<p>In the UI, you can retrive the run command by navigating to the <strong>Manage -&gt; StreamSets</strong>.</p>
+<section id="retrieving-the-engine-installation-command">
+<span id="projects-environments-retrieving-install-command"></span><h2>Retrieving the Engine Installation Command<a class="headerlink" href="#retrieving-the-engine-installation-command" title="Link to this heading">#</a></h2>
+<p>To start and run the Engine defined by an Environment, you’ll need to retrieve the installation command for that Environment and execute it from the machine where you want the Engine to run.</p>
+<p>In the UI, you can retrieve the run command by navigating to the <strong>Manage -&gt; StreamSets</strong>.</p>
 <a class="reference internal image-reference" href="../../_images/get_run_command.png"><img alt="Screenshot of the Environment update form in the UI" class="align-center" src="../../_images/get_run_command.png" style="width: 100%;" />
 </a>
 <p>You can retrieve the run command via the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.environment_model.Environment" title="ibm_watsonx_data_integration.cpd_models.environment_model.Environment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Environment</span></code></a> object by using
@@ -429,9 +436,22 @@ The delete method returns an API response, which you can insepct to verify the s
 <span class="go"># icr.io/sx-ci/datacollector:6.3.0-SNAPSHOT</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please be aware that the installation command you retrieve from the Environment requires the <code class="docutils literal notranslate"><span class="pre">SSET_API_KEY</span></code> environment variable to be set for the user executing the command.
+The environment variable should contain the API key you generated for <a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html#getting-started-and-tutorials-authentication"><span class="std std-ref">authenticating</span></a> with the watsonx.data integration platform.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can supply a value for <code class="docutils literal notranslate"><span class="pre">SSET_API_KEY</span></code> as a one-liner when retrieving the installation command for the Environment:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># `auth` is an IAMAuthenticator object, as created in the `Authentication` section of the documentation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">environment</span><span class="o">.</span><span class="n">get_installation_command</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;SSET_API_KEY&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;SSET_API_KEY=</span><span class="si">{</span><span class="n">auth</span><span class="o">.</span><span class="n">api_key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>                 <span class="c1"># pragma: allowlist secret</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="id1">
-<h2>Retrieving Available Engine Versions<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="retrieving-available-engine-versions">
+<span id="id1"></span><h2>Retrieving Available Engine Versions<a class="headerlink" href="#retrieving-available-engine-versions" title="Link to this heading">#</a></h2>
 <p>To view the list of available Engine versions, use the
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.available_engine_versions" title="ibm_watsonx_data_integration.platform.Platform.available_engine_versions"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Platform.available_engine_versions</span></code></a> property.
 This returns a list of Engine version names that can be used when configuring an Environment.</p>
@@ -532,8 +552,8 @@ This method takes the engine version name as an argument and returns detailed in
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-an-environment">Deleting an Environment</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-a-docker-run-command">Retrieving a Docker Run Command</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Retrieving Available Engine Versions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-the-engine-installation-command">Retrieving the Engine Installation Command</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-available-engine-versions">Retrieving Available Engine Versions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-engine-version-details">Retrieving Engine Version Details</a></li>
 </ul>
   </nav></div>

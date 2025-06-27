@@ -1,0 +1,14 @@
+/* ibm-watsonx-data-integration SDK CSS file */
+
+/* GENERAL
+------------------------------------------------------- */
+
+/* increases the width of the primary navbar so that "ibm-watsonx-data-integration" fits on a single line */
+.bd-sidebar-primary {
+    flex-basis: 22%;
+}
+
+/* Shrinks the logo size to better match the navbar width */
+.navbar-brand img {
+    max-width: 70%;
+}

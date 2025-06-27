@@ -51,7 +51,7 @@ To view the user details, you can click on the empty area within the row where t
    :align: center
    :width: 100%
 
-Pass the ``iam_id` to the :py:meth:`Platform.get_user_profile() <ibm_watsonx_data_integration.platform.Platform.get_user_profile>` method.
+Pass the ``iam_id`` to the :py:meth:`Platform.get_user_profile() <ibm_watsonx_data_integration.platform.Platform.get_user_profile>` method.
 This method returns an :py:class:`~ibm_watsonx_data_integration.cpd_models.user_model.UserProfile` object.
 
 .. code-block:: python

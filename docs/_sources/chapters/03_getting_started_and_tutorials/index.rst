@@ -3,7 +3,8 @@
 
 Getting Started
 ===============
-|
+
+This section is designed to help you get started using the ``ibm-watsonx-data-integration`` SDK for the first time: authentication, interfacing with the watsonx.data integration platform, and more!
 
 .. toctree::
    :maxdepth: 2

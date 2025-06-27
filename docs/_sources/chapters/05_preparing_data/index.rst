@@ -8,6 +8,7 @@ Preparing Data
    :maxdepth: 2
 
    flows
+   stages
    datasources
    connections
    files

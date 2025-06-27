@@ -7,8 +7,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Administration &#8212; ibm-watsonx-data-integration SDK for Python Version 0.0.1b</title>
+    <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
+    <title>Administration &#8212; ibm-watsonx-data-integration 0.0.1b documentation</title>
   
   
   
@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=77435cf2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -134,6 +135,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
   
     <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.1b</p>
   
@@ -159,7 +168,6 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../02_overview/release_notes.html">What’s new</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../02_overview/overview.html">Overview of wx.DI SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../02_overview/known_issues_and_limitations.html">Known Issues and limitations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../02_overview/faq.html">Get Help</a></li>
 </ul>
@@ -170,7 +178,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Projects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_projects/projects.html">Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/jobs.html">Jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/environments.html">Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/engines.html">Engines</a></li>
@@ -178,6 +187,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/flows.html">Flows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/stages.html">Stages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/files.html">Files</a></li>
@@ -186,7 +196,7 @@
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Administration</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="accounts.html">Accounts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="users.html">Users</a></li>
-<li class="toctree-l2"><a class="reference internal" href="access_groups.html">AccessGroups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_groups.html">Access Groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="roles.html">Roles</a></li>
 </ul>
 </details></li>
@@ -299,7 +309,13 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="users.html#getting-user-details-using-the-iam-id">Getting user details using the IAM ID</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="access_groups.html">AccessGroups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="access_groups.html">Access Groups</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="access_groups.html#listing-all-access-groups">Listing all Access Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_groups.html#create-an-access-group">Create an Access Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_groups.html#update-an-access-group">Update an Access Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_groups.html#delete-an-access-group">Delete an Access Group</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="roles.html">Roles</a></li>
 </ul>
 </div>

@@ -15,5 +15,6 @@ Limitations
 ~~~~~~~~~~~
 
 * The SDK only supports the IAM API key authentication mechanism at present.
-* The SDK only fully supports IBM StreamSets (real-time streaming) functionality at this time.
+* The SDK only fully supports StreamSets (real-time streaming) functionality at this time.
   Support for additional services and components, like DataStage (batch processing) is planned for future releases.
+* Currently, the SDK only supports creating a flow with an engine installed.

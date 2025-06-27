@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; ibm-watsonx-data-integration SDK for Python Version 0.0.1b</title>
+    <title>Index &#8212; ibm-watsonx-data-integration 0.0.1b documentation</title>
   
   
   
@@ -30,6 +30,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=77435cf2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -133,6 +134,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/watsonxDataIntegration_icon.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
   
     <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.1b</p>
   
@@ -158,7 +167,6 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="chapters/02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="chapters/02_overview/release_notes.html">What’s new</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapters/02_overview/overview.html">Overview of wx.DI SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chapters/02_overview/known_issues_and_limitations.html">Known Issues and limitations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chapters/02_overview/faq.html">Get Help</a></li>
 </ul>
@@ -169,7 +177,8 @@
 <li class="toctree-l2"><a class="reference internal" href="chapters/03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="chapters/04_projects/index.html">Projects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="chapters/04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapters/04_projects/projects.html">Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chapters/04_projects/jobs.html">Jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chapters/04_projects/environments.html">Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chapters/04_projects/engines.html">Engines</a></li>
@@ -177,6 +186,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="chapters/05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="chapters/05_preparing_data/flows.html">Flows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/05_preparing_data/stages.html">Stages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chapters/05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chapters/05_preparing_data/connections.html">Connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chapters/05_preparing_data/files.html">Files</a></li>
@@ -185,7 +195,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="chapters/06_administration/index.html">Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="chapters/06_administration/accounts.html">Accounts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chapters/06_administration/users.html">Users</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapters/06_administration/access_groups.html">AccessGroups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/06_administration/access_groups.html">Access Groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chapters/06_administration/roles.html">Roles</a></li>
 </ul>
 </details></li>
@@ -326,14 +336,14 @@ document.write(`
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.add_node">add_node() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition method)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageWithPredicates.add_predicates">add_predicates() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageWithPredicates method)</a>
+</li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.add_stage">add_stage() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition method)</a>
 
       <ul>
-        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.add_node">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow method)</a>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.add_stage">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow method)</a>
 </li>
       </ul></li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeWithPredicates.add_predicates">add_predicates() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeWithPredicates method)</a>
-</li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.environment_model.Environment.add_stage_libraries">add_stage_libraries() (ibm_watsonx_data_integration.cpd_models.environment_model.Environment method)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.user_model.UserProfile.added_on">added_on (ibm_watsonx_data_integration.cpd_models.user_model.UserProfile attribute)</a>
@@ -368,25 +378,27 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobRun.cancel">cancel() (ibm_watsonx_data_integration.cpd_models.job_model.JobRun method)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeConfigurationProperty.config_name">config_name (ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeConfigurationProperty attribute)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageConfigurationProperty.config_name">config_name (ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageConfigurationProperty attribute)</a>
 
       <ul>
-        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeServiceProperty.config_name">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeServiceProperty attribute)</a>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageServiceProperty.config_name">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageServiceProperty attribute)</a>
 </li>
       </ul></li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node.configuration">configuration (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node property)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration">Configuration (class in ibm_watsonx_data_integration.services.streamsets.models.configuration)</a>
+</li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.configuration">configuration (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition property)</a>
 
       <ul>
-        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.configuration">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition property)</a>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.configuration">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage property)</a>
 </li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.configuration">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow property)</a>
 </li>
       </ul></li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node.connect_event_to">connect_event_to() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node method)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.connect_event_to">connect_event_to() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage method)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node.connect_input_to">connect_input_to() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node method)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.connect_input_to">connect_input_to() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage method)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node.connect_output_to">connect_output_to() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node method)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.connect_output_to">connect_output_to() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage method)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.Connection">Connection (class in ibm_watsonx_data_integration.cpd_models.connections_model)</a>
 </li>
@@ -396,10 +408,10 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionInteractionProperties">ConnectionInteractionProperties (class in ibm_watsonx_data_integration.cpd_models.connections_model)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionMetadata">ConnectionMetadata (class in ibm_watsonx_data_integration.cpd_models.connections_model)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionMetadata">ConnectionMetadata (class in ibm_watsonx_data_integration.cpd_models.connections_model)</a>
+</li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.Connections">Connections (class in ibm_watsonx_data_integration.cpd_models.connections_model)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.connections">connections (ibm_watsonx_data_integration.cpd_models.project_model.Project property)</a>
@@ -448,7 +460,7 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypes">DatasourceTypes (class in ibm_watsonx_data_integration.cpd_models.connections_model)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeData.definition">definition (ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeData attribute)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageData.definition">definition (ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageData attribute)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.platform.Platform.delete_access_group">delete_access_group() (ibm_watsonx_data_integration.platform.Platform method)</a>
 </li>
@@ -478,11 +490,11 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DirectoryAsset">DirectoryAsset (class in ibm_watsonx_data_integration.cpd_models.connections_model)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node.disconnect_event_from">disconnect_event_from() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node method)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.disconnect_event_from">disconnect_event_from() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage method)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node.disconnect_input_from">disconnect_input_from() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node method)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.disconnect_input_from">disconnect_input_from() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage method)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node.disconnect_output_from">disconnect_output_from() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node method)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.disconnect_output_from">disconnect_output_from() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage method)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DiscoveredAsset">DiscoveredAsset (class in ibm_watsonx_data_integration.cpd_models.connections_model)</a>
 </li>
@@ -524,13 +536,13 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.environments">environments (ibm_watsonx_data_integration.cpd_models.project_model.Project property)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.error_node">error_node (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition property)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.error_stage">error_stage (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition property)</a>
 
       <ul>
-        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.error_node">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow property)</a>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.error_stage">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow property)</a>
 </li>
       </ul></li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node.events">events (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node property)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.events">events (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage property)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypeAction.execute">execute() (ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypeAction method)</a>
 </li>
@@ -558,6 +570,8 @@ document.write(`
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration.get">get() (ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration method)</a>
+</li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.platform.Platform.get_account">get_account() (ibm_watsonx_data_integration.platform.Platform method)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.get_attribute">get_attribute() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition static method)</a>
@@ -660,8 +674,6 @@ document.write(`
         <li><a href="api/models.html#module-ibm_watsonx_data_integration.cpd_models.job_model">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     ibm_watsonx_data_integration.cpd_models.project_model
 
@@ -669,6 +681,8 @@ document.write(`
         <li><a href="api/models.html#module-ibm_watsonx_data_integration.cpd_models.project_model">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     ibm_watsonx_data_integration.cpd_models.role_model
 
@@ -698,6 +712,13 @@ document.write(`
 </li>
       </ul></li>
       <li>
+    ibm_watsonx_data_integration.services.streamsets.models.configuration
+
+      <ul>
+        <li><a href="api/models.html#module-ibm_watsonx_data_integration.services.streamsets.models.configuration">module</a>
+</li>
+      </ul></li>
+      <li>
     ibm_watsonx_data_integration.services.streamsets.models.flow_model
 
       <ul>
@@ -712,11 +733,13 @@ document.write(`
         <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.id">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow property)</a>
 </li>
       </ul></li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node.inputs">inputs (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node property)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.inputs">inputs (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage property)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeData.instance">instance (ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeData attribute)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageData.instance">instance (ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageData attribute)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.user_model.UserProfile.invited_on">invited_on (ibm_watsonx_data_integration.cpd_models.user_model.UserProfile attribute)</a>
+</li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration.items">items() (ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -857,11 +880,11 @@ document.write(`
 </li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.user_model.UserSettings.model_config">(ibm_watsonx_data_integration.cpd_models.user_model.UserSettings attribute)</a>
 </li>
-        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node.model_config">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node attribute)</a>
-</li>
-        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeWithPredicates.model_config">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeWithPredicates attribute)</a>
-</li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.model_config">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition attribute)</a>
+</li>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.model_config">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage attribute)</a>
+</li>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageWithPredicates.model_config">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageWithPredicates attribute)</a>
 </li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsConnection.model_config">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsConnection attribute)</a>
 </li>
@@ -968,6 +991,8 @@ document.write(`
 </li>
         <li><a href="api/models.html#module-ibm_watsonx_data_integration.platform">ibm_watsonx_data_integration.platform</a>
 </li>
+        <li><a href="api/models.html#module-ibm_watsonx_data_integration.services.streamsets.models.configuration">ibm_watsonx_data_integration.services.streamsets.models.configuration</a>
+</li>
         <li><a href="api/models.html#module-ibm_watsonx_data_integration.services.streamsets.models.flow_model">ibm_watsonx_data_integration.services.streamsets.models.flow_model</a>
 </li>
         <li><a href="chapters/03_getting_started_and_tutorials/index.html#module-streamsets">streamsets</a>
@@ -981,28 +1006,8 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.name">name (ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow property)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node">Node (class in ibm_watsonx_data_integration.services.streamsets.models.flow_model)</a>
-</li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.node_configuration_name">node_configuration_name() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition static method)</a>
-</li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeClassDefault">NodeClassDefault (in module ibm_watsonx_data_integration.services.streamsets.models.flow_model)</a>
-</li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeConfigurationProperty">NodeConfigurationProperty (class in ibm_watsonx_data_integration.services.streamsets.models.flow_model)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeData">NodeData (class in ibm_watsonx_data_integration.services.streamsets.models.flow_model)</a>
-</li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.nodes">nodes (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition property)</a>
-
-      <ul>
-        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.nodes">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow property)</a>
-</li>
-      </ul></li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeServiceProperty">NodeServiceProperty (class in ibm_watsonx_data_integration.services.streamsets.models.flow_model)</a>
-</li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeWithPredicates">NodeWithPredicates (class in ibm_watsonx_data_integration.services.streamsets.models.flow_model)</a>
-</li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.user_model.UserSettings.notification_language">notification_language (ibm_watsonx_data_integration.cpd_models.user_model.UserSettings attribute)</a>
 </li>
   </ul></td>
@@ -1023,7 +1028,7 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Outputs">Outputs (class in ibm_watsonx_data_integration.cpd_models.job_model)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node.outputs">outputs (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node property)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.outputs">outputs (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage property)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1051,7 +1056,7 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.platform.Platform">Platform (class in ibm_watsonx_data_integration.platform)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeWithPredicates.predicates">predicates (ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeWithPredicates property)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageWithPredicates.predicates">predicates (ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageWithPredicates property)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Service.product">product (ibm_watsonx_data_integration.cpd_models.service_model.Service property)</a>
 </li>
@@ -1071,14 +1076,14 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.user_model.UserProfile.realm">realm (ibm_watsonx_data_integration.cpd_models.user_model.UserProfile attribute)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.remove_node">remove_node() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition method)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageWithPredicates.remove_predicate">remove_predicate() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageWithPredicates method)</a>
+</li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.remove_stage">remove_stage() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition method)</a>
 
       <ul>
-        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.remove_node">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow method)</a>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.remove_stage">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow method)</a>
 </li>
       </ul></li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeWithPredicates.remove_predicate">remove_predicate() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeWithPredicates method)</a>
-</li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.common.auth.IAMAuthenticator.request_token">request_token() (ibm_watsonx_data_integration.common.auth.IAMAuthenticator method)</a>
 </li>
   </ul></td>
@@ -1115,45 +1120,65 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.platform.Platform.service_instances">service_instances (ibm_watsonx_data_integration.platform.Platform property)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeServiceProperty.service_name">service_name (ibm_watsonx_data_integration.services.streamsets.models.flow_model.NodeServiceProperty attribute)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageServiceProperty.service_name">service_name (ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageServiceProperty attribute)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Services">Services (class in ibm_watsonx_data_integration.cpd_models.service_model)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.set_error_node">set_error_node() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition method)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.set_error_stage">set_error_stage() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition method)</a>
 
       <ul>
-        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.set_error_node">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow method)</a>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.set_error_stage">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow method)</a>
 </li>
       </ul></li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.set_start_event_node">set_start_event_node() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition method)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.set_start_event_stage">set_start_event_stage() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition method)</a>
 
       <ul>
-        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.set_start_event_node">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow method)</a>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.set_start_event_stage">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow method)</a>
 </li>
       </ul></li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.set_stats_aggregator_node">set_stats_aggregator_node() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition method)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.set_stats_aggregator_stage">set_stats_aggregator_stage() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition method)</a>
 
       <ul>
-        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.set_stats_aggregator_node">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow method)</a>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.set_stats_aggregator_stage">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow method)</a>
 </li>
       </ul></li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.set_stop_event_node">set_stop_event_node() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition method)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.set_stop_event_stage">set_stop_event_stage() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition method)</a>
 
       <ul>
-        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.set_stop_event_node">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow method)</a>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.set_stop_event_stage">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow method)</a>
 </li>
       </ul></li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.set_test_origin_node">set_test_origin_node() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition method)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.set_test_origin_stage">set_test_origin_stage() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition method)</a>
 
       <ul>
-        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.set_test_origin_node">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow method)</a>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.set_test_origin_stage">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow method)</a>
 </li>
       </ul></li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.user_model.UserProfile.settings">settings (ibm_watsonx_data_integration.cpd_models.user_model.UserProfile property)</a>
 </li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.environment_model.EngineProperties.split_string">split_string() (ibm_watsonx_data_integration.cpd_models.environment_model.EngineProperties class method)</a>
+</li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage">Stage (class in ibm_watsonx_data_integration.services.streamsets.models.flow_model)</a>
+</li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.stage_configuration_name">stage_configuration_name() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition static method)</a>
+</li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageClassDefault">StageClassDefault (in module ibm_watsonx_data_integration.services.streamsets.models.flow_model)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.environment_model.EngineProperties.split_string">split_string() (ibm_watsonx_data_integration.cpd_models.environment_model.EngineProperties class method)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageConfigurationProperty">StageConfigurationProperty (class in ibm_watsonx_data_integration.services.streamsets.models.flow_model)</a>
+</li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageData">StageData (class in ibm_watsonx_data_integration.services.streamsets.models.flow_model)</a>
+</li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.stages">stages (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition property)</a>
+
+      <ul>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.stages">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow property)</a>
+</li>
+      </ul></li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageServiceProperty">StageServiceProperty (class in ibm_watsonx_data_integration.services.streamsets.models.flow_model)</a>
+</li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageWithPredicates">StageWithPredicates (class in ibm_watsonx_data_integration.services.streamsets.models.flow_model)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job.start">start() (ibm_watsonx_data_integration.cpd_models.job_model.Job method)</a>
 </li>
@@ -1165,10 +1190,10 @@ document.write(`
       </ul></li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.user_model.UserProfile.state">state (ibm_watsonx_data_integration.cpd_models.user_model.UserProfile attribute)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.stats_aggregator_node">stats_aggregator_node (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition property)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.stats_aggregator_stage">stats_aggregator_stage (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition property)</a>
 
       <ul>
-        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.stats_aggregator_node">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow property)</a>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.stats_aggregator_stage">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow property)</a>
 </li>
       </ul></li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.stop_event">stop_event (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition property)</a>
@@ -1224,7 +1249,7 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.user_model.UserSettings.two_fa">two_fa (ibm_watsonx_data_integration.cpd_models.user_model.UserSettings attribute)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node.type">type (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Node property)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.type">type (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage property)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1232,6 +1257,8 @@ document.write(`
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration.update">update() (ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration method)</a>
+</li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.platform.Platform.update_access_group">update_access_group() (ibm_watsonx_data_integration.platform.Platform method)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_connection">update_connection() (ibm_watsonx_data_integration.cpd_models.project_model.Project method)</a>
@@ -1246,10 +1273,10 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.platform.Platform.update_role">update_role() (ibm_watsonx_data_integration.platform.Platform method)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.user_model.UserProfile.update_user_settings">update_user_settings() (ibm_watsonx_data_integration.cpd_models.user_model.UserProfile method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.user_model.UserProfile.update_user_settings">update_user_settings() (ibm_watsonx_data_integration.cpd_models.user_model.UserProfile method)</a>
+</li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.platform.Platform.upload_file">upload_file() (ibm_watsonx_data_integration.platform.Platform method)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.user_model.UserProfile.user_id">user_id (ibm_watsonx_data_integration.cpd_models.user_model.UserProfile attribute)</a>

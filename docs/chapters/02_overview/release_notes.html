@@ -7,8 +7,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>What’s new &#8212; ibm-watsonx-data-integration SDK for Python Version 0.0.1b</title>
+    <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
+    <title>What’s new &#8212; ibm-watsonx-data-integration 0.0.1b documentation</title>
   
   
   
@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=77435cf2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -46,7 +47,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/02_overview/release_notes';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Overview of wx.DI SDK" href="overview.html" />
+    <link rel="next" title="Known Issues and limitations" href="known_issues_and_limitations.html" />
     <link rel="prev" title="Overview" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -134,6 +135,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
   
     <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.1b</p>
   
@@ -159,7 +168,6 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">What’s new</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html">Overview of wx.DI SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="known_issues_and_limitations.html">Known Issues and limitations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faq.html">Get Help</a></li>
 </ul>
@@ -170,7 +178,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Projects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_projects/projects.html">Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/jobs.html">Jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/environments.html">Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/engines.html">Engines</a></li>
@@ -178,6 +187,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/flows.html">Flows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/stages.html">Stages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/files.html">Files</a></li>
@@ -186,7 +196,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../06_administration/index.html">Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/accounts.html">Accounts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/users.html">Users</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../06_administration/access_groups.html">AccessGroups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_administration/access_groups.html">Access Groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/roles.html">Roles</a></li>
 </ul>
 </details></li>
@@ -255,7 +265,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -271,6 +283,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Section Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-june-2025">0.0.1b (June 2025)</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -282,10 +302,21 @@ document.write(`
                   
   <section id="what-s-new">
 <span id="overview-release-notes"></span><h1>What’s new<a class="headerlink" href="#what-s-new" title="Link to this heading">#</a></h1>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>Placeholder.</p>
+<p>Below you will find release notes for each version of the <code class="docutils literal notranslate"><span class="pre">ibm-watsonx-data-integration</span></code> SDK as well as highlights of major features and/or fixes included in each release.</p>
+<section id="b-june-2025">
+<h2>0.0.1b (June 2025)<a class="headerlink" href="#b-june-2025" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Added support for retrieving, creating, updating, deleting and running Jobs.</p></li>
+<li><p>Added support for retrieving, creating, updating and deleting Projects.</p></li>
+<li><p>Added support for retrieving, creating, updating and deleting StreamSets Flows.</p></li>
+<li><p>Added support for retrieving, creating, updating and deleting Connections.</p></li>
+<li><p>Added support for retrieving, creating, updating and deleting StreamSets Environments.</p></li>
+<li><p>Added support for retrieving, creating, updating and deleting AccessGroups.</p></li>
+<li><p>Added support for retrieving, creating, updating and deleting Roles.</p></li>
+<li><p>Added support for retrieving Users &amp; Accounts.</p></li>
+<li><p>Added the ability to retrieve install script for StreamSets Engines.</p></li>
+</ul>
+</section>
 </section>
 
 
@@ -309,11 +340,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="overview.html"
+       href="known_issues_and_limitations.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Overview of wx.DI SDK</p>
+        <p class="prev-next-title">Known Issues and limitations</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -323,6 +354,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Section Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-june-2025">0.0.1b (June 2025)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

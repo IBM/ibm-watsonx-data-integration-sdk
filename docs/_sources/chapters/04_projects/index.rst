@@ -1,14 +1,14 @@
 .. _projects:
 
-Projects
-========
-|
+Integration Assets
+==================
 
-Project description.
+Integration Assets are the core components of the watsonx.data integration platform and include Projects, Jobs, Environments, and Engines that define, organize, and execute your data integration workflows.
 
 .. toctree::
    :maxdepth: 2
 
+   projects
    jobs
    environments
    engines

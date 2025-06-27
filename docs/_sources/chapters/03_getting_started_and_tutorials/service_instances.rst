@@ -10,7 +10,7 @@ This includes operations such as:
     * Retrieving Service Instances
     * Creating Service Instances
     * Deleting Service Instances
-|
+
 
 Retrieving Service Instances
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -19,12 +19,12 @@ To retrieve existing service instances, use the :py:attr:`ibm_watsonx_data_integ
 
 .. code-block:: python
 
-     # Returns a CollectionModel of all service instances
-     service_instances = platform.service_instances
+     >>> # Returns a CollectionModel of all service instances
+     >>> service_instances = platform.service_instances
 
-     # Returns a CollectionModel of the first five service instances
-     service_instances = platform.service_instances.get_all(limit=5)
-|
+     >>> # Returns a CollectionModel of the first five service instances
+     >>> service_instances = platform.service_instances.get_all(limit=5)
+
 
 Creating Service Instances
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -34,13 +34,14 @@ You must specify  ``instance_type`` and ``name``. Optionally, you can also speci
 
 .. code-block:: python
 
-    service_instance = platform.create_service_instance(
-                                instance_type='datastage',
-                                name='My Datastage Service Instance,
-                                target='us-south',
-                                tags=['DatastageInstance']
-                        )
-|
+    >>> service_instance = platform.create_service_instance(
+    ...     instance_type='datastage',
+    ...     name='My Datastage Service Instance',
+    ...     target='us-south',
+    ...     tags=['DatastageInstance']
+    ... )
+
+
 
 Deleting Service Instances
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -50,5 +51,5 @@ This method returns an HTTP response indicating the status of the delete operati
 
 .. code-block:: python
 
-    service_instance = platform.service_instances[0]
-    res = platform.delete_service_instance(service_instance)
+    >>> service_instance = platform.service_instances[0]
+    >>> res = platform.delete_service_instance(service_instance)

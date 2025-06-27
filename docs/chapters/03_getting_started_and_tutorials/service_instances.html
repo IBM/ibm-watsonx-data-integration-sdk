@@ -7,8 +7,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Service Instances &#8212; ibm-watsonx-data-integration SDK for Python Version 0.0.1b</title>
+    <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
+    <title>Service Instances &#8212; ibm-watsonx-data-integration 0.0.1b documentation</title>
   
   
   
@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=77435cf2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -46,7 +47,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03_getting_started_and_tutorials/service_instances';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Projects" href="../04_projects/index.html" />
+    <link rel="next" title="Integration Assets" href="../04_projects/index.html" />
     <link rel="prev" title="Platform" href="platform.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -134,6 +135,14 @@
   
   
   
+    
+    
+      
+    
+    
+    <img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
   
     <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.1b</p>
   
@@ -159,7 +168,6 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../02_overview/release_notes.html">What’s new</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../02_overview/overview.html">Overview of wx.DI SDK</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../02_overview/known_issues_and_limitations.html">Known Issues and limitations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../02_overview/faq.html">Get Help</a></li>
 </ul>
@@ -170,7 +178,8 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Service Instances</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Projects</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_projects/projects.html">Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/jobs.html">Jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/environments.html">Environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/engines.html">Engines</a></li>
@@ -178,6 +187,7 @@
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/flows.html">Flows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/stages.html">Stages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/files.html">Files</a></li>
@@ -186,7 +196,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../06_administration/index.html">Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/accounts.html">Accounts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/users.html">Users</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../06_administration/access_groups.html">AccessGroups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_administration/access_groups.html">Access Groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/roles.html">Roles</a></li>
 </ul>
 </details></li>
@@ -304,45 +314,36 @@ document.write(`
 </ul>
 </dd>
 </dl>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <section id="retrieving-service-instances">
 <h2>Retrieving Service Instances<a class="headerlink" href="#retrieving-service-instances" title="Link to this heading">#</a></h2>
 <p>To retrieve existing service instances, use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.service_instances" title="ibm_watsonx_data_integration.platform.Platform.service_instances"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.platform.Platform.service_instances</span></code></a> property of the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform" title="ibm_watsonx_data_integration.platform.Platform"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.platform.Platform</span></code></a> class. This will return a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Services" title="ibm_watsonx_data_integration.cpd_models.service_model.Services"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.cpd_models.service_model.Services</span></code></a> object.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Returns a CollectionModel of all service instances</span>
-<span class="n">service_instances</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">service_instances</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Returns a CollectionModel of all service instances</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">service_instances</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">service_instances</span>
 
-<span class="c1"># Returns a CollectionModel of the first five service instances</span>
-<span class="n">service_instances</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">service_instances</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Returns a CollectionModel of the first five service instances</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">service_instances</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">service_instances</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
 </div>
 </section>
 <section id="creating-service-instances">
 <h2>Creating Service Instances<a class="headerlink" href="#creating-service-instances" title="Link to this heading">#</a></h2>
 <p>To create a new <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Service" title="ibm_watsonx_data_integration.cpd_models.service_model.Service"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.cpd_models.service_model.Service</span></code></a> object within the watsonx.data integration platform, you can use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.create_service_instance" title="ibm_watsonx_data_integration.platform.Platform.create_service_instance"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.platform.Platform.create_service_instance()</span></code></a> method to instantiate the service instance.</p>
 <p>You must specify  <code class="docutils literal notranslate"><span class="pre">instance_type</span></code> and <code class="docutils literal notranslate"><span class="pre">name</span></code>. Optionally, you can also specify <code class="docutils literal notranslate"><span class="pre">target</span></code> and <code class="docutils literal notranslate"><span class="pre">tags</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">service_instance</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">create_service_instance</span><span class="p">(</span>
-                            <span class="n">instance_type</span><span class="o">=</span><span class="s1">&#39;datastage&#39;</span><span class="p">,</span>
-                            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;My Datastage Service Instance,</span>
-                            <span class="n">target</span><span class="o">=</span><span class="s1">&#39;us-south&#39;</span><span class="p">,</span>
-                            <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;DatastageInstance&#39;</span><span class="p">]</span>
-                    <span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">service_instance</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">create_service_instance</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">instance_type</span><span class="o">=</span><span class="s1">&#39;datastage&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;My Datastage Service Instance&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">target</span><span class="o">=</span><span class="s1">&#39;us-south&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;DatastageInstance&#39;</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
 </pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
 </div>
 </section>
 <section id="deleting-service-instances">
 <h2>Deleting Service Instances<a class="headerlink" href="#deleting-service-instances" title="Link to this heading">#</a></h2>
 <p>To delete a service instance, pass the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Service" title="ibm_watsonx_data_integration.cpd_models.service_model.Service"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.cpd_models.service_model.Service</span></code></a> object you want to delete into the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.delete_service_instance" title="ibm_watsonx_data_integration.platform.Platform.delete_service_instance"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.platform.Platform.delete_service_instance()</span></code></a> method to delete it.</p>
 <p>This method returns an HTTP response indicating the status of the delete operation.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">service_instance</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">service_instances</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">delete_service_instance</span><span class="p">(</span><span class="n">service_instance</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">service_instance</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">service_instances</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">delete_service_instance</span><span class="p">(</span><span class="n">service_instance</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -373,7 +374,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Projects</p>
+        <p class="prev-next-title">Integration Assets</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

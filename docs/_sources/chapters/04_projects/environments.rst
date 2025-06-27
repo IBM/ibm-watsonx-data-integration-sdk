@@ -3,14 +3,13 @@
 Environments
 ============
 
-|
-
 An environment defines the execution context for running flows.
 It specifies the engine to be used, the libraries to be installed, and additional runtime parameters such as the number of CPU cores, memory allocation, and the maximum number of concurrent flow runs.
 
 When configuring an environment, a command is generated that can be used to launch the environment.
 This command typically runs a Docker container with the selected engine version, all required libraries, and the specified parameters.
 
+.. _projects__environments__creating_an_environment:
 
 Creating an Environment
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -40,7 +39,7 @@ This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.enviro
     >>> environment = project.create_environment(
     ...     name="Sample",
     ...     engine_version="6.3.0-SNAPSHOT",
-    ...     # Optional parameters
+    ...     # Optional parameters - see API Reference for more optional parameters
     ...     description="Basic env.",
     ...     stage_libs=[
     ...         'streamsets-datacollector-basic-lib',
@@ -48,7 +47,6 @@ This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.enviro
     ...         'streamsets-datacollector-dev-lib'
     ...         ],
     ...     cpu_cores=2,
-    ...     ... # see API Reference for more optional parameters
     ...     )
     >>> environment
     Environment(name='Sample', description='Basic env.', asset_id='c383b27a-eab8-4214-a6f2-c9eb522d1efb', engine_version='6.3.0-SNAPSHOT')
@@ -100,7 +98,7 @@ In the UI, you can update or delete an existing Environment by navigating to the
 Updating an Environment
 -----------------------
 
-Similar to environment creation, environemnt can also be updated using the :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object.
+Similar to environment creation, environment can also be updated using the :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object.
 First, modify properties of the environment instance, then update it using the
 :py:meth:`Project.update_environment() <ibm_watsonx_data_integration.cpd_models.project_model.Project.update_environment>` method.
 
@@ -129,12 +127,15 @@ The delete method returns an API response, which you can insepct to verify the s
     >>> response
     <Response [200]>
 
-.. _retrieving_available_engine_versions:
 
-Retrieving a Docker Run Command
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. _projects__environments__retrieving_install_command:
 
-In the UI, you can retrive the run command by navigating to the **Manage -> StreamSets**.
+Retrieving the Engine Installation Command
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To start and run the Engine defined by an Environment, you'll need to retrieve the installation command for that Environment and execute it from the machine where you want the Engine to run.
+
+In the UI, you can retrieve the run command by navigating to the **Manage -> StreamSets**.
 
 .. image:: ../../_static/images/environment/get_run_command.png
    :alt: Screenshot of the Environment update form in the UI
@@ -164,6 +165,20 @@ You can retrieve the run command via the :py:class:`~ibm_watsonx_data_integratio
     # -e SSET_API_KEY \
     # -e SSET_IAM_URL=https://iam.test.cloud.ibm.com \
     # icr.io/sx-ci/datacollector:6.3.0-SNAPSHOT
+
+.. note::
+   Please be aware that the installation command you retrieve from the Environment requires the ``SSET_API_KEY`` environment variable to be set for the user executing the command.
+   The environment variable should contain the API key you generated for :ref:`authenticating <getting_started_and_tutorials__authentication>` with the watsonx.data integration platform.
+
+   .. tip::
+      You can supply a value for ``SSET_API_KEY`` as a one-liner when retrieving the installation command for the Environment:
+
+      .. code-block:: python
+
+         >>> # `auth` is an IAMAuthenticator object, as created in the `Authentication` section of the documentation
+         >>> environment.get_installation_command().replace("SSET_API_KEY", f"SSET_API_KEY={auth.api_key}")                 # pragma: allowlist secret
+
+.. _retrieving_available_engine_versions:
 
 Retrieving Available Engine Versions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

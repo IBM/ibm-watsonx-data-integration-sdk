@@ -88,8 +88,8 @@ Once you have made the necessary changes, click **Save** to update the project.
 
 |
 
-To update a project via the SDK, first make the necessary in-memory changes to your py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object.
-Next, pass in this object into the py:meth:`Platform.update_project() <ibm_watsonx_data_integration.platform.Platform.update_project>` method.
+To update a project via the SDK, first make the necessary in-memory changes to your :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object.
+Next, pass in this object into the :py:meth:`Platform.update_project() <ibm_watsonx_data_integration.platform.Platform.update_project>` method.
 
 This method returns an HTTP response indicating the status of the update operation.
 

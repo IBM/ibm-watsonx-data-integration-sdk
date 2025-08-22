@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Engines &#8212; ibm-watsonx-data-integration 0.0.1b documentation</title>
+    <title>Engines &#8212; ibm-watsonx-data-integration 0.0.2b documentation</title>
   
   
   
@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=77435cf2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -38,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=17f7287f"></script>
+    <script src="../../_static/documentation_options.js?v=b3319892"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -144,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.1b</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.2b</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -198,6 +199,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/users.html">Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/access_groups.html">Access Groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/roles.html">Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_administration/custom_roles.html">Custom Roles</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -312,14 +314,14 @@ They can be configured with specific settings, like Java version, memory allocat
 <section id="create-an-engine">
 <h2>Create an Engine<a class="headerlink" href="#create-an-engine" title="Link to this heading">#</a></h2>
 <p>The SDK provides functionality for interacting with an engine, however an engine cannot be created directly.
-Instead, you can retrieve the installation command to install and start an Engine directly from it’s Environment via the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.environment_model.Environment.get_installation_command" title="ibm_watsonx_data_integration.cpd_models.environment_model.Environment.get_installation_command"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Environment.get_installation_command()</span></code></a> method.</p>
+Instead, you can retrieve the installation command to install and start an Engine directly from it’s Environment via the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.get_installation_command" title="ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.get_installation_command"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Environment.get_installation_command()</span></code></a> method.</p>
 <p>For more information, refer to our <a class="reference internal" href="environments.html#projects-environments"><span class="std std-ref">Environment</span></a> documentation.</p>
 </section>
 <section id="retrieving-existing-engines-in-a-project">
 <h2>Retrieving Existing Engines in a Project<a class="headerlink" href="#retrieving-existing-engines-in-a-project" title="Link to this heading">#</a></h2>
 <p>To retrieve existing engines in a project, use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.engines" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.engines"><code class="xref py py-attr docutils literal notranslate"><span class="pre">engines</span></code></a> property of the
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> class.
-This will return a list of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.engine_model.Engine" title="ibm_watsonx_data_integration.cpd_models.engine_model.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a> objects.</p>
+This will return a list of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine" title="ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a> objects.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get all engines associated with the project</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">engines</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">engines</span>
 </pre></div>
@@ -328,17 +330,20 @@ This will return a list of <a class="reference internal" href="../../api/models.
 <section id="retrieving-an-existing-engine-in-a-project">
 <h2>Retrieving an Existing Engine in a Project<a class="headerlink" href="#retrieving-an-existing-engine-in-a-project" title="Link to this heading">#</a></h2>
 <p>To retrieve existing engines in a project, use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.get_engine" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.get_engine"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.get_engine()</span></code></a> method of the
-<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> class. You must specify <code class="docutils literal notranslate"><span class="pre">asset_id</span></code> of the existing engine which is stored in the <code class="docutils literal notranslate"><span class="pre">engine.metadata.asset_id</span></code> field.
-This will return a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.engine_model.Engine" title="ibm_watsonx_data_integration.cpd_models.engine_model.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a> object.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get a single engine by asset_id</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">engine</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_engine</span><span class="p">(</span><span class="n">asset_id</span><span class="o">=</span><span class="s1">&#39;C25F1E5F-A901-44F7-A27E-2B0E94C23224&#39;</span><span class="p">)</span>
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> class. You must specify <code class="docutils literal notranslate"><span class="pre">engine_id</span></code> of the existing engine.
+This will return a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine" title="ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a> object.</p>
+<p>In the UI, you can retrieve an Engine ID by navigating to <strong>Manage -&gt; StreamSets -&gt; Environment</strong> and click on your environment name for details.</p>
+<a class="reference internal image-reference" href="../../_images/retrieve_engine_id.png"><img alt="Screenshot of the Engine id retrieving" class="align-center" src="../../_images/retrieve_engine_id.png" style="width: 100%;" />
+</a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get a single engine by engine_id</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">engine</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">get_engine</span><span class="p">(</span><span class="n">engine_id</span><span class="o">=</span><span class="s1">&#39;C25F1E5F-A901-44F7-A27E-2B0E94C23224&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="retrieving-existing-engines-in-an-environment">
 <h2>Retrieving Existing Engines in an Environment<a class="headerlink" href="#retrieving-existing-engines-in-an-environment" title="Link to this heading">#</a></h2>
-<p>To retrieve existing engines in an Environment, use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.environment_model.Environment.engines" title="ibm_watsonx_data_integration.cpd_models.environment_model.Environment.engines"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Environment.engines</span></code></a> property of the
-<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.environment_model.Environment" title="ibm_watsonx_data_integration.cpd_models.environment_model.Environment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Environment</span></code></a> class. This will return a list of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.engine_model.Engine" title="ibm_watsonx_data_integration.cpd_models.engine_model.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a> objects.</p>
+<p>To retrieve existing engines in an Environment, use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.engines" title="ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.engines"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Environment.engines</span></code></a> property of the
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment" title="ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Environment</span></code></a> class. This will return a list of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine" title="ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a> objects.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get all engines associated with the environment</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">engines</span> <span class="o">=</span>  <span class="n">environment</span><span class="o">.</span><span class="n">engines</span>
 </pre></div>
@@ -346,7 +351,7 @@ This will return a <a class="reference internal" href="../../api/models.html#ibm
 </section>
 <section id="deleting-an-existing-engine">
 <h2>Deleting an Existing Engine<a class="headerlink" href="#deleting-an-existing-engine" title="Link to this heading">#</a></h2>
-<p>To delete an engine instance, pass the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.engine_model.Engine" title="ibm_watsonx_data_integration.cpd_models.engine_model.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a> object you want to
+<p>To delete an engine instance, pass the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine" title="ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a> object you want to
 delete into the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_engine" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_engine"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_engine()</span></code></a> method to delete it.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Delete an engine</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">delete_engine</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>

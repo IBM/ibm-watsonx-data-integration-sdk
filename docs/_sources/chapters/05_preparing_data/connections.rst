@@ -49,7 +49,7 @@ and provide a **Name** and other additional configuration (depending on the sele
    :align: center
    :width: 100%
 
-In the WatsonX DI SDK, you can create a new :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.Connection` object within a
+In the SDK, you can create a new :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.Connection` object within a
 :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project`,
 by selecting the appropriate project from the :py:class:`~ibm_watsonx_data_integration.platform.Platform` and then using
 the :py:meth:`Project.create_connection() <ibm_watsonx_data_integration.cpd_models.project_model.Project.create_connection>` method to instantiate the connection.
@@ -58,6 +58,10 @@ the :py:meth:`Project.create_connection() <ibm_watsonx_data_integration.cpd_mode
 You must provide a ``name`` and ``datasource`` type to create connection.
 :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType` is an object defining the data source for which the connection will be created.
 
+By default before creating any connection, server will validate it.
+If the connection cannot be estabilished with provided parameters, you will get an error and connection will not be saved.
+To skip validation and create connection anyway set ``test`` parameter of
+:py:meth:`Project.create_connection() <ibm_watsonx_data_integration.cpd_models.project_model.Project.create_connection>` to ``False``.
 
 .. note::
 
@@ -66,7 +70,7 @@ You must provide a ``name`` and ``datasource`` type to create connection.
 
 .. code-block:: python
 
-    >>> project = platform.projects[0]
+    >>> project = platform.projects.get(name="project")
     Project(guid='d7831458-4771-4ad4-bb05-fb95fa94361c', name='project')
     >>> datasource_type = platform.datasources[28]
     DatasourceType(name='http')
@@ -97,7 +101,7 @@ In the UI, you can get all Connections by navigating to **Assets -> Data access 
    :align: center
    :width: 100%
 
-In the WatsonX DI SDK, Connection can be retrieved using :py:class:`Project.connections <ibm_watsonx_data_integration.cpd_models.project_model.Project.connections>` property.
+In the SDK, Connection can be retrieved using :py:class:`Project.connections <ibm_watsonx_data_integration.cpd_models.project_model.Project.connections>` property.
 You can also further filter and refine the connections returned based on attributes including
 ``name``, ``context``, ``properties`` and ``datasource_type``.
 
@@ -117,7 +121,7 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.conn
 
     >>> # Return a list of all connections
     >>> connections = project.connections
-    [Connection(name='Connection Name')]
+    [Connection(name='Connection Name'), (...)]
 
 .. tip::
 
@@ -136,10 +140,13 @@ This button is visible only when cursor is over the Connection object.
    :align: center
    :width: 100%
 
-To update a connection in the WatsonX DI SDK, we first modify properties of the connection and then
+To update a connection in the SDK, we first modify properties of the connection and then
 pass the instance to the :py:meth:`Project.update_connection() <ibm_watsonx_data_integration.cpd_models.project_model.Project.update_connection>` method.
 
 This method returns an HTTP response indicating the status of the update operation.
+
+Similar to :ref:`Creating a Connection <preparing_data__connections__creating_a_connection>` you can skip the validation by setting ``test`` parameter of
+:py:meth:`Project.update_connection() <ibm_watsonx_data_integration.cpd_models.project_model.Project.update_connection>` to ``False``.
 
 .. code-block:: python
 
@@ -161,15 +168,13 @@ In the UI, you can delete an existing Connection by navigating to the **Assets -
    :align: center
    :width: 100%
 
-In the WatsonX DI SDK to delete a connection instance you can pass it to :py:meth:`Project.delete_connection() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_connection>` method.
+In the SDK to delete a connection instance you can pass it to :py:meth:`Project.delete_connection() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_connection>` method.
 
 This method returns an HTTP response indicating the status of the delete operation.
 
 .. code-block:: python
 
-    >>> connection = project.connections.get(
-    ...     asset_ref="ae0d053b-c4f6-4266-9b02-724e6eb94855"
-    ... )
+    >>> connection = project.connections.get(name="New Connection Name")
     Connection(name='New Connection Name')
     >>> res = project.delete_connection(connection)
     <Response [204]>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Flows &#8212; ibm-watsonx-data-integration 0.0.1b documentation</title>
+    <title>Flows &#8212; ibm-watsonx-data-integration 0.0.2b documentation</title>
   
   
   
@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=77435cf2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -38,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=17f7287f"></script>
+    <script src="../../_static/documentation_options.js?v=b3319892"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -144,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.1b</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.2b</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -198,6 +199,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/users.html">Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/access_groups.html">Access Groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/roles.html">Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_administration/custom_roles.html">Custom Roles</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -346,13 +348,13 @@ A flow is comprised of multiple stages with each stage defining how data is hand
 <p>Flows can be retrieved through a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> object using the
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.flows" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.flows"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Project.flows</span></code></a> property.
 You can also retrieve a single flow using the <code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.flows.get()</span></code> method
-which requires the <code class="docutils literal notranslate"><span class="pre">asset_id</span></code> parameter.</p>
+which requires the <code class="docutils literal notranslate"><span class="pre">flow_id</span></code> parameter.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">flows</span>  <span class="c1"># a list of all the flows</span>
-<span class="go">[StreamsetsFlow(name=&#39;My first flow&#39;, description=&#39;optional description&#39;, asset_id=&#39;ea5b7ec1-3651-430d-9704-4b93791d6e03&#39;, engine_version=&#39;6.3.0-SNAPSHOT&#39;)]</span>
+<span class="go">[StreamsetsFlow(name=&#39;My first flow&#39;, description=&#39;optional description&#39;, flow_id=&#39;ea5b7ec1-3651-430d-9704-4b93791d6e03&#39;, engine_version=&#39;6.3.0-SNAPSHOT&#39;)]</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">flows</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">asset_id</span><span class="o">=</span><span class="s1">&#39;ea5b7ec1-3651-430d-9704-4b93791d6e03&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">flows</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">flow_id</span><span class="o">=</span><span class="s1">&#39;ea5b7ec1-3651-430d-9704-4b93791d6e03&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span>
-<span class="go">StreamsetsFlow(name=&#39;My first flow&#39;, description=&#39;optional description&#39;, asset_id=&#39;ea5b7ec1-3651-430d-9704-4b93791d6e03&#39;, engine_version=&#39;6.3.0-SNAPSHOT&#39;)</span>
+<span class="go">StreamsetsFlow(name=&#39;My first flow&#39;, description=&#39;optional description&#39;, flow_id=&#39;ea5b7ec1-3651-430d-9704-4b93791d6e03&#39;, engine_version=&#39;6.3.0-SNAPSHOT&#39;)</span>
 </pre></div>
 </div>
 </section>
@@ -368,7 +370,7 @@ You are required to supply a <code class="docutils literal notranslate"><span cl
 This method will return a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamsetsFlow</span></code></a> instance.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;My first flow&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;optional description&quot;</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="n">environment</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span>
-<span class="go">StreamsetsFlow(name=&#39;My first flow&#39;, description=&#39;optional description&#39;, asset_id=&#39;58acfeb3-ee9e-4d1f-bbbd-4426cf7a9961&#39;, engine_version=&#39;6.3.0-SNAPSHOT&#39;)</span>
+<span class="go">StreamsetsFlow(name=&#39;My first flow&#39;, description=&#39;optional description&#39;, flow_id=&#39;58acfeb3-ee9e-4d1f-bbbd-4426cf7a9961&#39;, engine_version=&#39;6.3.0-SNAPSHOT&#39;)</span>
 </pre></div>
 </div>
 </section>
@@ -378,7 +380,7 @@ This method will return a <a class="reference internal" href="../../api/models.h
 <p>For starters, you can edit a flow’s attributes like <code class="docutils literal notranslate"><span class="pre">name</span></code> or <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;new description for the flow&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span>
-<span class="go">StreamsetsFlow(name=&#39;My first flow&#39;, description=&#39;new description for the flow&#39;, asset_id=&#39;ea5b7ec1-3651-430d-9704-4b93791d6e03&#39;, engine_version=&#39;6.3.0-SNAPSHOT&#39;)</span>
+<span class="go">StreamsetsFlow(name=&#39;My first flow&#39;, description=&#39;new description for the flow&#39;, flow_id=&#39;ea5b7ec1-3651-430d-9704-4b93791d6e03&#39;, engine_version=&#39;6.3.0-SNAPSHOT&#39;)</span>
 </pre></div>
 </div>
 <p>You can edit a flow’s configuration through the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.configuration" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.configuration"><code class="xref py py-attr docutils literal notranslate"><span class="pre">StreamsetsFlow.configuration</span></code></a> property.
@@ -415,7 +417,7 @@ along with the <code class="docutils literal notranslate"><span class="pre">name
 <p>This will duplicate a flow and return a new instance of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamsetsFlow</span></code></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">duplicated_flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">duplicate_flow</span><span class="p">(</span><span class="n">flow</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;duplicated flow&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;duplicate of </span><span class="si">{</span><span class="n">flow</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">duplicated_flow</span>
-<span class="go">StreamsetsFlow(name=&#39;duplicated flow&#39;, description=&#39;duplicate of My first flow&#39;, asset_id=&#39;ee199ac5-1d4e-4875-91fb-110d85eb2c92&#39;, engine_version=&#39;6.3.0-SNAPSHOT&#39;)</span>
+<span class="go">StreamsetsFlow(name=&#39;duplicated flow&#39;, description=&#39;duplicate of My first flow&#39;, flow_id=&#39;ee199ac5-1d4e-4875-91fb-110d85eb2c92&#39;, engine_version=&#39;6.3.0-SNAPSHOT&#39;)</span>
 </pre></div>
 </div>
 </section>

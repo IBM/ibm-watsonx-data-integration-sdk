@@ -32,7 +32,7 @@ In the SDK, you can create an environment from a :py:class:`~ibm_watsonx_data_in
 :py:meth:`Project.create_environment() <ibm_watsonx_data_integration.cpd_models.project_model.Project.create_environment>` method.
 At a minimum, you must provide the ``name`` and ``engine_version`` parameters.
 All other parameters are optional and will be populated with default values if not specified.
-This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.environment_model.Environment` object.
+This method returns a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment` object.
 
 .. code-block:: python
 
@@ -46,10 +46,10 @@ This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.enviro
     ...         'streamsets-datacollector-dataformats-lib',
     ...         'streamsets-datacollector-dev-lib'
     ...         ],
-    ...     cpu_cores=2,
+    ...     cpus_to_allocate=2,
     ...     )
     >>> environment
-    Environment(name='Sample', description='Basic env.', asset_id='c383b27a-eab8-4214-a6f2-c9eb522d1efb', engine_version='6.3.0-SNAPSHOT')
+    Environment(name='Sample', description='Basic env.', environment_id='c383b27a-eab8-4214-a6f2-c9eb522d1efb', engine_version='6.3.0-SNAPSHOT')
 
 
 .. note::
@@ -63,10 +63,9 @@ Retrieving an Existing Environment
 
 Environments can be retrieved through a :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object.
 You can access all environments associated with a project using the
-:py:attr:`Project.environments <ibm_watsonx_data_integration.cpd_models.project_model.Project.environments>` property
-or retrieve a single environment using the
-:py:meth:`Project.get_environment() <ibm_watsonx_data_integration.cpd_models.project_model.Project.get_environment>` method,
-which requires the ``asset_id`` parameter.
+:py:attr:`Project.environments <ibm_watsonx_data_integration.cpd_models.project_model.Project.environments>` property.
+You can also retrieve single environment using the :py:meth:`Project.environments.get()` method,
+which requires the ``environment_id`` parameter.
 
 .. code-block:: python
 
@@ -74,14 +73,14 @@ which requires the ``asset_id`` parameter.
     >>> environments = project.environments
     >>> environments
     [
-        Environment(name='Sample', description='Basic env.', asset_id='c383b27a-eab8-4214-a6f2-c9eb522d1efb', engine_version='6.3.0-SNAPSHOT'),
-        Environment(name='Sample2', asset_id='5f5b9182-fe04-463c-9fa6-af9d24d96da7', engine_version='6.3.0-SNAPSHOT')
+        Environment(name='Sample', description='Basic env.', environment_id='c383b27a-eab8-4214-a6f2-c9eb522d1efb', engine_version='6.3.0-SNAPSHOT'),
+        Environment(name='Sample2', environment_id='5f5b9182-fe04-463c-9fa6-af9d24d96da7', engine_version='6.3.0-SNAPSHOT')
     ]
 
-    >>> # Get a single environment by asset_id
-    >>> environment = project.get_environment(asset_id='5f5b9182-fe04-463c-9fa6-af9d24d96da7')
+    >>> # Get a single environment by its id
+    >>> environment = project.environments.get(environment_id='5f5b9182-fe04-463c-9fa6-af9d24d96da7')
     >>> environment
-    Environment(name='Sample2', asset_id='5f5b9182-fe04-463c-9fa6-af9d24d96da7', engine_version='6.3.0-SNAPSHOT')
+    Environment(name='Sample2', environment_id='5f5b9182-fe04-463c-9fa6-af9d24d96da7', engine_version='6.3.0-SNAPSHOT')
 
 
 Modifying an Environment
@@ -142,41 +141,23 @@ In the UI, you can retrieve the run command by navigating to the **Manage -> Str
    :align: center
    :width: 100%
 
-You can retrieve the run command via the :py:class:`~ibm_watsonx_data_integration.cpd_models.environment_model.Environment` object by using
-:py:meth:`Environment.get_installation_command() <ibm_watsonx_data_integration.cpd_models.environment_model.Environment.get_installation_command>` method.
+You can retrieve the run command via the :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment` object by using
+:py:meth:`Environment.get_installation_command() <ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.get_installation_command>` method.
 
 .. code-block:: python
 
     >>> installation_command = environment.get_installation_command(
     ...     # Optional parameters
-    ...     pretty=True,
+    ...     pretty=False,
     ...     foreground=False
     ...     )
     >>> installation_command
-    # docker run \
-    # -d \
-    # --restart on-failure \
-    # --cpus=4.0 \
-    # --hostname "$(hostname)" \
-    # -p 18630:18630 \
-    # -e SSET_PROJECT_ID=b127c19e-951d-4db6-944c-9850747d0c02 \
-    # -e SSET_ENVIRONMENT_ID=a0df9d94-625f-411d-88c1-736d38c67a8f \
-    # -e SSET_BASE_URL=https://api.dai.dev.cloud.ibm.com \
-    # -e SSET_API_KEY \
-    # -e SSET_IAM_URL=https://iam.test.cloud.ibm.com \
-    # icr.io/sx-ci/datacollector:6.3.0-SNAPSHOT
+    'docker run -d --restart on-failure --cpus=4.0 --hostname "$(hostname)" -p 18630:18630 -e SSET_PROJECT_ID=b127c19e-951d-4db6-944c-9850747d0c02 -e SSET_ENVIRONMENT_ID=a0df9d94-625f-411d-88c1-736d38c67a8f -e SSET_BASE_URL=https://api.dai.dev.cloud.ibm.com -e SSET_API_KEY="${SSET_API_KEY:?Please provide your API key from IBM Cloud}" -e SSET_IAM_URL=https://iam.test.cloud.ibm.com icr.io/sx-ci/datacollector:6.3.0-SNAPSHOT'      # pragma: allowlist secret
 
 .. note::
    Please be aware that the installation command you retrieve from the Environment requires the ``SSET_API_KEY`` environment variable to be set for the user executing the command.
    The environment variable should contain the API key you generated for :ref:`authenticating <getting_started_and_tutorials__authentication>` with the watsonx.data integration platform.
 
-   .. tip::
-      You can supply a value for ``SSET_API_KEY`` as a one-liner when retrieving the installation command for the Environment:
-
-      .. code-block:: python
-
-         >>> # `auth` is an IAMAuthenticator object, as created in the `Authentication` section of the documentation
-         >>> environment.get_installation_command().replace("SSET_API_KEY", f"SSET_API_KEY={auth.api_key}")                 # pragma: allowlist secret
 
 .. _retrieving_available_engine_versions:
 

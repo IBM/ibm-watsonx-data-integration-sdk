@@ -16,6 +16,7 @@ In order to begin using the SDK, there are a few prerequisites that must be fulf
 * You must have an account with access to the watsonx.data integration platform and an ``IAM API key`` created on that account to be used to :ref:`authenticate<getting_started_and_tutorials__authentication>` from the SDK.
   For additional information on API keys, including how to create and use them, please refer to the `IBM Cloud API Key documentation <https://cloud.ibm.com/docs/account?topic=account-manapikey>`_.
 * (Optional but strongly encouraged) For the vast majority of operations on the watsonx.data integration platform, like executing a flow, you will need to generate a ``User API Key`` within the watsonx.data integration service.
+  For additional information on User API keys, including how to create and use them, please refer to the `IBM Cloud User API Key documentation <https://cloud.ibm.com/docs/account?topic=account-userapikey>`_.
   Please note that the ``User API key`` is different from the ``IAM API key`` that you use to authenticate in the SDK, mentioned above. The User API key only exists within the watsonx.data integration platform.
 
   .. note::

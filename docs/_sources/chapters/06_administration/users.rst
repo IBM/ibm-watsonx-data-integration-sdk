@@ -10,7 +10,7 @@ The SDK provides functionality to interact with the User Management API on the w
 
 This includes operations such as:
     * Listing all users
-    * Getting user details using the IAM ID
+    * Getting user details using the IAM ID or User ID
 
 Listing all users
 ~~~~~~~~~~~~~~~~~
@@ -41,8 +41,8 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.user
     ]
 
 
-Getting user details using the IAM ID
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Getting user details using the IAM ID or User ID
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To view the user details, you can click on the empty area within the row where the user name is displayed.
 
@@ -51,11 +51,16 @@ To view the user details, you can click on the empty area within the row where t
    :align: center
    :width: 100%
 
-Pass the ``iam_id`` to the :py:meth:`Platform.get_user_profile() <ibm_watsonx_data_integration.platform.Platform.get_user_profile>` method.
-This method returns an :py:class:`~ibm_watsonx_data_integration.cpd_models.user_model.UserProfile` object.
+Users can be retrieved using :py:attr:`Platform.users <ibm_watsonx_data_integration.platform.Platform.users>` property.
+You can also further filter and refine the user returned based on the ``iam_id`` or ``user_id``attribute, but not both.
+This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.user_model.UserProfile` object.
 
 .. code-block:: python
 
-    >>> user = platform.get_user_profile('IBMid-6xxxxxxxxV')
+    >>> user = platform.users.get(iam_id='IBMid-6xxxxxxxxV')
     >>> user
     UserProfile(id='9xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxd', iam_id='IBMid-6xxxxxxxxV', user_id='A.user@ibm.com', state='ACTIVE', email='A.user@ibm.com', account_id='6xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx9', added_on='2025-02-18T21:35:47Z')
+
+    >>> user = platform.users.get(user_id='B.user@ibm.com')
+    >>> user
+    UserProfile(id='1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx3', iam_id='IBMid-6xxxxxxxxX', user_id='B.user@ibm.com', state='ACTIVE', email='B.user@ibm.com', account_id='6xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx9', added_on='2025-02-18T21:35:50Z')

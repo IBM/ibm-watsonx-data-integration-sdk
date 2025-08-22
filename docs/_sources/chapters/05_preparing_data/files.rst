@@ -33,7 +33,7 @@ In the UI, you can upload a new File  by navigating to **Overview -> Add data to
    :align: center
    :width: 100%
 
-In the WatsonX DI SDK to upload a new :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFile`,
+In the SDK to upload a new :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFile`,
 use the :py:meth:`Platform.upload_file() <ibm_watsonx_data_integration.platform.Platform.upload_file>` method.
 
 You must provide a ``name`` for the new file and a ``file`` path where the file is located on your machine.
@@ -60,7 +60,7 @@ In the UI, you can get Files by navigating to  **Assets -> Data -> Data assets**
    :width: 100%
 
 
-In the WatsonX DI SDK, Files can be retrieved using :py:class:`Platform.files <ibm_watsonx_data_integration.platform.Platform.files>` property.
+In the SDK, Files can be retrieved using :py:class:`Platform.files <ibm_watsonx_data_integration.platform.Platform.files>` property.
 
 This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFiles` object.
 
@@ -91,7 +91,7 @@ In the UI, you can download a File by navigating to **Assets -> Data -> Data ass
    :align: center
    :width: 100%
 
-In the WatsonX DI SDK file can be downloaded using :py:meth:`Platform.download_file() <ibm_watsonx_data_integration.platform.Platform.download_file>` method.
+In the SDK file can be downloaded using :py:meth:`Platform.download_file() <ibm_watsonx_data_integration.platform.Platform.download_file>` method.
 
 You must provide a ``file`` object and ``output`` path where the file will be downloaded.
 
@@ -116,7 +116,7 @@ In the UI, you can delete a File by navigating to **Assets -> Data -> Data asset
    :align: center
    :width: 100%
 
-In the WatsonX DI SDK pass a ConnectionFile instance to :py:meth:`Platform.delete_file() <ibm_watsonx_data_integration.platform.Platform.delete_file>` method to delete it.
+In the SDK pass a ConnectionFile instance to :py:meth:`Platform.delete_file() <ibm_watsonx_data_integration.platform.Platform.delete_file>` method to delete it.
 
 This method returns an HTTP response indicating the status of the delete operation.
 

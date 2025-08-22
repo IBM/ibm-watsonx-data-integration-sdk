@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Files &#8212; ibm-watsonx-data-integration 0.0.1b documentation</title>
+    <title>Files &#8212; ibm-watsonx-data-integration 0.0.2b documentation</title>
   
   
   
@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=77435cf2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -38,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=17f7287f"></script>
+    <script src="../../_static/documentation_options.js?v=b3319892"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -144,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.1b</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.2b</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -198,6 +199,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/users.html">Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/access_groups.html">Access Groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/roles.html">Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_administration/custom_roles.html">Custom Roles</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -328,7 +330,7 @@ To download a file with real data you must make an additional method call.</p>
 </a>
 <a class="reference internal image-reference" href="../../_images/upload_file2.png"><img alt="Screenshot of the File uploading in the UI - Step 2" class="align-center" src="../../_images/upload_file2.png" style="width: 100%;" />
 </a>
-<p>In the WatsonX DI SDK to upload a new <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFile" title="ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConnectionFile</span></code></a>,
+<p>In the SDK to upload a new <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFile" title="ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConnectionFile</span></code></a>,
 use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.upload_file" title="ibm_watsonx_data_integration.platform.Platform.upload_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Platform.upload_file()</span></code></a> method.</p>
 <p>You must provide a <code class="docutils literal notranslate"><span class="pre">name</span></code> for the new file and a <code class="docutils literal notranslate"><span class="pre">file</span></code> path where the file is located on your machine.
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.upload_file" title="ibm_watsonx_data_integration.platform.Platform.upload_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Platform.upload_file()</span></code></a> method returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFile" title="ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConnectionFile</span></code></a> object.</p>
@@ -345,7 +347,7 @@ use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_da
 <p>In the UI, you can get Files by navigating to  <strong>Assets -&gt; Data -&gt; Data assets</strong>.</p>
 <a class="reference internal image-reference" href="../../_images/get_files.png"><img alt="Screenshot of the File downloading in the UI" class="align-center" src="../../_images/get_files.png" style="width: 100%;" />
 </a>
-<p>In the WatsonX DI SDK, Files can be retrieved using <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.files" title="ibm_watsonx_data_integration.platform.Platform.files"><code class="xref py py-class docutils literal notranslate"><span class="pre">Platform.files</span></code></a> property.</p>
+<p>In the SDK, Files can be retrieved using <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.files" title="ibm_watsonx_data_integration.platform.Platform.files"><code class="xref py py-class docutils literal notranslate"><span class="pre">Platform.files</span></code></a> property.</p>
 <p>This property returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFiles" title="ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFiles"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConnectionFiles</span></code></a> object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Return a list of all files</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">files</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">files</span>
@@ -366,7 +368,7 @@ use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_da
 <p>In the UI, you can download a File by navigating to <strong>Assets -&gt; Data -&gt; Data assets</strong>.</p>
 <a class="reference internal image-reference" href="../../_images/download_file.png"><img alt="Screenshot of the File downloading in the UI" class="align-center" src="../../_images/download_file.png" style="width: 100%;" />
 </a>
-<p>In the WatsonX DI SDK file can be downloaded using <code class="xref py py-meth docutils literal notranslate"><span class="pre">Platform.download_file()</span></code> method.</p>
+<p>In the SDK file can be downloaded using <code class="xref py py-meth docutils literal notranslate"><span class="pre">Platform.download_file()</span></code> method.</p>
 <p>You must provide a <code class="docutils literal notranslate"><span class="pre">file</span></code> object and <code class="docutils literal notranslate"><span class="pre">output</span></code> path where the file will be downloaded.</p>
 <p>This method returns an HTTP response indicating the status of the download operation.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;dummy.txt&quot;</span><span class="p">)</span>
@@ -381,7 +383,7 @@ use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_da
 <p>In the UI, you can delete a File by navigating to <strong>Assets -&gt; Data -&gt; Data assets</strong>.</p>
 <a class="reference internal image-reference" href="../../_images/delete_file.png"><img alt="Screenshot of the File deletion in the UI" class="align-center" src="../../_images/delete_file.png" style="width: 100%;" />
 </a>
-<p>In the WatsonX DI SDK pass a ConnectionFile instance to <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.delete_file" title="ibm_watsonx_data_integration.platform.Platform.delete_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Platform.delete_file()</span></code></a> method to delete it.</p>
+<p>In the SDK pass a ConnectionFile instance to <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.delete_file" title="ibm_watsonx_data_integration.platform.Platform.delete_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Platform.delete_file()</span></code></a> method to delete it.</p>
 <p>This method returns an HTTP response indicating the status of the delete operation.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;data.txt&quot;</span><span class="p">)</span>
 <span class="go">ConnectionFile(file_name=&quot;data.txt&quot;)</span>

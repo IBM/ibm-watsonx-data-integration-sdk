@@ -2,7 +2,8 @@
 
 Administration
 ==============
-|
+
+This section covers administrative tasks such as managing accounts, users, access groups, roles and custom roles.
 
 .. toctree::
    :maxdepth: 2
@@ -11,3 +12,4 @@ Administration
    users
    access_groups
    roles
+   custom_roles

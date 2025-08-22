@@ -11,7 +11,7 @@ Create an Engine
 ~~~~~~~~~~~~~~~~
 
 The SDK provides functionality for interacting with an engine, however an engine cannot be created directly.
-Instead, you can retrieve the installation command to install and start an Engine directly from it's Environment via the :py:meth:`Environment.get_installation_command() <ibm_watsonx_data_integration.cpd_models.environment_model.Environment.get_installation_command>` method.
+Instead, you can retrieve the installation command to install and start an Engine directly from it's Environment via the :py:meth:`Environment.get_installation_command() <ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.get_installation_command>` method.
 
 For more information, refer to our :ref:`Environment <projects__environments>` documentation.
 
@@ -20,7 +20,7 @@ Retrieving Existing Engines in a Project
 
 To retrieve existing engines in a project, use the :py:attr:`~ibm_watsonx_data_integration.cpd_models.project_model.Project.engines` property of the
 :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` class.
-This will return a list of :py:class:`~ibm_watsonx_data_integration.cpd_models.engine_model.Engine` objects.
+This will return a list of :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine` objects.
 
 .. code-block:: python
 
@@ -32,20 +32,27 @@ Retrieving an Existing Engine in a Project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To retrieve existing engines in a project, use the :py:meth:`Project.get_engine() <ibm_watsonx_data_integration.cpd_models.project_model.Project.get_engine>` method of the
-:py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` class. You must specify ``asset_id`` of the existing engine which is stored in the ``engine.metadata.asset_id`` field.
-This will return a :py:class:`~ibm_watsonx_data_integration.cpd_models.engine_model.Engine` object.
+:py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` class. You must specify ``engine_id`` of the existing engine.
+This will return a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine` object.
 
+In the UI, you can retrieve an Engine ID by navigating to **Manage -> StreamSets -> Environment** and click on your environment name for details.
 
-    >>> # Get a single engine by asset_id
-    >>> engine = project.get_engine(asset_id='C25F1E5F-A901-44F7-A27E-2B0E94C23224')
+.. image:: ../../_static/images/engine/retrieve_engine_id.png
+   :alt: Screenshot of the Engine id retrieving
+   :align: center
+   :width: 100%
+
+.. code-block:: python
+
+    >>> # Get a single engine by engine_id
+    >>> engine = project.get_engine(engine_id='C25F1E5F-A901-44F7-A27E-2B0E94C23224')
 
 
 Retrieving Existing Engines in an Environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To retrieve existing engines in an Environment, use the :py:attr:`Environment.engines <ibm_watsonx_data_integration.cpd_models.environment_model.Environment.engines>` property of the
-:py:class:`~ibm_watsonx_data_integration.cpd_models.environment_model.Environment` class. This will return a list of :py:class:`~ibm_watsonx_data_integration.cpd_models.engine_model.Engine` objects.
-
+To retrieve existing engines in an Environment, use the :py:attr:`Environment.engines <ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.engines>` property of the
+:py:class:`~ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment` class. This will return a list of :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine` objects.
 
 .. code-block:: python
 
@@ -55,9 +62,8 @@ To retrieve existing engines in an Environment, use the :py:attr:`Environment.en
 
 Deleting an Existing Engine
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-To delete an engine instance, pass the :py:class:`~ibm_watsonx_data_integration.cpd_models.engine_model.Engine` object you want to
+To delete an engine instance, pass the :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine` object you want to
 delete into the :py:meth:`Project.delete_engine() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_engine>` method to delete it.
-
 
 .. code-block:: python
 

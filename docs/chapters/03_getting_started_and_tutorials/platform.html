@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Platform &#8212; ibm-watsonx-data-integration 0.0.1b documentation</title>
+    <title>Platform &#8212; ibm-watsonx-data-integration 0.0.2b documentation</title>
   
   
   
@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=77435cf2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -38,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=17f7287f"></script>
+    <script src="../../_static/documentation_options.js?v=b3319892"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -144,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.1b</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.2b</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -198,6 +199,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/users.html">Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/access_groups.html">Access Groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/roles.html">Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_administration/custom_roles.html">Custom Roles</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -295,11 +297,12 @@ document.write(`
 <p>To interact with the watsonx.data integration platform, instantiate the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform" title="ibm_watsonx_data_integration.platform.Platform"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.platform.Platform</span></code></a> class.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">Platform</span></code> object serves as the entry point for accessing all major functionality in the SDK, including service instances, environments, flows, and more.</p>
 <p>You must provide a valid authentication object (such as an instance of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.auth.IAMAuthenticator" title="ibm_watsonx_data_integration.common.auth.IAMAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.common.auth.IAMAuthenticator</span></code></a>) when initializing the platform object.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you don’t specify <cite>base_api_url</cite>, the SDK defaults to <cite>‘https://api.dataplatform.cloud.ibm.com’</cite>. For any other region, set base_api_url to the appropriate regional endpoint.</p>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.platform</span><span class="w"> </span><span class="kn">import</span> <span class="n">Platform</span>
-<span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span> <span class="o">=</span> <span class="n">Platform</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">auth</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span> <span class="o">=</span> <span class="n">Platform</span><span class="p">(</span><span class="n">auth</span><span class="p">,</span> <span class="n">base_api_url</span><span class="o">=</span><span class="s2">&quot;https://api.ca-tor.dai.cloud.ibm.com&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Once you’ve created the <code class="docutils literal notranslate"><span class="pre">platform</span></code> object, you can begin interacting with the watsonx.data integration platform.</p>

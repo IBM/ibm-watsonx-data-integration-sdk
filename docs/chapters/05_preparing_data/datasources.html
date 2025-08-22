@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Datasource Type &#8212; ibm-watsonx-data-integration 0.0.1b documentation</title>
+    <title>Datasource Type &#8212; ibm-watsonx-data-integration 0.0.2b documentation</title>
   
   
   
@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=77435cf2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -38,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=17f7287f"></script>
+    <script src="../../_static/documentation_options.js?v=b3319892"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -144,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.1b</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.2b</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -198,6 +199,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/users.html">Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/access_groups.html">Access Groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/roles.html">Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_administration/custom_roles.html">Custom Roles</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -327,7 +329,9 @@ document.write(`
 <span id="preparing-data-datasources-retrieving-an-datasourcetype"></span><h2>Retrieving a DatasourceType<a class="headerlink" href="#retrieving-a-datasourcetype" title="Link to this heading">#</a></h2>
 <p>In the UI, the list of all DatasourceType objects is displayed during creation of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.Connection" title="ibm_watsonx_data_integration.cpd_models.connections_model.Connection"><code class="xref py py-class docutils literal notranslate"><span class="pre">Connection</span></code></a>
 (See: <a class="reference internal" href="connections.html#preparing-data-connections-creating-a-connection"><span class="std std-ref">Creating a Connection</span></a>).</p>
-<p>In the WatsonX DI SDK, a Connection can be retrieved using <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.connections" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.connections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project.connections</span></code></a> property.
+<a class="reference internal image-reference" href="../../_images/get_datasource.png"><img alt="Screenshot of the DataSource selection in the UI" class="align-center" src="../../_images/get_datasource.png" style="width: 100%;" />
+</a>
+<p>In the SDK, a Connection can be retrieved using <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.connections" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.connections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project.connections</span></code></a> property.
 You can also further filter and refine the connections returned based on attributes including
 <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">context</span></code>, <code class="docutils literal notranslate"><span class="pre">properties</span></code> and <code class="docutils literal notranslate"><span class="pre">datasource_type</span></code>.</p>
 <p>A DatasourceType can be retrieved using <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.datasources" title="ibm_watsonx_data_integration.platform.Platform.datasources"><code class="xref py py-class docutils literal notranslate"><span class="pre">Platform.datasources</span></code></a> property.
@@ -362,7 +366,18 @@ You can also further filter and refine the connections returned based on attribu
 </section>
 <section id="retrieving-a-datasourcetype-connection-properties">
 <span id="preparing-data-datasources-retrieving-a-datasourcetype-connection-properties"></span><h2>Retrieving a DatasourceType connection properties<a class="headerlink" href="#retrieving-a-datasourcetype-connection-properties" title="Link to this heading">#</a></h2>
-<p>To list all properties available for a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType" title="ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasourceType</span></code></a> object use <code class="xref py py-class docutils literal notranslate"><span class="pre">DatasourceType.properties.connection</span></code> property.</p>
+<p>In the UI, available connection fields depend on previously selected DatasourceType (See: <a class="reference internal" href="#preparing-data-datasources-retrieving-an-datasourcetype"><span class="std std-ref">Retrieving a DatasourceType</span></a>).</p>
+<p>For example, JDBC connection by default requires 3 parameters - <code class="docutils literal notranslate"><span class="pre">JDBC</span> <span class="pre">Connection</span> <span class="pre">String</span></code>, <code class="docutils literal notranslate"><span class="pre">Username</span></code>, <code class="docutils literal notranslate"><span class="pre">Password</span></code>.</p>
+<a class="reference internal image-reference" href="../../_images/datasource_jdbc.png"><img alt="Screenshot of the JDBC DataSource arguments." class="align-center" src="../../_images/datasource_jdbc.png" style="width: 100%;" />
+</a>
+<p>HTTP connection on the other hand by default requires only one parameters - <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">URL</span></code>.</p>
+<a class="reference internal image-reference" href="../../_images/datasource_http.png"><img alt="Screenshot of the HTTP DataSource arguments." class="align-center" src="../../_images/datasource_http.png" style="width: 100%;" />
+</a>
+<p>In the SDK to get all properties available for a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType" title="ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasourceType</span></code></a>
+object use <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType.properties" title="ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType.properties"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasourceType.properties</span></code></a>
+property (which will return <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypeProperties" title="ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypeProperties"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasourceTypeProperties</span></code></a> object).
+Then you can call <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypeProperties.connection" title="ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypeProperties.connection"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasourceTypeProperties.connection</span></code></a>
+to retrieve all available connection properties.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get datasource object</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">datasource</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">datasources</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">DatasourceType(name=&#39;informix&#39;)</span>
@@ -374,7 +389,7 @@ You can also further filter and refine the connections returned based on attribu
 <span class="go">]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># You can get list of all required properties</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">required_properties</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">properties</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">required</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">required_properties</span> <span class="o">=</span> <span class="n">datasource</span><span class="o">.</span><span class="n">required_connection_properties</span>
 <span class="go">[</span>
 <span class="go">    DatasourceTypeProperty(name=&#39;host&#39;),</span>
 <span class="go">    DatasourceTypeProperty(name=&#39;password&#39;),</span>
@@ -382,7 +397,7 @@ You can also further filter and refine the connections returned based on attribu
 <span class="go">]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Or get details about the property</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">reqired_property_1</span> <span class="o">=</span> <span class="n">required_properties</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">required_property_1</span> <span class="o">=</span> <span class="n">required_properties</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">DatasourceTypeProperty(name=&#39;host&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">required_property_1</span><span class="o">.</span><span class="n">type</span>
 <span class="go">&#39;string&#39;</span>

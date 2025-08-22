@@ -3,6 +3,7 @@
 Accounts
 ========
 
+|
 
 An account in IBM Cloud is the top-level container for resource grouping, access control, and billing.
 It provides the context under which all Cloud Pak Data integration workloads—projects, jobs, flows, and connections—operate.
@@ -10,7 +11,7 @@ The SDK provides functionality to interact with the accounts on the watsonx.data
 
 This includes operations such as:
     * Listing all accessible accounts
-    * Fetching an account’s details by its ID
+    * Fetching an account by ID
     * Getting the current account
     * Setting the current account
 
@@ -42,12 +43,13 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.acco
 Fetching an account by ID
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Pass the ``account_id`` to the :py:meth:`Platform.get_account() <ibm_watsonx_data_integration.platform.Platform.get_account>` method.
-This method returns an :py:class:`~ibm_watsonx_data_integration.cpd_models.account_model.Account` object.
+Accounts can be retrieved using :py:attr:`Platform.accounts <ibm_watsonx_data_integration.platform.Platform.accounts>` property.
+You can also further filter and refine the account returned based on the ``account_id`` attribute.
+This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.account_model.Account` object.
 
 .. code-block:: python
 
-    >>> account = platform.get_account('bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx6')
+    >>> account = platform.accounts.get(account_id='bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx6')
     >>> account
     Account(name="C's Account", account_type='PAYG', account_id='bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx6')
 
@@ -81,7 +83,7 @@ Pass in an :py:class:`~ibm_watsonx_data_integration.cpd_models.account_model.Acc
         Account(name="D's Account", account_type='PAYG', account_id='fxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx9'),
         Account(name="E's Account", account_type='PAYG', account_id='9xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxc')
     ]
-    >>> account = platform.get_account('bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx6')
+    >>> account = platform.accounts.get(account_id='bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx6')
     >>> platform.current_account = account
     >>> platform.current_account
     Account(name="C's Account", account_type='PAYG', account_id='bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx6')

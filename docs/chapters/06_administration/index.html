@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Administration &#8212; ibm-watsonx-data-integration 0.0.1b documentation</title>
+    <title>Administration &#8212; ibm-watsonx-data-integration 0.0.2b documentation</title>
   
   
   
@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=77435cf2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -38,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=17f7287f"></script>
+    <script src="../../_static/documentation_options.js?v=b3319892"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -144,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.1b</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.2b</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -198,6 +199,7 @@
 <li class="toctree-l2"><a class="reference internal" href="users.html">Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="access_groups.html">Access Groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="roles.html">Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_roles.html">Custom Roles</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -292,9 +294,7 @@ document.write(`
                   
   <section id="administration">
 <span id="id1"></span><h1>Administration<a class="headerlink" href="#administration" title="Link to this heading">#</a></h1>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
+<p>This section covers administrative tasks such as managing accounts, users, access groups, roles and custom roles.</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="accounts.html">Accounts</a><ul>
@@ -306,17 +306,31 @@ document.write(`
 </li>
 <li class="toctree-l1"><a class="reference internal" href="users.html">Users</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="users.html#listing-all-users">Listing all users</a></li>
-<li class="toctree-l2"><a class="reference internal" href="users.html#getting-user-details-using-the-iam-id">Getting user details using the IAM ID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html#getting-user-details-using-the-iam-id-or-user-id">Getting user details using the IAM ID or User ID</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="access_groups.html">Access Groups</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="access_groups.html#listing-all-access-groups">Listing all Access Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_groups.html#get-an-access-group">Get an Access Group</a></li>
 <li class="toctree-l2"><a class="reference internal" href="access_groups.html#create-an-access-group">Create an Access Group</a></li>
 <li class="toctree-l2"><a class="reference internal" href="access_groups.html#update-an-access-group">Update an Access Group</a></li>
 <li class="toctree-l2"><a class="reference internal" href="access_groups.html#delete-an-access-group">Delete an Access Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_groups.html#get-member-of-an-access-group">Get Member of an Access Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_groups.html#add-member-s-to-access-group">Add Member(s) to Access Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_groups.html#remove-member-s-from-access-group">Remove Member(s) from Access Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_groups.html#check-membership-to-an-access-group">Check Membership to an Access Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_groups.html#add-member-to-multiple-access-groups">Add Member to Multiple Access Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_groups.html#remove-member-from-all-access-groups">Remove Member from All Access Groups</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="roles.html">Roles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_roles.html">Custom Roles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="custom_roles.html#listing-roles">Listing roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_roles.html#creating-custom-roles">Creating custom roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_roles.html#updating-custom-roles">Updating custom roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_roles.html#deleting-custom-roles">Deleting custom roles</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>

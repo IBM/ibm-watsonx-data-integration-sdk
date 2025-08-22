@@ -36,23 +36,16 @@ first select the appropriate project from the :py:class:`~ibm_watsonx_data_integ
 then use the :py:meth:`Project.create_job() <ibm_watsonx_data_integration.cpd_models.project_model.Project.create_job>`
 method to instantiate the job.
 
-You must specify either ``asset_ref`` or ``asset_ret_type``, but not both.
-The ``asset_ref`` represents the ID of the flow for which the job will be created.
-You also need to pass the :py:class:`Environment.id <ibm_watsonx_data_integration.cpd_models.environment_model.Environment.id>`
-property value as ``streamsets_env_id`` in ``configuration``.
+You must specify a reference to :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow` object.
 Additionally, you can provide optional configuration such as environment variables or job parameters.
 This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_model.Job` object.
 
 .. code-block:: python
 
-    >>> project = platform.projects[0]
     >>> job = project.create_job(
-    ...     asset_ref=flow.metadata.asset_id,
+    ...     flow=flow,
     ...     name="Test Job",
     ...     description="...",
-    ...     configuration={
-    ...         "streamsets_env_id": environment.id,
-    ...     },
     ...     job_parameters={"name": "value"}
     ... )
     Job(name='Job for Test flow 1750236869686' version=0, project_name='Test project')
@@ -71,16 +64,16 @@ To list existing jobs in the UI, navigate to **Jobs** tab in project view.
 
 Jobs can be retrieved using :py:class:`Project.jobs <ibm_watsonx_data_integration.cpd_models.project_model.Project.jobs>` property.
 You can also further filter and refine the jobs returned based on attributes including
-``space_id``, ``asset_ref``, ``asset_ref_type`` and ``run_id``.
+``space_id``, ``job_id``, ``job_type`` and ``run_id``.
 This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_model.Jobs` object.
 
 .. code-block:: python
 
-    >>> # Returns first job matching given `asset_ref`
-    >>> job = project.jobs.get(asset_ref="ae0d053b-c4f6-4266-9b02-724e6eb94855")
+    >>> # Returns first job matching given `job_id`
+    >>> job = project.jobs.get(job_id="ae0d053b-c4f6-4266-9b02-724e6eb94855")
     Job(name='Job for Test flow 1750236869686' version=0, project_name='Test project')
-    >>> # Return a list of all jobs that match `asset_ref_type`
-    >>> jobs = project.jobs.get_all(asset_ref_type="data_intg_flow")
+    >>> # Return a list of all jobs that match `job_type`
+    >>> jobs = project.jobs.get_all(job_type="data_intg_flow")
     [Job(name='Job for Test flow 1750236869686' version=0, project_name='Test project')]
 
 Updating a Job
@@ -104,7 +97,7 @@ The response also includes the updated job definition.
 
 .. code-block:: python
 
-    >>> job = project.jobs.get(asset_ref="ae0d053b-c4f6-4266-9b02-724e6eb94855")
+    >>> job = project.jobs.get(job_id="ae0d053b-c4f6-4266-9b02-724e6eb94855")
     >>> job.name = "New name"
     >>> job.description = "New description."
     >>> res = project.update_job(job)
@@ -128,7 +121,7 @@ This method returns an HTTP response indicating the status of the delete operati
 
 .. code-block:: python
 
-    >>> job = project.jobs.get(asset_ref="ae0d053b-c4f6-4266-9b02-724e6eb94855")
+    >>> job = project.jobs.get(job_id="ae0d053b-c4f6-4266-9b02-724e6eb94855")
     >>> res = project.delete_job(job)
     <Response [204]>
 
@@ -147,7 +140,7 @@ In the UI, you can start job from **Job Details** page by clicking play icon.
 A job instance serves as a template to actually execute the flow for which the job was created.
 Call :py:meth:`~ibm_watsonx_data_integration.cpd_models.job_model.Job.start` method on the job instance.
 You can pass the ``name`` and ``description`` parameters to define the job run.
-Additionally, you can further configure the job run by passing the ``configurations``,
+Additionally, you can further configure the job run by passing the ``configuration``,
 ``job_parameters`` and ``parameter_sets`` parameters to this method.
 This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_model.JobRun` object.
 
@@ -180,7 +173,7 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_
     >>> job_runs = job.job_runs
     [JobRun(name='job run', job_name='Job for Test flow 1750236869686', state='Queued')]
     >>> # Returns a list of all job runs which status is `Running`
-    >>> job_runs = job.job_runs.get_all(states=[JobRunState.Running.value])
+    >>> job_runs = job.job_runs.get_all(states=[JobRunState.Running])
     [JobRun(name='job run', job_name='Job for Test flow 1750236869686', state='Running')]
 
 Cancelling a Job Run

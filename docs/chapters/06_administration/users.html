@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Users &#8212; ibm-watsonx-data-integration 0.0.1b documentation</title>
+    <title>Users &#8212; ibm-watsonx-data-integration 0.0.2b documentation</title>
   
   
   
@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=77435cf2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -38,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=17f7287f"></script>
+    <script src="../../_static/documentation_options.js?v=b3319892"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -144,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.1b</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.2b</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -198,6 +199,7 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="access_groups.html">Access Groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="roles.html">Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="custom_roles.html">Custom Roles</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -289,7 +291,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-all-users">Listing all users</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-user-details-using-the-iam-id">Getting user details using the IAM ID</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-user-details-using-the-iam-id-or-user-id">Getting user details using the IAM ID or User ID</a></li>
 </ul>
             </nav>
         </div>
@@ -309,7 +311,7 @@ The SDK provides functionality to interact with the User Management API on the w
 <dl class="simple">
 <dt>This includes operations such as:</dt><dd><ul class="simple">
 <li><p>Listing all users</p></li>
-<li><p>Getting user details using the IAM ID</p></li>
+<li><p>Getting user details using the IAM ID or User ID</p></li>
 </ul>
 </dd>
 </dl>
@@ -332,16 +334,21 @@ This property returns a <a class="reference internal" href="../../api/models.htm
 </pre></div>
 </div>
 </section>
-<section id="getting-user-details-using-the-iam-id">
-<h2>Getting user details using the IAM ID<a class="headerlink" href="#getting-user-details-using-the-iam-id" title="Link to this heading">#</a></h2>
+<section id="getting-user-details-using-the-iam-id-or-user-id">
+<h2>Getting user details using the IAM ID or User ID<a class="headerlink" href="#getting-user-details-using-the-iam-id-or-user-id" title="Link to this heading">#</a></h2>
 <p>To view the user details, you can click on the empty area within the row where the user name is displayed.</p>
 <a class="reference internal image-reference" href="../../_images/get_user_details.png"><img alt="Screenshot of the User details in the UI" class="align-center" src="../../_images/get_user_details.png" style="width: 100%;" />
 </a>
-<p>Pass the <code class="docutils literal notranslate"><span class="pre">iam_id</span></code> to the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.get_user_profile" title="ibm_watsonx_data_integration.platform.Platform.get_user_profile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Platform.get_user_profile()</span></code></a> method.
-This method returns an <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.user_model.UserProfile" title="ibm_watsonx_data_integration.cpd_models.user_model.UserProfile"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserProfile</span></code></a> object.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">user</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">get_user_profile</span><span class="p">(</span><span class="s1">&#39;IBMid-6xxxxxxxxV&#39;</span><span class="p">)</span>
+<p>Users can be retrieved using <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.users" title="ibm_watsonx_data_integration.platform.Platform.users"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Platform.users</span></code></a> property.
+You can also further filter and refine the user returned based on the <code class="docutils literal notranslate"><span class="pre">iam_id</span></code> or <a href="#id1"><span class="problematic" id="id2">``</span></a>user_id``attribute, but not both.
+This property returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.user_model.UserProfile" title="ibm_watsonx_data_integration.cpd_models.user_model.UserProfile"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserProfile</span></code></a> object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">user</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">iam_id</span><span class="o">=</span><span class="s1">&#39;IBMid-6xxxxxxxxV&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">user</span>
 <span class="go">UserProfile(id=&#39;9xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxd&#39;, iam_id=&#39;IBMid-6xxxxxxxxV&#39;, user_id=&#39;A.user@ibm.com&#39;, state=&#39;ACTIVE&#39;, email=&#39;A.user@ibm.com&#39;, account_id=&#39;6xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx9&#39;, added_on=&#39;2025-02-18T21:35:47Z&#39;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">user</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="s1">&#39;B.user@ibm.com&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">user</span>
+<span class="go">UserProfile(id=&#39;1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx3&#39;, iam_id=&#39;IBMid-6xxxxxxxxX&#39;, user_id=&#39;B.user@ibm.com&#39;, state=&#39;ACTIVE&#39;, email=&#39;B.user@ibm.com&#39;, account_id=&#39;6xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx9&#39;, added_on=&#39;2025-02-18T21:35:50Z&#39;)</span>
 </pre></div>
 </div>
 </section>
@@ -393,7 +400,7 @@ This method returns an <a class="reference internal" href="../../api/models.html
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-all-users">Listing all users</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-user-details-using-the-iam-id">Getting user details using the IAM ID</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-user-details-using-the-iam-id-or-user-id">Getting user details using the IAM ID or User ID</a></li>
 </ul>
   </nav></div>
 

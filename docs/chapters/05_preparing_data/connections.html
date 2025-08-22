@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Connections &#8212; ibm-watsonx-data-integration 0.0.1b documentation</title>
+    <title>Connections &#8212; ibm-watsonx-data-integration 0.0.2b documentation</title>
   
   
   
@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=77435cf2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -38,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=17f7287f"></script>
+    <script src="../../_static/documentation_options.js?v=b3319892"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -144,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.1b</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.2b</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -198,6 +199,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/users.html">Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/access_groups.html">Access Groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/roles.html">Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_administration/custom_roles.html">Custom Roles</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -337,17 +339,21 @@ Each connection is defined for exactly one datasource.</p>
 <p>and provide a <strong>Name</strong> and other additional configuration (depending on the selected datasource).</p>
 <a class="reference internal image-reference" href="../../_images/create_connection4.png"><img alt="Screenshot of the Connection creation in the UI - Step 4" class="align-center" src="../../_images/create_connection4.png" style="width: 100%;" />
 </a>
-<p>In the WatsonX DI SDK, you can create a new <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.Connection" title="ibm_watsonx_data_integration.cpd_models.connections_model.Connection"><code class="xref py py-class docutils literal notranslate"><span class="pre">Connection</span></code></a> object within a
+<p>In the SDK, you can create a new <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.Connection" title="ibm_watsonx_data_integration.cpd_models.connections_model.Connection"><code class="xref py py-class docutils literal notranslate"><span class="pre">Connection</span></code></a> object within a
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a>,
 by selecting the appropriate project from the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform" title="ibm_watsonx_data_integration.platform.Platform"><code class="xref py py-class docutils literal notranslate"><span class="pre">Platform</span></code></a> and then using
 the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.create_connection" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.create_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.create_connection()</span></code></a> method to instantiate the connection.</p>
 <p>You must provide a <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">datasource</span></code> type to create connection.
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType" title="ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasourceType</span></code></a> is an object defining the data source for which the connection will be created.</p>
+<p>By default before creating any connection, server will validate it.
+If the connection cannot be estabilished with provided parameters, you will get an error and connection will not be saved.
+To skip validation and create connection anyway set <code class="docutils literal notranslate"><span class="pre">test</span></code> parameter of
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.create_connection" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.create_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.create_connection()</span></code></a> to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To get available datasources see: <a class="reference internal" href="datasources.html#preparing-data-datasources-retrieving-an-datasourcetype"><span class="std std-ref">Retrieving a DatasourceType</span></a>.</p>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">projects</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">projects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;project&quot;</span><span class="p">)</span>
 <span class="go">Project(guid=&#39;d7831458-4771-4ad4-bb05-fb95fa94361c&#39;, name=&#39;project&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">datasource_type</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">datasources</span><span class="p">[</span><span class="mi">28</span><span class="p">]</span>
 <span class="go">DatasourceType(name=&#39;http&#39;)</span>
@@ -371,7 +377,7 @@ the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_i
 <p>In the UI, you can get all Connections by navigating to <strong>Assets -&gt; Data access -&gt; Connections</strong>.</p>
 <a class="reference internal image-reference" href="../../_images/get_connections.png"><img alt="Screenshot of the Connection listing in the UI" class="align-center" src="../../_images/get_connections.png" style="width: 100%;" />
 </a>
-<p>In the WatsonX DI SDK, Connection can be retrieved using <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.connections" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.connections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project.connections</span></code></a> property.
+<p>In the SDK, Connection can be retrieved using <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.connections" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.connections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project.connections</span></code></a> property.
 You can also further filter and refine the connections returned based on attributes including
 <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">context</span></code>, <code class="docutils literal notranslate"><span class="pre">properties</span></code> and <code class="docutils literal notranslate"><span class="pre">datasource_type</span></code>.</p>
 <p>This property returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.Connections" title="ibm_watsonx_data_integration.cpd_models.connections_model.Connections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Connections</span></code></a> object.</p>
@@ -387,7 +393,7 @@ You can also further filter and refine the connections returned based on attribu
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Return a list of all connections</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">connections</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">connections</span>
-<span class="go">[Connection(name=&#39;Connection Name&#39;)]</span>
+<span class="go">[Connection(name=&#39;Connection Name&#39;), (...)]</span>
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -401,9 +407,11 @@ You can also further filter and refine the connections returned based on attribu
 This button is visible only when cursor is over the Connection object.</p>
 <a class="reference internal image-reference" href="../../_images/update_connection.png"><img alt="Screenshot of the Connection updating in the UI" class="align-center" src="../../_images/update_connection.png" style="width: 100%;" />
 </a>
-<p>To update a connection in the WatsonX DI SDK, we first modify properties of the connection and then
+<p>To update a connection in the SDK, we first modify properties of the connection and then
 pass the instance to the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_connection" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_connection()</span></code></a> method.</p>
 <p>This method returns an HTTP response indicating the status of the update operation.</p>
+<p>Similar to <a class="reference internal" href="#preparing-data-connections-creating-a-connection"><span class="std std-ref">Creating a Connection</span></a> you can skip the validation by setting <code class="docutils literal notranslate"><span class="pre">test</span></code> parameter of
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_connection" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_connection()</span></code></a> to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">connection</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Connection Name&quot;</span><span class="p">)</span>
 <span class="go">Connection(name=&#39;Connection Name&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">connection</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;New Connection Name&quot;</span>
@@ -417,11 +425,9 @@ pass the instance to the <a class="reference internal" href="../../api/models.ht
 <p>In the UI, you can delete an existing Connection by navigating to the <strong>Assets -&gt; Data access -&gt; Connections</strong>.</p>
 <a class="reference internal image-reference" href="../../_images/delete_connection.png"><img alt="Screenshot of the Connection deletion in the UI" class="align-center" src="../../_images/delete_connection.png" style="width: 100%;" />
 </a>
-<p>In the WatsonX DI SDK to delete a connection instance you can pass it to <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_connection" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_connection()</span></code></a> method.</p>
+<p>In the SDK to delete a connection instance you can pass it to <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_connection" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_connection()</span></code></a> method.</p>
 <p>This method returns an HTTP response indicating the status of the delete operation.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">connection</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">asset_ref</span><span class="o">=</span><span class="s2">&quot;ae0d053b-c4f6-4266-9b02-724e6eb94855&quot;</span>
-<span class="gp">... </span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">connection</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;New Connection Name&quot;</span><span class="p">)</span>
 <span class="go">Connection(name=&#39;New Connection Name&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">delete_connection</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span>
 <span class="go">&lt;Response [204]&gt;</span>

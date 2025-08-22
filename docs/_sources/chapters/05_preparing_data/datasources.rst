@@ -30,7 +30,12 @@ Retrieving a DatasourceType
 In the UI, the list of all DatasourceType objects is displayed during creation of :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.Connection`
 (See: :ref:`Creating a Connection <preparing_data__connections__creating_a_connection>`).
 
-In the WatsonX DI SDK, a Connection can be retrieved using :py:class:`Project.connections <ibm_watsonx_data_integration.cpd_models.project_model.Project.connections>` property.
+.. image:: ../../_static/images/connections/get_datasource.png
+   :alt: Screenshot of the DataSource selection in the UI
+   :align: center
+   :width: 100%
+
+In the SDK, a Connection can be retrieved using :py:class:`Project.connections <ibm_watsonx_data_integration.cpd_models.project_model.Project.connections>` property.
 You can also further filter and refine the connections returned based on attributes including
 ``name``, ``context``, ``properties`` and ``datasource_type``.
 
@@ -72,7 +77,27 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.conn
 Retrieving a DatasourceType connection properties
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To list all properties available for a :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType` object use :py:class:`DatasourceType.properties.connection <ibm_watsonx_data_integration.cpd_models.project_model.DatasourceType.properties.connection>` property.
+In the UI, available connection fields depend on previously selected DatasourceType (See: :ref:`Retrieving a DatasourceType <preparing_data__datasources__retrieving_an_datasourcetype>`).
+
+For example, JDBC connection by default requires 3 parameters - ``JDBC Connection String``, ``Username``, ``Password``.
+
+.. image:: ../../_static/images/connections/datasource_jdbc.png
+   :alt: Screenshot of the JDBC DataSource arguments.
+   :align: center
+   :width: 100%
+
+HTTP connection on the other hand by default requires only one parameters - ``File URL``.
+
+.. image:: ../../_static/images/connections/datasource_http.png
+   :alt: Screenshot of the HTTP DataSource arguments.
+   :align: center
+   :width: 100%
+
+In the SDK to get all properties available for a :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType`
+object use :py:class:`DatasourceType.properties <ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType.properties>`
+property (which will return :py:class:`DatasourceTypeProperties <ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypeProperties>` object).
+Then you can call :py:class:`DatasourceTypeProperties.connection <ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypeProperties.connection>`
+to retrieve all available connection properties.
 
 .. code-block:: python
 
@@ -87,7 +112,7 @@ To list all properties available for a :py:class:`~ibm_watsonx_data_integration.
     ]
 
     >>> # You can get list of all required properties
-    >>> required_properties = [p for p in properties if p.required]
+    >>> required_properties = datasource.required_connection_properties
     [
         DatasourceTypeProperty(name='host'),
         DatasourceTypeProperty(name='password'),
@@ -95,7 +120,7 @@ To list all properties available for a :py:class:`~ibm_watsonx_data_integration.
     ]
 
     >>> # Or get details about the property
-    >>> reqired_property_1 = required_properties[0]
+    >>> required_property_1 = required_properties[0]
     DatasourceTypeProperty(name='host')
     >>> required_property_1.type
     'string'

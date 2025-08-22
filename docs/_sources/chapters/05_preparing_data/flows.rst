@@ -38,16 +38,16 @@ Retrieving Flows
 Flows can be retrieved through a :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object using the
 :py:attr:`Project.flows <ibm_watsonx_data_integration.cpd_models.project_model.Project.flows>` property.
 You can also retrieve a single flow using the :py:meth:`Project.flows.get() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlows.get>` method
-which requires the ``asset_id`` parameter.
+which requires the ``flow_id`` parameter.
 
 .. code-block:: python
 
     >>> project.flows  # a list of all the flows
-    [StreamsetsFlow(name='My first flow', description='optional description', asset_id='ea5b7ec1-3651-430d-9704-4b93791d6e03', engine_version='6.3.0-SNAPSHOT')]
+    [StreamsetsFlow(name='My first flow', description='optional description', flow_id='ea5b7ec1-3651-430d-9704-4b93791d6e03', engine_version='6.3.0-SNAPSHOT')]
 
-    >>> flow = project.flows.get(asset_id='ea5b7ec1-3651-430d-9704-4b93791d6e03')
+    >>> flow = project.flows.get(flow_id='ea5b7ec1-3651-430d-9704-4b93791d6e03')
     >>> flow
-    StreamsetsFlow(name='My first flow', description='optional description', asset_id='ea5b7ec1-3651-430d-9704-4b93791d6e03', engine_version='6.3.0-SNAPSHOT')
+    StreamsetsFlow(name='My first flow', description='optional description', flow_id='ea5b7ec1-3651-430d-9704-4b93791d6e03', engine_version='6.3.0-SNAPSHOT')
 
 
 .. _preparing_data__flows__creating_a_flow:
@@ -73,7 +73,7 @@ This method will return a :py:class:`~ibm_watsonx_data_integration.services.stre
 
     >>> flow = project.create_flow(name="My first flow", description="optional description", environment=environment)
     >>> flow
-    StreamsetsFlow(name='My first flow', description='optional description', asset_id='58acfeb3-ee9e-4d1f-bbbd-4426cf7a9961', engine_version='6.3.0-SNAPSHOT')
+    StreamsetsFlow(name='My first flow', description='optional description', flow_id='58acfeb3-ee9e-4d1f-bbbd-4426cf7a9961', engine_version='6.3.0-SNAPSHOT')
 
 
 .. _preparing_data__flows__editing_a_flow:
@@ -89,7 +89,7 @@ For starters, you can edit a flow's attributes like ``name`` or ``description``.
 
     >>> flow.description = "new description for the flow"
     >>> flow
-    StreamsetsFlow(name='My first flow', description='new description for the flow', asset_id='ea5b7ec1-3651-430d-9704-4b93791d6e03', engine_version='6.3.0-SNAPSHOT')
+    StreamsetsFlow(name='My first flow', description='new description for the flow', flow_id='ea5b7ec1-3651-430d-9704-4b93791d6e03', engine_version='6.3.0-SNAPSHOT')
 
 You can edit a flow's configuration through the :py:attr:`StreamsetsFlow.configuration <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.configuration>` property.
 This property returns a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration` object which encapsulates a flow's configuration.
@@ -144,7 +144,7 @@ This will duplicate a flow and return a new instance of :py:class:`~ibm_watsonx_
 
     >>> duplicated_flow = project.duplicate_flow(flow, name="duplicated flow", description=f"duplicate of {flow.name}")
     >>> duplicated_flow
-    StreamsetsFlow(name='duplicated flow', description='duplicate of My first flow', asset_id='ee199ac5-1d4e-4875-91fb-110d85eb2c92', engine_version='6.3.0-SNAPSHOT')
+    StreamsetsFlow(name='duplicated flow', description='duplicate of My first flow', flow_id='ee199ac5-1d4e-4875-91fb-110d85eb2c92', engine_version='6.3.0-SNAPSHOT')
 
 
 .. _preparing_data__flows__deleting_a_flow:

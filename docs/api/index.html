@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>API Reference &#8212; ibm-watsonx-data-integration 0.0.1b documentation</title>
+    <title>API Reference &#8212; ibm-watsonx-data-integration 0.0.2b documentation</title>
   
   
   
@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=77435cf2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -38,7 +39,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=17f7287f"></script>
+    <script src="../_static/documentation_options.js?v=b3319892"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -48,7 +49,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Models" href="models.html" />
-    <link rel="prev" title="Roles" href="../chapters/06_administration/roles.html" />
+    <link rel="prev" title="Custom Roles" href="../chapters/06_administration/custom_roles.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -144,7 +145,7 @@
     <script>document.write(`<img src="../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.1b</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.2b</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -198,6 +199,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../chapters/06_administration/users.html">Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapters/06_administration/access_groups.html">Access Groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapters/06_administration/roles.html">Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapters/06_administration/custom_roles.html">Custom Roles</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -303,14 +305,17 @@ In this API reference doc, you’ll find a complete breakdown of all classes, pr
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.common.auth">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.services.streamsets.models.configuration">Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.connections_model">Connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.engine_model">Engine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.environment_model">Environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.services.streamsets.models.flow_model">Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.services.streamsets.models.engine_model">Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.services.streamsets.models.environment_model">Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.flow_model">Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#id4">Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.job_model">Job</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.platform">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.project_model">Project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.role_model">Role</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.service_model">Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.service_id_model">Service Id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.trusted_profile_model">Trusted Profile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.user_model">User</a></li>
 </ul>
 </li>
@@ -330,12 +335,12 @@ In this API reference doc, you’ll find a complete breakdown of all classes, pr
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../chapters/06_administration/roles.html"
+       href="../chapters/06_administration/custom_roles.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Roles</p>
+        <p class="prev-next-title">Custom Roles</p>
       </div>
     </a>
     <a class="right-next"

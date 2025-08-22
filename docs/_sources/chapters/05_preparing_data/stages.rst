@@ -39,7 +39,7 @@ To add stages to a flow in the UI, you can open the dropdown menu on the left of
 .. image:: ../../_static/images/stages/add_stage.png
    :alt: Screenshot for adding a stage.
    :align: center
-   :width: 100%
+   :width: 40%
 |
 
 In the SDK, you can use the :py:meth:`StreamsetsFlow.add_stage() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.add_stage>` method.
@@ -71,7 +71,7 @@ To remove a stage in the UI, you can click on the stage and then click on the de
 .. image:: ../../_static/images/stages/remove_stage.png
    :alt: Screenshot for removing a stage.
    :align: center
-   :width: 100%
+   :width: 50%
 |
 
 In the SDK, you can remove a stage from a flow using the :py:meth:`StreamsetsFlow.remove_stage() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.remove_stage>` method
@@ -96,7 +96,7 @@ In the UI, to connect stages, you can click on the output of a stage and drag it
 .. image:: ../../_static/images/stages/connect_stages.png
    :alt: Screenshot for connecting a stage.
    :align: center
-   :width: 100%
+   :width: 85%
 |
 
 To disconnect a stage, you can click on the connection and then the delete icon that comes above it.
@@ -104,7 +104,7 @@ To disconnect a stage, you can click on the connection and then the delete icon 
 .. image:: ../../_static/images/stages/disconnect_stages.png
    :alt: Screenshot for disconnecting a stage.
    :align: center
-   :width: 100%
+   :width: 85%
 |
 
 In the SDK, to connect stages to each other we can use the following methods:

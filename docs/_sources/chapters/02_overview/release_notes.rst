@@ -5,6 +5,19 @@ What's new
 
 Below you will find release notes for each version of the ``ibm-watsonx-data-integration`` SDK as well as highlights of major features and/or fixes included in each release.
 
+0.0.2b (August 2025)
+--------------------
+* Added support for retrieving, adding, and removing members from AccessGroups.
+
+* Engine and Environment API clients & model moved under Streamsets service
+
+* Access pattern updates for all resource IDs
+
+* Bug fixes across the SDK
+
+* Minor updates for enhanced SDK functionality
+
+
 0.0.1b (June 2025)
 ------------------
 * Added support for retrieving, creating, updating, deleting and running Jobs.

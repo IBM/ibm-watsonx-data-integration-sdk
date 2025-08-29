@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Stages &#8212; ibm-watsonx-data-integration 0.0.2b documentation</title>
+    <title>Stages &#8212; ibm-watsonx-data-integration 0.0.1b documentation</title>
   
   
   
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css?v=a0a71c94" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=77435cf2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=b3319892"></script>
+    <script src="../../_static/documentation_options.js?v=17f7287f"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.2b</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.1b</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -339,13 +339,7 @@ This returns a <code class="xref py py-class docutils literal notranslate"><span
 </section>
 <section id="add-a-stage-to-a-flow">
 <span id="preparing-data-add-stage-to-flow"></span><h2>Add a Stage to a Flow<a class="headerlink" href="#add-a-stage-to-a-flow" title="Link to this heading">#</a></h2>
-<p>To add stages to a flow in the UI, you can open the dropdown menu on the left of the flow edit page and select the stage you want to add.</p>
-<a class="reference internal image-reference" href="../../_images/add_stage.png"><img alt="Screenshot for adding a stage." class="align-center" src="../../_images/add_stage.png" style="width: 40%;" />
-</a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>In the SDK, you can use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.add_stage" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.add_stage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StreamsetsFlow.add_stage()</span></code></a> method.
+<p>To add stages to a flow, you can use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.add_stage" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.add_stage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StreamsetsFlow.add_stage()</span></code></a> method.
 This method accepts the following parameters <code class="docutils literal notranslate"><span class="pre">label</span></code>, <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">type</span></code> and <code class="docutils literal notranslate"><span class="pre">library</span></code>, of which one of <code class="docutils literal notranslate"><span class="pre">label</span></code> or <code class="docutils literal notranslate"><span class="pre">name</span></code> must be provided.</p>
 <p>This method returns an instance of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage"><code class="xref py py-class docutils literal notranslate"><span class="pre">Stage</span></code></a> representing the newly created stage.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">amazon_sqs_consumer</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Amazon SQS Consumer&quot;</span><span class="p">)</span>
@@ -362,13 +356,7 @@ returns the first possible stage matching the conditions, therefore it is advisa
 </section>
 <section id="remove-a-stage-from-a-flow">
 <span id="preparing-data-remove-stage-from-flow"></span><h2>Remove a Stage from a Flow<a class="headerlink" href="#remove-a-stage-from-a-flow" title="Link to this heading">#</a></h2>
-<p>To remove a stage in the UI, you can click on the stage and then click on the delete icon that comes above it.</p>
-<a class="reference internal image-reference" href="../../_images/remove_stage.png"><img alt="Screenshot for removing a stage." class="align-center" src="../../_images/remove_stage.png" style="width: 50%;" />
-</a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>In the SDK, you can remove a stage from a flow using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.remove_stage" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.remove_stage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StreamsetsFlow.remove_stage()</span></code></a> method
+<p>You can remove a stage from a flow using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.remove_stage" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.remove_stage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StreamsetsFlow.remove_stage()</span></code></a> method
 and passing an instance of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage"><code class="xref py py-class docutils literal notranslate"><span class="pre">Stage</span></code></a> to it.</p>
 <p>All stages connected to this stage will be disconnected by this action.</p>
 <p>This method does not return anything.</p>
@@ -378,20 +366,8 @@ and passing an instance of <a class="reference internal" href="../../api/models.
 </section>
 <section id="connection-and-disconnecting-stages">
 <span id="preparing-data-connecting-disconnecting-stages"></span><h2>Connection and Disconnecting Stages<a class="headerlink" href="#connection-and-disconnecting-stages" title="Link to this heading">#</a></h2>
-<p>In the UI, to connect stages, you can click on the output of a stage and drag it to another stage.</p>
-<a class="reference internal image-reference" href="../../_images/connect_stages.png"><img alt="Screenshot for connecting a stage." class="align-center" src="../../_images/connect_stages.png" style="width: 85%;" />
-</a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>To disconnect a stage, you can click on the connection and then the delete icon that comes above it.</p>
-<a class="reference internal image-reference" href="../../_images/disconnect_stages.png"><img alt="Screenshot for disconnecting a stage." class="align-center" src="../../_images/disconnect_stages.png" style="width: 85%;" />
-</a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <dl class="simple">
-<dt>In the SDK, to connect stages to each other we can use the following methods:</dt><dd><ul class="simple">
+<dt>To connect stages to each other we can use the following methods:</dt><dd><ul class="simple">
 <li><p><a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.connect_output_to" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.connect_output_to"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Stage.connect_output_to()</span></code></a> - this method is used to connect the output of the current stage to the input of another stage.</p></li>
 <li><p><a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.connect_input_to" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.connect_input_to"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Stage.connect_input_to()</span></code></a> - this method is used to connect the input of the current stage to the output of another stage.</p></li>
 <li><p><a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.connect_event_to" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.connect_event_to"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Stage.connect_event_to()</span></code></a> - this method is used to connect the event output of the current stage to the input of another stage.</p></li>

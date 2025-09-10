@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/autodoc_pydantic.css?v=a0a71c94" />
+    <link rel="stylesheet" type="text/css" href="../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=77435cf2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -688,6 +688,16 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Flow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError"><code class="docutils literal notranslate"><span class="pre">FlowValidationError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.errorCode"><code class="docutils literal notranslate"><span class="pre">FlowValidationError.errorCode</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.humanReadableMessage"><code class="docutils literal notranslate"><span class="pre">FlowValidationError.humanReadableMessage</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.instanceName"><code class="docutils literal notranslate"><span class="pre">FlowValidationError.instanceName</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.level"><code class="docutils literal notranslate"><span class="pre">FlowValidationError.level</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.message"><code class="docutils literal notranslate"><span class="pre">FlowValidationError.message</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.technicalMessage"><code class="docutils literal notranslate"><span class="pre">FlowValidationError.technicalMessage</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.type"><code class="docutils literal notranslate"><span class="pre">FlowValidationError.type</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition"><code class="docutils literal notranslate"><span class="pre">PipelineDefinition</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.configuration_data"><code class="docutils literal notranslate"><span class="pre">PipelineDefinition.configuration_data</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.description"><code class="docutils literal notranslate"><span class="pre">PipelineDefinition.description</span></code></a></li>
@@ -798,6 +808,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.metadata"><code class="docutils literal notranslate"><span class="pre">StreamsetsFlow.metadata</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.add_stage"><code class="docutils literal notranslate"><span class="pre">StreamsetsFlow.add_stage()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.get_executor_id"><code class="docutils literal notranslate"><span class="pre">StreamsetsFlow.get_executor_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.model_dump"><code class="docutils literal notranslate"><span class="pre">StreamsetsFlow.model_dump()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.remove_stage"><code class="docutils literal notranslate"><span class="pre">StreamsetsFlow.remove_stage()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.set_error_stage"><code class="docutils literal notranslate"><span class="pre">StreamsetsFlow.set_error_stage()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.set_start_event_stage"><code class="docutils literal notranslate"><span class="pre">StreamsetsFlow.set_start_event_stage()</span></code></a></li>
@@ -1048,17 +1059,16 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_job"><code class="docutils literal notranslate"><span class="pre">Project.delete_job()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.duplicate_flow"><code class="docutils literal notranslate"><span class="pre">Project.duplicate_flow()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.get_engine"><code class="docutils literal notranslate"><span class="pre">Project.get_engine()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.get_streamsets_connection"><code class="docutils literal notranslate"><span class="pre">Project.get_streamsets_connection()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_connection"><code class="docutils literal notranslate"><span class="pre">Project.update_connection()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_environment"><code class="docutils literal notranslate"><span class="pre">Project.update_environment()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_flow"><code class="docutils literal notranslate"><span class="pre">Project.update_flow()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_job"><code class="docutils literal notranslate"><span class="pre">Project.update_job()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.validate_flow"><code class="docutils literal notranslate"><span class="pre">Project.validate_flow()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.connections"><code class="docutils literal notranslate"><span class="pre">Project.connections</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.engines"><code class="docutils literal notranslate"><span class="pre">Project.engines</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.environments"><code class="docutils literal notranslate"><span class="pre">Project.environments</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.flows"><code class="docutils literal notranslate"><span class="pre">Project.flows</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.jobs"><code class="docutils literal notranslate"><span class="pre">Project.jobs</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.streamsets_connections"><code class="docutils literal notranslate"><span class="pre">Project.streamsets_connections</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.ProjectMetadata"><code class="docutils literal notranslate"><span class="pre">ProjectMetadata</span></code></a><ul class="nav section-nav flex-column">
@@ -1579,9 +1589,8 @@ document.write(`
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.account_model.Account.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.account_model.Account.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.account_model.Account.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -1637,9 +1646,8 @@ validated to form a valid model.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.account_model.AccountMetadata.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.account_model.AccountMetadata.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.account_model.AccountMetadata.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -1723,9 +1731,8 @@ validated to form a valid model.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.account_model.BluemixSubscription.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.account_model.BluemixSubscription.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.account_model.BluemixSubscription.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -3110,9 +3117,8 @@ validated to form a valid model.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.streamsets.models.engine_model.EngineMetadata.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.services.streamsets.models.engine_model.EngineMetadata.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.streamsets.models.engine_model.EngineMetadata.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -3223,9 +3229,8 @@ validated to form a valid model.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.streamsets.models.engine_model.LibraryDefinitions.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.services.streamsets.models.engine_model.LibraryDefinitions.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.streamsets.models.engine_model.LibraryDefinitions.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -3288,7 +3293,7 @@ validated to form a valid model.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>env_json</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span>) – The JSON for the Service.</p></li>
 <li><p><strong>platform</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="#ibm_watsonx_data_integration.platform.Platform" title="ibm_watsonx_data_integration.platform.Platform"><code class="xref py py-class docutils literal notranslate"><span class="pre">Platform</span></code></a>]</span>, default: <code class="docutils literal notranslate"><span class="pre">None</span></code>) – The Platform object.</p></li>
-<li><p><strong>project</strong> – The Project object.</p></li>
+<li><p><strong>project</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a></span>) – The Project object.</p></li>
 </ul>
 </dd>
 </dl>
@@ -3515,9 +3520,8 @@ validated to form a valid model.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.streamsets.models.environment_model.EnvironmentMetadata.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.services.streamsets.models.environment_model.EnvironmentMetadata.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.streamsets.models.environment_model.EnvironmentMetadata.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -3608,6 +3612,52 @@ It ensures a consistent contract for flows that need to override the default pay
 <section id="id4">
 <h2>Flow<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p id="module-ibm_watsonx_data_integration.services.streamsets.models.flow_model">Module containing StreamSets Flow Models.</p>
+<dl class="py class pydantic_model">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError">
+<em class="property"><span class="pre">pydantic</span> <span class="pre">model</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ibm_watsonx_data_integration.services.streamsets.models.flow_model.</span></span><span class="sig-name descname"><span class="pre">FlowValidationError</span></span><a class="headerlink" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Streamsets validation error object.</p>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<cite>ValidationError</cite>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><cite>self</cite> is explicitly positional-only to allow <cite>self</cite> as a field name.</p>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.errorCode">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">errorCode</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"> <span class="pre">[Required]</span></em><a class="headerlink" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.errorCode" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.humanReadableMessage">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">humanReadableMessage</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"> <span class="pre">[Required]</span></em><a class="headerlink" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.humanReadableMessage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.instanceName">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">instanceName</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> <span class="pre">|</span> <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.instanceName" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.level">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">level</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"> <span class="pre">[Required]</span></em><a class="headerlink" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.level" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.message">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">message</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"> <span class="pre">[Required]</span></em><a class="headerlink" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.message" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.technicalMessage">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">technicalMessage</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"> <span class="pre">[Required]</span></em><a class="headerlink" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.technicalMessage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.type">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"> <span class="pre">[Required]</span></em><a class="headerlink" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.type" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py class pydantic_model">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition">
 <em class="property"><span class="pre">pydantic</span> <span class="pre">model</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ibm_watsonx_data_integration.services.streamsets.models.flow_model.</span></span><span class="sig-name descname"><span class="pre">PipelineDefinition</span></span><a class="headerlink" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition" title="Link to this definition">#</a></dt>
@@ -4409,6 +4459,20 @@ validated to form a valid model.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.model_dump">
+<span class="sig-name descname"><span class="pre">model_dump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">by_alias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.model_dump" title="Link to this definition">#</a></dt>
+<dd><p>Generate a dictionary representation of the model, optionally specifying which fields to include or exclude.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary representation of the model.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.remove_stage">
 <span class="sig-name descname"><span class="pre">remove_stage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage"><span class="pre">Stage</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.remove_stage" title="Link to this definition">#</a></dt>
 <dd><p>Removes a stage from the flow.</p>
@@ -4671,9 +4735,8 @@ validated to form a valid model.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlowMetadata.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlowMetadata.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlowMetadata.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -5005,9 +5068,8 @@ validated to form a valid model.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.job_model.JobConfiguration.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.job_model.JobConfiguration.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.job_model.JobConfiguration.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -5053,9 +5115,8 @@ validated to form a valid model.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.job_model.JobMetadata.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.job_model.JobMetadata.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.job_model.JobMetadata.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -5088,9 +5149,8 @@ validated to form a valid model.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.job_model.JobParameter.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.job_model.JobParameter.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.job_model.JobParameter.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -5316,9 +5376,8 @@ validated to form a valid model.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.job_model.JobRunMetadata.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.job_model.JobRunMetadata.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.job_model.JobRunMetadata.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -5406,9 +5465,8 @@ validated to form a valid model.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.job_model.Outputs.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.job_model.Outputs.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.job_model.Outputs.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -5444,9 +5502,8 @@ validated to form a valid model.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.job_model.ParameterSet.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.job_model.ParameterSet.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.job_model.ParameterSet.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -5477,9 +5534,8 @@ validated to form a valid model.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.job_model.RetentionPolicy.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.job_model.RetentionPolicy.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.job_model.RetentionPolicy.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -5515,9 +5571,8 @@ validated to form a valid model.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.job_model.ScheduleInfo.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.job_model.ScheduleInfo.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.job_model.ScheduleInfo.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -5693,7 +5748,7 @@ method.</p>
 <dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#ibm_watsonx_data_integration.cpd_models.service_model.Service" title="ibm_watsonx_data_integration.cpd_models.service_model.Service"><code class="xref py py-class docutils literal notranslate"><span class="pre">Service</span></code></a></span></p>
 </dd>
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A HTTP response.</p>
+<dd class="field-odd"><p>A Service instance.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -6351,27 +6406,6 @@ If true and validation cannot be estabilished, connection will not be saved.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.project_model.Project.get_streamsets_connection">
-<span class="sig-name descname"><span class="pre">get_streamsets_connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.get_streamsets_connection" title="Link to this definition">#</a></dt>
-<dd><p>Retrieves StreamSets connection by id associated with the project.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>connection_id</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>) – Id of the connection asset to retrieve.</p></li>
-<li><p><strong>version</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> | <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span>, default: <code class="docutils literal notranslate"><span class="pre">None</span></code>) – Connection version.</p></li>
-<li><p><strong>type</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> | <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span>, default: <code class="docutils literal notranslate"><span class="pre">None</span></code>) – Connection type.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsConnection" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamsetsConnection</span></code></a></span></p>
-</dd>
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Retrieved StreamsetsConnection object.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_connection">
 <span class="sig-name descname"><span class="pre">update_connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ibm_watsonx_data_integration.cpd_models.connections_model.Connection" title="ibm_watsonx_data_integration.cpd_models.connections_model.Connection"><span class="pre">Connection</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">test</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_connection" title="Link to this definition">#</a></dt>
 <dd><p>Update the Connection.</p>
@@ -6443,6 +6477,23 @@ If true and validation cannot be estabilished, connection will not be saved.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.project_model.Project.validate_flow">
+<span class="sig-name descname"><span class="pre">validate_flow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow"><span class="pre">StreamsetsFlow</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.validate_flow" title="Link to this definition">#</a></dt>
+<dd><p>Validates a flow.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>flow</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamsetsFlow</span></code></a></span>) – The Flow to validate.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<a class="reference internal" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError"><code class="xref py py-class docutils literal notranslate"><span class="pre">FlowValidationError</span></code></a>]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of all errors with a flow.</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.project_model.Project.connections">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">connections</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#ibm_watsonx_data_integration.cpd_models.connections_model.Connections" title="ibm_watsonx_data_integration.cpd_models.connections_model.Connections"><span class="pre">Connections</span></a></em><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.connections" title="Link to this definition">#</a></dt>
@@ -6488,17 +6539,6 @@ If true and validation cannot be estabilished, connection will not be saved.</p>
 </dl>
 </dd></dl>
 
-<dl class="py property">
-<dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.project_model.Project.streamsets_connections">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">streamsets_connections</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsConnection" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsConnection"><span class="pre">StreamsetsConnection</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.streamsets_connections" title="Link to this definition">#</a></dt>
-<dd><p>Retrieves StreamSets connections associated with the project.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A list of StreamsetsConnection within the project.</p>
-</dd>
-</dl>
-</dd></dl>
-
 </dd></dl>
 
 <dl class="py class pydantic_model">
@@ -6532,9 +6572,8 @@ validated to form a valid model.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.project_model.ProjectMetadata.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.project_model.ProjectMetadata.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.project_model.ProjectMetadata.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -6573,9 +6612,8 @@ validated to form a valid model.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.project_model.Scope.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.project_model.Scope.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.project_model.Scope.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -6611,9 +6649,8 @@ validated to form a valid model.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.project_model.Storage.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.project_model.Storage.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.project_model.Storage.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -7310,9 +7347,8 @@ DISABLED_CLASSIC_INFRASTRUCTURE, VPN_ONLY).</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.user_model.UserProfile.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.user_model.UserProfile.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.user_model.UserProfile.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -7469,9 +7505,8 @@ This field is mapped from the JSON key “2FA”.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="ibm_watsonx_data_integration.cpd_models.user_model.UserSettings.model_post_init">
-<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.user_model.UserSettings.model_post_init" title="Link to this definition">#</a></dt>
-<dd><p>We need to both initialize private attributes and call the user-defined model_post_init
-method.</p>
+<span class="sig-name descname"><span class="pre">model_post_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_BaseModel__context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.cpd_models.user_model.UserSettings.model_post_init" title="Link to this definition">#</a></dt>
+<dd><p>Don’t allow extra variables after initialization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
@@ -7926,6 +7961,16 @@ method.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Flow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError"><code class="docutils literal notranslate"><span class="pre">FlowValidationError</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.errorCode"><code class="docutils literal notranslate"><span class="pre">FlowValidationError.errorCode</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.humanReadableMessage"><code class="docutils literal notranslate"><span class="pre">FlowValidationError.humanReadableMessage</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.instanceName"><code class="docutils literal notranslate"><span class="pre">FlowValidationError.instanceName</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.level"><code class="docutils literal notranslate"><span class="pre">FlowValidationError.level</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.message"><code class="docutils literal notranslate"><span class="pre">FlowValidationError.message</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.technicalMessage"><code class="docutils literal notranslate"><span class="pre">FlowValidationError.technicalMessage</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.type"><code class="docutils literal notranslate"><span class="pre">FlowValidationError.type</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition"><code class="docutils literal notranslate"><span class="pre">PipelineDefinition</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.configuration_data"><code class="docutils literal notranslate"><span class="pre">PipelineDefinition.configuration_data</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.description"><code class="docutils literal notranslate"><span class="pre">PipelineDefinition.description</span></code></a></li>
@@ -8036,6 +8081,7 @@ method.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.metadata"><code class="docutils literal notranslate"><span class="pre">StreamsetsFlow.metadata</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.add_stage"><code class="docutils literal notranslate"><span class="pre">StreamsetsFlow.add_stage()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.get_executor_id"><code class="docutils literal notranslate"><span class="pre">StreamsetsFlow.get_executor_id()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.model_dump"><code class="docutils literal notranslate"><span class="pre">StreamsetsFlow.model_dump()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.remove_stage"><code class="docutils literal notranslate"><span class="pre">StreamsetsFlow.remove_stage()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.set_error_stage"><code class="docutils literal notranslate"><span class="pre">StreamsetsFlow.set_error_stage()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.set_start_event_stage"><code class="docutils literal notranslate"><span class="pre">StreamsetsFlow.set_start_event_stage()</span></code></a></li>
@@ -8286,17 +8332,16 @@ method.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_job"><code class="docutils literal notranslate"><span class="pre">Project.delete_job()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.duplicate_flow"><code class="docutils literal notranslate"><span class="pre">Project.duplicate_flow()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.get_engine"><code class="docutils literal notranslate"><span class="pre">Project.get_engine()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.get_streamsets_connection"><code class="docutils literal notranslate"><span class="pre">Project.get_streamsets_connection()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_connection"><code class="docutils literal notranslate"><span class="pre">Project.update_connection()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_environment"><code class="docutils literal notranslate"><span class="pre">Project.update_environment()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_flow"><code class="docutils literal notranslate"><span class="pre">Project.update_flow()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_job"><code class="docutils literal notranslate"><span class="pre">Project.update_job()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.validate_flow"><code class="docutils literal notranslate"><span class="pre">Project.validate_flow()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.connections"><code class="docutils literal notranslate"><span class="pre">Project.connections</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.engines"><code class="docutils literal notranslate"><span class="pre">Project.engines</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.environments"><code class="docutils literal notranslate"><span class="pre">Project.environments</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.flows"><code class="docutils literal notranslate"><span class="pre">Project.flows</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.jobs"><code class="docutils literal notranslate"><span class="pre">Project.jobs</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project.streamsets_connections"><code class="docutils literal notranslate"><span class="pre">Project.streamsets_connections</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.project_model.ProjectMetadata"><code class="docutils literal notranslate"><span class="pre">ProjectMetadata</span></code></a><ul class="nav section-nav flex-column">

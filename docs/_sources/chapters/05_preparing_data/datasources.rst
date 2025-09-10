@@ -47,6 +47,10 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.conn
 
 .. code-block:: python
 
+    >>> # Return first datasource type matching given `name`
+    >>> datasource = platform.datasources.get(name="jdbc")
+    DatasourceType(name='jdbc')
+
     >>> # Return first datasource type matching given `perspective`
     >>> datasource = platform.datasources.get(perspective="wx")
     DatasourceType(name='informix')

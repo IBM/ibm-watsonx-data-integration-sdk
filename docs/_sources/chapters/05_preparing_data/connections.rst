@@ -72,7 +72,7 @@ To skip validation and create connection anyway set ``test`` parameter of
 
     >>> project = platform.projects.get(name="project")
     Project(guid='d7831458-4771-4ad4-bb05-fb95fa94361c', name='project')
-    >>> datasource_type = platform.datasources[28]
+    >>> datasource_type = platform.datasources.get(name='http')
     DatasourceType(name='http')
     >>> connection = project.create_connection(
     ...     name="Connection Name",

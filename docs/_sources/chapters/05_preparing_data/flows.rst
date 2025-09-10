@@ -14,6 +14,7 @@ The SDK provides the following functionality to interact with flows:
     * Updating a flow
     * Duplicating a flow
     * Deleting a flow
+    * Validating a flow
     * Handling error records
 
 .. _preparing_data__flows__prerequisites:
@@ -23,8 +24,8 @@ Prerequisites
 
 To create a flow using the SDK, please make sure you have done the following steps:
     * :ref:`Created a project<projects__projects__creating_a_project>`.
-    * :ref:`Create an environment in the project <projects__environments__creating_an_environment>`.
-    * :ref:`Install an engine in your environment<projects__environments__retrieving_install_command>`.
+    * :ref:`Created an environment in the project <projects__environments__creating_an_environment>`.
+    * :ref:`Installed an engine in your environment<projects__environments__retrieving_install_command>`.
 
 .. note::
     Currently, the SDK only supports creating a flow with an engine installed.
@@ -171,6 +172,34 @@ This method returns an HTTP response indicating the status of the update operati
 
 
 .. _preparing_data__flows__handling_error_records:
+
+Validating a Flow
+~~~~~~~~~~~~~~~~~
+
+In the UI, you can update a flow by making changes to the flow and hitting the "Validate" icon to validate the flow.
+
+.. image:: ../../_static/images/flows/validate_flow_button.png
+   :alt: Screenshot of the validate button.
+   :align: center
+   :width: 100%
+
+To validate a flow via the SDK, you need to update a flow, and then pass it to the :py:meth:`Project.validate_flow() <ibm_watsonx_data_integration.cpd_models.project_model.Project.validate_flow>` method.
+This will return a list of :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError` instances if there are any errors.
+
+.. code-block:: python
+
+    >>> flow.add_stage("Trash")
+    Trash_01()
+    >>> project.update_flow(flow)
+    <Response [200]>
+    >>> project.validate_flow(flow)
+    [
+        FlowValidationError(type='stageIssues', instanceName='Trash_01', humanReadableMessage='The first stage must be an origin'),
+        FlowValidationError(type='stageIssues', instanceName='Trash_01', humanReadableMessage='Target must have input streams')
+    ]
+
+
+.. _preparing_data__flows__validating_a_flow:
 
 Handling Error Records
 ~~~~~~~~~~~~~~~~~~~~~~

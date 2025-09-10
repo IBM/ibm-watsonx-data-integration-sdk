@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css?v=a0a71c94" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=77435cf2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -297,6 +297,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-flow">Updating a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-a-flow">Duplicating a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-flow">Deleting a Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validating-a-flow">Validating a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-error-records">Handling Error Records</a></li>
 </ul>
             </nav>
@@ -324,6 +325,7 @@ A flow is comprised of multiple stages with each stage defining how data is hand
 <li><p>Updating a flow</p></li>
 <li><p>Duplicating a flow</p></li>
 <li><p>Deleting a flow</p></li>
+<li><p>Validating a flow</p></li>
 <li><p>Handling error records</p></li>
 </ul>
 </dd>
@@ -333,8 +335,8 @@ A flow is comprised of multiple stages with each stage defining how data is hand
 <dl class="simple">
 <dt>To create a flow using the SDK, please make sure you have done the following steps:</dt><dd><ul class="simple">
 <li><p><a class="reference internal" href="../04_projects/projects.html#projects-projects-creating-a-project"><span class="std std-ref">Created a project</span></a>.</p></li>
-<li><p><a class="reference internal" href="../04_projects/environments.html#projects-environments-creating-an-environment"><span class="std std-ref">Create an environment in the project</span></a>.</p></li>
-<li><p><a class="reference internal" href="../04_projects/environments.html#projects-environments-retrieving-install-command"><span class="std std-ref">Install an engine in your environment</span></a>.</p></li>
+<li><p><a class="reference internal" href="../04_projects/environments.html#projects-environments-creating-an-environment"><span class="std std-ref">Created an environment in the project</span></a>.</p></li>
+<li><p><a class="reference internal" href="../04_projects/environments.html#projects-environments-retrieving-install-command"><span class="std std-ref">Installed an engine in your environment</span></a>.</p></li>
 </ul>
 </dd>
 </dl>
@@ -434,8 +436,27 @@ to the <a class="reference internal" href="../../api/models.html#ibm_watsonx_dat
 </pre></div>
 </div>
 </section>
+<section id="validating-a-flow">
+<span id="preparing-data-flows-handling-error-records"></span><h2>Validating a Flow<a class="headerlink" href="#validating-a-flow" title="Link to this heading">#</a></h2>
+<p>In the UI, you can update a flow by making changes to the flow and hitting the “Validate” icon to validate the flow.</p>
+<a class="reference internal image-reference" href="../../_images/validate_flow_button.png"><img alt="Screenshot of the validate button." class="align-center" src="../../_images/validate_flow_button.png" style="width: 100%;" />
+</a>
+<p>To validate a flow via the SDK, you need to update a flow, and then pass it to the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.validate_flow" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.validate_flow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.validate_flow()</span></code></a> method.
+This will return a list of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError"><code class="xref py py-class docutils literal notranslate"><span class="pre">FlowValidationError</span></code></a> instances if there are any errors.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s2">&quot;Trash&quot;</span><span class="p">)</span>
+<span class="go">Trash_01()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">flow</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">validate_flow</span><span class="p">(</span><span class="n">flow</span><span class="p">)</span>
+<span class="go">[</span>
+<span class="go">    FlowValidationError(type=&#39;stageIssues&#39;, instanceName=&#39;Trash_01&#39;, humanReadableMessage=&#39;The first stage must be an origin&#39;),</span>
+<span class="go">    FlowValidationError(type=&#39;stageIssues&#39;, instanceName=&#39;Trash_01&#39;, humanReadableMessage=&#39;Target must have input streams&#39;)</span>
+<span class="go">]</span>
+</pre></div>
+</div>
+</section>
 <section id="handling-error-records">
-<span id="preparing-data-flows-handling-error-records"></span><h2>Handling Error Records<a class="headerlink" href="#handling-error-records" title="Link to this heading">#</a></h2>
+<span id="preparing-data-flows-validating-a-flow"></span><h2>Handling Error Records<a class="headerlink" href="#handling-error-records" title="Link to this heading">#</a></h2>
 <p>To edit error record handling on the UI, click the gear icon on the top-right of the screen in a flow’s edit page.</p>
 <a class="reference internal image-reference" href="../../_images/save_flow_button.png"><img alt="Screenshot of the flow creation page." class="align-center" src="../../_images/save_flow_button.png" style="width: 100%;" />
 </a>
@@ -523,6 +544,7 @@ You need to pass either the <code class="docutils literal notranslate"><span cla
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-flow">Updating a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-a-flow">Duplicating a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-flow">Deleting a Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validating-a-flow">Validating a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-error-records">Handling Error Records</a></li>
 </ul>
   </nav></div>

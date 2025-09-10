@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css?v=a0a71c94" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=77435cf2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -338,7 +338,11 @@ You can also further filter and refine the connections returned based on attribu
 You can also further filter and refine the connections returned based on attributes including
 <code class="docutils literal notranslate"><span class="pre">environment</span></code>, <code class="docutils literal notranslate"><span class="pre">perspective</span></code> and <code class="docutils literal notranslate"><span class="pre">product</span></code>.</p>
 <p>This property returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypes" title="ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypes"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasourceTypes</span></code></a> object.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Return first datasource type matching given `perspective`</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Return first datasource type matching given `name`</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datasource</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">datasources</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;jdbc&quot;</span><span class="p">)</span>
+<span class="go">DatasourceType(name=&#39;jdbc&#39;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Return first datasource type matching given `perspective`</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">datasource</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">datasources</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">perspective</span><span class="o">=</span><span class="s2">&quot;wx&quot;</span><span class="p">)</span>
 <span class="go">DatasourceType(name=&#39;informix&#39;)</span>
 

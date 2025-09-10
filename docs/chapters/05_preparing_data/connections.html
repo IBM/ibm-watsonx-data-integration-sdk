@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css?v=a0a71c94" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=77435cf2" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -355,7 +355,7 @@ To skip validation and create connection anyway set <code class="docutils litera
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">projects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;project&quot;</span><span class="p">)</span>
 <span class="go">Project(guid=&#39;d7831458-4771-4ad4-bb05-fb95fa94361c&#39;, name=&#39;project&#39;)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">datasource_type</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">datasources</span><span class="p">[</span><span class="mi">28</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datasource_type</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">datasources</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;http&#39;</span><span class="p">)</span>
 <span class="go">DatasourceType(name=&#39;http&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">connection</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Connection Name&quot;</span><span class="p">,</span>

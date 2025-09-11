@@ -35,10 +35,10 @@ You must specify  ``instance_type`` and ``name``. Optionally, you can also speci
 .. code-block:: python
 
     >>> service_instance = platform.create_service_instance(
-    ...     instance_type='datastage',
-    ...     name='My Datastage Service Instance',
-    ...     target='us-south',
-    ...     tags=['DatastageInstance']
+    ...     instance_type="datastage",
+    ...     name="My Datastage Service Instance",
+    ...     target="us-south",
+    ...     tags=["DatastageInstance"]
     ... )
 
 
@@ -51,5 +51,5 @@ This method returns an HTTP response indicating the status of the delete operati
 
 .. code-block:: python
 
-    >>> service_instance = platform.service_instances[0]
+    >>> service_instance = platform.service_instances.get(name="watsonx.data integration")
     >>> res = platform.delete_service_instance(service_instance)

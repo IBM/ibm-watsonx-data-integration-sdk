@@ -106,7 +106,7 @@ to retrieve all available connection properties.
 .. code-block:: python
 
     >>> # Get datasource object
-    >>> datasource = platform.datasources[0]
+    >>> datasource = platform.datasources.get(name='informix')
     DatasourceType(name='informix')
     >>> properties = datasource.properties.connection
     [

@@ -37,10 +37,10 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.proj
 
     >>> # Returns first project matching given `guid`
     >>> project = platform.projects.get(guid="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-    Project(guid='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', name="ci_cd_project")
+    Project(guid="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", name="ci_cd_project")
     >>> # Return a list of all projects that match `name`
     >>> projects = platform.projects.get_all(name="ci_cd_project")
-    [Project(guid='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', name="ci_cd_project"). Project(guid='yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy', name="ci_cd_project")]
+    [Project(guid="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", name="ci_cd_project"). Project(guid="yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy", name="ci_cd_project")]
 
 .. _projects__projects__creating_a_project:
 
@@ -71,9 +71,9 @@ This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.projec
     ...     description="Test Project Description",
     ...     tags=["flow_test_project"],
     ...     public=True,
-    ...     project_type="wx""
+    ...     project_type="wx"
     ... )
-    Project(guid='xyxyxyxy-xyxy-xyxy-xyxy-xyxyxyxy', name="Test Project")
+    Project(guid="xyxyxyxy-xyxy-xyxy-xyxy-xyxyxyxy", name="Test Project")
 
 Updating a Project
 ~~~~~~~~~~~~~~~~~~

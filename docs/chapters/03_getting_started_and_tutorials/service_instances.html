@@ -199,7 +199,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/users.html">Users</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/access_groups.html">Access Groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_administration/roles.html">Roles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../06_administration/custom_roles.html">Custom Roles</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -332,10 +331,10 @@ document.write(`
 <p>To create a new <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Service" title="ibm_watsonx_data_integration.cpd_models.service_model.Service"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.cpd_models.service_model.Service</span></code></a> object within the watsonx.data integration platform, you can use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.create_service_instance" title="ibm_watsonx_data_integration.platform.Platform.create_service_instance"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.platform.Platform.create_service_instance()</span></code></a> method to instantiate the service instance.</p>
 <p>You must specify  <code class="docutils literal notranslate"><span class="pre">instance_type</span></code> and <code class="docutils literal notranslate"><span class="pre">name</span></code>. Optionally, you can also specify <code class="docutils literal notranslate"><span class="pre">target</span></code> and <code class="docutils literal notranslate"><span class="pre">tags</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">service_instance</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">create_service_instance</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">instance_type</span><span class="o">=</span><span class="s1">&#39;datastage&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;My Datastage Service Instance&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">target</span><span class="o">=</span><span class="s1">&#39;us-south&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;DatastageInstance&#39;</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="n">instance_type</span><span class="o">=</span><span class="s2">&quot;datastage&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;My Datastage Service Instance&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">target</span><span class="o">=</span><span class="s2">&quot;us-south&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;DatastageInstance&quot;</span><span class="p">]</span>
 <span class="gp">... </span><span class="p">)</span>
 </pre></div>
 </div>
@@ -344,7 +343,7 @@ document.write(`
 <h2>Deleting Service Instances<a class="headerlink" href="#deleting-service-instances" title="Link to this heading">#</a></h2>
 <p>To delete a service instance, pass the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Service" title="ibm_watsonx_data_integration.cpd_models.service_model.Service"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.cpd_models.service_model.Service</span></code></a> object you want to delete into the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.delete_service_instance" title="ibm_watsonx_data_integration.platform.Platform.delete_service_instance"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.platform.Platform.delete_service_instance()</span></code></a> method to delete it.</p>
 <p>This method returns an HTTP response indicating the status of the delete operation.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">service_instance</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">service_instances</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">service_instance</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">service_instances</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;watsonx.data integration&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">delete_service_instance</span><span class="p">(</span><span class="n">service_instance</span><span class="p">)</span>
 </pre></div>
 </div>

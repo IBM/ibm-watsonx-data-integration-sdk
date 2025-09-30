@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Datasource Type &#8212; ibm-watsonx-data-integration 0.0.2b documentation</title>
+    <title>Datasource Type &#8212; ibm-watsonx-data-integration 1.0.0b documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=b3319892"></script>
+    <script src="../../_static/documentation_options.js?v=10856860"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.2b</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0b</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -177,6 +177,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/platform.html">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/python_code_generation.html">Python Code Generation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -338,28 +339,20 @@ You can also further filter and refine the connections returned based on attribu
 <code class="docutils literal notranslate"><span class="pre">environment</span></code>, <code class="docutils literal notranslate"><span class="pre">perspective</span></code> and <code class="docutils literal notranslate"><span class="pre">product</span></code>.</p>
 <p>This property returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypes" title="ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypes"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasourceTypes</span></code></a> object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Return first datasource type matching given `name`</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">datasource</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">datasources</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;jdbc&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">datasources</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;jdbc&#39;</span><span class="p">)</span>
 <span class="go">DatasourceType(name=&#39;jdbc&#39;)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Return first datasource type matching given `perspective`</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">datasource</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">datasources</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">perspective</span><span class="o">=</span><span class="s2">&quot;wx&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">datasources</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">perspective</span><span class="o">=</span><span class="s1">&#39;wx&#39;</span><span class="p">)</span>
 <span class="go">DatasourceType(name=&#39;informix&#39;)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Return a list of all datasource types that match `perspective`</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">datasources</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">datasources</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">perspective</span><span class="o">=</span><span class="s2">&quot;wx&quot;</span><span class="p">)</span>
-<span class="go">[</span>
-<span class="go">    DatasourceType(name=&#39;informix&#39;),</span>
-<span class="go">    DatasourceType(name=&#39;postgresql-ibmcloud&#39;),</span>
-<span class="go">    (...)</span>
-<span class="go">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">datasources</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">perspective</span><span class="o">=</span><span class="s1">&#39;wx&#39;</span><span class="p">)</span>
+<span class="go">[DatasourceType(name=&#39;informix&#39;), DatasourceType(name=&#39;postgresql-ibmcloud&#39;), ...]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Return a list of all datasource types</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">datasources</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">datasources</span>
-<span class="go">[</span>
-<span class="go">    DatasourceType(name=&#39;informix&#39;),</span>
-<span class="go">    DatasourceType(name=&#39;postgresql-ibmcloud&#39;),</span>
-<span class="go">    (...)</span>
-<span class="go">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">datasources</span>
+<span class="go">[DatasourceType(name=&#39;informix&#39;), DatasourceType(name=&#39;postgresql-ibmcloud&#39;), ...]</span>
 </pre></div>
 </div>
 <div class="admonition tip">
@@ -383,24 +376,19 @@ Then you can call <a class="reference internal" href="../../api/models.html#ibm_
 to retrieve all available connection properties.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get datasource object</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">datasource</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">datasources</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;informix&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datasource</span>
 <span class="go">DatasourceType(name=&#39;informix&#39;)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">properties</span> <span class="o">=</span> <span class="n">datasource</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">connection</span>
-<span class="go">[</span>
-<span class="go">    DatasourceTypeProperty(name=&#39;cluster_access_token&#39;),</span>
-<span class="go">    DatasourceTypeProperty(name=&#39;cluster_user_name&#39;),</span>
-<span class="go">    (...)</span>
-<span class="go">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datasource</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">connection</span>
+<span class="go">[DatasourceTypeProperty(name=&#39;cluster_access_token&#39;), DatasourceTypeProperty(name=&#39;cluster_user_name&#39;), ...]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># You can get list of all required properties</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">required_properties</span> <span class="o">=</span> <span class="n">datasource</span><span class="o">.</span><span class="n">required_connection_properties</span>
-<span class="go">[</span>
-<span class="go">    DatasourceTypeProperty(name=&#39;host&#39;),</span>
-<span class="go">    DatasourceTypeProperty(name=&#39;password&#39;),</span>
-<span class="go">    (...)</span>
-<span class="go">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">required_properties</span>
+<span class="go">[DatasourceTypeProperty(name=&#39;host&#39;), DatasourceTypeProperty(name=&#39;password&#39;), ...]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Or get details about the property</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">required_property_1</span> <span class="o">=</span> <span class="n">required_properties</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">required_property_1</span>
 <span class="go">DatasourceTypeProperty(name=&#39;host&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">required_property_1</span><span class="o">.</span><span class="n">type</span>
 <span class="go">&#39;string&#39;</span>

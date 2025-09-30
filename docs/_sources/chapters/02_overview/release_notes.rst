@@ -5,6 +5,25 @@ What's new
 
 Below you will find release notes for each version of the ``ibm-watsonx-data-integration`` SDK as well as highlights of major features and/or fixes included in each release.
 
+1.0.0b (September 2025)
+--------------------
+* Added support for retrieving, adding, updating and removing batch flows.
+
+* Added support for executing batch flows within a job.
+
+* Added python generator support for batch & streaming flows.
+
+* Added support for engineless streaming flows.
+
+* Added support for streaming job offsets.
+
+* Added support for validate streaming flows.
+
+* Bug fixes and improvements.
+
+* Minor updates for enhanced SDK functionality.
+
+
 0.0.2b (August 2025)
 --------------------
 * Added support for retrieving, adding, and removing members from AccessGroups.

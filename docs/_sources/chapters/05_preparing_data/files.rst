@@ -1,5 +1,7 @@
 .. _preparing_data__files:
 
+.. skip: start "our test env has blocked files feature"
+
 Files
 =====
 |
@@ -42,10 +44,10 @@ You must provide a ``name`` for the new file and a ``file`` path where the file 
 .. code-block:: python
 
     >>> file = platform.upload_file(
-    ...     name="dummy.txt",
-    ...     file=pathlib.Path("/home/me/file.txt"),
+    ...     name='dummy.txt',
+    ...     file=pathlib.Path('/home/me/file.txt'),
     ... )
-    ConnectionFile(file_name="dummy.txt")
+    ConnectionFile(file_name='dummy.txt')
 
 .. _preparing_data__files__retrieving_an_existing_file:
 
@@ -68,7 +70,7 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.conn
 
     >>> # Return a list of all files
     >>> files = platform.files
-    [ConnectionFile(file_name="dummy.txt")]
+    [ConnectionFile(file_name='dummy.txt')]
 
 .. note::
 
@@ -99,9 +101,9 @@ This method returns an HTTP response indicating the status of the download opera
 
 .. code-block:: python
 
-    >>> file = platform.files.get(name="dummy.txt")
-    ConnectionFile(file_name="dummy.txt")
-    >>> res = platform.download_file(file=file, output=pathlib.Path("/home/me/download/file.txt"))
+    >>> file = platform.files.get(name='dummy.txt')
+    ConnectionFile(file_name='dummy.txt')
+    >>> res = platform.download_file(file=file, output=pathlib.Path('/home/me/download/file.txt'))
     <Response [200]>
 
 .. _preparing_data__files__deleting_a_file:
@@ -122,7 +124,9 @@ This method returns an HTTP response indicating the status of the delete operati
 
 .. code-block:: python
 
-    >>> file = platform.files.get(file_name="data.txt")
-    ConnectionFile(file_name="data.txt")
+    >>> file = platform.files.get(file_name='data.txt')
+    ConnectionFile(file_name='data.txt')
     >>> res = platform.delete_file(file)
     <Response [204]>
+
+.. skip: end

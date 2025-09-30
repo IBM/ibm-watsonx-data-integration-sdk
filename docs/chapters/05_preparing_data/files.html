@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Files &#8212; ibm-watsonx-data-integration 0.0.2b documentation</title>
+    <title>Files &#8212; ibm-watsonx-data-integration 1.0.0b documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=b3319892"></script>
+    <script src="../../_static/documentation_options.js?v=10856860"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.2b</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0b</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -177,6 +177,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/platform.html">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/python_code_generation.html">Python Code Generation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -304,8 +305,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="files">
-<span id="preparing-data-files"></span><h1>Files<a class="headerlink" href="#files" title="Link to this heading">#</a></h1>
+  <span class="target" id="preparing-data-files"></span><section id="files">
+<h1>Files<a class="headerlink" href="#files" title="Link to this heading">#</a></h1>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -334,10 +335,10 @@ use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_da
 <p>You must provide a <code class="docutils literal notranslate"><span class="pre">name</span></code> for the new file and a <code class="docutils literal notranslate"><span class="pre">file</span></code> path where the file is located on your machine.
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.upload_file" title="ibm_watsonx_data_integration.platform.Platform.upload_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Platform.upload_file()</span></code></a> method returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFile" title="ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConnectionFile</span></code></a> object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dummy.txt&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">file</span><span class="o">=</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/home/me/file.txt&quot;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;dummy.txt&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">file</span><span class="o">=</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/home/me/file.txt&#39;</span><span class="p">),</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="go">ConnectionFile(file_name=&quot;dummy.txt&quot;)</span>
+<span class="go">ConnectionFile(file_name=&#39;dummy.txt&#39;)</span>
 </pre></div>
 </div>
 </section>
@@ -350,7 +351,7 @@ use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_da
 <p>This property returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFiles" title="ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFiles"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConnectionFiles</span></code></a> object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Return a list of all files</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">files</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">files</span>
-<span class="go">[ConnectionFile(file_name=&quot;dummy.txt&quot;)]</span>
+<span class="go">[ConnectionFile(file_name=&#39;dummy.txt&#39;)]</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -370,9 +371,9 @@ use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_da
 <p>In the SDK file can be downloaded using <code class="xref py py-meth docutils literal notranslate"><span class="pre">Platform.download_file()</span></code> method.</p>
 <p>You must provide a <code class="docutils literal notranslate"><span class="pre">file</span></code> object and <code class="docutils literal notranslate"><span class="pre">output</span></code> path where the file will be downloaded.</p>
 <p>This method returns an HTTP response indicating the status of the download operation.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;dummy.txt&quot;</span><span class="p">)</span>
-<span class="go">ConnectionFile(file_name=&quot;dummy.txt&quot;)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/home/me/download/file.txt&quot;</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;dummy.txt&#39;</span><span class="p">)</span>
+<span class="go">ConnectionFile(file_name=&#39;dummy.txt&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/home/me/download/file.txt&#39;</span><span class="p">))</span>
 <span class="go">&lt;Response [200]&gt;</span>
 </pre></div>
 </div>
@@ -384,8 +385,8 @@ use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_da
 </a>
 <p>In the SDK pass a ConnectionFile instance to <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.delete_file" title="ibm_watsonx_data_integration.platform.Platform.delete_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Platform.delete_file()</span></code></a> method to delete it.</p>
 <p>This method returns an HTTP response indicating the status of the delete operation.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;data.txt&quot;</span><span class="p">)</span>
-<span class="go">ConnectionFile(file_name=&quot;data.txt&quot;)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file_name</span><span class="o">=</span><span class="s1">&#39;data.txt&#39;</span><span class="p">)</span>
+<span class="go">ConnectionFile(file_name=&#39;data.txt&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">delete_file</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
 <span class="go">&lt;Response [204]&gt;</span>
 </pre></div>

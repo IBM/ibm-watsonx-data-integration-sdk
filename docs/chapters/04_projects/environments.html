@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Environments &#8212; ibm-watsonx-data-integration 0.0.2b documentation</title>
+    <title>Environments &#8212; ibm-watsonx-data-integration 1.0.0b documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=b3319892"></script>
+    <script src="../../_static/documentation_options.js?v=10856860"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.2b</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0b</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -177,6 +177,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/platform.html">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/python_code_generation.html">Python Code Generation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Integration Assets</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -293,10 +294,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-an-existing-environment">Retrieving an Existing Environment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-an-environment">Modifying an Environment</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-an-environment">Updating an Environment</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-the-engine-installation-command">Retrieving the Engine Installation Command</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-an-environment">Deleting an Environment</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-the-engine-installation-command">Retrieving the Engine Installation Command</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-available-engine-versions">Retrieving Available Engine Versions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-engine-version-details">Retrieving Engine Version Details</a></li>
 </ul>
@@ -329,20 +332,19 @@ This command typically runs a Docker container with the selected engine version,
 At a minimum, you must provide the <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">engine_version</span></code> parameters.
 All other parameters are optional and will be populated with default values if not specified.
 This method returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment" title="ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Environment</span></code></a> object.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">environment</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_environment</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Sample&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">engine_version</span><span class="o">=</span><span class="s2">&quot;6.3.0-SNAPSHOT&quot;</span><span class="p">,</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">env</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_environment</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Sample&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1"># Optional parameters - see API Reference for more optional parameters</span>
-<span class="gp">... </span>    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Basic env.&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Basic env.&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">stage_libs</span><span class="o">=</span><span class="p">[</span>
 <span class="gp">... </span>        <span class="s1">&#39;streamsets-datacollector-basic-lib&#39;</span><span class="p">,</span>
 <span class="gp">... </span>        <span class="s1">&#39;streamsets-datacollector-dataformats-lib&#39;</span><span class="p">,</span>
 <span class="gp">... </span>        <span class="s1">&#39;streamsets-datacollector-dev-lib&#39;</span>
-<span class="gp">... </span>        <span class="p">],</span>
+<span class="gp">... </span>    <span class="p">],</span>
 <span class="gp">... </span>    <span class="n">cpus_to_allocate</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">environment</span>
-<span class="go">Environment(name=&#39;Sample&#39;, description=&#39;Basic env.&#39;, environment_id=&#39;c383b27a-eab8-4214-a6f2-c9eb522d1efb&#39;, engine_version=&#39;6.3.0-SNAPSHOT&#39;)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">env</span>
+<span class="go">Environment(name=&#39;Sample&#39;, description=&#39;Basic env.&#39;, ...)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -361,17 +363,12 @@ You can access all environments associated with a project using the
 You can also retrieve single environment using the <code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.environments.get()</span></code> method,
 which requires the <code class="docutils literal notranslate"><span class="pre">environment_id</span></code> parameter.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get all environments associated with the project</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">environments</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">environments</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">environments</span>
-<span class="go">[</span>
-<span class="go">    Environment(name=&#39;Sample&#39;, description=&#39;Basic env.&#39;, environment_id=&#39;c383b27a-eab8-4214-a6f2-c9eb522d1efb&#39;, engine_version=&#39;6.3.0-SNAPSHOT&#39;),</span>
-<span class="go">    Environment(name=&#39;Sample2&#39;, environment_id=&#39;5f5b9182-fe04-463c-9fa6-af9d24d96da7&#39;, engine_version=&#39;6.3.0-SNAPSHOT&#39;)</span>
-<span class="go">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">environments</span>
+<span class="go">[...Environment(name=&#39;Sample&#39;, description=&#39;Basic env.&#39;, ...)...]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get a single environment by its id</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">environment</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">environment_id</span><span class="o">=</span><span class="s1">&#39;5f5b9182-fe04-463c-9fa6-af9d24d96da7&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">environment</span>
-<span class="go">Environment(name=&#39;Sample2&#39;, environment_id=&#39;5f5b9182-fe04-463c-9fa6-af9d24d96da7&#39;, engine_version=&#39;6.3.0-SNAPSHOT&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">environment_id</span><span class="o">=</span><span class="n">env</span><span class="o">.</span><span class="n">environment_id</span><span class="p">)</span>
+<span class="go">Environment(name=&#39;Sample&#39;, description=&#39;Basic env.&#39;, ...)</span>
 </pre></div>
 </div>
 </section>
@@ -386,24 +383,15 @@ which requires the <code class="docutils literal notranslate"><span class="pre">
 First, modify properties of the environment instance, then update it using the
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_environment" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_environment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_environment()</span></code></a> method.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Modify environment settings</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">environment</span><span class="o">.</span><span class="n">max_memory_used</span> <span class="o">=</span> <span class="mi">80</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">environment</span><span class="o">.</span><span class="n">stage_libs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;streamsets-datacollector-aws-lib&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">env</span><span class="o">.</span><span class="n">max_memory_used</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">env</span><span class="o">.</span><span class="n">stage_libs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;streamsets-datacollector-aws-lib&#39;</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Update the environment on the platform</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">environment</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">update_environment</span><span class="p">(</span><span class="n">environment</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">environment</span><span class="o">.</span><span class="n">stage_libs</span>
-<span class="go">[&#39;streamsets-datacollector-basic-lib&#39;, &#39;streamsets-datacollector-dataformats-lib&#39;, &#39;streamsets-datacollector-dev-lib&#39;, &#39;streamsets-datacollector-aws-lib&#39;]</span>
-</pre></div>
-</div>
-</section>
-<section id="deleting-an-environment">
-<h3>Deleting an Environment<a class="headerlink" href="#deleting-an-environment" title="Link to this heading">#</a></h3>
-<p>To remove an environment, use the
-<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_environment" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_environment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_environment()</span></code></a> method.
-The delete method returns an API response, which you can insepct to verify the status code.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">delete_environment</span><span class="p">(</span><span class="n">environment</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_environment</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
 <span class="go">&lt;Response [200]&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">env</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">environment_id</span><span class="o">=</span><span class="n">env</span><span class="o">.</span><span class="n">environment_id</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">env</span><span class="o">.</span><span class="n">stage_libs</span>
+<span class="go">[&#39;streamsets-datacollector-basic-lib&#39;, &#39;streamsets-datacollector-dataformats-lib&#39;, &#39;streamsets-datacollector-dev-lib&#39;, &#39;streamsets-datacollector-aws-lib&#39;]</span>
 </pre></div>
 </div>
 </section>
@@ -416,13 +404,12 @@ The delete method returns an API response, which you can insepct to verify the s
 </a>
 <p>You can retrieve the run command via the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment" title="ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Environment</span></code></a> object by using
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.get_installation_command" title="ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.get_installation_command"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Environment.get_installation_command()</span></code></a> method.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">installation_command</span> <span class="o">=</span> <span class="n">environment</span><span class="o">.</span><span class="n">get_installation_command</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">env</span><span class="o">.</span><span class="n">get_installation_command</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="c1"># Optional parameters</span>
 <span class="gp">... </span>    <span class="n">pretty</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">foreground</span><span class="o">=</span><span class="kc">False</span>
-<span class="gp">... </span>    <span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">installation_command</span>
-<span class="go">&#39;docker run -d --restart on-failure --cpus=4.0 --hostname &quot;$(hostname)&quot; -p 18630:18630 -e SSET_PROJECT_ID=b127c19e-951d-4db6-944c-9850747d0c02 -e SSET_ENVIRONMENT_ID=a0df9d94-625f-411d-88c1-736d38c67a8f -e SSET_BASE_URL=https://api.dai.dev.cloud.ibm.com -e SSET_API_KEY=&quot;${SSET_API_KEY:?Please provide your API key from IBM Cloud}&quot; -e SSET_IAM_URL=https://iam.test.cloud.ibm.com icr.io/sx-ci/datacollector:6.3.0-SNAPSHOT&#39;      # pragma: allowlist secret</span>
+<span class="gp">... </span>    <span class="n">foreground</span><span class="o">=</span><span class="kc">True</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">&#39;docker run -d --restart on-failure --cpus=4.0 --hostname &quot;$(hostname)&quot; -p 18630:18630 ...&#39;</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -430,15 +417,24 @@ The delete method returns an API response, which you can insepct to verify the s
 <p>Please be aware that the installation command you retrieve from the Environment requires the <code class="docutils literal notranslate"><span class="pre">SSET_API_KEY</span></code> environment variable to be set for the user executing the command.
 The environment variable should contain the API key you generated for <a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html#getting-started-and-tutorials-authentication"><span class="std std-ref">authenticating</span></a> with the watsonx.data integration platform.</p>
 </div>
+<section id="deleting-an-environment">
+<h3>Deleting an Environment<a class="headerlink" href="#deleting-an-environment" title="Link to this heading">#</a></h3>
+<p>To remove an environment, use the
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_environment" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_environment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_environment()</span></code></a> method.
+The delete method returns an API response, which you can insepct to verify the status code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">delete_environment</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="retrieving-available-engine-versions">
 <span id="id1"></span><h2>Retrieving Available Engine Versions<a class="headerlink" href="#retrieving-available-engine-versions" title="Link to this heading">#</a></h2>
 <p>To view the list of available Engine versions, use the
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.available_engine_versions" title="ibm_watsonx_data_integration.platform.Platform.available_engine_versions"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Platform.available_engine_versions</span></code></a> property.
 This returns a list of Engine version names that can be used when configuring an Environment.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">engine_versions</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">available_engine_versions</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">engine_versions</span>
-<span class="go">[&quot;6.3.0-SNAPSHOT&quot;, &quot;JDK17_6.3.0-latest&quot;, ...]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">available_engine_versions</span>
+<span class="go">[...&#39;JDK17_6.3.0&#39;...]</span>
 </pre></div>
 </div>
 </section>
@@ -450,32 +446,13 @@ This returns a list of Engine version names that can be used when configuring an
 <p>In the SDK, to retrieve the list of libraries supported by a given Engine version, use the
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.get_engine_version_info" title="ibm_watsonx_data_integration.platform.Platform.get_engine_version_info"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Platform.get_engine_version_info()</span></code></a> method.
 This method takes the engine version name as an argument and returns detailed information about that version, including its supported libraries.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">engine_info</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">get_engine_version_info</span><span class="p">(</span><span class="s2">&quot;6.3.0-SNAPSHOT&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">engine_info</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">get_engine_version_info</span><span class="p">(</span><span class="s1">&#39;JDK17_6.3.0&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">engine_info</span>
-<span class="go">{</span>
-<span class="go">    &#39;engine_version_id&#39;: &#39;6.3.0-SNAPSHOT&#39;,</span>
-<span class="go">    &#39;image_tag&#39;: &#39;6.3.0-SNAPSHOT&#39;,</span>
-<span class="go">    &#39;engine_type&#39;: &#39;data_collector&#39;,</span>
-<span class="go">    &#39;stage_libs&#39;: [</span>
-<span class="go">        {</span>
-<span class="go">            &#39;stage_lib_id&#39;: &#39;streamsets-datacollector-apache-kafka-lib&#39;,</span>
-<span class="go">            &#39;label&#39;: &#39;Apache Kafka&#39;,</span>
-<span class="go">            &#39;image_location&#39;: ...,</span>
-<span class="go">            &#39;stages&#39;: ...</span>
-<span class="go">        },</span>
-<span class="go">        ...</span>
-<span class="go">    ]</span>
-<span class="go">}</span>
+<span class="go">{&#39;engine_version_id&#39;: &#39;JDK17_6.3.0&#39;, ...&#39;engine_type&#39;: &#39;data_collector&#39;, &#39;stage_libs&#39;: [...]...}</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># To see all stage library IDs that can be used in environment.stage_libs</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">lib</span><span class="p">[</span><span class="s1">&#39;stage_lib_id&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">lib</span> <span class="ow">in</span> <span class="n">engine_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;stage_libs&#39;</span><span class="p">)]</span>
-<span class="go">[</span>
-<span class="go">    &#39;streamsets-datacollector-apache-kafka-lib&#39;,</span>
-<span class="go">    &#39;streamsets-datacollector-postgres-aurora-lib&#39;,</span>
-<span class="go">    &#39;streamsets-datacollector-google-secret-manager-credentialstore-lib&#39;,</span>
-<span class="go">    &#39;streamsets-datacollector-redis-lib&#39;,</span>
-<span class="go">    ...</span>
-<span class="go">]</span>
+<span class="go">[...&#39;streamsets-datacollector-aws-lib&#39;, &#39;streamsets-datacollector-apache-kafka-lib&#39;...]</span>
 </pre></div>
 </div>
 </section>
@@ -530,10 +507,12 @@ This method takes the engine version name as an argument and returns detailed in
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-an-existing-environment">Retrieving an Existing Environment</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-an-environment">Modifying an Environment</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-an-environment">Updating an Environment</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-the-engine-installation-command">Retrieving the Engine Installation Command</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-an-environment">Deleting an Environment</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-the-engine-installation-command">Retrieving the Engine Installation Command</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-available-engine-versions">Retrieving Available Engine Versions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-engine-version-details">Retrieving Engine Version Details</a></li>
 </ul>

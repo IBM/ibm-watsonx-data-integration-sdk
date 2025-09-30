@@ -13,9 +13,13 @@ You must provide a valid authentication object (such as an instance of :py:class
 .. note::
     If you don’t specify `base_api_url`, the SDK defaults to `'https://api.dataplatform.cloud.ibm.com'`. For any other region, set base_api_url to the appropriate regional endpoint.
 
+.. skip: start "production url usage"
+
 .. code-block:: python
 
- >>> from ibm_watsonx_data_integration.platform import Platform
- >>> platform = Platform(auth, base_api_url="https://api.ca-tor.dai.cloud.ibm.com")
+    >>> from ibm_watsonx_data_integration.platform import Platform
+    >>> platform = Platform(auth, base_api_url='https://api.ca-tor.dai.cloud.ibm.com')
+
+.. skip: end
 
 Once you’ve created the ``platform`` object, you can begin interacting with the watsonx.data integration platform.

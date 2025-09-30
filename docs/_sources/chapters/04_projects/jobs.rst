@@ -12,11 +12,12 @@ A job run allows you to override the default configuration and captures runtime 
 The SDK provides functionality to interact with both jobs and job runs on the watsonx.data integration platform.
 
 This includes operations such as:
-    * Creating and deleting jobs
+    * Creating a job
     * Updating a job
     * Starting a job
     * Cancelling a job run
     * Retrieving logs from a job run
+    * Deleting a job
 
 Creating a Job
 ~~~~~~~~~~~~~~
@@ -44,11 +45,12 @@ This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_mo
 
     >>> job = project.create_job(
     ...     flow=flow,
-    ...     name="Test Job",
-    ...     description="...",
-    ...     job_parameters={"name": "value"}
+    ...     name='Test Job',
+    ...     description='...',
     ... )
-    Job(name='Job for Test flow 1750236869686' version=0, project_name='Test project')
+    >>> job
+    Job(name='Test Job', ...)
+
 
 Retrieving an Existing Job
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -69,12 +71,15 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_
 
 .. code-block:: python
 
-    >>> # Returns first job matching given `job_id`
-    >>> job = project.jobs.get(job_id="ae0d053b-c4f6-4266-9b02-724e6eb94855")
-    Job(name='Job for Test flow 1750236869686' version=0, project_name='Test project')
-    >>> # Return a list of all jobs that match `job_type`
-    >>> jobs = project.jobs.get_all(job_type="data_intg_flow")
-    [Job(name='Job for Test flow 1750236869686' version=0, project_name='Test project')]
+    >>> # Returns all jobs
+    >>> project.jobs
+    [Job(name='Test Job', ...)]
+    >>> # Returns first job matching given `name`
+    >>> project.jobs.get(name='Test Job')
+    Job(name='Test Job', ...)
+    >>> # Return a list of all jobs that match given `name`
+    >>> project.jobs.get_all(name='Test Job')
+    [Job(name='Test Job', ...)]
 
 Updating a Job
 ~~~~~~~~~~~~~~
@@ -97,33 +102,10 @@ The response also includes the updated job definition.
 
 .. code-block:: python
 
-    >>> job = project.jobs.get(job_id="ae0d053b-c4f6-4266-9b02-724e6eb94855")
-    >>> job.name = "New name"
-    >>> job.description = "New description."
-    >>> res = project.update_job(job)
+    >>> job.metadata.name = 'New name'
+    >>> job.metadata.description = 'New description.'
+    >>> project.update_job(job)
     <Response [200]>
-
-Deleting a Job
-~~~~~~~~~~~~~~
-
-In the UI, you can delete a job by selecting its title from the jobs list.
-To delete a job, click the trash icon in the top bar.
-
-.. image:: ../../_static/images/jobs/job_details_page_delete_job.jpeg
-   :alt: Screenshot of the Job Details page with the trash icon highlighted
-   :align: center
-   :width: 100%
-
-|
-
-To delete a job, you can pass the job instance to :py:meth:`Project.delete_job() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_job>`.
-This method returns an HTTP response indicating the status of the delete operation.
-
-.. code-block:: python
-
-    >>> job = project.jobs.get(job_id="ae0d053b-c4f6-4266-9b02-724e6eb94855")
-    >>> res = project.delete_job(job)
-    <Response [204]>
 
 Starting a Job
 ~~~~~~~~~~~~~~
@@ -146,9 +128,9 @@ This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_mo
 
 .. code-block:: python
 
-    >>> job_run = job.start(name="Test Job Run", description="...")
+    >>> job_run = job.start(name='Test Job Run', description='...')
     >>> job_run
-    JobRun(name='job run', job_name='Job for Test flow 1750236869686', state='Queued')
+    JobRun(name='job run', ..., state='Queued')
 
 Retrieving a Job Run
 ~~~~~~~~~~~~~~~~~~~~
@@ -170,11 +152,12 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_
 .. code-block:: python
 
     >>> # Returns a list of all job runs for given job
-    >>> job_runs = job.job_runs
-    [JobRun(name='job run', job_name='Job for Test flow 1750236869686', state='Queued')]
+    >>> job.job_runs
+    [JobRun(name='job run', ..., state='Queued')]
     >>> # Returns a list of all job runs which status is `Running`
-    >>> job_runs = job.job_runs.get_all(states=[JobRunState.Running])
-    [JobRun(name='job run', job_name='Job for Test flow 1750236869686', state='Running')]
+    >>> from ibm_watsonx_data_integration.cpd_models.job_model import JobRunState
+    >>> job.job_runs.get_all(states=[JobRunState.Queued])
+    [JobRun(name='job run', ..., state='Queued')]
 
 Cancelling a Job Run
 ~~~~~~~~~~~~~~~~~~~~
@@ -194,7 +177,7 @@ This method returns an HTTP response indicating the status of the operation.
 
 .. code-block:: python
 
-    >>> res = job_run.cancel()
+    >>> job_run.cancel()
     <Response [204]>
 
 Retrieving a Job Run logs
@@ -206,11 +189,67 @@ Runtime logs for a job run execution are stored in the
 :py:class:`JobRun.logs <ibm_watsonx_data_integration.cpd_models.job_model.JobRun.logs>` property.
 It returns a list where each entry is a string containing a log message.
 
+.. skip: start "not supported for streamsets flows"
+
 .. code-block:: python
 
     >>> job_run.logs
     [
-        "##I IIS-DSEE-TOSH-00397 2025-05-27 14:27:27(000) Starting job Job for Test flow 1750236869686",
-        "##I IIS-DSEE-TOSH-00408 2025-05-27 14:27:27(000) Job Parameters:",
+        '##I IIS-DSEE-TOSH-00397 2025-05-27 14:27:27(000) Starting job Job for Test flow 1750236869686',
+        '##I IIS-DSEE-TOSH-00408 2025-05-27 14:27:27(000) Job Parameters:',
         ...
     ]
+
+.. skip: end
+
+
+Resetting offsets
+~~~~~~~~~~~~~~~~~
+Jobs use offsets to track the last processed data before they were completed or canceled.
+In certain cases, it may be necessary to reset a job’s offset to reprocess data.
+In the UI, you can reset job offset by selecting **Restart from initial offset** from edit job screen.
+
+.. image:: ../../_static/images/jobs/reset_job_offsets.jpeg
+    :alt: Screenshot of resetting Job offsets
+    :align: center
+    :width: 100%
+
+|
+
+Job offsets can be reset using :py:meth:`~ibm_watsonx_data_integration.cpd_models.job_model.Job.reset_offset`
+method on the job instance.
+
+.. warning::
+   This method only applies to jobs created from StreamSets flows.
+
+.. code-block:: python
+
+    >>> job.reset_offset()
+    <Response [200]>
+
+
+Deleting a Job
+~~~~~~~~~~~~~~
+
+In the UI, you can delete a job by selecting its title from the jobs list.
+To delete a job, click the trash icon in the top bar.
+
+.. image:: ../../_static/images/jobs/job_details_page_delete_job.jpeg
+   :alt: Screenshot of the Job Details page with the trash icon highlighted
+   :align: center
+   :width: 100%
+
+|
+
+To delete a job, you can pass the job instance to :py:meth:`Project.delete_job() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_job>`.
+This method returns an HTTP response indicating the status of the delete operation.
+
+.. invisible-code-block: python
+
+    >>> from tests.integration.test_job import wait_for_expected_state
+    >>> wait_for_expected_state(job, job_run, JobRunState.Canceled)
+
+.. code-block:: python
+
+    >>> project.delete_job(job)
+    <Response [204]>

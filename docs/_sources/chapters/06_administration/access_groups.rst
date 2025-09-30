@@ -8,54 +8,10 @@ Access group management is a platform level service in IBM Cloud that enables yo
 The SDK provides functionality to interact with the access group API.
 
 This includes operations such as:
-    * Listing all access groups under the current Account
     * Creating a new access group
+    * Listing all access groups under the current Account
     * Updating an existing access group
     * Deleting an existing access group
-
-.. _administration__access_groups__listing__access_groups:
-
-Listing all Access Groups
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In the IBM Cloud UI, you can view a list of all access groups under the current account by navigating **Manage -> Access (IAM) -> Access Groups**.
-
-.. image:: ../../_static/images/access_groups/list_access_groups.png
-   :alt: Screenshot of the access groups list in the IBM Cloud UI
-   :align: center
-   :width: 100%
-
-Access groups can be retrieved by using the :py:attr:`Platform.access_groups <ibm_watsonx_data_integration.platform.Platform.access_groups>` property.
-This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.access_groups_model.AccessGroups` object, which is a collection of :py:class:`~ibm_watsonx_data_integration.cpd_models.access_groups_model.AccessGroup` objects.
-
-.. code-block:: python
-
-    >>> access_groups = platform.access_groups
-    >>> access_groups
-    [
-        AccessGroup(name='Developers', description='access group for Developers'),
-        AccessGroup(name='Managers', description='Group for managers'),
-        AccessGroup(name='New access group', description='the newest description'),
-        AccessGroup(name='Public Access', description='This group includes all users and service IDs by default. All group members, including unauthenticated users, are given public access to any resources that are defined in the policies for the group.'),
-        AccessGroup(name='Second Test Group', description='Updated Dummy Description'),
-        AccessGroup(name='Test access group', description='Dummy access group')
-    ]
-
-
-.. _administration_access_groups__get__access_group:
-
-Get an Access Group
-~~~~~~~~~~~~~~~~~~~
-
-To get a specific access group using the SDK, provide the ``access_group_id`` as a filter to the :py:attr:`Platform.access_groups <ibm_watsonx_data_integration.platform.Platform.access_groups>` by using the :py:meth:`AccessGroups.get() <ibm_watsonx_data_integration.cpd_models.access_groups_model.AccessGroups.get>` function.
-This function will return a :py:class:`~ibm_watsonx_data_integration.cpd_models.access_groups_model.AccessGroup` object if the requested access group was found.
-
-.. code-block:: python
-
-   >>> access_groups = platform.access_groups
-   >>> access_groups.get(access_group_id="AccessGroupId-d9a16887-8e76-4478-bb00-35534fdd91e2")
-
-   AccessGroup(name='Test Access Group' description='Dummy Access Group')
 
 .. _administration__access_groups__create__an_access_group:
 
@@ -66,14 +22,14 @@ In the IBM Cloud UI, you can create a new access group by clicking the blue ``Cr
 The two fields to be filled in are the ``Name`` and ``Description`` fields.
 
 .. image:: ../../_static/images/access_groups/create_button.png
-   :alt: Screenshot of the button to create an access group in the IBM Cloud UI
-   :align: center
-   :width: 100%
+    :alt: Screenshot of the button to create an access group in the IBM Cloud UI
+    :align: center
+    :width: 100%
 
 .. image:: ../../_static/images/access_groups/create_access_group.png
-   :alt: Screenshot of creating an access group in the IBM Cloud UI
-   :align: center
-   :width: 100%
+    :alt: Screenshot of creating an access group in the IBM Cloud UI
+    :align: center
+    :width: 100%
 
 An access group can be created by passing in a ``name`` and ``description`` to the :py:meth:`Platform.create_access_group() <ibm_watsonx_data_integration.platform.Platform.create_access_group>` method.
 This method returns a newly minted :py:class:`~ibm_watsonx_data_integration.cpd_models.access_groups_model.AccessGroup` object.
@@ -81,8 +37,42 @@ This method returns a newly minted :py:class:`~ibm_watsonx_data_integration.cpd_
 
 .. code-block:: python
 
-    >>> developers_access_group = platform.create_access_group(name="Developers", description="access group for Developers")
-    >>> developers_access_group
+    >>> new_group = platform.create_access_group(name='Developers', description='access group for Developers')
+    >>> new_group
+    AccessGroup(name='Developers', description='access group for Developers')
+
+
+.. _administration__access_groups__listing__access_groups:
+
+Listing all Access Groups
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the IBM Cloud UI, you can view a list of all access groups under the current account by navigating **Manage -> Access (IAM) -> Access Groups**.
+
+.. image:: ../../_static/images/access_groups/list_access_groups.png
+    :alt: Screenshot of the access groups list in the IBM Cloud UI
+    :align: center
+    :width: 100%
+
+Access groups can be retrieved by using the :py:attr:`Platform.access_groups <ibm_watsonx_data_integration.platform.Platform.access_groups>` property.
+This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.access_groups_model.AccessGroups` object, which is a collection of :py:class:`~ibm_watsonx_data_integration.cpd_models.access_groups_model.AccessGroup` objects.
+
+.. code-block:: python
+
+    >>> platform.access_groups
+    [...AccessGroup(name='Developers', description='access group for Developers')...]
+
+.. _administration_access_groups__get__access_group:
+
+Get an Access Group
+~~~~~~~~~~~~~~~~~~~
+
+To get a specific access group using the SDK, provide the ``name`` as a filter to the :py:attr:`Platform.access_groups <ibm_watsonx_data_integration.platform.Platform.access_groups>` by using the :py:meth:`AccessGroups.get() <ibm_watsonx_data_integration.cpd_models.access_groups_model.AccessGroups.get>` function.
+This function will return a :py:class:`~ibm_watsonx_data_integration.cpd_models.access_groups_model.AccessGroup` object if the requested access group was found.
+
+.. code-block:: python
+
+    >>> platform.access_groups.get(name='Developers')
     AccessGroup(name='Developers', description='access group for Developers')
 
 .. _administration__access_groups__update__an_access_group:
@@ -110,55 +100,10 @@ This method returns an API response, whose status code should be ``<200>`` if th
 
 .. code-block:: python
 
-    >>> developers_ag.name = "New Name"
-    >>> developers_ag.description = "New Description"
-    >>> platform.update_access_group(developers_ag)
+    >>> new_group.name = 'New Name'
+    >>> new_group.description = 'New Description'
+    >>> platform.update_access_group(new_group)
     <Response [200]>
-
-.. _administration__access_groups__delete__an_access_group:
-
-Delete an Access Group
-~~~~~~~~~~~~~~~~~~~~~~
-
-In the IBM Cloud UI, you can delete an access group by clicking on the three buttons to the right of the access group you would like to delete.
-That opens up a dropdown with a ``Remove`` button. Clicking that button opens a popup that asks you to confirm if you'd like to delete said access group.
-
-.. image:: ../../_static/images/access_groups/remove_access_group.png
-   :alt: Screenshot of remove button for an access group
-   :align: center
-   :width: 100%
-
-.. image:: ../../_static/images/access_groups/delete_access_group.png
-   :alt: Screenshot of UI pane to delete an access group
-   :align: center
-   :width: 100%
-
-An access group can be deleted through the SDK by passing an :py:class:`~ibm_watsonx_data_integration.cpd_models.access_groups_model.AccessGroup` object to the  :py:meth:`Platform.delete_access_group() <ibm_watsonx_data_integration.platform.Platform.delete_access_group>` method.
-This method returns an API response, whose status code should be ``<204>`` if the access group was successfully deleted.
-
-.. code-block:: python
-
-    >>> platform.delete_access_group(developers_ag)
-    <Response [204]>
-
-
-.. _administration__access_groups__get_members:
-
-Get Member of an Access Group
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-You can view membership information of an Access Group in the IBM Cloud UI by clicking on the desired access group's name. This will load a new page with multiple tabs. The ``Users`` tab lists IBM Cloud Users with membership to the selected access group.
-The ``Service ID`` tab lists  Service IDs with membership to the selected access group. The ``Trusted Profiles`` tab lists Trusted Profiles with membership to the selected access group.
-
-
-In the SDK, all current members of the selected access group can be retrieved by calling the :py:meth:`AccessGroup.get_access_group_members() <ibm_watsonx_data_integration.cpd_models.AccessGroup.get_access_group_members>` function.
-This function outputs a list of :py:class:`~ibm_watsonx_data_integration.cpd_models.user_model.UserProfile`, :py:class:`~ibm_watsonx_data_integration.cpd_models.trusted_profile_model.TrustedProfile`, and :py:class:`~ibm_watsonx_data_integration.cpd_models.service_id_model.ServiceID` objects that correspond to the members in the selected access group.
-
-.. code-block:: python
-
-   >>> developers_ag.get_access_group_members()
-   [ServiceID(id='ServiceId-b6820268-5f8b-4d9b-b46e-1b99d05dea2f', name='Fifth Test Service ID')]
-
 
 .. _administration__access_groups__add_member:
 
@@ -188,33 +133,26 @@ In the SDK, to add a member to the desired access group, either pass an individu
 
 .. code-block:: python
 
-   >>> user = platform.users.get(iam_id="IBMid-6XXXXXXXXP")
-   >>> developers_access_group.add_members_to_access_group(user)
-   {'members': [{'iam_id': 'IBMid-XXXXXXXXXX', 'type': 'user', 'created_at': '2025-08-01T09:27:12Z', 'created_by_id': 'IBMid-XXXXXXXXXX', 'status_code': 200}]}
+   >>> user = platform.users[0]
+   >>> new_group.add_members_to_access_group(user)
+   <Response [207]>
+
+.. _administration__access_groups__get_members:
+
+Get Member of an Access Group
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can view membership information of an Access Group in the IBM Cloud UI by clicking on the desired access group's name. This will load a new page with multiple tabs. The ``Users`` tab lists IBM Cloud Users with membership to the selected access group.
+The ``Service ID`` tab lists  Service IDs with membership to the selected access group. The ``Trusted Profiles`` tab lists Trusted Profiles with membership to the selected access group.
 
 
-.. _administration__access_groups__remove_member:
-
-Remove Member(s) from Access Group
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To remove a member from an Access Group in the UI, you must select the desired access group, navigate to the tab for the type of member you would like to remove (one of ``Users``, ``Service ID``, or ``Trusted Profile``),
-select the member(s) to remove, and then click the remove button in the top right corner. Confirm the removal of the member(s) on the following popup.
-
-.. image:: ../../_static/images/access_groups/select_members_to_remove.png
-   :alt: Screenshot of selecting members to remove
-   :align: center
-   :width: 100%
-
-In the SDK, to remove a member from the desired access group, either pass an individual member of a list of members (of types :py:class:`~ibm_watsonx_data_integration.cpd_models.user_model.UserProfile`, :py:class:`~ibm_watsonx_data_integration.cpd_models.trusted_profile_model.TrustedProfile`, or :py:class:`~ibm_watsonx_data_integration.cpd_models.service_id_model.ServiceID`) to the
-:py:meth:`AccessGroup.remove_members_from_access_group() <ibm_watsonx_data_integration.cpd_models.AccessGroup.remove_members_from_access_group>` function. This will remove the specified member(s) from the desired Access Group and return an API response, whose status code should be ``<204>`` if the member(s) were successfully removed.
+In the SDK, all current members of the selected access group can be retrieved by calling the :py:meth:`AccessGroup.get_access_group_members() <ibm_watsonx_data_integration.cpd_models.AccessGroup.get_access_group_members>` function.
+This function outputs a list of :py:class:`~ibm_watsonx_data_integration.cpd_models.user_model.UserProfile`, :py:class:`~ibm_watsonx_data_integration.cpd_models.trusted_profile_model.TrustedProfile`, and :py:class:`~ibm_watsonx_data_integration.cpd_models.service_id_model.ServiceID` objects that correspond to the members in the selected access group.
 
 .. code-block:: python
 
-   >>> user = platform.users.get(iam_id="IBMid-6XXXXXXXXP")
-   >>> developers_access_group.remove_members_from_access_group(user)
-   {'access_group_id': 'AccessGroupId-5f54b267-927f-442a-97fd-6ed4581d6998', 'members': [{'iam_id': 'IBMid-6XXXXXXXX0', 'status_code': 204}]}
-
+   >>> new_group.get_access_group_members()
+   [UserProfile(...)]
 
 .. _administration__access_groups__check_membership:
 
@@ -234,10 +172,29 @@ pass the member to the :py:meth:`AccessGroup.check_membership() <ibm_watsonx_dat
 
 .. code-block:: python
 
-   >>> user = platform.users.get(iam_id="IBMid-6XXXXXXXXP")
-   >>> developers_access_group.check_membership(user)
+   >>> new_group.check_membership(user)
    <Response [204]>
 
+.. _administration__access_groups__remove_member:
+
+Remove Member(s) from Access Group
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To remove a member from an Access Group in the UI, you must select the desired access group, navigate to the tab for the type of member you would like to remove (one of ``Users``, ``Service ID``, or ``Trusted Profile``),
+select the member(s) to remove, and then click the remove button in the top right corner. Confirm the removal of the member(s) on the following popup.
+
+.. image:: ../../_static/images/access_groups/select_members_to_remove.png
+   :alt: Screenshot of selecting members to remove
+   :align: center
+   :width: 100%
+
+In the SDK, to remove a member from the desired access group, either pass an individual member of a list of members (of types :py:class:`~ibm_watsonx_data_integration.cpd_models.user_model.UserProfile`, :py:class:`~ibm_watsonx_data_integration.cpd_models.trusted_profile_model.TrustedProfile`, or :py:class:`~ibm_watsonx_data_integration.cpd_models.service_id_model.ServiceID`) to the
+:py:meth:`AccessGroup.remove_members_from_access_group() <ibm_watsonx_data_integration.cpd_models.AccessGroup.remove_members_from_access_group>` function. This will remove the specified member(s) from the desired Access Group and return an API response, whose status code should be ``<204>`` if the member(s) were successfully removed.
+
+.. code-block:: python
+
+   >>> new_group.remove_members_from_access_group(user)
+   <Response [207]>
 
 .. _administration__access_groups__add_member_to_multiple_access_groups:
 
@@ -274,10 +231,9 @@ This will return an API response, whose status should be ``<200>`` for each acce
 
 .. code-block:: python
 
-   >>> user = platform.users.get(iam_id="IBMid-6XXXXXXXXP")
-   >>> access_groups = [platform.access_groups.get(access_group_id="AccessGroupId-5f54b267-927f-442a-97fd-6ed4581d6998"), platform.access_groups.get(access_group_id="AccessGroupId-f31bb98a-a2c3-4281-8d54-073a129d071f")]
+   >>> access_groups = [new_group, users_access_group]
    >>> platform.add_member_to_multiple_access_groups(user, access_groups)
-   {'groups': [{'access_group_id': 'AccessGroupId-5f54b267-927f-442a-97fd-6ed4581d6998', 'status_code': 200}, {'access_group_id': 'AccessGroupId-f31bb98a-a2c3-4281-8d54-073a129d071f', 'status_code': 200}]}
+   <Response [207]>
 
 
 .. _administration__access_groups__remove_member_from_all_access_groups:
@@ -290,6 +246,31 @@ the :py:meth:`Platform.remove_member_from_all_access_groups() <ibm_watsonx_data_
 
 .. code-block:: python
 
-   >>> user = platform.users.get(iam_id="IBMid-6XXXXXXXXP")
    >>> platform.remove_member_from_all_access_groups(user)
-   {'iam_id': 'IBMid-6XXXXXXXXP', 'groups': [{'access_group_id': 'AccessGroupId-5f54b267-927f-442a-97fd-6ed4581d6998', 'status_code': 204}, {'access_group_id': 'AccessGroupId-7b0be36f-dbea-42d1-9c8e-e962796a30f7', 'status_code': 204}]}
+   <Response [207]>
+
+.. _administration__access_groups__delete__an_access_group:
+
+Delete an Access Group
+~~~~~~~~~~~~~~~~~~~~~~
+
+In the IBM Cloud UI, you can delete an access group by clicking on the three buttons to the right of the access group you would like to delete.
+That opens up a dropdown with a ``Remove`` button. Clicking that button opens a popup that asks you to confirm if you'd like to delete said access group.
+
+.. image:: ../../_static/images/access_groups/remove_access_group.png
+   :alt: Screenshot of remove button for an access group
+   :align: center
+   :width: 100%
+
+.. image:: ../../_static/images/access_groups/delete_access_group.png
+   :alt: Screenshot of UI pane to delete an access group
+   :align: center
+   :width: 100%
+
+An access group can be deleted through the SDK by passing an :py:class:`~ibm_watsonx_data_integration.cpd_models.access_groups_model.AccessGroup` object to the  :py:meth:`Platform.delete_access_group() <ibm_watsonx_data_integration.platform.Platform.delete_access_group>` method.
+This method returns an API response, whose status code should be ``<204>`` if the access group was successfully deleted.
+
+.. code-block:: python
+
+    >>> platform.delete_access_group(new_group)
+    <Response [204]>

@@ -26,6 +26,8 @@ This will return a list of :py:class:`~ibm_watsonx_data_integration.services.str
 
     >>> # Get all engines associated with the project
     >>> engines = project.engines
+    >>> engines
+    [Engine(..., engine_type='data_collector', ...)]
 
 
 Retrieving an Existing Engine in a Project
@@ -45,7 +47,8 @@ In the UI, you can retrieve an Engine ID by navigating to **Manage -> StreamSets
 .. code-block:: python
 
     >>> # Get a single engine by engine_id
-    >>> engine = project.get_engine(engine_id='C25F1E5F-A901-44F7-A27E-2B0E94C23224')
+    >>> project.get_engine(engine_id=engines[0].engine_id)
+    Engine(..., engine_type='data_collector', ...)
 
 
 Retrieving Existing Engines in an Environment
@@ -57,7 +60,8 @@ To retrieve existing engines in an Environment, use the :py:attr:`Environment.en
 .. code-block:: python
 
     >>> # Get all engines associated with the environment
-    >>> engines =  environment.engines
+    >>> environment.engines
+    [Engine(..., engine_type='data_collector', ...)]
 
 
 Deleting an Existing Engine
@@ -65,7 +69,11 @@ Deleting an Existing Engine
 To delete an engine instance, pass the :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine` object you want to
 delete into the :py:meth:`Project.delete_engine() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_engine>` method to delete it.
 
+.. skip: start "engine is needed for other tests"
+
 .. code-block:: python
 
     >>> # Delete an engine
-    >>> project.delete_engine(engine)
+    >>> project.delete_engine(engines[0])
+
+.. skip: end

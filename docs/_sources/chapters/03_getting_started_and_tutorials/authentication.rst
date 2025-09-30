@@ -10,18 +10,22 @@ You can generate an API key from your IBM Cloud account at: `https://cloud.ibm.c
 
 To authenticate, pass your API key into the :py:class:`ibm_watsonx_data_integration.common.auth.IAMAuthenticator` class.
 
+.. skip: start "dummy authentication values"
+
 .. code-block:: python
 
- >>> from ibm_watsonx_data_integration.common.auth import IAMAuthenticator
- >>>
- >>> # Replace with your actual API key
- >>> auth = IAMAuthenticator(                       # pragma: allowlist secret
- ...     api_key="your-api-key",                    # pragma: allowlist secret
- ...     base_auth_url="https://cloud.ibm.com"
- ... )
+    >>> from ibm_watsonx_data_integration.common.auth import IAMAuthenticator
+    >>>
+    >>> # Replace with your actual API key
+    >>> auth = IAMAuthenticator(                       # pragma: allowlist secret
+    ...     api_key='your-api-key',                    # pragma: allowlist secret
+    ...     base_auth_url='https://cloud.ibm.com'
+    ... )
+
+.. skip: end
 
 .. note::
    The ``base_auth_url`` should be the host URL where you created your IAM API key.
-   In the example above, the ``base_auth_url`` is set to ``"https://cloud.ibm.com"`` since the API key was created at `"https://cloud.ibm.com/iam/apikeys"`.
+   In the example above, the ``base_auth_url`` is set to ``'https://cloud.ibm.com'`` since the API key was created at `'https://cloud.ibm.com/iam/apikeys'`.
 
 Once authenticated, pass the ``auth`` object to the :ref:`Platform class<getting_started_and_tutorials__platform>` to begin interacting with the SDK.

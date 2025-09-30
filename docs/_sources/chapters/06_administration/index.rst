@@ -12,4 +12,3 @@ This section covers administrative tasks such as managing accounts, users, acces
    users
    access_groups
    roles
-   custom_roles

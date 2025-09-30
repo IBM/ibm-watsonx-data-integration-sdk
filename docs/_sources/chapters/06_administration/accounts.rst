@@ -30,28 +30,8 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.acco
 
 .. code-block:: python
 
-    >>> all_accounts = platform.accounts
-    >>> all_accounts
-    [
-        Account(name="A's Account", account_type='TRIAL', account_id='6xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxa'),
-        Account(name="B's Account", account_type='TRIAL', account_id='6xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx9'),
-        Account(name="C's Account", account_type='PAYG', account_id='bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx6'),
-        Account(name="D's Account", account_type='PAYG', account_id='fxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx9'),
-        Account(name="E's Account", account_type='PAYG', account_id='9xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxc')
-    ]
-
-Fetching an account by ID
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Accounts can be retrieved using :py:attr:`Platform.accounts <ibm_watsonx_data_integration.platform.Platform.accounts>` property.
-You can also further filter and refine the account returned based on the ``account_id`` attribute.
-This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.account_model.Account` object.
-
-.. code-block:: python
-
-    >>> account = platform.accounts.get(account_id='bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx6')
-    >>> account
-    Account(name="C's Account", account_type='PAYG', account_id='bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx6')
+    >>> platform.accounts
+    [...Account(...)...]
 
 Getting the current account
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -64,7 +44,19 @@ By default, it is the first account you joined or the first one listed in your a
 
     >>> account = platform.current_account
     >>> account
-    Account(name="A's Account", account_type='TRIAL', account_id='6xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxa')
+    Account(...)
+
+Fetching an account by ID
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Accounts can be retrieved using :py:attr:`Platform.accounts <ibm_watsonx_data_integration.platform.Platform.accounts>` property.
+You can also further filter and refine the account returned based on the ``account_id`` attribute.
+This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.account_model.Account` object.
+
+.. code-block:: python
+
+    >>> platform.accounts.get(account_id=platform.current_account.account_id)
+    Account(...)
 
 Setting the current account
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -72,18 +64,12 @@ Setting the current account
 You can use the setter for the :py:attr:`Platform.current_account <ibm_watsonx_data_integration.platform.Platform.current_account>` to override which account will be used for all subsequent SDK operations.
 Pass in an :py:class:`~ibm_watsonx_data_integration.cpd_models.account_model.Account` object.
 
+.. skip: start "only one account available"
+
 .. code-block:: python
 
-    >>> all_accounts = platform.accounts
-    >>> all_accounts
-    [
-        Account(name="A's Account", account_type='TRIAL', account_id='6xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxa'),
-        Account(name="B's Account", account_type='TRIAL', account_id='6xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx9'),
-        Account(name="C's Account", account_type='PAYG', account_id='bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx6'),
-        Account(name="D's Account", account_type='PAYG', account_id='fxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx9'),
-        Account(name="E's Account", account_type='PAYG', account_id='9xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxc')
-    ]
-    >>> account = platform.accounts.get(account_id='bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx6')
-    >>> platform.current_account = account
+    >>> platform.current_account = platform.accounts.get(name='Second Account')
     >>> platform.current_account
-    Account(name="C's Account", account_type='PAYG', account_id='bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx6')
+    Account(name='Second Account', ...)
+
+.. skip: end

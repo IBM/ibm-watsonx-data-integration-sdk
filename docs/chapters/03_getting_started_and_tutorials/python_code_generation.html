@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Installation and Versioning &#8212; ibm-watsonx-data-integration 1.0.0b documentation</title>
+    <title>Python Code Generation &#8212; ibm-watsonx-data-integration 1.0.0b documentation</title>
   
   
   
@@ -45,11 +45,11 @@
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=30646c52"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/01_welcome/installation_and_versioning';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03_getting_started_and_tutorials/python_code_generation';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Overview" href="../02_overview/index.html" />
-    <link rel="prev" title="Prerequisites" href="prereqs.html" />
+    <link rel="next" title="Integration Assets" href="../04_projects/index.html" />
+    <link rel="prev" title="Service Instances" href="service_instances.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -162,9 +162,9 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Welcome</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="prereqs.html">Prerequisites</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Installation and Versioning</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_welcome/prereqs.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -173,11 +173,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../02_overview/faq.html">Get Help</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../03_getting_started_and_tutorials/index.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/platform.html">Platform</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/python_code_generation.html">Python Code Generation</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Getting Started</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="platform.html">Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service_instances.html">Service Instances</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Python Code Generation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -280,7 +280,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Installation and Versioning</h1>
+    <h1>Python Code Generation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -290,8 +290,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-via-pip">Installation via pip</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#versioning">Versioning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-usage">Example usage</a></li>
 </ul>
             </nav>
         </div>
@@ -303,20 +303,43 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="installation-and-versioning">
-<h1>Installation and Versioning<a class="headerlink" href="#installation-and-versioning" title="Link to this heading">#</a></h1>
-<p id="installation">Installation of the <code class="docutils literal notranslate"><span class="pre">ibm-watsonx-data-integration</span></code> SDK for Python is managed through pip.</p>
-<p>The SDK package itself can be found in our project on <a class="reference external" href="https://pypi.org/project/ibm-watsonx-data-integration">PyPI</a>.</p>
-<section id="installation-via-pip">
-<h2>Installation via pip<a class="headerlink" href="#installation-via-pip" title="Link to this heading">#</a></h2>
-<p>To install the 1.0.0b release of the <code class="docutils literal notranslate"><span class="pre">ibm-watsonx-data-integration</span></code> package, you can run the following command to install the package via <a class="reference external" href="https://pip.pypa.io">pip</a>:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip3 install ibm-watsonx-data-integration</span>
+  <section id="python-code-generation">
+<span id="getting-started-and-tutorials-python-code-generation"></span><h1>Python Code Generation<a class="headerlink" href="#python-code-generation" title="Link to this heading">#</a></h1>
+<p>If you already have a set of existing flows and want to recreate them into Python SDK, you can use the
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.codegen.generator.PythonGenerator" title="ibm_watsonx_data_integration.codegen.generator.PythonGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">PythonGenerator</span></code></a> class to automate the transformation.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<p>To properly generate a script, a few preparatory steps are required:</p>
+<ol class="arabic simple">
+<li><p>Create an instance of a correctly configured and authenticated <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.auth.IAMAuthenticator" title="ibm_watsonx_data_integration.common.auth.IAMAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">IAMAuthenticator</span></code></a> class.</p></li>
+<li><p>Make sure your IBM Cloud API key is exported as an environment variable named <code class="docutils literal notranslate"><span class="pre">IBM_CLOUD_API_KEY</span></code>. This key will be used by the generated script during execution.</p></li>
+</ol>
+</section>
+<section id="example-usage">
+<h2>Example usage<a class="headerlink" href="#example-usage" title="Link to this heading">#</a></h2>
+<p>The example below demonstrates how to regenerate Python SDK code from
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamsetsFlow</span></code></a>
+class fetched directly from a project.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.platform</span><span class="w"> </span><span class="kn">import</span> <span class="n">Platform</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.common.auth</span><span class="w"> </span><span class="kn">import</span> <span class="n">IAMAuthenticator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.codegen</span><span class="w"> </span><span class="kn">import</span> <span class="n">PythonGenerator</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">auth</span> <span class="o">=</span> <span class="n">IAMAuthenticator</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;IBM_CLOUD_API_KEY&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span> <span class="o">=</span> <span class="n">Platform</span><span class="p">(</span><span class="n">auth</span><span class="p">,</span> <span class="n">base_api_url</span><span class="o">=</span><span class="s1">&#39;https://api.ca-tor.dai.cloud.ibm.com&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">projects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Project&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">flows</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;My first flow&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">generator</span> <span class="o">=</span> <span class="n">PythonGenerator</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">source</span><span class="o">=</span><span class="n">flow</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">destination</span><span class="o">=</span><span class="s1">&#39;/tmp/output.py&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">auth</span><span class="o">=</span><span class="n">auth</span><span class="p">,</span>  <span class="c1"># pragma: allowlist secret</span>
+<span class="gp">... </span>    <span class="n">base_api_url</span><span class="o">=</span><span class="s1">&#39;https://api.ca-tor.dai.cloud.ibm.com&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">generator</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+<span class="go">PosixPath(&#39;/tmp/output.py&#39;)</span>
 </pre></div>
 </div>
-</section>
-<section id="versioning">
-<h2>Versioning<a class="headerlink" href="#versioning" title="Link to this heading">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">ibm-watsonx-data-integration</span></code> SDK for Python adheres to <a class="reference external" href="https://semver.org/">Semantic Versioning</a>.</p>
 </section>
 </section>
 
@@ -332,20 +355,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="prereqs.html"
+       href="service_instances.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Prerequisites</p>
+        <p class="prev-next-title">Service Instances</p>
       </div>
     </a>
     <a class="right-next"
-       href="../02_overview/index.html"
+       href="../04_projects/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Overview</p>
+        <p class="prev-next-title">Integration Assets</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -365,8 +388,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-via-pip">Installation via pip</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#versioning">Versioning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-usage">Example usage</a></li>
 </ul>
   </nav></div>
 

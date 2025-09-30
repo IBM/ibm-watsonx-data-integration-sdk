@@ -36,20 +36,19 @@ This method returns a :py:class:`~ibm_watsonx_data_integration.services.streamse
 
 .. code-block:: python
 
-    >>> environment = project.create_environment(
-    ...     name="Sample",
-    ...     engine_version="6.3.0-SNAPSHOT",
+    >>> env = project.create_environment(
+    ...     name='Sample',
     ...     # Optional parameters - see API Reference for more optional parameters
-    ...     description="Basic env.",
+    ...     description='Basic env.',
     ...     stage_libs=[
     ...         'streamsets-datacollector-basic-lib',
     ...         'streamsets-datacollector-dataformats-lib',
     ...         'streamsets-datacollector-dev-lib'
-    ...         ],
+    ...     ],
     ...     cpus_to_allocate=2,
-    ...     )
-    >>> environment
-    Environment(name='Sample', description='Basic env.', environment_id='c383b27a-eab8-4214-a6f2-c9eb522d1efb', engine_version='6.3.0-SNAPSHOT')
+    ... )
+    >>> env
+    Environment(name='Sample', description='Basic env.', ...)
 
 
 .. note::
@@ -70,17 +69,12 @@ which requires the ``environment_id`` parameter.
 .. code-block:: python
 
     >>> # Get all environments associated with the project
-    >>> environments = project.environments
-    >>> environments
-    [
-        Environment(name='Sample', description='Basic env.', environment_id='c383b27a-eab8-4214-a6f2-c9eb522d1efb', engine_version='6.3.0-SNAPSHOT'),
-        Environment(name='Sample2', environment_id='5f5b9182-fe04-463c-9fa6-af9d24d96da7', engine_version='6.3.0-SNAPSHOT')
-    ]
+    >>> project.environments
+    [...Environment(name='Sample', description='Basic env.', ...)...]
 
     >>> # Get a single environment by its id
-    >>> environment = project.environments.get(environment_id='5f5b9182-fe04-463c-9fa6-af9d24d96da7')
-    >>> environment
-    Environment(name='Sample2', environment_id='5f5b9182-fe04-463c-9fa6-af9d24d96da7', engine_version='6.3.0-SNAPSHOT')
+    >>> project.environments.get(environment_id=env.environment_id)
+    Environment(name='Sample', description='Basic env.', ...)
 
 
 Modifying an Environment
@@ -104,28 +98,15 @@ First, modify properties of the environment instance, then update it using the
 .. code-block:: python
 
     >>> # Modify environment settings
-    >>> environment.max_memory_used = 80
-    >>> environment.stage_libs.append('streamsets-datacollector-aws-lib')
+    >>> env.max_memory_used = 80
+    >>> env.stage_libs.append('streamsets-datacollector-aws-lib')
 
     >>> # Update the environment on the platform
-    >>> environment = project.update_environment(environment)
-    >>> environment.stage_libs
-    ['streamsets-datacollector-basic-lib', 'streamsets-datacollector-dataformats-lib', 'streamsets-datacollector-dev-lib', 'streamsets-datacollector-aws-lib']
-
-
-Deleting an Environment
------------------------
-
-To remove an environment, use the
-:py:meth:`Project.delete_environment() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_environment>` method.
-The delete method returns an API response, which you can insepct to verify the status code.
-
-.. code-block:: python
-
-    >>> response = project.delete_environment(environment)
-    >>> response
+    >>> project.update_environment(env)
     <Response [200]>
-
+    >>> env = project.environments.get(environment_id=env.environment_id)
+    >>> env.stage_libs
+    ['streamsets-datacollector-basic-lib', 'streamsets-datacollector-dataformats-lib', 'streamsets-datacollector-dev-lib', 'streamsets-datacollector-aws-lib']
 
 .. _projects__environments__retrieving_install_command:
 
@@ -144,19 +125,35 @@ In the UI, you can retrieve the run command by navigating to the **Manage -> Str
 You can retrieve the run command via the :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment` object by using
 :py:meth:`Environment.get_installation_command() <ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.get_installation_command>` method.
 
+.. skip: start "docker command output in non parsable format"
+
 .. code-block:: python
 
-    >>> installation_command = environment.get_installation_command(
+    >>> env.get_installation_command(
     ...     # Optional parameters
     ...     pretty=False,
-    ...     foreground=False
-    ...     )
-    >>> installation_command
-    'docker run -d --restart on-failure --cpus=4.0 --hostname "$(hostname)" -p 18630:18630 -e SSET_PROJECT_ID=b127c19e-951d-4db6-944c-9850747d0c02 -e SSET_ENVIRONMENT_ID=a0df9d94-625f-411d-88c1-736d38c67a8f -e SSET_BASE_URL=https://api.dai.dev.cloud.ibm.com -e SSET_API_KEY="${SSET_API_KEY:?Please provide your API key from IBM Cloud}" -e SSET_IAM_URL=https://iam.test.cloud.ibm.com icr.io/sx-ci/datacollector:6.3.0-SNAPSHOT'      # pragma: allowlist secret
+    ...     foreground=True
+    ... )
+    'docker run -d --restart on-failure --cpus=4.0 --hostname "$(hostname)" -p 18630:18630 ...'
+
+.. skip: end
 
 .. note::
    Please be aware that the installation command you retrieve from the Environment requires the ``SSET_API_KEY`` environment variable to be set for the user executing the command.
    The environment variable should contain the API key you generated for :ref:`authenticating <getting_started_and_tutorials__authentication>` with the watsonx.data integration platform.
+
+
+Deleting an Environment
+-----------------------
+
+To remove an environment, use the
+:py:meth:`Project.delete_environment() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_environment>` method.
+The delete method returns an API response, which you can insepct to verify the status code.
+
+.. code-block:: python
+
+    >>> project.delete_environment(env)
+    <Response [200]>
 
 
 .. _retrieving_available_engine_versions:
@@ -170,9 +167,8 @@ This returns a list of Engine version names that can be used when configuring an
 
 .. code-block:: python
 
-    >>> engine_versions = platform.available_engine_versions
-    >>> engine_versions
-    ["6.3.0-SNAPSHOT", "JDK17_6.3.0-latest", ...]
+    >>> platform.available_engine_versions
+    [...'JDK17_6.3.0'...]
 
 
 .. _retrieving_engine_version_details:
@@ -193,29 +189,10 @@ This method takes the engine version name as an argument and returns detailed in
 
 .. code-block:: python
 
-    >>> engine_info = platform.get_engine_version_info("6.3.0-SNAPSHOT")
+    >>> engine_info = platform.get_engine_version_info('JDK17_6.3.0')
     >>> engine_info
-    {
-        'engine_version_id': '6.3.0-SNAPSHOT',
-        'image_tag': '6.3.0-SNAPSHOT',
-        'engine_type': 'data_collector',
-        'stage_libs': [
-            {
-                'stage_lib_id': 'streamsets-datacollector-apache-kafka-lib',
-                'label': 'Apache Kafka',
-                'image_location': ...,
-                'stages': ...
-            },
-            ...
-        ]
-    }
+    {'engine_version_id': 'JDK17_6.3.0', ...'engine_type': 'data_collector', 'stage_libs': [...]...}
 
     >>> # To see all stage library IDs that can be used in environment.stage_libs
     >>> [lib['stage_lib_id'] for lib in engine_info.get('stage_libs')]
-    [
-        'streamsets-datacollector-apache-kafka-lib',
-        'streamsets-datacollector-postgres-aurora-lib',
-        'streamsets-datacollector-google-secret-manager-credentialstore-lib',
-        'streamsets-datacollector-redis-lib',
-        ...
-    ]
+    [...'streamsets-datacollector-aws-lib', 'streamsets-datacollector-apache-kafka-lib'...]

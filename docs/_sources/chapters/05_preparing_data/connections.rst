@@ -70,15 +70,14 @@ To skip validation and create connection anyway set ``test`` parameter of
 
 .. code-block:: python
 
-    >>> project = platform.projects.get(name="project")
-    Project(guid='d7831458-4771-4ad4-bb05-fb95fa94361c', name='project')
-    >>> datasource_type = platform.datasources.get(name="http")
+    >>> datasource_type = platform.datasources.get(name='http')
     >>> connection = project.create_connection(
-    ...     name="Connection Name",
+    ...     name='Connection Name',
     ...     datasource_type=datasource_type,
-    ...     description="Description ...",
-    ...     properties={"url": "https://my/connection/url"},
+    ...     description='Description ...',
+    ...     properties={'url': 'https://my/connection/url'},
     ... )
+    >>> connection
     Connection(name='Connection Name')
 
 .. important::
@@ -109,18 +108,18 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.conn
 .. code-block:: python
 
     >>> # Returns the first connection matching given `name`
-    >>> connection = project.connections.get(name="Connection Name")
+    >>> project.connections.get(name='Connection Name')
     Connection(name='Connection Name')
 
     >>> # Return a list of all connections that match `properties`
-    >>> connections = project.connections.get_all(
-    ...     properties={"url": "https://my/connection/url"}
+    >>> project.connections.get_all(
+    ...     properties={'url': 'https://my/connection/url'}
     ... )
     [Connection(name='Connection Name')]
 
     >>> # Return a list of all connections
-    >>> connections = project.connections
-    [Connection(name='Connection Name'), (...)]
+    >>> project.connections
+    [Connection(name='Connection Name')]
 
 .. tip::
 
@@ -149,11 +148,14 @@ Similar to :ref:`Creating a Connection <preparing_data__connections__creating_a_
 
 .. code-block:: python
 
-    >>> connection = project.connections.get(name="Connection Name")
+    >>> connection = project.connections.get(name='Connection Name')
+    >>> connection
     Connection(name='Connection Name')
-    >>> connection.name = "New Connection Name"
-    >>> res = project.update_connection(connection)
+    >>> connection.name = 'New Connection Name'
+    >>> project.update_connection(connection)
     <Response [200]>
+    >>> project.connections.get(name='Connection Name')
+    Connection(name='New Connection Name')
 
 .. _preparing_data__connections__deleting_a_connection:
 
@@ -173,7 +175,8 @@ This method returns an HTTP response indicating the status of the delete operati
 
 .. code-block:: python
 
-    >>> connection = project.connections.get(name="New Connection Name")
+    >>> connection = project.connections.get(name='New Connection Name')
+    >>> connection
     Connection(name='New Connection Name')
-    >>> res = project.delete_connection(connection)
+    >>> project.delete_connection(connection)
     <Response [204]>

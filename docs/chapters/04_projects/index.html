@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Integration Assets &#8212; ibm-watsonx-data-integration 0.0.2b documentation</title>
+    <title>Integration Assets &#8212; ibm-watsonx-data-integration 1.0.0b documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=b3319892"></script>
+    <script src="../../_static/documentation_options.js?v=10856860"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -49,7 +49,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Projects" href="projects.html" />
-    <link rel="prev" title="Service Instances" href="../03_getting_started_and_tutorials/service_instances.html" />
+    <link rel="prev" title="Python Code Generation" href="../03_getting_started_and_tutorials/python_code_generation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.2b</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0b</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -177,6 +177,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/platform.html">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/python_code_generation.html">Python Code Generation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Integration Assets</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -297,8 +298,8 @@ document.write(`
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="projects.html#retrieving-existing-projects">Retrieving Existing Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="projects.html#creating-a-project">Creating a Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html#retrieving-existing-projects">Retrieving Existing Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="projects.html#updating-a-project">Updating a Project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="projects.html#deleting-a-project">Deleting a Project</a></li>
 </ul>
@@ -307,11 +308,12 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="jobs.html#creating-a-job">Creating a Job</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jobs.html#retrieving-an-existing-job">Retrieving an Existing Job</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jobs.html#updating-a-job">Updating a Job</a></li>
-<li class="toctree-l2"><a class="reference internal" href="jobs.html#deleting-a-job">Deleting a Job</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jobs.html#starting-a-job">Starting a Job</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jobs.html#retrieving-a-job-run">Retrieving a Job Run</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jobs.html#cancelling-a-job-run">Cancelling a Job Run</a></li>
 <li class="toctree-l2"><a class="reference internal" href="jobs.html#retrieving-a-job-run-logs">Retrieving a Job Run logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html#resetting-offsets">Resetting offsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jobs.html#deleting-a-job">Deleting a Job</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="environments.html">Environments</a><ul>
@@ -347,12 +349,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../03_getting_started_and_tutorials/service_instances.html"
+       href="../03_getting_started_and_tutorials/python_code_generation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Service Instances</p>
+        <p class="prev-next-title">Python Code Generation</p>
       </div>
     </a>
     <a class="right-next"

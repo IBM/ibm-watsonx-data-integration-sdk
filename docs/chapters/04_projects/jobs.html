@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Jobs &#8212; ibm-watsonx-data-integration 0.0.2b documentation</title>
+    <title>Jobs &#8212; ibm-watsonx-data-integration 1.0.0b documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=b3319892"></script>
+    <script src="../../_static/documentation_options.js?v=10856860"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.2b</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0b</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -177,6 +177,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/platform.html">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/python_code_generation.html">Python Code Generation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Integration Assets</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -292,11 +293,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-job">Creating a Job</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-an-existing-job">Retrieving an Existing Job</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-job">Updating a Job</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-job">Deleting a Job</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-a-job">Starting a Job</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-a-job-run">Retrieving a Job Run</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cancelling-a-job-run">Cancelling a Job Run</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-a-job-run-logs">Retrieving a Job Run logs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resetting-offsets">Resetting offsets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-job">Deleting a Job</a></li>
 </ul>
             </nav>
         </div>
@@ -320,11 +322,12 @@ A job run allows you to override the default configuration and captures runtime 
 The SDK provides functionality to interact with both jobs and job runs on the watsonx.data integration platform.</p>
 <dl class="simple">
 <dt>This includes operations such as:</dt><dd><ul class="simple">
-<li><p>Creating and deleting jobs</p></li>
+<li><p>Creating a job</p></li>
 <li><p>Updating a job</p></li>
 <li><p>Starting a job</p></li>
 <li><p>Cancelling a job run</p></li>
 <li><p>Retrieving logs from a job run</p></li>
+<li><p>Deleting a job</p></li>
 </ul>
 </dd>
 </dl>
@@ -346,11 +349,11 @@ Additionally, you can provide optional configuration such as environment variabl
 This method returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job" title="ibm_watsonx_data_integration.cpd_models.job_model.Job"><code class="xref py py-class docutils literal notranslate"><span class="pre">Job</span></code></a> object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">flow</span><span class="o">=</span><span class="n">flow</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test Job&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">job_parameters</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">}</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Job&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;...&#39;</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="go">Job(name=&#39;Job for Test flow 1750236869686&#39; version=0, project_name=&#39;Test project&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job</span>
+<span class="go">Job(name=&#39;Test Job&#39;, ...)</span>
 </pre></div>
 </div>
 </section>
@@ -366,12 +369,15 @@ This method returns a <a class="reference internal" href="../../api/models.html#
 You can also further filter and refine the jobs returned based on attributes including
 <code class="docutils literal notranslate"><span class="pre">space_id</span></code>, <code class="docutils literal notranslate"><span class="pre">job_id</span></code>, <code class="docutils literal notranslate"><span class="pre">job_type</span></code> and <code class="docutils literal notranslate"><span class="pre">run_id</span></code>.
 This property returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Jobs" title="ibm_watsonx_data_integration.cpd_models.job_model.Jobs"><code class="xref py py-class docutils literal notranslate"><span class="pre">Jobs</span></code></a> object.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Returns first job matching given `job_id`</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">jobs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">job_id</span><span class="o">=</span><span class="s2">&quot;ae0d053b-c4f6-4266-9b02-724e6eb94855&quot;</span><span class="p">)</span>
-<span class="go">Job(name=&#39;Job for Test flow 1750236869686&#39; version=0, project_name=&#39;Test project&#39;)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Return a list of all jobs that match `job_type`</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">jobs</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">jobs</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">job_type</span><span class="o">=</span><span class="s2">&quot;data_intg_flow&quot;</span><span class="p">)</span>
-<span class="go">[Job(name=&#39;Job for Test flow 1750236869686&#39; version=0, project_name=&#39;Test project&#39;)]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Returns all jobs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">jobs</span>
+<span class="go">[Job(name=&#39;Test Job&#39;, ...)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Returns first job matching given `name`</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">jobs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Job&#39;</span><span class="p">)</span>
+<span class="go">Job(name=&#39;Test Job&#39;, ...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Return a list of all jobs that match given `name`</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">jobs</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Job&#39;</span><span class="p">)</span>
+<span class="go">[Job(name=&#39;Test Job&#39;, ...)]</span>
 </pre></div>
 </div>
 </section>
@@ -389,28 +395,10 @@ First, modify the properties of the existing job, then update it using the
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_job" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_job"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_job()</span></code></a> method.
 This method returns an HTTP response indicating the status of the update operation.
 The response also includes the updated job definition.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">jobs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">job_id</span><span class="o">=</span><span class="s2">&quot;ae0d053b-c4f6-4266-9b02-724e6eb94855&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">job</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;New name&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">job</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;New description.&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">update_job</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;New name&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;New description.&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_job</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
 <span class="go">&lt;Response [200]&gt;</span>
-</pre></div>
-</div>
-</section>
-<section id="deleting-a-job">
-<h2>Deleting a Job<a class="headerlink" href="#deleting-a-job" title="Link to this heading">#</a></h2>
-<p>In the UI, you can delete a job by selecting its title from the jobs list.
-To delete a job, click the trash icon in the top bar.</p>
-<a class="reference internal image-reference" href="../../_images/job_details_page_delete_job.jpeg"><img alt="Screenshot of the Job Details page with the trash icon highlighted" class="align-center" src="../../_images/job_details_page_delete_job.jpeg" style="width: 100%;" />
-</a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>To delete a job, you can pass the job instance to <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_job" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_job"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_job()</span></code></a>.
-This method returns an HTTP response indicating the status of the delete operation.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">jobs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">job_id</span><span class="o">=</span><span class="s2">&quot;ae0d053b-c4f6-4266-9b02-724e6eb94855&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">delete_job</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
-<span class="go">&lt;Response [204]&gt;</span>
 </pre></div>
 </div>
 </section>
@@ -428,9 +416,9 @@ You can pass the <code class="docutils literal notranslate"><span class="pre">na
 Additionally, you can further configure the job run by passing the <code class="docutils literal notranslate"><span class="pre">configuration</span></code>,
 <code class="docutils literal notranslate"><span class="pre">job_parameters</span></code> and <code class="docutils literal notranslate"><span class="pre">parameter_sets</span></code> parameters to this method.
 This method returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobRun" title="ibm_watsonx_data_integration.cpd_models.job_model.JobRun"><code class="xref py py-class docutils literal notranslate"><span class="pre">JobRun</span></code></a> object.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job_run</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test Job Run&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job_run</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Job Run&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">job_run</span>
-<span class="go">JobRun(name=&#39;job run&#39;, job_name=&#39;Job for Test flow 1750236869686&#39;, state=&#39;Queued&#39;)</span>
+<span class="go">JobRun(name=&#39;job run&#39;, ..., state=&#39;Queued&#39;)</span>
 </pre></div>
 </div>
 </section>
@@ -447,11 +435,12 @@ You can also further filter and refine the jobs returned based on attributes inc
 <code class="docutils literal notranslate"><span class="pre">space_id</span></code> and <code class="docutils literal notranslate"><span class="pre">states</span></code>.
 This property returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobRuns" title="ibm_watsonx_data_integration.cpd_models.job_model.JobRuns"><code class="xref py py-class docutils literal notranslate"><span class="pre">JobRuns</span></code></a> object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Returns a list of all job runs for given job</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">job_runs</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">job_runs</span>
-<span class="go">[JobRun(name=&#39;job run&#39;, job_name=&#39;Job for Test flow 1750236869686&#39;, state=&#39;Queued&#39;)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job</span><span class="o">.</span><span class="n">job_runs</span>
+<span class="go">[JobRun(name=&#39;job run&#39;, ..., state=&#39;Queued&#39;)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Returns a list of all job runs which status is `Running`</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">job_runs</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">job_runs</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">states</span><span class="o">=</span><span class="p">[</span><span class="n">JobRunState</span><span class="o">.</span><span class="n">Running</span><span class="p">])</span>
-<span class="go">[JobRun(name=&#39;job run&#39;, job_name=&#39;Job for Test flow 1750236869686&#39;, state=&#39;Running&#39;)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.cpd_models.job_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">JobRunState</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job</span><span class="o">.</span><span class="n">job_runs</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">states</span><span class="o">=</span><span class="p">[</span><span class="n">JobRunState</span><span class="o">.</span><span class="n">Queued</span><span class="p">])</span>
+<span class="go">[JobRun(name=&#39;job run&#39;, ..., state=&#39;Queued&#39;)]</span>
 </pre></div>
 </div>
 </section>
@@ -466,7 +455,7 @@ This property returns a <a class="reference internal" href="../../api/models.htm
 <p>To cancel a running job run using SDK, use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobRun.cancel" title="ibm_watsonx_data_integration.cpd_models.job_model.JobRun.cancel"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cancel()</span></code></a>
 method on the job run instance.
 This method returns an HTTP response indicating the status of the operation.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">job_run</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job_run</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
 <span class="go">&lt;Response [204]&gt;</span>
 </pre></div>
 </div>
@@ -478,10 +467,47 @@ This method returns an HTTP response indicating the status of the operation.</p>
 It returns a list where each entry is a string containing a log message.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job_run</span><span class="o">.</span><span class="n">logs</span>
 <span class="go">[</span>
-<span class="go">    &quot;##I IIS-DSEE-TOSH-00397 2025-05-27 14:27:27(000) Starting job Job for Test flow 1750236869686&quot;,</span>
-<span class="go">    &quot;##I IIS-DSEE-TOSH-00408 2025-05-27 14:27:27(000) Job Parameters:&quot;,</span>
+<span class="go">    &#39;##I IIS-DSEE-TOSH-00397 2025-05-27 14:27:27(000) Starting job Job for Test flow 1750236869686&#39;,</span>
+<span class="go">    &#39;##I IIS-DSEE-TOSH-00408 2025-05-27 14:27:27(000) Job Parameters:&#39;,</span>
 <span class="go">    ...</span>
 <span class="go">]</span>
+</pre></div>
+</div>
+</section>
+<section id="resetting-offsets">
+<h2>Resetting offsets<a class="headerlink" href="#resetting-offsets" title="Link to this heading">#</a></h2>
+<p>Jobs use offsets to track the last processed data before they were completed or canceled.
+In certain cases, it may be necessary to reset a job’s offset to reprocess data.
+In the UI, you can reset job offset by selecting <strong>Restart from initial offset</strong> from edit job screen.</p>
+<a class="reference internal image-reference" href="../../_images/reset_job_offsets.jpeg"><img alt="Screenshot of resetting Job offsets" class="align-center" src="../../_images/reset_job_offsets.jpeg" style="width: 100%;" />
+</a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Job offsets can be reset using <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job.reset_offset" title="ibm_watsonx_data_integration.cpd_models.job_model.Job.reset_offset"><code class="xref py py-meth docutils literal notranslate"><span class="pre">reset_offset()</span></code></a>
+method on the job instance.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This method only applies to jobs created from StreamSets flows.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job</span><span class="o">.</span><span class="n">reset_offset</span><span class="p">()</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="deleting-a-job">
+<h2>Deleting a Job<a class="headerlink" href="#deleting-a-job" title="Link to this heading">#</a></h2>
+<p>In the UI, you can delete a job by selecting its title from the jobs list.
+To delete a job, click the trash icon in the top bar.</p>
+<a class="reference internal image-reference" href="../../_images/job_details_page_delete_job.jpeg"><img alt="Screenshot of the Job Details page with the trash icon highlighted" class="align-center" src="../../_images/job_details_page_delete_job.jpeg" style="width: 100%;" />
+</a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>To delete a job, you can pass the job instance to <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_job" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_job"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_job()</span></code></a>.
+This method returns an HTTP response indicating the status of the delete operation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">delete_job</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+<span class="go">&lt;Response [204]&gt;</span>
 </pre></div>
 </div>
 </section>
@@ -535,11 +561,12 @@ It returns a list where each entry is a string containing a log message.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-job">Creating a Job</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-an-existing-job">Retrieving an Existing Job</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-job">Updating a Job</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-job">Deleting a Job</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-a-job">Starting a Job</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-a-job-run">Retrieving a Job Run</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cancelling-a-job-run">Cancelling a Job Run</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-a-job-run-logs">Retrieving a Job Run logs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resetting-offsets">Resetting offsets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-job">Deleting a Job</a></li>
 </ul>
   </nav></div>
 

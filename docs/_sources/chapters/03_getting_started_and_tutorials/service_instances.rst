@@ -19,11 +19,11 @@ To retrieve existing service instances, use the :py:attr:`ibm_watsonx_data_integ
 
 .. code-block:: python
 
-     >>> # Returns a CollectionModel of all service instances
-     >>> service_instances = platform.service_instances
+    >>> # Returns a CollectionModel of all service instances
+    >>> service_instances = platform.service_instances
 
-     >>> # Returns a CollectionModel of the first five service instances
-     >>> service_instances = platform.service_instances.get_all(limit=5)
+    >>> # Returns a CollectionModel of the first five service instances
+    >>> service_instances = platform.service_instances.get_all(limit=5)
 
 
 Creating Service Instances
@@ -32,13 +32,15 @@ To create a new :py:class:`ibm_watsonx_data_integration.cpd_models.service_model
 
 You must specify  ``instance_type`` and ``name``. Optionally, you can also specify ``target`` and ``tags``.
 
+.. skip: start "paid plan only"
+
 .. code-block:: python
 
     >>> service_instance = platform.create_service_instance(
-    ...     instance_type="datastage",
-    ...     name="My Datastage Service Instance",
-    ...     target="us-south",
-    ...     tags=["DatastageInstance"]
+    ...     instance_type='datastage',
+    ...     name='My Datastage Service Instance',
+    ...     target='us-south',
+    ...     tags=['DatastageInstance']
     ... )
 
 
@@ -51,5 +53,7 @@ This method returns an HTTP response indicating the status of the delete operati
 
 .. code-block:: python
 
-    >>> service_instance = platform.service_instances.get(name="watsonx.data integration")
-    >>> res = platform.delete_service_instance(service_instance)
+    >>> service_instance = platform.service_instances.get(name='My Datastage Service Instance')
+    >>> platform.delete_service_instance(service_instance)
+
+.. skip: end

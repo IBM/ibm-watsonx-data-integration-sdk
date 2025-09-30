@@ -32,14 +32,8 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.user
 
 .. code-block:: python
 
-    >>> all_users = platform.users
-    >>> all_users
-    [
-        UserProfile(id='9xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxd', iam_id='IBMid-6xxxxxxxxV', user_id='A.user@ibm.com', state='ACTIVE', email='A.user@ibm.com', account_id='6xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx9', added_on='2025-02-18T21:35:47Z'),
-        UserProfile(id='1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx3', iam_id='IBMid-6xxxxxxxxX', user_id='B.user@ibm.com', state='ACTIVE', email='B.user@ibm.com', account_id='6xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx9', added_on='2025-02-18T21:35:50Z'),
-        UserProfile(id='cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx5', iam_id='IBMid-6xxxxxxxxK', user_id='C.user@ibm.com', state='PENDING', email='C.user@ibm.com', account_id='6xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx9', added_on='2025-02-18T21:35:46Z')
-    ]
-
+    >>> platform.users
+    [...UserProfile(...)...]
 
 Getting user details using the IAM ID or User ID
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -55,12 +49,14 @@ Users can be retrieved using :py:attr:`Platform.users <ibm_watsonx_data_integrat
 You can also further filter and refine the user returned based on the ``iam_id`` or ``user_id``attribute, but not both.
 This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.user_model.UserProfile` object.
 
+.. skip: start "unable to create test user"
+
 .. code-block:: python
 
-    >>> user = platform.users.get(iam_id='IBMid-6xxxxxxxxV')
-    >>> user
-    UserProfile(id='9xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxd', iam_id='IBMid-6xxxxxxxxV', user_id='A.user@ibm.com', state='ACTIVE', email='A.user@ibm.com', account_id='6xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx9', added_on='2025-02-18T21:35:47Z')
+    >>> platform.users.get(iam_id='IBMid-6xxxxxxxxV')
+    UserProfile(...)
 
-    >>> user = platform.users.get(user_id='B.user@ibm.com')
-    >>> user
-    UserProfile(id='1xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx3', iam_id='IBMid-6xxxxxxxxX', user_id='B.user@ibm.com', state='ACTIVE', email='B.user@ibm.com', account_id='6xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx9', added_on='2025-02-18T21:35:50Z')
+    >>> platform.users.get(user_id='B.user@ibm.com')
+    UserProfile(...)
+
+.. skip: end

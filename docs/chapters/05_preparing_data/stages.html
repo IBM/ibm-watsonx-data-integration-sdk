@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Stages &#8212; ibm-watsonx-data-integration 0.0.2b documentation</title>
+    <title>Stages &#8212; ibm-watsonx-data-integration 1.0.0b documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=b3319892"></script>
+    <script src="../../_static/documentation_options.js?v=10856860"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.2b</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0b</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -177,6 +177,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/platform.html">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/python_code_generation.html">Python Code Generation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -292,11 +293,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-all-stages-in-a-flow">Listing all Stages in a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-stage-to-a-flow">Add a Stage to a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-a-stage-from-a-flow">Remove a Stage from a Flow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-and-disconnecting-stages">Connection and Disconnecting Stages</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-stages">Connecting Stages</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-stages-with-multiple-outputs">Connecting Stages with Multiple Outputs</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-all-stages-connected-to-a-stage">Listing all Stages Connected to a Stage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disconnecting-stages">Disconnecting Stages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-a-stage-s-configuration">Editing a Stage’s Configuration</a></li>
 </ul>
             </nav>
@@ -321,8 +323,9 @@ This way we can connect a bunch of stages to create a flow that can do complex t
 <li><p>Listing all the stages in a flow</p></li>
 <li><p>Adding a stage to a flow</p></li>
 <li><p>Removing a stage from a flow</p></li>
-<li><p>Connecting and disconnecting stages from each other</p></li>
+<li><p>Connecting stages</p></li>
 <li><p>Listing all the stages connected to a stage</p></li>
+<li><p>Disconnecting stages</p></li>
 <li><p>Editing a stage’s configuration</p></li>
 </ul>
 </dd>
@@ -332,7 +335,7 @@ This way we can connect a bunch of stages to create a flow that can do complex t
 <p>To list all the stages in a flow, you can use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.stages" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.stages"><code class="xref py py-attr docutils literal notranslate"><span class="pre">StreamsetsFlow.stages</span></code></a> property.
 This returns a <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code> of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage"><code class="xref py py-class docutils literal notranslate"><span class="pre">Stage</span></code></a> instances.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">stages</span>
-<span class="go">[DevRawDataSource_01(), Trash_01(), PipelineFinisherExecutor_01()]</span>
+<span class="go">[DevRawDataSource_01(), Trash_01()]</span>
 </pre></div>
 </div>
 </section>
@@ -347,7 +350,7 @@ This returns a <code class="xref py py-class docutils literal notranslate"><span
 <p>In the SDK, you can use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.add_stage" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.add_stage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StreamsetsFlow.add_stage()</span></code></a> method.
 This method accepts the following parameters <code class="docutils literal notranslate"><span class="pre">label</span></code>, <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">type</span></code> and <code class="docutils literal notranslate"><span class="pre">library</span></code>, of which one of <code class="docutils literal notranslate"><span class="pre">label</span></code> or <code class="docutils literal notranslate"><span class="pre">name</span></code> must be provided.</p>
 <p>This method returns an instance of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage"><code class="xref py py-class docutils literal notranslate"><span class="pre">Stage</span></code></a> representing the newly created stage.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">amazon_sqs_consumer</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Amazon SQS Consumer&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">amazon_sqs_consumer</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Amazon SQS Consumer&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>You can use the <code class="docutils literal notranslate"><span class="pre">type</span></code> parameter to narrow down on the type of stage that is returned when multiple stages share the same <code class="docutils literal notranslate"><span class="pre">label</span></code>.
@@ -375,16 +378,10 @@ and passing an instance of <a class="reference internal" href="../../api/models.
 </pre></div>
 </div>
 </section>
-<section id="connection-and-disconnecting-stages">
-<span id="preparing-data-connecting-disconnecting-stages"></span><h2>Connection and Disconnecting Stages<a class="headerlink" href="#connection-and-disconnecting-stages" title="Link to this heading">#</a></h2>
+<section id="connecting-stages">
+<span id="preparing-data-connecting-stages"></span><h2>Connecting Stages<a class="headerlink" href="#connecting-stages" title="Link to this heading">#</a></h2>
 <p>In the UI, to connect stages, you can click on the output of a stage and drag it to another stage.</p>
 <a class="reference internal image-reference" href="../../_images/connect_stages.png"><img alt="Screenshot for connecting a stage." class="align-center" src="../../_images/connect_stages.png" style="width: 85%;" />
-</a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>To disconnect a stage, you can click on the connection and then the delete icon that comes above it.</p>
-<a class="reference internal image-reference" href="../../_images/disconnect_stages.png"><img alt="Screenshot for disconnecting a stage." class="align-center" src="../../_images/disconnect_stages.png" style="width: 85%;" />
 </a>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -398,24 +395,12 @@ and passing an instance of <a class="reference internal" href="../../api/models.
 </dd>
 </dl>
 <p>For all the methods listed above, we can pass one or more instances of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage"><code class="xref py py-class docutils literal notranslate"><span class="pre">Stage</span></code></a> as parameters to connect the stages.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s2">&quot;Dev Raw Data Source&quot;</span><span class="p">)</span>  <span class="c1"># a sample origin stage that generates random data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">trash</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s2">&quot;Trash&quot;</span><span class="p">)</span>  <span class="c1"># a sample destination stage that accepts all input and discards it</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Dev Raw Data Source&#39;</span><span class="p">)</span>  <span class="c1"># a sample origin stage that generates random data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">trash</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>  <span class="c1"># a sample destination stage that accepts all input and discards it</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">trash</span><span class="p">)</span>  <span class="c1"># alternatively, you can call: trash.connect_input_to(dev_random_source)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># events are connected in a similar way</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline_finisher</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s2">&quot;Pipeline Finisher Executor&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline_finisher</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Pipeline Finisher Executor&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span><span class="o">.</span><span class="n">connect_event_to</span><span class="p">(</span><span class="n">pipeline_finisher</span><span class="p">)</span>  <span class="c1"># outputs events to pipeline finisher</span>
-</pre></div>
-</div>
-<dl class="simple">
-<dt>To disconnect stages, we have a similar trio of methods:</dt><dd><ul class="simple">
-<li><p><a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.disconnect_output_from" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.disconnect_output_from"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Stage.disconnect_output_from()</span></code></a> - this method is used to disconnect the output of the current stage from the input of another stage.</p></li>
-<li><p><a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.disconnect_input_from" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.disconnect_input_from"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Stage.disconnect_input_from()</span></code></a> - this method is used to disconnect the input of the current stage from the output of another stage.</p></li>
-<li><p><a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.disconnect_event_from" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.disconnect_event_from"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Stage.disconnect_event_from()</span></code></a> - this method is used to disconnect the event output of the current stage from the input of another stage.</p></li>
-</ul>
-</dd>
-</dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span><span class="o">.</span><span class="n">disconnect_output_from</span><span class="p">(</span><span class="n">trash</span><span class="p">)</span>  <span class="c1"># alternatively, you can call: trash.disconnect_input_from(dev_random_source)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span><span class="o">.</span><span class="n">disconnect_event_from</span><span class="p">(</span><span class="n">pipeline_finisher</span><span class="p">)</span>
 </pre></div>
 </div>
 <section id="connecting-stages-with-multiple-outputs">
@@ -425,26 +410,23 @@ and passing an instance of <a class="reference internal" href="../../api/models.
 It is then possible to connect the stage to multiple stages, and we can connect each stage to take the output for a specific predicate.</p>
 <p>To do this via the SDK, we will first edit the <code class="docutils literal notranslate"><span class="pre">predicates</span></code> of a <code class="docutils literal notranslate"><span class="pre">Stream</span> <span class="pre">Selector</span></code> stage and then how to connect other stages based on a predicate.</p>
 <p>You can view the predicates of a <code class="docutils literal notranslate"><span class="pre">Stream</span> <span class="pre">Selector</span></code> using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageWithPredicates.predicates" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageWithPredicates.predicates"><code class="xref py py-attr docutils literal notranslate"><span class="pre">StageWithPredicates.predicates</span></code></a> property.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s2">&quot;Stream Selector&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Stream Selector&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span><span class="o">.</span><span class="n">predicates</span>
-<span class="go">[{&#39;outputLane&#39;: &#39;StreamSelector_01OutputLane7ed54751_74ad_4efd_b300_fb9719f049f4&#39;, &#39;predicate&#39;: &#39;default&#39;}]</span>
+<span class="go">[{&#39;outputLane&#39;: &#39;StreamSelector_01OutputLane...&#39;, &#39;predicate&#39;: &#39;default&#39;}]</span>
 </pre></div>
 </div>
 <p>A <code class="docutils literal notranslate"><span class="pre">Stream</span> <span class="pre">Selector</span></code> stage has only a single <code class="docutils literal notranslate"><span class="pre">default</span></code> predicate by default. We need to add more predicates to suit our needs.
 We can do this via the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageWithPredicates.add_predicates" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageWithPredicates.add_predicates"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StageWithPredicates.add_predicates()</span></code></a> method.</p>
 <p>We need to pass a <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> which contains the predicates we want to add.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span><span class="o">.</span><span class="n">add_predicates</span><span class="p">([</span><span class="s2">&quot;${record:value(&#39;/expense&#39;) &gt;= 10000}&quot;</span><span class="p">,</span> <span class="s2">&quot;${record:value(&#39;/expense&#39;) &lt; -10000}&quot;</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span><span class="o">.</span><span class="n">add_predicates</span><span class="p">([</span><span class="s1">&#39;${record:value(&quot;/expense&quot;) &gt;= 10000}&#39;</span><span class="p">,</span> <span class="s1">&#39;${record:value(&quot;/expense&quot;) &lt; -10000}&#39;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span><span class="o">.</span><span class="n">predicates</span>
-<span class="go">[{&#39;outputLane&#39;: &#39;StreamSelector_01OutputLane1716167f_9730_4ee9_8f18_536419e53803&#39;, &#39;predicate&#39;: &quot;${record:value(&#39;/expense&#39;) &lt; -10000}&quot;},</span>
-<span class="go"> {&#39;outputLane&#39;: &#39;StreamSelector_01OutputLane2137877e_4a4f_46c4_bd5d_0b4e861ca845&#39;, &#39;predicate&#39;: &quot;${record:value(&#39;/expense&#39;) &gt;= 10000}&quot;},</span>
-<span class="go"> {&#39;outputLane&#39;: &#39;StreamSelector_01OutputLane7ed54751_74ad_4efd_b300_fb9719f049f4&#39;, &#39;predicate&#39;: &#39;default&#39;}]</span>
+<span class="go">[{&#39;outputLane&#39;: &#39;StreamSelector_01OutputLane...&#39;, &#39;predicate&#39;: &#39;${record:value(&quot;/expense&quot;) &lt; -10000}&#39;}, {&#39;outputLane&#39;: &#39;StreamSelector_01OutputLane...&#39;, &#39;predicate&#39;: &#39;${record:value(&quot;/expense&quot;) &gt;= 10000}&#39;}, {&#39;outputLane&#39;: &#39;StreamSelector_01OutputLane...&#39;, &#39;predicate&#39;: &#39;default&#39;}]</span>
 </pre></div>
 </div>
 <p>To remove a predicate we need to pass a predicate into the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageWithPredicates.remove_predicate" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageWithPredicates.remove_predicate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StageWithPredicates.remove_predicate()</span></code></a> method.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span><span class="o">.</span><span class="n">remove_predicate</span><span class="p">(</span><span class="n">stream_selector</span><span class="o">.</span><span class="n">predicates</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span><span class="o">.</span><span class="n">predicates</span>
-<span class="go">[{&#39;outputLane&#39;: &#39;StreamSelector_01OutputLane2137877e_4a4f_46c4_bd5d_0b4e861ca845&#39;, &#39;predicate&#39;: &quot;${record:value(&#39;/expense&#39;) &gt;= 10000}&quot;},</span>
-<span class="go"> {&#39;outputLane&#39;: &#39;StreamSelector_01OutputLane7ed54751_74ad_4efd_b300_fb9719f049f4&#39;, &#39;predicate&#39;: &#39;default&#39;}]</span>
+<span class="go">[{&#39;outputLane&#39;: &#39;StreamSelector_01OutputLane...&#39;, &#39;predicate&#39;: &#39;${record:value(&quot;/expense&quot;) &gt;= 10000}&#39;}, {&#39;outputLane&#39;: &#39;StreamSelector_01OutputLane...&#39;, &#39;predicate&#39;: &#39;default&#39;}]</span>
 </pre></div>
 </div>
 <p>Finally, to connect a stage with a specific predicate, use the <code class="docutils literal notranslate"><span class="pre">predicate</span></code> parameter in the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.connect_output_to" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.connect_output_to"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Stage.connect_output_to()</span></code></a>
@@ -470,11 +452,32 @@ or it could get input data from a stage.</p>
 </dl>
 <p>All three properties return a <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code> of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage"><code class="xref py py-class docutils literal notranslate"><span class="pre">Stage</span></code></a> instances.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span><span class="o">.</span><span class="n">outputs</span>
-<span class="go">[Trash_01()]</span>
+<span class="go">[Trash_02()]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span><span class="o">.</span><span class="n">events</span>
 <span class="go">[PipelineFinisherExecutor_01()]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">trash</span><span class="o">.</span><span class="n">inputs</span>
-<span class="go">[DevRawDataSource_01()]</span>
+<span class="go">[DevRawDataSource_02(), StreamSelector_01()]</span>
+</pre></div>
+</div>
+</section>
+<section id="disconnecting-stages">
+<span id="preparing-data-disconnecting-stages"></span><h2>Disconnecting Stages<a class="headerlink" href="#disconnecting-stages" title="Link to this heading">#</a></h2>
+<p>In the UI, to disconnect a stage, you can click on the connection and then the delete icon that comes above it.</p>
+<a class="reference internal image-reference" href="../../_images/disconnect_stages.png"><img alt="Screenshot for disconnecting a stage." class="align-center" src="../../_images/disconnect_stages.png" style="width: 85%;" />
+</a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="simple">
+<dt>To disconnect stages, we have a similar trio of methods as for connecting:</dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.disconnect_output_from" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.disconnect_output_from"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Stage.disconnect_output_from()</span></code></a> - this method is used to disconnect the output of the current stage from the input of another stage.</p></li>
+<li><p><a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.disconnect_input_from" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.disconnect_input_from"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Stage.disconnect_input_from()</span></code></a> - this method is used to disconnect the input of the current stage from the output of another stage.</p></li>
+<li><p><a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.disconnect_event_from" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.disconnect_event_from"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Stage.disconnect_event_from()</span></code></a> - this method is used to disconnect the event output of the current stage from the input of another stage.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span><span class="o">.</span><span class="n">disconnect_output_from</span><span class="p">(</span><span class="n">trash</span><span class="p">)</span>  <span class="c1"># alternatively, you can call: trash.disconnect_input_from(dev_random_source)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span><span class="o">.</span><span class="n">disconnect_event_from</span><span class="p">(</span><span class="n">pipeline_finisher</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -483,9 +486,9 @@ or it could get input data from a stage.</p>
 <p>You can edit a stage’s configuration through the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.configuration" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.configuration"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Stage.configuration</span></code></a> property.
 This property returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration" title="ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration"><code class="xref py py-class docutils literal notranslate"><span class="pre">Configuration</span></code></a> object which encapsulates a stage’s configuration.
 You can print out the configuration and edit it similar to a <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s2">&quot;stop_after_first_batch&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;stop_after_first_batch&#39;</span><span class="p">]</span>
 <span class="go">False</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s2">&quot;stop_after_first_batch&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s1">&#39;stop_after_first_batch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
 </pre></div>
 </div>
 </section>
@@ -539,11 +542,12 @@ You can print out the configuration and edit it similar to a <code class="xref p
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-all-stages-in-a-flow">Listing all Stages in a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-stage-to-a-flow">Add a Stage to a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-a-stage-from-a-flow">Remove a Stage from a Flow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connection-and-disconnecting-stages">Connection and Disconnecting Stages</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-stages">Connecting Stages</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-stages-with-multiple-outputs">Connecting Stages with Multiple Outputs</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-all-stages-connected-to-a-stage">Listing all Stages Connected to a Stage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disconnecting-stages">Disconnecting Stages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-a-stage-s-configuration">Editing a Stage’s Configuration</a></li>
 </ul>
   </nav></div>

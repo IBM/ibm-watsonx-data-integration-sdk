@@ -48,28 +48,20 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.conn
 .. code-block:: python
 
     >>> # Return first datasource type matching given `name`
-    >>> datasource = platform.datasources.get(name="jdbc")
+    >>> platform.datasources.get(name='jdbc')
     DatasourceType(name='jdbc')
 
     >>> # Return first datasource type matching given `perspective`
-    >>> datasource = platform.datasources.get(perspective="wx")
+    >>> platform.datasources.get(perspective='wx')
     DatasourceType(name='informix')
 
     >>> # Return a list of all datasource types that match `perspective`
-    >>> datasources = platform.datasources.get_all(perspective="wx")
-    [
-        DatasourceType(name='informix'),
-        DatasourceType(name='postgresql-ibmcloud'),
-        (...)
-    ]
+    >>> platform.datasources.get_all(perspective='wx')
+    [DatasourceType(name='informix'), DatasourceType(name='postgresql-ibmcloud'), ...]
 
     >>> # Return a list of all datasource types
-    >>> datasources = platform.datasources
-    [
-        DatasourceType(name='informix'),
-        DatasourceType(name='postgresql-ibmcloud'),
-        (...)
-    ]
+    >>> platform.datasources
+    [DatasourceType(name='informix'), DatasourceType(name='postgresql-ibmcloud'), ...]
 
 .. tip::
 
@@ -107,24 +99,19 @@ to retrieve all available connection properties.
 
     >>> # Get datasource object
     >>> datasource = platform.datasources.get(name='informix')
+    >>> datasource
     DatasourceType(name='informix')
-    >>> properties = datasource.properties.connection
-    [
-        DatasourceTypeProperty(name='cluster_access_token'),
-        DatasourceTypeProperty(name='cluster_user_name'),
-        (...)
-    ]
+    >>> datasource.properties.connection
+    [DatasourceTypeProperty(name='cluster_access_token'), DatasourceTypeProperty(name='cluster_user_name'), ...]
 
     >>> # You can get list of all required properties
     >>> required_properties = datasource.required_connection_properties
-    [
-        DatasourceTypeProperty(name='host'),
-        DatasourceTypeProperty(name='password'),
-        (...)
-    ]
+    >>> required_properties
+    [DatasourceTypeProperty(name='host'), DatasourceTypeProperty(name='password'), ...]
 
     >>> # Or get details about the property
     >>> required_property_1 = required_properties[0]
+    >>> required_property_1
     DatasourceTypeProperty(name='host')
     >>> required_property_1.type
     'string'

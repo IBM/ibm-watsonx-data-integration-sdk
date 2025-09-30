@@ -11,36 +11,10 @@ Projects provide an isolated context for managing and grouping related assets, a
 The SDK provides functionality to interact with projects on the watsonx.data integration platform.
 
 This includes operations such as:
-    * Retrieving existing projects
     * Creating a project
+    * Retrieving existing projects
     * Updating a project
     * Deleting a project
-
-Retrieving Existing Projects
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To list existing projects in the UI, navigate to **View all projects**.
-
-.. image:: ../../_static/images/projects/list_all_projects.png
-   :alt: Listing projects via the UI
-   :align: center
-   :width: 50%
-
-|
-
-Projects can be retrieved using :py:class:`~ibm_watsonx_data_integration.platform.Platform` class.
-You can also further filter and refine the projects returned based on attributes including ``name`` and ``guid``.
-
-This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Projects` object.
-
-.. code-block:: python
-
-    >>> # Returns first project matching given `guid`
-    >>> project = platform.projects.get(guid="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-    Project(guid="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", name="ci_cd_project")
-    >>> # Return a list of all projects that match `name`
-    >>> projects = platform.projects.get_all(name="ci_cd_project")
-    [Project(guid="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", name="ci_cd_project"). Project(guid="yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyy", name="ci_cd_project")]
 
 .. _projects__projects__creating_a_project:
 
@@ -66,14 +40,44 @@ This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.projec
 
 .. code-block:: python
 
-    >>> project = platform.create_project(
-    ...     name="Test Project",
-    ...     description="Test Project Description",
-    ...     tags=["flow_test_project"],
+    >>> my_project = platform.create_project(
+    ...     name='Test Project',
+    ...     description='Test Project Description',
+    ...     tags=['flow_test_project'],
     ...     public=True,
-    ...     project_type="wx"
+    ...     project_type='wx'
     ... )
-    Project(guid="xyxyxyxy-xyxy-xyxy-xyxy-xyxyxyxy", name="Test Project")
+    >>> my_project
+    Project(..., name='Test Project')
+
+Retrieving Existing Projects
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To list existing projects in the UI, navigate to **View all projects**.
+
+.. image:: ../../_static/images/projects/list_all_projects.png
+   :alt: Listing projects via the UI
+   :align: center
+   :width: 50%
+
+|
+
+Projects can be retrieved using :py:class:`~ibm_watsonx_data_integration.platform.Platform` class.
+You can also further filter and refine the projects returned based on attributes including ``name`` and ``guid``.
+
+This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Projects` object.
+
+.. code-block:: python
+
+    >>> # Return a list of all projects
+    >>> platform.projects
+    [...Project(..., name='Test Project')...]
+    >>> # Returns first project matching given `name`
+    >>> platform.projects.get(name="Test Project")
+    Project(..., name='Test Project')
+    >>> # Return a list of all projects that match `name`
+    >>> platform.projects.get_all(name="Test Project")
+    [Project(..., name='Test Project')]
 
 Updating a Project
 ~~~~~~~~~~~~~~~~~~
@@ -95,10 +99,10 @@ This method returns an HTTP response indicating the status of the update operati
 
 .. code-block:: python
 
-    >>> project = platform.projects.get(guid="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-    >>> project.name = "New name"
-    >>> project.description = "New description."
-    >>> res = platform.update_project(project)
+    >>> my_project = platform.projects.get(name='Test Project')
+    >>> my_project.name = 'New name'
+    >>> my_project.description = 'New description.'
+    >>> platform.update_project(my_project)
     <Response [200]>
 
 
@@ -120,6 +124,5 @@ This method returns an HTTP response indicating the status of the delete operati
 
 .. code-block:: python
 
-    >>> project = platform.projects.get(guid="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
-    >>> res = platform.delete_project(project)
+    >>> platform.delete_project(my_project)
     <Response [204]>

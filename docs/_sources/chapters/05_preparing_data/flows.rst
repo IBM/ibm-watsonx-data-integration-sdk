@@ -8,8 +8,8 @@ A flow is an object used for storing the execution flow of a data pipeline.
 A flow is comprised of multiple stages with each stage defining how data is handled in that part of the execution flow.
 
 The SDK provides the following functionality to interact with flows:
-    * Retrieving flows
     * Creating a flow
+    * Retrieving flows
     * Editing a flow
     * Updating a flow
     * Duplicating a flow
@@ -29,27 +29,6 @@ To create a flow using the SDK, please make sure you have done the following ste
 
 .. note::
     Currently, the SDK only supports creating a flow with an engine installed.
-
-
-.. _preparing_data__flows__retrieving_a_flow:
-
-Retrieving Flows
-~~~~~~~~~~~~~~~~
-
-Flows can be retrieved through a :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object using the
-:py:attr:`Project.flows <ibm_watsonx_data_integration.cpd_models.project_model.Project.flows>` property.
-You can also retrieve a single flow using the :py:meth:`Project.flows.get() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlows.get>` method
-which requires the ``flow_id`` parameter.
-
-.. code-block:: python
-
-    >>> project.flows  # a list of all the flows
-    [StreamsetsFlow(name='My first flow', description='optional description', flow_id='ea5b7ec1-3651-430d-9704-4b93791d6e03', engine_version='6.3.0-SNAPSHOT')]
-
-    >>> flow = project.flows.get(flow_id='ea5b7ec1-3651-430d-9704-4b93791d6e03')
-    >>> flow
-    StreamsetsFlow(name='My first flow', description='optional description', flow_id='ea5b7ec1-3651-430d-9704-4b93791d6e03', engine_version='6.3.0-SNAPSHOT')
-
 
 .. _preparing_data__flows__creating_a_flow:
 
@@ -72,10 +51,27 @@ This method will return a :py:class:`~ibm_watsonx_data_integration.services.stre
 
 .. code-block:: python
 
-    >>> flow = project.create_flow(name="My first flow", description="optional description", environment=environment)
-    >>> flow
-    StreamsetsFlow(name='My first flow', description='optional description', flow_id='58acfeb3-ee9e-4d1f-bbbd-4426cf7a9961', engine_version='6.3.0-SNAPSHOT')
+    >>> new_flow = project.create_flow(name='My first flow', description='optional description', environment=environment)
+    >>> new_flow
+    StreamsetsFlow(name='My first flow', description='optional description', flow_id=..., engine_version=...)
 
+.. _preparing_data__flows__retrieving_a_flow:
+
+Retrieving Flows
+~~~~~~~~~~~~~~~~
+
+Flows can be retrieved through a :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object using the
+:py:attr:`Project.flows <ibm_watsonx_data_integration.cpd_models.project_model.Project.flows>` property.
+You can also retrieve a single flow using the :py:meth:`Project.flows.get() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlows.get>` method
+which requires the ``flow_id`` parameter.
+
+.. code-block:: python
+
+    >>> project.flows  # a list of all the flows
+    [...StreamsetsFlow(name='My first flow', description='optional description', ...)...]
+
+    >>> project.flows.get(name='My first flow')
+    StreamsetsFlow(name='My first flow', description='optional description', ...)
 
 .. _preparing_data__flows__editing_a_flow:
 
@@ -88,9 +84,9 @@ For starters, you can edit a flow's attributes like ``name`` or ``description``.
 
 .. code-block:: python
 
-    >>> flow.description = "new description for the flow"
-    >>> flow
-    StreamsetsFlow(name='My first flow', description='new description for the flow', flow_id='ea5b7ec1-3651-430d-9704-4b93791d6e03', engine_version='6.3.0-SNAPSHOT')
+    >>> new_flow.description = 'new description for the flow'
+    >>> new_flow
+    StreamsetsFlow(name='My first flow', description='new description for the flow', ...)
 
 You can edit a flow's configuration through the :py:attr:`StreamsetsFlow.configuration <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.configuration>` property.
 This property returns a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration` object which encapsulates a flow's configuration.
@@ -98,9 +94,9 @@ You can print out the configuration and edit it similar to a :py:class:`dict`.
 
 .. code-block:: python
 
-    >>> flow.configuration["retry_pipeline_on_error"]
+    >>> new_flow.configuration['retry_pipeline_on_error']
     True
-    >>> flow.configuration["retry_pipeline_on_error"] = False
+    >>> new_flow.configuration['retry_pipeline_on_error'] = False
 
 Finally, you can edit a flow by editing its stages.
 This can include adding a stage, removing a stage, updating a stage's configuration or connecting a stage in a different way than before.
@@ -111,7 +107,7 @@ All the operations described are covered in the :ref:`Stage <preparing_data__sta
 Updating a Flow
 ~~~~~~~~~~~~~~~
 
-In the UI, you can update a flow by making changes to the flow and hitting the "Save" icon to update the flow.
+In the UI, you can update a flow by making changes to the flow and hitting the 'Save' icon to update the flow.
 
 .. image:: ../../_static/images/flows/save_flow_button.png
    :alt: Screenshot of the flow creation page.
@@ -125,10 +121,11 @@ This method returns an HTTP response indicating the status of the update operati
 
 .. code-block:: python
 
-    >>> flow.name = "new flow name"  # you can also update the stages, configuration, etc.
-    >>> project.update_flow(flow)
+    >>> new_flow.name = 'new flow name'  # you can also update the stages, configuration, etc.
+    >>> project.update_flow(new_flow)
     <Response [200]>
-
+    >>> new_flow
+    StreamsetsFlow(name='new flow name', description='new description for the flow', ...)
 
 .. _preparing_data__flows__duplicating_a_flow:
 
@@ -143,10 +140,9 @@ This will duplicate a flow and return a new instance of :py:class:`~ibm_watsonx_
 
 .. code-block:: python
 
-    >>> duplicated_flow = project.duplicate_flow(flow, name="duplicated flow", description=f"duplicate of {flow.name}")
+    >>> duplicated_flow = project.duplicate_flow(new_flow, name='duplicated flow', description='duplicated flow description')
     >>> duplicated_flow
-    StreamsetsFlow(name='duplicated flow', description='duplicate of My first flow', flow_id='ee199ac5-1d4e-4875-91fb-110d85eb2c92', engine_version='6.3.0-SNAPSHOT')
-
+    StreamsetsFlow(name='duplicated flow', description='duplicated flow description', ...)
 
 .. _preparing_data__flows__deleting_a_flow:
 
@@ -170,34 +166,29 @@ This method returns an HTTP response indicating the status of the update operati
     >>> project.delete_flow(duplicated_flow)
     <Response [204]>
 
-
 .. _preparing_data__flows__handling_error_records:
 
 Validating a Flow
 ~~~~~~~~~~~~~~~~~
 
-In the UI, you can update a flow by making changes to the flow and hitting the "Validate" icon to validate the flow.
+In the UI, you can update a flow by making changes to the flow and hitting the 'Validate' icon to validate the flow.
 
 .. image:: ../../_static/images/flows/validate_flow_button.png
    :alt: Screenshot of the validate button.
    :align: center
    :width: 100%
 
-To validate a flow via the SDK, you need to update a flow, and then pass it to the :py:meth:`Project.validate_flow() <ibm_watsonx_data_integration.cpd_models.project_model.Project.validate_flow>` method.
+To validate a flow via the SDK, you need to update a flow, and then call the :py:meth:`StreamsetsFlow.validate() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.validate>` method.
 This will return a list of :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError` instances if there are any errors.
 
 .. code-block:: python
 
-    >>> flow.add_stage("Trash")
+    >>> new_flow.add_stage('Trash')
     Trash_01()
-    >>> project.update_flow(flow)
+    >>> project.update_flow(new_flow)
     <Response [200]>
-    >>> project.validate_flow(flow)
-    [
-        FlowValidationError(type='stageIssues', instanceName='Trash_01', humanReadableMessage='The first stage must be an origin'),
-        FlowValidationError(type='stageIssues', instanceName='Trash_01', humanReadableMessage='Target must have input streams')
-    ]
-
+    >>> new_flow.validate()
+    [FlowValidationError(type='stageIssues', instanceName='Trash_01', humanReadableMessage='The first stage must be an origin'), FlowValidationError(type='stageIssues', instanceName='Trash_01', humanReadableMessage='Target must have input streams')]
 
 .. _preparing_data__flows__validating_a_flow:
 
@@ -230,9 +221,9 @@ This can be updated in a flow's configuration.
 
 .. code-block:: python
 
-    >>> flow.configuration['error_record_policy']
+    >>> new_flow.configuration['error_record_policy']
     'ORIGINAL_RECORD'
-    >>> flow.configuration['error_record_policy'] = 'STAGE_RECORD'
+    >>> new_flow.configuration['error_record_policy'] = 'STAGE_RECORD'
 
 
 To change the error record stage, you can call :py:meth:`StreamsetsFlow.set_error_stage() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.set_error_stage>` method.
@@ -244,12 +235,12 @@ You need to pass either the ``label`` or the ``name`` of the new error stage, yo
 
 .. code-block:: python
 
-    >>> write_to_file = flow.set_error_stage("Write to File")
-    >>> write_to_file.configuration['directory'] = "/path/to/some/directory"
+    >>> write_to_file = new_flow.set_error_stage('Write to File')
+    >>> write_to_file.configuration['directory'] = '/path/to/some/directory'
 
 Finally, you can view the current error stage for a flow at any point using the :py:attr:`StreamsetsFlow.error_stage <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.error_stage>` property.
 
 .. code-block:: python
 
-    >>> flow.error_stage
+    >>> new_flow.error_stage
     WritetoFile_ErrorStage()

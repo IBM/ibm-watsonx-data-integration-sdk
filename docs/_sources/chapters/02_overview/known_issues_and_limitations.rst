@@ -9,7 +9,7 @@ This page is actively maintained and updated with each release of the ``ibm-wats
 Known Issues
 ~~~~~~~~~~~~
 
-* Users may encounter HTTP 429 errors ("too many requests") when making calls from the SDK - this is actively being mitigated and will be fixed in the next release.
+* Users may encounter HTTP 429 errors ('too many requests') when making calls from the SDK - this is actively being mitigated and will be fixed in the next release.
 
 Limitations
 ~~~~~~~~~~~

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Platform &#8212; ibm-watsonx-data-integration 0.0.2b documentation</title>
+    <title>Platform &#8212; ibm-watsonx-data-integration 1.0.0b documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=b3319892"></script>
+    <script src="../../_static/documentation_options.js?v=10856860"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 0.0.2b</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0b</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -177,6 +177,7 @@
 <li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="service_instances.html">Service Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_code_generation.html">Python Code Generation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -301,7 +302,7 @@ document.write(`
 <p>If you don’t specify <cite>base_api_url</cite>, the SDK defaults to <cite>‘https://api.dataplatform.cloud.ibm.com’</cite>. For any other region, set base_api_url to the appropriate regional endpoint.</p>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.platform</span><span class="w"> </span><span class="kn">import</span> <span class="n">Platform</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span> <span class="o">=</span> <span class="n">Platform</span><span class="p">(</span><span class="n">auth</span><span class="p">,</span> <span class="n">base_api_url</span><span class="o">=</span><span class="s2">&quot;https://api.ca-tor.dai.cloud.ibm.com&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span> <span class="o">=</span> <span class="n">Platform</span><span class="p">(</span><span class="n">auth</span><span class="p">,</span> <span class="n">base_api_url</span><span class="o">=</span><span class="s1">&#39;https://api.ca-tor.dai.cloud.ibm.com&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Once you’ve created the <code class="docutils literal notranslate"><span class="pre">platform</span></code> object, you can begin interacting with the watsonx.data integration platform.</p>

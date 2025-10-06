@@ -410,13 +410,10 @@ pass the instance to the <a class="reference internal" href="../../api/models.ht
 <p>This method returns an HTTP response indicating the status of the update operation.</p>
 <p>Similar to <a class="reference internal" href="#preparing-data-connections-creating-a-connection"><span class="std std-ref">Creating a Connection</span></a> you can skip the validation by setting <code class="docutils literal notranslate"><span class="pre">test</span></code> parameter of
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_connection" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_connection()</span></code></a> to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">connection</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Connection Name&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">connection</span>
-<span class="go">Connection(name=&#39;Connection Name&#39;)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">connection</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;New Connection Name&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">connection</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;New Connection Name&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_connection</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span>
 <span class="go">&lt;Response [200]&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Connection Name&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;New Connection Name&#39;</span><span class="p">)</span>
 <span class="go">Connection(name=&#39;New Connection Name&#39;)</span>
 </pre></div>
 </div>
@@ -428,10 +425,7 @@ pass the instance to the <a class="reference internal" href="../../api/models.ht
 </a>
 <p>In the SDK to delete a connection instance you can pass it to <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_connection" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_connection()</span></code></a> method.</p>
 <p>This method returns an HTTP response indicating the status of the delete operation.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">connection</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;New Connection Name&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">connection</span>
-<span class="go">Connection(name=&#39;New Connection Name&#39;)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">delete_connection</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">delete_connection</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span>
 <span class="go">&lt;Response [204]&gt;</span>
 </pre></div>
 </div>

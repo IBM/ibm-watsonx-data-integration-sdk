@@ -10,11 +10,11 @@ Known Issues
 ~~~~~~~~~~~~
 
 * Users may encounter HTTP 429 errors ('too many requests') when making calls from the SDK - this is actively being mitigated and will be fixed in the next release.
+* The Streaming Python Generator must use triple quotes (""") for SQL strings to avoid syntax issues.
+* When running the Streaming Python Generator on a flow using a JSON data format, it currently returns a JSON literal instead of a "JSON" string.
 
 Limitations
 ~~~~~~~~~~~
 
 * The SDK only supports the IAM API key authentication mechanism at present.
-* The SDK only fully supports StreamSets (real-time streaming) functionality at this time.
-  Support for additional services and components, like DataStage (batch processing) is planned for future releases.
 * Currently, the SDK only supports creating a flow with an engine installed.

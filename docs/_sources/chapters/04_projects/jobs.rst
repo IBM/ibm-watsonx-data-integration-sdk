@@ -159,6 +159,12 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_
     >>> job.job_runs.get_all(states=[JobRunState.Queued])
     [JobRun(name='job run', ..., state='Queued')]
 
+.. invisible-code-block: python
+
+    >>> from tests.integration.test_job import wait_for_expected_state
+    >>> wait_for_expected_state(job, job_run, JobRunState.Running)
+
+
 Cancelling a Job Run
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -179,6 +185,11 @@ This method returns an HTTP response indicating the status of the operation.
 
     >>> job_run.cancel()
     <Response [204]>
+
+.. invisible-code-block: python
+
+    >>> from tests.integration.test_job import wait_for_expected_state
+    >>> wait_for_expected_state(job, job_run, JobRunState.Canceled)
 
 Retrieving a Job Run logs
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -243,11 +254,6 @@ To delete a job, click the trash icon in the top bar.
 
 To delete a job, you can pass the job instance to :py:meth:`Project.delete_job() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_job>`.
 This method returns an HTTP response indicating the status of the delete operation.
-
-.. invisible-code-block: python
-
-    >>> from tests.integration.test_job import wait_for_expected_state
-    >>> wait_for_expected_state(job, job_run, JobRunState.Canceled)
 
 .. code-block:: python
 

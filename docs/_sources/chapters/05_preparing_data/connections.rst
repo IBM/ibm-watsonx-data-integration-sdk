@@ -148,13 +148,10 @@ Similar to :ref:`Creating a Connection <preparing_data__connections__creating_a_
 
 .. code-block:: python
 
-    >>> connection = project.connections.get(name='Connection Name')
-    >>> connection
-    Connection(name='Connection Name')
     >>> connection.name = 'New Connection Name'
     >>> project.update_connection(connection)
     <Response [200]>
-    >>> project.connections.get(name='Connection Name')
+    >>> project.connections.get(name='New Connection Name')
     Connection(name='New Connection Name')
 
 .. _preparing_data__connections__deleting_a_connection:
@@ -175,8 +172,5 @@ This method returns an HTTP response indicating the status of the delete operati
 
 .. code-block:: python
 
-    >>> connection = project.connections.get(name='New Connection Name')
-    >>> connection
-    Connection(name='New Connection Name')
     >>> project.delete_connection(connection)
     <Response [204]>

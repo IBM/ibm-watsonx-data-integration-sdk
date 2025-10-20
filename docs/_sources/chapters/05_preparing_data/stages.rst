@@ -47,9 +47,14 @@ This method accepts the following parameters ``label``, ``name``, ``type`` and `
 
 This method returns an instance of :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage` representing the newly created stage.
 
+After adding stages you need to call :py:meth:`Project.update_flow() <ibm_watsonx_data_integration.cpd_models.project_model.Project.update_flow>` method to save the changes.
+
 .. code-block:: python
 
-    >>> amazon_sqs_consumer = flow.add_stage(label='Amazon SQS Consumer')
+    >>> flow.add_stage(label='Amazon SQS Consumer')
+    AmazonSQSConsumer_01()
+    >>> project.update_flow(flow)
+    <Response [200]>
 
 You can use the ``type`` parameter to narrow down on the type of stage that is returned when multiple stages share the same ``label``.
 For example, ``Amazon S3`` can be of ``type`` ``origin``, ``executor`` or ``destination``.
@@ -80,9 +85,14 @@ All stages connected to this stage will be disconnected by this action.
 
 This method does not return anything.
 
+After removing stages you need to call :py:meth:`Project.update_flow() <ibm_watsonx_data_integration.cpd_models.project_model.Project.update_flow>` method to save the changes.
+
 .. code-block:: python
 
+    >>> amazon_sqs_consumer = next(filter(lambda stage: stage.instance_name == 'AmazonSQSConsumer_01', flow.stages))
     >>> flow.remove_stage(amazon_sqs_consumer)
+    >>> project.update_flow(flow)
+    <Response [200]>
 
 .. _preparing_data__connecting_stages:
 
@@ -112,6 +122,9 @@ For all the methods listed above, we can pass one or more instances of :py:class
     >>> # events are connected in a similar way
     >>> pipeline_finisher = flow.add_stage('Pipeline Finisher Executor')
     >>> dev_random_source.connect_event_to(pipeline_finisher)  # outputs events to pipeline finisher
+    >>> project.update_flow(flow)
+    <Response [200]>
+
 
 .. _preparing_data__stage_with_predicates:
 
@@ -183,7 +196,7 @@ All three properties return a :py:class:`list` of :py:class:`~ibm_watsonx_data_i
     >>> dev_random_source.events
     [PipelineFinisherExecutor_01()]
     >>> trash.inputs
-    [DevRawDataSource_02(), StreamSelector_01()]
+    [DevRawDataSource_02()]
 
 .. _preparing_data__disconnecting_stages:
 

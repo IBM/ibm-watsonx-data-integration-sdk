@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; ibm-watsonx-data-integration 1.0.0b documentation</title>
+    <title>Index &#8212; ibm-watsonx-data-integration 1.0.0b2 documentation</title>
   
   
   
@@ -38,7 +38,7 @@
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="_static/documentation_options.js?v=10856860"></script>
+    <script src="_static/documentation_options.js?v=28e194a7"></script>
     <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
@@ -144,7 +144,7 @@
     <script>document.write(`<img src="_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0b</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0b2</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -176,7 +176,7 @@
 <li class="toctree-l2"><a class="reference internal" href="chapters/03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chapters/03_getting_started_and_tutorials/platform.html">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chapters/03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapters/03_getting_started_and_tutorials/python_code_generation.html">Python Code Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapters/03_getting_started_and_tutorials/code_generation.html">Code Generation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="chapters/04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -323,6 +323,8 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlowUsage.access_count">access_count (ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlowUsage attribute)</a>
 </li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.access_groups_model.AccessGroup.access_group_id">access_group_id (ibm_watsonx_data_integration.cpd_models.access_groups_model.AccessGroup attribute)</a>
+</li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.platform.Platform.access_groups">access_groups (ibm_watsonx_data_integration.platform.Platform property)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.access_groups_model.AccessGroups">AccessGroups (class in ibm_watsonx_data_integration.cpd_models.access_groups_model)</a>
@@ -377,10 +379,10 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType.allowed_as_target">allowed_as_target (ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.user_model.UserSettings.allowed_ip_addresses">allowed_ip_addresses (ibm_watsonx_data_integration.cpd_models.user_model.UserSettings attribute)</a>, <a href="api/models.html#id20">[1]</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.user_model.UserProfile.alt_phone">alt_phone (ibm_watsonx_data_integration.cpd_models.user_model.UserProfile attribute)</a>, <a href="api/models.html#id7">[1]</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.RetentionPolicy.amount">amount (ibm_watsonx_data_integration.cpd_models.job_model.RetentionPolicy attribute)</a>
@@ -410,9 +412,17 @@ document.write(`
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionMetadata.asset_id">asset_id (ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionMetadata attribute)</a>
 
       <ul>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobMetadata.asset_id">(ibm_watsonx_data_integration.cpd_models.job_model.JobMetadata attribute)</a>
+</li>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobRunMetadata.asset_id">(ibm_watsonx_data_integration.cpd_models.job_model.JobRunMetadata attribute)</a>
+</li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_model.EngineMetadata.asset_id">(ibm_watsonx_data_integration.services.streamsets.models.engine_model.EngineMetadata attribute)</a>
 </li>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.EnvironmentMetadata.asset_id">(ibm_watsonx_data_integration.services.streamsets.models.environment_model.EnvironmentMetadata attribute)</a>
+</li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsConnectionMetadata.asset_id">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsConnectionMetadata attribute)</a>
+</li>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlowMetadata.asset_id">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlowMetadata attribute)</a>
 </li>
       </ul></li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job.asset_ref">asset_ref (ibm_watsonx_data_integration.cpd_models.job_model.Job attribute)</a>
@@ -446,6 +456,8 @@ document.write(`
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.common.auth.BaseAuthenticator">BaseAuthenticator (class in ibm_watsonx_data_integration.common.auth)</a>
+</li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.common.auth.BearerTokenAuthenticator">BearerTokenAuthenticator (class in ibm_watsonx_data_integration.common.auth)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.account_model.Account.billing_country_code">billing_country_code (ibm_watsonx_data_integration.cpd_models.account_model.Account attribute)</a>
 </li>
@@ -527,7 +539,7 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypeProperties.connection">connection (ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypeProperties attribute)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.Connection.connection_id">connection_id (ibm_watsonx_data_integration.cpd_models.connections_model.Connection property)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.Connection.connection_id">connection_id (ibm_watsonx_data_integration.cpd_models.connections_model.Connection attribute)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.connection_ids">connection_ids (ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow attribute)</a>
 </li>
@@ -566,6 +578,8 @@ document.write(`
       <li><a href="api/models.html#ibm_watsonx_data_integration.platform.Platform.create_role">create_role() (ibm_watsonx_data_integration.platform.Platform method)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.platform.Platform.create_service_instance">create_service_instance() (ibm_watsonx_data_integration.platform.Platform method)</a>
+</li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.create_subflow">create_subflow() (ibm_watsonx_data_integration.cpd_models.project_model.Project method)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionMetadata.create_time">create_time (ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionMetadata attribute)</a>
 
@@ -693,6 +707,8 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_environment">delete_environment() (ibm_watsonx_data_integration.cpd_models.project_model.Project method)</a>
 </li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_environments">delete_environments() (ibm_watsonx_data_integration.cpd_models.project_model.Project method)</a>
+</li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.platform.Platform.delete_file">delete_file() (ibm_watsonx_data_integration.platform.Platform method)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_flow">delete_flow() (ibm_watsonx_data_integration.cpd_models.project_model.Project method)</a>
@@ -707,14 +723,16 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.platform.Platform.delete_service_instance">delete_service_instance() (ibm_watsonx_data_integration.platform.Platform method)</a>
 </li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_subflow">delete_subflow() (ibm_watsonx_data_integration.cpd_models.project_model.Project method)</a>
+</li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Service.deleted_at">deleted_at (ibm_watsonx_data_integration.cpd_models.service_model.Service attribute)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Service.deleted_by">deleted_by (ibm_watsonx_data_integration.cpd_models.service_model.Service attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobConfiguration.deployment_job_definition_id">deployment_job_definition_id (ibm_watsonx_data_integration.cpd_models.job_model.JobConfiguration attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.access_groups_model.AccessGroup.description">description (ibm_watsonx_data_integration.cpd_models.access_groups_model.AccessGroup attribute)</a>
 
       <ul>
@@ -730,13 +748,19 @@ document.write(`
 </li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.FunctionalID.description">(ibm_watsonx_data_integration.cpd_models.connections_model.FunctionalID attribute)</a>
 </li>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job.description">(ibm_watsonx_data_integration.cpd_models.job_model.Job property)</a>
+</li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobMetadata.description">(ibm_watsonx_data_integration.cpd_models.job_model.JobMetadata attribute)</a>
 </li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.description">(ibm_watsonx_data_integration.cpd_models.project_model.Project attribute)</a>
 </li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.role_model.Role.description">(ibm_watsonx_data_integration.cpd_models.role_model.Role attribute)</a>
 </li>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine.description">(ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine property)</a>
+</li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_model.EngineMetadata.description">(ibm_watsonx_data_integration.services.streamsets.models.engine_model.EngineMetadata attribute)</a>
+</li>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.description">(ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment property)</a>
 </li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.EnvironmentMetadata.description">(ibm_watsonx_data_integration.services.streamsets.models.environment_model.EnvironmentMetadata attribute)</a>
 </li>
@@ -763,6 +787,8 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.duplicate_flow">duplicate_flow() (ibm_watsonx_data_integration.cpd_models.project_model.Project method)</a>
 </li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.duplicate_subflow">duplicate_subflow() (ibm_watsonx_data_integration.cpd_models.project_model.Project method)</a>
+</li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobRun.duration">duration (ibm_watsonx_data_integration.cpd_models.job_model.JobRun attribute)</a>
 </li>
   </ul></td>
@@ -787,7 +813,7 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.engine_heartbeat_interval">engine_heartbeat_interval (ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment attribute)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine.engine_id">engine_id (ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine property)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine.engine_id">engine_id (ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine attribute)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.engine_properties">engine_properties (ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment attribute)</a>
 </li>
@@ -829,11 +855,9 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.environment">environment (ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow property)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.environment_id">environment_id (ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment property)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.environment_id">environment_id (ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment attribute)</a>
 
       <ul>
-        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.EnvironmentMetadata.environment_id">(ibm_watsonx_data_integration.services.streamsets.models.environment_model.EnvironmentMetadata attribute)</a>
-</li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.environment_id">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow attribute)</a>
 </li>
       </ul></li>
@@ -897,12 +921,8 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.user_model.UserProfile.first_name">first_name (ibm_watsonx_data_integration.cpd_models.user_model.UserProfile attribute)</a>, <a href="api/models.html#id9">[1]</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.flow_id">flow_id (ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow property)</a>
-
-      <ul>
-        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlowMetadata.flow_id">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlowMetadata attribute)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.flow_id">flow_id (ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow attribute)</a>
 </li>
-      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.flows_model.Flows">Flows (class in ibm_watsonx_data_integration.cpd_models.flows_model)</a>
@@ -927,6 +947,8 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.Connection.gateway_id">gateway_id (ibm_watsonx_data_integration.cpd_models.connections_model.Connection attribute)</a>
 </li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator.generate">generate() (ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator method)</a>
+</li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.generator">generator (ibm_watsonx_data_integration.cpd_models.project_model.Project attribute)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.flows_model.Flows.get">get() (ibm_watsonx_data_integration.cpd_models.flows_model.Flows method)</a>
@@ -944,15 +966,19 @@ document.write(`
       <li><a href="api/models.html#ibm_watsonx_data_integration.common.auth.BaseAuthenticator.get_authorization_header">get_authorization_header() (ibm_watsonx_data_integration.common.auth.BaseAuthenticator method)</a>
 
       <ul>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.common.auth.BearerTokenAuthenticator.get_authorization_header">(ibm_watsonx_data_integration.common.auth.BearerTokenAuthenticator method)</a>
+</li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.common.auth.IAMAuthenticator.get_authorization_header">(ibm_watsonx_data_integration.common.auth.IAMAuthenticator method)</a>
 </li>
       </ul></li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.get_color_icon_from_stage_definition">get_color_icon_from_stage_definition() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition static method)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator.get_code">get_code() (ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator method)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.get_engine">get_engine() (ibm_watsonx_data_integration.cpd_models.project_model.Project method)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.get_color_icon_from_stage_definition">get_color_icon_from_stage_definition() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition static method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.get_engine">get_engine() (ibm_watsonx_data_integration.cpd_models.project_model.Project method)</a>
+</li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.platform.Platform.get_engine_version_info">get_engine_version_info() (ibm_watsonx_data_integration.platform.Platform method)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.get_installation_command">get_installation_command() (ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment method)</a>
@@ -1125,8 +1151,6 @@ document.write(`
         <li><a href="api/models.html#module-ibm_watsonx_data_integration.cpd_models.trusted_profile_model">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     ibm_watsonx_data_integration.cpd_models.user_model
 
@@ -1134,11 +1158,20 @@ document.write(`
         <li><a href="api/models.html#module-ibm_watsonx_data_integration.cpd_models.user_model">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     ibm_watsonx_data_integration.platform
 
       <ul>
         <li><a href="api/models.html#module-ibm_watsonx_data_integration.platform">module</a>
+</li>
+      </ul></li>
+      <li>
+    ibm_watsonx_data_integration.services.datastage.codegen.python_generator
+
+      <ul>
+        <li><a href="api/models.html#module-ibm_watsonx_data_integration.services.datastage.codegen.python_generator">module</a>
 </li>
       </ul></li>
       <li>
@@ -1188,15 +1221,23 @@ document.write(`
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.info">info (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition attribute)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypeActionProperties.input">input (ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypeActionProperties attribute)</a>
+
+      <ul>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage.input">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage attribute)</a>
 </li>
+      </ul></li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.input_lanes">input_lanes (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage attribute)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.inputs">inputs (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage property)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageData.instance">instance (ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageData attribute)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.instance_name">instance_name (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage attribute)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage.instance_name">instance_name (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage attribute)</a>
+
+      <ul>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.instance_name">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage attribute)</a>
 </li>
+      </ul></li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError.instanceName">instanceName (ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError attribute)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.Connection.interaction_properties">interaction_properties (ibm_watsonx_data_integration.cpd_models.connections_model.Connection attribute)</a>
@@ -1221,11 +1262,9 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_model.EngineMetrics.job_count">job_count (ibm_watsonx_data_integration.services.streamsets.models.engine_model.EngineMetrics attribute)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job.job_id">job_id (ibm_watsonx_data_integration.cpd_models.job_model.Job property)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job.job_id">job_id (ibm_watsonx_data_integration.cpd_models.job_model.Job attribute)</a>
 
       <ul>
-        <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobMetadata.job_id">(ibm_watsonx_data_integration.cpd_models.job_model.JobMetadata attribute)</a>
-</li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobRun.job_id">(ibm_watsonx_data_integration.cpd_models.job_model.JobRun attribute)</a>
 </li>
       </ul></li>
@@ -1237,16 +1276,12 @@ document.write(`
         <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobRun.job_parameters">(ibm_watsonx_data_integration.cpd_models.job_model.JobRun attribute)</a>
 </li>
       </ul></li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobRun.job_run_id">job_run_id (ibm_watsonx_data_integration.cpd_models.job_model.JobRun property)</a>
-
-      <ul>
-        <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobRunMetadata.job_run_id">(ibm_watsonx_data_integration.cpd_models.job_model.JobRunMetadata attribute)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobRun.job_run_id">job_run_id (ibm_watsonx_data_integration.cpd_models.job_model.JobRun attribute)</a>
 </li>
-      </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job.job_runs">job_runs (ibm_watsonx_data_integration.cpd_models.job_model.Job property)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job.job_type">job_type (ibm_watsonx_data_integration.cpd_models.job_model.Job attribute)</a>
 
       <ul>
@@ -1503,6 +1538,8 @@ document.write(`
 </li>
         <li><a href="api/models.html#module-ibm_watsonx_data_integration.platform">ibm_watsonx_data_integration.platform</a>
 </li>
+        <li><a href="api/models.html#module-ibm_watsonx_data_integration.services.datastage.codegen.python_generator">ibm_watsonx_data_integration.services.datastage.codegen.python_generator</a>
+</li>
         <li><a href="api/models.html#module-ibm_watsonx_data_integration.services.streamsets.models.configuration">ibm_watsonx_data_integration.services.streamsets.models.configuration</a>
 </li>
         <li><a href="api/models.html#module-ibm_watsonx_data_integration.services.streamsets.models.engine_model">ibm_watsonx_data_integration.services.streamsets.models.engine_model</a>
@@ -1535,6 +1572,8 @@ document.write(`
 </li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DiscoveredAsset.name">(ibm_watsonx_data_integration.cpd_models.connections_model.DiscoveredAsset attribute)</a>
 </li>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job.name">(ibm_watsonx_data_integration.cpd_models.job_model.Job property)</a>
+</li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobMetadata.name">(ibm_watsonx_data_integration.cpd_models.job_model.JobMetadata attribute)</a>
 </li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobParameter.name">(ibm_watsonx_data_integration.cpd_models.job_model.JobParameter attribute)</a>
@@ -1553,7 +1592,11 @@ document.write(`
 </li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.trusted_profile_model.TrustedProfile.name">(ibm_watsonx_data_integration.cpd_models.trusted_profile_model.TrustedProfile attribute)</a>
 </li>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine.name">(ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine property)</a>
+</li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_model.EngineMetadata.name">(ibm_watsonx_data_integration.services.streamsets.models.engine_model.EngineMetadata attribute)</a>
+</li>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.name">(ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment property)</a>
 </li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.EnvironmentMetadata.name">(ibm_watsonx_data_integration.services.streamsets.models.environment_model.EnvironmentMetadata attribute)</a>
 </li>
@@ -1597,7 +1640,11 @@ document.write(`
 </li>
       </ul></li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypeActionProperties.output">output (ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypeActionProperties attribute)</a>
+
+      <ul>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage.output">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage attribute)</a>
 </li>
+      </ul></li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.output_lanes">output_lanes (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage attribute)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobConfiguration.outputs">outputs (ibm_watsonx_data_integration.cpd_models.job_model.JobConfiguration attribute)</a>
@@ -1684,10 +1731,12 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.platform.Platform">Platform (class in ibm_watsonx_data_integration.platform)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageWithPredicates.predicates">predicates (ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageWithPredicates property)</a>
 </li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.preview">preview() (ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition.previewable">previewable (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PipelineDefinition attribute)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_model.LibraryDefinitions.process_library_definitions">process_library_definitions() (ibm_watsonx_data_integration.services.streamsets.models.engine_model.LibraryDefinitions static method)</a>
@@ -1695,6 +1744,8 @@ document.write(`
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionMetadata.project_id">project_id (ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionMetadata attribute)</a>
 
       <ul>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.project_id">(ibm_watsonx_data_integration.cpd_models.project_model.Project attribute)</a>
+</li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_model.EngineMetadata.project_id">(ibm_watsonx_data_integration.services.streamsets.models.engine_model.EngineMetadata attribute)</a>
 </li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.EnvironmentMetadata.project_id">(ibm_watsonx_data_integration.services.streamsets.models.environment_model.EnvironmentMetadata attribute)</a>
@@ -1729,6 +1780,12 @@ document.write(`
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.public">public (ibm_watsonx_data_integration.cpd_models.project_model.Project attribute)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.codegen.generator.PythonGenerator">PythonGenerator (class in ibm_watsonx_data_integration.codegen.generator)</a>
+
+      <ul>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator">(class in ibm_watsonx_data_integration.services.datastage.codegen.python_generator)</a>
+</li>
+      </ul></li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGeneratorConfig">PythonGeneratorConfig (class in ibm_watsonx_data_integration.services.datastage.codegen.python_generator)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1838,6 +1895,8 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Service.restored_by">restored_by (ibm_watsonx_data_integration.cpd_models.service_model.Service attribute)</a>
 </li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.role_model.Role.role_id">role_id (ibm_watsonx_data_integration.cpd_models.role_model.Role attribute)</a>
+</li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.role_model.Role.role_type">role_type (ibm_watsonx_data_integration.cpd_models.role_model.Role attribute)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.role_model.Roles">Roles (class in ibm_watsonx_data_integration.cpd_models.role_model)</a>
@@ -1900,7 +1959,11 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.EngineProperties.serialize_stagelibs">serialize_stagelibs() (ibm_watsonx_data_integration.services.streamsets.models.environment_model.EngineProperties method)</a>
 </li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.service_id_model.ServiceID.service_id">service_id (ibm_watsonx_data_integration.cpd_models.service_id_model.ServiceID attribute)</a>
+</li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.platform.Platform.service_ids">service_ids (ibm_watsonx_data_integration.platform.Platform property)</a>
+</li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Service.service_instance_id">service_instance_id (ibm_watsonx_data_integration.cpd_models.service_model.Service attribute)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.platform.Platform.service_instances">service_instances (ibm_watsonx_data_integration.platform.Platform property)</a>
 </li>
@@ -1988,8 +2051,12 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.stage_libs">stage_libs (ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment attribute)</a>
 </li>
-      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.stage_name">stage_name (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage attribute)</a>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage.stage_name">stage_name (ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage attribute)</a>
+
+      <ul>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.stage_name">(ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage attribute)</a>
 </li>
+      </ul></li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.stage_version">stage_version (ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage attribute)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StageClassDefault">StageClassDefault (in module ibm_watsonx_data_integration.services.streamsets.models.flow_model)</a>
@@ -2077,6 +2144,8 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.user_model.UserProfile.sub_state">sub_state (ibm_watsonx_data_integration.cpd_models.user_model.UserProfile attribute)</a>, <a href="api/models.html#id18">[1]</a>
 </li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.subflows">subflows (ibm_watsonx_data_integration.cpd_models.project_model.Project property)</a>
+</li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.account_model.Account.subscription_id">subscription_id (ibm_watsonx_data_integration.cpd_models.account_model.Account attribute)</a>
 
       <ul>
@@ -2163,6 +2232,8 @@ document.write(`
       </ul></li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobRun.total_stages">total_stages (ibm_watsonx_data_integration.cpd_models.job_model.JobRun attribute)</a>
 </li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.trusted_profile_model.TrustedProfile.trusted_profile_id">trusted_profile_id (ibm_watsonx_data_integration.cpd_models.trusted_profile_model.TrustedProfile attribute)</a>
+</li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.platform.Platform.trusted_profiles">trusted_profiles (ibm_watsonx_data_integration.platform.Platform property)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.trusted_profile_model.TrustedProfiles">TrustedProfiles (class in ibm_watsonx_data_integration.cpd_models.trusted_profile_model)</a>
@@ -2223,6 +2294,8 @@ document.write(`
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.platform.Platform.update_role">update_role() (ibm_watsonx_data_integration.platform.Platform method)</a>
 </li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_subflow">update_subflow() (ibm_watsonx_data_integration.cpd_models.project_model.Project method)</a>
+</li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.user_model.UserProfile.update_user_settings">update_user_settings() (ibm_watsonx_data_integration.cpd_models.user_model.UserProfile method)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.account_model.AccountMetadata.updated_at">updated_at (ibm_watsonx_data_integration.cpd_models.account_model.AccountMetadata attribute)</a>
@@ -2233,14 +2306,14 @@ document.write(`
         <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Service.updated_at">(ibm_watsonx_data_integration.cpd_models.service_model.Service attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.account_model.AccountMetadata.updated_by">updated_by (ibm_watsonx_data_integration.cpd_models.account_model.AccountMetadata attribute)</a>
 
       <ul>
         <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Service.updated_by">(ibm_watsonx_data_integration.cpd_models.service_model.Service attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#ibm_watsonx_data_integration.platform.Platform.upload_file">upload_file() (ibm_watsonx_data_integration.platform.Platform method)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.account_model.AccountMetadata.url">url (ibm_watsonx_data_integration.cpd_models.account_model.AccountMetadata attribute)</a>
@@ -2291,6 +2364,8 @@ document.write(`
       </ul></li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.validate_flow">validate_flow() (ibm_watsonx_data_integration.cpd_models.project_model.Project method)</a>
 </li>
+      <li><a href="api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.ValidationResult">ValidationResult (class in ibm_watsonx_data_integration.services.streamsets.models.flow_model)</a>
+</li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobParameter.value">value (ibm_watsonx_data_integration.cpd_models.job_model.JobParameter attribute)</a>
 </li>
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.ParameterSet.value_set">value_set (ibm_watsonx_data_integration.cpd_models.job_model.ParameterSet attribute)</a>
@@ -2302,6 +2377,8 @@ document.write(`
       <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionsServiceInfo.version">version (ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionsServiceInfo attribute)</a>
 
       <ul>
+        <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job.version">(ibm_watsonx_data_integration.cpd_models.job_model.Job property)</a>
+</li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobConfiguration.version">(ibm_watsonx_data_integration.cpd_models.job_model.JobConfiguration attribute)</a>
 </li>
         <li><a href="api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobMetadata.version">(ibm_watsonx_data_integration.cpd_models.job_model.JobMetadata attribute)</a>

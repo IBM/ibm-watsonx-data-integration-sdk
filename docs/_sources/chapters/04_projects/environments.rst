@@ -39,6 +39,7 @@ This method returns a :py:class:`~ibm_watsonx_data_integration.services.streamse
     >>> env = project.create_environment(
     ...     name='Sample',
     ...     # Optional parameters - see API Reference for more optional parameters
+    ...     engine_version=engine_version,
     ...     description='Basic env.',
     ...     stage_libs=[
     ...         'streamsets-datacollector-basic-lib',
@@ -143,10 +144,10 @@ You can retrieve the run command via the :py:class:`~ibm_watsonx_data_integratio
    The environment variable should contain the API key you generated for :ref:`authenticating <getting_started_and_tutorials__authentication>` with the watsonx.data integration platform.
 
 
-Deleting an Environment
+Deleting an Environments
 -----------------------
 
-To remove an environment, use the
+To remove a single environment, use the
 :py:meth:`Project.delete_environment() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_environment>` method.
 The delete method returns an API response, which you can insepct to verify the status code.
 
@@ -155,6 +156,14 @@ The delete method returns an API response, which you can insepct to verify the s
     >>> project.delete_environment(env)
     <Response [200]>
 
+To remove multiple environments at once, use the
+:py:meth:`Project.delete_environments() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_environments>` method.
+This method accepts any number of Environment instances and returns a single HTTP response.
+
+.. code-block:: python
+
+    >>> project.delete_environments(env1, env2, env3)
+    <Response [200]>
 
 .. _retrieving_available_engine_versions:
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Flows &#8212; ibm-watsonx-data-integration 1.0.0b documentation</title>
+    <title>Flows &#8212; ibm-watsonx-data-integration 1.0.0b2 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=10856860"></script>
+    <script src="../../_static/documentation_options.js?v=28e194a7"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0b</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0b2</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -177,7 +177,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/platform.html">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/python_code_generation.html">Python Code Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/code_generation.html">Code Generation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -298,6 +298,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-a-flow">Duplicating a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-flow">Deleting a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validating-a-flow">Validating a Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#previewing-a-flow">Previewing a flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-error-records">Handling Error Records</a></li>
 </ul>
             </nav>
@@ -326,6 +327,7 @@ A flow is comprised of multiple stages with each stage defining how data is hand
 <li><p>Duplicating a flow</p></li>
 <li><p>Deleting a flow</p></li>
 <li><p>Validating a flow</p></li>
+<li><p>Previewing a flow</p></li>
 <li><p>Handling error records</p></li>
 </ul>
 </dd>
@@ -443,18 +445,37 @@ to the <a class="reference internal" href="../../api/models.html#ibm_watsonx_dat
 <a class="reference internal image-reference" href="../../_images/validate_flow_button.png"><img alt="Screenshot of the validate button." class="align-center" src="../../_images/validate_flow_button.png" style="width: 100%;" />
 </a>
 <p>To validate a flow via the SDK, you need to update a flow, and then call the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.validate" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.validate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StreamsetsFlow.validate()</span></code></a> method.
-This will return a list of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError"><code class="xref py py-class docutils literal notranslate"><span class="pre">FlowValidationError</span></code></a> instances if there are any errors.</p>
+This will return a <code class="xref py py-class docutils literal notranslate"><span class="pre">ValidationResult</span></code> object.
+This object contains a <code class="docutils literal notranslate"><span class="pre">issues</span></code> attribute that contains a list of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError"><code class="xref py py-class docutils literal notranslate"><span class="pre">FlowValidationError</span></code></a> instances if there are any errors.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>
 <span class="go">Trash_01()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">new_flow</span><span class="p">)</span>
 <span class="go">&lt;Response [200]&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
-<span class="go">[FlowValidationError(type=&#39;stageIssues&#39;, instanceName=&#39;Trash_01&#39;, humanReadableMessage=&#39;The first stage must be an origin&#39;), FlowValidationError(type=&#39;stageIssues&#39;, instanceName=&#39;Trash_01&#39;, humanReadableMessage=&#39;Target must have input streams&#39;)]</span>
+<span class="go">ValidationResult(success=False, issues=[FlowValidationError(type=&#39;stageIssues&#39;, instanceName=&#39;Trash_01&#39;, humanReadableMessage=&#39;The first stage must be an origin&#39;), FlowValidationError(type=&#39;stageIssues&#39;, instanceName=&#39;Trash_01&#39;, humanReadableMessage=&#39;Target must have input streams&#39;)], message=&#39;Validation Failed&#39;)</span>
+</pre></div>
+</div>
+</section>
+<section id="previewing-a-flow">
+<span id="preparing-data-flows-validating-a-flow"></span><h2>Previewing a flow<a class="headerlink" href="#previewing-a-flow" title="Link to this heading">#</a></h2>
+<p>In the UI, you can preview a flow by hitting the “Preview” icon.</p>
+<a class="reference internal image-reference" href="../../_images/preview_flow_button.png"><img alt="Screenshot of the preview button." class="align-center" src="../../_images/preview_flow_button.png" style="width: 100%;" />
+</a>
+<p>To preview a flow via the SDK, you need to call <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.preview" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.preview"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StreamsetsFlow.preview()</span></code></a> method.
+This will return a list of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage"><code class="xref py py-class docutils literal notranslate"><span class="pre">PreviewStage</span></code></a> instances.
+Each PreviewStage provides access to its <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage.input" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage.input"><code class="xref py py-attr docutils literal notranslate"><span class="pre">input</span></code></a> and <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage.output" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage.output"><code class="xref py py-attr docutils literal notranslate"><span class="pre">output</span></code></a> properties, which contain the input and output data for that stage.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">preview</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">preview</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">preview</span>
+<span class="go">[PreviewStage(instance_name=&#39;DevRawDataSource_01&#39;), PreviewStage(instance_name=&#39;Trash_01&#39;)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dev_raw_data_preview</span><span class="p">,</span> <span class="n">trash_preview</span> <span class="o">=</span> <span class="n">preview</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dev_raw_data_preview</span><span class="o">.</span><span class="n">input</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dev_raw_data_preview</span><span class="o">.</span><span class="n">output</span>
+<span class="go">[(&#39;abc&#39;, &#39;xyz&#39;, &#39;lmn&#39;)]</span>
 </pre></div>
 </div>
 </section>
 <section id="handling-error-records">
-<span id="preparing-data-flows-validating-a-flow"></span><h2>Handling Error Records<a class="headerlink" href="#handling-error-records" title="Link to this heading">#</a></h2>
+<span id="preparing-data-flows-previewing-a-flow"></span><h2>Handling Error Records<a class="headerlink" href="#handling-error-records" title="Link to this heading">#</a></h2>
 <p>To edit error record handling on the UI, click the gear icon on the top-right of the screen in a flow’s edit page.</p>
 <a class="reference internal image-reference" href="../../_images/save_flow_button.png"><img alt="Screenshot of the flow creation page." class="align-center" src="../../_images/save_flow_button.png" style="width: 100%;" />
 </a>
@@ -543,6 +564,7 @@ You need to pass either the <code class="docutils literal notranslate"><span cla
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-a-flow">Duplicating a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-flow">Deleting a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validating-a-flow">Validating a Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#previewing-a-flow">Previewing a flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-error-records">Handling Error Records</a></li>
 </ul>
   </nav></div>

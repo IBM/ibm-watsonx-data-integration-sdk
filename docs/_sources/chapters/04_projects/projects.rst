@@ -48,7 +48,7 @@ This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.projec
     ...     project_type='wx'
     ... )
     >>> my_project
-    Project(name='Test Project', ...)
+    Project(..., name='Test Project')
 
 Retrieving Existing Projects
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -71,13 +71,13 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.proj
 
     >>> # Return a list of all projects
     >>> platform.projects
-    [...Project(name='Test Project', ...)...]
+    [...Project(..., name='Test Project')...]
     >>> # Returns first project matching given `name`
-    >>> platform.projects.get(name='Test Project')
-    Project(name='Test Project', ...)
+    >>> platform.projects.get(name="Test Project")
+    Project(..., name='Test Project')
     >>> # Return a list of all projects that match `name`
-    >>> platform.projects.get_all(name='Test Project')
-    [Project(name='Test Project', ...)]
+    >>> platform.projects.get_all(name="Test Project")
+    [Project(..., name='Test Project')]
 
 Updating a Project
 ~~~~~~~~~~~~~~~~~~

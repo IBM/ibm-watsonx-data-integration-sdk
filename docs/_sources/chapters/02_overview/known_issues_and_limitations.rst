@@ -10,8 +10,6 @@ Known Issues
 ~~~~~~~~~~~~
 
 * Users may encounter HTTP 429 errors ('too many requests') when making calls from the SDK - this is actively being mitigated and will be fixed in the next release.
-* The Streaming Python Generator must use triple quotes (""") for SQL strings to avoid syntax issues.
-* When running the Streaming Python Generator on a flow using a JSON data format, it currently returns a JSON literal instead of a "JSON" string.
 
 Limitations
 ~~~~~~~~~~~

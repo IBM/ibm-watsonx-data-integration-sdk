@@ -15,7 +15,6 @@ The SDK provides the following functionality to interact with flows:
     * Duplicating a flow
     * Deleting a flow
     * Validating a flow
-    * Previewing a flow
     * Handling error records
 
 .. _preparing_data__flows__prerequisites:
@@ -190,37 +189,9 @@ This object contains a ``issues`` attribute that contains a list of :py:class:`~
     >>> project.update_flow(new_flow)
     <Response [200]>
     >>> new_flow.validate()
-    ValidationResult(success=False, issues=[FlowValidationError(type='stageIssues', instanceName='Trash_01', humanReadableMessage='The first stage must be an origin'), FlowValidationError(type='stageIssues', instanceName='Trash_01', humanReadableMessage='Target must have input streams')], message='Validation Failed')
+    ValidationResult(success=False, issues=[FlowValidationError(type='stageIssues', instanceName='Trash_01', humanReadableMessage='The first stage must be an origin'), FlowValidationError(type='stageIssues', instanceName='Trash_01', humanReadableMessage='Target must have input streams')], message='Validation failed')
 
 .. _preparing_data__flows__validating_a_flow:
-
-Previewing a flow
-~~~~~~~~~~~~~~~~~
-
-In the UI, you can preview a flow by hitting the "Preview" icon.
-
-.. image:: ../../_static/images/flows/preview_flow_button.png
-   :alt: Screenshot of the preview button.
-   :align: center
-   :width: 100%
-
-To preview a flow via the SDK, you need to call :py:meth:`StreamsetsFlow.preview() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.preview>` method.
-This will return a list of :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage` instances.
-Each PreviewStage provides access to its :py:attr:`input <ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage.input>` and :py:attr:`output <ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage.output>` properties, which contain the input and output data for that stage.
-
-
-.. code-block:: python
-
-    >>> preview = flow.preview()
-    >>> preview
-    [PreviewStage(instance_name='DevRawDataSource_01'), PreviewStage(instance_name='Trash_01')]
-    >>> dev_raw_data_preview, trash_preview = preview
-    >>> dev_raw_data_preview.input
-    >>> dev_raw_data_preview.output
-    [('abc', 'xyz', 'lmn')]
-
-
-.. _preparing_data__flows__previewing_a_flow:
 
 Handling Error Records
 ~~~~~~~~~~~~~~~~~~~~~~

@@ -46,7 +46,7 @@ For more information about roles and actions see `IAM roles and actions <https:/
     ...     actions=['iam-groups.groups.update']
     ... )
     >>> new_role
-    Role(display_name='New Role', role_type='custom_role', actions=['iam-groups.groups.update'], ...)
+    Role(display_name='New Role', role_type='custom_role', actions=['iam-groups.groups.update'])
 
 .. note::
     This method may raise a ``requests.exceptions.HTTPError`` with status code 409 if a role with the same ``name`` or ``display_name`` or identical set of ``actions`` already exists.

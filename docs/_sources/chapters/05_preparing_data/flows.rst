@@ -37,23 +37,34 @@ Creating a Flow
 
 In the UI, you can create a flow by navigating to **Assets -> New asset -> Create a flow**.
 
-Here, you will be required to choose an environment for your flow along with a name and description.
-
-.. image:: ../../_static/images/flows/create_flow.png
-   :alt: Screenshot of the flow creation page.
-   :align: center
-   :width: 100%
-
 In the SDK, you can create a flow from a :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object using the
 :py:meth:`Project.create_flow() <ibm_watsonx_data_integration.cpd_models.project_model.Project.create_flow>` method.
-You are required to supply a ``name`` and ``environment`` parameters and an optional ``description`` parameter.
-This method will return a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow` instance.
+You are required to supply a ``name`` parameter and an optional ``description`` parameter.
+You should also specify a ``flow_type`` parameter which decides what type of flow you will get.
+    * If ``flow_type='streamsets'``, then you get a streaming flow of the :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow` instance.
+        * If no ``flow_type`` is specified, this type of flow is returned by default.
+
+        .. warning::
+            Note that creating streaming flows in the UI requires setting an environment:
+
+            .. image:: ../../_static/images/flows/create_flow.png
+                :alt: Screenshot of the flow creation page.
+                :align: center
+                :width: 100%
+
+            Therefore, an ``environment`` parameter is also necessary for streaming flows.
+    * If ``flow_type='datastage'``, then you get a batch flow of the :py:class:`~ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow` instance.
+
+This method will return a :py:class:`~ibm_watsonx_data_integration.cpd_models.flow_model.Flow` of the specified flow subclass according to ``flow_type``.
 
 .. code-block:: python
 
     >>> new_flow = project.create_flow(name='My first flow', description='optional description', environment=environment)
     >>> new_flow
     StreamsetsFlow(name='My first flow', description='optional description', flow_id=..., engine_version=...)
+    >>> new_flow_2 = project.create_flow(name='My second flow', description='optional description', environment=None, flow_type='datastage')
+    >>> new_flow_2
+    DataStageFlow(..., name='My second flow', description='optional description', flow_id=...)
 
 .. _preparing_data__flows__retrieving_a_flow:
 
@@ -62,16 +73,19 @@ Retrieving Flows
 
 Flows can be retrieved through a :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object using the
 :py:attr:`Project.flows <ibm_watsonx_data_integration.cpd_models.project_model.Project.flows>` property.
-You can also retrieve a single flow using the :py:meth:`Project.flows.get() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlows.get>` method
+You can also retrieve a single flow using the :py:meth:`Project.flows.get() <ibm_watsonx_data_integration.cpd_models.flows_model.Flows.get>` method
 which requires the ``flow_id`` parameter.
 
 .. code-block:: python
 
     >>> project.flows  # a list of all the flows
-    [...StreamsetsFlow(name='My first flow', description='optional description', ...)...]
+    [...StreamsetsFlow(name='My first flow', description='optional description', ...)...DataStageFlow(..., name='My second flow', description='optional description', ...)...]
 
     >>> project.flows.get(name='My first flow')
     StreamsetsFlow(name='My first flow', description='optional description', ...)
+
+    >>> project.flows.get(name='My second flow')
+    DataStageFlow(..., name='My second flow', description='optional description', ...)
 
 .. _preparing_data__flows__editing_a_flow:
 
@@ -88,9 +102,8 @@ For starters, you can edit a flow's attributes like ``name`` or ``description``.
     >>> new_flow
     StreamsetsFlow(name='My first flow', description='new description for the flow', ...)
 
-You can edit a flow's configuration through the :py:attr:`StreamsetsFlow.configuration <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.configuration>` property.
-This property returns a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration` object which encapsulates a flow's configuration.
-You can print out the configuration and edit it similar to a :py:class:`dict`.
+Because streaming flows have many properties related to pipeline, engines, etc., you can edit a streaming flow's configuration through the :py:attr:`Flow.configuration <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.configuration>` property. This property returns a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration` object which encapsulates a flow's configuration.
+You can print out the configuration and edit it similarly to a :py:class:`dict`.
 
 .. code-block:: python
 
@@ -98,7 +111,7 @@ You can print out the configuration and edit it similar to a :py:class:`dict`.
     True
     >>> new_flow.configuration['retry_pipeline_on_error'] = False
 
-Finally, you can edit a flow by editing its stages.
+Finally, you can edit any flow by editing its stages.
 This can include adding a stage, removing a stage, updating a stage's configuration or connecting a stage in a different way than before.
 All the operations described are covered in the :ref:`Stage <preparing_data__stages>` documentation.
 
@@ -114,7 +127,7 @@ In the UI, you can update a flow by making changes to the flow and hitting the '
    :align: center
    :width: 100%
 
-In the SDK, you can make any changes to a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow` instance
+In the SDK, you can make any changes to a :py:class:`~ibm_watsonx_data_integration.cpd_models.flow_model.Flow` instance
 in memory and update it by passing this object to :py:meth:`Project.update_flow() <ibm_watsonx_data_integration.cpd_models.project_model.Project.update_flow>` method.
 
 This method returns an HTTP response indicating the status of the update operation.
@@ -132,11 +145,11 @@ This method returns an HTTP response indicating the status of the update operati
 Duplicating a Flow
 ~~~~~~~~~~~~~~~~~~
 
-To duplicate a flow using the SDK, you need to pass a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow` instance
+To duplicate a flow using the SDK, you need to pass a :py:class:`~ibm_watsonx_data_integration.cpd_models.flow_model.Flow` instance
 to the :py:meth:`Project.duplicate_flow() <ibm_watsonx_data_integration.cpd_models.project_model.Project.duplicate_flow>` method
 along with the ``name`` parameter for the name of the new flow and an optional ``description`` parameter.
 
-This will duplicate a flow and return a new instance of :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow`.
+This will duplicate a flow and return a new instance of :py:class:`~ibm_watsonx_data_integration.cpd_models.flow_model.Flow`.
 
 .. code-block:: python
 
@@ -156,8 +169,7 @@ To delete a flow in the UI, you can go to **Assets**, choose a flow and click on
    :align: center
    :width: 100%
 
-To delete a flow via the SDK, you need to pass a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow` instance
-to the :py:meth:`Project.delete_flow() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_flow>` method.
+To delete a flow via the SDK, you need to pass a :py:class:`~ibm_watsonx_data_integration.cpd_models.flow_model.Flow` instance to the :py:meth:`Project.delete_flow() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_flow>` method.
 
 This method returns an HTTP response indicating the status of the update operation.
 
@@ -166,20 +178,20 @@ This method returns an HTTP response indicating the status of the update operati
     >>> project.delete_flow(duplicated_flow)
     <Response [204]>
 
-.. _preparing_data__flows__handling_error_records:
+.. _preparing_data__flows__validating_a_flow:
 
-Validating a Flow
-~~~~~~~~~~~~~~~~~
+Validating a Flow (Streaming)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the UI, you can update a flow by making changes to the flow and hitting the 'Validate' icon to validate the flow.
+In the UI, you can validate a streaming flow by making changes to the flow and hitting the 'Validate' icon to validate the flow.
 
 .. image:: ../../_static/images/flows/validate_flow_button.png
    :alt: Screenshot of the validate button.
    :align: center
    :width: 100%
 
-To validate a flow via the SDK, you need to update a flow, and then call the :py:meth:`StreamsetsFlow.validate() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.validate>` method.
-This will return a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.ValidationResult` object.
+To validate a streaming flow via the SDK, you need to update a flow, and then call the :py:meth:`StreamsetsFlow.validate() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.validate>` method.
+This will return a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.ValidationResult` object.
 This object contains a ``issues`` attribute that contains a list of :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError` instances if there are any errors.
 
 .. code-block:: python
@@ -191,10 +203,60 @@ This object contains a ``issues`` attribute that contains a list of :py:class:`~
     >>> new_flow.validate()
     ValidationResult(success=False, issues=[FlowValidationError(type='stageIssues', instanceName='Trash_01', humanReadableMessage='The first stage must be an origin'), FlowValidationError(type='stageIssues', instanceName='Trash_01', humanReadableMessage='Target must have input streams')], message='Validation failed')
 
-.. _preparing_data__flows__validating_a_flow:
+.. _preparing_data__flows__previewing_a_flow:
 
-Handling Error Records
-~~~~~~~~~~~~~~~~~~~~~~
+
+
+Previewing a flow
+~~~~~~~~~~~~~~~~~
+
+In the UI, you can preview a flow by hitting the 'Preview' icon.
+
+.. image:: ../../_static/images/flows/preview_flow_button.png
+   :alt: Screenshot of the preview button.
+   :align: center
+   :width: 100%
+
+To preview a flow via the SDK, you need to call :py:meth:`StreamsetsFlow.preview() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.preview>` method.
+This will return a list of :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage` instances.
+Each PreviewStage provides access to its :py:attr:`input <ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage.input>` and :py:attr:`output <ibm_watsonx_data_integration.services.streamsets.models.flow_model.PreviewStage.output>` properties, which contain the input and output data for that stage.
+
+
+.. code-block:: python
+
+    >>> preview = flow.preview()
+    >>> preview
+    [PreviewStage(instance_name='DevRawDataSource_01'), PreviewStage(instance_name='Trash_01')]
+    >>> dev_raw_data_preview, trash_preview = preview
+    >>> dev_raw_data_preview.input
+    >>> dev_raw_data_preview.output
+    [('abc', 'xyz', 'lmn')]
+
+.. _preparing_data__flows__exporting_flows:
+
+Exporting Flows
+~~~~~~~~~~~~~~~
+
+To export a flow via the SDK, you need to call the :py:meth:`Platform.export_streaming_flows() <ibm_watsonx_data_integration.platform.Platform.export_streaming_flows>` method and
+must pass in either an individual :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow` object,
+a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlows` object, or a list of
+:py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow` objects. You may also choose to set the
+``with_plain_text_credentials`` parameter to export plain text credentials, the ``destination`` parameter to export the flow to a specific location,
+and the ``stream`` parameter if they would like to stream the zip file data. The function will return the location the exported zip file was written to.
+
+.. skip: start 'Export Flows API endpoint not on Prod yet'
+
+.. code-block:: python
+
+    >>> project.export_streaming_flows(flows=project.flows)
+    PosixPath('flows.zip')
+
+.. skip: end
+
+.. _preparing_data__flows__handling_error_records:
+
+Handling Error Records (Streaming)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To edit error record handling on the UI, click the gear icon on the top-right of the screen in a flow's edit page.
 
@@ -245,3 +307,19 @@ Finally, you can view the current error stage for a flow at any point using the 
 
     >>> new_flow.error_stage
     WritetoFile_ErrorStage()
+
+.. _preparing_data__flows__compiling_a_flow:
+
+Compiling a Flow (Batch)
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the UI, you can compile a batch flow by hitting the 'Compile' icon to compile the flow. Compiling is required before running a flow, so pressing the 'Run' icon in the UI will automatically compile first.
+
+.. image:: ../../_static/images/flows/compile_batch_flow.png
+   :alt: Screenshot of the compile button.
+   :align: center
+   :width: 100%
+
+Because of this UI behavior, in the SDK, making a job out of a DataStage flow will **automatically compile** the flow for you.
+However, if you wish to just compile a flow without creating or running a job for it, you can still call the :py:meth:`DataStageFlow.compile() <ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.Datastage.compile>` method.
+This will return an HTTP response indicating the status of the compile operation.

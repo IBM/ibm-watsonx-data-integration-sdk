@@ -37,7 +37,7 @@ first select the appropriate project from the :py:class:`~ibm_watsonx_data_integ
 then use the :py:meth:`Project.create_job() <ibm_watsonx_data_integration.cpd_models.project_model.Project.create_job>`
 method to instantiate the job.
 
-You must specify a reference to :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow` object.
+You must specify a reference to :py:class:`~ibm_watsonx_data_integration.cpd_models.flow_model.Flow` object.
 Additionally, you can provide optional configuration such as environment variables or job parameters.
 This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_model.Job` object.
 

@@ -11,6 +11,7 @@ This section covers how to manage flows and their stages, work with datasource t
 
    flows
    stages
+   batch_schemas
    datasources
    connections
    files

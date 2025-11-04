@@ -12,4 +12,4 @@ This section is designed to help you get started using the ``ibm-watsonx-data-in
    authentication
    platform
    service_instances
-   python_code_generation
+   code_generation

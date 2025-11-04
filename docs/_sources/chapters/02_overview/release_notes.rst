@@ -6,7 +6,7 @@ What's new
 Below you will find release notes for each version of the ``ibm-watsonx-data-integration`` SDK as well as highlights of major features and/or fixes included in each release.
 
 1.0.0b (September 2025)
---------------------
+-----------------------
 * Added support for retrieving, adding, updating and removing batch flows.
 
 * Added support for executing batch flows within a job.

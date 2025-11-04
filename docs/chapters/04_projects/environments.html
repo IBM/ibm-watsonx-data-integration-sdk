@@ -177,7 +177,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/platform.html">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/python_code_generation.html">Python Code Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/code_generation.html">Code Generation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Integration Assets</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -190,6 +190,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/flows.html">Flows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/stages.html">Stages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/batch_schemas.html">Batch Schemas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/files.html">Files</a></li>
@@ -297,7 +298,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-the-engine-installation-command">Retrieving the Engine Installation Command</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-an-environment">Deleting an Environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-an-environments">Deleting an Environments</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-available-engine-versions">Retrieving Available Engine Versions</a></li>
@@ -417,8 +418,8 @@ First, modify properties of the environment instance, then update it using the
 <p>Please be aware that the installation command you retrieve from the Environment requires the <code class="docutils literal notranslate"><span class="pre">SSET_API_KEY</span></code> environment variable to be set for the user executing the command.
 The environment variable should contain the API key you generated for <a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html#getting-started-and-tutorials-authentication"><span class="std std-ref">authenticating</span></a> with the watsonx.data integration platform.</p>
 </div>
-<section id="deleting-an-environment">
-<h3>Deleting an Environment<a class="headerlink" href="#deleting-an-environment" title="Link to this heading">#</a></h3>
+<section id="deleting-an-environments">
+<h3>Deleting an Environments<a class="headerlink" href="#deleting-an-environments" title="Link to this heading">#</a></h3>
 <p>To remove an environment, use the
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_environment" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_environment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_environment()</span></code></a> method.
 The delete method returns an API response, which you can insepct to verify the status code.</p>
@@ -510,7 +511,7 @@ This method takes the engine version name as an argument and returns detailed in
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-the-engine-installation-command">Retrieving the Engine Installation Command</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-an-environment">Deleting an Environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-an-environments">Deleting an Environments</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-available-engine-versions">Retrieving Available Engine Versions</a></li>

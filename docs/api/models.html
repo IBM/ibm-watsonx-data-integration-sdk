@@ -176,7 +176,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../chapters/03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapters/03_getting_started_and_tutorials/platform.html">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapters/03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapters/03_getting_started_and_tutorials/python_code_generation.html">Python Code Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapters/03_getting_started_and_tutorials/code_generation.html">Code Generation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapters/04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -189,6 +189,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapters/05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapters/05_preparing_data/flows.html">Flows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapters/05_preparing_data/stages.html">Stages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapters/05_preparing_data/batch_schemas.html">Batch Schemas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapters/05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapters/05_preparing_data/connections.html">Connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapters/05_preparing_data/files.html">Files</a></li>
@@ -401,6 +402,68 @@ document.write(`
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow">Batch Flow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow"><code class="docutils literal notranslate"><span class="pre">DataStageFlow</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.acp"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.acp</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.description"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.description</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.flow_id"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.flow_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.name"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.rcp"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.rcp</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.add_stage"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.add_stage()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.compile"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.compile()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.create_or_get"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.create_or_get()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.get_compile_info"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.get_compile_info()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.get_compile_status"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.get_compile_status()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.get_link"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.get_link()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.get_links"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.get_links()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.remove_stage"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.remove_stage()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.use_auto_column_propagation"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.use_auto_column_propagation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.use_runtime_column_propagation"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.use_runtime_column_propagation()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlowPayloadExtender"><code class="docutils literal notranslate"><span class="pre">DataStageFlowPayloadExtender</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlowPayloadExtender.extend"><code class="docutils literal notranslate"><span class="pre">DataStageFlowPayloadExtender.extend()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlows"><code class="docutils literal notranslate"><span class="pre">DataStageFlows</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlows.get"><code class="docutils literal notranslate"><span class="pre">DataStageFlows.get()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlows.get_all"><code class="docutils literal notranslate"><span class="pre">DataStageFlows.get_all()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ibm_watsonx_data_integration.services.datastage.codegen.python_generator">Batch Generator</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator"><code class="docutils literal notranslate"><span class="pre">PythonGenerator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator.generate"><code class="docutils literal notranslate"><span class="pre">PythonGenerator.generate()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator.get_code"><code class="docutils literal notranslate"><span class="pre">PythonGenerator.get_code()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGeneratorConfig"><code class="docutils literal notranslate"><span class="pre">PythonGeneratorConfig</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-link">Batch Link</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="docutils literal notranslate"><span class="pre">Link</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.create_schema"><code class="docutils literal notranslate"><span class="pre">Link.create_schema()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.primary"><code class="docutils literal notranslate"><span class="pre">Link.primary()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.reference"><code class="docutils literal notranslate"><span class="pre">Link.reference()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.reject"><code class="docutils literal notranslate"><span class="pre">Link.reject()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-node">Batch Node</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode"><code class="docutils literal notranslate"><span class="pre">StageNode</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.connect_input_to"><code class="docutils literal notranslate"><span class="pre">StageNode.connect_input_to()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.connect_output_to"><code class="docutils literal notranslate"><span class="pre">StageNode.connect_output_to()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.disconnect_input_from"><code class="docutils literal notranslate"><span class="pre">StageNode.disconnect_input_from()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.disconnect_output_from"><code class="docutils literal notranslate"><span class="pre">StageNode.disconnect_output_from()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.get_links_to"><code class="docutils literal notranslate"><span class="pre">StageNode.get_links_to()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.use_connection"><code class="docutils literal notranslate"><span class="pre">StageNode.use_connection()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ibm_watsonx_data_integration.services.datastage.models.schema.schema">Batch Schema</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ibm_watsonx_data_integration.services.streamsets.models.configuration">Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration"><code class="docutils literal notranslate"><span class="pre">Configuration</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration.get"><code class="docutils literal notranslate"><span class="pre">Configuration.get()</span></code></a></li>
@@ -1129,13 +1192,6 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ibm_watsonx_data_integration.codegen.generator">Python Generator</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.codegen.generator.PythonGenerator"><code class="docutils literal notranslate"><span class="pre">PythonGenerator</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.codegen.generator.PythonGenerator.save"><code class="docutils literal notranslate"><span class="pre">PythonGenerator.save()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ibm_watsonx_data_integration.cpd_models.role_model">Role</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.role_model.Role"><code class="docutils literal notranslate"><span class="pre">Role</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.role_model.Role.account_id"><code class="docutils literal notranslate"><span class="pre">Role.account_id</span></code></a></li>
@@ -1217,6 +1273,13 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.service_id_model.ServiceIDs"><code class="docutils literal notranslate"><span class="pre">ServiceIDs</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ibm_watsonx_data_integration.codegen.generator">Streaming Generator</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.codegen.generator.PythonGenerator"><code class="docutils literal notranslate"><span class="pre">PythonGenerator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.codegen.generator.PythonGenerator.save"><code class="docutils literal notranslate"><span class="pre">PythonGenerator.save()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ibm_watsonx_data_integration.cpd_models.trusted_profile_model">Trusted Profile</a><ul class="nav section-nav flex-column">
@@ -1999,6 +2062,457 @@ validated to form a valid model.</p>
 
 </dd></dl>
 
+</section>
+<section id="module-ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow">
+<span id="batch-flow"></span><h2>Batch Flow<a class="headerlink" href="#module-ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow" title="Link to this heading">#</a></h2>
+<dl class="py class pydantic_model">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow">
+<em class="property"><span class="pre">pydantic</span> <span class="pre">model</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.</span></span><span class="sig-name descname"><span class="pre">DataStageFlow</span></span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">FlowComposer</span></code>, <a class="reference internal" href="#ibm_watsonx_data_integration.cpd_models.flow_model.Flow" title="ibm_watsonx_data_integration.cpd_models.flow_model.Flow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code></a></p>
+<p>Represents a batch flow.</p>
+<p>Initialize a DataStage flow.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>project</strong> (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>) – The project for the flow to be created in. If None, then the flow is not created remotely.</p></li>
+<li><p><strong>name</strong> – The flow name.</p></li>
+<li><p><strong>description</strong> – The flow description.</p></li>
+<li><p><strong>flow_type</strong> – The type of flow. This should always be datastage.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.acp">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">acp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.acp" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.description">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.description" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.flow_id">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">flow_id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.flow_id" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.name">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'unnamed_flow'</span></em><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute pydantic_field">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.rcp">
+<em class="property"><span class="pre">field</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rcp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.rcp" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.add_stage">
+<span class="sig-name descname"><span class="pre">add_stage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'Address</span> <span class="pre">Verification'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Aggregator'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Amazon</span> <span class="pre">RDS</span> <span class="pre">for</span> <span class="pre">MySQL'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Amazon</span> <span class="pre">RDS</span> <span class="pre">for</span> <span class="pre">Oracle'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Amazon</span> <span class="pre">RDS</span> <span class="pre">for</span> <span class="pre">PostgreSQL'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Amazon</span> <span class="pre">Redshift'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Amazon</span> <span class="pre">S3'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Apache</span> <span class="pre">Cassandra'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Apache</span> <span class="pre">Cassandra</span> <span class="pre">for</span> <span class="pre">DataStage'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Apache</span> <span class="pre">Derby'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Apache</span> <span class="pre">HBase'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Apache</span> <span class="pre">HDFS'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Apache</span> <span class="pre">Hive'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Apache</span> <span class="pre">Impala'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Apache</span> <span class="pre">Kafka'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Azure</span> <span class="pre">PostgreSQL'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Big</span> <span class="pre">Data</span> <span class="pre">File'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Bloom</span> <span class="pre">Filter'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Box'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Change</span> <span class="pre">Apply'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Change</span> <span class="pre">Capture'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Checksum'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Column</span> <span class="pre">Export'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Column</span> <span class="pre">Generator'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Column</span> <span class="pre">Import'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Combine</span> <span class="pre">Records'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Compare'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Complex</span> <span class="pre">Flat</span> <span class="pre">File'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Compress'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Copy'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Data</span> <span class="pre">Rules'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Data</span> <span class="pre">Service'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Data</span> <span class="pre">set'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'DataStax</span> <span class="pre">Enterprise'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Decode'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Denodo'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Difference'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Distributed</span> <span class="pre">Transaction'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Dremio'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Dropbox'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Elasticsearch'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Encode'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Exasol'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Excel'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Expand'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'External</span> <span class="pre">Filter'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'External</span> <span class="pre">Source'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'External</span> <span class="pre">Target'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'FTP'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'File</span> <span class="pre">set'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Filter'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Funnel'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Generic'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Generic</span> <span class="pre">JDBC'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Generic</span> <span class="pre">S3'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Google</span> <span class="pre">BigQuery'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Google</span> <span class="pre">Cloud</span> <span class="pre">Pub/Sub'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Google</span> <span class="pre">Cloud</span> <span class="pre">Storage'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Google</span> <span class="pre">Looker'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Greenplum'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'HTTP'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Head'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Hierarchical</span> <span class="pre">Data'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Cloud</span> <span class="pre">Data</span> <span class="pre">Engine'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Cloud</span> <span class="pre">Databases</span> <span class="pre">for</span> <span class="pre">DataStax'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Cloud</span> <span class="pre">Databases</span> <span class="pre">for</span> <span class="pre">MongoDB'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Cloud</span> <span class="pre">Databases</span> <span class="pre">for</span> <span class="pre">MySQL'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Cloud</span> <span class="pre">Databases</span> <span class="pre">for</span> <span class="pre">PostgreSQL'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Cloud</span> <span class="pre">Object</span> <span class="pre">Storage'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Cognos</span> <span class="pre">Analytics'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Data</span> <span class="pre">Virtualization'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Data</span> <span class="pre">Virtualization</span> <span class="pre">Manager</span> <span class="pre">for</span> <span class="pre">z/OS'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Db2'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Db2</span> <span class="pre">Big</span> <span class="pre">SQL'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Db2</span> <span class="pre">Event</span> <span class="pre">Store'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Db2</span> <span class="pre">Hosted'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Db2</span> <span class="pre">Warehouse'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Db2</span> <span class="pre">for</span> <span class="pre">DataStage'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Db2</span> <span class="pre">for</span> <span class="pre">i'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Db2</span> <span class="pre">for</span> <span class="pre">z/OS'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Db2</span> <span class="pre">on</span> <span class="pre">Cloud'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Informix'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">MQ'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Match</span> <span class="pre">360'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Netezza</span> <span class="pre">Performance</span> <span class="pre">Server'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Netezza</span> <span class="pre">Performance</span> <span class="pre">Server</span> <span class="pre">for</span> <span class="pre">DataStage'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Planning</span> <span class="pre">Analytics'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">Product</span> <span class="pre">Master'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'IBM</span> <span class="pre">watsonx.data</span> <span class="pre">Presto'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Investigate'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Java</span> <span class="pre">Integration'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Join'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Lookup'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Lookup</span> <span class="pre">file</span> <span class="pre">set'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Make</span> <span class="pre">Subrecord'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Make</span> <span class="pre">Vector'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'MariaDB'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Match</span> <span class="pre">Frequency'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'MatchFreq'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Merge'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Microsoft</span> <span class="pre">Azure</span> <span class="pre">Blob</span> <span class="pre">Storage'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Microsoft</span> <span class="pre">Azure</span> <span class="pre">Cosmos</span> <span class="pre">DB'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Microsoft</span> <span class="pre">Azure</span> <span class="pre">Data</span> <span class="pre">Lake</span> <span class="pre">Storage'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Microsoft</span> <span class="pre">Azure</span> <span class="pre">Databricks'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Microsoft</span> <span class="pre">Azure</span> <span class="pre">File</span> <span class="pre">Storage'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Microsoft</span> <span class="pre">Azure</span> <span class="pre">SQL</span> <span class="pre">Database'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Microsoft</span> <span class="pre">Azure</span> <span class="pre">Synapse</span> <span class="pre">Analytics'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Microsoft</span> <span class="pre">SQL</span> <span class="pre">Server'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'MinIO'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Modify'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'MongoDB'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'MySQL'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'ODBC'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'One-source</span> <span class="pre">Match'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Operational</span> <span class="pre">Decision</span> <span class="pre">Manager'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Oracle'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Oracle</span> <span class="pre">Database</span> <span class="pre">for</span> <span class="pre">DataStage'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Peek'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Pivot</span> <span class="pre">Enterprise'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'PostgreSQL'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Presto'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Promote</span> <span class="pre">Subrecord'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'QSmwi'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Remove</span> <span class="pre">Duplicates'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Rest'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Row</span> <span class="pre">Generator'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'SAP</span> <span class="pre">ASE'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'SAP</span> <span class="pre">BAPI'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'SAP</span> <span class="pre">Bulk</span> <span class="pre">Extract'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'SAP</span> <span class="pre">Delta</span> <span class="pre">Extract'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'SAP</span> <span class="pre">HANA'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'SAP</span> <span class="pre">IDoc'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'SAP</span> <span class="pre">IDoc</span> <span class="pre">Extract'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'SAP</span> <span class="pre">IQ'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'SAP</span> <span class="pre">OData'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Salesforce</span> <span class="pre">API</span> <span class="pre">for</span> <span class="pre">DataStage'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Salesforce.com'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Sample'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Sequential</span> <span class="pre">file'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'SingleStoreDB'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Slowly</span> <span class="pre">Changing</span> <span class="pre">Dimension'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Snowflake'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Sort'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Split</span> <span class="pre">Subrecord'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Split</span> <span class="pre">Vector'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Standardize'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Storage</span> <span class="pre">volume'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Stored</span> <span class="pre">Procedure'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Surrogate</span> <span class="pre">Key</span> <span class="pre">Generator'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Survive'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Switch'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Tableau'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Tail'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Teradata'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Teradata</span> <span class="pre">database</span> <span class="pre">for</span> <span class="pre">DataStage'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Transformer'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Two-source</span> <span class="pre">Match'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Vertica'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Wave</span> <span class="pre">Generator'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Web</span> <span class="pre">Service'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'Write</span> <span class="pre">Range</span> <span class="pre">Map'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'XML</span> <span class="pre">Input'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'XML</span> <span class="pre">Output'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'zOSFile'</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.add_stage" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.compile">
+<span class="sig-name descname"><span class="pre">compile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.compile" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://requests.readthedocs.io/en/latest/api/#requests.Response" title="(in Requests v2.32.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.create_or_get">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_or_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><span class="pre">Project</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'unnamed_flow'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">environment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment" title="ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment"><span class="pre">Environment</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'datastage'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.create_or_get" title="Link to this definition">#</a></dt>
+<dd><p>Either creates the flow with the given name or returns the preexisting flow of that name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow" title="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataStageFlow</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.get_compile_info">
+<span class="sig-name descname"><span class="pre">get_compile_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.get_compile_info" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://requests.readthedocs.io/en/latest/api/#requests.Response" title="(in Requests v2.32.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.get_compile_status">
+<span class="sig-name descname"><span class="pre">get_compile_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.get_compile_status" title="Link to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference external" href="https://requests.readthedocs.io/en/latest/api/#requests.Response" title="(in Requests v2.32.5)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Response</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.get_link">
+<span class="sig-name descname"><span class="pre">get_link</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.get_link" title="Link to this definition">#</a></dt>
+<dd><p>Gets the link between two nodes in the flow. If there are no links or multiple links, it raises an error.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></span>) – Node from which the link originates.</p></li>
+<li><p><strong>destination</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></span>) – Node to which the link points.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The single link between the source and destination nodes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.get_links">
+<span class="sig-name descname"><span class="pre">get_links</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.get_links" title="Link to this definition">#</a></dt>
+<dd><p>Gets all links between two nodes in the flow.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></span>) – Node from which the links originate.</p></li>
+<li><p><strong>destination</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></span>) – Node to which the links point.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<a class="reference internal" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a>]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A list of Links between the source and destination nodes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.remove_stage">
+<span class="sig-name descname"><span class="pre">remove_stage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.remove_stage" title="Link to this definition">#</a></dt>
+<dd><p>Removes a node from the flow.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>node</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></span>) – The node to be removed.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.use_auto_column_propagation">
+<span class="sig-name descname"><span class="pre">use_auto_column_propagation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">acp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.use_auto_column_propagation" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.use_runtime_column_propagation">
+<span class="sig-name descname"><span class="pre">use_runtime_column_propagation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rcp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.use_runtime_column_propagation" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlowPayloadExtender">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.</span></span><span class="sig-name descname"><span class="pre">DataStageFlowPayloadExtender</span></span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlowPayloadExtender" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#ibm_watsonx_data_integration.cpd_models.flow_model.PayloadExtender" title="ibm_watsonx_data_integration.cpd_models.flow_model.PayloadExtender"><code class="xref py py-class docutils literal notranslate"><span class="pre">PayloadExtender</span></code></a></p>
+<p>DataStage flow extender setup also compiles the flow.</p>
+<dl class="field-list simple">
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlowPayloadExtender.extend">
+<span class="sig-name descname"><span class="pre">extend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">payload</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ibm_watsonx_data_integration.cpd_models.flow_model.Flow" title="ibm_watsonx_data_integration.cpd_models.flow_model.Flow"><span class="pre">Flow</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlowPayloadExtender.extend" title="Link to this definition">#</a></dt>
+<dd><p>Here we should modify and return payload for job creation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlows">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.</span></span><span class="sig-name descname"><span class="pre">DataStageFlows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">project</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><span class="pre">Project</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlows" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">CollectionModel</span></code></p>
+<p>Collection of DataStageFlow objects.</p>
+<p>The __init__ of the DataStageFlows class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>project</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a></span>) – The Project object.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlows.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlows.get" title="Link to this definition">#</a></dt>
+<dd><p>Used to get an instant result from the api.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span>) – Optional arguments to be passed to filter the results.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>An inherited instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">streamsets.sdk.sch_models.BaseModel</span></code>.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If instance is not in the list.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlows.get_all">
+<span class="sig-name descname"><span class="pre">get_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlows.get_all" title="Link to this definition">#</a></dt>
+<dd><p>Used to get multiple (all) results from api.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></span>) – Optional other arguments to be passed to filter the results.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>A <code class="xref py py-obj docutils literal notranslate"><span class="pre">list</span></code> of inherited instances of</dt><dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">streamsets.sdk.sch_models.BaseModel</span></code>.</p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-ibm_watsonx_data_integration.services.datastage.codegen.python_generator">
+<span id="batch-generator"></span><h2>Batch Generator<a class="headerlink" href="#module-ibm_watsonx_data_integration.services.datastage.codegen.python_generator" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ibm_watsonx_data_integration.services.datastage.codegen.python_generator.</span></span><span class="sig-name descname"><span class="pre">PythonGenerator</span></span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Converts DataStage flows exported as a flow JSON or ZIP file to Python SDK code.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator.generate" title="Link to this definition">#</a></dt>
+<dd><p>Runs the Python converter, generating Python code and writing it to the specified output path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_path</strong> – The path to the input file. Can be a flow JSON file or a ZIP file containing the flow and its dependencies.</p></li>
+<li><p><strong>output_path</strong> (<em>optional</em>) – The output path where the generated Python code will be written.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the generated code strings.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator.get_code">
+<span class="sig-name descname"><span class="pre">get_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator.get_code" title="Link to this definition">#</a></dt>
+<dd><p>Returns the generated code as a string. Applicable only for JSON inputs.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGeneratorConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ibm_watsonx_data_integration.services.datastage.codegen.python_generator.</span></span><span class="sig-name descname"><span class="pre">PythonGeneratorConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'single_file'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'file_per_flow'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'file_per_flow'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create_job</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_job</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_flow_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'&lt;TODO:</span> <span class="pre">insert</span> <span class="pre">your</span> <span class="pre">api_key&gt;'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'&lt;TODO:</span> <span class="pre">insert</span> <span class="pre">your</span> <span class="pre">project_id&gt;'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGeneratorConfig" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The underlying settngs for the python generator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Literal</span></code>[<code class="docutils literal notranslate"><span class="pre">'single_file'</span></code>, <code class="docutils literal notranslate"><span class="pre">'file_per_flow'</span></code>]</span>, default: <code class="docutils literal notranslate"><span class="pre">'file_per_flow'</span></code>) – The export mode, or how the generated code will be structured. <code class="docutils literal notranslate"><span class="pre">single_file</span></code> puts all code in one file. <code class="docutils literal notranslate"><span class="pre">file_per_flow</span></code> (default) puts each flow in its own file with relevant assets included as needed.</p></li>
+<li><p><strong>create_job</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>, default: <code class="docutils literal notranslate"><span class="pre">True</span></code>) – Whether to create a job for the flow(s).</p></li>
+<li><p><strong>run_job</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>, default: <code class="docutils literal notranslate"><span class="pre">True</span></code>) – Whether to run the created job. Only checked if create_job is True.</p></li>
+<li><p><strong>overwrite</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>, default: <code class="docutils literal notranslate"><span class="pre">False</span></code>) – Whether to overwrite the output path directory.</p></li>
+<li><p><strong>use_flow_name</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></span>, default: <code class="docutils literal notranslate"><span class="pre">True</span></code>) – Whether the flow and jobs use the flow’s original name (applies for zip structure only).</p></li>
+<li><p><strong>api_key</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>, default: <code class="docutils literal notranslate"><span class="pre">'&lt;TODO:</span> <span class="pre">insert</span> <span class="pre">your</span> <span class="pre">api_key&gt;'</span></code>) – Your API key. Provide the API key now or replace the placeholder later.</p></li>
+<li><p><strong>project_id</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></span>, default: <code class="docutils literal notranslate"><span class="pre">'&lt;TODO:</span> <span class="pre">insert</span> <span class="pre">your</span> <span class="pre">project_id&gt;'</span></code>) – Your project ID. Provide the project ID now or replace the placeholder later.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="batch-link">
+<h2>Batch Link<a class="headerlink" href="#batch-link" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ibm_watsonx_data_integration.services.datastage.models.flow.dag.</span></span><span class="sig-name descname"><span class="pre">Link</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DAG</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.create_schema">
+<span class="sig-name descname"><span class="pre">create_schema</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.create_schema" title="Link to this definition">#</a></dt>
+<dd><p>Initializes the schema that the link uses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Schema</span></code></span></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The new link object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.primary">
+<span class="sig-name descname"><span class="pre">primary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.primary" title="Link to this definition">#</a></dt>
+<dd><p>Sets the link type to primary. Modifies the current link object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a></span></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The current link object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.reference">
+<span class="sig-name descname"><span class="pre">reference</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.reference" title="Link to this definition">#</a></dt>
+<dd><p>Sets the link type to reference. Modifies the current link object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a></span></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The current link object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.reject">
+<span class="sig-name descname"><span class="pre">reject</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.reject" title="Link to this definition">#</a></dt>
+<dd><p>Sets the link type to reject. Modifies the current link object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a></span></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The current link object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="batch-node">
+<h2>Batch Node<a class="headerlink" href="#batch-node" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ibm_watsonx_data_integration.services.datastage.models.flow.dag.</span></span><span class="sig-name descname"><span class="pre">StageNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">DAG</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">configuration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BaseModel</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.connect_input_to">
+<span class="sig-name descname"><span class="pre">connect_input_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.connect_input_to" title="Link to this definition">#</a></dt>
+<dd><p>Connects the input of this node to the output of another node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>node</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></span>) – The source node to connect from.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A Link object representing the connection.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.connect_output_to">
+<span class="sig-name descname"><span class="pre">connect_output_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.connect_output_to" title="Link to this definition">#</a></dt>
+<dd><p>Connects the output of this node to the input of another node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>node</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></span>) – The destination node to connect to.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A Link object representing the connection.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.disconnect_input_from">
+<span class="sig-name descname"><span class="pre">disconnect_input_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.disconnect_input_from" title="Link to this definition">#</a></dt>
+<dd><p>Disconnects the input of this node from the output of another node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>src</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></span>) – The source node to disconnect from.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<a class="reference internal" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a>]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The list of Links that were removed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.disconnect_output_from">
+<span class="sig-name descname"><span class="pre">disconnect_output_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dest</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.disconnect_output_from" title="Link to this definition">#</a></dt>
+<dd><p>Disconnects the output of this node from the input of another node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dest</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></span>) – The destination node to disconnect from.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<a class="reference internal" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a>]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The list of Links that were removed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.get_links_to">
+<span class="sig-name descname"><span class="pre">get_links_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dest</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Node</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.get_links_to" title="Link to this definition">#</a></dt>
+<dd><p>Returns:
+All links between this node and the destination node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>[<a class="reference internal" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.use_connection">
+<span class="sig-name descname"><span class="pre">use_connection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ibm_watsonx_data_integration.cpd_models.connections_model.Connection" title="ibm_watsonx_data_integration.cpd_models.connections_model.Connection"><span class="pre">Connection</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.use_connection" title="Link to this definition">#</a></dt>
+<dd><p>Adds a project-level connection to this connector stage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-ibm_watsonx_data_integration.services.datastage.models.schema.schema">
+<span id="batch-schema"></span><h2>Batch Schema<a class="headerlink" href="#module-ibm_watsonx_data_integration.services.datastage.models.schema.schema" title="Link to this heading">#</a></h2>
 </section>
 <section id="module-ibm_watsonx_data_integration.services.streamsets.models.configuration">
 <span id="configuration"></span><h2>Configuration<a class="headerlink" href="#module-ibm_watsonx_data_integration.services.streamsets.models.configuration" title="Link to this heading">#</a></h2>
@@ -6930,42 +7444,6 @@ validated to form a valid model.</p>
 </dd></dl>
 
 </section>
-<section id="module-ibm_watsonx_data_integration.codegen.generator">
-<span id="python-generator"></span><h2>Python Generator<a class="headerlink" href="#module-ibm_watsonx_data_integration.codegen.generator" title="Link to this heading">#</a></h2>
-<p>This module contains PythonGenerator class.</p>
-<dl class="py class">
-<dt class="sig sig-object py" id="ibm_watsonx_data_integration.codegen.generator.PythonGenerator">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ibm_watsonx_data_integration.codegen.generator.</span></span><span class="sig-name descname"><span class="pre">PythonGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ibm_watsonx_data_integration.cpd_models.flow_model.Flow" title="ibm_watsonx_data_integration.cpd_models.flow_model.Flow"><span class="pre">Flow</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ibm_watsonx_data_integration.common.auth.IAMAuthenticator" title="ibm_watsonx_data_integration.common.auth.IAMAuthenticator"><span class="pre">IAMAuthenticator</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.codegen.generator.PythonGenerator" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Flow code generation entrypoint.</p>
-<p>The __init__ of the PythonGenerator class.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>source</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#ibm_watsonx_data_integration.cpd_models.flow_model.Flow" title="ibm_watsonx_data_integration.cpd_models.flow_model.Flow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code></a></span>) – Location from <code class="docutils literal notranslate"><span class="pre">Flow</span></code> definition will be loaded.</p></li>
-<li><p><strong>destination</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></span>) – Location where save generated script.</p></li>
-<li><p><strong>auth</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#ibm_watsonx_data_integration.common.auth.IAMAuthenticator" title="ibm_watsonx_data_integration.common.auth.IAMAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">IAMAuthenticator</span></code></a></span>) – Reference to authenticator object.</p></li>
-<li><p><strong>kwargs</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></span>) – Additional configuration values.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="ibm_watsonx_data_integration.codegen.generator.PythonGenerator.save">
-<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.codegen.generator.PythonGenerator.save" title="Link to this definition">#</a></dt>
-<dd><p>Run code generation then save it to destination.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></span></p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Path to the location where the generated script was saved.</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</section>
 <section id="module-ibm_watsonx_data_integration.cpd_models.role_model">
 <span id="role"></span><h2>Role<a class="headerlink" href="#module-ibm_watsonx_data_integration.cpd_models.role_model" title="Link to this heading">#</a></h2>
 <p>Module containing Roles Models.</p>
@@ -7380,6 +7858,42 @@ validated to form a valid model.</p>
 <dd class="field-odd"><p><strong>platform</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<a class="reference internal" href="#ibm_watsonx_data_integration.platform.Platform" title="ibm_watsonx_data_integration.platform.Platform"><code class="xref py py-class docutils literal notranslate"><span class="pre">Platform</span></code></a>]</span>, default: <code class="docutils literal notranslate"><span class="pre">None</span></code>) – The Platform object.</p>
 </dd>
 </dl>
+</dd></dl>
+
+</section>
+<section id="module-ibm_watsonx_data_integration.codegen.generator">
+<span id="streaming-generator"></span><h2>Streaming Generator<a class="headerlink" href="#module-ibm_watsonx_data_integration.codegen.generator" title="Link to this heading">#</a></h2>
+<p>This module contains PythonGenerator class.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.codegen.generator.PythonGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ibm_watsonx_data_integration.codegen.generator.</span></span><span class="sig-name descname"><span class="pre">PythonGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ibm_watsonx_data_integration.cpd_models.flow_model.Flow" title="ibm_watsonx_data_integration.cpd_models.flow_model.Flow"><span class="pre">Flow</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#ibm_watsonx_data_integration.common.auth.IAMAuthenticator" title="ibm_watsonx_data_integration.common.auth.IAMAuthenticator"><span class="pre">IAMAuthenticator</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.codegen.generator.PythonGenerator" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Flow code generation entrypoint.</p>
+<p>The __init__ of the PythonGenerator class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#ibm_watsonx_data_integration.cpd_models.flow_model.Flow" title="ibm_watsonx_data_integration.cpd_models.flow_model.Flow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code></a></span>) – Location from <code class="docutils literal notranslate"><span class="pre">Flow</span></code> definition will be loaded.</p></li>
+<li><p><strong>destination</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></span>) – Location where save generated script.</p></li>
+<li><p><strong>auth</strong> (<span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="#ibm_watsonx_data_integration.common.auth.IAMAuthenticator" title="ibm_watsonx_data_integration.common.auth.IAMAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">IAMAuthenticator</span></code></a></span>) – Reference to authenticator object.</p></li>
+<li><p><strong>kwargs</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code> | <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></span>) – Additional configuration values.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="ibm_watsonx_data_integration.codegen.generator.PythonGenerator.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ibm_watsonx_data_integration.codegen.generator.PythonGenerator.save" title="Link to this definition">#</a></dt>
+<dd><p>Run code generation then save it to destination.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></span></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Path to the location where the generated script was saved.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -7979,6 +8493,68 @@ This field is mapped from the JSON key “2FA”.</p>
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow">Batch Flow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow"><code class="docutils literal notranslate"><span class="pre">DataStageFlow</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.acp"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.acp</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.description"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.description</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.flow_id"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.flow_id</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.name"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.rcp"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.rcp</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.add_stage"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.add_stage()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.compile"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.compile()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.create_or_get"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.create_or_get()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.get_compile_info"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.get_compile_info()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.get_compile_status"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.get_compile_status()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.get_link"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.get_link()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.get_links"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.get_links()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.remove_stage"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.remove_stage()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.use_auto_column_propagation"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.use_auto_column_propagation()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.use_runtime_column_propagation"><code class="docutils literal notranslate"><span class="pre">DataStageFlow.use_runtime_column_propagation()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlowPayloadExtender"><code class="docutils literal notranslate"><span class="pre">DataStageFlowPayloadExtender</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlowPayloadExtender.extend"><code class="docutils literal notranslate"><span class="pre">DataStageFlowPayloadExtender.extend()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlows"><code class="docutils literal notranslate"><span class="pre">DataStageFlows</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlows.get"><code class="docutils literal notranslate"><span class="pre">DataStageFlows.get()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlows.get_all"><code class="docutils literal notranslate"><span class="pre">DataStageFlows.get_all()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ibm_watsonx_data_integration.services.datastage.codegen.python_generator">Batch Generator</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator"><code class="docutils literal notranslate"><span class="pre">PythonGenerator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator.generate"><code class="docutils literal notranslate"><span class="pre">PythonGenerator.generate()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator.get_code"><code class="docutils literal notranslate"><span class="pre">PythonGenerator.get_code()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGeneratorConfig"><code class="docutils literal notranslate"><span class="pre">PythonGeneratorConfig</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-link">Batch Link</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="docutils literal notranslate"><span class="pre">Link</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.create_schema"><code class="docutils literal notranslate"><span class="pre">Link.create_schema()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.primary"><code class="docutils literal notranslate"><span class="pre">Link.primary()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.reference"><code class="docutils literal notranslate"><span class="pre">Link.reference()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.reject"><code class="docutils literal notranslate"><span class="pre">Link.reject()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-node">Batch Node</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode"><code class="docutils literal notranslate"><span class="pre">StageNode</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.connect_input_to"><code class="docutils literal notranslate"><span class="pre">StageNode.connect_input_to()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.connect_output_to"><code class="docutils literal notranslate"><span class="pre">StageNode.connect_output_to()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.disconnect_input_from"><code class="docutils literal notranslate"><span class="pre">StageNode.disconnect_input_from()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.disconnect_output_from"><code class="docutils literal notranslate"><span class="pre">StageNode.disconnect_output_from()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.get_links_to"><code class="docutils literal notranslate"><span class="pre">StageNode.get_links_to()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.use_connection"><code class="docutils literal notranslate"><span class="pre">StageNode.use_connection()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ibm_watsonx_data_integration.services.datastage.models.schema.schema">Batch Schema</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ibm_watsonx_data_integration.services.streamsets.models.configuration">Configuration</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration"><code class="docutils literal notranslate"><span class="pre">Configuration</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration.get"><code class="docutils literal notranslate"><span class="pre">Configuration.get()</span></code></a></li>
@@ -8707,13 +9283,6 @@ This field is mapped from the JSON key “2FA”.</p>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ibm_watsonx_data_integration.codegen.generator">Python Generator</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.codegen.generator.PythonGenerator"><code class="docutils literal notranslate"><span class="pre">PythonGenerator</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.codegen.generator.PythonGenerator.save"><code class="docutils literal notranslate"><span class="pre">PythonGenerator.save()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ibm_watsonx_data_integration.cpd_models.role_model">Role</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.role_model.Role"><code class="docutils literal notranslate"><span class="pre">Role</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.role_model.Role.account_id"><code class="docutils literal notranslate"><span class="pre">Role.account_id</span></code></a></li>
@@ -8795,6 +9364,13 @@ This field is mapped from the JSON key “2FA”.</p>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.cpd_models.service_id_model.ServiceIDs"><code class="docutils literal notranslate"><span class="pre">ServiceIDs</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ibm_watsonx_data_integration.codegen.generator">Streaming Generator</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.codegen.generator.PythonGenerator"><code class="docutils literal notranslate"><span class="pre">PythonGenerator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ibm_watsonx_data_integration.codegen.generator.PythonGenerator.save"><code class="docutils literal notranslate"><span class="pre">PythonGenerator.save()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ibm_watsonx_data_integration.cpd_models.trusted_profile_model">Trusted Profile</a><ul class="nav section-nav flex-column">

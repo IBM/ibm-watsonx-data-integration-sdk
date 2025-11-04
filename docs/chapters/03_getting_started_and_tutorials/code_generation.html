@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Python Code Generation &#8212; ibm-watsonx-data-integration 1.0.0b3 documentation</title>
+    <title>Code Generation &#8212; ibm-watsonx-data-integration 1.0.0b3 documentation</title>
   
   
   
@@ -45,7 +45,7 @@
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=30646c52"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03_getting_started_and_tutorials/python_code_generation';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03_getting_started_and_tutorials/code_generation';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Integration Assets" href="../04_projects/index.html" />
@@ -177,7 +177,7 @@
 <li class="toctree-l2"><a class="reference internal" href="authentication.html">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="platform.html">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="service_instances.html">Service Instances</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Python Code Generation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Code Generation</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -190,6 +190,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/flows.html">Flows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/stages.html">Stages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/batch_schemas.html">Batch Schemas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/files.html">Files</a></li>
@@ -280,7 +281,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Python Code Generation</h1>
+    <h1>Code Generation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -290,8 +291,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-usage">Example usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-generation-for-streaming">Code Generation for Streaming</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-usage">Example usage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-generation-for-batch">Code Generation for Batch</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-inputs">Preparing Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-generator">Running the Generator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-generated-code">Running Generated Code</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -303,12 +314,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="python-code-generation">
-<span id="getting-started-and-tutorials-python-code-generation"></span><h1>Python Code Generation<a class="headerlink" href="#python-code-generation" title="Link to this heading">#</a></h1>
-<p>If you already have a set of existing flows and want to recreate them into Python SDK, you can use the
+  <section id="code-generation">
+<span id="getting-started-and-tutorials-code-generation"></span><h1>Code Generation<a class="headerlink" href="#code-generation" title="Link to this heading">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">PythonGenerator</span></code> is an entry point that converts existing flows to Python SDK code.</p>
+<section id="code-generation-for-streaming">
+<h2>Code Generation for Streaming<a class="headerlink" href="#code-generation-for-streaming" title="Link to this heading">#</a></h2>
+<p>For streaming flows, you can use the
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.codegen.generator.PythonGenerator" title="ibm_watsonx_data_integration.codegen.generator.PythonGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">PythonGenerator</span></code></a> class to automate the transformation.</p>
 <section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h3>
 <p>To properly generate a script, a few preparatory steps are required:</p>
 <ol class="arabic simple">
 <li><p>Create an instance of a correctly configured and authenticated <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.auth.IAMAuthenticator" title="ibm_watsonx_data_integration.common.auth.IAMAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">IAMAuthenticator</span></code></a> class.</p></li>
@@ -316,7 +330,7 @@ document.write(`
 </ol>
 </section>
 <section id="example-usage">
-<h2>Example usage<a class="headerlink" href="#example-usage" title="Link to this heading">#</a></h2>
+<h3>Example usage<a class="headerlink" href="#example-usage" title="Link to this heading">#</a></h3>
 <p>The example below demonstrates how to regenerate Python SDK code from
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamsetsFlow</span></code></a>
 class fetched directly from a project.</p>
@@ -340,6 +354,105 @@ class fetched directly from a project.</p>
 <span class="go">PosixPath(&#39;/tmp/output.py&#39;)</span>
 </pre></div>
 </div>
+</section>
+</section>
+<section id="code-generation-for-batch">
+<h2>Code Generation for Batch<a class="headerlink" href="#code-generation-for-batch" title="Link to this heading">#</a></h2>
+<p>For batch flows, use the
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator" title="ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">PythonGenerator</span></code></a>
+class to automatically converts assets from zip or json format to python code.</p>
+<section id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Link to this heading">#</a></h3>
+<p>To use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator" title="ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">PythonGenerator</span></code></a>, create an instance of the generator and set the desired configuration settings.</p>
+<ul class="simple">
+<li><p><strong>mode</strong>: Generate one file per flow (<code class="docutils literal notranslate"><span class="pre">'flow_per_file'</span></code> by default) or combine into a single file (<code class="docutils literal notranslate"><span class="pre">'single_file'</span></code>).</p></li>
+<li><p><strong>create_job</strong>: Add code to create a job for each flow (True by default).</p></li>
+<li><p><strong>run_job</strong>: Add code to run the auto-created jobs. Only checked if <code class="docutils literal notranslate"><span class="pre">create_job</span></code> is True, and defaults to True.</p></li>
+<li><p><strong>overwrite</strong>: Allow overwriting the output directory (False by default).</p></li>
+<li><p><strong>use_flow_name</strong>: Use original flow names instead of autogenerated ones (True by default).</p></li>
+<li><p><strong>api_key</strong>: Provide your API key or update the placeholder later (default is a placeholder).</p></li>
+<li><p><strong>project_id</strong>: Provide your project ID or update the placeholder later (default is a placeholder).</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.datastage</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Declare a generator to use</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">generator</span> <span class="o">=</span> <span class="n">PythonGenerator</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Configure settings</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">generator</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;flow_per_file&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">generator</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">create_job</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">generator</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">run_job</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">generator</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;MY_API_KEY&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">generator</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">project_id</span> <span class="o">=</span> <span class="s1">&#39;MY_PROJECT_ID&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="preparing-inputs">
+<h3>Preparing Inputs<a class="headerlink" href="#preparing-inputs" title="Link to this heading">#</a></h3>
+<p>The input can either be a flow JSON or a zip file containing one or more flows and their dependent assets.
+Both of these formats can be acquired in numerous ways, but one method is to download it directly from the flow editor.</p>
+<a class="reference internal image-reference" href="../../_images/sample_project.png"><img alt="Screenshot of the flow editor for a batch flow" class="align-center" src="../../_images/sample_project.png" style="width: 100%;" />
+</a>
+<p>This is a sample project containing one batch flow and one connection used in the flow.</p>
+<a class="reference internal image-reference" href="../../_images/sample_batch_flow.png"><img alt="Screenshot of a project containing a sample batch flow and a sample connection" class="align-center" src="../../_images/sample_batch_flow.png" style="width: 100%;" />
+</a>
+<p>The flow reads data from a COS datasource, sorts it, then outputs a preview of the data.</p>
+<a class="reference internal image-reference" href="../../_images/download_flow.png"><img alt="Screenshot of the popup to download a flow and its dependencies" class="align-center" src="../../_images/download_flow.png" style="width: 100%;" />
+</a>
+<p>From this page, you can download the flow and its dependencies as a zip file.</p>
+<p>This is the expected structure of the downloaded zip file:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>downloaded_folder/
+├── connections/
+│   └── sample_connection.json
+└── data_intg_flow/
+│   └── sample_batch_flow.json
+└── ...etc
+</pre></div>
+</div>
+</section>
+<section id="running-the-generator">
+<h3>Running the Generator<a class="headerlink" href="#running-the-generator" title="Link to this heading">#</a></h3>
+<p>Run the PythonGenerator using the <code class="docutils literal notranslate"><span class="pre">PythonGenerator.generate(input_path,</span> <span class="pre">output_path)</span></code> method</p>
+<ul class="simple">
+<li><p><strong>input_path</strong>: input_path to the JSON or zip file</p></li>
+<li><p><strong>output_path</strong> (optional): the file or directory where the code will be written (if no output_path is specified, the code will not be written)</p></li>
+<li><p>returns a dictionary that maps file names to generated code strings</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Generate multiple flows from zip and write to output directory</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">generator</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">input_path</span><span class="o">=</span><span class="s1">&#39;downloaded_folder.zip&#39;</span><span class="p">,</span> <span class="n">output_path</span><span class="o">=</span><span class="s1">&#39;path/to/output&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Generate one flow from JSON and write to output directory</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">generator</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">input_path</span><span class="o">=</span><span class="s1">&#39;downloaded_folder/data_intg_flow/sample_batch_flow.json&#39;</span><span class="p">,</span> <span class="n">output_path</span><span class="o">=</span><span class="s1">&#39;path/to/output.py&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Generate from zip without saving files</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">generated_code</span> <span class="o">=</span> <span class="n">generator</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">input_path</span><span class="o">=</span><span class="s1">&#39;downloaded_folder.zip&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Zip format is preferred since it contains dependencies and therefore can be generated more completely.</p>
+</div>
+</section>
+<section id="running-generated-code">
+<h3>Running Generated Code<a class="headerlink" href="#running-generated-code" title="Link to this heading">#</a></h3>
+<p>Before running the generated code, three types of placeholders may need to be replaced.</p>
+<p>Replace the api_key and project_id placeholders if you did not set them on the generator object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;&lt;TODO: insert your api_key&gt;&#39;</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">projects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">guid</span><span class="o">=</span><span class="s1">&#39;&lt;TODO: insert your project_id&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sensitive or encrypted connection credentials will also be generated as placeholders:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vertica</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;sample_vertica_conn&#39;</span><span class="p">,</span>
+    <span class="n">datasource_type</span><span class="o">=</span><span class="n">platform</span><span class="o">.</span><span class="n">datasources</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;vertica&#39;</span><span class="p">),</span>
+    <span class="n">properties</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;database&#39;</span><span class="p">:</span> <span class="s1">&#39;abcdef&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;TODO: insert your password&gt;&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;username&#39;</span><span class="p">:</span> <span class="s1">&#39;&lt;TODO: insert your username&gt;&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
@@ -388,8 +501,18 @@ class fetched directly from a project.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-usage">Example usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-generation-for-streaming">Code Generation for Streaming</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-usage">Example usage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-generation-for-batch">Code Generation for Batch</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-inputs">Preparing Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-generator">Running the Generator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-generated-code">Running Generated Code</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

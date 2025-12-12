@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Known Issues and limitations &#8212; ibm-watsonx-data-integration 1.0.0b3 documentation</title>
+    <title>Known Issues and limitations &#8212; ibm-watsonx-data-integration 1.0.0 documentation</title>
   
   
   
@@ -31,15 +31,15 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=77435cf2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css?v=a0a71c94" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=f8c2f790" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=931d16ba"></script>
+    <script src="../../_static/documentation_options.js?v=f9c1cefe"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0b3</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -177,30 +177,54 @@
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/platform.html">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/code_generation.html">Code Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_batch.html">Code Generation (Batch)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_streaming.html">Code Generation (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_connections.html">Code Generation for Connections</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/projects.html">Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/jobs.html">Jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../04_projects/environments.html">Environments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../04_projects/engines.html">Engines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_projects/environments_streaming.html">Environments (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_projects/engines_streaming.html">Engines (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_projects/access_control.html">Access Control</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/flows.html">Flows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/stages.html">Stages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/batch_schemas.html">Batch Schemas</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/batch/index.html">Batch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/stages.html">Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/subflows.html">Subflows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/parameter_sets.html">Parameter Sets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/files.html">Files</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../06_administration/index.html">Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../06_administration/accounts.html">Accounts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../06_administration/users.html">Users</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../06_administration/access_groups.html">Access Groups</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../06_administration/roles.html">Roles</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_administration/on_prem_administration/index.html">On-Prem Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_administration/on_prem_administration/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_administration/on_prem_administration/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_administration/on_prem_administration/roles.html">Roles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_administration/saas_administration/index.html">SaaS Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/service_ids.html">Service IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -311,14 +335,21 @@ This page is actively maintained and updated with each release of the <code clas
 <section id="known-issues">
 <h2>Known Issues<a class="headerlink" href="#known-issues" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Users may encounter HTTP 429 errors (‘too many requests’) when making calls from the SDK - this is actively being mitigated and will be fixed in the next release.</p></li>
+<li><p>Users may encounter HTTP 429 errors (‘too many requests’) when making calls from the SDK.</p></li>
+<li><p>When retrieving a parameter set by name using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.models.CollectionModel.get" title="ibm_watsonx_data_integration.common.models.CollectionModel.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.parameter_sets.get()</span></code></a> method, the <code class="docutils literal notranslate"><span class="pre">parameters</span></code> field of the returned <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet" title="ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParameterSet</span></code></a> object will be empty.</p></li>
+<li><p>When retrieving a batch flow by name using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.models.CollectionModel.get" title="ibm_watsonx_data_integration.common.models.CollectionModel.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.flows.get()</span></code></a> method, the flow will be empty.</p></li>
+<li><p>Changes to batch flow runtime parameters may not show up in the UI. If you are strictly using the SDK this will not be a problem.</p></li>
+<li><p>Creating parameter sets with invalid characters (example: <code class="docutils literal notranslate"><span class="pre">'MyParameterSet!*'</span></code>) can cause parameter set related operations to fail.</p></li>
+<li><p>When retrieving subflows or batch flows that contain subflow stages, the subflow DAG will be empty. You can workaround this by downloading the flow and using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator" title="ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">PythonGenerator</span></code></a> to create the flow.</p></li>
+<li><p>When retrieving subflows that contain subflow stages, you cannot modify that subflow’s DAG. You can workaround this by downloading the flow and using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator" title="ibm_watsonx_data_integration.services.datastage.codegen.python_generator.PythonGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">PythonGenerator</span></code></a> to create the flow.</p></li>
 </ul>
 </section>
 <section id="limitations">
 <h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>The SDK only supports the IAM API key authentication mechanism at present.</p></li>
-<li><p>Currently, the SDK only supports creating a flow with an engine installed.</p></li>
+<li><p>The SDK only partially supports DataStage (batch processing) functionality at this point. DataStage components will be added in future releases.</p></li>
+<li><p>All streaming flow related features are currently offered as technical previews.</p></li>
+<li><p>When using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.codegen.generator.PythonGenerator" title="ibm_watsonx_data_integration.codegen.generator.PythonGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">PythonGenerator</span></code></a> class to generate code, the authenticator object that is generated will always be <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.auth.IAMAuthenticator" title="ibm_watsonx_data_integration.common.auth.IAMAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">IAMAuthenticator</span></code></a> regardless of what type of authenticator object is passed in to the generator.</p></li>
 </ul>
 </section>
 </section>

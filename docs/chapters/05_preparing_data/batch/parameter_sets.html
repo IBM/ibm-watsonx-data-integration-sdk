@@ -1,0 +1,653 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
+    <title>Parameter Sets &#8212; ibm-watsonx-data-integration 1.0.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css?v=a0a71c94" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=f8c2f790" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=f9c1cefe"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=30646c52"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/05_preparing_data/batch/parameter_sets';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Streaming" href="../streaming/index.html" />
+    <link rel="prev" title="Subflows" href="subflows.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/prereqs.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/release_notes.html">What’s new</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/known_issues_and_limitations.html">Known Issues and limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/faq.html">Get Help</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03_getting_started_and_tutorials/index.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/platform.html">Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_batch.html">Code Generation (Batch)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_streaming.html">Code Generation (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_connections.html">Code Generation for Connections</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/jobs.html">Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/environments_streaming.html">Environments (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/engines_streaming.html">Engines (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/access_control.html">Access Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Preparing Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Batch</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stages.html">Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subflows.html">Subflows</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Parameter Sets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasources.html">Datasource Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../connections.html">Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../06_administration/index.html">Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_administration/on_prem_administration/index.html">On-Prem Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_administration/on_prem_administration/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_administration/on_prem_administration/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_administration/on_prem_administration/roles.html">Roles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_administration/saas_administration/index.html">SaaS Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/service_ids.html">Service IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html">Models</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Parameter Sets</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Section Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-parameter-set">Creating a Parameter Set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-an-existing-parameter-set">Retrieving an Existing Parameter Set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-parameter-set">Updating a Parameter Set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-value-sets">Adding Value Sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-local-parameters">Adding local Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-local-parameters-and-parameter-sets">Using local parameters and Parameter Sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-projdef">Using PROJDEF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-parameter-set">Deleting a Parameter Set</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="parameter-sets">
+<span id="preparing-data-parameter-sets"></span><h1>Parameter Sets<a class="headerlink" href="#parameter-sets" title="Link to this heading">#</a></h1>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>A parameter set is an object that helps make your jobs more flexible and reusable. Parameter sets allow you to specify values at run time rather than hardcoding them.</p>
+<p>The SDK provides functionality to interact with parameter sets.</p>
+<dl class="simple">
+<dt>This includes operations such as:</dt><dd><ul class="simple">
+<li><p>Creating a parameter set</p></li>
+<li><p>Retrieving parameter set</p></li>
+<li><p>Updating a parameter set</p></li>
+<li><p>Adding value sets</p></li>
+<li><p>Adding local parameters</p></li>
+<li><p>Using local parameters and parameter sets</p></li>
+<li><p>Deleting a parameter set</p></li>
+</ul>
+</dd>
+</dl>
+<section id="creating-a-parameter-set">
+<span id="preparing-data-parameter-sets-creating-a-parameter-set"></span><h2>Creating a Parameter Set<a class="headerlink" href="#creating-a-parameter-set" title="Link to this heading">#</a></h2>
+<p>In the UI, you can create a new Parameter Set by navigating to <strong>Assets -&gt; New asset -&gt; Define reusable sets of parameters</strong>.</p>
+<a class="reference internal image-reference" href="../../../_images/create_connection.png"><img alt="Screenshot of the Connection creation in the UI - Step 1" class="align-center" src="../../../_images/create_connection.png" style="width: 100%;" />
+</a>
+<a class="reference internal image-reference" href="../../../_images/create_paramset.png"><img alt="Screenshot of the Parameter set creation in the UI - Step 2" class="align-center" src="../../../_images/create_paramset.png" style="width: 100%;" />
+</a>
+<p>In the SDK, you can create a new <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet" title="ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParameterSet</span></code></a> object within a
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a>,
+by selecting the appropriate project from the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.platform.Platform" title="ibm_watsonx_data_integration.platform.Platform"><code class="xref py py-class docutils literal notranslate"><span class="pre">Platform</span></code></a> and then using
+the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.create_parameter_set" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.create_parameter_set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.create_parameter_set()</span></code></a> method to instantiate the Parameter Set.</p>
+<p>You must provide a <code class="docutils literal notranslate"><span class="pre">name</span></code> to create parameter set.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paramset</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_parameter_set</span><span class="p">(</span><span class="s1">&#39;testparamset&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paramset</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="n">parameter_type</span><span class="o">=</span><span class="s1">&#39;INTEGER&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;qty&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">)</span>
+<span class="go">ParameterSet(name=&#39;testparamset&#39;, parameters=[Parameter(name=&#39;qty&#39;, param_type=&#39;int64&#39;, value=&#39;100&#39;)], description=&#39;&#39;, value_sets=[])</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_parameter_set</span><span class="p">(</span><span class="n">paramset</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="retrieving-an-existing-parameter-set">
+<span id="preparing-data-parameter-sets-retrieving-an-existing-parameter-set"></span><h2>Retrieving an Existing Parameter Set<a class="headerlink" href="#retrieving-an-existing-parameter-set" title="Link to this heading">#</a></h2>
+<p>In the UI, you can get all Parameter Sets by navigating to <strong>Assets -&gt; Configurations -&gt; Parameter sets</strong>.</p>
+<a class="reference internal image-reference" href="../../../_images/get_paramsets.png"><img alt="Screenshot of the Connection listing in the UI" class="align-center" src="../../../_images/get_paramsets.png" style="width: 100%;" />
+</a>
+<p>In the SDK, Parameter Sets can be retrieved using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.parameter_sets" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.parameter_sets"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project.parameter_sets</span></code></a> property.
+You need to note that it doesn’t contain any parameters inside.
+To get all parameters of a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet" title="ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParameterSet</span></code></a> you need to call <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.common.models.CollectionModel.get" title="ibm_watsonx_data_integration.common.models.CollectionModel.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.parameter_sets.get()</span></code></a> method
+with a <code class="docutils literal notranslate"><span class="pre">parameter_set_id</span></code>.</p>
+<p>This property returns a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet" title="ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParameterSet</span></code></a> object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Returns a list of all parameter sets</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">parameter_sets</span>
+<span class="go">[...ParameterSet(name=&#39;testparamset&#39;, parameters=[], description=&#39;&#39;, value_sets=[])...]</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">testparamset</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">parameter_sets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;testparamset&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">testparamset</span>
+<span class="go">ParameterSet(name=&#39;testparamset&#39;, parameters=[], description=&#39;&#39;, value_sets=[])</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">parameter_sets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">parameter_set_id</span><span class="o">=</span><span class="n">testparamset</span><span class="o">.</span><span class="n">parameter_set_id</span><span class="p">)</span>
+<span class="go">ParameterSet(name=&#39;testparamset&#39;, parameters=[Parameter(name=&#39;qty&#39;, param_type=&#39;int64&#39;, value=&#39;100&#39;, valid_values=[])], description=&#39;&#39;, value_sets=[])</span>
+</pre></div>
+</div>
+</section>
+<section id="updating-a-parameter-set">
+<span id="preparing-data-parameter-sets-updating-a-parameter-set"></span><h2>Updating a Parameter Set<a class="headerlink" href="#updating-a-parameter-set" title="Link to this heading">#</a></h2>
+<p>In the UI, you can update a Parameter Set by navigating to <strong>Assets -&gt; Configurations -&gt; Parameter sets</strong> and clicking the name of the Parameter Set you want to edit.
+This will take you to a new page where you can add, edit, and delete parameters.</p>
+<a class="reference internal image-reference" href="../../../_images/update_paramset1.png"><img alt="Screenshot of the Parameter set updating in the UI - Step 1" class="align-center" src="../../../_images/update_paramset1.png" style="width: 100%;" />
+</a>
+<a class="reference internal image-reference" href="../../../_images/update_paramset2.png"><img alt="Screenshot of the Parameter set updating in the UI - Step 2" class="align-center" src="../../../_images/update_paramset2.png" style="width: 100%;" />
+</a>
+<p>To add parameters to a Parameter Set in the SDK, you can use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet.add_parameter" title="ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet.add_parameter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ParameterSet.add_parameter()</span></code></a> method.
+This method requires a <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">parameter_type</span></code> and can also take a <code class="docutils literal notranslate"><span class="pre">value</span></code>, <code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">prompt</span></code>, and <code class="docutils literal notranslate"><span class="pre">valid_values</span></code>. The <code class="docutils literal notranslate"><span class="pre">valid_values</span></code> argument is only used in a parameter of type <code class="docutils literal notranslate"><span class="pre">list</span></code>.</p>
+<p>To remove parameters use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet.add_parameter" title="ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet.add_parameter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ParameterSet.remove_parameter()</span></code></a> method which takes in the <code class="docutils literal notranslate"><span class="pre">name</span></code> of the parameter you wish to remove.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paramset</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>   <span class="n">paramset</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="n">parameter_type</span><span class="o">=</span><span class="s1">&#39;STRING&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;score&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;person&#39;</span><span class="p">)</span>
+<span class="gp">... </span>   <span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="n">parameter_type</span><span class="o">=</span><span class="s1">&#39;DATE&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;2025-03-12&#39;</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paramset</span><span class="o">.</span><span class="n">remove_parameter</span><span class="p">(</span><span class="s1">&#39;score&#39;</span><span class="p">)</span>
+<span class="go">ParameterSet(name=&#39;testparamset&#39;, parameters=[Parameter(name=&#39;qty&#39;, param_type=&#39;int64&#39;, value=&#39;100&#39;), Parameter(name=&#39;date&#39;, param_type=&#39;date&#39;, value=&#39;2025-03-12&#39;)], description=&#39;&#39;, value_sets=[])</span>
+</pre></div>
+</div>
+<p>You can also directly change the <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">description</span></code> of the Parameter Set.
+To apply these modifications to the Parameter Set we pass the instance to the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_parameter_set" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_parameter_set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_parameter_set()</span></code></a> method.</p>
+<p>This method returns an HTTP response indicating the status of the update operation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paramset</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;New Paramset Name&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_parameter_set</span><span class="p">(</span><span class="n">paramset</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">parameter_sets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;New Paramset Name&#39;</span><span class="p">)</span>
+<span class="go">ParameterSet(name=&#39;New Paramset Name&#39;, parameters=[], description=&#39;&#39;, value_sets=[])</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-value-sets">
+<span id="preparing-data-parameter-sets-adding-value-sets"></span><h2>Adding Value Sets<a class="headerlink" href="#adding-value-sets" title="Link to this heading">#</a></h2>
+<p>Value sets let you assign different values to the parameters in a parameter set. In the UI, to create a value set first navigate to <strong>Assets -&gt; Configurations -&gt; Parameter sets</strong> and click the name of the Parameter Set you want to edit. Then, click the Value sets tab to create, edit, or delete a value set.</p>
+<a class="reference internal image-reference" href="../../../_images/value_set1.png"><img alt="Screenshot of the value set tab in the UI - Step 1" class="align-center" src="../../../_images/value_set1.png" style="width: 100%;" />
+</a>
+<p>Here is the window that pops up when you click create value set.</p>
+<a class="reference internal image-reference" href="../../../_images/value_set2.png"><img alt="Screenshot of the value set window in the UI - Step 2" class="align-center" src="../../../_images/value_set2.png" style="width: 100%;" />
+</a>
+<p>In the SDK, you can create a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.parameter_set_model.ValueSet" title="ibm_watsonx_data_integration.cpd_models.parameter_set_model.ValueSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValueSet</span></code></a> which requires the <code class="docutils literal notranslate"><span class="pre">name</span></code> of the value set. Then, add values to the value set by calling <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.parameter_set_model.ValueSet.add_value" title="ibm_watsonx_data_integration.cpd_models.parameter_set_model.ValueSet.add_value"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ValueSet.add_value()</span></code></a> which takes in the <code class="docutils literal notranslate"><span class="pre">name</span></code> of the parameter and the <code class="docutils literal notranslate"><span class="pre">value</span></code> for the parameter. Finally, add the value set to the parameter set by passing the ValueSet object into <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet.add_value_set" title="ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet.add_value_set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ParameterSet.add_value_set()</span></code></a>.</p>
+<p>If a parameter is not given a value its default value will be used. You can also call <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.parameter_set_model.ValueSet.remove_value" title="ibm_watsonx_data_integration.cpd_models.parameter_set_model.ValueSet.remove_value"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ValueSet.remove_value()</span></code></a> with the <code class="docutils literal notranslate"><span class="pre">name</span></code> of the parameter to reset it to the default value.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.cpd_models.parameter_set_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">ValueSet</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">set_1</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>   <span class="n">ValueSet</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;set_1&#39;</span><span class="p">)</span>
+<span class="gp">... </span>   <span class="o">.</span><span class="n">add_value</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;qty&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;20&#39;</span><span class="p">)</span>
+<span class="gp">... </span>   <span class="o">.</span><span class="n">add_value</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;2022-07-13&#39;</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">set_1</span><span class="o">.</span><span class="n">remove_value</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">)</span>
+<span class="go">ValueSet(name=&#39;set_1&#39;, values=[{&#39;name&#39;: &#39;qty&#39;, &#39;value&#39;: &#39;20&#39;}])</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paramset</span><span class="o">.</span><span class="n">add_value_set</span><span class="p">(</span><span class="n">set_1</span><span class="p">)</span>
+<span class="go">ParameterSet(name=&#39;New Paramset Name&#39;, parameters=[Parameter(name=&#39;qty&#39;, param_type=&#39;int64&#39;, value=&#39;100&#39;), Parameter(name=&#39;date&#39;, param_type=&#39;date&#39;, value=&#39;2025-03-12&#39;)], description=&#39;&#39;, value_sets=[ValueSet(name=&#39;set_1&#39;, values=[{&#39;name&#39;: &#39;qty&#39;, &#39;value&#39;: &#39;20&#39;}, {&#39;name&#39;: &#39;date&#39;, &#39;value&#39;: &#39;2025-03-12&#39;}])])</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">set_2</span> <span class="o">=</span> <span class="p">(</span>
+<span class="gp">... </span>   <span class="n">ValueSet</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;set_2&#39;</span><span class="p">)</span>
+<span class="gp">... </span>   <span class="o">.</span><span class="n">add_value</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;qty&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;40&#39;</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paramset</span><span class="o">.</span><span class="n">add_value_set</span><span class="p">(</span><span class="n">set_2</span><span class="p">)</span>
+<span class="go">ParameterSet(name=&#39;New Paramset Name&#39;, parameters=[Parameter(name=&#39;qty&#39;, param_type=&#39;int64&#39;, value=&#39;100&#39;), Parameter(name=&#39;date&#39;, param_type=&#39;date&#39;, value=&#39;2025-03-12&#39;)], description=&#39;&#39;, value_sets=[ValueSet(name=&#39;set_1&#39;, values=[{&#39;name&#39;: &#39;qty&#39;, &#39;value&#39;: &#39;20&#39;}, {&#39;name&#39;: &#39;date&#39;, &#39;value&#39;: &#39;2025-03-12&#39;}]), ValueSet(name=&#39;set_2&#39;, values=[{&#39;name&#39;: &#39;qty&#39;, &#39;value&#39;: &#39;40&#39;}, {&#39;name&#39;: &#39;date&#39;, &#39;value&#39;: &#39;2025-03-12&#39;}])])</span>
+</pre></div>
+</div>
+<p>In this example both value sets have the <code class="docutils literal notranslate"><span class="pre">qty</span></code> parameter set to a new value while the <code class="docutils literal notranslate"><span class="pre">date</span></code> parameter is still the default value.</p>
+<p>You can choose what value set you want a job to use by <a class="reference internal" href="../../04_projects/jobs.html#projects-jobs-editing-a-batch-job"><span class="std std-ref">Editing the runtime settings</span></a> of the job.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the UI, there is a way to choose a value set for a flow but this is not yet implemented in the SDK.</p>
+</div>
+</section>
+<section id="adding-local-parameters">
+<span id="preparing-data-parameter-sets-adding-local-parameters"></span><h2>Adding local Parameters<a class="headerlink" href="#adding-local-parameters" title="Link to this heading">#</a></h2>
+<p>Local parameters are parameters that only exist within a single flow.</p>
+<p>In the UI, you can add a local parameter by navigating to <strong>Flow parameters -&gt; Local parameters -&gt; Create parameter</strong></p>
+<a class="reference internal image-reference" href="../../../_images/add_parameters1.png"><img alt="Screenshot of adding local parameters in the UI - Part 1" class="align-center" src="../../../_images/add_parameters1.png" style="width: 100%;" />
+</a>
+<a class="reference internal image-reference" href="../../../_images/add_parameters2.png"><img alt="Screenshot of adding local parameters in the UI - Part 2" class="align-center" src="../../../_images/add_parameters2.png" style="width: 100%;" />
+</a>
+<p>In the SDK, you can call the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.add_local_parameter" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.add_local_parameter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchFlow.add_local_parameter()</span></code></a> method.
+Just like the add_parameter method above, this method requires a <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">parameter_type</span></code> and can also take a <code class="docutils literal notranslate"><span class="pre">value</span></code>, <code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">prompt</span></code>, and <code class="docutils literal notranslate"><span class="pre">valid_values</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">batch_flow</span><span class="o">.</span><span class="n">add_local_parameter</span><span class="p">(</span><span class="n">parameter_type</span><span class="o">=</span><span class="s1">&#39;STRING&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;tablename&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;cust_source&#39;</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">batch_flow</span><span class="o">.</span><span class="n">add_local_parameter</span><span class="p">(</span><span class="n">parameter_type</span><span class="o">=</span><span class="s1">&#39;LIST&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;shoplist&#39;</span><span class="p">,</span> <span class="n">valid_values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tomato&#39;</span><span class="p">,</span> <span class="s1">&#39;lettuce&#39;</span><span class="p">,</span> <span class="s1">&#39;bacon&#39;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;bacon&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</section>
+<section id="using-local-parameters-and-parameter-sets">
+<span id="preparing-data-parameter-sets-using-local-parameters-and-parameter-sets"></span><h2>Using local parameters and Parameter Sets<a class="headerlink" href="#using-local-parameters-and-parameter-sets" title="Link to this heading">#</a></h2>
+<p>In the UI, you can use a Parameter Set in a flow by navigating to <strong>Flow parameters -&gt; Parameter sets -&gt; Add parameter sets</strong> and choosing the desired parameter set from the list.</p>
+<a class="reference internal image-reference" href="../../../_images/use_paramset.png"><img alt="Screenshot of the Connection deletion in the UI" class="align-center" src="../../../_images/use_paramset.png" style="width: 100%;" />
+</a>
+<p>In the SDK to use a Parameter Set instance in a flow you can pass it to <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.use_parameter_set" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.use_parameter_set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchFlow.use_parameter_set()</span></code></a> method.
+For local parameters there are no additional actions that you need to take after you <a class="reference internal" href="#preparing-data-parameter-sets-adding-local-parameters"><span class="std std-ref">Add a local parameter</span></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">batch_flow</span><span class="o">.</span><span class="n">use_parameter_set</span><span class="p">(</span><span class="n">paramset</span><span class="p">)</span> 
+</pre></div>
+</div>
+<p>To use a parameter from a parameter set in your code you can use the following notation: <code class="docutils literal notranslate"><span class="pre">'#New</span> <span class="pre">Paramset</span> <span class="pre">Name.schema#'</span></code> where the name of the parameter set is followed by the parameter you wish to use.
+For local parameters you do not need to put anything in front of the parameter name: <code class="docutils literal notranslate"><span class="pre">'#tablename#'</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bigquery</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Google BigQuery&#39;</span><span class="p">,</span> <span class="s1">&#39;BigQuery&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bigquery</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">table_name</span> <span class="o">=</span> <span class="s1">&#39;#tablename#&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bigquery</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">dataset_name</span> <span class="o">=</span> <span class="s1">&#39;#testparamset.schema#&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="using-projdef">
+<span id="preparing-data-parameter-sets-deleting-a-parameter-set"></span><h2>Using PROJDEF<a class="headerlink" href="#using-projdef" title="Link to this heading">#</a></h2>
+<p>You can use the PROJDEF parameter set to contain the parameters and environment variable values for a DataStage flow, job, or job run to reference.
+You can read more about PROJDEF <a class="reference external" href="https://dataplatform.cloud.ibm.com/docs/content/dstage/dsnav/topics/projdef-parameter-set.html?context=cpdaas">here</a>.
+To add PROJDEF in the UI go to <strong>Flow parameters -&gt; Add PROJDEF parameter</strong></p>
+<a class="reference internal image-reference" href="../../../_images/use_projdef.png"><img alt="Screenshot of using PROJDEF in UI" class="align-center" src="../../../_images/use_projdef.png" style="width: 100%;" />
+</a>
+<p>To use PROJDEF in the SDK you first need to create parameter_set with name ‘PROJDEF’ and then use it like a normal parameterSet.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">projdef_param</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_parameter_set</span><span class="p">(</span><span class="s1">&#39;PROJDEF&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">projdef_param</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="n">parameter_type</span><span class="o">=</span><span class="s1">&#39;INTEGER&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;qty&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">)</span>
+<span class="go">ParameterSet(name=&#39;PROJDEF&#39;, parameters=[Parameter(name=&#39;qty&#39;, param_type=&#39;int64&#39;, value=&#39;100&#39;)], description=&#39;&#39;, value_sets=[])</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_parameter_set</span><span class="p">(</span><span class="n">projdef_param</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">batch_flow</span><span class="o">.</span><span class="n">use_parameter_set</span><span class="p">(</span><span class="n">projdef_param</span><span class="p">)</span>
+<span class="go">BatchFlow(...)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">batch_flow</span><span class="p">)</span>
+<span class="go">&lt;Response [201]&gt;</span>
+</pre></div>
+</div>
+<p>To add only some of the PROJDEF parameters use <cite>flow.use_projdef_parameter()</cite>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">projdef_param</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">parameter_sets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;PROJDEF&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">projdef_param</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">parameter_sets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">parameter_set_id</span><span class="o">=</span><span class="n">projdef_param</span><span class="o">.</span><span class="n">parameter_set_id</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">param</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">projdef_param</span><span class="o">.</span><span class="n">parameters</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;qty&#39;</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">batch_flow</span><span class="o">.</span><span class="n">use_projdef_parameter</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+<span class="go">BatchFlow(...)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">batch_flow</span><span class="p">)</span>
+<span class="go">&lt;Response [201]&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="deleting-a-parameter-set">
+<h2>Deleting a Parameter Set<a class="headerlink" href="#deleting-a-parameter-set" title="Link to this heading">#</a></h2>
+<p>In the UI, you can delete an existing Parameter Set by navigating to the <strong>Assets -&gt; Configurations -&gt; Parameter sets</strong>.</p>
+<a class="reference internal image-reference" href="../../../_images/delete_paramset.png"><img alt="Screenshot of the Parameter Set deletion in the UI" class="align-center" src="../../../_images/delete_paramset.png" style="width: 100%;" />
+</a>
+<p>In the SDK to delete a Parameter Set instance you can pass it to <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_parameter_set" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_parameter_set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_parameter_set()</span></code></a> method.</p>
+<p>This method returns an HTTP response indicating the status of the delete operation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">delete_parameter_set</span><span class="p">(</span><span class="n">paramset</span><span class="p">)</span>
+<span class="go">&lt;Response [204]&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="subflows.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Subflows</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../streaming/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Streaming</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Section Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-parameter-set">Creating a Parameter Set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-an-existing-parameter-set">Retrieving an Existing Parameter Set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-parameter-set">Updating a Parameter Set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-value-sets">Adding Value Sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-local-parameters">Adding local Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-local-parameters-and-parameter-sets">Using local parameters and Parameter Sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-projdef">Using PROJDEF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-parameter-set">Deleting a Parameter Set</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, IBM.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

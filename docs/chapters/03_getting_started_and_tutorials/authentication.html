@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Authentication &#8212; ibm-watsonx-data-integration 1.0.0b3 documentation</title>
+    <title>Authentication &#8212; ibm-watsonx-data-integration 1.0.0 documentation</title>
   
   
   
@@ -31,15 +31,15 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=77435cf2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css?v=a0a71c94" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=f8c2f790" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=931d16ba"></script>
+    <script src="../../_static/documentation_options.js?v=f9c1cefe"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0b3</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -177,30 +177,54 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="platform.html">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="service_instances.html">Service Instances</a></li>
-<li class="toctree-l2"><a class="reference internal" href="code_generation.html">Code Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code_generation_batch.html">Code Generation (Batch)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code_generation_streaming.html">Code Generation (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code_generation_connections.html">Code Generation for Connections</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/projects.html">Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/jobs.html">Jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../04_projects/environments.html">Environments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../04_projects/engines.html">Engines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_projects/environments_streaming.html">Environments (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_projects/engines_streaming.html">Engines (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_projects/access_control.html">Access Control</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/flows.html">Flows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/stages.html">Stages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/batch_schemas.html">Batch Schemas</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/batch/index.html">Batch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/stages.html">Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/subflows.html">Subflows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/parameter_sets.html">Parameter Sets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/files.html">Files</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../06_administration/index.html">Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../06_administration/accounts.html">Accounts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../06_administration/users.html">Users</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../06_administration/access_groups.html">Access Groups</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../06_administration/roles.html">Roles</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_administration/on_prem_administration/index.html">On-Prem Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_administration/on_prem_administration/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_administration/on_prem_administration/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_administration/on_prem_administration/roles.html">Roles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_administration/saas_administration/index.html">SaaS Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/service_ids.html">Service IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -268,7 +292,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -284,6 +310,18 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Section Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iam-authentication-saas">IAM Authentication (SaaS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bearer-token-authentication-saas">Bearer Token Authentication (SaaS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zen-api-key-authentication-on-prem">Zen Api Key Authentication (on-prem)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#icp4d-authentication-on-prem">ICP4D Authentication (on-prem)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-authenticator">Using the Authenticator</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -296,7 +334,9 @@ document.write(`
   <section id="authentication">
 <span id="getting-started-and-tutorials-authentication"></span><h1>Authentication<a class="headerlink" href="#authentication" title="Link to this heading">#</a></h1>
 <p>To interact with the watsonx.data integration platform via the SDK, you must first authenticate.
-The SDK supports IAM authentication using an API key.</p>
+The SDK supports multiple authentication methods.</p>
+<section id="iam-authentication-saas">
+<h2>IAM Authentication (SaaS)<a class="headerlink" href="#iam-authentication-saas" title="Link to this heading">#</a></h2>
 <p>You can generate an API key from your IBM Cloud account at: <a class="reference external" href="https://cloud.ibm.com/iam/apikeys">https://cloud.ibm.com/iam/apikeys</a></p>
 <p>To authenticate, pass your API key into the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.auth.IAMAuthenticator" title="ibm_watsonx_data_integration.common.auth.IAMAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.common.auth.IAMAuthenticator</span></code></a> class.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.common.auth</span><span class="w"> </span><span class="kn">import</span> <span class="n">IAMAuthenticator</span>
@@ -313,7 +353,55 @@ The SDK supports IAM authentication using an API key.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">base_auth_url</span></code> should be the host URL where you created your IAM API key.
 In the example above, the <code class="docutils literal notranslate"><span class="pre">base_auth_url</span></code> is set to <code class="docutils literal notranslate"><span class="pre">'https://cloud.ibm.com'</span></code> since the API key was created at <cite>‘https://cloud.ibm.com/iam/apikeys’</cite>.</p>
 </div>
-<p>Once authenticated, pass the <code class="docutils literal notranslate"><span class="pre">auth</span></code> object to the <a class="reference internal" href="platform.html#getting-started-and-tutorials-platform"><span class="std std-ref">Platform class</span></a> to begin interacting with the SDK.</p>
+</section>
+<section id="bearer-token-authentication-saas">
+<h2>Bearer Token Authentication (SaaS)<a class="headerlink" href="#bearer-token-authentication-saas" title="Link to this heading">#</a></h2>
+<p>Alternatively, you can authenticate using a bearer token by passing it into the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.auth.BearerTokenAuthenticator" title="ibm_watsonx_data_integration.common.auth.BearerTokenAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.common.auth.BearerTokenAuthenticator</span></code></a> class.</p>
+<p>For more information on how to generate bearer tokens, please refer to <a class="reference external" href="https://cloud.ibm.com/docs/account?topic=account-iamtoken_from_apikey">this page</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.common.auth</span><span class="w"> </span><span class="kn">import</span> <span class="n">BearerTokenAuthenticator</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Replace with your actual bearer token</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">auth</span> <span class="o">=</span> <span class="n">BearerTokenAuthenticator</span><span class="p">(</span>               <span class="c1"># pragma: allowlist secret</span>
+<span class="gp">... </span>    <span class="n">bearer_token</span><span class="o">=</span><span class="s1">&#39;your-bearer-token&#39;</span>           <span class="c1"># pragma: allowlist secret</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="zen-api-key-authentication-on-prem">
+<h2>Zen Api Key Authentication (on-prem)<a class="headerlink" href="#zen-api-key-authentication-on-prem" title="Link to this heading">#</a></h2>
+<p>For on-premises authentication, use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.auth.ZenApiKeyAuthenticator" title="ibm_watsonx_data_integration.common.auth.ZenApiKeyAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.common.auth.ZenApiKeyAuthenticator</span></code></a> class.
+Pass in your username and Zen API key into the <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">zen_api_key</span></code> fields respectively:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.common.auth</span><span class="w"> </span><span class="kn">import</span> <span class="n">ZenApiKeyAuthenticator</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Replace with your actual username and zen_api_key</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">auth</span> <span class="o">=</span> <span class="n">ZenApiKeyAuthenticator</span><span class="p">(</span>               <span class="c1"># pragma: allowlist secret</span>
+<span class="gp">... </span>    <span class="n">username</span><span class="o">=</span><span class="s1">&#39;your-username&#39;</span><span class="p">,</span>                <span class="c1"># pragma: allowlist secret</span>
+<span class="gp">... </span>    <span class="n">zen_api_key</span><span class="o">=</span><span class="s1">&#39;your-zen-api-key&#39;</span>           <span class="c1"># pragma: allowlist secret</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="icp4d-authentication-on-prem">
+<h2>ICP4D Authentication (on-prem)<a class="headerlink" href="#icp4d-authentication-on-prem" title="Link to this heading">#</a></h2>
+<p>For on-premises authentication, alternatively you can also use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.auth.ICP4DAuthenticator" title="ibm_watsonx_data_integration.common.auth.ICP4DAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.common.auth.ICP4DAuthenticator</span></code></a> class.
+Pass in your username and cluster url into the <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">url</span></code> fields respectively.
+Finally, you may authenticate using either a traditional password or your zen API key by using the <code class="docutils literal notranslate"><span class="pre">password</span></code> or <code class="docutils literal notranslate"><span class="pre">zen_api_key</span></code> fields respectively. Only one of <code class="docutils literal notranslate"><span class="pre">password</span></code> or <code class="docutils literal notranslate"><span class="pre">zen_api_key</span></code> is required.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.common.auth</span><span class="w"> </span><span class="kn">import</span> <span class="n">ICP4DAuthenticator</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Replace with your actual username and password</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">auth</span> <span class="o">=</span> <span class="n">ICP4DAuthenticator</span><span class="p">(</span>                   <span class="c1"># pragma: allowlist secret</span>
+<span class="gp">... </span>    <span class="n">url</span><span class="o">=</span><span class="s1">&#39;your-cluster-url&#39;</span><span class="p">,</span>                  <span class="c1"># pragma: allowlist secret</span>
+<span class="gp">... </span>    <span class="n">username</span><span class="o">=</span><span class="s1">&#39;your-username&#39;</span><span class="p">,</span>                <span class="c1"># pragma: allowlist secret</span>
+<span class="gp">... </span>    <span class="n">password</span><span class="o">=</span><span class="s1">&#39;your-password&#39;</span>                 <span class="c1"># pragma: allowlist secret</span>
+<span class="gp">... </span>    <span class="c1"># zen_api_key=&#39;your-zen-api-key&#39;         # pragma: allowlist secret</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="using-the-authenticator">
+<h2>Using the Authenticator<a class="headerlink" href="#using-the-authenticator" title="Link to this heading">#</a></h2>
+<p>Once authenticated with either method, pass the <code class="docutils literal notranslate"><span class="pre">auth</span></code> object to the <a class="reference internal" href="platform.html#getting-started-and-tutorials-platform"><span class="std std-ref">Platform class</span></a> to begin interacting with the SDK.</p>
+</section>
 </section>
 
 
@@ -351,6 +439,25 @@ In the example above, the <code class="docutils literal notranslate"><span class
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Section Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iam-authentication-saas">IAM Authentication (SaaS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bearer-token-authentication-saas">Bearer Token Authentication (SaaS)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zen-api-key-authentication-on-prem">Zen Api Key Authentication (on-prem)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#icp4d-authentication-on-prem">ICP4D Authentication (on-prem)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-authenticator">Using the Authenticator</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

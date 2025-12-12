@@ -9,9 +9,8 @@ This section covers how to manage flows and their stages, work with datasource t
 .. toctree::
    :maxdepth: 2
 
-   flows
-   stages
-   batch_schemas
+   batch/index
+   streaming/index
    datasources
    connections
    files

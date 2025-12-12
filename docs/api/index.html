@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>API Reference &#8212; ibm-watsonx-data-integration 1.0.0b3 documentation</title>
+    <title>API Reference &#8212; ibm-watsonx-data-integration 1.0.0 documentation</title>
   
   
   
@@ -31,15 +31,15 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/autodoc_pydantic.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=77435cf2" />
+    <link rel="stylesheet" type="text/css" href="../_static/autodoc_pydantic.css?v=a0a71c94" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=f8c2f790" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=931d16ba"></script>
+    <script src="../_static/documentation_options.js?v=f9c1cefe"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -49,7 +49,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Models" href="models.html" />
-    <link rel="prev" title="Roles" href="../chapters/06_administration/roles.html" />
+    <link rel="prev" title="Trusted Profiles" href="../chapters/06_administration/saas_administration/trusted_profiles.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0b3</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -177,30 +177,54 @@
 <li class="toctree-l2"><a class="reference internal" href="../chapters/03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapters/03_getting_started_and_tutorials/platform.html">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapters/03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapters/03_getting_started_and_tutorials/code_generation.html">Code Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapters/03_getting_started_and_tutorials/code_generation_batch.html">Code Generation (Batch)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapters/03_getting_started_and_tutorials/code_generation_streaming.html">Code Generation (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapters/03_getting_started_and_tutorials/code_generation_connections.html">Code Generation for Connections</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapters/04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapters/04_projects/projects.html">Projects</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapters/04_projects/jobs.html">Jobs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapters/04_projects/environments.html">Environments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapters/04_projects/engines.html">Engines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapters/04_projects/environments_streaming.html">Environments (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapters/04_projects/engines_streaming.html">Engines (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapters/04_projects/access_control.html">Access Control</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapters/05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapters/05_preparing_data/flows.html">Flows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapters/05_preparing_data/stages.html">Stages</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapters/05_preparing_data/batch_schemas.html">Batch Schemas</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../chapters/05_preparing_data/batch/index.html">Batch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../chapters/05_preparing_data/batch/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chapters/05_preparing_data/batch/stages.html">Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chapters/05_preparing_data/batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chapters/05_preparing_data/batch/subflows.html">Subflows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chapters/05_preparing_data/batch/parameter_sets.html">Parameter Sets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../chapters/05_preparing_data/streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../chapters/05_preparing_data/streaming/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chapters/05_preparing_data/streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapters/05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapters/05_preparing_data/connections.html">Connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapters/05_preparing_data/files.html">Files</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapters/06_administration/index.html">Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../chapters/06_administration/accounts.html">Accounts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapters/06_administration/users.html">Users</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapters/06_administration/access_groups.html">Access Groups</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapters/06_administration/roles.html">Roles</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../chapters/06_administration/on_prem_administration/index.html">On-Prem Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../chapters/06_administration/on_prem_administration/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chapters/06_administration/on_prem_administration/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chapters/06_administration/on_prem_administration/roles.html">Roles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../chapters/06_administration/saas_administration/index.html">SaaS Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../chapters/06_administration/saas_administration/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chapters/06_administration/saas_administration/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chapters/06_administration/saas_administration/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chapters/06_administration/saas_administration/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chapters/06_administration/saas_administration/service_ids.html">Service IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chapters/06_administration/saas_administration/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">API Reference</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -301,30 +325,40 @@ In this API reference doc, you’ll find a complete breakdown of all classes, pr
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.access_groups_model">Access Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.access_groups_model_on_prem">Access Groups On Prem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.account_model">Account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.account_owner_model">Account Owner</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.common.auth">Authentication</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow">Batch Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.services.datastage.models.stage_models.amazon_postgresql">Batch Connectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow">Batch Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.services.datastage.codegen.python_generator">Batch Generator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#batch-link">Batch Link</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#batch-node">Batch Node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.services.datastage.models.schema.schema">Batch Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.services.datastage.models.stage_models.address_verification">Batch Stages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.services.datastage.models.flow.subflow">Batch Subflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.services.streamsets.models.configuration">Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.connections_model">Connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.services.streamsets.models.engine_model">Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.services.streamsets.models.engine_version">Engine Version</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.services.streamsets.models.environment_model">Environment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.flow_model">Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="models.html#id4">Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#id1">Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.flows_model">Flows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.job_model">Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#id2">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.parameter_set_model">Parameter Set</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.platform">Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.project_model">Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.project_collaborator_model">Project Collaborator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.role_model">Role</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.role_model_on_prem">Role On Prem</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.service_model">Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.service_id_model">Service Id</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.codegen.generator">Streaming Generator</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.trusted_profile_model">Trusted Profile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.user_model">User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html#module-ibm_watsonx_data_integration.cpd_models.user_model_on_prem">User On Prem</a></li>
 </ul>
 </li>
 </ul>
@@ -343,12 +377,12 @@ In this API reference doc, you’ll find a complete breakdown of all classes, pr
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../chapters/06_administration/roles.html"
+       href="../chapters/06_administration/saas_administration/trusted_profiles.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Roles</p>
+        <p class="prev-next-title">Trusted Profiles</p>
       </div>
     </a>
     <a class="right-next"

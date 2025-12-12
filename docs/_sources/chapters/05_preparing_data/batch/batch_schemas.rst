@@ -1,11 +1,11 @@
 .. _preparing_data__batch_schemas:
 
-Batch Schemas
-=============
+Schemas
+=======
 
-For batch flows, a **schema** is shared in the **link** between two batch stages.
+For batch flows, a **schema** is shared in the **link** between two batch stages. A schema defines the structure (columns, data types) of your data.
 
-To create a schema you must first create a link between two batch stages, which is explained in the :ref:`Connecting Batch Stages <preparing_data__connecting_stages_batch>` section.
+To create a schema you must first create a link between two batch stages, which is explained in the :ref:`Connecting Batch Stages <preparing_data__batch__connecting_stages>` section.
 Then use the :py:meth:`Link.create_schema() <ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.create_schema>` method to create the schema object.
 
 .. code-block:: python

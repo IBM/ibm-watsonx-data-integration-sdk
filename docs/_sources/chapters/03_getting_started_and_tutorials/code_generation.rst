@@ -95,7 +95,6 @@ Both of these formats can be acquired in numerous ways, but one method is to dow
    :alt: Screenshot of the flow editor for a batch flow
    :align: center
    :width: 100%
-
 This is a sample project containing one batch flow and one connection used in the flow.
 
 .. image:: ../../_static/images/code_generation/sample_batch_flow.png

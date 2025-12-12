@@ -10,7 +10,7 @@ The SDK package itself can be found in our project on `PyPI <https://pypi.org/pr
 Installation via pip
 ~~~~~~~~~~~~~~~~~~~~
 
-To install the |version| release of the ``ibm-watsonx-data-integration`` package, you can run the following command to install the package via `pip`_:
+To install the latest release of the ``ibm-watsonx-data-integration`` package, you can run the following command to install the package via `pip`_:
 
 .. code-block:: console
 

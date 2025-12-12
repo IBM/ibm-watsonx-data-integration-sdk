@@ -1,6 +1,6 @@
 .. _preparing_data__files:
 
-.. skip: start "our test env has blocked files feature"
+.. skip: start 'our test env has blocked files feature'
 
 Files
 =====
@@ -25,12 +25,12 @@ Uploading a File
 
 In the UI, you can upload a new File  by navigating to **Overview -> Add data to work with**.
 
-.. image:: ../../_static/images/files/upload_file.png
+.. image:: /_static/images/files/upload_file.png
    :alt: Screenshot of the File uploading in the UI - Step 1
    :align: center
    :width: 100%
 
-.. image:: ../../_static/images/files/upload_file2.png
+.. image:: /_static/images/files/upload_file2.png
    :alt: Screenshot of the File uploading in the UI - Step 2
    :align: center
    :width: 100%
@@ -56,7 +56,7 @@ Retrieving an existing File
 
 In the UI, you can get Files by navigating to  **Assets -> Data -> Data assets**.
 
-.. image:: ../../_static/images/files/get_files.png
+.. image:: /_static/images/files/get_files.png
    :alt: Screenshot of the File downloading in the UI
    :align: center
    :width: 100%
@@ -80,31 +80,33 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.conn
 
     For detailed information about parameters and values refer to https://cloud.ibm.com/apidocs/data-ai-common-core#listfiles.
 
+..
+    This section is commented until we implement downloading a file into SDK
 
-.. _preparing_data__files__downloading_an_existing_file:
+    .. _preparing_data__files__downloading_an_existing_file:
 
-Downloading an Existing File
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Downloading an Existing File
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the UI, you can download a File by navigating to **Assets -> Data -> Data assets**.
+    In the UI, you can download a File by navigating to **Assets -> Data -> Data assets**.
 
-.. image:: ../../_static/images/files/download_file.png
-   :alt: Screenshot of the File downloading in the UI
-   :align: center
-   :width: 100%
+    .. image:: /_static/images/files/download_file.png
+       :alt: Screenshot of the File downloading in the UI
+       :align: center
+       :width: 100%
 
-In the SDK file can be downloaded using :py:meth:`Platform.download_file() <ibm_watsonx_data_integration.platform.Platform.download_file>` method.
+    In the SDK file can be downloaded using :py:meth:`Platform.download_file() <ibm_watsonx_data_integration.platform.Platform.download_file>` method.
 
-You must provide a ``file`` object and ``output`` path where the file will be downloaded.
+    You must provide a ``file`` object and ``output`` path where the file will be downloaded.
 
-This method returns an HTTP response indicating the status of the download operation.
+    This method returns an HTTP response indicating the status of the download operation.
 
-.. code-block:: python
+    .. code-block:: python
 
-    >>> file = platform.files.get(name='dummy.txt')
-    ConnectionFile(file_name='dummy.txt')
-    >>> res = platform.download_file(file=file, output=pathlib.Path('/home/me/download/file.txt'))
-    <Response [200]>
+        >>> file = platform.files.get(name='dummy.txt')
+        ConnectionFile(file_name='dummy.txt')
+        >>> res = platform.download_file(file=file, output=pathlib.Path('/home/me/download/file.txt'))
+        <Response [200]>
 
 .. _preparing_data__files__deleting_a_file:
 
@@ -113,7 +115,7 @@ Deleting a File
 
 In the UI, you can delete a File by navigating to **Assets -> Data -> Data assets**.
 
-.. image:: ../../_static/images/files/delete_file.png
+.. image:: /_static/images/files/delete_file.png
    :alt: Screenshot of the File deletion in the UI
    :align: center
    :width: 100%

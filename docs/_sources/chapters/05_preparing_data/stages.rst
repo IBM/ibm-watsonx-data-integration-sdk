@@ -29,9 +29,6 @@ This returns a :py:class:`list` of :py:class:`~ibm_watsonx_data_integration.serv
     >>> flow.stages
     [DevRawDataSource_01(), Trash_01()]
 
-.. warning::
-   This method currently only applies to StreamSets flows.
-
 .. _preparing_data__add_stage_to_flow:
 
 Add a Stage to a Flow
@@ -43,20 +40,21 @@ To add stages to a flow in the UI, you can open the dropdown menu on the left of
    :alt: Screenshot for adding a stage.
    :align: center
    :width: 40%
-
-.. _preparing_data__add_stage_to_flow_streaming:
-
-Streaming
----------
+|
 
 In the SDK, you can use the :py:meth:`StreamsetsFlow.add_stage() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.add_stage>` method.
 This method accepts the following parameters ``label``, ``name``, ``type`` and ``library``, of which one of ``label`` or ``name`` must be provided.
 
 This method returns an instance of :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage` representing the newly created stage.
 
+After adding stages you need to call :py:meth:`Project.update_flow() <ibm_watsonx_data_integration.cpd_models.project_model.Project.update_flow>` method to save the changes.
+
 .. code-block:: python
 
-    >>> amazon_sqs_consumer = flow.add_stage(label='Amazon SQS Consumer')
+    >>> flow.add_stage(label='Amazon SQS Consumer')
+    AmazonSQSConsumer_01()
+    >>> project.update_flow(flow)
+    <Response [200]>
 
 You can use the ``type`` parameter to narrow down on the type of stage that is returned when multiple stages share the same ``label``.
 For example, ``Amazon S3`` can be of ``type`` ``origin``, ``executor`` or ``destination``.
@@ -66,24 +64,6 @@ returns the first possible stage matching the conditions, therefore it is advisa
 .. note::
 
     There are four possible values for ``type`` namely, ``origin``, ``processor``, ``executor`` and ``destination``.
-
-.. _preparing_data__add_stage_to_flow_batch:
-
-Batch
------
-
-In the SDK, you can use the :py:meth:`DataStageFlow.add_stage() <ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.add_stage>` method.
-This method takes in the stage's official ``type`` and the ``label`` for that stage. The ``type`` is the unique identifier for that stage and the ``label`` is the name you wish to give it.
-
-This method returns the newly created stage.
-
-.. code-block:: python
-
-    >>> amazon_rds = batch_flow.add_stage(type = 'Amazon RDS for PostgreSQL', label = 'Amazon RDS')
-    >>> project.update_flow(batch_flow)
-    <Response [201]>
-
-You can find a list of all unique identifiers here: :py:meth:`DataStageFlow.add_stage() <ibm_watsonx_data_integration.services.datastage.models.flow.datastage_flow.DataStageFlow.add_stage>`
 
 .. _preparing_data__remove_stage_from_flow:
 
@@ -96,6 +76,7 @@ To remove a stage in the UI, you can click on the stage and then click on the de
    :alt: Screenshot for removing a stage.
    :align: center
    :width: 50%
+|
 
 In the SDK, you can remove a stage from a flow using the :py:meth:`StreamsetsFlow.remove_stage() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamsetsFlow.remove_stage>` method
 and passing an instance of :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage` to it.
@@ -104,12 +85,14 @@ All stages connected to this stage will be disconnected by this action.
 
 This method does not return anything.
 
+After removing stages you need to call :py:meth:`Project.update_flow() <ibm_watsonx_data_integration.cpd_models.project_model.Project.update_flow>` method to save the changes.
+
 .. code-block:: python
 
+    >>> amazon_sqs_consumer = next(filter(lambda stage: stage.instance_name == 'AmazonSQSConsumer_01', flow.stages))
     >>> flow.remove_stage(amazon_sqs_consumer)
-
-.. warning::
-   This method currently only applies to StreamSets flows.
+    >>> project.update_flow(flow)
+    <Response [200]>
 
 .. _preparing_data__connecting_stages:
 
@@ -122,13 +105,9 @@ In the UI, to connect stages, you can click on the output of a stage and drag it
    :alt: Screenshot for connecting a stage.
    :align: center
    :width: 85%
+|
 
-.. _preparing_data__connecting_stages_streaming:
-
-Streaming
----------
-
-In the SDK, to connect streaming stages to each other we can use the following methods:
+In the SDK, to connect stages to each other we can use the following methods:
     * :py:meth:`Stage.connect_output_to() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.connect_output_to>` - this method is used to connect the output of the current stage to the input of another stage.
     * :py:meth:`Stage.connect_input_to() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.connect_input_to>` - this method is used to connect the input of the current stage to the output of another stage.
     * :py:meth:`Stage.connect_event_to() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.connect_event_to>` - this method is used to connect the event output of the current stage to the input of another stage.
@@ -143,11 +122,14 @@ For all the methods listed above, we can pass one or more instances of :py:class
     >>> # events are connected in a similar way
     >>> pipeline_finisher = flow.add_stage('Pipeline Finisher Executor')
     >>> dev_random_source.connect_event_to(pipeline_finisher)  # outputs events to pipeline finisher
+    >>> project.update_flow(flow)
+    <Response [200]>
+
 
 .. _preparing_data__stage_with_predicates:
 
-Connecting Streaming Stages with Multiple Outputs
--------------------------------------------------
+Connecting Stages with Multiple Outputs
+----------------------------------------
 
 There is a special case of ``Stream Selector`` - a stage having multiple outputs. The number of outputs of this stage are determined by ``predicates``.
 
@@ -192,20 +174,6 @@ or :py:meth:`Stage.connect_input_to() <ibm_watsonx_data_integration.services.str
     >>> # alternatively, you can use:
     >>> trash.connect_input_to(stream_selector, predicate=stream_selector.predicates[0])
 
-.. _preparing_data__connecting_stages_batch:
-
-Batch
------
-
-In the SDK, to connect batch stages to each other we can use the :py:meth:`Stage.connect_output_to() <ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.connect_output_to>` method.
-This method connects the stage it's called on to the stage in the argument and returns the created link between the two stages.
-
-.. code-block:: python
-
-    >>> row_gen = batch_flow.add_stage('Row Generator', 'Row_Generator') # a sample origin stage that generates data
-    >>> peek = batch_flow.add_stage('Peek', 'Peek') # a sample destination stage that outputs all input to console
-    >>> link = row_gen.connect_output_to(peek)
-
 .. _preparing_data__listing_connected_stages:
 
 Listing all Stages Connected to a Stage
@@ -228,10 +196,7 @@ All three properties return a :py:class:`list` of :py:class:`~ibm_watsonx_data_i
     >>> dev_random_source.events
     [PipelineFinisherExecutor_01()]
     >>> trash.inputs
-    [DevRawDataSource_02(), StreamSelector_01()]
-
-.. warning::
-   This method currently only applies to StreamSets flows.
+    [DevRawDataSource_02()]
 
 .. _preparing_data__disconnecting_stages:
 
@@ -244,6 +209,7 @@ In the UI, to disconnect a stage, you can click on the connection and then the d
    :alt: Screenshot for disconnecting a stage.
    :align: center
    :width: 85%
+|
 
 To disconnect stages, we have a similar trio of methods as for connecting:
     * :py:meth:`Stage.disconnect_output_from() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.disconnect_output_from>` - this method is used to disconnect the output of the current stage from the input of another stage.
@@ -255,20 +221,10 @@ To disconnect stages, we have a similar trio of methods as for connecting:
     >>> dev_random_source.disconnect_output_from(trash)  # alternatively, you can call: trash.disconnect_input_from(dev_random_source)
     >>> dev_random_source.disconnect_event_from(pipeline_finisher)
 
-.. warning::
-   This method currently only applies to StreamSets flows.
-
 .. _preparing_data__editing_stage_configuration:
 
 Editing a Stage's Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-All stages have properties which can be configured.
-
-.. _preparing_data__editing_stage_configuration_streaming:
-
-Streaming
----------
 
 You can edit a stage's configuration through the :py:attr:`Stage.configuration <ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.configuration>` property.
 This property returns a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration` object which encapsulates a stage's configuration.
@@ -279,19 +235,3 @@ You can print out the configuration and edit it similar to a :py:class:`dict`.
     >>> dev_random_source.configuration['stop_after_first_batch']
     False
     >>> dev_random_source.configuration['stop_after_first_batch'] = True
-
-.. _preparing_data__editing_stage_configuration_batch:
-
-Batch
------
-You can edit a stage's configuration through its corresponding `configuration` property.
-This property returns an object containing all of that stage's properties. The object has a class corresponding to the stage's class.
-
-.. Furthermore, the types of the properties depend on the types in the UI. For example, integer parameters will be integers where possible, checkboxes will be booleans where possible, and choices like dropdowns turn into enums.
-
-.. code-block:: python
-
-    >>> row_gen.configuration
-    row_generator(buf_mode=<BufMode.default: 'default'>, max_mem_buf_size=3145728, ...)
-    >>> row_gen.configuration.records = 5
-    >>> row_gen.configuration.runtime_column_propagation = False

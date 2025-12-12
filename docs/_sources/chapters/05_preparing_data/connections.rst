@@ -5,10 +5,10 @@ Connections
 |
 
 A connection is an object that is used to store connection related data for a single datasource (Kafka, Azure, etc.) like credentials, secrets and urls.
-Each connection is defined for exactly one datasource.
+Each connection is defined by exactly one datasource.
 
 .. tip::
-    To read more about datasources see :ref:`Retrieving an DatasourceType <preparing_data__datasources__retrieving_an_datasourcetype>`.
+    To read more about datasources see :ref:`Retrieving a DatasourceType <preparing_data__datasources__retrieving_a_datasourcetype>`.
 
 The SDK provides functionality to interact with connections.
 
@@ -25,26 +25,26 @@ Creating a Connection
 
 In the UI, you can create a new Connection by navigating to **Assets -> New asset -> Connect to a datasource**.
 
-.. image:: ../../_static/images/connections/create_connection.png
+.. image:: /_static/images/connections/create_connection.png
    :alt: Screenshot of the Connection creation in the UI - Step 1
    :align: center
    :width: 100%
 
-.. image:: ../../_static/images/connections/create_connection2.png
+.. image:: /_static/images/connections/create_connection2.png
    :alt: Screenshot of the Connection creation in the UI - Step 2
    :align: center
    :width: 100%
 
 You will need to choose the desired **datasource** from the list
 
-.. image:: ../../_static/images/connections/create_connection3.png
+.. image:: /_static/images/connections/create_connection3.png
    :alt: Screenshot of the Connection creation in the UI - Step 3
    :align: center
    :width: 100%
 
 and provide a **Name** and other additional configuration (depending on the selected datasource).
 
-.. image:: ../../_static/images/connections/create_connection4.png
+.. image:: /_static/images/connections/create_connection4.png
    :alt: Screenshot of the Connection creation in the UI - Step 4
    :align: center
    :width: 100%
@@ -65,7 +65,7 @@ To skip validation and create connection anyway set ``test`` parameter of
 
 .. note::
 
-    To get available datasources see: :ref:`Retrieving a DatasourceType <preparing_data__datasources__retrieving_an_datasourcetype>`.
+    To get available datasources see: :ref:`Retrieving a DatasourceType <preparing_data__datasources__retrieving_a_datasourcetype>`.
 
 
 .. code-block:: python
@@ -89,12 +89,12 @@ To skip validation and create connection anyway set ``test`` parameter of
 
 .. _preparing_data__connections__retrieving_an_existing_connection:
 
-Retrieving an Existing Connection
+Retrieving an existing Connection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the UI, you can get all Connections by navigating to **Assets -> Data access -> Connections**.
 
-.. image:: ../../_static/images/connections/get_connections.png
+.. image:: /_static/images/connections/get_connections.png
    :alt: Screenshot of the Connection listing in the UI
    :align: center
    :width: 100%
@@ -118,7 +118,7 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.conn
     [Connection(name='Connection Name')]
 
     >>> # Return a list of all connections
-    >>> project.connections
+    >>> project.connections # doctest: +SKIP
     [Connection(name='Connection Name')]
 
 .. tip::
@@ -133,7 +133,7 @@ Updating a Connection
 In the UI, you can update a Connection by navigating to **Assets -> Data access -> Connections** and clicking the edit button on the Connection you want to edit.
 This button is visible only when cursor is over the Connection object.
 
-.. image:: ../../_static/images/connections/update_connection.png
+.. image:: /_static/images/connections/update_connection.png
    :alt: Screenshot of the Connection updating in the UI
    :align: center
    :width: 100%
@@ -151,8 +151,54 @@ Similar to :ref:`Creating a Connection <preparing_data__connections__creating_a_
     >>> connection.name = 'New Connection Name'
     >>> project.update_connection(connection)
     <Response [200]>
-    >>> project.connections.get(name='New Connection Name')
+    >>> project.connections.get(name='New Connection Name') # doctest: +SKIP
     Connection(name='New Connection Name')
+
+.. _preparing_data__connections__using_a_connection:
+
+Using a Connection (Batch Only)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the UI, you can use a Connection in a flow by adding a connector stage and choosing the Connection in the view connection property.
+
+.. image:: /_static/images/connections/use_connection.png
+   :alt: Screenshot of the Connection usage in the UI
+   :align: center
+   :width: 100%
+
+In the SDK to use a Connection instance you can pass it to the ``use_connection`` method of the connector stage.
+
+.. code-block:: python
+
+    >>> new_flow = project.create_flow(name='New flow', environment=None, flow_type='batch')
+    >>> connection = project.connections.get(name='New Connection Name')
+    >>> connection # doctest: +SKIP
+    Connection(name='New Connection Name')
+    >>> http = new_flow.add_stage(type='HTTP', label='HTTP_Stage_1')
+    >>> http.use_connection(connection) # doctest: +SKIP
+
+.. _preparing_data__connections__using_a_local_connection:
+
+Using a local Connection (Batch Only)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+An alternate way to use a connector stage is by putting connection parameters directly into the stage's properties. In the UI this can be done under the Connection details section of the stage.
+
+If you are already :ref:`Using a Connection <preparing_data__connections__using_a_connection>` the Connection details section will not be visible.
+
+.. image:: /_static/images/connections/use_local_connection.png
+   :alt: Screenshot of the Local Connection usage in the UI
+   :align: center
+   :width: 100%
+
+In the SDK each connector stage's configuration has a connection property. To use a local connection you can directly edit the desired fields of this connection property.
+
+.. code-block:: python
+
+    >>> http = new_flow.add_stage(type='HTTP', label='HTTP_Stage_1')
+    >>> http.configuration.connection.url = 'yoururl.com'
+    >>> http.configuration.connection.ssl_certificate = 'yoursslcertificate'
+
 
 .. _preparing_data__connections__deleting_a_connection:
 
@@ -161,7 +207,7 @@ Deleting a Connection
 
 In the UI, you can delete an existing Connection by navigating to the **Assets -> Data access -> Connections**.
 
-.. image:: ../../_static/images/connections/delete_connection.png
+.. image:: /_static/images/connections/delete_connection.png
    :alt: Screenshot of the Connection deletion in the UI
    :align: center
    :width: 100%

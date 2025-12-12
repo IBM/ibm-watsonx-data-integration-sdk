@@ -1,0 +1,831 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
+    <title>Subflows &#8212; ibm-watsonx-data-integration 1.0.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css?v=a0a71c94" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=f8c2f790" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=f9c1cefe"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=30646c52"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/05_preparing_data/batch/subflows';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Parameter Sets" href="parameter_sets.html" />
+    <link rel="prev" title="Schemas" href="batch_schemas.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/prereqs.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/release_notes.html">What’s new</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/known_issues_and_limitations.html">Known Issues and limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/faq.html">Get Help</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03_getting_started_and_tutorials/index.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/platform.html">Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_batch.html">Code Generation (Batch)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_streaming.html">Code Generation (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_connections.html">Code Generation for Connections</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/jobs.html">Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/environments_streaming.html">Environments (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/engines_streaming.html">Engines (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/access_control.html">Access Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Preparing Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Batch</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stages.html">Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Subflows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parameter_sets.html">Parameter Sets</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasources.html">Datasource Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../connections.html">Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../06_administration/index.html">Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_administration/on_prem_administration/index.html">On-Prem Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_administration/on_prem_administration/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_administration/on_prem_administration/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_administration/on_prem_administration/roles.html">Roles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_administration/saas_administration/index.html">SaaS Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/service_ids.html">Service IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html">Models</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Subflows</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Section Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-subflow">Creating a Subflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-data-subflows-creating-a-subflow-creating-a-subflow">Creating a Subflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-local-subflow">Creating a Local Subflow</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-subflows">Retrieving Subflows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-a-subflow">Editing a Subflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-attributes">Editing Attributes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique-stages-to-subflows">Unique Stages to Subflows</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-subflow">Updating a Subflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-data-subflows-updating-a-subflow-updating-a-subflow">Updating a Subflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-local-subflow">Updating a Local Subflow</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-a-subflow">Duplicating a Subflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-data-subflows-duplicating-a-subflow-duplicating-a-subflow">Duplicating a Subflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-a-local-subflow">Duplicating a Local Subflow</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-subflow">Deleting a Subflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-data-subflows-deleting-a-subflow-deleting-a-subflow">Deleting a Subflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-local-subflow">Deleting a Local Subflow</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-subflows-in-flows">Using Subflows in Flows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-parameter-sets-in-subflows">Using Parameter Sets in Subflows</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-parameter-sets">Using Parameter Sets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-local-parameters">Using Local Parameters</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="subflows">
+<span id="preparing-data-subflows"></span><h1>Subflows<a class="headerlink" href="#subflows" title="Link to this heading">#</a></h1>
+<p>A subflow is a batch flow component that can be used to simplify a complex design visually to make it easier to
+understand and/or act as a reusable component by other data flows.</p>
+<dl class="simple">
+<dt>There are two primary types of subflows:</dt><dd><ul class="simple">
+<li><p>Local Subflow: A subflow that is local to the data flow you are working on. It is not its own asset and cannot be used by other flows.</p></li>
+<li><p>(Global) Subflow: A subflow that that can be reused by other data flows in the project. It is not local to any specific data flow.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the documentation, global subflow assets are referred to as ‘subflows’, while local subflows will always be explicitly referred to as ‘local subflows’.</p>
+</div>
+<dl class="simple">
+<dt>The SDK provides the following functionality to interact with subflows:</dt><dd><ul class="simple">
+<li><p>Creating a subflow</p></li>
+<li><p>Retrieving a subflow</p></li>
+<li><p>Editing a subflow</p></li>
+<li><p>Duplicating a subflow</p></li>
+<li><p>Deconstructing a subflow</p></li>
+<li><p>Deleting a subflow</p></li>
+<li><p>Using subflows in flows</p></li>
+</ul>
+</dd>
+</dl>
+<section id="prerequisites">
+<span id="preparing-data-subflows-prerequisites"></span><h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>To create a subflow using the SDK, please make sure you have done the following steps:</dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="../../04_projects/projects.html#projects-projects-creating-a-project"><span class="std std-ref">Created a project</span></a>.</p></li>
+</ul>
+</dd>
+<dt>To create a local subflow using the SDK, please make sure you have done the following steps:</dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="../../04_projects/projects.html#projects-projects-creating-a-project"><span class="std std-ref">Created a project</span></a>.</p></li>
+<li><p><a class="reference internal" href="flows.html#preparing-data-batch-flows-creating-a-flow"><span class="std std-ref">Created a flow</span></a>.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Subflows are a BatchFlow only feature.</p>
+</div>
+</section>
+<section id="creating-a-subflow">
+<span id="preparing-data-subflows-creating-a-subflow"></span><h2>Creating a Subflow<a class="headerlink" href="#creating-a-subflow" title="Link to this heading">#</a></h2>
+<section id="preparing-data-subflows-creating-a-subflow-creating-a-subflow">
+<span id="id1"></span><h3>Creating a Subflow<a class="headerlink" href="#preparing-data-subflows-creating-a-subflow-creating-a-subflow" title="Link to this heading">#</a></h3>
+<p>In the UI, you can create a flow by navigating to <strong>Assets -&gt; New asset -&gt; Create reusable DataStage components -&gt; Subflow</strong>.</p>
+<p>Here, you will be required to choose a name for your subflow along with a name and description.</p>
+<a class="reference internal image-reference" href="../../../_images/create_subflow.png"><img alt="Screenshot of the subflow creation page." class="align-center" src="../../../_images/create_subflow.png" style="width: 100%;" />
+</a>
+<p>In the SDK, you can create a subflow from a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> object using the
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.create_subflow" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.create_subflow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.create_subflow()</span></code></a> method.
+You are required to supply a <code class="docutils literal notranslate"><span class="pre">name</span></code> and an optional <code class="docutils literal notranslate"><span class="pre">description</span></code>.
+This method will return a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow" title="ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subflow</span></code></a> instance.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_subflow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_subflow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;My first subflow&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;optional description&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_subflow</span>
+<span class="go">Subflow(name=&#39;My first flow&#39;, description=&#39;optional description&#39;)</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-a-local-subflow">
+<span id="preparing-data-subflows-creating-a-subflow-creating-a-local-subflow"></span><h3>Creating a Local Subflow<a class="headerlink" href="#creating-a-local-subflow" title="Link to this heading">#</a></h3>
+<p>In the UI, you can create a local subflow by highlighting stages in a batch flow and selecting <strong>Create local subflow</strong>.
+This creates a local subflow with the nodes you have selected.</p>
+<a class="reference internal image-reference" href="../../../_images/create_local_subflow.png"><img alt="Screenshot of creating a local subflow option." class="align-center" src="../../../_images/create_local_subflow.png" style="width: 100%;" />
+</a>
+<p>In the SDK, you can create a local subflow from a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchFlow</span></code></a> object using the
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.create_subflow" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.create_subflow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchFlow.create_subflow()</span></code></a> method.
+You are required to supply a <code class="docutils literal notranslate"><span class="pre">label</span></code> and an optional set of <code class="docutils literal notranslate"><span class="pre">nodes</span></code> to create the subflow from.
+This method will return a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow" title="ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subflow</span></code></a> instance.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">myflow</span> <span class="c1"># batch flow already created</span>
+<span class="go">BatchFlow(name=&#39;My flow&#39;, description=&#39;&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_subflow</span> <span class="o">=</span> <span class="n">myflow</span><span class="o">.</span><span class="n">create_subflow</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;subflow_stage&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="retrieving-subflows">
+<span id="preparing-data-subflows-retrieving-a-subflow"></span><h2>Retrieving Subflows<a class="headerlink" href="#retrieving-subflows" title="Link to this heading">#</a></h2>
+<p>Subflows can be retrieved through a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> object using the
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.subflows" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.subflows"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Project.subflows</span></code></a> property.
+You can also retrieve a single subflow using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.common.models.CollectionModel.get" title="ibm_watsonx_data_integration.common.models.CollectionModel.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.subflows.get()</span></code></a> method
+which takes key word arguments and finds the first subflow match.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">subflows</span> <span class="c1"># a list of all the flows</span>
+<span class="go">[...Subflow(name=&#39;My first subflow&#39;, description=&#39;optional description&#39;)...]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">subflows</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;My first subflow&#39;</span><span class="p">)</span> <span class="c1"># get a subflow with the name &#39;My first subflow&#39;</span>
+<span class="go">Subflow(name=&#39;My first subflow&#39;, description=&#39;optional description&#39;)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Local subflows cannot be retrieved using this method since they are local to an individual flow rather than a project.</p>
+</div>
+</section>
+<section id="editing-a-subflow">
+<span id="preparing-data-subflows-editing-a-subflow"></span><h2>Editing a Subflow<a class="headerlink" href="#editing-a-subflow" title="Link to this heading">#</a></h2>
+<section id="editing-attributes">
+<span id="preparing-data-subflows-editing-a-subflow-editing-attributes"></span><h3>Editing Attributes<a class="headerlink" href="#editing-attributes" title="Link to this heading">#</a></h3>
+<p>You can edit a subflow’s attributes like <code class="docutils literal notranslate"><span class="pre">name</span></code> or <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_subflow</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;new description for the subflow&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_subflow</span>
+<span class="go">Subflow(name=&#39;My first subflow&#39;, description=&#39;new description for the subflow&#39;)</span>
+</pre></div>
+</div>
+<p>Finally, you can edit a flow by editing its stages.
+This can include adding a stage, removing a stage, updating a stage’s configuration or connecting a stage in a different way than before.
+Most of the operations described are covered in <a class="reference internal" href="../streaming/stages.html#preparing-data-stages"><span class="std std-ref">Stage</span></a> documentation.</p>
+</section>
+<section id="unique-stages-to-subflows">
+<span id="preparing-data-subflows-editing-a-subflow-unique-stages-to-subflows"></span><h3>Unique Stages to Subflows<a class="headerlink" href="#unique-stages-to-subflows" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>There are two stages that are unique to subflows:</dt><dd><ul class="simple">
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">EntryNode</span></code>: acts as an entry point into the subflow</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ExitNode</span></code>: acts as an exit point into the subflow</p></li>
+</ul>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="../../../_images/entry_exit_nodes.png"><img alt="Screenshot of the entry and exit node stage options." class="align-center" src="../../../_images/entry_exit_nodes.png" style="width: 50%;" />
+</a>
+<p>Subflows cannot be utilized within a parent flow without entry and exit nodes. A subflow has no limit to the amount of entry or exit nodes
+it can have. To add an entry or exit node to a subflow, you can use the
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow.add_entry_node" title="ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow.add_entry_node"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Subflow.add_entry_node()</span></code></a>
+or <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow.add_exit_node" title="ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow.add_exit_node"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Subflow.add_exit_node()</span></code></a>
+method respectively.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_subflow</span>
+<span class="go">Subflow(name=&#39;My first subflow&#39;, description=&#39;optional description&#39;, ...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">entry_node</span> <span class="o">=</span> <span class="n">new_subflow</span><span class="o">.</span><span class="n">add_entry_node</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">exit_node</span> <span class="o">=</span> <span class="n">new_subflow</span><span class="o">.</span><span class="n">add_exit_node</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="updating-a-subflow">
+<span id="preparing-data-subflows-updating-a-subflow"></span><h2>Updating a Subflow<a class="headerlink" href="#updating-a-subflow" title="Link to this heading">#</a></h2>
+<section id="preparing-data-subflows-updating-a-subflow-updating-a-subflow">
+<span id="id2"></span><h3>Updating a Subflow<a class="headerlink" href="#preparing-data-subflows-updating-a-subflow-updating-a-subflow" title="Link to this heading">#</a></h3>
+<p>In the UI, you can update a flow by making changes to the subflow and hitting the ‘Save’ icon to update the flow.</p>
+<a class="reference internal image-reference" href="../../../_images/save_subflow.png"><img alt="Saving a subflow." class="align-center" src="../../../_images/save_subflow.png" style="width: 100%;" />
+</a>
+<p>In the SDK, you can make any changes to a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow" title="ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subflow</span></code></a> instance
+in memory and update it by passing this object to <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_subflow" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_subflow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_subflow()</span></code></a> method.</p>
+</section>
+<section id="updating-a-local-subflow">
+<span id="preparing-data-subflows-updating-a-subflow-updating-a-local-subflow"></span><h3>Updating a Local Subflow<a class="headerlink" href="#updating-a-local-subflow" title="Link to this heading">#</a></h3>
+<p>In the UI, you can update a local subflow by making changes to the subflow and saving the parent flow. For more information
+on this, please refer to <a class="reference internal" href="flows.html#preparing-data-batch-flows-updating-a-flow"><span class="std std-ref">Updating a Flow</span></a>.</p>
+</section>
+</section>
+<section id="duplicating-a-subflow">
+<span id="preparing-data-subflows-duplicating-a-subflow"></span><h2>Duplicating a Subflow<a class="headerlink" href="#duplicating-a-subflow" title="Link to this heading">#</a></h2>
+<section id="preparing-data-subflows-duplicating-a-subflow-duplicating-a-subflow">
+<span id="id3"></span><h3>Duplicating a Subflow<a class="headerlink" href="#preparing-data-subflows-duplicating-a-subflow-duplicating-a-subflow" title="Link to this heading">#</a></h3>
+<p>To duplicate a subflow using the SDK, you need to pass a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow" title="ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subflow</span></code></a> instance
+to the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.duplicate_subflow" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.duplicate_subflow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.duplicate_subflow()</span></code></a> method
+along with the <code class="docutils literal notranslate"><span class="pre">name</span></code> parameter for the name of the new flow and an optional <code class="docutils literal notranslate"><span class="pre">description</span></code> parameter.</p>
+<p>This will duplicate a flow and return a new instance of <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow" title="ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subflow</span></code></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">duplicated_subflow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">duplicate_subflow</span><span class="p">(</span><span class="n">new_subflow</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;duplicated_subflow&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;optional_description&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span> <span class="n">duplicated_subflow</span>
+<span class="n">Subflow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;duplicated_subflow&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;optional_description&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="duplicating-a-local-subflow">
+<span id="preparing-data-subflows-duplicating-a-subflow-duplicating-a-local-subflow"></span><h3>Duplicating a Local Subflow<a class="headerlink" href="#duplicating-a-local-subflow" title="Link to this heading">#</a></h3>
+<p>To duplicate a local subflow, you need to pass a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow" title="ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subflow</span></code></a> instance
+to the  <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.duplicate_subflow" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.duplicate_subflow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchFlow.duplicate_subflow()</span></code></a> method
+along with the <code class="docutils literal notranslate"><span class="pre">name</span></code> parameter.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">duplicated_subflow</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">duplicate_subflow</span><span class="p">(</span><span class="n">new_subflow</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;duplicated_subflow&#39;</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span> <span class="n">duplicated_subflow</span>
+<span class="n">Subflow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;duplicated_subflow&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="deleting-a-subflow">
+<span id="preparing-data-subflows-deleting-a-subflow"></span><h2>Deleting a Subflow<a class="headerlink" href="#deleting-a-subflow" title="Link to this heading">#</a></h2>
+<section id="preparing-data-subflows-deleting-a-subflow-deleting-a-subflow">
+<span id="id4"></span><h3>Deleting a Subflow<a class="headerlink" href="#preparing-data-subflows-deleting-a-subflow-deleting-a-subflow" title="Link to this heading">#</a></h3>
+<p>To delete a subflow in the UI, you can go to <strong>Assets</strong>, choose a flow and click on the three dots next to it and choose <code class="docutils literal notranslate"><span class="pre">Delete</span></code>.</p>
+<a class="reference internal image-reference" href="../../../_images/delete_subflow.png"><img alt="Screenshot of deleting subflow." class="align-center" src="../../../_images/delete_subflow.png" style="width: 100%;" />
+</a>
+<p>To delete a flow via the SDK, you need to pass a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow" title="ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subflow</span></code></a> instance
+to the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_subflow" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_subflow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_subflow()</span></code></a> method.</p>
+<p>This method returns an HTTP response indicating the status of the update operation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">delete_subflow</span><span class="p">(</span><span class="n">duplicated_subflow</span><span class="p">)</span>
+<span class="go">&lt;Response [204]&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="deleting-a-local-subflow">
+<span id="preparing-data-subflows-deleting-a-subflow-deleting-a-local-subflow"></span><h3>Deleting a Local Subflow<a class="headerlink" href="#deleting-a-local-subflow" title="Link to this heading">#</a></h3>
+<p>To delete a local subflow from a flow in the SDK, you need to pass a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow" title="ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Subflow</span></code></a> instance
+to the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.delete_subflow" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.delete_subflow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchFlow.delete_subflow()</span></code></a> method.</p>
+<p>This method returns None if there were no issues.</p>
+</section>
+</section>
+<section id="using-subflows-in-flows">
+<span id="preparing-data-subflows-using-subflows-in-flows"></span><h2>Using Subflows in Flows<a class="headerlink" href="#using-subflows-in-flows" title="Link to this heading">#</a></h2>
+<p>To use a subflow in a parent data flow, it must be properly linked, which involves mapping its inputs and outputs.
+Consider the following subflow:</p>
+<a class="reference internal image-reference" href="../../../_images/subflow_example.png"><img alt="Example subflow." class="align-center" src="../../../_images/subflow_example.png" style="width: 50%;" />
+</a>
+<p>Pay special attention to the name of the links, because when we use this subflow in a parent flow, we need to indicate
+to the parent node what links to map to. The following data flow uses this subflow:</p>
+<a class="reference internal image-reference" href="../../../_images/example_usage.png"><img alt="Flow using a subflow." class="align-center" src="../../../_images/example_usage.png" style="width: 50%;" />
+</a>
+<p>To indicate that the input row generator is connected to the entry node <strong>Link_2</strong>, you must indicate that in the input
+mapping.</p>
+<a class="reference internal image-reference" href="../../../_images/usage_inputs.png"><img alt="Flow using a subflow." class="align-center" src="../../../_images/usage_inputs.png" style="width: 50%;" />
+</a>
+<p>You must also do this for the outputs.</p>
+<a class="reference internal image-reference" href="../../../_images/usage_outputs.png"><img alt="Flow using a subflow." class="align-center" src="../../../_images/usage_outputs.png" style="width: 50%;" />
+</a>
+<p>In the SDK, to link a stage from the parent flow to a subflow’s entry node, you must use the
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.map_to_link" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.map_to_link"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Link.map_to_link()</span></code></a> method,
+specifying which link the parent flow should map to.</p>
+<p>The following code shows how to create the above subflow and flow:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.datastage</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.common.auth</span><span class="w"> </span><span class="kn">import</span> <span class="n">IAMAuthenticator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;&lt;TODO: insert your api_key&gt;&#39;</span> <span class="c1"># pragma: allowlist secret</span>
+<span class="n">auth</span> <span class="o">=</span> <span class="n">IAMAuthenticator</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">,</span> <span class="n">base_auth_url</span><span class="o">=</span><span class="s1">&#39;https://cloud.ibm.com&#39;</span><span class="p">)</span> <span class="c1"># pragma: allowlist secret</span>
+<span class="n">platform</span> <span class="o">=</span> <span class="n">Platform</span><span class="p">(</span><span class="n">auth</span><span class="p">,</span> <span class="n">base_api_url</span><span class="o">=</span><span class="s1">&#39;https://api.ca-tor.dai.cloud.ibm.com&#39;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">projects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">project_id</span><span class="o">=</span><span class="s1">&#39;&lt;TODO: insert your project_id&gt;&#39;</span><span class="p">)</span>
+
+
+<span class="n">flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;subflow_middle_codegen&#39;</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flow_type</span><span class="o">=</span><span class="s1">&#39;batch&#39;</span><span class="p">)</span>
+
+<span class="c1"># Stages</span>
+<span class="n">row_generator_1</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Row Generator&#39;</span><span class="p">,</span> <span class="s1">&#39;Row_Generator_1&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_middle_codegen</span><span class="p">():</span>
+    <span class="n">sf</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_subflow</span><span class="p">(</span><span class="s1">&#39;middle_codegen&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Stages</span>
+    <span class="n">entry_node_2</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">add_entry_node</span><span class="p">(</span><span class="s1">&#39;Entry node_2&#39;</span><span class="p">)</span>
+    <span class="n">peek_1</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Peek&#39;</span><span class="p">,</span> <span class="s1">&#39;Peek_1&#39;</span><span class="p">)</span>
+
+    <span class="n">peek_1</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">runtime_column_propagation</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">exit_node_2</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">add_exit_node</span><span class="p">(</span><span class="s1">&#39;Exit node_2&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Graph</span>
+    <span class="n">link_2_2</span> <span class="o">=</span> <span class="n">entry_node_2</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">peek_1</span><span class="p">)</span>
+    <span class="n">link_2_2</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Link_2&#39;</span>
+    <span class="n">entry_node_2_schema</span> <span class="o">=</span> <span class="n">link_2_2</span><span class="o">.</span><span class="n">create_schema</span><span class="p">()</span>
+    <span class="n">entry_node_2_schema</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="s1">&#39;CHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;COLUMN_1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+    <span class="n">link_3_2</span> <span class="o">=</span> <span class="n">peek_1</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">exit_node_2</span><span class="p">)</span>
+    <span class="n">link_3_2</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Link_3&#39;</span>
+    <span class="n">peek_1_schema</span> <span class="o">=</span> <span class="n">link_3_2</span><span class="o">.</span><span class="n">create_schema</span><span class="p">()</span>
+    <span class="n">peek_1_schema</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="s1">&#39;CHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;COLUMN_1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="s1">&#39;Link_2.COLUMN_1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+    <span class="n">project</span><span class="o">.</span><span class="n">update_subflow</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">sf</span>
+
+
+<span class="n">middle_codegen</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_subflow</span><span class="p">(</span><span class="n">get_middle_codegen</span><span class="p">(),</span> <span class="s1">&#39;middle_codegen_1&#39;</span><span class="p">)</span>
+
+<span class="n">peek_2</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Peek&#39;</span><span class="p">,</span> <span class="s1">&#39;Peek_2&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Graph</span>
+<span class="n">link_2</span> <span class="o">=</span> <span class="n">row_generator_1</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">middle_codegen</span><span class="p">)</span><span class="o">.</span><span class="n">map_to_link</span><span class="p">(</span><span class="s1">&#39;Link_2&#39;</span><span class="p">)</span>
+<span class="n">link_2</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Link_2&#39;</span>
+<span class="n">row_generator_1_schema</span> <span class="o">=</span> <span class="n">link_2</span><span class="o">.</span><span class="n">create_schema</span><span class="p">()</span>
+<span class="n">row_generator_1_schema</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="s1">&#39;CHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;COLUMN_1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+
+<span class="n">link_3</span> <span class="o">=</span> <span class="n">middle_codegen</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">peek_2</span><span class="p">)</span><span class="o">.</span><span class="n">map_from_link</span><span class="p">(</span><span class="s1">&#39;Link_3&#39;</span><span class="p">)</span>
+<span class="n">link_3</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Link_3&#39;</span>
+<span class="n">middle_codegen_1_schema</span> <span class="o">=</span> <span class="n">link_3</span><span class="o">.</span><span class="n">create_schema</span><span class="p">()</span>
+<span class="n">middle_codegen_1_schema</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="s1">&#39;CHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;COLUMN_1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="s1">&#39;Link_2.COLUMN_1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+
+<span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">flow</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="using-parameter-sets-in-subflows">
+<span id="preparing-data-subflows-using-parameter-sets-in-subflows"></span><h2>Using Parameter Sets in Subflows<a class="headerlink" href="#using-parameter-sets-in-subflows" title="Link to this heading">#</a></h2>
+<p>This section covers the use of parameter sets in external subflows. Local subflows use the parameter sets and local parameters of their parent.</p>
+<section id="using-parameter-sets">
+<span id="preparing-data-subflows-using-parameter-sets-in-subflows-using-parameter-sets"></span><h3>Using Parameter Sets<a class="headerlink" href="#using-parameter-sets" title="Link to this heading">#</a></h3>
+<p>The process of using parameter sets in subflows is the exact same as using one in a flow. This process is explained in the <a class="reference internal" href="parameter_sets.html#preparing-data-parameter-sets"><span class="std std-ref">Parameter Sets</span></a> section. In order for a subflow to use a parameter set its parent must also use the parameter set.</p>
+</section>
+<section id="using-local-parameters">
+<span id="preparing-data-subflows-using-parameter-sets-in-subflows-using-local-parameters"></span><h3>Using Local Parameters<a class="headerlink" href="#using-local-parameters" title="Link to this heading">#</a></h3>
+<p>The process of using local parameters in subflows requires a few extra steps compared to how they are used in flows. To add a local parameter, use <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow.add_local_parameter" title="ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow.add_local_parameter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Subflow.add_local_parameter</span></code></a>.
+Just like in a flow this method requires a <code class="docutils literal notranslate"><span class="pre">parameter_type</span></code> and a <code class="docutils literal notranslate"><span class="pre">name</span></code>. Optionally, a <code class="docutils literal notranslate"><span class="pre">value</span></code> and <code class="docutils literal notranslate"><span class="pre">description</span></code> can be provided. <code class="docutils literal notranslate"><span class="pre">Value</span></code> can either be a string or an int depending on the <code class="docutils literal notranslate"><span class="pre">parameter_type</span></code>. This method should be called during the process of creating the subflow.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_created_subflow</span><span class="p">():</span>
+    <span class="n">sf</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_subflow</span><span class="p">(</span><span class="s1">&#39;paramset_subflow&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Stages</span>
+    <span class="n">entry_node_2</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">add_entry_node</span><span class="p">(</span><span class="s1">&#39;Entry node_2&#39;</span><span class="p">)</span>
+    <span class="n">peek_1</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Peek&#39;</span><span class="p">,</span> <span class="s1">&#39;Peek_1&#39;</span><span class="p">)</span>
+
+    <span class="n">peek_1</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">runtime_column_propagation</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">exit_node_2</span> <span class="o">=</span> <span class="n">sf</span><span class="o">.</span><span class="n">add_exit_node</span><span class="p">(</span><span class="s1">&#39;Exit node_2&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Graph</span>
+    <span class="n">link_2_2</span> <span class="o">=</span> <span class="n">entry_node_2</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">peek_1</span><span class="p">)</span>
+    <span class="n">link_2_2</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Link_2&#39;</span>
+    <span class="n">entry_node_2_schema</span> <span class="o">=</span> <span class="n">link_2_2</span><span class="o">.</span><span class="n">create_schema</span><span class="p">()</span>
+    <span class="n">entry_node_2_schema</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="s1">&#39;CHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;COLUMN_1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+    <span class="n">link_3_2</span> <span class="o">=</span> <span class="n">peek_1</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">exit_node_2</span><span class="p">)</span>
+    <span class="n">link_3_2</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Link_3&#39;</span>
+    <span class="n">peek_1_schema</span> <span class="o">=</span> <span class="n">link_3_2</span><span class="o">.</span><span class="n">create_schema</span><span class="p">()</span>
+    <span class="n">peek_1_schema</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="s1">&#39;CHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;COLUMN_1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="s1">&#39;Link_2.COLUMN_1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+    <span class="n">subflow</span><span class="o">.</span><span class="n">add_local_parameter</span><span class="p">(</span><span class="n">parameter_type</span><span class="o">=</span><span class="s1">&#39;string&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;make&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;toyota&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">subflow</span><span class="o">.</span><span class="n">add_local_parameter</span><span class="p">(</span><span class="s1">&#39;integer&#39;</span><span class="p">,</span> <span class="s1">&#39;num&#39;</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+
+    <span class="n">project</span><span class="o">.</span><span class="n">update_subflow</span><span class="p">(</span><span class="n">sf</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">sf</span>
+</pre></div>
+</div>
+<p>Since an external subflow can be reused you may want to set different values for different cases. To do this call the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow.set_local_parameter" title="ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow.set_local_parameter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Subflow.set_local_parameter</span></code></a> method after adding the subflow to a flow.
+This method takes the <code class="docutils literal notranslate"><span class="pre">name</span></code> of the local parameter you want to change and the <code class="docutils literal notranslate"><span class="pre">value</span></code> you want to set it to.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">paramset_subflow</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_subflow</span><span class="p">(</span><span class="n">get_created_subflow</span><span class="p">(),</span> <span class="s1">&#39;paramset_subflow&#39;</span><span class="p">)</span>
+
+<span class="n">paramset_subflow</span><span class="o">.</span><span class="n">set_local_parameter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;num&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">paramset_subflow</span><span class="o">.</span><span class="n">set_local_parameter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;make&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;honda&#39;</span><span class="p">)</span>
+
+<span class="n">paramset_subflow2</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_subflow</span><span class="p">(</span><span class="n">get_created_subflow</span><span class="p">(),</span> <span class="s1">&#39;paramset_subflow2&#39;</span><span class="p">)</span>
+
+<span class="n">paramset_subflow</span><span class="o">.</span><span class="n">set_local_parameter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;num&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">36</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="batch_schemas.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Schemas</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="parameter_sets.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Parameter Sets</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Section Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-subflow">Creating a Subflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-data-subflows-creating-a-subflow-creating-a-subflow">Creating a Subflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-local-subflow">Creating a Local Subflow</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-subflows">Retrieving Subflows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-a-subflow">Editing a Subflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-attributes">Editing Attributes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unique-stages-to-subflows">Unique Stages to Subflows</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-subflow">Updating a Subflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-data-subflows-updating-a-subflow-updating-a-subflow">Updating a Subflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-local-subflow">Updating a Local Subflow</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-a-subflow">Duplicating a Subflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-data-subflows-duplicating-a-subflow-duplicating-a-subflow">Duplicating a Subflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-a-local-subflow">Duplicating a Local Subflow</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-subflow">Deleting a Subflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-data-subflows-deleting-a-subflow-deleting-a-subflow">Deleting a Subflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-local-subflow">Deleting a Local Subflow</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-subflows-in-flows">Using Subflows in Flows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-parameter-sets-in-subflows">Using Parameter Sets in Subflows</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-parameter-sets">Using Parameter Sets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-local-parameters">Using Local Parameters</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, IBM.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

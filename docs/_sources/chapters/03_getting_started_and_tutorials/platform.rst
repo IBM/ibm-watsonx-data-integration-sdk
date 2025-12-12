@@ -13,7 +13,7 @@ You must provide a valid authentication object (such as an instance of :py:class
 .. note::
     If you don’t specify `base_api_url`, the SDK defaults to `'https://api.dataplatform.cloud.ibm.com'`. For any other region, set base_api_url to the appropriate regional endpoint.
 
-.. skip: start "production url usage"
+.. skip: start 'production url usage'
 
 .. code-block:: python
 
@@ -22,4 +22,8 @@ You must provide a valid authentication object (such as an instance of :py:class
 
 .. skip: end
 
-Once you’ve created the ``platform`` object, you can begin interacting with the watsonx.data integration platform.
+Once you’ve created the ``Platform`` object, you can begin interacting with the watsonx.data integration platform.
+
+
+.. note::
+    When connecting to an on-premises deployment, specify your cluster’s URL using the `base_url` parameter and provide your authenticator object through the `auth` parameter as usual.

@@ -6,7 +6,7 @@ Datasource Type
 ===============
 |
 
-A ``datasource type`` is an object that represents a source of the data. This can be a database (MongoDB, MySQL), file storage (Dropbox, Google Cloud Storage), generic protocol or API (FTP, HTTP).
+A ``datasource type`` is an object that represents a source of data. This can be a database (MongoDB, MySQL), file storage (Dropbox, Google Cloud Storage), generic protocol or API (FTP, HTTP).
 
 .. note::
 
@@ -22,7 +22,7 @@ The SDK provides functionality to interact with datasource types.
 This includes operations such as:
     * Retrieving DatasourceType(s)
 
-.. _preparing_data__datasources__retrieving_an_datasourcetype:
+.. _preparing_data__datasources__retrieving_a_datasourcetype:
 
 Retrieving a DatasourceType
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -30,7 +30,7 @@ Retrieving a DatasourceType
 In the UI, the list of all DatasourceType objects is displayed during creation of :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.Connection`
 (See: :ref:`Creating a Connection <preparing_data__connections__creating_a_connection>`).
 
-.. image:: ../../_static/images/connections/get_datasource.png
+.. image:: /_static/images/connections/get_datasource.png
    :alt: Screenshot of the DataSource selection in the UI
    :align: center
    :width: 100%
@@ -73,18 +73,18 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.conn
 Retrieving a DatasourceType connection properties
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the UI, available connection fields depend on previously selected DatasourceType (See: :ref:`Retrieving a DatasourceType <preparing_data__datasources__retrieving_an_datasourcetype>`).
+In the UI, available connection fields depend on previously selected DatasourceType (See: :ref:`Retrieving a DatasourceType <preparing_data__datasources__retrieving_a_datasourcetype>`).
 
 For example, JDBC connection by default requires 3 parameters - ``JDBC Connection String``, ``Username``, ``Password``.
 
-.. image:: ../../_static/images/connections/datasource_jdbc.png
+.. image:: /_static/images/connections/datasource_jdbc.png
    :alt: Screenshot of the JDBC DataSource arguments.
    :align: center
    :width: 100%
 
 HTTP connection on the other hand by default requires only one parameters - ``File URL``.
 
-.. image:: ../../_static/images/connections/datasource_http.png
+.. image:: /_static/images/connections/datasource_http.png
    :alt: Screenshot of the HTTP DataSource arguments.
    :align: center
    :width: 100%

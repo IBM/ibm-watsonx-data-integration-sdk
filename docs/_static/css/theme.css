@@ -8,6 +8,23 @@
     flex-basis: 22%;
 }
 
+.bd-container__inner {
+    width: 100%;
+}
+
+.bd-page-width {
+    max-width: 100%;
+}
+
+dt {
+    overflow-wrap: break-word;
+}
+
+.sig-prename::before {
+    content: "\A";
+    white-space: pre;
+}
+
 /* Shrinks the logo size to better match the navbar width */
 .navbar-brand img {
     max-width: 70%;

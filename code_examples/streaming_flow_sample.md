@@ -87,7 +87,7 @@ This section demonstrates the core workflow: creating a streaming flow object, a
 ```python
 # Create a new Streaming Flow named "Dev to Trash"
 # SET environment = environment above if you want to run a job for this flow
-flow = project.create_flow(name="Dev to Trash", environment=None, description="")
+flow = project.create_flow(name="Dev to Trash", environment=environment, description="")
 
 # Add the Origin (data source) stage
 dev_raw_data_source_1 = flow.add_stage("Dev Raw Data Source", type="origin")
@@ -125,12 +125,12 @@ The code creates and configures a linear Streaming Flow pipeline named "Dev to T
 
 ## 5. Running a job for the basic flow
 
-Note: The job for the basic flow will only run if you have successfully created an environment and installed an engine. Refer to the documentation here for additional help
+Note: The job for the basic flow will only run if you have successfully created an environment and installed an engine. Refer to the documentation here for additional help https://ibm.github.io/ibm-watsonx-data-integration-sdk/chapters/04_projects/engines_streaming.html
 ```python
 # Create a Job object associated with the existing 'flow'.
 dev_to_trash_job = project.create_job(
     name="DevToTrash_StreamingJob",  
-    flow=streaming_flow                 
+    flow=flow                 
 )
 
 # Start a Job Run (an instance of execution) for the created Job.
@@ -146,9 +146,11 @@ print(f"Streaming Job '{dev_to_trash_job.name}' started with Run ID: {dev_to_tra
 
 This powerful feature allows users to take an existing flow and generate the Python SDK code required to rebuild it.
 ```python
+from ibm_watsonx_data_integration.codegen.generator import PythonGenerator
+
 # Python generator generating streaming flow template or learning SDK
 generator = PythonGenerator(
-    source=streaming_flow,
+    source=flow,
     destination='../Desktop/streaming_flow_template.py',
     auth=auth,  
     base_api_url='https://api.ca-tor.dai.cloud.ibm.com'

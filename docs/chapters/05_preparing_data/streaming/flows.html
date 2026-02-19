@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Flows &#8212; ibm-watsonx-data-integration 1.0.0 documentation</title>
+    <title>Flows &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
   
   
   
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css?v=a0a71c94" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=f8c2f790" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=f9c1cefe"></script>
+    <script src="../../../_static/documentation_options.js?v=051bfb12"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -165,11 +165,12 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01_welcome/prereqs.html">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/supported_products.html">Supported Products</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../02_overview/release_notes.html">What’s new</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../02_overview/known_issues_and_limitations.html">Known Issues and limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/known_issues_and_limitations.html">Known Issues and Limitations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02_overview/faq.html">Get Help</a></li>
 </ul>
 </details></li>
@@ -180,6 +181,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_batch.html">Code Generation (Batch)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_streaming.html">Code Generation (Streaming)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_connections.html">Code Generation for Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/http_retry.html">HTTP Retry Management</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -187,7 +189,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../04_projects/jobs.html">Jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../04_projects/environments_streaming.html">Environments (Streaming)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../04_projects/engines_streaming.html">Engines (Streaming)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04_projects/access_control.html">Access Control</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Preparing Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -206,25 +207,27 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../connections.html">Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../06_administration/index.html">Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_administration/on_prem_administration/index.html">On-Prem Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../06_administration/on_prem_administration/users.html">Users</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../06_administration/on_prem_administration/access_groups.html">Access Groups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../06_administration/on_prem_administration/roles.html">Roles</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/on_prem_access_control/index.html">On-Prem Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/roles.html">Roles</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_administration/saas_administration/index.html">SaaS Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/accounts.html">Accounts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/users.html">Users</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/access_groups.html">Access Groups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/roles.html">Roles</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/service_ids.html">Service IDs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/trusted_profiles.html">Trusted Profiles</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/saas_access_control/index.html">SaaS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06_access_control/project_collaborators.html">Project Collaborators</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -339,10 +342,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="flows">
-<span id="preparing-data-flows"></span><h1>Flows<a class="headerlink" href="#flows" title="Link to this heading">#</a></h1>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
+<span id="preparing-data-streaming-flows"></span><h1>Flows<a class="headerlink" href="#flows" title="Link to this heading">#</a></h1>
 <p>A flow is an object used for storing the execution flow of a data pipeline.
 It is comprised of multiple stages with each stage defining how data is handled in that part of the execution flow.</p>
 <dl class="simple">
@@ -381,7 +381,7 @@ It is comprised of multiple stages with each stage defining how data is handled 
 <p>In the UI, you can create a flow by navigating to <strong>Assets -&gt; New asset -&gt; Create a flow</strong>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Creating streaming flow in the UI requires setting an environment</p>
+<p>Creating a streaming flow in the UI requires setting an environment</p>
 </div>
 <a class="reference internal image-reference" href="../../../_images/create_streaming_flow.png"><img alt="Screenshot of the flow creation page." class="align-center" src="../../../_images/create_streaming_flow.png" style="width: 100%;" />
 </a>
@@ -390,7 +390,7 @@ It is comprised of multiple stages with each stage defining how data is handled 
 You are required to supply a <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">environment</span></code> parameters.
 On how to create an environment check <a class="reference internal" href="../../04_projects/environments_streaming.html#projects-environments-creating-an-environment"><span class="std std-ref">creating an environment</span></a>.
 You can also provide an optional <code class="docutils literal notranslate"><span class="pre">description</span></code>.
-You don’t have to specify a <code class="docutils literal notranslate"><span class="pre">flow_type</span></code> as its default value is <cite>streaming</cite>.
+You don’t have to specify a <code class="docutils literal notranslate"><span class="pre">flow_type</span></code> as its default value is <code class="docutils literal notranslate"><span class="pre">streaming</span></code>.
 This method returns a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamingFlow</span></code></a> instance.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;My streaming flow&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;optional description&#39;</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="n">environment</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span>
@@ -399,13 +399,15 @@ This method returns a <a class="reference internal" href="../../../api/models.ht
 </div>
 </section>
 <section id="retrieving-flows">
-<span id="preparing-data-flows-retrieving-a-flow"></span><h2>Retrieving Flows<a class="headerlink" href="#retrieving-flows" title="Link to this heading">#</a></h2>
+<span id="preparing-data-streaming-flows-retrieving-a-flow"></span><h2>Retrieving Flows<a class="headerlink" href="#retrieving-flows" title="Link to this heading">#</a></h2>
 <p>Flows can be retrieved through a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> object using the
 <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.flows" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.flows"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Project.flows</span></code></a> property.
-You can also retrieve a single flow using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.common.models.CollectionModel.get" title="ibm_watsonx_data_integration.common.models.CollectionModel.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.flows.get()</span></code></a> method.
-which requires the <code class="docutils literal notranslate"><span class="pre">flow_id</span></code> parameter.</p>
+If you wish to only retrieve streaming flows use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.common.models.CollectionModel.get_all" title="ibm_watsonx_data_integration.common.models.CollectionModel.get_all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.flows.get_all()</span></code></a> method to filter by <code class="docutils literal notranslate"><span class="pre">flow_type</span></code>.
+You can also retrieve a single flow using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.common.models.CollectionModel.get" title="ibm_watsonx_data_integration.common.models.CollectionModel.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.flows.get()</span></code></a> method which requires the <code class="docutils literal notranslate"><span class="pre">flow_id</span></code> parameter.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">flows</span>  <span class="c1"># a list of all flows</span>
 <span class="go">[...StreamingFlow(name=&#39;My streaming flow&#39;, description=&#39;optional description&#39;, ...)...BatchFlow(..., name=&#39;My batch flow&#39;, description=&#39;optional description&#39;, ...)...]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">flows</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">flow_type</span><span class="o">=</span><span class="s1">&#39;streaming&#39;</span><span class="p">)</span>
+<span class="go">[...StreamingFlow(name=&#39;My streaming flow&#39;, description=&#39;optional description&#39;, ...)...]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">flows</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;My streaming flow&#39;</span><span class="p">)</span>
 <span class="go">StreamingFlow(name=&#39;My streaming flow&#39;, description=&#39;optional description&#39;, ...)</span>
 </pre></div>
@@ -422,7 +424,7 @@ which requires the <code class="docutils literal notranslate"><span class="pre">
 </div>
 <p>Also you can edit any flow by editing its stages.
 This can include adding a stage, removing a stage, updating a stage’s configuration or connecting a stage in a different way than before.
-All the operations described are covered in the <a class="reference internal" href="stages.html#preparing-data-stages"><span class="std std-ref">Stages</span></a> documentation.</p>
+All the operations described are covered in the Stages documentation (see <a class="reference internal" href="../batch/stages.html#preparing-data-batch-stages"><span class="std std-ref">Batch Stages</span></a> or <a class="reference internal" href="stages.html#preparing-data-streaming-stages"><span class="std std-ref">Streaming Stages</span></a>).</p>
 <p>On top of that streaming flows have many properties related to pipeline, engines, etc., you can edit a streaming flow’s configuration through the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.configuration" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.configuration"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Flow.configuration</span></code></a> property.
 This property returns a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration" title="ibm_watsonx_data_integration.services.streamsets.models.configuration.Configuration"><code class="xref py py-class docutils literal notranslate"><span class="pre">Configuration</span></code></a> object which encapsulates a flow’s configuration.
 You can print out the configuration and edit it similarly to a <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>.</p>
@@ -435,25 +437,25 @@ You can print out the configuration and edit it similarly to a <code class="xref
 <section id="updating-a-flow">
 <span id="preparing-data-streaming-flows-updating-a-flow"></span><h2>Updating a Flow<a class="headerlink" href="#updating-a-flow" title="Link to this heading">#</a></h2>
 <p>In the UI, you can update a flow by making changes to the flow and hitting the ‘Save’ icon to update the flow.</p>
-<a class="reference internal image-reference" href="../../../_images/save_flow_button.png"><img alt="Screenshot of the flow creation page." class="align-center" src="../../../_images/save_flow_button.png" style="width: 100%;" />
+<a class="reference internal image-reference" href="../../../_images/save_flow_button.png"><img alt="Screenshot of updating the flow." class="align-center" src="../../../_images/save_flow_button.png" style="width: 100%;" />
 </a>
-<p>In the SDK, you can make any changes to a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.flow_model.Flow" title="ibm_watsonx_data_integration.cpd_models.flow_model.Flow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code></a> instance
+<p>In the SDK, you can make any changes to a <code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code> instance
 in memory and update it by passing this object to <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_flow" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_flow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_flow()</span></code></a> method.</p>
 <p>This method returns an HTTP response indicating the status of the update operation.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;new flow name&#39;</span>  <span class="c1"># you can also update the stages, configuration, etc.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">new_flow</span><span class="p">)</span>
 <span class="go">&lt;Response [200]&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span>
-<span class="go">StreamsetsFlow(name=&#39;new flow name&#39;, description=&#39;new description for the flow&#39;, ...)</span>
+<span class="go">StreamingFlow(name=&#39;new flow name&#39;, description=&#39;new description for the flow&#39;, ...)</span>
 </pre></div>
 </div>
 </section>
 <section id="duplicating-a-flow">
 <span id="preparing-data-streaming-flows-duplicating-a-flow"></span><h2>Duplicating a Flow<a class="headerlink" href="#duplicating-a-flow" title="Link to this heading">#</a></h2>
-<p>To duplicate a flow using the SDK, you need to pass a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.flow_model.Flow" title="ibm_watsonx_data_integration.cpd_models.flow_model.Flow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code></a> instance
+<p>To duplicate a flow using the SDK, you need to pass a <code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code> instance
 to the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.duplicate_flow" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.duplicate_flow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.duplicate_flow()</span></code></a> method
 along with the <code class="docutils literal notranslate"><span class="pre">name</span></code> parameter for the name of the new flow and an optional <code class="docutils literal notranslate"><span class="pre">description</span></code> parameter.</p>
-<p>This will duplicate a flow and return a new instance of <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.flow_model.Flow" title="ibm_watsonx_data_integration.cpd_models.flow_model.Flow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code></a>.</p>
+<p>This will duplicate a flow and return a new instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">duplicated_flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">duplicate_flow</span><span class="p">(</span><span class="n">new_flow</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;duplicated flow&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;duplicated flow description&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">duplicated_flow</span>
 <span class="go">StreamsetsFlow(name=&#39;duplicated flow&#39;, description=&#39;duplicated flow description&#39;, ...)</span>
@@ -463,10 +465,10 @@ along with the <code class="docutils literal notranslate"><span class="pre">name
 <section id="deleting-a-flow">
 <span id="preparing-data-streaming-flows-deleting-a-flow"></span><h2>Deleting a Flow<a class="headerlink" href="#deleting-a-flow" title="Link to this heading">#</a></h2>
 <p>To delete a flow in the UI, you can go to <strong>Assets</strong>, choose a flow and click on the three dots next to it and choose <strong>Delete</strong>.</p>
-<a class="reference internal image-reference" href="../../../_images/flow_options.png"><img alt="Screenshot of the flow creation page." class="align-center" src="../../../_images/flow_options.png" style="width: 100%;" />
+<a class="reference internal image-reference" href="../../../_images/flow_options.png"><img alt="Screenshot of deleting a flow." class="align-center" src="../../../_images/flow_options.png" style="width: 100%;" />
 </a>
-<p>To delete a flow via the SDK, you need to pass a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.flow_model.Flow" title="ibm_watsonx_data_integration.cpd_models.flow_model.Flow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code></a> instance to the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_flow" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_flow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_flow()</span></code></a> method.</p>
-<p>This method returns an HTTP response indicating the status of the update operation.</p>
+<p>To delete a flow via the SDK, you need to pass a <code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code> instance to the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_flow" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_flow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_flow()</span></code></a> method.</p>
+<p>This method returns an HTTP response indicating the status of the delete operation.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">delete_flow</span><span class="p">(</span><span class="n">duplicated_flow</span><span class="p">)</span>
 <span class="go">&lt;Response [204]&gt;</span>
 </pre></div>
@@ -477,11 +479,11 @@ along with the <code class="docutils literal notranslate"><span class="pre">name
 <p>In the UI, you can validate a streaming flow by making changes to the flow and hitting the ‘Validate’ icon to validate the flow.</p>
 <a class="reference internal image-reference" href="../../../_images/validate_flow_button.png"><img alt="Screenshot of the validate button." class="align-center" src="../../../_images/validate_flow_button.png" style="width: 100%;" />
 </a>
-<p>To validate a streaming flow via the SDK, you need to update a flow, and then call the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.validate" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.validate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StreamingFlow.validate()</span></code></a> method.
+<p>To validate a streaming flow via the SDK, you need to update a flow, and then call the <code class="xref py py-meth docutils literal notranslate"><span class="pre">StreamingFlow.validate()</span></code> method.
 This will return a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.ValidationResult" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.ValidationResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValidationResult</span></code></a> object.
 This object contains <code class="docutils literal notranslate"><span class="pre">issues</span></code> attribute that has a list of <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError"><code class="xref py py-class docutils literal notranslate"><span class="pre">FlowValidationError</span></code></a> instances if there are any errors.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>
-<span class="go">Trash_01(stage_id=&#39;Trash_01&#39;)</span>
+<span class="go">Trash_01(stage_name=&#39;Trash 1&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">new_flow</span><span class="p">)</span>
 <span class="go">&lt;Response [200]&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
@@ -509,28 +511,39 @@ Each PreviewStage provides access to its <a class="reference internal" href="../
 </section>
 <section id="exporting-flows">
 <span id="preparing-data-flows-exporting-flows"></span><h2>Exporting Flows<a class="headerlink" href="#exporting-flows" title="Link to this heading">#</a></h2>
-<p>To export a flow via the SDK, you need to call the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.export_streaming_flows" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.export_streaming_flows"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.export_streaming_flows()</span></code></a> method and you
-must pass in either an individual <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamingFlow</span></code></a> object,
-a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlows" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlows"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamingFlows</span></code></a> object, or a list of
-<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamingFlow</span></code></a> objects.</p>
+<p>To export a flow via the SDK, you need to call the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.export_flow" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.export_flow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.export_flow()</span></code></a> method and you
+must pass in either an individual <code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code> object. If you would like to
+export multiple flows at the same time, you can call the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.export_flows" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.export_flows"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.export_flows()</span></code></a>
+method pass in a list of <code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code> objects.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.export_flows" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.export_flows"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.export_flows()</span></code></a>
+to export multiple flows at once, it is important that all objects in the list must be of the same type. You cannot
+pass in a list of <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamingFlow</span></code></a> and
+<cite>~ibm_watsonx_data_integration.services.datastage.models.flow.BatchFlow</cite> objects. It must be one or the other.</p>
+</div>
 <dl class="simple">
 <dt>You can set the following additional parameters:</dt><dd><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">with_plain_text_credentials</span></code> – export credentials in plain text.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">with_plain_text_credentials</span></code> – export credentials in plain text. (only relevant to streaming flows)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">destination</span></code> – specify the export location.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">stream</span></code> – stream the ZIP file data.</p></li>
 </ul>
 </dd>
 </dl>
 <p>The function will return the location the exported zip file was written to.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">export_streaming_flows</span><span class="p">(</span><span class="n">flows</span><span class="o">=</span><span class="n">project</span><span class="o">.</span><span class="n">flows</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span>
+<span class="go">StreamingFlow(name=&#39;My streaming flow&#39;, description=&#39;optional description&#39;, ...)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">export_flow</span><span class="p">(</span><span class="n">flow</span><span class="o">=</span><span class="n">flow</span><span class="p">)</span>
 <span class="go">PosixPath(&#39;flows.zip&#39;)</span>
 </pre></div>
 </div>
 </section>
 <section id="importing-flows">
 <span id="preparing-data-flows-importing-flows"></span><h2>Importing Flows<a class="headerlink" href="#importing-flows" title="Link to this heading">#</a></h2>
-<p>To import a flow via the SDK, you need to call the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.export_streaming_flows" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.export_streaming_flows"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.import_streaming_flows()</span></code></a> method and you
-must specify the <code class="docutils literal notranslate"><span class="pre">source</span></code> parameter, which is the Path to the zip file containing the json(s) of the streaming flow(s) to be imported.</p>
+<p>To import a flow via the SDK, you need to call the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.import_flows" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.import_flows"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.import_flows()</span></code></a> method and you
+must specify the <code class="docutils literal notranslate"><span class="pre">source</span></code> parameter, which is the Path to the zip file containing the json(s) of the streaming flow(s) to be imported and the <code class="docutils literal notranslate"><span class="pre">type</span></code> parameter, which should be
+<code class="docutils literal notranslate"><span class="pre">'streaming'</span></code>.</p>
 <dl class="simple">
 <dt>You must also set the <code class="docutils literal notranslate"><span class="pre">conflict_resolution</span></code> parameter which determines how to handle an attempted import of a duplicate flow which already exists in the project. The options for <code class="docutils literal notranslate"><span class="pre">conflict_resolution</span></code> are listed below:</dt><dd><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">'skip'</span></code> – skip this particular flow and move to the next flow to be imported.</p></li>
@@ -541,7 +554,7 @@ must specify the <code class="docutils literal notranslate"><span class="pre">so
 </dl>
 <p>The function will return the imported <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamingFlow</span></code></a> objects
 or it will return a list of the imported <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamingFlow</span></code></a> objects.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">import_streaming_flows</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;flows_to_import.zip&#39;</span><span class="p">,</span> <span class="n">conflict_resolution</span><span class="o">=</span><span class="s1">&#39;skip&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">import_flows</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;streaming&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s1">&#39;flows_to_import.zip&#39;</span><span class="p">,</span> <span class="n">conflict_resolution</span><span class="o">=</span><span class="s1">&#39;skip&#39;</span><span class="p">)</span>
 <span class="go">StreamingFlow(name=&#39;dummy_flow&#39;, description=&#39;dummy_description&#39;, flow_id=&#39;...&#39;, engine_version=&#39;...&#39;)</span>
 </pre></div>
 </div>
@@ -549,10 +562,10 @@ or it will return a list of the imported <a class="reference internal" href="../
 <section id="handling-error-records">
 <span id="preparing-data-streaming-flows-handling-error-records"></span><h2>Handling Error Records<a class="headerlink" href="#handling-error-records" title="Link to this heading">#</a></h2>
 <p>To edit error record handling on the UI, click the gear icon on the top-right of the screen in a flow’s edit page.</p>
-<a class="reference internal image-reference" href="../../../_images/save_flow_button.png"><img alt="Screenshot of the flow creation page." class="align-center" src="../../../_images/save_flow_button.png" style="width: 100%;" />
+<a class="reference internal image-reference" href="../../../_images/save_flow_button.png"><img alt="Screenshot of opening a flow settings." class="align-center" src="../../../_images/save_flow_button.png" style="width: 100%;" />
 </a>
 <p>This opens a new pop-up window with a tab for <code class="docutils literal notranslate"><span class="pre">Error</span> <span class="pre">records</span></code> on the left. This will let you adjust the error record handling for the flow.</p>
-<a class="reference internal image-reference" href="../../../_images/flow_settings.png"><img alt="Screenshot of the flow creation page." class="align-center" src="../../../_images/flow_settings.png" style="width: 100%;" />
+<a class="reference internal image-reference" href="../../../_images/flow_settings.png"><img alt="Screenshot of flow settings." class="align-center" src="../../../_images/flow_settings.png" style="width: 100%;" />
 </a>
 <p>This page lets you change how error records are handled by policy and which stage should handle them.</p>
 <p>The possible options for error record policy are <code class="docutils literal notranslate"><span class="pre">Original</span> <span class="pre">record</span> <span class="pre">as</span> <span class="pre">it</span> <span class="pre">was</span> <span class="pre">generated</span> <span class="pre">by</span> <span class="pre">the</span> <span class="pre">origin</span></code> and
@@ -576,7 +589,7 @@ You need to pass either the <code class="docutils literal notranslate"><span cla
 </div>
 <p>You can view the current error stage for a flow at any point using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.error_stage" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.error_stage"><code class="xref py py-attr docutils literal notranslate"><span class="pre">StreamingFlow.error_stage</span></code></a> property.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span><span class="o">.</span><span class="n">error_stage</span>
-<span class="go">WritetoFile_ErrorStage(stage_id=&#39;WritetoFile_ErrorStage&#39;)</span>
+<span class="go">WritetoFile_ErrorStage(stage_name=&#39;Error Records - Write to File&#39;)</span>
 </pre></div>
 </div>
 </section>

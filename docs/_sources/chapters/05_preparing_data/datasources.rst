@@ -4,13 +4,12 @@
 
 Datasource Type
 ===============
-|
 
 A ``datasource type`` is an object that represents a source of data. This can be a database (MongoDB, MySQL), file storage (Dropbox, Google Cloud Storage), generic protocol or API (FTP, HTTP).
 
 .. note::
 
-    For the full list, get all DatasourceTypes objects (`Retrieving a DatasourceType`_) or refer to the IBM documentation.
+    For the full list, get all DatasourceTypes objects (See: `Retrieving a DatasourceType`_) or refer to the IBM documentation.
 
 Datasource objects are used as arguments when creating :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.Connection` objects.
 
@@ -35,12 +34,9 @@ In the UI, the list of all DatasourceType objects is displayed during creation o
    :align: center
    :width: 100%
 
-In the SDK, a Connection can be retrieved using :py:class:`Project.connections <ibm_watsonx_data_integration.cpd_models.project_model.Project.connections>` property.
-You can also further filter and refine the connections returned based on attributes including
-``name``, ``context``, ``properties`` and ``datasource_type``.
 
 A DatasourceType can be retrieved using :py:class:`Platform.datasources <ibm_watsonx_data_integration.platform.Platform.datasources>` property.
-You can also further filter and refine the connections returned based on attributes including
+You can also filter the connections returned based on attributes including
 ``environment``, ``perspective`` and ``product``.
 
 This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceTypes` object.
@@ -82,7 +78,7 @@ For example, JDBC connection by default requires 3 parameters - ``JDBC Connectio
    :align: center
    :width: 100%
 
-HTTP connection on the other hand by default requires only one parameters - ``File URL``.
+HTTP connection on the other hand by default requires only one parameter - ``File URL``.
 
 .. image:: /_static/images/connections/datasource_http.png
    :alt: Screenshot of the HTTP DataSource arguments.

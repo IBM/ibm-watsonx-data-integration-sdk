@@ -144,12 +144,12 @@ You can retrieve the run command via the :py:class:`~ibm_watsonx_data_integratio
    The environment variable should contain the API key you generated for :ref:`authenticating <getting_started_and_tutorials__authentication>` with the watsonx.data integration platform.
 
 
-Deleting an Environments
-------------------------
+Deleting an Environment
+-----------------------
 
 To remove a single environment, use the
 :py:meth:`Project.delete_environment() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_environment>` method.
-The delete method returns an API response, which you can insepct to verify the status code.
+The delete method returns an API response, which you can inspect to verify the status code.
 
 .. code-block:: python
 

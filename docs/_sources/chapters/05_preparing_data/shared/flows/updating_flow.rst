@@ -1,7 +1,7 @@
 In the UI, you can update a flow by making changes to the flow and hitting the 'Save' icon to update the flow.
 
 .. image:: /_static/images/flows/save_flow_button.png
-   :alt: Screenshot of the flow creation page.
+   :alt: Screenshot of updating the flow.
    :align: center
    :width: 100%
 
@@ -18,6 +18,6 @@ This method returns an HTTP response indicating the status of the update operati
     >>> project.update_flow(new_flow)
     <Response [200]>
     >>> new_flow
-    StreamsetsFlow(name='new flow name', description='new description for the flow', ...)
+    StreamingFlow(name='new flow name', description='new description for the flow', ...)
 
 .. skip: end

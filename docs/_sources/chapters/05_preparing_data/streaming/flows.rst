@@ -1,8 +1,7 @@
-.. _preparing_data__flows:
+.. _preparing_data__streaming__flows:
 
 Flows
 =====
-|
 
 .. include:: ../shared/flows/introduction.rst
 
@@ -40,7 +39,7 @@ Creating a Flow
 In the UI, you can create a flow by navigating to **Assets -> New asset -> Create a flow**.
 
 .. warning::
-    Creating streaming flow in the UI requires setting an environment
+    Creating a streaming flow in the UI requires setting an environment
 
 .. image:: /_static/images/flows/create_streaming_flow.png
     :alt: Screenshot of the flow creation page.
@@ -52,7 +51,7 @@ In the SDK, you can create a flow from a :py:class:`~ibm_watsonx_data_integratio
 You are required to supply a ``name`` and ``environment`` parameters.
 On how to create an environment check :ref:`creating an environment <projects__environments__creating_an_environment>`.
 You can also provide an optional ``description``.
-You don't have to specify a ``flow_type`` as its default value is `streaming`.
+You don't have to specify a ``flow_type`` as its default value is ``streaming``.
 This method returns a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow` instance.
 
 .. code-block:: python
@@ -61,17 +60,22 @@ This method returns a :py:class:`~ibm_watsonx_data_integration.services.streamse
     >>> new_flow
     StreamingFlow(name='My streaming flow', description='optional description', flow_id=..., engine_version=...)
 
-.. _preparing_data__flows__retrieving_a_flow:
+.. _preparing_data__streaming__flows__retrieving_a_flow:
 
 Retrieving Flows
 ~~~~~~~~~~~~~~~~
 
-.. include:: ../shared/flows/retrieving_flows.rst
+Flows can be retrieved through a :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object using the
+:py:attr:`Project.flows <ibm_watsonx_data_integration.cpd_models.project_model.Project.flows>` property.
+If you wish to only retrieve streaming flows use the :py:meth:`Project.flows.get_all() <ibm_watsonx_data_integration.common.models.CollectionModel.get_all>` method to filter by ``flow_type``.
+You can also retrieve a single flow using the :py:meth:`Project.flows.get() <ibm_watsonx_data_integration.common.models.CollectionModel.get>` method which requires the ``flow_id`` parameter.
 
 .. code-block:: python
 
     >>> project.flows  # a list of all flows
     [...StreamingFlow(name='My streaming flow', description='optional description', ...)...BatchFlow(..., name='My batch flow', description='optional description', ...)...]
+    >>> project.flows.get_all(flow_type='streaming')
+    [...StreamingFlow(name='My streaming flow', description='optional description', ...)...]
     >>> project.flows.get(name='My streaming flow')
     StreamingFlow(name='My streaming flow', description='optional description', ...)
 
@@ -133,7 +137,7 @@ This object contains ``issues`` attribute that has a list of :py:class:`~ibm_wat
 .. code-block:: python
 
     >>> new_flow.add_stage('Trash')
-    Trash_01(stage_id='Trash_01')
+    Trash_01(stage_name='Trash 1')
     >>> project.update_flow(new_flow)
     <Response [200]>
     >>> new_flow.validate()
@@ -168,37 +172,16 @@ Each PreviewStage provides access to its :py:attr:`input <ibm_watsonx_data_integ
 
 .. _preparing_data__flows__exporting_flows:
 
-Exporting Flows
-~~~~~~~~~~~~~~~
-
-To export a flow via the SDK, you need to call the :py:meth:`Project.export_streaming_flows() <ibm_watsonx_data_integration.cpd_models.project_model.Project.export_streaming_flows>` method and you
-must pass in either an individual :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow` object,
-a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlows` object, or a list of
-:py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow` objects.
-
-You can set the following additional parameters:
-    * ``with_plain_text_credentials`` – export credentials in plain text.
-    * ``destination`` – specify the export location.
-    * ``stream`` – stream the ZIP file data.
-
-The function will return the location the exported zip file was written to.
-
-.. skip: start 'Export Flows API endpoint not on Prod yet'
-
-.. code-block:: python
-
-    >>> project.export_streaming_flows(flows=project.flows)
-    PosixPath('flows.zip')
-
-.. skip: end
+.. include:: ../shared/flows/exporting_flows.rst
 
 .. _preparing_data__flows__importing_flows:
 
 Importing Flows
 ~~~~~~~~~~~~~~~
 
-To import a flow via the SDK, you need to call the :py:meth:`Project.import_streaming_flows() <ibm_watsonx_data_integration.cpd_models.project_model.Project.export_streaming_flows>` method and you
-must specify the ``source`` parameter, which is the Path to the zip file containing the json(s) of the streaming flow(s) to be imported.
+To import a flow via the SDK, you need to call the :py:meth:`Project.import_flows() <ibm_watsonx_data_integration.cpd_models.project_model.Project.import_flows>` method and you
+must specify the ``source`` parameter, which is the Path to the zip file containing the json(s) of the streaming flow(s) to be imported and the ``type`` parameter, which should be
+``'streaming'``.
 
 You must also set the ``conflict_resolution`` parameter which determines how to handle an attempted import of a duplicate flow which already exists in the project. The options for ``conflict_resolution`` are listed below:
     * ``'skip'`` – skip this particular flow and move to the next flow to be imported.
@@ -212,7 +195,7 @@ or it will return a list of the imported :py:class:`~ibm_watsonx_data_integratio
 
 .. code-block:: python
 
-    >>> project.import_streaming_flows(source='flows_to_import.zip', conflict_resolution='skip')
+    >>> project.import_flows(type='streaming', source='flows_to_import.zip', conflict_resolution='skip')
     StreamingFlow(name='dummy_flow', description='dummy_description', flow_id='...', engine_version='...')
 
 .. skip: end
@@ -225,14 +208,14 @@ Handling Error Records
 To edit error record handling on the UI, click the gear icon on the top-right of the screen in a flow's edit page.
 
 .. image:: /_static/images/flows/save_flow_button.png
-   :alt: Screenshot of the flow creation page.
+   :alt: Screenshot of opening a flow settings.
    :align: center
    :width: 100%
 
 This opens a new pop-up window with a tab for ``Error records`` on the left. This will let you adjust the error record handling for the flow.
 
 .. image:: /_static/images/flows/flow_settings.png
-   :alt: Screenshot of the flow creation page.
+   :alt: Screenshot of flow settings.
    :align: center
    :width: 100%
 
@@ -268,4 +251,4 @@ You can view the current error stage for a flow at any point using the :py:attr:
 .. code-block:: python
 
     >>> new_flow.error_stage
-    WritetoFile_ErrorStage(stage_id='WritetoFile_ErrorStage')
+    WritetoFile_ErrorStage(stage_name='Error Records - Write to File')

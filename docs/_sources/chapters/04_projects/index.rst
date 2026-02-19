@@ -12,4 +12,3 @@ Integration Assets are the core components of the watsonx.data integration platf
    jobs
    environments_streaming
    engines_streaming
-   access_control

@@ -2,7 +2,6 @@
 
 Connections
 ===========
-|
 
 A connection is an object that is used to store connection related data for a single datasource (Kafka, Azure, etc.) like credentials, secrets and urls.
 Each connection is defined by exactly one datasource.
@@ -55,11 +54,11 @@ by selecting the appropriate project from the :py:class:`~ibm_watsonx_data_integ
 the :py:meth:`Project.create_connection() <ibm_watsonx_data_integration.cpd_models.project_model.Project.create_connection>` method to instantiate the connection.
 
 
-You must provide a ``name`` and ``datasource`` type to create connection.
+You must provide a ``name`` and ``datasource`` type to create a connection.
 :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType` is an object defining the data source for which the connection will be created.
 
 By default before creating any connection, server will validate it.
-If the connection cannot be estabilished with provided parameters, you will get an error and connection will not be saved.
+If the connection cannot be established with provided parameters, you will get an error and connection will not be saved.
 To skip validation and create connection anyway set ``test`` parameter of
 :py:meth:`Project.create_connection() <ibm_watsonx_data_integration.cpd_models.project_model.Project.create_connection>` to ``False``.
 
@@ -99,8 +98,8 @@ In the UI, you can get all Connections by navigating to **Assets -> Data access 
    :align: center
    :width: 100%
 
-In the SDK, Connection can be retrieved using :py:class:`Project.connections <ibm_watsonx_data_integration.cpd_models.project_model.Project.connections>` property.
-You can also further filter and refine the connections returned based on attributes including
+In the SDK, a Connection can be retrieved using :py:class:`Project.connections <ibm_watsonx_data_integration.cpd_models.project_model.Project.connections>` property.
+You can also filter the connections returned based on attributes including
 ``name``, ``context``, ``properties`` and ``datasource_type``.
 
 This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.Connections` object.

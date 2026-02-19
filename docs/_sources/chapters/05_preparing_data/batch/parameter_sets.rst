@@ -2,7 +2,6 @@
 
 Parameter Sets
 ==============
-|
 
 A parameter set is an object that helps make your jobs more flexible and reusable. Parameter sets allow you to specify values at run time rather than hardcoding them.
 
@@ -10,7 +9,7 @@ The SDK provides functionality to interact with parameter sets.
 
 This includes operations such as:
     * Creating a parameter set
-    * Retrieving parameter set
+    * Retrieving a parameter set
     * Updating a parameter set
     * Adding value sets
     * Adding local parameters
@@ -40,10 +39,13 @@ In the SDK, you can create a new :py:class:`~ibm_watsonx_data_integration.cpd_mo
 by selecting the appropriate project from the :py:class:`~ibm_watsonx_data_integration.platform.Platform` and then using
 the :py:meth:`Project.create_parameter_set() <ibm_watsonx_data_integration.cpd_models.project_model.Project.create_parameter_set>` method to instantiate the Parameter Set.
 
-You must provide a ``name`` to create parameter set.
+You must provide a ``name`` to create a parameter set.
+When adding parameters to a parameter set, you should use the :py:class:`~ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterType` enum to specify the parameter type.
+The available parameter types match options available in UI.
 
 .. invisible-code-block: python
 
+    >>> from ibm_watsonx_data_integration.cpd_models.parameter_set_model import ParameterType
     >>> params = project.parameter_sets
     >>> for i in params:
     ...     if i.name == 'testparamset':
@@ -52,12 +54,11 @@ You must provide a ``name`` to create parameter set.
 .. code-block:: python
 
     >>> paramset = project.create_parameter_set('testparamset')
-    >>> paramset.add_parameter(parameter_type='INTEGER', name='qty', value='100')
+    >>> paramset.add_parameter(parameter_type=ParameterType.Integer, name='qty', value='100')
     ParameterSet(name='testparamset', parameters=[Parameter(name='qty', param_type='int64', value='100')], description='', value_sets=[])
     >>>
     >>> project.update_parameter_set(paramset)
     <Response [200]>
-
 
 .. _preparing_data__parameter_sets__retrieving_an_existing_parameter_set:
 
@@ -72,24 +73,16 @@ In the UI, you can get all Parameter Sets by navigating to **Assets -> Configura
    :width: 100%
 
 In the SDK, Parameter Sets can be retrieved using the :py:class:`Project.parameter_sets <ibm_watsonx_data_integration.cpd_models.project_model.Project.parameter_sets>` property.
-You need to note that it doesn't contain any parameters inside.
-To get all parameters of a :py:class:`~ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet` you need to call :py:meth:`Project.parameter_sets.get() <ibm_watsonx_data_integration.common.models.CollectionModel.get>` method
-with a ``parameter_set_id``.
-
-This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet` object.
+This property returns a list of :py:class:`~ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet` objects.
 
 .. code-block:: python
 
     >>> # Returns a list of all parameter sets
     >>> project.parameter_sets
-    [...ParameterSet(name='testparamset', parameters=[], description='', value_sets=[])...]
+    [...ParameterSet(name='testparamset', parameters=[Parameter(name='qty', param_type='int64', value='100')], description='', value_sets=[])...]
     >>>
-    >>> testparamset = project.parameter_sets.get(name='testparamset')
-    >>> testparamset
-    ParameterSet(name='testparamset', parameters=[], description='', value_sets=[])
-    >>>
-    >>> project.parameter_sets.get(parameter_set_id=testparamset.parameter_set_id)
-    ParameterSet(name='testparamset', parameters=[Parameter(name='qty', param_type='int64', value='100', valid_values=[])], description='', value_sets=[])
+    >>> project.parameter_sets.get(name='testparamset')
+    ParameterSet(name='testparamset', parameters=[Parameter(name='qty', param_type='int64', value='100')], description='', value_sets=[])
 
 
 .. _preparing_data__parameter_sets__updating_a_parameter_set:
@@ -113,13 +106,13 @@ This will take you to a new page where you can add, edit, and delete parameters.
 To add parameters to a Parameter Set in the SDK, you can use the :py:meth:`ParameterSet.add_parameter() <ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet.add_parameter>` method.
 This method requires a ``name`` and ``parameter_type`` and can also take a ``value``, ``description``, ``prompt``, and ``valid_values``. The ``valid_values`` argument is only used in a parameter of type ``list``.
 
-To remove parameters use the :py:meth:`ParameterSet.remove_parameter() <ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet.add_parameter>` method which takes in the ``name`` of the parameter you wish to remove.
+To remove parameters use the :py:meth:`ParameterSet.remove_parameter() <ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet.remove_parameter>` method which takes in the ``name`` of the parameter you wish to remove.
 
 .. code-block:: python
 
     >>> paramset = (
-    ...    paramset.add_parameter(parameter_type='STRING', name='score', value='person')
-    ...    .add_parameter(parameter_type='DATE', name='date', value='2025-03-12')
+    ...    paramset.add_parameter(parameter_type=ParameterType.String, name='score', value='person')
+    ...    .add_parameter(parameter_type=ParameterType.Date, name='date', value='2025-03-12')
     ... )
     >>> paramset.remove_parameter('score')
     ParameterSet(name='testparamset', parameters=[Parameter(name='qty', param_type='int64', value='100'), Parameter(name='date', param_type='date', value='2025-03-12')], description='', value_sets=[])
@@ -132,12 +125,12 @@ This method returns an HTTP response indicating the status of the update operati
 
 .. code-block:: python
 
-    >>> paramset.name = 'New Paramset Name'
+    >>> paramset.name = 'New_Paramset_Name'
     >>> project.update_parameter_set(paramset)
     <Response [200]>
     >>>
-    >>> project.parameter_sets.get(name='New Paramset Name')
-    ParameterSet(name='New Paramset Name', parameters=[], description='', value_sets=[])
+    >>> project.parameter_sets.get(name='New_Paramset_Name')
+    ParameterSet(name='New_Paramset_Name', parameters=[...Parameter(...)...], description='', value_sets=[])
 
 .. _preparing_data__parameter_sets__adding_value_sets:
 
@@ -174,14 +167,14 @@ If a parameter is not given a value its default value will be used. You can also
     ValueSet(name='set_1', values=[{'name': 'qty', 'value': '20'}])
     >>>
     >>> paramset.add_value_set(set_1)
-    ParameterSet(name='New Paramset Name', parameters=[Parameter(name='qty', param_type='int64', value='100'), Parameter(name='date', param_type='date', value='2025-03-12')], description='', value_sets=[ValueSet(name='set_1', values=[{'name': 'qty', 'value': '20'}, {'name': 'date', 'value': '2025-03-12'}])])
+    ParameterSet(name='New_Paramset_Name', parameters=[Parameter(name='qty', param_type='int64', value='100'), Parameter(name='date', param_type='date', value='2025-03-12')], description='', value_sets=[ValueSet(name='set_1', values=[{'name': 'qty', 'value': '20'}, {'name': 'date', 'value': '2025-03-12'}])])
     >>>
     >>> set_2 = (
     ...    ValueSet(name='set_2')
     ...    .add_value(name='qty', value='40')
     ... )
     >>> paramset.add_value_set(set_2)
-    ParameterSet(name='New Paramset Name', parameters=[Parameter(name='qty', param_type='int64', value='100'), Parameter(name='date', param_type='date', value='2025-03-12')], description='', value_sets=[ValueSet(name='set_1', values=[{'name': 'qty', 'value': '20'}, {'name': 'date', 'value': '2025-03-12'}]), ValueSet(name='set_2', values=[{'name': 'qty', 'value': '40'}, {'name': 'date', 'value': '2025-03-12'}])])
+    ParameterSet(name='New_Paramset_Name', parameters=[Parameter(name='qty', param_type='int64', value='100'), Parameter(name='date', param_type='date', value='2025-03-12')], description='', value_sets=[ValueSet(name='set_1', values=[{'name': 'qty', 'value': '20'}, {'name': 'date', 'value': '2025-03-12'}]), ValueSet(name='set_2', values=[{'name': 'qty', 'value': '40'}, {'name': 'date', 'value': '2025-03-12'}])])
 
 In this example both value sets have the ``qty`` parameter set to a new value while the ``date`` parameter is still the default value.
 
@@ -215,8 +208,8 @@ Just like the add_parameter method above, this method requires a ``name`` and ``
 
 .. code-block:: python
 
-    >>> batch_flow.add_local_parameter(parameter_type='STRING', name='tablename', value='cust_source') # doctest: +SKIP
-    >>> batch_flow.add_local_parameter(parameter_type='LIST', name='shoplist', valid_values=['tomato', 'lettuce', 'bacon'], value='bacon') # doctest: +SKIP
+    >>> batch_flow.add_local_parameter(parameter_type=ParameterType.String, name='tablename', value='cust_source') # doctest: +SKIP
+    >>> batch_flow.add_local_parameter(parameter_type=ParameterType.List, name='shoplist', valid_values=['tomato', 'lettuce', 'bacon'], value='bacon') # doctest: +SKIP
 
 .. _preparing_data__parameter_sets__using_local_parameters_and_parameter_sets:
 
@@ -252,7 +245,7 @@ For local parameters you do not need to put anything in front of the parameter n
 
 Using PROJDEF
 ~~~~~~~~~~~~~
-You can use the PROJDEF parameter set to contain the parameters and environment variable values for a DataStage flow, job, or job run to reference.
+You can use the PROJDEF parameter set to contain the parameters and environment variable values for a Batch flow, job, or job run to reference.
 You can read more about PROJDEF `here <https://dataplatform.cloud.ibm.com/docs/content/dstage/dsnav/topics/projdef-parameter-set.html?context=cpdaas>`_.
 To add PROJDEF in the UI go to **Flow parameters -> Add PROJDEF parameter**
 
@@ -266,7 +259,7 @@ To use PROJDEF in the SDK you first need to create parameter_set with name 'PROJ
 .. code-block:: python
 
     >>> projdef_param = project.create_parameter_set('PROJDEF')
-    >>> projdef_param.add_parameter(parameter_type='INTEGER', name='qty', value='100')
+    >>> projdef_param.add_parameter(parameter_type=ParameterType.Integer, name='qty', value='100')
     ParameterSet(name='PROJDEF', parameters=[Parameter(name='qty', param_type='int64', value='100')], description='', value_sets=[])
     >>>
     >>> project.update_parameter_set(projdef_param)

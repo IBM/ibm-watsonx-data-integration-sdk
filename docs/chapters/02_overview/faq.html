@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Get Help &#8212; ibm-watsonx-data-integration 1.0.0 documentation</title>
+    <title>Get Help &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
   
   
   
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css?v=a0a71c94" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=f8c2f790" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=f9c1cefe"></script>
+    <script src="../../_static/documentation_options.js?v=051bfb12"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -49,7 +49,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Getting Started" href="../03_getting_started_and_tutorials/index.html" />
-    <link rel="prev" title="Known Issues and limitations" href="known_issues_and_limitations.html" />
+    <link rel="prev" title="Known Issues and Limitations" href="known_issues_and_limitations.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -165,11 +165,12 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../01_welcome/prereqs.html">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_welcome/supported_products.html">Supported Products</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Overview</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="release_notes.html">What’s new</a></li>
-<li class="toctree-l2"><a class="reference internal" href="known_issues_and_limitations.html">Known Issues and limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="known_issues_and_limitations.html">Known Issues and Limitations</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Get Help</a></li>
 </ul>
 </details></li>
@@ -180,6 +181,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_batch.html">Code Generation (Batch)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_streaming.html">Code Generation (Streaming)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_connections.html">Code Generation for Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/http_retry.html">HTTP Retry Management</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -187,7 +189,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/jobs.html">Jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/environments_streaming.html">Environments (Streaming)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/engines_streaming.html">Engines (Streaming)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../04_projects/access_control.html">Access Control</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -206,25 +207,27 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/examples.html">Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/files.html">Files</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../06_administration/index.html">Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../06_administration/on_prem_administration/index.html">On-Prem Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/on_prem_administration/users.html">Users</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/on_prem_administration/access_groups.html">Access Groups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/on_prem_administration/roles.html">Roles</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_access_control/on_prem_access_control/index.html">On-Prem Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/on_prem_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/on_prem_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/on_prem_access_control/roles.html">Roles</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../06_administration/saas_administration/index.html">SaaS Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/accounts.html">Accounts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/users.html">Users</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/access_groups.html">Access Groups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/roles.html">Roles</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/service_ids.html">Service IDs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/trusted_profiles.html">Trusted Profiles</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_access_control/saas_access_control/index.html">SaaS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_access_control/project_collaborators.html">Project Collaborators</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -315,7 +318,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#faq">FAQ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#faq">FAQ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-ibm-watsonx-data-integration-python-sdk">1. What is the IBM watsonx.data integration Python SDK?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-this-sdk-for">2. Who is this SDK for?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-would-a-customer-use-this-instead-of-the-existing-ui">3. Why would a customer use this instead of the existing UI?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-the-main-use-cases">4. What are the main use cases?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-this-improve-developer-productivity">5. How does this improve developer productivity?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-is-ibm-different-from-competitors-here">6. How is IBM different from competitors here?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-required-to-adopt-the-sdk">7. What is required to adopt the SDK?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-it-cost">8. What does it cost?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-can-developers-get-started">9. Where can developers get started?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-common-misconceptions-or-limitations">10. What are common misconceptions or limitations?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-long-term-vision">11. What is the long-term vision?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-data-integration-software-versions-is-this-sdk-compatible-with">12. What data integration software versions is this SDK compatible with?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support">Support</a></li>
 </ul>
             </nav>
@@ -332,7 +349,60 @@ document.write(`
 <span id="overview-faq"></span><h1>Get Help<a class="headerlink" href="#get-help" title="Link to this heading">#</a></h1>
 <section id="faq">
 <h2>FAQ<a class="headerlink" href="#faq" title="Link to this heading">#</a></h2>
-<p>Coming soon…</p>
+<section id="what-is-the-ibm-watsonx-data-integration-python-sdk">
+<h3>1. What is the IBM watsonx.data integration Python SDK?<a class="headerlink" href="#what-is-the-ibm-watsonx-data-integration-python-sdk" title="Link to this heading">#</a></h3>
+<p>The Python SDK is a developer-first interface that allows data engineers and developers to build, manage, and deploy IBM watsonx.data integration data flows entirely in code. It exposes Python methods for flows, jobs, environments, and configurations, making it easy to embed integration workflows into CI/CD and automation practices.</p>
+</section>
+<section id="who-is-this-sdk-for">
+<h3>2. Who is this SDK for?<a class="headerlink" href="#who-is-this-sdk-for" title="Link to this heading">#</a></h3>
+<p>The SDK is designed for data engineers, integration developers, and platform administrators who prefer a programmatic interface for data integration workflows or have a need to automate ETL, ELT, batch, and streaming flows. DevOps engineers and platform leaders can also take advantage of the SDK to improve scalability, governance, and operational efficiency in hybrid and multi-cloud environments.</p>
+</section>
+<section id="why-would-a-customer-use-this-instead-of-the-existing-ui">
+<h3>3. Why would a customer use this instead of the existing UI?<a class="headerlink" href="#why-would-a-customer-use-this-instead-of-the-existing-ui" title="Link to this heading">#</a></h3>
+<p>While the UI is useful for design and monitoring, the SDK removes manual overhead and enables data flows to be defined as code. This provides reproducibility, easier integration into CI/CD, and faster delivery.</p>
+</section>
+<section id="what-are-the-main-use-cases">
+<h3>4. What are the main use cases?<a class="headerlink" href="#what-are-the-main-use-cases" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Managing integration flows and jobs as code.</p></li>
+<li><p>Automating repetitive deployment tasks.</p></li>
+<li><p>Embedding data integration into DevOps pipelines.</p></li>
+<li><p>Scaling data integration workflows across hybrid and multi-cloud data environments.</p></li>
+<li><p>Supporting governance and compliance with reproducible configurations.</p></li>
+</ul>
+</section>
+<section id="how-does-this-improve-developer-productivity">
+<h3>5. How does this improve developer productivity?<a class="headerlink" href="#how-does-this-improve-developer-productivity" title="Link to this heading">#</a></h3>
+<p>The SDK reduces time-to-deploy by automating routine tasks, eliminating manual errors, and allowing pipelines to be version controlled. This frees developers to focus on optimization, analytics, and innovation.</p>
+</section>
+<section id="how-is-ibm-different-from-competitors-here">
+<h3>6. How is IBM different from competitors here?<a class="headerlink" href="#how-is-ibm-different-from-competitors-here" title="Link to this heading">#</a></h3>
+<p>Unlike Informatica, Matillion, Fivetran or cloud-native tools that provide fragmented APIs, IBM offers a unified SDK that spans multiple integration products, supports hybrid and multi-cloud, and embeds enterprise-grade governance, security, and in the future AI-assisted capabilities.</p>
+</section>
+<section id="what-is-required-to-adopt-the-sdk">
+<h3>7. What is required to adopt the SDK?<a class="headerlink" href="#what-is-required-to-adopt-the-sdk" title="Link to this heading">#</a></h3>
+<p>Adoption mainly requires developers to become familiar with Python and integrate the SDK into existing automation frameworks. No new infrastructure is needed beyond an existing IBM integration deployment.</p>
+</section>
+<section id="what-does-it-cost">
+<h3>8. What does it cost?<a class="headerlink" href="#what-does-it-cost" title="Link to this heading">#</a></h3>
+<p>The SDK is included at no additional cost for customers licensed for the underlying IBM integration products. API usage follows platform entitlements.</p>
+</section>
+<section id="where-can-developers-get-started">
+<h3>9. Where can developers get started?<a class="headerlink" href="#where-can-developers-get-started" title="Link to this heading">#</a></h3>
+<p>Developers will find documentation, tutorials, and code samples in IBM watsonx.data integration documentation <a class="reference internal" href="../01_welcome/prereqs.html"><span class="doc">here</span></a>. Webinars, blogs, and community forums will also showcase use cases, best practices, and how to get started guides. To learn how to build flows, use the Python flow generator to take an existing flow and generate the corresponding SDK code to rebuild the flow to learn syntax and structure of the data integration Python SDK.</p>
+</section>
+<section id="what-are-common-misconceptions-or-limitations">
+<h3>10. What are common misconceptions or limitations?<a class="headerlink" href="#what-are-common-misconceptions-or-limitations" title="Link to this heading">#</a></h3>
+<p>Some may expect the SDK to generate pipelines automatically or use AI to design flows. The SDK focuses on programmatic access and automation of existing capabilities. Designing optimal workflows still requires knowledge of IBM’s watsonx.data integration tools.</p>
+</section>
+<section id="what-is-the-long-term-vision">
+<h3>11. What is the long-term vision?<a class="headerlink" href="#what-is-the-long-term-vision" title="Link to this heading">#</a></h3>
+<p>The SDK will evolve into the unified developer interface for IBM’s full data integration suite, with AI-assisted pipeline creation, observability, pipeline orchestration and unstructured data integration.</p>
+</section>
+<section id="what-data-integration-software-versions-is-this-sdk-compatible-with">
+<h3>12. What data integration software versions is this SDK compatible with?<a class="headerlink" href="#what-data-integration-software-versions-is-this-sdk-compatible-with" title="Link to this heading">#</a></h3>
+<p>See full list of compatible software products <a class="reference internal" href="../01_welcome/supported_products.html"><span class="doc">here</span></a>.</p>
+</section>
 </section>
 <section id="support">
 <h2>Support<a class="headerlink" href="#support" title="Link to this heading">#</a></h2>
@@ -358,7 +428,7 @@ Please reach out to our support team via the <a class="reference external" href=
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Known Issues and limitations</p>
+        <p class="prev-next-title">Known Issues and Limitations</p>
       </div>
     </a>
     <a class="right-next"
@@ -386,7 +456,21 @@ Please reach out to our support team via the <a class="reference external" href=
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#faq">FAQ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#faq">FAQ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-ibm-watsonx-data-integration-python-sdk">1. What is the IBM watsonx.data integration Python SDK?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#who-is-this-sdk-for">2. Who is this SDK for?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-would-a-customer-use-this-instead-of-the-existing-ui">3. Why would a customer use this instead of the existing UI?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-the-main-use-cases">4. What are the main use cases?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-this-improve-developer-productivity">5. How does this improve developer productivity?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-is-ibm-different-from-competitors-here">6. How is IBM different from competitors here?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-required-to-adopt-the-sdk">7. What is required to adopt the SDK?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-it-cost">8. What does it cost?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#where-can-developers-get-started">9. Where can developers get started?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-common-misconceptions-or-limitations">10. What are common misconceptions or limitations?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-long-term-vision">11. What is the long-term vision?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-data-integration-software-versions-is-this-sdk-compatible-with">12. What data integration software versions is this SDK compatible with?</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support">Support</a></li>
 </ul>
   </nav></div>

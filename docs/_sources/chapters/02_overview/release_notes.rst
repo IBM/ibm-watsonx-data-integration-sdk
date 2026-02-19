@@ -5,6 +5,25 @@ What's new
 
 Below you will find release notes for each version of the ``ibm-watsonx-data-integration`` SDK as well as highlights of major features and/or fixes included in each release.
 
+1.1.0 (February 2026)
+------------------------
+* Added Python 3.14 support.
+
+* Added support for proxies, custom SSL certificates, and disabling SSL verification.
+
+* Fixed UI topology not persisting when editing flows.
+
+* Python code generator improvements.
+
+* Improved UX for working with batch stages and links.
+
+* Added ability to edit job configuration.
+
+* Bug fixes and improvements.
+
+* Minor updates for enhanced SDK functionality.
+
+
 1.0.0 (December 2025)
 ------------------------
 * Added support for retrieving, creating, updating, and deleting ParameterSets.
@@ -44,7 +63,7 @@ Below you will find release notes for each version of the ``ibm-watsonx-data-int
 
 * Added support for streaming job offsets.
 
-* Added support for validate streaming flows.
+* Added support for validating streaming flows.
 
 * Bug fixes and improvements.
 

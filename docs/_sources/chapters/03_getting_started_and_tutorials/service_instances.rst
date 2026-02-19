@@ -1,4 +1,3 @@
-
 Service Instances
 =================
 
@@ -15,25 +14,11 @@ This includes operations such as:
    Working with service instances is only supported on Cloud Pak for Data SaaS.
 
 
-Retrieving Service Instances
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To retrieve existing service instances, use the :py:attr:`~ibm_watsonx_data_integration.platform.Platform.service_instances` property of the :py:class:`~ibm_watsonx_data_integration.platform.Platform` class. This will return a :py:class:`~ibm_watsonx_data_integration.cpd_models.service_model.Services` object.
-
-.. code-block:: python
-
-    >>> # Returns a list of all service instances
-    >>> service_instances = platform.service_instances
-
-    >>> # Returns a list of the first five service instances
-    >>> service_instances = platform.service_instances.get_all(limit=5)
-
-
 Creating Service Instances
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 To create a new :py:class:`~ibm_watsonx_data_integration.cpd_models.service_model.Service` object within the watsonx.data integration platform, you can use the :py:meth:`Platform.create_service_instance() <ibm_watsonx_data_integration.platform.Platform.create_service_instance>` method to instantiate the service instance.
 
-You must specify  ``instance_type`` and ``name``. Optionally, you can also specify ``target`` and ``tags``.
+You must specify ``instance_type`` and ``name``. Optionally, you can also specify ``target`` and ``tags``.
 
 .. skip: start 'paid plan only'
 
@@ -50,7 +35,7 @@ You must specify  ``instance_type`` and ``name``. Optionally, you can also speci
 Retrieving Service Instances
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To retrieve existing service instances, use the :py:attr:`ibm_watsonx_data_integration.platform.Platform.service_instances` property of the :py:class:`ibm_watsonx_data_integration.platform.Platform` class. This will return a :py:class:`ibm_watsonx_data_integration.cpd_models.service_model.Services` object.
+To retrieve existing service instances, use the :py:attr:`~ibm_watsonx_data_integration.platform.Platform.service_instances` property of the :py:class:`~ibm_watsonx_data_integration.platform.Platform` class. This will return a :py:class:`~ibm_watsonx_data_integration.cpd_models.service_model.Services` object.
 
 .. code-block:: python
 

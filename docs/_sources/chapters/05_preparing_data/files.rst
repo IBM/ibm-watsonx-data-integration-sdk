@@ -4,7 +4,6 @@
 
 Files
 =====
-|
 
 A file is a ``data asset`` and it is just a regular file where you can store your data.
 :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFile` is a wrapper containing a few more details about a file such as ``hash`` or ``url``.
@@ -23,7 +22,7 @@ This includes operations such as:
 Uploading a File
 ~~~~~~~~~~~~~~~~
 
-In the UI, you can upload a new File  by navigating to **Overview -> Add data to work with**.
+In the UI, you can upload a new File by navigating to **Overview -> Add data to work with**.
 
 .. image:: /_static/images/files/upload_file.png
    :alt: Screenshot of the File uploading in the UI - Step 1

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Code Generation for Connections &#8212; ibm-watsonx-data-integration 1.0.0 documentation</title>
+    <title>Code Generation for Connections &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
   
   
   
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css?v=a0a71c94" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=f8c2f790" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=f9c1cefe"></script>
+    <script src="../../_static/documentation_options.js?v=051bfb12"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -48,7 +48,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03_getting_started_and_tutorials/code_generation_connections';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Integration Assets" href="../04_projects/index.html" />
+    <link rel="next" title="HTTP Retry Management" href="http_retry.html" />
     <link rel="prev" title="Code Generation (Streaming)" href="code_generation_streaming.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -165,11 +165,12 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../01_welcome/prereqs.html">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_welcome/supported_products.html">Supported Products</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../02_overview/release_notes.html">What’s new</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../02_overview/known_issues_and_limitations.html">Known Issues and limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_overview/known_issues_and_limitations.html">Known Issues and Limitations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../02_overview/faq.html">Get Help</a></li>
 </ul>
 </details></li>
@@ -180,6 +181,7 @@
 <li class="toctree-l2"><a class="reference internal" href="code_generation_batch.html">Code Generation (Batch)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="code_generation_streaming.html">Code Generation (Streaming)</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Code Generation for Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_retry.html">HTTP Retry Management</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -187,7 +189,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/jobs.html">Jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/environments_streaming.html">Environments (Streaming)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/engines_streaming.html">Engines (Streaming)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../04_projects/access_control.html">Access Control</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -206,25 +207,27 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/examples.html">Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/files.html">Files</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../06_administration/index.html">Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../06_administration/on_prem_administration/index.html">On-Prem Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/on_prem_administration/users.html">Users</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/on_prem_administration/access_groups.html">Access Groups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/on_prem_administration/roles.html">Roles</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_access_control/on_prem_access_control/index.html">On-Prem Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/on_prem_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/on_prem_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/on_prem_access_control/roles.html">Roles</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../06_administration/saas_administration/index.html">SaaS Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/accounts.html">Accounts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/users.html">Users</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/access_groups.html">Access Groups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/roles.html">Roles</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/service_ids.html">Service IDs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/trusted_profiles.html">Trusted Profiles</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_access_control/saas_access_control/index.html">SaaS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_access_control/project_collaborators.html">Project Collaborators</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -316,6 +319,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#masking-authentication-credentials">Masking Authentication Credentials</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-usage">Example usage</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-output">Example Output</a></li>
 </ul>
@@ -335,13 +339,22 @@ document.write(`
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.codegen.generator.PythonGenerator" title="ibm_watsonx_data_integration.codegen.generator.PythonGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.codegen.generator.PythonGenerator</span></code></a> class to automate the transformation.</p>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
-<p>To properly generate a script, you will need a correctly configured authenticator class (for example: <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.auth.IAMAuthenticator" title="ibm_watsonx_data_integration.common.auth.IAMAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">IAMAuthenticator</span></code></a>).
-If you are using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.auth.IAMAuthenticator" title="ibm_watsonx_data_integration.common.auth.IAMAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">IAMAuthenticator</span></code></a>, make sure your IBM Cloud API key is exported as an environment variable
-named <code class="docutils literal notranslate"><span class="pre">IBM_CLOUD_API_KEY</span></code>. This key will be used by the generated script during execution.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>All types of authenticator objects are accepted by the PythonGenerator class, but for now the authenticator object in the generated code will always be IAMAuthenticator.</p>
-</div>
+<p>To properly generate a script, you will need a correctly configured authenticator class (for example: <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.auth.IAMAuthenticator" title="ibm_watsonx_data_integration.common.auth.IAMAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">IAMAuthenticator</span></code></a>).</p>
+</section>
+<section id="masking-authentication-credentials">
+<h2>Masking Authentication Credentials<a class="headerlink" href="#masking-authentication-credentials" title="Link to this heading">#</a></h2>
+<p>The part of the generated script will include the creation of an authenticator object based on the one you have configured.
+By default, the sensitive values, such as api keys, will be replaced with environment variables. If you would like to include
+sensitive credentials in your script, you can pass <code class="docutils literal notranslate"><span class="pre">mask_credentials=False</span></code> into the constructor of
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.codegen.generator.PythonGenerator" title="ibm_watsonx_data_integration.codegen.generator.PythonGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.codegen.generator.PythonGenerator</span></code></a>.</p>
+<p>If you do choose to leave the credentials masked, you can expect the following environment variables to replace their
+corresponding credentials:</p>
+<ul class="simple">
+<li><p><strong>IBM_CLOUD_API_KEY</strong>: <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.auth.IAMAuthenticator.api_key" title="ibm_watsonx_data_integration.common.auth.IAMAuthenticator.api_key"><code class="xref py py-attr docutils literal notranslate"><span class="pre">IAMAuthenticator.api_key</span></code></a></p></li>
+<li><p><strong>ZEN_API_KEY</strong>: <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.auth.ZenApiKeyAuthenticator.zen_api_key" title="ibm_watsonx_data_integration.common.auth.ZenApiKeyAuthenticator.zen_api_key"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ZenApiKeyAuthenticator.zen_api_key</span></code></a> and <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.auth.ICP4DAuthenticator.zen_api_key" title="ibm_watsonx_data_integration.common.auth.ICP4DAuthenticator.zen_api_key"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ICP4DAuthenticator.zen_api_key</span></code></a></p></li>
+<li><p><strong>CP4D_PASSWORD</strong>: <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.auth.ICP4DAuthenticator.password" title="ibm_watsonx_data_integration.common.auth.ICP4DAuthenticator.password"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ICP4DAuthenticator.password</span></code></a></p></li>
+<li><p><strong>BEARER_TOKEN</strong>: <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.auth.BearerTokenAuthenticator.bearer_token" title="ibm_watsonx_data_integration.common.auth.BearerTokenAuthenticator.bearer_token"><code class="xref py py-attr docutils literal notranslate"><span class="pre">BearerTokenAuthenticator.bearer_token</span></code></a></p></li>
+</ul>
 </section>
 <section id="example-usage">
 <h2>Example usage<a class="headerlink" href="#example-usage" title="Link to this heading">#</a></h2>
@@ -425,11 +438,11 @@ class fetched directly from a project.</p>
       </div>
     </a>
     <a class="right-next"
-       href="../04_projects/index.html"
+       href="http_retry.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Integration Assets</p>
+        <p class="prev-next-title">HTTP Retry Management</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -450,6 +463,7 @@ class fetched directly from a project.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#masking-authentication-credentials">Masking Authentication Credentials</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-usage">Example usage</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-output">Example Output</a></li>
 </ul>

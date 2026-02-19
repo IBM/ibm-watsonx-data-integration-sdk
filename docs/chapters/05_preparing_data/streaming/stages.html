@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Stages &#8212; ibm-watsonx-data-integration 1.0.0 documentation</title>
+    <title>Stages &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
   
   
   
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css?v=a0a71c94" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=f8c2f790" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=f9c1cefe"></script>
+    <script src="../../../_static/documentation_options.js?v=051bfb12"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -165,11 +165,12 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01_welcome/prereqs.html">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/supported_products.html">Supported Products</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../02_overview/release_notes.html">What’s new</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../02_overview/known_issues_and_limitations.html">Known Issues and limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/known_issues_and_limitations.html">Known Issues and Limitations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02_overview/faq.html">Get Help</a></li>
 </ul>
 </details></li>
@@ -180,6 +181,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_batch.html">Code Generation (Batch)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_streaming.html">Code Generation (Streaming)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_connections.html">Code Generation for Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/http_retry.html">HTTP Retry Management</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -187,7 +189,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../04_projects/jobs.html">Jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../04_projects/environments_streaming.html">Environments (Streaming)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../04_projects/engines_streaming.html">Engines (Streaming)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04_projects/access_control.html">Access Control</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Preparing Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -206,25 +207,27 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../connections.html">Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../06_administration/index.html">Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_administration/on_prem_administration/index.html">On-Prem Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../06_administration/on_prem_administration/users.html">Users</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../06_administration/on_prem_administration/access_groups.html">Access Groups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../06_administration/on_prem_administration/roles.html">Roles</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/on_prem_access_control/index.html">On-Prem Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/roles.html">Roles</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_administration/saas_administration/index.html">SaaS Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/accounts.html">Accounts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/users.html">Users</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/access_groups.html">Access Groups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/roles.html">Roles</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/service_ids.html">Service IDs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../06_administration/saas_administration/trusted_profiles.html">Trusted Profiles</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/saas_access_control/index.html">SaaS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06_access_control/project_collaborators.html">Project Collaborators</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -338,10 +341,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="stages">
-<span id="preparing-data-stages"></span><h1>Stages<a class="headerlink" href="#stages" title="Link to this heading">#</a></h1>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
+<span id="preparing-data-streaming-stages"></span><h1>Stages<a class="headerlink" href="#stages" title="Link to this heading">#</a></h1>
 <p>A stage is a part of a flow responsible for processing the flow’s data in a single, simple way.
 By connecting multiple stages together, you can perform complex tasks.</p>
 <dl class="simple">
@@ -362,7 +362,7 @@ By connecting multiple stages together, you can perform complex tasks.</p>
 <p>To list all the stages in a flow, you can use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.stages" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.stages"><code class="xref py py-attr docutils literal notranslate"><span class="pre">StreamingFlow.stages</span></code></a> property.
 This returns a <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code> of <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage"><code class="xref py py-class docutils literal notranslate"><span class="pre">Stage</span></code></a> instances.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">stages</span>
-<span class="go">[DevRawDataSource_01(stage_id=&#39;DevRawDataSource_01&#39;), Trash_01(stage_id=&#39;Trash_01&#39;)]</span>
+<span class="go">[DevRawDataSource_01(stage_name=&#39;Dev Raw Data Source 1&#39;), Trash_01(stage_name=&#39;Trash 1&#39;)]</span>
 </pre></div>
 </div>
 </section>
@@ -376,7 +376,7 @@ This method accepts the following parameters <code class="docutils literal notra
 <p>This method returns an instance of <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage"><code class="xref py py-class docutils literal notranslate"><span class="pre">Stage</span></code></a> representing the newly created stage.</p>
 <p>After adding stages you need to call <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_flow" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_flow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_flow()</span></code></a> method to save the changes.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Amazon SQS Consumer&#39;</span><span class="p">)</span>
-<span class="go">AmazonSQSConsumer_01(stage_id=&#39;AmazonSQSConsumer_01&#39;)</span>
+<span class="go">AmazonSQSConsumer_01(stage_name=&#39;Amazon SQS Consumer 1&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">flow</span><span class="p">)</span>
 <span class="go">&lt;Response [200]&gt;</span>
 </pre></div>
@@ -424,11 +424,11 @@ and passing an instance of <a class="reference internal" href="../../../api/mode
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Dev Raw Data Source&#39;</span><span class="p">)</span>  <span class="c1"># a sample origin stage that generates random data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">trash</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>  <span class="c1"># a sample destination stage that accepts all input and discards it</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">trash</span><span class="p">)</span>  <span class="c1"># alternatively, you can call: trash.connect_input_to(dev_random_source)</span>
-<span class="go">Trash_02(stage_id=&#39;Trash_02&#39;)</span>
+<span class="go">Trash_02(stage_name=&#39;Trash 2&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># events are connected in a similar way</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline_finisher</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Pipeline Finisher Executor&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span><span class="o">.</span><span class="n">connect_event_to</span><span class="p">(</span><span class="n">pipeline_finisher</span><span class="p">)</span>  <span class="c1"># outputs events to pipeline finisher</span>
-<span class="go">PipelineFinisherExecutor_01(stage_id=&#39;PipelineFinisherExecutor_01&#39;)</span>
+<span class="go">PipelineFinisherExecutor_01(stage_name=&#39;Pipeline Finisher Executor 1&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">flow</span><span class="p">)</span>
 <span class="go">&lt;Response [200]&gt;</span>
 </pre></div>
@@ -462,10 +462,10 @@ We can do this via the <a class="reference internal" href="../../../api/models.h
 <p>To connect a stage with a specific predicate, use the <code class="docutils literal notranslate"><span class="pre">predicate</span></code> parameter in the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.connect_output_to" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.connect_output_to"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Stage.connect_output_to()</span></code></a>
 or <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.connect_input_to" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.connect_input_to"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Stage.connect_input_to()</span></code></a> methods.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">trash</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="n">stream_selector</span><span class="o">.</span><span class="n">predicates</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="go">Trash_02(stage_id=&#39;Trash_02&#39;)</span>
+<span class="go">Trash_02(stage_name=&#39;Trash 2&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># alternatively, you can use:</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">trash</span><span class="o">.</span><span class="n">connect_input_to</span><span class="p">(</span><span class="n">stream_selector</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="n">stream_selector</span><span class="o">.</span><span class="n">predicates</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="go">StreamSelector_01(stage_id=&#39;StreamSelector_01&#39;)</span>
+<span class="go">StreamSelector_01(stage_name=&#39;Stream Selector 1&#39;)</span>
 </pre></div>
 </div>
 </section>
@@ -484,11 +484,11 @@ or it can get input data from a stage.</p>
 </dl>
 <p>All three properties return a <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code> of <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage"><code class="xref py py-class docutils literal notranslate"><span class="pre">Stage</span></code></a> instances.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span><span class="o">.</span><span class="n">outputs</span>
-<span class="go">[Trash_02(stage_id=&#39;Trash_02&#39;)]</span>
+<span class="go">[Trash_02(stage_name=&#39;Trash 2&#39;)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span><span class="o">.</span><span class="n">events</span>
-<span class="go">[PipelineFinisherExecutor_01(stage_id=&#39;PipelineFinisherExecutor_01&#39;)]</span>
+<span class="go">[PipelineFinisherExecutor_01(stage_name=&#39;Pipeline Finisher Executor 1&#39;)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">trash</span><span class="o">.</span><span class="n">inputs</span>
-<span class="go">[DevRawDataSource_02(stage_id=&#39;DevRawDataSource_02&#39;), StreamSelector_01(stage_id=&#39;StreamSelector_01&#39;)]</span>
+<span class="go">[DevRawDataSource_02(stage_name=&#39;Dev Raw Data Source 2&#39;), StreamSelector_01(stage_name=&#39;Stream Selector 1&#39;)]</span>
 </pre></div>
 </div>
 </section>
@@ -506,9 +506,9 @@ or it can get input data from a stage.</p>
 </dd>
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span><span class="o">.</span><span class="n">disconnect_output_from</span><span class="p">(</span><span class="n">trash</span><span class="p">)</span>  <span class="c1"># alternatively, you can call: trash.disconnect_input_from(dev_random_source)</span>
-<span class="go">Trash_02(stage_id=&#39;Trash_02&#39;)</span>
+<span class="go">Trash_02(stage_name=&#39;Trash 2&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dev_random_source</span><span class="o">.</span><span class="n">disconnect_event_from</span><span class="p">(</span><span class="n">pipeline_finisher</span><span class="p">)</span>
-<span class="go">PipelineFinisherExecutor_01(stage_id=&#39;PipelineFinisherExecutor_01&#39;)</span>
+<span class="go">PipelineFinisherExecutor_01(stage_name=&#39;Pipeline Finisher Executor 1&#39;)</span>
 </pre></div>
 </div>
 </section>
@@ -519,7 +519,7 @@ or it can get input data from a stage.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Field Remover&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">trash</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">source</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">processor</span><span class="p">)</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">trash</span><span class="p">)</span>
-<span class="go">Trash_03(stage_id=&#39;Trash_03&#39;)</span>
+<span class="go">Trash_03(stage_name=&#39;Trash 3&#39;)</span>
 </pre></div>
 </div>
 <p>It is also possible to connect multiple stages to the output of a stage with a single call.</p>
@@ -527,7 +527,7 @@ or it can get input data from a stage.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">renamer1</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Field Renamer&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">renamer2</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Field Renamer&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">source</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">renamer1</span><span class="p">,</span> <span class="n">renamer2</span><span class="p">)</span>
-<span class="go">[FieldRenamer_01(stage_id=&#39;FieldRenamer_01&#39;), FieldRenamer_02(stage_id=&#39;FieldRenamer_02&#39;)]</span>
+<span class="go">[FieldRenamer_01(stage_name=&#39;Field Renamer 1&#39;), FieldRenamer_02(stage_name=&#39;Field Renamer 2&#39;)]</span>
 </pre></div>
 </div>
 </section>

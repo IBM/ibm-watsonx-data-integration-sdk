@@ -2,7 +2,6 @@
 
 Jobs
 ====
-|
 
 A job is an executable unit of work defined for a specific asset.
 It acts as a reusable template that includes basic configuration and parameters.
@@ -27,7 +26,7 @@ This includes operations such as:
 Creating a Job
 ~~~~~~~~~~~~~~
 
-In the UI, you can create and run a new Job directly from flow canvas by clicking the **Run** button.
+In the UI, you can create and run a new job directly from flow canvas by clicking **Run** button.
 
 .. image:: /_static/images/jobs/create_job.png
    :alt: Screenshot of the Job creation in the UI
@@ -70,7 +69,7 @@ To list existing jobs in the UI, navigate to the **Jobs** tab in project view.
 |
 
 Jobs can be retrieved using the :py:class:`Project.jobs <ibm_watsonx_data_integration.cpd_models.project_model.Project.jobs>` property.
-You can also further filter and refine the jobs returned based on attributes including
+You can also filter the jobs returned based on attributes including
 ``space_id``, ``job_id``, ``job_type`` and ``run_id``.
 This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_model.Jobs` object.
 
@@ -103,7 +102,7 @@ To update a job, click the pencil icon in the top bar.
 
 Updating a job is also possible via your :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` instance.
 First, modify the properties of the existing job, then update it using the
-:py:meth:`~ibm_watsonx_data_integration.cpd_models.project_model.Project.update_job` method.
+:py:meth:`~ibm_watsonx_data_integration.cpd_models.project_model.Project.update_job` method. You can modify properties in the ``metadata`` and ``configuration`` fields of the :py:class:`~ibm_watsonx_data_integration.cpd_models.job_model.Job` object.
 This method returns an HTTP response indicating the status of the update operation.
 The response also includes the updated job definition.
 
@@ -113,6 +112,26 @@ The response also includes the updated job definition.
     >>> job.metadata.description = 'New description.'
     >>> project.update_job(job)
     <Response [200]>
+
+You can display the properties of a job by calling the :py:meth:`Job.print_json() <ibm_watsonx_data_integration.cpd_models.job_model.Job.print_json>` method.
+
+.. code-block:: python
+
+    >>> job.print_json()
+    {
+        "metadata": {
+            "name": "New name",
+            "description": "New description.",
+            ...
+        },
+        ...
+        "configuration": {...},
+        ...
+    }
+
+
+.. note::
+    Most of the fields other than metadata and configuration are runtime settings for batch jobs. These settings can only be set by a special method. This is explained in the next section.
 
 .. _projects__jobs__editing_a_batch_job:
 
@@ -139,9 +158,8 @@ Batch flows include additional settings.
 
 In the SDK, you can call the :py:meth:`~ibm_watsonx_data_integration.cpd_models.job_model.Job.edit_configuration` method on the job instance. Here are all the different settings you can change:
 
-* ``environment``: The internal name of the batch environment to use. To find the internal name of a batch environment you can either list out all internal names with :py:meth:`Project.list_batch_environments() <ibm_watsonx_data_integration.cpd_models.project_model.Project.list_batch_environments>` or call :py:meth:`Project.get_batch_environment() <ibm_watsonx_data_integration.cpd_models.project_model.Project.get_batch_environment>` with the display name.
+* ``environment``: The internal name of the batch environment to use. To find the internal name of a batch environment you can either list all internal names with :py:meth:`Project.list_batch_environments() <ibm_watsonx_data_integration.cpd_models.project_model.Project.list_batch_environments>` or call :py:meth:`Project.get_batch_environment() <ibm_watsonx_data_integration.cpd_models.project_model.Project.get_batch_environment>` with the display name.
 
-.. skip: start 'should be resolved by WSDK-720'
 
 .. code-block:: python
 
@@ -150,7 +168,6 @@ In the SDK, you can call the :py:meth:`~ibm_watsonx_data_integration.cpd_models.
     >>> project.get_batch_environment('Default DataStage PX S')
     'default_datastage_px'
 
-.. skip: end
 
 * ``warn_limit``: The number of warnings before the stages are stopped. Takes an ``int`` greater than 0 or None for no limit.
 * ``retention_days``: The number of days to keep a job run. Cannot be set if ``retention_amount`` is also set. Takes an ``int`` greater than 0 or None for no limit.
@@ -194,7 +211,7 @@ In the UI, you can start a job from the **Job Details** page by clicking the pla
 
 A job instance serves as a template to actually execute the flow for which the job was created.
 Call the :py:meth:`Job.start() <ibm_watsonx_data_integration.cpd_models.job_model.Job.start>` method on the job instance.
-You must pass a ``name`` and a ``description`` to define the job run.
+The ``name`` and ``description`` parameters are optional; if not provided, default values will be used (``name='job run'``, ``description=''``).
 Additionally, you can further configure the job run by passing the ``configuration``,
 ``job_parameters`` and ``parameter_sets`` fields to this method.
 This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_model.JobRun` object.

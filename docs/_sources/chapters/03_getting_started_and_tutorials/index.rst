@@ -15,3 +15,4 @@ This section is designed to help you get started using the ``ibm-watsonx-data-in
    code_generation_batch
    code_generation_streaming
    code_generation_connections
+   http_retry

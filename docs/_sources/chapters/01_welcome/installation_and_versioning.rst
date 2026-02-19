@@ -1,6 +1,7 @@
+.. _installation:
+
 Installation and Versioning
 ===========================
-.. _installation:
 
 Installation of the ``ibm-watsonx-data-integration`` SDK for Python is managed through pip.
 

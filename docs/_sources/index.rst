@@ -16,5 +16,5 @@ The ``ibm-watsonx-data-integration`` SDK is supported on Python 3.10+.
    chapters/03_getting_started_and_tutorials/index
    chapters/04_projects/index
    chapters/05_preparing_data/index
-   chapters/06_administration/index
+   chapters/06_access_control/index
    api/index

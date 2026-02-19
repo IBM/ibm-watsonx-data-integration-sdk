@@ -1,8 +1,7 @@
-.. _welcome__install:
+.. _prerequisites:
 
 Prerequisites
 =============
-.. _prerequisites:
 
 Setup and installation for the ``ibm-watsonx-data-integration`` SDK for Python is lightweight and straight-forward, with only a few dependencies required by the package itself.
 

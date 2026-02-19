@@ -2,7 +2,6 @@
 
 Projects
 ========
-|
 
 A project is a collaborative workspace in the watsonx.data integration platform where users can organize assets such as jobs, flows, and environments.
 
@@ -21,14 +20,13 @@ This includes operations such as:
 Creating a Project
 ~~~~~~~~~~~~~~~~~~
 
-In the UI, you can create a new project by clicking **New project** button.
+In the UI, you can create a new project by clicking the **New Project +** button.
 
 .. image:: /_static/images/projects/create_project.png
    :alt: Creating a project via the UI
    :align: center
    :width: 100%
 
-|
 
 To create a new :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object using the SDK, use the :py:meth:`Platform.create_project() <ibm_watsonx_data_integration.platform.Platform.create_project>` method.
 
@@ -64,7 +62,7 @@ To list existing projects in the UI, navigate to **View all projects**.
 
 Projects can be retrieved using :py:class:`Platform.projects <ibm_watsonx_data_integration.platform.Platform.projects>`.
 This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Projects` object.
-You can also further filter and refine the projects returned based on attributes including ``name`` and ``project_id``.
+You can also filter the projects returned based on attributes including ``name`` and ``project_id``.
 
 .. code-block:: python
 

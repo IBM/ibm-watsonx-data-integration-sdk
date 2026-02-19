@@ -1,4 +1,4 @@
-.. _preparing_data__streaming__batch:
+.. _preparing_data__batch:
 
 Batch
 =====

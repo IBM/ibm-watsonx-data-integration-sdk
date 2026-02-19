@@ -3,7 +3,6 @@
 Subflows
 ========
 
-
 A subflow is a batch flow component that can be used to simplify a complex design visually to make it easier to
 understand and/or act as a reusable component by other data flows.
 
@@ -68,7 +67,7 @@ This method will return a :py:class:`~ibm_watsonx_data_integration.services.data
 
     >>> new_subflow = project.create_subflow(name='My first subflow', description='optional description')
     >>> new_subflow
-    Subflow(name='My first flow', description='optional description')
+    Subflow(name='My first subflow', description='optional description')
 
 .. skip: end
 
@@ -149,7 +148,7 @@ You can edit a subflow's attributes like ``name`` or ``description``.
 
 Finally, you can edit a flow by editing its stages.
 This can include adding a stage, removing a stage, updating a stage's configuration or connecting a stage in a different way than before.
-Most of the operations described are covered in :ref:`Stage <preparing_data__stages>` documentation.
+Most of the operations described are covered in :ref:`Stage <preparing_data__batch_stages>` documentation.
 
 .. _preparing_data__subflows__editing_a_subflow__unique_stages_to_subflows:
 
@@ -231,8 +230,8 @@ This will duplicate a flow and return a new instance of :py:class:`~ibm_watsonx_
 
 .. code-block:: python
 
-    >> duplicated_subflow = project.duplicate_subflow(new_subflow, name='duplicated_subflow', description='optional_description')
-    >> duplicated_subflow
+    >>> duplicated_subflow = project.duplicate_subflow(new_subflow, name='duplicated_subflow', description='optional_description')
+    >>> duplicated_subflow
     Subflow(name='duplicated_subflow', description='optional_description', ...)
 
 .. skip: end
@@ -250,8 +249,8 @@ along with the ``name`` parameter.
 
 .. code-block:: python
 
-    >> duplicated_subflow = flow.duplicate_subflow(new_subflow, name='duplicated_subflow')
-    >> duplicated_subflow
+    >>> duplicated_subflow = flow.duplicate_subflow(new_subflow, name='duplicated_subflow')
+    >>> duplicated_subflow
     Subflow(name='duplicated_subflow', description='', ...)
 
 .. skip: end
@@ -458,8 +457,8 @@ Just like in a flow this method requires a ``parameter_type`` and a ``name``. Op
         peek_1_schema = link_3_2.create_schema()
         peek_1_schema.add_field('CHAR', 'COLUMN_1').source('Link_2.COLUMN_1').length(100)
 
-        subflow.add_local_parameter(parameter_type='string', name='make', value='toyota', description='')
-        subflow.add_local_parameter('integer', 'num', 13)
+        sf.add_local_parameter(parameter_type='string', name='make', value='toyota', description='')
+        sf.add_local_parameter('integer', 'num', 13)
 
         project.update_subflow(sf)
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Jobs &#8212; ibm-watsonx-data-integration 1.0.0 documentation</title>
+    <title>Jobs &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
   
   
   
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css?v=a0a71c94" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=f8c2f790" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=f9c1cefe"></script>
+    <script src="../../_static/documentation_options.js?v=051bfb12"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -165,11 +165,12 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../01_welcome/prereqs.html">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_welcome/supported_products.html">Supported Products</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../02_overview/release_notes.html">What’s new</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../02_overview/known_issues_and_limitations.html">Known Issues and limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_overview/known_issues_and_limitations.html">Known Issues and Limitations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../02_overview/faq.html">Get Help</a></li>
 </ul>
 </details></li>
@@ -180,6 +181,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_batch.html">Code Generation (Batch)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_streaming.html">Code Generation (Streaming)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_connections.html">Code Generation for Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/http_retry.html">HTTP Retry Management</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Integration Assets</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -187,7 +189,6 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="environments_streaming.html">Environments (Streaming)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="engines_streaming.html">Engines (Streaming)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="access_control.html">Access Control</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -206,25 +207,27 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/examples.html">Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/files.html">Files</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../06_administration/index.html">Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../06_administration/on_prem_administration/index.html">On-Prem Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/on_prem_administration/users.html">Users</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/on_prem_administration/access_groups.html">Access Groups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/on_prem_administration/roles.html">Roles</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_access_control/on_prem_access_control/index.html">On-Prem Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/on_prem_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/on_prem_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/on_prem_access_control/roles.html">Roles</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../06_administration/saas_administration/index.html">SaaS Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/accounts.html">Accounts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/users.html">Users</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/access_groups.html">Access Groups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/roles.html">Roles</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/service_ids.html">Service IDs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/trusted_profiles.html">Trusted Profiles</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_access_control/saas_access_control/index.html">SaaS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_access_control/project_collaborators.html">Project Collaborators</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -339,9 +342,6 @@ document.write(`
                   
   <section id="jobs">
 <span id="projects-jobs"></span><h1>Jobs<a class="headerlink" href="#jobs" title="Link to this heading">#</a></h1>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <p>A job is an executable unit of work defined for a specific asset.
 It acts as a reusable template that includes basic configuration and parameters.</p>
 <p>The actual execution of a job is referred to as a job run.
@@ -365,7 +365,7 @@ The SDK provides functionality to interact with both jobs and job runs on the wa
 </dl>
 <section id="creating-a-job">
 <h2>Creating a Job<a class="headerlink" href="#creating-a-job" title="Link to this heading">#</a></h2>
-<p>In the UI, you can create and run a new Job directly from flow canvas by clicking the <strong>Run</strong> button.</p>
+<p>In the UI, you can create and run a new job directly from flow canvas by clicking <strong>Run</strong> button.</p>
 <a class="reference internal image-reference" href="../../_images/create_job.png"><img alt="Screenshot of the Job creation in the UI" class="align-center" src="../../_images/create_job.png" style="width: 100%;" />
 </a>
 <div class="line-block">
@@ -376,7 +376,7 @@ The SDK provides functionality to interact with both jobs and job runs on the wa
 first select the appropriate project from the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform" title="ibm_watsonx_data_integration.platform.Platform"><code class="xref py py-class docutils literal notranslate"><span class="pre">Platform</span></code></a>,
 then use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.create_job" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.create_job"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.create_job()</span></code></a>
 method to instantiate the job.</p>
-<p>You must specify a reference to <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.flow_model.Flow" title="ibm_watsonx_data_integration.cpd_models.flow_model.Flow"><code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code></a> object.
+<p>You must specify a reference to <code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code> object.
 Additionally, you can provide optional configuration such as environment variables or job parameters.
 This method returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job" title="ibm_watsonx_data_integration.cpd_models.job_model.Job"><code class="xref py py-class docutils literal notranslate"><span class="pre">Job</span></code></a> object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span>
@@ -398,7 +398,7 @@ This method returns a <a class="reference internal" href="../../api/models.html#
 <div class="line"><br /></div>
 </div>
 <p>Jobs can be retrieved using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.jobs" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.jobs"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project.jobs</span></code></a> property.
-You can also further filter and refine the jobs returned based on attributes including
+You can also filter the jobs returned based on attributes including
 <code class="docutils literal notranslate"><span class="pre">space_id</span></code>, <code class="docutils literal notranslate"><span class="pre">job_id</span></code>, <code class="docutils literal notranslate"><span class="pre">job_type</span></code> and <code class="docutils literal notranslate"><span class="pre">run_id</span></code>.
 This property returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Jobs" title="ibm_watsonx_data_integration.cpd_models.job_model.Jobs"><code class="xref py py-class docutils literal notranslate"><span class="pre">Jobs</span></code></a> object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Returns all jobs</span>
@@ -424,7 +424,7 @@ To update a job, click the pencil icon in the top bar.</p>
 </div>
 <p>Updating a job is also possible via your <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> instance.
 First, modify the properties of the existing job, then update it using the
-<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_job" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_job"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_job()</span></code></a> method.
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_job" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_job"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_job()</span></code></a> method. You can modify properties in the <code class="docutils literal notranslate"><span class="pre">metadata</span></code> and <code class="docutils literal notranslate"><span class="pre">configuration</span></code> fields of the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job" title="ibm_watsonx_data_integration.cpd_models.job_model.Job"><code class="xref py py-class docutils literal notranslate"><span class="pre">Job</span></code></a> object.
 This method returns an HTTP response indicating the status of the update operation.
 The response also includes the updated job definition.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;New name&#39;</span>
@@ -432,6 +432,24 @@ The response also includes the updated job definition.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_job</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
 <span class="go">&lt;Response [200]&gt;</span>
 </pre></div>
+</div>
+<p>You can display the properties of a job by calling the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job.print_json" title="ibm_watsonx_data_integration.cpd_models.job_model.Job.print_json"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Job.print_json()</span></code></a> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job</span><span class="o">.</span><span class="n">print_json</span><span class="p">()</span>
+<span class="go">{</span>
+<span class="go">    &quot;metadata&quot;: {</span>
+<span class="go">        &quot;name&quot;: &quot;New name&quot;,</span>
+<span class="go">        &quot;description&quot;: &quot;New description.&quot;,</span>
+<span class="go">        ...</span>
+<span class="go">    },</span>
+<span class="go">    ...</span>
+<span class="go">    &quot;configuration&quot;: {...},</span>
+<span class="go">    ...</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Most of the fields other than metadata and configuration are runtime settings for batch jobs. These settings can only be set by a special method. This is explained in the next section.</p>
 </div>
 </section>
 <section id="editing-runtime-settings-batch">
@@ -444,14 +462,14 @@ Batch flows include additional settings.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<a class="reference internal image-reference" href="../../_images/runtime_settings.png"><img alt="Screenshot of the Runtime Settings page" class="align-center" src="../../_images/runtime_settings.png" style="width: 100%;" />
+<a class="reference internal image-reference" href="../../_images/runtime_settings1.png"><img alt="Screenshot of the Runtime Settings page" class="align-center" src="../../_images/runtime_settings1.png" style="width: 100%;" />
 </a>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <p>In the SDK, you can call the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job.edit_configuration" title="ibm_watsonx_data_integration.cpd_models.job_model.Job.edit_configuration"><code class="xref py py-meth docutils literal notranslate"><span class="pre">edit_configuration()</span></code></a> method on the job instance. Here are all the different settings you can change:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">environment</span></code>: The internal name of the batch environment to use. To find the internal name of a batch environment you can either list out all internal names with <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.list_batch_environments" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.list_batch_environments"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.list_batch_environments()</span></code></a> or call <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.get_batch_environment" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.get_batch_environment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.get_batch_environment()</span></code></a> with the display name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">environment</span></code>: The internal name of the batch environment to use. To find the internal name of a batch environment you can either list all internal names with <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.list_batch_environments" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.list_batch_environments"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.list_batch_environments()</span></code></a> or call <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.get_batch_environment" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.get_batch_environment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.get_batch_environment()</span></code></a> with the display name.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">list_batch_environments</span><span class="p">()</span>
 <span class="go">[&#39;default_datastage_px&#39;, &#39;default_datastage_px_large&#39;, &#39;default_datastage_px_medium&#39;]</span>
@@ -497,7 +515,7 @@ Batch flows include additional settings.</p>
 </div>
 <p>A job instance serves as a template to actually execute the flow for which the job was created.
 Call the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job.start" title="ibm_watsonx_data_integration.cpd_models.job_model.Job.start"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Job.start()</span></code></a> method on the job instance.
-You must pass a <code class="docutils literal notranslate"><span class="pre">name</span></code> and a <code class="docutils literal notranslate"><span class="pre">description</span></code> to define the job run.
+The <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">description</span></code> parameters are optional; if not provided, default values will be used (<code class="docutils literal notranslate"><span class="pre">name='job</span> <span class="pre">run'</span></code>, <code class="docutils literal notranslate"><span class="pre">description=''</span></code>).
 Additionally, you can further configure the job run by passing the <code class="docutils literal notranslate"><span class="pre">configuration</span></code>,
 <code class="docutils literal notranslate"><span class="pre">job_parameters</span></code> and <code class="docutils literal notranslate"><span class="pre">parameter_sets</span></code> fields to this method.
 This method returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobRun" title="ibm_watsonx_data_integration.cpd_models.job_model.JobRun"><code class="xref py py-class docutils literal notranslate"><span class="pre">JobRun</span></code></a> object.</p>

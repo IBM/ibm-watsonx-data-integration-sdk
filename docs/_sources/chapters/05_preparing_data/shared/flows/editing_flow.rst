@@ -14,4 +14,4 @@ For starters, you can edit a flow's attributes like ``name`` or ``description``.
 
 Also you can edit any flow by editing its stages.
 This can include adding a stage, removing a stage, updating a stage's configuration or connecting a stage in a different way than before.
-All the operations described are covered in the :ref:`Stages <preparing_data__stages>` documentation.
+All the operations described are covered in the Stages documentation (see :ref:`Batch Stages <preparing_data__batch_stages>` or :ref:`Streaming Stages <preparing_data__streaming_stages>`).

@@ -30,6 +30,7 @@ To authenticate, pass your API key into the :py:class:`ibm_watsonx_data_integrat
 .. note::
    The ``base_auth_url`` should be the host URL where you created your IAM API key.
    In the example above, the ``base_auth_url`` is set to ``'https://cloud.ibm.com'`` since the API key was created at `'https://cloud.ibm.com/iam/apikeys'`.
+   In addition, the ``base_auth_url`` is an optional parameter and will default to ``'https://cloud.ibm.com'``.
 
 
 Bearer Token Authentication (SaaS)

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Service Instances &#8212; ibm-watsonx-data-integration 1.0.0 documentation</title>
+    <title>Service Instances &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
   
   
   
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css?v=a0a71c94" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=f8c2f790" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=f9c1cefe"></script>
+    <script src="../../_static/documentation_options.js?v=051bfb12"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.0.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -165,11 +165,12 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../01_welcome/prereqs.html">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_welcome/supported_products.html">Supported Products</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../02_overview/release_notes.html">What’s new</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../02_overview/known_issues_and_limitations.html">Known Issues and limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_overview/known_issues_and_limitations.html">Known Issues and Limitations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../02_overview/faq.html">Get Help</a></li>
 </ul>
 </details></li>
@@ -180,6 +181,7 @@
 <li class="toctree-l2"><a class="reference internal" href="code_generation_batch.html">Code Generation (Batch)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="code_generation_streaming.html">Code Generation (Streaming)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="code_generation_connections.html">Code Generation for Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_retry.html">HTTP Retry Management</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -187,7 +189,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/jobs.html">Jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/environments_streaming.html">Environments (Streaming)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04_projects/engines_streaming.html">Engines (Streaming)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../04_projects/access_control.html">Access Control</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -206,25 +207,27 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/examples.html">Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/files.html">Files</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../06_administration/index.html">Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../06_administration/on_prem_administration/index.html">On-Prem Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/on_prem_administration/users.html">Users</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/on_prem_administration/access_groups.html">Access Groups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/on_prem_administration/roles.html">Roles</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_access_control/on_prem_access_control/index.html">On-Prem Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/on_prem_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/on_prem_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/on_prem_access_control/roles.html">Roles</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../06_administration/saas_administration/index.html">SaaS Administration</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/accounts.html">Accounts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/users.html">Users</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/access_groups.html">Access Groups</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/roles.html">Roles</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/service_ids.html">Service IDs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../06_administration/saas_administration/trusted_profiles.html">Trusted Profiles</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_access_control/saas_access_control/index.html">SaaS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_access_control/project_collaborators.html">Project Collaborators</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -315,9 +318,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-service-instances">Retrieving Service Instances</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-service-instances">Creating Service Instances</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Retrieving Service Instances</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-service-instances">Retrieving Service Instances</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-service-instances">Deleting Service Instances</a></li>
 </ul>
             </nav>
@@ -346,21 +348,10 @@ document.write(`
 <p class="admonition-title">Note</p>
 <p>Working with service instances is only supported on Cloud Pak for Data SaaS.</p>
 </div>
-<section id="retrieving-service-instances">
-<h2>Retrieving Service Instances<a class="headerlink" href="#retrieving-service-instances" title="Link to this heading">#</a></h2>
-<p>To retrieve existing service instances, use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.service_instances" title="ibm_watsonx_data_integration.platform.Platform.service_instances"><code class="xref py py-attr docutils literal notranslate"><span class="pre">service_instances</span></code></a> property of the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform" title="ibm_watsonx_data_integration.platform.Platform"><code class="xref py py-class docutils literal notranslate"><span class="pre">Platform</span></code></a> class. This will return a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Services" title="ibm_watsonx_data_integration.cpd_models.service_model.Services"><code class="xref py py-class docutils literal notranslate"><span class="pre">Services</span></code></a> object.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Returns a list of all service instances</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">service_instances</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">service_instances</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Returns a list of the first five service instances</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">service_instances</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">service_instances</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">limit</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
 <section id="creating-service-instances">
 <h2>Creating Service Instances<a class="headerlink" href="#creating-service-instances" title="Link to this heading">#</a></h2>
 <p>To create a new <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Service" title="ibm_watsonx_data_integration.cpd_models.service_model.Service"><code class="xref py py-class docutils literal notranslate"><span class="pre">Service</span></code></a> object within the watsonx.data integration platform, you can use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.create_service_instance" title="ibm_watsonx_data_integration.platform.Platform.create_service_instance"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Platform.create_service_instance()</span></code></a> method to instantiate the service instance.</p>
-<p>You must specify  <code class="docutils literal notranslate"><span class="pre">instance_type</span></code> and <code class="docutils literal notranslate"><span class="pre">name</span></code>. Optionally, you can also specify <code class="docutils literal notranslate"><span class="pre">target</span></code> and <code class="docutils literal notranslate"><span class="pre">tags</span></code>.</p>
+<p>You must specify <code class="docutils literal notranslate"><span class="pre">instance_type</span></code> and <code class="docutils literal notranslate"><span class="pre">name</span></code>. Optionally, you can also specify <code class="docutils literal notranslate"><span class="pre">target</span></code> and <code class="docutils literal notranslate"><span class="pre">tags</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">service_instance</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">create_service_instance</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">instance_type</span><span class="o">=</span><span class="s1">&#39;datastage&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;My Datastage Service Instance&#39;</span><span class="p">,</span>
@@ -370,9 +361,9 @@ document.write(`
 </pre></div>
 </div>
 </section>
-<section id="id1">
-<h2>Retrieving Service Instances<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>To retrieve existing service instances, use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.service_instances" title="ibm_watsonx_data_integration.platform.Platform.service_instances"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.platform.Platform.service_instances</span></code></a> property of the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform" title="ibm_watsonx_data_integration.platform.Platform"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.platform.Platform</span></code></a> class. This will return a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Services" title="ibm_watsonx_data_integration.cpd_models.service_model.Services"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.cpd_models.service_model.Services</span></code></a> object.</p>
+<section id="retrieving-service-instances">
+<h2>Retrieving Service Instances<a class="headerlink" href="#retrieving-service-instances" title="Link to this heading">#</a></h2>
+<p>To retrieve existing service instances, use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.service_instances" title="ibm_watsonx_data_integration.platform.Platform.service_instances"><code class="xref py py-attr docutils literal notranslate"><span class="pre">service_instances</span></code></a> property of the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform" title="ibm_watsonx_data_integration.platform.Platform"><code class="xref py py-class docutils literal notranslate"><span class="pre">Platform</span></code></a> class. This will return a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Services" title="ibm_watsonx_data_integration.cpd_models.service_model.Services"><code class="xref py py-class docutils literal notranslate"><span class="pre">Services</span></code></a> object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Returns a CollectionModel of all service instances</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">service_instances</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">service_instances</span>
 
@@ -437,9 +428,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-service-instances">Retrieving Service Instances</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-service-instances">Creating Service Instances</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Retrieving Service Instances</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-service-instances">Retrieving Service Instances</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-service-instances">Deleting Service Instances</a></li>
 </ul>
   </nav></div>

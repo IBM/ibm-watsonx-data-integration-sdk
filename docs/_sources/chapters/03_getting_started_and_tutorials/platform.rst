@@ -3,7 +3,6 @@
 Platform
 ========
 
-
 To interact with the watsonx.data integration platform, instantiate the :py:class:`ibm_watsonx_data_integration.platform.Platform` class.
 
 The ``Platform`` object serves as the entry point for accessing all major functionality in the SDK, including service instances, environments, flows, and more.

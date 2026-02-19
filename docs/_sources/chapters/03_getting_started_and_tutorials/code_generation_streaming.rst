@@ -8,15 +8,7 @@ Code Generation (Streaming)
 For streaming flows, you can use the
 :py:class:`~ibm_watsonx_data_integration.codegen.generator.PythonGenerator` class to automate the transformation.
 
-Prerequisites
-~~~~~~~~~~~~~
-
-To properly generate a script, you will need a correctly configured authenticator class (for example: :py:class:`~ibm_watsonx_data_integration.common.auth.IAMAuthenticator`).
-If you are using the :py:class:`~ibm_watsonx_data_integration.common.auth.IAMAuthenticator`, make sure your IBM Cloud API key is exported as an environment variable
-named ``IBM_CLOUD_API_KEY``. This key will be used by the generated script during execution.
-
-.. note::
-   All types of authenticator objects are accepted by the PythonGenerator class, but for now the authenticator object in the generated code will always be IAMAuthenticator.
+.. include:: ./shared/code_generation_prereqs.rst
 
 Example usage
 ~~~~~~~~~~~~~

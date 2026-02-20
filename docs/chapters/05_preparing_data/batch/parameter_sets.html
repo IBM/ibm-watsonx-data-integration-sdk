@@ -320,10 +320,14 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-parameter-set">Creating a Parameter Set</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-an-existing-parameter-set">Retrieving an Existing Parameter Set</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-parameter-set">Updating a Parameter Set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-parameter-set">Updating a Parameter Set</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-parameters-within-a-parameter-set">Updating Parameters Within a Parameter Set</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-value-sets">Adding Value Sets</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-local-parameters">Adding local Parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-local-parameters-and-parameter-sets">Using local parameters and Parameter Sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-a-parameter-set">Duplicating a Parameter Set</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-projdef">Using PROJDEF</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-parameter-set">Deleting a Parameter Set</a></li>
 </ul>
@@ -349,6 +353,7 @@ document.write(`
 <li><p>Adding value sets</p></li>
 <li><p>Adding local parameters</p></li>
 <li><p>Using local parameters and parameter sets</p></li>
+<li><p>Duplicating a parameter set</p></li>
 <li><p>Deleting a parameter set</p></li>
 </ul>
 </dd>
@@ -356,7 +361,7 @@ document.write(`
 <section id="creating-a-parameter-set">
 <span id="preparing-data-parameter-sets-creating-a-parameter-set"></span><h2>Creating a Parameter Set<a class="headerlink" href="#creating-a-parameter-set" title="Link to this heading">#</a></h2>
 <p>In the UI, you can create a new Parameter Set by navigating to <strong>Assets -&gt; New asset -&gt; Define reusable sets of parameters</strong>.</p>
-<a class="reference internal image-reference" href="../../../_images/create_connection.png"><img alt="Screenshot of the Connection creation in the UI - Step 1" class="align-center" src="../../../_images/create_connection.png" style="width: 100%;" />
+<a class="reference internal image-reference" href="../../../_images/create_connection.png"><img alt="Screenshot of the Parameter set creation in the UI - Step 1" class="align-center" src="../../../_images/create_connection.png" style="width: 100%;" />
 </a>
 <a class="reference internal image-reference" href="../../../_images/create_paramset.png"><img alt="Screenshot of the Parameter set creation in the UI - Step 2" class="align-center" src="../../../_images/create_paramset.png" style="width: 100%;" />
 </a>
@@ -364,7 +369,7 @@ document.write(`
 <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a>,
 by selecting the appropriate project from the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.platform.Platform" title="ibm_watsonx_data_integration.platform.Platform"><code class="xref py py-class docutils literal notranslate"><span class="pre">Platform</span></code></a> and then using
 the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.create_parameter_set" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.create_parameter_set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.create_parameter_set()</span></code></a> method to instantiate the Parameter Set.</p>
-<p>You must provide a <code class="docutils literal notranslate"><span class="pre">name</span></code> to create a parameter set.
+<p>You must provide a <code class="docutils literal notranslate"><span class="pre">name</span></code> to create a parameter set. The parameter set name can only contain letters, numbers, and underscores.
 When adding parameters to a parameter set, you should use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterType" title="ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParameterType</span></code></a> enum to specify the parameter type.
 The available parameter types match options available in UI.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paramset</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_parameter_set</span><span class="p">(</span><span class="s1">&#39;testparamset&#39;</span><span class="p">)</span>
@@ -373,6 +378,22 @@ The available parameter types match options available in UI.</p>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_parameter_set</span><span class="p">(</span><span class="n">paramset</span><span class="p">)</span>
 <span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+<p>When creating a parameter set with <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.create_parameter_set" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.create_parameter_set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.create_parameter_set()</span></code></a>, you can provide parameters as either <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.parameter_set_model.Parameter" title="ibm_watsonx_data_integration.cpd_models.parameter_set_model.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parameter</span></code></a> objects or as dictionaries.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.cpd_models.parameter_set_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">ParameterType</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Using Parameter objects</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">param1</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;qty&#39;</span><span class="p">,</span> <span class="n">param_type</span><span class="o">=</span><span class="n">ParameterType</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">param2</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;score&#39;</span><span class="p">,</span> <span class="n">param_type</span><span class="o">=</span><span class="n">ParameterType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;high&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paramset_a</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_parameter_set</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_params_from_objects&#39;</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Using dictionaries</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">params_dict</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;qty&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">ParameterType</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;100&#39;</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;score&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">ParameterType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;high&#39;</span><span class="p">}</span>
+<span class="gp">... </span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paramset_b</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_parameter_set</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_params_from_dictionaries&#39;</span><span class="p">,</span> <span class="n">parameters</span><span class="o">=</span><span class="n">params_dict</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -411,7 +432,7 @@ This method requires a <code class="docutils literal notranslate"><span class="p
 <span class="go">ParameterSet(name=&#39;testparamset&#39;, parameters=[Parameter(name=&#39;qty&#39;, param_type=&#39;int64&#39;, value=&#39;100&#39;), Parameter(name=&#39;date&#39;, param_type=&#39;date&#39;, value=&#39;2025-03-12&#39;)], description=&#39;&#39;, value_sets=[])</span>
 </pre></div>
 </div>
-<p>You can also directly change the <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">description</span></code> of the Parameter Set.
+<p>You can also directly change the <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">description</span></code> of the Parameter Set. When changing the parameter set name, remember that it can only contain letters, numbers, and underscores.
 To apply these modifications to the Parameter Set we pass the instance to the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_parameter_set" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_parameter_set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_parameter_set()</span></code></a> method.</p>
 <p>This method returns an HTTP response indicating the status of the update operation.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paramset</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;New_Paramset_Name&#39;</span>
@@ -422,6 +443,22 @@ To apply these modifications to the Parameter Set we pass the instance to the <a
 <span class="go">ParameterSet(name=&#39;New_Paramset_Name&#39;, parameters=[...Parameter(...)...], description=&#39;&#39;, value_sets=[])</span>
 </pre></div>
 </div>
+<section id="updating-parameters-within-a-parameter-set">
+<h3>Updating Parameters Within a Parameter Set<a class="headerlink" href="#updating-parameters-within-a-parameter-set" title="Link to this heading">#</a></h3>
+<p>When you add a parameter with an existing name to a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet" title="ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParameterSet</span></code></a>, it will overwrite the existing parameter. Alternatively, you can fetch a single parameter and modify it directly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Overwriting an existing parameter by adding with the same name</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paramset</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="n">parameter_type</span><span class="o">=</span><span class="n">ParameterType</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;qty&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;200&#39;</span><span class="p">)</span>
+<span class="go">ParameterSet(name=&#39;New_Paramset_Name&#39;, parameters=[Parameter(name=&#39;qty&#39;, param_type=&#39;int64&#39;, value=&#39;200&#39;), ...], description=&#39;&#39;, value_sets=[])</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Or fetch and modify a parameter directly</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">param</span> <span class="o">=</span> <span class="nb">next</span><span class="p">((</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">paramset</span><span class="o">.</span><span class="n">parameters</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;qty&#39;</span><span class="p">),</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">param</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">param</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="s1">&#39;300&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_parameter_set</span><span class="p">(</span><span class="n">paramset</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+</section>
 </section>
 <section id="adding-value-sets">
 <span id="preparing-data-parameter-sets-adding-value-sets"></span><h2>Adding Value Sets<a class="headerlink" href="#adding-value-sets" title="Link to this heading">#</a></h2>
@@ -443,14 +480,14 @@ To apply these modifications to the Parameter Set we pass the instance to the <a
 <span class="go">ValueSet(name=&#39;set_1&#39;, values=[{&#39;name&#39;: &#39;qty&#39;, &#39;value&#39;: &#39;20&#39;}])</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">paramset</span><span class="o">.</span><span class="n">add_value_set</span><span class="p">(</span><span class="n">set_1</span><span class="p">)</span>
-<span class="go">ParameterSet(name=&#39;New_Paramset_Name&#39;, parameters=[Parameter(name=&#39;qty&#39;, param_type=&#39;int64&#39;, value=&#39;100&#39;), Parameter(name=&#39;date&#39;, param_type=&#39;date&#39;, value=&#39;2025-03-12&#39;)], description=&#39;&#39;, value_sets=[ValueSet(name=&#39;set_1&#39;, values=[{&#39;name&#39;: &#39;qty&#39;, &#39;value&#39;: &#39;20&#39;}, {&#39;name&#39;: &#39;date&#39;, &#39;value&#39;: &#39;2025-03-12&#39;}])])</span>
+<span class="go">ParameterSet(name=&#39;New_Paramset_Name&#39;, parameters=[Parameter(name=&#39;qty&#39;, param_type=&#39;int64&#39;, value=&#39;300&#39;), Parameter(name=&#39;date&#39;, param_type=&#39;date&#39;, value=&#39;2025-03-12&#39;)], description=&#39;&#39;, value_sets=[ValueSet(name=&#39;set_1&#39;, values=[{&#39;name&#39;: &#39;qty&#39;, &#39;value&#39;: &#39;20&#39;}, {&#39;name&#39;: &#39;date&#39;, &#39;value&#39;: &#39;2025-03-12&#39;}])])</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">set_2</span> <span class="o">=</span> <span class="p">(</span>
 <span class="gp">... </span>   <span class="n">ValueSet</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;set_2&#39;</span><span class="p">)</span>
 <span class="gp">... </span>   <span class="o">.</span><span class="n">add_value</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;qty&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;40&#39;</span><span class="p">)</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">paramset</span><span class="o">.</span><span class="n">add_value_set</span><span class="p">(</span><span class="n">set_2</span><span class="p">)</span>
-<span class="go">ParameterSet(name=&#39;New_Paramset_Name&#39;, parameters=[Parameter(name=&#39;qty&#39;, param_type=&#39;int64&#39;, value=&#39;100&#39;), Parameter(name=&#39;date&#39;, param_type=&#39;date&#39;, value=&#39;2025-03-12&#39;)], description=&#39;&#39;, value_sets=[ValueSet(name=&#39;set_1&#39;, values=[{&#39;name&#39;: &#39;qty&#39;, &#39;value&#39;: &#39;20&#39;}, {&#39;name&#39;: &#39;date&#39;, &#39;value&#39;: &#39;2025-03-12&#39;}]), ValueSet(name=&#39;set_2&#39;, values=[{&#39;name&#39;: &#39;qty&#39;, &#39;value&#39;: &#39;40&#39;}, {&#39;name&#39;: &#39;date&#39;, &#39;value&#39;: &#39;2025-03-12&#39;}])])</span>
+<span class="go">ParameterSet(name=&#39;New_Paramset_Name&#39;, parameters=[Parameter(name=&#39;qty&#39;, param_type=&#39;int64&#39;, value=&#39;300&#39;), Parameter(name=&#39;date&#39;, param_type=&#39;date&#39;, value=&#39;2025-03-12&#39;)], description=&#39;&#39;, value_sets=[ValueSet(name=&#39;set_1&#39;, values=[{&#39;name&#39;: &#39;qty&#39;, &#39;value&#39;: &#39;20&#39;}, {&#39;name&#39;: &#39;date&#39;, &#39;value&#39;: &#39;2025-03-12&#39;}]), ValueSet(name=&#39;set_2&#39;, values=[{&#39;name&#39;: &#39;qty&#39;, &#39;value&#39;: &#39;40&#39;}, {&#39;name&#39;: &#39;date&#39;, &#39;value&#39;: &#39;2025-03-12&#39;}])])</span>
 </pre></div>
 </div>
 <p>In this example both value sets have the <code class="docutils literal notranslate"><span class="pre">qty</span></code> parameter set to a new value while the <code class="docutils literal notranslate"><span class="pre">date</span></code> parameter is still the default value.</p>
@@ -490,6 +527,22 @@ For local parameters you do not need to put anything in front of the parameter n
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bigquery</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Google BigQuery&#39;</span><span class="p">,</span> <span class="s1">&#39;BigQuery&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bigquery</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">table_name</span> <span class="o">=</span> <span class="s1">&#39;#tablename#&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bigquery</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">dataset_name</span> <span class="o">=</span> <span class="s1">&#39;#testparamset.schema#&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="duplicating-a-parameter-set">
+<span id="preparing-data-parameter-sets-duplicating-a-parameter-set"></span><h2>Duplicating a Parameter Set<a class="headerlink" href="#duplicating-a-parameter-set" title="Link to this heading">#</a></h2>
+<p>In the UI, you can duplicate a Parameter Set by navigating to <strong>Assets -&gt; Configurations -&gt; Parameter sets</strong>.
+Then click the three-dot menu on the Parameter Set you want to duplicate and select <strong>Duplicate</strong>.
+A new Parameter Set with a <code class="docutils literal notranslate"><span class="pre">_copy_1</span></code> suffix appended to the name will be created.</p>
+<a class="reference internal image-reference" href="../../../_images/duplicate_paramset.png"><img alt="Duplicate Parameter Set" class="align-center" src="../../../_images/duplicate_paramset.png" style="width: 100%;" />
+</a>
+<p>In the SDK, you can duplicate a Parameter Set by passing it to the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.duplicate_parameter_set" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.duplicate_parameter_set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.duplicate_parameter_set()</span></code></a> method.
+This method returns a new <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet" title="ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParameterSet</span></code></a> object with all parameters and value sets copied from the original.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">original_paramset</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">parameter_sets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;New_Paramset_Name&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">duplicated_paramset</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">duplicate_parameter_set</span><span class="p">(</span><span class="n">original_paramset</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">duplicated_paramset</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;New_Paramset_Name_copy_1&#39;</span>
 </pre></div>
 </div>
 </section>
@@ -589,10 +642,14 @@ To add PROJDEF in the UI go to <strong>Flow parameters -&gt; Add PROJDEF paramet
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-parameter-set">Creating a Parameter Set</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-an-existing-parameter-set">Retrieving an Existing Parameter Set</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-parameter-set">Updating a Parameter Set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-parameter-set">Updating a Parameter Set</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-parameters-within-a-parameter-set">Updating Parameters Within a Parameter Set</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-value-sets">Adding Value Sets</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-local-parameters">Adding local Parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-local-parameters-and-parameter-sets">Using local parameters and Parameter Sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-a-parameter-set">Duplicating a Parameter Set</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-projdef">Using PROJDEF</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-parameter-set">Deleting a Parameter Set</a></li>
 </ul>

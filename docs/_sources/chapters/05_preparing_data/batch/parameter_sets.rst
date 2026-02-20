@@ -14,6 +14,7 @@ This includes operations such as:
     * Adding value sets
     * Adding local parameters
     * Using local parameters and parameter sets
+    * Duplicating a parameter set
     * Deleting a parameter set
 
 .. _preparing_data__parameter_sets__creating_a_parameter_set:
@@ -24,7 +25,7 @@ Creating a Parameter Set
 In the UI, you can create a new Parameter Set by navigating to **Assets -> New asset -> Define reusable sets of parameters**.
 
 .. image:: /_static/images/connections/create_connection.png
-   :alt: Screenshot of the Connection creation in the UI - Step 1
+   :alt: Screenshot of the Parameter set creation in the UI - Step 1
    :align: center
    :width: 100%
 
@@ -39,7 +40,7 @@ In the SDK, you can create a new :py:class:`~ibm_watsonx_data_integration.cpd_mo
 by selecting the appropriate project from the :py:class:`~ibm_watsonx_data_integration.platform.Platform` and then using
 the :py:meth:`Project.create_parameter_set() <ibm_watsonx_data_integration.cpd_models.project_model.Project.create_parameter_set>` method to instantiate the Parameter Set.
 
-You must provide a ``name`` to create a parameter set.
+You must provide a ``name`` to create a parameter set. The parameter set name can only contain letters, numbers, and underscores.
 When adding parameters to a parameter set, you should use the :py:class:`~ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterType` enum to specify the parameter type.
 The available parameter types match options available in UI.
 
@@ -59,6 +60,24 @@ The available parameter types match options available in UI.
     >>>
     >>> project.update_parameter_set(paramset)
     <Response [200]>
+
+When creating a parameter set with :py:meth:`Project.create_parameter_set() <ibm_watsonx_data_integration.cpd_models.project_model.Project.create_parameter_set>`, you can provide parameters as either :py:class:`~ibm_watsonx_data_integration.cpd_models.parameter_set_model.Parameter` objects or as dictionaries.
+
+.. code-block:: python
+
+    >>> from ibm_watsonx_data_integration.cpd_models.parameter_set_model import Parameter, ParameterType
+    >>>
+    >>> # Using Parameter objects
+    >>> param1 = Parameter(name='qty', param_type=ParameterType.Integer, value='100')
+    >>> param2 = Parameter(name='score', param_type=ParameterType.String, value='high')
+    >>> paramset_a = project.create_parameter_set(name='my_params_from_objects', parameters=[param1, param2])
+    >>>
+    >>> # Using dictionaries
+    >>> params_dict = [
+    ...     {'name': 'qty', 'type': ParameterType.Integer, 'value': '100'},
+    ...     {'name': 'score', 'type': ParameterType.String, 'value': 'high'}
+    ... ]
+    >>> paramset_b = project.create_parameter_set(name='my_params_from_dictionaries', parameters=params_dict)
 
 .. _preparing_data__parameter_sets__retrieving_an_existing_parameter_set:
 
@@ -118,7 +137,7 @@ To remove parameters use the :py:meth:`ParameterSet.remove_parameter() <ibm_wats
     ParameterSet(name='testparamset', parameters=[Parameter(name='qty', param_type='int64', value='100'), Parameter(name='date', param_type='date', value='2025-03-12')], description='', value_sets=[])
 
 
-You can also directly change the ``name`` and ``description`` of the Parameter Set.
+You can also directly change the ``name`` and ``description`` of the Parameter Set. When changing the parameter set name, remember that it can only contain letters, numbers, and underscores.
 To apply these modifications to the Parameter Set we pass the instance to the :py:meth:`Project.update_parameter_set() <ibm_watsonx_data_integration.cpd_models.project_model.Project.update_parameter_set>` method.
 
 This method returns an HTTP response indicating the status of the update operation.
@@ -131,6 +150,24 @@ This method returns an HTTP response indicating the status of the update operati
     >>>
     >>> project.parameter_sets.get(name='New_Paramset_Name')
     ParameterSet(name='New_Paramset_Name', parameters=[...Parameter(...)...], description='', value_sets=[])
+
+Updating Parameters Within a Parameter Set
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When you add a parameter with an existing name to a :py:class:`~ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet`, it will overwrite the existing parameter. Alternatively, you can fetch a single parameter and modify it directly:
+
+.. code-block:: python
+
+    >>> # Overwriting an existing parameter by adding with the same name
+    >>> paramset.add_parameter(parameter_type=ParameterType.Integer, name='qty', value='200')
+    ParameterSet(name='New_Paramset_Name', parameters=[Parameter(name='qty', param_type='int64', value='200'), ...], description='', value_sets=[])
+    >>>
+    >>> # Or fetch and modify a parameter directly
+    >>> param = next((p for p in paramset.parameters if p.name == 'qty'), None)
+    >>> if param:
+    ...     param.value = '300'
+    >>> project.update_parameter_set(paramset)
+    <Response [200]>
 
 .. _preparing_data__parameter_sets__adding_value_sets:
 
@@ -167,14 +204,14 @@ If a parameter is not given a value its default value will be used. You can also
     ValueSet(name='set_1', values=[{'name': 'qty', 'value': '20'}])
     >>>
     >>> paramset.add_value_set(set_1)
-    ParameterSet(name='New_Paramset_Name', parameters=[Parameter(name='qty', param_type='int64', value='100'), Parameter(name='date', param_type='date', value='2025-03-12')], description='', value_sets=[ValueSet(name='set_1', values=[{'name': 'qty', 'value': '20'}, {'name': 'date', 'value': '2025-03-12'}])])
+    ParameterSet(name='New_Paramset_Name', parameters=[Parameter(name='qty', param_type='int64', value='300'), Parameter(name='date', param_type='date', value='2025-03-12')], description='', value_sets=[ValueSet(name='set_1', values=[{'name': 'qty', 'value': '20'}, {'name': 'date', 'value': '2025-03-12'}])])
     >>>
     >>> set_2 = (
     ...    ValueSet(name='set_2')
     ...    .add_value(name='qty', value='40')
     ... )
     >>> paramset.add_value_set(set_2)
-    ParameterSet(name='New_Paramset_Name', parameters=[Parameter(name='qty', param_type='int64', value='100'), Parameter(name='date', param_type='date', value='2025-03-12')], description='', value_sets=[ValueSet(name='set_1', values=[{'name': 'qty', 'value': '20'}, {'name': 'date', 'value': '2025-03-12'}]), ValueSet(name='set_2', values=[{'name': 'qty', 'value': '40'}, {'name': 'date', 'value': '2025-03-12'}])])
+    ParameterSet(name='New_Paramset_Name', parameters=[Parameter(name='qty', param_type='int64', value='300'), Parameter(name='date', param_type='date', value='2025-03-12')], description='', value_sets=[ValueSet(name='set_1', values=[{'name': 'qty', 'value': '20'}, {'name': 'date', 'value': '2025-03-12'}]), ValueSet(name='set_2', values=[{'name': 'qty', 'value': '40'}, {'name': 'date', 'value': '2025-03-12'}])])
 
 In this example both value sets have the ``qty`` parameter set to a new value while the ``date`` parameter is still the default value.
 
@@ -240,6 +277,30 @@ For local parameters you do not need to put anything in front of the parameter n
     >>> bigquery.configuration.table_name = '#tablename#'
     >>> bigquery.configuration.dataset_name = '#testparamset.schema#'
 
+
+.. _preparing_data__parameter_sets__duplicating_a_parameter_set:
+
+Duplicating a Parameter Set
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the UI, you can duplicate a Parameter Set by navigating to **Assets -> Configurations -> Parameter sets**.
+Then click the three-dot menu on the Parameter Set you want to duplicate and select **Duplicate**.
+A new Parameter Set with a ``_copy_1`` suffix appended to the name will be created.
+
+.. image:: /_static/images/parameter_sets/duplicate_paramset.png
+   :alt: Duplicate Parameter Set
+   :align: center
+   :width: 100%
+
+In the SDK, you can duplicate a Parameter Set by passing it to the :py:meth:`Project.duplicate_parameter_set() <ibm_watsonx_data_integration.cpd_models.project_model.Project.duplicate_parameter_set>` method.
+This method returns a new :py:class:`~ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet` object with all parameters and value sets copied from the original.
+
+.. code-block:: python
+
+    >>> original_paramset = project.parameter_sets.get(name='New_Paramset_Name')
+    >>> duplicated_paramset = project.duplicate_parameter_set(original_paramset)
+    >>> duplicated_paramset.name
+    'New_Paramset_Name_copy_1'
 
 .. _preparing_data__parameter_sets__deleting_a_parameter_set:
 

@@ -42,11 +42,13 @@ then use the :py:meth:`Project.create_job() <ibm_watsonx_data_integration.cpd_mo
 method to instantiate the job.
 
 You must specify a reference to :py:class:`~ibm_watsonx_data_integration.cpd_models.flow_model.Flow` object.
-Additionally, you can provide optional configuration such as environment variables or job parameters.
+Additionally, you can provide optional configuration such as environment variables, schedules, retention policies, and runtime parameters.
+The ``runtime_parameters`` parameter accepts either a dictionary or a :py:class:`~ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet` object.
 This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_model.Job` object.
 
 .. code-block:: python
 
+    >>> # Create a job without runtime parameters
     >>> job = project.create_job(
     ...     flow=flow,
     ...     name='Test Job',
@@ -54,6 +56,26 @@ This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_mo
     ... )
     >>> job
     Job(name='Test Job', ...)
+
+You can override parameter set values at job creation time by passing a dictionary to ``runtime_parameters``.
+The dictionary keys should be in the format ``"parameter_set_name.parameter_name"`` for external parameters,
+or just ``"parameter_name"`` for local parameters:
+
+.. code-block:: python
+
+    >>> # Create a job with runtime parameters to override parameter set values
+    >>> job = project.create_job(
+    ...     flow=flow,
+    ...     name='Test Job with Parameters',
+    ...     description='Job with custom parameter values',
+    ...     runtime_parameters={
+    ...         'my_paramset.database_name': 'production_db',
+    ...         'my_paramset.batch_size': 1000,
+    ...         'local_param': 'custom_value'
+    ...     }
+    ... )
+    >>> job
+    Job(name='Test Job with Parameters', ...)
 
 
 Retrieving an Existing Job
@@ -102,14 +124,15 @@ To update a job, click the pencil icon in the top bar.
 
 Updating a job is also possible via your :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` instance.
 First, modify the properties of the existing job, then update it using the
-:py:meth:`~ibm_watsonx_data_integration.cpd_models.project_model.Project.update_job` method. You can modify properties in the ``metadata`` and ``configuration`` fields of the :py:class:`~ibm_watsonx_data_integration.cpd_models.job_model.Job` object.
+:py:meth:`~ibm_watsonx_data_integration.cpd_models.project_model.Project.update_job` method.
+You can modify properties and ``configuration`` fields of the :py:class:`~ibm_watsonx_data_integration.cpd_models.job_model.Job` object.
 This method returns an HTTP response indicating the status of the update operation.
 The response also includes the updated job definition.
 
 .. code-block:: python
 
-    >>> job.metadata.name = 'New name'
-    >>> job.metadata.description = 'New description.'
+    >>> job.name = 'New name'
+    >>> job.description = 'New description.'
     >>> project.update_job(job)
     <Response [200]>
 
@@ -212,15 +235,36 @@ In the UI, you can start a job from the **Job Details** page by clicking the pla
 A job instance serves as a template to actually execute the flow for which the job was created.
 Call the :py:meth:`Job.start() <ibm_watsonx_data_integration.cpd_models.job_model.Job.start>` method on the job instance.
 The ``name`` and ``description`` parameters are optional; if not provided, default values will be used (``name='job run'``, ``description=''``).
-Additionally, you can further configure the job run by passing the ``configuration``,
-``job_parameters`` and ``parameter_sets`` fields to this method.
+Additionally, you can further configure the job run by passing the ``configuration`` and ``runtime_parameters`` parameters to this method.
+The ``runtime_parameters`` parameter accepts either a dictionary or a :py:class:`~ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet` object.
 This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_model.JobRun` object.
 
 .. code-block:: python
 
+    >>> # Start a job run without runtime parameters
     >>> job_run = job.start(name='Test Job Run', description='...')
     >>> job_run
     JobRun(...job_name='New name'...)
+
+You can override parameter values for a specific job run by passing a dictionary to ``runtime_parameters``.
+This allows you to run the same job with different parameter values without modifying the job itself.
+The dictionary keys should be in the format ``"parameter_set_name.parameter_name"`` for external parameters,
+or just ``"parameter_name"`` for local parameters:
+
+.. code-block:: python
+
+    >>> # Start a job run with runtime parameters to override values
+    >>> job_run = job.start(
+    ...     name='Test Job Run with Custom Parameters',
+    ...     description='Run with overridden parameter values',
+    ...     runtime_parameters={
+    ...         'my_paramset.rows': 30,
+    ...         'my_paramset.database_name': 'test_db',
+    ...         'local_param': 'override_value'
+    ...     }
+    ... )
+    >>> job_run
+    JobRun(...job_name='Test Job Run with Custom Parameters'...)
 
 Retrieving a Job Run
 ~~~~~~~~~~~~~~~~~~~~
@@ -244,7 +288,6 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_
     >>> job.job_runs
     [JobRun(...job_name='New name'...)]
     >>> # Returns a list of all job runs which job_type is `streamsets_flow`
-    >>> from ibm_watsonx_data_integration.cpd_models.job_model import JobRunState
     >>> job.job_runs.get_all(job_type='streamsets_flow')
     [JobRun(...job_name='New name'...)]
 

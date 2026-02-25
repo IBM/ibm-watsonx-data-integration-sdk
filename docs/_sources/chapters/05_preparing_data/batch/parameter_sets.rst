@@ -215,6 +215,29 @@ If a parameter is not given a value its default value will be used. You can also
 
 In this example both value sets have the ``qty`` parameter set to a new value while the ``date`` parameter is still the default value.
 
+Alternatively, you can initialize value sets directly when creating a parameter set by passing a list of :py:class:`ValueSet <ibm_watsonx_data_integration.cpd_models.parameter_set_model.ValueSet>` objects or dictionaries to the ``value_sets`` parameter. When using dictionaries, each dict must contain a ``name`` field and a ``values`` list with parameter name-value pairs.
+
+.. code-block:: python
+
+    >>> # Using ValueSet objects
+    >>> value_set_1 = ValueSet(name='set_1').add_value(name='qty', value='20')
+    >>> value_set_2 = ValueSet(name='set_2').add_value(name='qty', value='40')
+    >>> paramset_with_sets = project.create_parameter_set(
+    ...     name='paramset_with_valuesets',
+    ...     parameters=[{'name': 'qty', 'param_type': ParameterType.Integer, 'value': '100'}],
+    ...     value_sets=[value_set_1, value_set_2]
+    ... )
+    >>>
+    >>> # Using dictionaries
+    >>> paramset_with_dict_sets = project.create_parameter_set(
+    ...     name='paramset_with_dict_valuesets',
+    ...     parameters=[{'name': 'qty', 'param_type': ParameterType.Integer, 'value': '100'}],
+    ...     value_sets=[
+    ...         {'name': 'set_1', 'values': [{'qty': '20'}]},
+    ...         {'name': 'set_2', 'values': [{'qty': '40'}]}
+    ...     ]
+    ... )
+
 You can choose what value set you want a job to use by :ref:`Editing the runtime settings <projects__jobs__editing_a_batch_job>` of the job.
 
 .. note::

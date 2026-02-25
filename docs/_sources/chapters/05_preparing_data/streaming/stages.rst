@@ -161,6 +161,50 @@ or :py:meth:`Stage.connect_input_to() <ibm_watsonx_data_integration.services.str
     >>> trash.connect_input_to(stream_selector, predicate=stream_selector.predicates[0])
     StreamSelector_01(stage_name='Stream Selector 1')
 
+.. important::
+
+    The ``predicates`` attribute is an ordered Python :py:class:`list`.
+    The index of a predicate is determined solely by its position in this list (0-based indexing).
+
+    The ``default`` predicate is always the last element in the list.
+
+    The value inside the predicate expression (for example ``${1 == 1}``) does **not** determine its index.
+
+For example:
+
+.. skip: start 'dummy predicate values'
+
+.. code-block:: python
+
+    >>> stream_selector.predicates
+        [
+            {
+                'outputLane': 'StreamSelector_01OutputLane...',
+                'predicate': '${1 == 1}'
+            },  # index 0
+            {
+                'outputLane': 'StreamSelector_01OutputLane...',
+                'predicate': 'default'
+            }   # index 1 (always last)
+        ]
+
+
+In this case:
+
+- ``stream_selector.predicates[0]`` corresponds to the first output lane
+- ``stream_selector.predicates[1]`` corresponds to the ``default`` lane
+
+When connecting stages, the predicate index must match the position in the list:
+
+.. code-block:: python
+
+    >>> stream_selector.connect_output_to(trash, predicate=stream_selector.predicates[0])
+    >>> stream_selector.connect_output_to(processor, predicate=stream_selector.predicates[1])
+
+.. skip: end
+
+``default`` cannot be used as an index value. It is simply the last element in the ``predicates`` list.
+
 .. _preparing_data__streaming__listing_connected_stages:
 
 Listing all Stages Connected to a Stage

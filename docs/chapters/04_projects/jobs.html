@@ -377,15 +377,35 @@ first select the appropriate project from the <a class="reference internal" href
 then use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.create_job" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.create_job"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.create_job()</span></code></a>
 method to instantiate the job.</p>
 <p>You must specify a reference to <code class="xref py py-class docutils literal notranslate"><span class="pre">Flow</span></code> object.
-Additionally, you can provide optional configuration such as environment variables or job parameters.
+Additionally, you can provide optional configuration such as environment variables, schedules, retention policies, and runtime parameters.
+The <code class="docutils literal notranslate"><span class="pre">runtime_parameters</span></code> parameter accepts either a dictionary or a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet" title="ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParameterSet</span></code></a> object.
 This method returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job" title="ibm_watsonx_data_integration.cpd_models.job_model.Job"><code class="xref py py-class docutils literal notranslate"><span class="pre">Job</span></code></a> object.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a job without runtime parameters</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">flow</span><span class="o">=</span><span class="n">flow</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Job&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;...&#39;</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">job</span>
 <span class="go">Job(name=&#39;Test Job&#39;, ...)</span>
+</pre></div>
+</div>
+<p>You can override parameter set values at job creation time by passing a dictionary to <code class="docutils literal notranslate"><span class="pre">runtime_parameters</span></code>.
+The dictionary keys should be in the format <code class="docutils literal notranslate"><span class="pre">&quot;parameter_set_name.parameter_name&quot;</span></code> for external parameters,
+or just <code class="docutils literal notranslate"><span class="pre">&quot;parameter_name&quot;</span></code> for local parameters:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a job with runtime parameters to override parameter set values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">flow</span><span class="o">=</span><span class="n">flow</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Job with Parameters&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Job with custom parameter values&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">runtime_parameters</span><span class="o">=</span><span class="p">{</span>
+<span class="gp">... </span>        <span class="s1">&#39;my_paramset.database_name&#39;</span><span class="p">:</span> <span class="s1">&#39;production_db&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;my_paramset.batch_size&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;local_param&#39;</span><span class="p">:</span> <span class="s1">&#39;custom_value&#39;</span>
+<span class="gp">... </span>    <span class="p">}</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job</span>
+<span class="go">Job(name=&#39;Test Job with Parameters&#39;, ...)</span>
 </pre></div>
 </div>
 </section>
@@ -424,11 +444,12 @@ To update a job, click the pencil icon in the top bar.</p>
 </div>
 <p>Updating a job is also possible via your <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> instance.
 First, modify the properties of the existing job, then update it using the
-<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_job" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_job"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_job()</span></code></a> method. You can modify properties in the <code class="docutils literal notranslate"><span class="pre">metadata</span></code> and <code class="docutils literal notranslate"><span class="pre">configuration</span></code> fields of the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job" title="ibm_watsonx_data_integration.cpd_models.job_model.Job"><code class="xref py py-class docutils literal notranslate"><span class="pre">Job</span></code></a> object.
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_job" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_job"><code class="xref py py-meth docutils literal notranslate"><span class="pre">update_job()</span></code></a> method.
+You can modify properties and <code class="docutils literal notranslate"><span class="pre">configuration</span></code> fields of the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job" title="ibm_watsonx_data_integration.cpd_models.job_model.Job"><code class="xref py py-class docutils literal notranslate"><span class="pre">Job</span></code></a> object.
 This method returns an HTTP response indicating the status of the update operation.
 The response also includes the updated job definition.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;New name&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">job</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;New description.&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;New name&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;New description.&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_job</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
 <span class="go">&lt;Response [200]&gt;</span>
 </pre></div>
@@ -462,7 +483,7 @@ Batch flows include additional settings.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<a class="reference internal image-reference" href="../../_images/runtime_settings.png"><img alt="Screenshot of the Runtime Settings page" class="align-center" src="../../_images/runtime_settings.png" style="width: 100%;" />
+<a class="reference internal image-reference" href="../../_images/runtime_settings1.png"><img alt="Screenshot of the Runtime Settings page" class="align-center" src="../../_images/runtime_settings1.png" style="width: 100%;" />
 </a>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -516,12 +537,31 @@ Batch flows include additional settings.</p>
 <p>A job instance serves as a template to actually execute the flow for which the job was created.
 Call the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job.start" title="ibm_watsonx_data_integration.cpd_models.job_model.Job.start"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Job.start()</span></code></a> method on the job instance.
 The <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">description</span></code> parameters are optional; if not provided, default values will be used (<code class="docutils literal notranslate"><span class="pre">name='job</span> <span class="pre">run'</span></code>, <code class="docutils literal notranslate"><span class="pre">description=''</span></code>).
-Additionally, you can further configure the job run by passing the <code class="docutils literal notranslate"><span class="pre">configuration</span></code>,
-<code class="docutils literal notranslate"><span class="pre">job_parameters</span></code> and <code class="docutils literal notranslate"><span class="pre">parameter_sets</span></code> fields to this method.
+Additionally, you can further configure the job run by passing the <code class="docutils literal notranslate"><span class="pre">configuration</span></code> and <code class="docutils literal notranslate"><span class="pre">runtime_parameters</span></code> parameters to this method.
+The <code class="docutils literal notranslate"><span class="pre">runtime_parameters</span></code> parameter accepts either a dictionary or a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet" title="ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParameterSet</span></code></a> object.
 This method returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobRun" title="ibm_watsonx_data_integration.cpd_models.job_model.JobRun"><code class="xref py py-class docutils literal notranslate"><span class="pre">JobRun</span></code></a> object.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job_run</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Job Run&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Start a job run without runtime parameters</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job_run</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Job Run&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">job_run</span>
 <span class="go">JobRun(...job_name=&#39;New name&#39;...)</span>
+</pre></div>
+</div>
+<p>You can override parameter values for a specific job run by passing a dictionary to <code class="docutils literal notranslate"><span class="pre">runtime_parameters</span></code>.
+This allows you to run the same job with different parameter values without modifying the job itself.
+The dictionary keys should be in the format <code class="docutils literal notranslate"><span class="pre">&quot;parameter_set_name.parameter_name&quot;</span></code> for external parameters,
+or just <code class="docutils literal notranslate"><span class="pre">&quot;parameter_name&quot;</span></code> for local parameters:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Start a job run with runtime parameters to override values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job_run</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">start</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Job Run with Custom Parameters&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Run with overridden parameter values&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">runtime_parameters</span><span class="o">=</span><span class="p">{</span>
+<span class="gp">... </span>        <span class="s1">&#39;my_paramset.rows&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;my_paramset.database_name&#39;</span><span class="p">:</span> <span class="s1">&#39;test_db&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;local_param&#39;</span><span class="p">:</span> <span class="s1">&#39;override_value&#39;</span>
+<span class="gp">... </span>    <span class="p">}</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job_run</span>
+<span class="go">JobRun(...job_name=&#39;Test Job Run with Custom Parameters&#39;...)</span>
 </pre></div>
 </div>
 </section>
@@ -540,7 +580,6 @@ This property returns a <a class="reference internal" href="../../api/models.htm
 <span class="gp">&gt;&gt;&gt; </span><span class="n">job</span><span class="o">.</span><span class="n">job_runs</span>
 <span class="go">[JobRun(...job_name=&#39;New name&#39;...)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Returns a list of all job runs which job_type is `streamsets_flow`</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.cpd_models.job_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">JobRunState</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">job</span><span class="o">.</span><span class="n">job_runs</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">job_type</span><span class="o">=</span><span class="s1">&#39;streamsets_flow&#39;</span><span class="p">)</span>
 <span class="go">[JobRun(...job_name=&#39;New name&#39;...)]</span>
 </pre></div>

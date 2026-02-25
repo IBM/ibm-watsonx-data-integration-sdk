@@ -77,7 +77,7 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.conn
 
 .. tip::
 
-    For detailed information about parameters and values refer to https://cloud.ibm.com/apidocs/data-ai-common-core#listfiles.
+    For detailed information about parameters and values refer to https://cloud.ibm.com/apidocs/data-ai-common-core **Files** section.
 
 ..
     This section is commented until we implement downloading a file into SDK

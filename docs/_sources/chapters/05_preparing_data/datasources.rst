@@ -61,7 +61,7 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.conn
 
 .. tip::
 
-    For detailed information about parameters and values refer to https://cloud.ibm.com/apidocs/data-ai-common-core#listdatasourcetypes.
+    For detailed information about parameters and values refer to https://cloud.ibm.com/apidocs/data-ai-common-core **Datasource Types** section.
 
 
 .. _preparing_data__datasources__retrieving_a_datasourcetype_connection_properties:

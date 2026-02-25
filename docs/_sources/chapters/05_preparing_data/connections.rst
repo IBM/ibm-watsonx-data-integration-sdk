@@ -122,7 +122,7 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.conn
 
 .. tip::
 
-    For detailed information about parameters and values refer to https://cloud.ibm.com/apidocs/data-ai-common-core#listconnections.
+    For detailed information about parameters and values refer to https://cloud.ibm.com/apidocs/data-ai-common-core **Connections** section.
 
 .. _preparing_data__connections__updating_a_connection:
 

@@ -468,6 +468,38 @@ or <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data
 <span class="go">StreamSelector_01(stage_name=&#39;Stream Selector 1&#39;)</span>
 </pre></div>
 </div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">predicates</span></code> attribute is an ordered Python <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code>.
+The index of a predicate is determined solely by its position in this list (0-based indexing).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">default</span></code> predicate is always the last element in the list.</p>
+<p>The value inside the predicate expression (for example <code class="docutils literal notranslate"><span class="pre">${1</span> <span class="pre">==</span> <span class="pre">1}</span></code>) does <strong>not</strong> determine its index.</p>
+</div>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span><span class="o">.</span><span class="n">predicates</span>
+<span class="go">    [</span>
+<span class="go">        {</span>
+<span class="go">            &#39;outputLane&#39;: &#39;StreamSelector_01OutputLane...&#39;,</span>
+<span class="go">            &#39;predicate&#39;: &#39;${1 == 1}&#39;</span>
+<span class="go">        },  # index 0</span>
+<span class="go">        {</span>
+<span class="go">            &#39;outputLane&#39;: &#39;StreamSelector_01OutputLane...&#39;,</span>
+<span class="go">            &#39;predicate&#39;: &#39;default&#39;</span>
+<span class="go">        }   # index 1 (always last)</span>
+<span class="go">    ]</span>
+</pre></div>
+</div>
+<p>In this case:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">stream_selector.predicates[0]</span></code> corresponds to the first output lane</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stream_selector.predicates[1]</span></code> corresponds to the <code class="docutils literal notranslate"><span class="pre">default</span></code> lane</p></li>
+</ul>
+<p>When connecting stages, the predicate index must match the position in the list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">trash</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="n">stream_selector</span><span class="o">.</span><span class="n">predicates</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">processor</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="n">stream_selector</span><span class="o">.</span><span class="n">predicates</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">default</span></code> cannot be used as an index value. It is simply the last element in the <code class="docutils literal notranslate"><span class="pre">predicates</span></code> list.</p>
 </section>
 </section>
 <section id="listing-all-stages-connected-to-a-stage">

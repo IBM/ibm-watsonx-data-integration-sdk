@@ -38,18 +38,18 @@ Verify it works:
 .. code-block:: json
 
     {
-      'mcpServers': {
-        'data-intg-mcp': {
-          'command': 'uvx',
-          'args': [
-            '--python',
-            '3.12',
-            '--from',
-            'ibm_watsonx_data_integration_mcp',
-            'data-intg-mcp'
+      "mcpServers": {
+        "data-intg-mcp": {
+          "command": "uvx",
+          "args": [
+            "--python",
+            "3.12",
+            "--from",
+            "ibm_watsonx_data_integration_mcp",
+            "data-intg-mcp"
           ],
-          'env': {
-            'WATSONX_API_KEY': 'YOUR_API_KEY'  # pragma: allowlist secret
+          "env": {
+            "WATSONX_API_KEY": "YOUR_API_KEY" # pragma: allowlist secret
           }
         }
       }
@@ -81,16 +81,16 @@ Verify the installation:
 .. code-block:: json
 
     {
-      'mcpServers': {
-        'data-intg-mcp': {
-          'command': 'uv',
-          'args': [
-            'tool',
-            'run',
-            'data-intg-mcp'
+      "mcpServers": {
+        "data-intg-mcp": {
+          "command": "uv",
+          "args": [
+            "tool",
+            "run",
+            "data-intg-mcp"
           ],
-          'env': {
-            'WATSONX_API_KEY': 'YOUR_API_KEY'  # pragma: allowlist secret
+          "env": {
+            "WATSONX_API_KEY": "YOUR_API_KEY" # pragma: allowlist secret
           }
         }
       }
@@ -116,12 +116,12 @@ Verify the installation:
 .. code-block:: json
 
     {
-      'mcpServers': {
-        'data-intg-mcp': {
-          'command': '<Path to .venv>/bin/data-intg-mcp',
-          'args': [],
-          'env': {
-            'WATSONX_API_KEY': 'YOUR_API_KEY'  # pragma: allowlist secret
+      "mcpServers": {
+        "data-intg-mcp": {
+          "command": "<Path to .venv>/bin/data-intg-mcp",
+          "args": [],
+          "env": {
+            "WATSONX_API_KEY": "YOUR_API_KEY" # pragma: allowlist secret
           }
         }
       }

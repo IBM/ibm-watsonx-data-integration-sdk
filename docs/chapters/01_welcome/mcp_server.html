@@ -369,18 +369,18 @@ It enables AI assistants to interact with your data integration workflows direct
 </div>
 <p><strong>MCP server configuration:</strong></p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="err">&#39;mcpServers&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="err">&#39;da</span><span class="kc">ta</span><span class="mi">-</span><span class="err">i</span><span class="kc">nt</span><span class="err">g</span><span class="mi">-</span><span class="err">mcp&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="err">&#39;comma</span><span class="kc">n</span><span class="err">d&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;uvx&#39;</span><span class="p">,</span>
-<span class="w">      </span><span class="err">&#39;args&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="err">&#39;</span><span class="mi">--</span><span class="err">py</span><span class="kc">t</span><span class="err">ho</span><span class="kc">n</span><span class="err">&#39;</span><span class="p">,</span>
-<span class="w">        </span><span class="err">&#39;</span><span class="mf">3.12</span><span class="err">&#39;</span><span class="p">,</span>
-<span class="w">        </span><span class="err">&#39;</span><span class="mi">--</span><span class="kc">fr</span><span class="err">om&#39;</span><span class="p">,</span>
-<span class="w">        </span><span class="err">&#39;ibm_wa</span><span class="kc">ts</span><span class="err">o</span><span class="kc">n</span><span class="err">x_da</span><span class="kc">ta</span><span class="err">_i</span><span class="kc">nte</span><span class="err">gra</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="err">_mcp&#39;</span><span class="p">,</span>
-<span class="w">        </span><span class="err">&#39;da</span><span class="kc">ta</span><span class="mi">-</span><span class="err">i</span><span class="kc">nt</span><span class="err">g</span><span class="mi">-</span><span class="err">mcp&#39;</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;--python&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;3.12&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;--from&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;ibm_watsonx_data_integration_mcp&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;data-intg-mcp&quot;</span>
 <span class="w">      </span><span class="p">],</span>
-<span class="w">      </span><span class="err">&#39;e</span><span class="kc">n</span><span class="err">v&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="err">&#39;WATSONX_API_KEY&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;YOUR_API_KEY&#39;</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="err">pragma</span><span class="p">:</span><span class="w"> </span><span class="err">allowlis</span><span class="kc">t</span><span class="w"> </span><span class="err">secre</span><span class="kc">t</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_API_KEY&quot;</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="err">pragma</span><span class="p">:</span><span class="w"> </span><span class="err">allowlis</span><span class="kc">t</span><span class="w"> </span><span class="err">secre</span><span class="kc">t</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
@@ -404,16 +404,16 @@ It enables AI assistants to interact with your data integration workflows direct
 </div>
 <p><strong>MCP server configuration:</strong></p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="err">&#39;mcpServers&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="err">&#39;da</span><span class="kc">ta</span><span class="mi">-</span><span class="err">i</span><span class="kc">nt</span><span class="err">g</span><span class="mi">-</span><span class="err">mcp&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="err">&#39;comma</span><span class="kc">n</span><span class="err">d&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;uv&#39;</span><span class="p">,</span>
-<span class="w">      </span><span class="err">&#39;args&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">        </span><span class="err">&#39;</span><span class="kc">t</span><span class="err">ool&#39;</span><span class="p">,</span>
-<span class="w">        </span><span class="err">&#39;ru</span><span class="kc">n</span><span class="err">&#39;</span><span class="p">,</span>
-<span class="w">        </span><span class="err">&#39;da</span><span class="kc">ta</span><span class="mi">-</span><span class="err">i</span><span class="kc">nt</span><span class="err">g</span><span class="mi">-</span><span class="err">mcp&#39;</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uv&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;tool&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;run&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;data-intg-mcp&quot;</span>
 <span class="w">      </span><span class="p">],</span>
-<span class="w">      </span><span class="err">&#39;e</span><span class="kc">n</span><span class="err">v&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="err">&#39;WATSONX_API_KEY&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;YOUR_API_KEY&#39;</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="err">pragma</span><span class="p">:</span><span class="w"> </span><span class="err">allowlis</span><span class="kc">t</span><span class="w"> </span><span class="err">secre</span><span class="kc">t</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_API_KEY&quot;</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="err">pragma</span><span class="p">:</span><span class="w"> </span><span class="err">allowlis</span><span class="kc">t</span><span class="w"> </span><span class="err">secre</span><span class="kc">t</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
@@ -434,12 +434,12 @@ pip<span class="w"> </span>install<span class="w"> </span>ibm_watsonx_data_integ
 </div>
 <p><strong>MCP server configuration:</strong></p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">  </span><span class="err">&#39;mcpServers&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="err">&#39;da</span><span class="kc">ta</span><span class="mi">-</span><span class="err">i</span><span class="kc">nt</span><span class="err">g</span><span class="mi">-</span><span class="err">mcp&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="err">&#39;comma</span><span class="kc">n</span><span class="err">d&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;&lt;Pa</span><span class="kc">t</span><span class="err">h</span><span class="w"> </span><span class="kc">t</span><span class="err">o</span><span class="w"> </span><span class="err">.ve</span><span class="kc">n</span><span class="err">v&gt;/bi</span><span class="kc">n</span><span class="err">/da</span><span class="kc">ta</span><span class="mi">-</span><span class="err">i</span><span class="kc">nt</span><span class="err">g</span><span class="mi">-</span><span class="err">mcp&#39;</span><span class="p">,</span>
-<span class="w">      </span><span class="err">&#39;args&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
-<span class="w">      </span><span class="err">&#39;e</span><span class="kc">n</span><span class="err">v&#39;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="err">&#39;WATSONX_API_KEY&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;YOUR_API_KEY&#39;</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="err">pragma</span><span class="p">:</span><span class="w"> </span><span class="err">allowlis</span><span class="kc">t</span><span class="w"> </span><span class="err">secre</span><span class="kc">t</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Path to .venv&gt;/bin/data-intg-mcp&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_API_KEY&quot;</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="err">pragma</span><span class="p">:</span><span class="w"> </span><span class="err">allowlis</span><span class="kc">t</span><span class="w"> </span><span class="err">secre</span><span class="kc">t</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>

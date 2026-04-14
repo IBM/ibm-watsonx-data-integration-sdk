@@ -18,4 +18,5 @@ Looking for documentation on the SDKs interfaces and abstractions? Please check 
 
    prereqs
    installation_and_versioning
+   mcp_server
    supported_products

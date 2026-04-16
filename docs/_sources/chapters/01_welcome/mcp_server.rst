@@ -27,11 +27,23 @@ If you don't have ``uvx``, install it first:
 
     pip install uv
 
-Verify it works:
+Verify it works (this will install all dependencies and may take a few minutes on first run):
 
 .. code-block:: bash
 
     uvx --python 3.12 --from ibm_watsonx_data_integration_mcp data-intg-mcp --help
+
+You should see output similar to:
+
+.. code-block:: text
+
+    usage: data-intg-mcp [-h] [--clear-cache]
+
+    MCP Server for IBM watsonx.data Integration
+
+    options:
+      -h, --help     show this help message and exit
+      --clear-cache  Clear all cached documentation before starting (resources_cache/ and docs/)
 
 **MCP server configuration:**
 
@@ -49,7 +61,7 @@ Verify it works:
             "data-intg-mcp"
           ],
           "env": {
-            "WATSONX_API_KEY": "YOUR_API_KEY" # pragma: allowlist secret
+            "WATSONX_API_KEY": "YOUR_API_KEY"
           }
         }
       }
@@ -64,7 +76,7 @@ If you don't have ``uv``, install it first:
 
     pip install uv
 
-Install:
+Install (this will install all dependencies and may take a few minutes):
 
 .. code-block:: bash
 
@@ -75,6 +87,18 @@ Verify the installation:
 .. code-block:: bash
 
     data-intg-mcp --help
+
+You should see output similar to:
+
+.. code-block:: text
+
+    usage: data-intg-mcp [-h] [--clear-cache]
+
+    MCP Server for IBM watsonx.data Integration
+
+    options:
+      -h, --help     show this help message and exit
+      --clear-cache  Clear all cached documentation before starting (resources_cache/ and docs/)
 
 **MCP server configuration:**
 
@@ -90,7 +114,7 @@ Verify the installation:
             "data-intg-mcp"
           ],
           "env": {
-            "WATSONX_API_KEY": "YOUR_API_KEY" # pragma: allowlist secret
+            "WATSONX_API_KEY": "YOUR_API_KEY"
           }
         }
       }
@@ -105,11 +129,25 @@ Using ``pip`` with a Virtual Environment
     source .venv/bin/activate
     pip install ibm_watsonx_data_integration_mcp
 
+This will install the MCP server and all its dependencies into the virtual environment.
+
 Verify the installation:
 
 .. code-block:: bash
 
     data-intg-mcp --help
+
+You should see output similar to:
+
+.. code-block:: text
+
+    usage: data-intg-mcp [-h] [--clear-cache]
+
+    MCP Server for IBM watsonx.data Integration
+
+    options:
+      -h, --help     show this help message and exit
+      --clear-cache  Clear all cached documentation before starting (resources_cache/ and docs/)
 
 **MCP server configuration:**
 
@@ -121,7 +159,7 @@ Verify the installation:
           "command": "<Path to .venv>/bin/data-intg-mcp",
           "args": [],
           "env": {
-            "WATSONX_API_KEY": "YOUR_API_KEY" # pragma: allowlist secret
+            "WATSONX_API_KEY": "YOUR_API_KEY"
           }
         }
       }
@@ -129,6 +167,13 @@ Verify the installation:
 
 Client Integration
 ------------------
+
+Once you've added the MCP server configuration to your client, the server will start automatically when the client launches.
+You'll know the server has finished initializing when you see the following message in the logs:
+
+.. code-block:: text
+
+    [INFO] Documentation bootstrap complete
 
 Claude Desktop
 ~~~~~~~~~~~~~~
@@ -148,4 +193,4 @@ Authentication
 Set your ``WATSONX_API_KEY`` in the ``env`` block of your MCP client configuration. The server validates this key on startup.
 
 .. note::
-   You can generate an API key from your IBM Cloud account at: `https://cloud.ibm.com/iam/apikeys <https://cloud.ibm.com/iam/apikeys>`_
+   For information on how to generate an IBM Cloud API key, see :ref:`getting_started_and_tutorials__authentication`.

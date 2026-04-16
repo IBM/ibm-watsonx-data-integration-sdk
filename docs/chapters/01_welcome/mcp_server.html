@@ -363,8 +363,18 @@ It enables AI assistants to interact with your data integration workflows direct
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>uv
 </pre></div>
 </div>
-<p>Verify it works:</p>
+<p>Verify it works (this will install all dependencies and may take a few minutes on first run):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>--python<span class="w"> </span><span class="m">3</span>.12<span class="w"> </span>--from<span class="w"> </span>ibm_watsonx_data_integration_mcp<span class="w"> </span>data-intg-mcp<span class="w"> </span>--help
+</pre></div>
+</div>
+<p>You should see output similar to:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: data-intg-mcp [-h] [--clear-cache]
+
+MCP Server for IBM watsonx.data Integration
+
+options:
+  -h, --help     show this help message and exit
+  --clear-cache  Clear all cached documentation before starting (resources_cache/ and docs/)
 </pre></div>
 </div>
 <p><strong>MCP server configuration:</strong></p>
@@ -380,7 +390,7 @@ It enables AI assistants to interact with your data integration workflows direct
 <span class="w">        </span><span class="s2">&quot;data-intg-mcp&quot;</span>
 <span class="w">      </span><span class="p">],</span>
 <span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_API_KEY&quot;</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="err">pragma</span><span class="p">:</span><span class="w"> </span><span class="err">allowlis</span><span class="kc">t</span><span class="w"> </span><span class="err">secre</span><span class="kc">t</span>
+<span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_API_KEY&quot;</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
@@ -394,12 +404,22 @@ It enables AI assistants to interact with your data integration workflows direct
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>uv
 </pre></div>
 </div>
-<p>Install:</p>
+<p>Install (this will install all dependencies and may take a few minutes):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>tool<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="m">3</span>.12<span class="w"> </span>ibm_watsonx_data_integration_mcp
 </pre></div>
 </div>
 <p>Verify the installation:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>data-intg-mcp<span class="w"> </span>--help
+</pre></div>
+</div>
+<p>You should see output similar to:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: data-intg-mcp [-h] [--clear-cache]
+
+MCP Server for IBM watsonx.data Integration
+
+options:
+  -h, --help     show this help message and exit
+  --clear-cache  Clear all cached documentation before starting (resources_cache/ and docs/)
 </pre></div>
 </div>
 <p><strong>MCP server configuration:</strong></p>
@@ -413,7 +433,7 @@ It enables AI assistants to interact with your data integration workflows direct
 <span class="w">        </span><span class="s2">&quot;data-intg-mcp&quot;</span>
 <span class="w">      </span><span class="p">],</span>
 <span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_API_KEY&quot;</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="err">pragma</span><span class="p">:</span><span class="w"> </span><span class="err">allowlis</span><span class="kc">t</span><span class="w"> </span><span class="err">secre</span><span class="kc">t</span>
+<span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_API_KEY&quot;</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
@@ -428,8 +448,19 @@ It enables AI assistants to interact with your data integration workflows direct
 pip<span class="w"> </span>install<span class="w"> </span>ibm_watsonx_data_integration_mcp
 </pre></div>
 </div>
+<p>This will install the MCP server and all its dependencies into the virtual environment.</p>
 <p>Verify the installation:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>data-intg-mcp<span class="w"> </span>--help
+</pre></div>
+</div>
+<p>You should see output similar to:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: data-intg-mcp [-h] [--clear-cache]
+
+MCP Server for IBM watsonx.data Integration
+
+options:
+  -h, --help     show this help message and exit
+  --clear-cache  Clear all cached documentation before starting (resources_cache/ and docs/)
 </pre></div>
 </div>
 <p><strong>MCP server configuration:</strong></p>
@@ -439,7 +470,7 @@ pip<span class="w"> </span>install<span class="w"> </span>ibm_watsonx_data_integ
 <span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;Path to .venv&gt;/bin/data-intg-mcp&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
 <span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_API_KEY&quot;</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="err">pragma</span><span class="p">:</span><span class="w"> </span><span class="err">allowlis</span><span class="kc">t</span><span class="w"> </span><span class="err">secre</span><span class="kc">t</span>
+<span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_API_KEY&quot;</span>
 <span class="w">      </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
@@ -450,6 +481,11 @@ pip<span class="w"> </span>install<span class="w"> </span>ibm_watsonx_data_integ
 </section>
 <section id="client-integration">
 <h2>Client Integration<a class="headerlink" href="#client-integration" title="Link to this heading">#</a></h2>
+<p>Once you’ve added the MCP server configuration to your client, the server will start automatically when the client launches.
+You’ll know the server has finished initializing when you see the following message in the logs:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[INFO] Documentation bootstrap complete
+</pre></div>
+</div>
 <section id="claude-desktop">
 <h3>Claude Desktop<a class="headerlink" href="#claude-desktop" title="Link to this heading">#</a></h3>
 <p>Navigate to <strong>Claude → Settings → Developer → Edit Config</strong> and add one of the MCP server configurations above
@@ -466,7 +502,7 @@ configurations above to your Bob MCP config file.</p>
 <p>Set your <code class="docutils literal notranslate"><span class="pre">WATSONX_API_KEY</span></code> in the <code class="docutils literal notranslate"><span class="pre">env</span></code> block of your MCP client configuration. The server validates this key on startup.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You can generate an API key from your IBM Cloud account at: <a class="reference external" href="https://cloud.ibm.com/iam/apikeys">https://cloud.ibm.com/iam/apikeys</a></p>
+<p>For information on how to generate an IBM Cloud API key, see <a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html#getting-started-and-tutorials-authentication"><span class="std std-ref">Authentication</span></a>.</p>
 </div>
 </section>
 </section>

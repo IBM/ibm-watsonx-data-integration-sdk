@@ -42,7 +42,7 @@ the :py:meth:`Project.create_parameter_set() <ibm_watsonx_data_integration.cpd_m
 
 You must provide a ``name`` to create a parameter set. The parameter set name can only contain letters, numbers, and underscores.
 When adding parameters to a parameter set, you should use the :py:class:`~ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterType` enum to specify the parameter type.
-The available parameter types match options available in UI.
+The available parameter types match the options available in the UI.
 
 .. invisible-code-block: python
 
@@ -84,7 +84,7 @@ When creating a parameter set with :py:meth:`Project.create_parameter_set() <ibm
 Retrieving an Existing Parameter Set
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the UI, you can get all Parameter Sets by navigating to **Assets -> Configurations -> Parameter sets**.
+In the UI, you can view all Parameter Sets by navigating to **Assets -> Configurations -> Parameter sets**.
 
 .. image:: /_static/images/parameter_sets/get_paramsets.png
    :alt: Screenshot of the Connection listing in the UI
@@ -123,9 +123,9 @@ This will take you to a new page where you can add, edit, and delete parameters.
    :width: 100%
 
 To add parameters to a Parameter Set in the SDK, you can use the :py:meth:`ParameterSet.add_parameter() <ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet.add_parameter>` method.
-This method requires a ``name`` and ``parameter_type`` and can also take a ``value``, ``description``, ``prompt``, and ``valid_values``. The ``valid_values`` argument is only used in a parameter of type ``list``.
+This method requires a ``name`` and ``parameter_type`` and can also take ``value``, ``description``, ``prompt``, and ``valid_values``. The ``valid_values`` argument is used only for parameters of type ``list``.
 
-To remove parameters use the :py:meth:`ParameterSet.remove_parameter() <ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet.remove_parameter>` method which takes in the ``name`` of the parameter you wish to remove.
+To remove parameters, use the :py:meth:`ParameterSet.remove_parameter() <ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet.remove_parameter>` method, which takes the ``name`` of the parameter you want to remove.
 
 .. code-block:: python
 
@@ -137,8 +137,8 @@ To remove parameters use the :py:meth:`ParameterSet.remove_parameter() <ibm_wats
     ParameterSet(name='testparamset', parameters=[Parameter(name='qty', param_type='int64', value='100'), Parameter(name='date', param_type='date', value='2025-03-12')], description='', value_sets=[])
 
 
-You can also directly change the ``name`` and ``description`` of the Parameter Set. When changing the parameter set name, remember that it can only contain letters, numbers, and underscores.
-To apply these modifications to the Parameter Set we pass the instance to the :py:meth:`Project.update_parameter_set() <ibm_watsonx_data_integration.cpd_models.project_model.Project.update_parameter_set>` method.
+You can also directly change the ``name`` and ``description`` of the Parameter Set. When changing the parameter set name, remember that it can contain only letters, numbers, and underscores.
+To apply these modifications to the Parameter Set, pass the instance to the :py:meth:`Project.update_parameter_set() <ibm_watsonx_data_integration.cpd_models.project_model.Project.update_parameter_set>` method.
 
 This method returns an HTTP response indicating the status of the update operation.
 
@@ -174,23 +174,23 @@ When you add a parameter with an existing name to a :py:class:`~ibm_watsonx_data
 Adding Value Sets
 ~~~~~~~~~~~~~~~~~
 
-Value sets let you assign different values to the parameters in a parameter set. In the UI, to create a value set first navigate to **Assets -> Configurations -> Parameter sets** and click the name of the Parameter Set you want to edit. Then, click the Value sets tab to create, edit, or delete a value set.
+Value sets let you assign different values to the parameters in a parameter set. In the UI, to create a value set, first navigate to **Assets -> Configurations -> Parameter sets** and click the name of the Parameter Set you want to edit. Then click the **Value sets** tab to create, edit, or delete a value set.
 
 .. image:: /_static/images/parameter_sets/value_set1.png
    :alt: Screenshot of the value set tab in the UI - Step 1
    :align: center
    :width: 100%
 
-Here is the window that pops up when you click create value set.
+The following window appears when you click **Create value set**.
 
 .. image:: /_static/images/parameter_sets/value_set2.png
    :alt: Screenshot of the value set window in the UI - Step 2
    :align: center
    :width: 100%
 
-In the SDK, you can create a :py:class:`ValueSet <ibm_watsonx_data_integration.cpd_models.parameter_set_model.ValueSet>` which requires the ``name`` of the value set. Then, add values to the value set by calling :py:meth:`ValueSet.add_value() <ibm_watsonx_data_integration.cpd_models.parameter_set_model.ValueSet.add_value>` which takes in the ``name`` of the parameter and the ``value`` for the parameter. Finally, add the value set to the parameter set by passing the ValueSet object into :py:meth:`ParameterSet.add_value_set() <ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet.add_value_set>`.
+In the SDK, you can create a :py:class:`ValueSet <ibm_watsonx_data_integration.cpd_models.parameter_set_model.ValueSet>`, which requires the ``name`` of the value set. Then add values to the value set by calling :py:meth:`ValueSet.add_value() <ibm_watsonx_data_integration.cpd_models.parameter_set_model.ValueSet.add_value>`, which takes the ``name`` of the parameter and the ``value`` for that parameter. Finally, add the value set to the parameter set by passing the ValueSet object to :py:meth:`ParameterSet.add_value_set() <ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet.add_value_set>`.
 
-If a parameter is not given a value its default value will be used. You can also call :py:meth:`ValueSet.remove_value() <ibm_watsonx_data_integration.cpd_models.parameter_set_model.ValueSet.remove_value>` with the ``name`` of the parameter to reset it to the default value.
+If a parameter is not given a value, its default value is used. You can also call :py:meth:`ValueSet.remove_value() <ibm_watsonx_data_integration.cpd_models.parameter_set_model.ValueSet.remove_value>` with the ``name`` of the parameter to reset it to the default value.
 
 .. code-block:: python
 
@@ -213,22 +213,45 @@ If a parameter is not given a value its default value will be used. You can also
     >>> paramset.add_value_set(set_2)
     ParameterSet(name='New_Paramset_Name', parameters=[Parameter(name='qty', param_type='int64', value='300'), Parameter(name='date', param_type='date', value='2025-03-12')], description='', value_sets=[ValueSet(name='set_1', values=[{'name': 'qty', 'value': '20'}, {'name': 'date', 'value': '2025-03-12'}]), ValueSet(name='set_2', values=[{'name': 'qty', 'value': '40'}, {'name': 'date', 'value': '2025-03-12'}])])
 
-In this example both value sets have the ``qty`` parameter set to a new value while the ``date`` parameter is still the default value.
+In this example, both value sets have the ``qty`` parameter set to a new value, while the ``date`` parameter still uses the default value.
 
-You can choose what value set you want a job to use by :ref:`Editing the runtime settings <projects__jobs__editing_a_batch_job>` of the job.
+Alternatively, you can initialize value sets directly when creating a parameter set by passing a list of :py:class:`ValueSet <ibm_watsonx_data_integration.cpd_models.parameter_set_model.ValueSet>` objects or dictionaries to the ``value_sets`` parameter. When using dictionaries, each dict must contain a ``name`` field and a ``values`` list with parameter name-value pairs.
+
+.. code-block:: python
+
+    >>> # Using ValueSet objects
+    >>> value_set_1 = ValueSet(name='set_1').add_value(name='qty', value='20')
+    >>> value_set_2 = ValueSet(name='set_2').add_value(name='qty', value='40')
+    >>> paramset_with_sets = project.create_parameter_set(
+    ...     name='paramset_with_valuesets',
+    ...     parameters=[{'name': 'qty', 'param_type': ParameterType.Integer, 'value': '100'}],
+    ...     value_sets=[value_set_1, value_set_2]
+    ... )
+    >>>
+    >>> # Using dictionaries
+    >>> paramset_with_dict_sets = project.create_parameter_set(
+    ...     name='paramset_with_dict_valuesets',
+    ...     parameters=[{'name': 'qty', 'param_type': ParameterType.Integer, 'value': '100'}],
+    ...     value_sets=[
+    ...         {'name': 'set_1', 'values': [{'qty': '20'}]},
+    ...         {'name': 'set_2', 'values': [{'qty': '40'}]}
+    ...     ]
+    ... )
+
+You can choose which value set you want a job to use by :ref:`editing the job's runtime settings <projects__jobs__editing_a_batch_job>`.
 
 .. note::
-    In the UI, there is a way to choose a value set for a flow but this is not yet implemented in the SDK.
+    In the UI, there is a way to choose a value set for a flow, but this is not yet implemented in the SDK.
 
 
 .. _preparing_data__parameter_sets__adding_local_parameters:
 
-Adding local Parameters
+Adding Local Parameters
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Local parameters are parameters that only exist within a single flow.
 
-In the UI, you can add a local parameter by navigating to **Flow parameters -> Local parameters -> Create parameter**
+In the UI, you can add a local parameter by navigating to **Flow parameters -> Local parameters -> Create parameter**.
 
 .. image:: /_static/images/parameter_sets/add_parameters1.png
    :alt: Screenshot of adding local parameters in the UI - Part 1
@@ -241,7 +264,7 @@ In the UI, you can add a local parameter by navigating to **Flow parameters -> L
    :width: 100%
 
 In the SDK, you can call the :py:meth:`BatchFlow.add_local_parameter() <ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.add_local_parameter>` method.
-Just like the add_parameter method above, this method requires a ``name`` and ``parameter_type`` and can also take a ``value``, ``description``, ``prompt``, and ``valid_values``.
+Just like the ``add_parameter`` method above, this method requires a ``name`` and ``parameter_type`` and can also take ``value``, ``description``, ``prompt``, and ``valid_values``.
 
 .. code-block:: python
 
@@ -250,7 +273,7 @@ Just like the add_parameter method above, this method requires a ``name`` and ``
 
 .. _preparing_data__parameter_sets__using_local_parameters_and_parameter_sets:
 
-Using local parameters and Parameter Sets
+Using Local Parameters and Parameter Sets
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the UI, you can use a Parameter Set in a flow by navigating to **Flow parameters -> Parameter sets -> Add parameter sets** and choosing the desired parameter set from the list.
@@ -260,16 +283,16 @@ In the UI, you can use a Parameter Set in a flow by navigating to **Flow paramet
    :align: center
    :width: 100%
 
-In the SDK to use a Parameter Set instance in a flow you can pass it to :py:meth:`BatchFlow.use_parameter_set() <ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.use_parameter_set>` method.
-For local parameters there are no additional actions that you need to take after you :ref:`Add a local parameter <preparing_data__parameter_sets__adding_local_parameters>`.
+In the SDK, to use a Parameter Set instance in a flow, you can pass it to the :py:meth:`BatchFlow.use_parameter_set() <ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.use_parameter_set>` method.
+For local parameters, there are no additional actions you need to take after you :ref:`add a local parameter <preparing_data__parameter_sets__adding_local_parameters>`.
 
 .. code-block:: python
 
     >>> batch_flow.use_parameter_set(paramset) # doctest: +SKIP
 
 
-To use a parameter from a parameter set in your code you can use the following notation: ``'#New Paramset Name.schema#'`` where the name of the parameter set is followed by the parameter you wish to use.
-For local parameters you do not need to put anything in front of the parameter name: ``'#tablename#'``.
+To use a parameter from a parameter set in your code, you can use the following notation: ``'#New Paramset Name.schema#'``, where the name of the parameter set is followed by the parameter you want to use.
+For local parameters, you do not need to put anything in front of the parameter name: ``'#tablename#'``.
 
 .. code-block:: python
 
@@ -302,20 +325,18 @@ This method returns a new :py:class:`~ibm_watsonx_data_integration.cpd_models.pa
     >>> duplicated_paramset.name
     'New_Paramset_Name_copy_1'
 
-.. _preparing_data__parameter_sets__deleting_a_parameter_set:
-
 Using PROJDEF
 ~~~~~~~~~~~~~
-You can use the PROJDEF parameter set to contain the parameters and environment variable values for a Batch flow, job, or job run to reference.
+You can use the PROJDEF parameter set to contain the parameters and environment variable values that a batch flow, job, or job run can reference.
 You can read more about PROJDEF `here <https://dataplatform.cloud.ibm.com/docs/content/dstage/dsnav/topics/projdef-parameter-set.html?context=cpdaas>`_.
-To add PROJDEF in the UI go to **Flow parameters -> Add PROJDEF parameter**
+To add PROJDEF in the UI, go to **Flow parameters -> Add PROJDEF parameter**.
 
 .. image:: /_static/images/parameter_sets/use_projdef.png
    :alt: Screenshot of using PROJDEF in UI
    :align: center
    :width: 100%
 
-To use PROJDEF in the SDK you first need to create parameter_set with name 'PROJDEF' and then use it like a normal parameterSet.
+To use PROJDEF in the SDK, you first need to create a parameter set with the name ``PROJDEF`` and then use it like a normal parameter set.
 
 .. code-block:: python
 
@@ -333,7 +354,7 @@ To use PROJDEF in the SDK you first need to create parameter_set with name 'PROJ
     <Response [201]>
 
 
-To add only some of the PROJDEF parameters use `flow.use_projdef_parameter()`.
+To add only some of the PROJDEF parameters, use ``flow.use_projdef_parameter()``.
 
 .. code-block:: python
 
@@ -348,17 +369,19 @@ To add only some of the PROJDEF parameters use `flow.use_projdef_parameter()`.
     <Response [201]>
 
 
+.. _preparing_data__parameter_sets__deleting_a_parameter_set:
+
 Deleting a Parameter Set
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the UI, you can delete an existing Parameter Set by navigating to the **Assets -> Configurations -> Parameter sets**.
+In the UI, you can delete an existing Parameter Set by navigating to **Assets -> Configurations -> Parameter sets**.
 
 .. image:: /_static/images/parameter_sets/delete_paramset.png
    :alt: Screenshot of the Parameter Set deletion in the UI
    :align: center
    :width: 100%
 
-In the SDK to delete a Parameter Set instance you can pass it to :py:meth:`Project.delete_parameter_set() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_parameter_set>` method.
+In the SDK, to delete a Parameter Set instance, you can pass it to the :py:meth:`Project.delete_parameter_set() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_parameter_set>` method.
 
 This method returns an HTTP response indicating the status of the delete operation.
 

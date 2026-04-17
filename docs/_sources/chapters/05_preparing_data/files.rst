@@ -5,9 +5,9 @@
 Files
 =====
 
-A file is a ``data asset`` and it is just a regular file where you can store your data.
-:py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFile` is a wrapper containing a few more details about a file such as ``hash`` or ``url``.
-To download a file with real data you must make an additional method call.
+A file is a ``data asset`` and is simply a regular file where you can store your data.
+:py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFile` is a wrapper containing additional details about a file, such as its ``hash`` or ``url``.
+To download a file with actual data, you must make an additional method call.
 
 The SDK provides functionality to interact with files.
 
@@ -34,11 +34,11 @@ In the UI, you can upload a new File by navigating to **Overview -> Add data to 
    :align: center
    :width: 100%
 
-In the SDK to upload a new :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFile`,
+In the SDK, to upload a new :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFile`,
 use the :py:meth:`Platform.upload_file() <ibm_watsonx_data_integration.platform.Platform.upload_file>` method.
 
-You must provide a ``name`` for the new file and a ``file`` path where the file is located on your machine.
-:py:meth:`Platform.upload_file() <ibm_watsonx_data_integration.platform.Platform.upload_file>` method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFile` object.
+You must provide a ``name`` for the new file and a ``file`` path indicating where the file is located on your machine.
+The :py:meth:`Platform.upload_file() <ibm_watsonx_data_integration.platform.Platform.upload_file>` method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFile` object.
 
 .. code-block:: python
 
@@ -53,7 +53,7 @@ You must provide a ``name`` for the new file and a ``file`` path where the file 
 Retrieving an existing File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the UI, you can get Files by navigating to  **Assets -> Data -> Data assets**.
+In the UI, you can view Files by navigating to **Assets -> Data -> Data assets**.
 
 .. image:: /_static/images/files/get_files.png
    :alt: Screenshot of the File downloading in the UI
@@ -61,7 +61,7 @@ In the UI, you can get Files by navigating to  **Assets -> Data -> Data assets**
    :width: 100%
 
 
-In the SDK, Files can be retrieved using :py:class:`Platform.files <ibm_watsonx_data_integration.platform.Platform.files>` property.
+In the SDK, Files can be retrieved using the :py:class:`Platform.files <ibm_watsonx_data_integration.platform.Platform.files>` property.
 
 This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.ConnectionFiles` object.
 
@@ -77,7 +77,7 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.conn
 
 .. tip::
 
-    For detailed information about parameters and values refer to https://cloud.ibm.com/apidocs/data-ai-common-core#listfiles.
+    For detailed information about parameters and values, refer to the **Files** section of https://cloud.ibm.com/apidocs/data-ai-common-core.
 
 ..
     This section is commented until we implement downloading a file into SDK
@@ -94,9 +94,9 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.conn
        :align: center
        :width: 100%
 
-    In the SDK file can be downloaded using :py:meth:`Platform.download_file() <ibm_watsonx_data_integration.platform.Platform.download_file>` method.
+    In the SDK, a file can be downloaded using the :py:meth:`Platform.download_file() <ibm_watsonx_data_integration.platform.Platform.download_file>` method.
 
-    You must provide a ``file`` object and ``output`` path where the file will be downloaded.
+    You must provide a ``file`` object and an ``output`` path where the file will be downloaded.
 
     This method returns an HTTP response indicating the status of the download operation.
 
@@ -119,7 +119,7 @@ In the UI, you can delete a File by navigating to **Assets -> Data -> Data asset
    :align: center
    :width: 100%
 
-In the SDK pass a ConnectionFile instance to :py:meth:`Platform.delete_file() <ibm_watsonx_data_integration.platform.Platform.delete_file>` method to delete it.
+In the SDK, pass a ``ConnectionFile`` instance to the :py:meth:`Platform.delete_file() <ibm_watsonx_data_integration.platform.Platform.delete_file>` method to delete it.
 
 This method returns an HTTP response indicating the status of the delete operation.
 

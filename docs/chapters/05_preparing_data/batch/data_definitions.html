@@ -1,0 +1,634 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
+    <title>Data Definitions &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=f8c2f790" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=db04a367"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=30646c52"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/05_preparing_data/batch/data_definitions';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Subflows" href="subflows.html" />
+    <link rel="prev" title="Schemas" href="batch_schemas.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/prereqs.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/mcp_server.html">MCP Server Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/supported_products.html">Supported Products</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/release_notes.html">What’s new</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/known_issues_and_limitations.html">Known Issues and Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/faq.html">Get Help</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03_getting_started_and_tutorials/index.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/platform.html">Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_batch.html">Code Generation (Batch)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_streaming.html">Code Generation (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_connections.html">Code Generation for Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/http_retry.html">HTTP Retry Management</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/jobs.html">Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/environments_streaming.html">Environments (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/engines_streaming.html">Engines (Streaming)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Preparing Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Batch</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compilation_mode.html">Compilation Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stages.html">Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Data Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subflows.html">Subflows</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasources.html">Datasource Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../connections.html">Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parameter_sets.html">Parameter Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/on_prem_access_control/index.html">On-Prem Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/roles.html">Roles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/saas_access_control/index.html">SaaS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/aws_access_control/users.html">Users</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06_access_control/project_collaborators.html">Project Collaborators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html">Models</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data Definitions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Section Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-data-definition">Creating a Data Definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-fields-to-a-data-definition">Adding Fields to a Data Definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-and-removing-fields">Editing and Removing Fields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-data-definitions">Retrieving Data Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-data-definition-into-a-schema">Importing Data Definition into a Schema</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-schema-to-data-definition">Exporting Schema to Data Definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-data-definitions">Duplicating Data Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-and-deleting-data-definitions">Updating and Deleting Data Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-fields">Working with Fields</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="data-definitions">
+<span id="preparing-data-data-definitions"></span><h1>Data Definitions<a class="headerlink" href="#data-definitions" title="Link to this heading">#</a></h1>
+<p>A <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.data_definition.DataDefinition" title="ibm_watsonx_data_integration.services.datastage.models.schema.data_definition.DataDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataDefinition</span></code></a> is a reusable table definition that can be shared across multiple batch flows. Data definitions define the structure of your data, including its columns and data types, and can be imported into schemas or exported from schemas for reuse.</p>
+<p>Data definitions are particularly useful when you have a common data structure that needs to be used in multiple flows, because they allow you to define the structure once and reuse it everywhere.</p>
+<section id="creating-a-data-definition">
+<span id="preparing-data-data-definitions-creating"></span><h2>Creating a Data Definition<a class="headerlink" href="#creating-a-data-definition" title="Link to this heading">#</a></h2>
+<p>To create a data definition, use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.create_data_definition" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.create_data_definition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.create_data_definition()</span></code></a> method. You can create an empty data definition and add fields later, or provide fields during creation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_def</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_data_definition</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Customer Data&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Customer information schema&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-fields-to-a-data-definition">
+<span id="preparing-data-data-definitions-adding-fields"></span><h2>Adding Fields to a Data Definition<a class="headerlink" href="#adding-fields-to-a-data-definition" title="Link to this heading">#</a></h2>
+<p>Data definitions are populated with fields, similar to schemas. To add a field to a data definition, use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.data_definition.DataDefinition.add_field" title="ibm_watsonx_data_integration.services.datastage.models.schema.data_definition.DataDefinition.add_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataDefinition.add_field()</span></code></a> method, which requires an <code class="docutils literal notranslate"><span class="pre">odbc_type</span></code> and a <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">field1</span> <span class="o">=</span> <span class="n">data_def</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="n">odbc_type</span><span class="o">=</span><span class="s1">&#39;VARCHAR&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;CUSTOMER_ID&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field2</span> <span class="o">=</span> <span class="n">data_def</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="s1">&#39;CHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;CUSTOMER_NAME&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field3</span> <span class="o">=</span> <span class="n">data_def</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="s1">&#39;INTEGER&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After adding fields, you must update the data definition to persist the changes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_data_definition</span><span class="p">(</span><span class="n">data_def</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+<p>The supported datatypes are the same as for schemas:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;BIGINT&#39;</span><span class="p">,</span> <span class="s1">&#39;BINARY&#39;</span><span class="p">,</span> <span class="s1">&#39;BIT&#39;</span><span class="p">,</span> <span class="s1">&#39;CHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;DATE&#39;</span><span class="p">,</span> <span class="s1">&#39;DECIMAL&#39;</span><span class="p">,</span> <span class="s1">&#39;DOUBLE&#39;</span><span class="p">,</span> <span class="s1">&#39;FLOAT&#39;</span><span class="p">,</span> <span class="s1">&#39;INTEGER&#39;</span><span class="p">,</span>
+<span class="s1">&#39;LONGVARBINARY&#39;</span><span class="p">,</span> <span class="s1">&#39;LONGVARCHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;NUMERIC&#39;</span><span class="p">,</span> <span class="s1">&#39;REAL&#39;</span><span class="p">,</span> <span class="s1">&#39;SMALLINT&#39;</span><span class="p">,</span> <span class="s1">&#39;TIME&#39;</span><span class="p">,</span> <span class="s1">&#39;TIMESTAMP&#39;</span><span class="p">,</span>
+<span class="s1">&#39;TINYINT&#39;</span><span class="p">,</span> <span class="s1">&#39;UNKNOWN&#39;</span><span class="p">,</span> <span class="s1">&#39;VARBINARY&#39;</span><span class="p">,</span> <span class="s1">&#39;VARCHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;NCHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;LONGNVARCHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;NVARCHAR&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="editing-and-removing-fields">
+<span id="preparing-data-data-definitions-editing-and-removing-fields"></span><h2>Editing and Removing Fields<a class="headerlink" href="#editing-and-removing-fields" title="Link to this heading">#</a></h2>
+<p>To edit an existing field in a data definition, you can directly modify the field properties. For a list of all properties, see the parameters of the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.data_definition.DataDefinition.add_field" title="ibm_watsonx_data_integration.services.datastage.models.schema.data_definition.DataDefinition.add_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataDefinition.add_field()</span></code></a> method. Some properties depend on <code class="docutils literal notranslate"><span class="pre">odbc_type</span></code> and may not always be settable.</p>
+<p>To remove a field, use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.data_definition.DataDefinition.remove_field" title="ibm_watsonx_data_integration.services.datastage.models.schema.data_definition.DataDefinition.remove_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataDefinition.remove_field()</span></code></a> method, which takes the field name.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">field4</span> <span class="o">=</span> <span class="n">data_def</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="s1">&#39;CHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;TEMP_FIELD&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">field4</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">nullable</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_def</span><span class="o">.</span><span class="n">remove_field</span><span class="p">(</span><span class="s1">&#39;TEMP_FIELD&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_data_definition</span><span class="p">(</span><span class="n">data_def</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+<p>To remove all fields at once, use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.data_definition.DataDefinition.clear_fields" title="ibm_watsonx_data_integration.services.datastage.models.schema.data_definition.DataDefinition.clear_fields"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataDefinition.clear_fields()</span></code></a> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_def</span><span class="o">.</span><span class="n">clear_fields</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_data_definition</span><span class="p">(</span><span class="n">data_def</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="retrieving-data-definitions">
+<span id="preparing-data-data-definitions-retrieving"></span><h2>Retrieving Data Definitions<a class="headerlink" href="#retrieving-data-definitions" title="Link to this heading">#</a></h2>
+<p>To retrieve existing data definitions from a project, use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.data_definitions" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.data_definitions"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Project.data_definitions</span></code></a> property which returns a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.data_definition.DataDefinitions" title="ibm_watsonx_data_integration.services.datastage.models.schema.data_definition.DataDefinitions"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataDefinitions</span></code></a> collection.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">data_definitions</span>
+<span class="go">[DataDefinition(metadata=DataDefinitionMetadata(name=&#39;Customer Data&#39;, description=&#39;Customer information schema&#39;))]</span>
+</pre></div>
+</div>
+<p>If you know the <code class="docutils literal notranslate"><span class="pre">data_definition_id</span></code>, you can retrieve a specific data definition using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.common.models.CollectionModel.get" title="ibm_watsonx_data_integration.common.models.CollectionModel.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">DataDefinitions.get()</span></code></a> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_def</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">data_definitions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">data_definition_id</span><span class="o">=</span><span class="s1">&#39;abc-123-def&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="importing-data-definition-into-a-schema">
+<span id="preparing-data-data-definitions-importing-to-schema"></span><h2>Importing Data Definition into a Schema<a class="headerlink" href="#importing-data-definition-into-a-schema" title="Link to this heading">#</a></h2>
+<p>One of the key benefits of data definitions is the ability to import them into schemas. This allows you to reuse a common data structure across multiple flows. Use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.import_data_definition" title="ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.import_data_definition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Schema.import_data_definition()</span></code></a> method to import fields from a data definition into a schema.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">row_gen</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Row Generator&#39;</span><span class="p">,</span> <span class="s1">&#39;Row_Generator_1&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">peek</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Peek&#39;</span><span class="p">,</span> <span class="s1">&#39;Peek_1&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">link</span> <span class="o">=</span> <span class="n">row_gen</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">peek</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">schema</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">create_schema</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Import all fields from the data definition</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">schema</span><span class="o">.</span><span class="n">import_data_definition</span><span class="p">(</span><span class="n">data_def</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">schema</span><span class="o">.</span><span class="n">fields</span>
+<span class="go">[VarChar(name=CUSTOMER_ID, type=VARCHAR), Char(name=CUSTOMER_NAME, type=CHAR), Integer(name=AGE, type=INTEGER)]</span>
+</pre></div>
+</div>
+<p>You can also import only specific fields by providing a list of field names to the <code class="docutils literal notranslate"><span class="pre">field_names</span></code> parameter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Import only specific fields</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">schema</span><span class="o">.</span><span class="n">import_data_definition</span><span class="p">(</span><span class="n">data_def</span><span class="p">,</span> <span class="n">field_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CUSTOMER_ID&#39;</span><span class="p">,</span> <span class="s1">&#39;CUSTOMER_NAME&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">schema</span><span class="o">.</span><span class="n">fields</span>
+<span class="go">[VarChar(name=CUSTOMER_ID, type=VARCHAR), Char(name=CUSTOMER_NAME, type=CHAR)]</span>
+</pre></div>
+</div>
+<p>Fields are always appended to the existing schema, so you can import from multiple data definitions or add additional fields manually.</p>
+</section>
+<section id="exporting-schema-to-data-definition">
+<span id="preparing-data-data-definitions-exporting-from-schema"></span><h2>Exporting Schema to Data Definition<a class="headerlink" href="#exporting-schema-to-data-definition" title="Link to this heading">#</a></h2>
+<p>You can also create a data definition from an existing schema using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.export_data_definition" title="ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.export_data_definition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Schema.export_data_definition()</span></code></a> method. This is useful when you have designed a schema in a flow and want to reuse it elsewhere.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a data definition from an existing schema</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_data_def</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="n">export_data_definition</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Exported Schema&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Schema exported from batch flow&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_data_def</span><span class="o">.</span><span class="n">fields</span>
+<span class="go">[VarChar(name=CUSTOMER_ID, type=VARCHAR), Char(name=CUSTOMER_NAME, type=CHAR)]</span>
+</pre></div>
+</div>
+<p>The exported data definition will contain all fields from the schema and will be automatically created in the project.</p>
+<p>To specify a selection of fields to export, pass the field names to the <code class="docutils literal notranslate"><span class="pre">field_names</span></code> parameter.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_data_def</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="n">export_data_definition</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Exported Schema with only customer_id&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Schema exported from batch flow&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">field_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CUSTOMER_ID&#39;</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_data_def</span><span class="o">.</span><span class="n">fields</span>
+<span class="go">[VarChar(name=CUSTOMER_ID, type=VARCHAR)]</span>
+</pre></div>
+</div>
+</section>
+<section id="duplicating-data-definitions">
+<span id="preparing-data-data-definitions-duplicating"></span><h2>Duplicating Data Definitions<a class="headerlink" href="#duplicating-data-definitions" title="Link to this heading">#</a></h2>
+<p>To create a copy of an existing data definition, use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.duplicate_data_definition" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.duplicate_data_definition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.duplicate_data_definition()</span></code></a> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">duplicated</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">duplicate_data_definition</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">data_definition</span><span class="o">=</span><span class="n">data_def</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Customer Data Copy&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you do not provide a name, the duplicated data definition will be named <code class="docutils literal notranslate"><span class="pre">{{original</span> <span class="pre">name}}</span> <span class="pre">cloned</span></code>.</p>
+</section>
+<section id="updating-and-deleting-data-definitions">
+<span id="preparing-data-data-definitions-updating-and-deleting"></span><h2>Updating and Deleting Data Definitions<a class="headerlink" href="#updating-and-deleting-data-definitions" title="Link to this heading">#</a></h2>
+<p>To update a data definition after making changes, use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_data_definition" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_data_definition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_data_definition()</span></code></a> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_def</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Updated Customer Data&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_def</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;Updated description&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_data_definition</span><span class="p">(</span><span class="n">data_def</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+<p>To delete a data definition, use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_data_definition" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_data_definition"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_data_definition()</span></code></a> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">delete_data_definition</span><span class="p">(</span><span class="n">data_def</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="working-with-fields">
+<span id="preparing-data-data-definitions-working-with-fields"></span><h2>Working with Fields<a class="headerlink" href="#working-with-fields" title="Link to this heading">#</a></h2>
+<p>Data definitions provide several methods for working with fields:</p>
+<p><strong>Getting a field by name:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">field</span> <span class="o">=</span> <span class="n">data_def</span><span class="o">.</span><span class="n">get_field_by_name</span><span class="p">(</span><span class="s1">&#39;CUSTOMER_ID&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">odbc_type</span><span class="p">)</span>
+<span class="go">VARCHAR</span>
+</pre></div>
+</div>
+<p><strong>Checking if a field exists:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">data_def</span><span class="o">.</span><span class="n">has_field</span><span class="p">(</span><span class="s1">&#39;CUSTOMER_ID&#39;</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Field exists&#39;</span><span class="p">)</span>
+<span class="go">Field exists</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Alternative using &#39;in&#39; operator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="s1">&#39;CUSTOMER_ID&#39;</span> <span class="ow">in</span> <span class="n">data_def</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Field exists&#39;</span><span class="p">)</span>
+<span class="go">Field exists</span>
+</pre></div>
+</div>
+<p><strong>Accessing all fields:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">data_def</span><span class="o">.</span><span class="n">fields</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">field</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">field</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">odbc_type</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">CUSTOMER_ID: VARCHAR</span>
+<span class="go">CUSTOMER_NAME: CHAR</span>
+<span class="go">AGE: INTEGER</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Data definitions are stored as project assets and can be shared across multiple flows within the same project. Changes to a data definition do not automatically update schemas that have already imported from it; you must re-import to get the updated fields.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="batch_schemas.html#preparing-data-batch-schemas"><span class="std std-ref">Schemas</span></a> - For information about schemas used in batch flows</p></li>
+<li><p><a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.data_definition.DataDefinition" title="ibm_watsonx_data_integration.services.datastage.models.schema.data_definition.DataDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataDefinition</span></code></a> - API reference for DataDefinition class</p></li>
+<li><p><a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema" title="ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema"><code class="xref py py-class docutils literal notranslate"><span class="pre">Schema</span></code></a> - API reference for Schema class</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="batch_schemas.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Schemas</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="subflows.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Subflows</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Section Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-data-definition">Creating a Data Definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-fields-to-a-data-definition">Adding Fields to a Data Definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-and-removing-fields">Editing and Removing Fields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-data-definitions">Retrieving Data Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-data-definition-into-a-schema">Importing Data Definition into a Schema</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-schema-to-data-definition">Exporting Schema to Data Definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-data-definitions">Duplicating Data Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-and-deleting-data-definitions">Updating and Deleting Data Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-fields">Working with Fields</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, IBM.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

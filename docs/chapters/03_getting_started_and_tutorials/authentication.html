@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Authentication &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
+    <title>Authentication &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=051bfb12"></script>
+    <script src="../../_static/documentation_options.js?v=db04a367"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -195,10 +195,11 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/batch/index.html">Batch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/stages.html">Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/data_definitions.html">Data Definitions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/subflows.html">Subflows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/parameter_sets.html">Parameter Sets</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -208,8 +209,9 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/parameter_sets.html">Parameter Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/examples.html">Examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -226,6 +228,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/roles.html">Roles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_access_control/aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/aws_access_control/users.html">Users</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_access_control/project_collaborators.html">Project Collaborators</a></li>
@@ -324,6 +331,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zen-api-key-authentication-on-prem">Zen Api Key Authentication (on-prem)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#icp4d-authentication-on-prem">ICP4D Authentication (on-prem)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-authenticator">Using the Authenticator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-endpoints-saas">Regional Endpoints (SaaS)</a></li>
 </ul>
             </nav>
         </div>
@@ -388,9 +396,9 @@ Pass in your username and Zen API key into the <code class="docutils literal not
 </section>
 <section id="icp4d-authentication-on-prem">
 <h2>ICP4D Authentication (on-prem)<a class="headerlink" href="#icp4d-authentication-on-prem" title="Link to this heading">#</a></h2>
-<p>For on-premises authentication, alternatively you can also use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.auth.ICP4DAuthenticator" title="ibm_watsonx_data_integration.common.auth.ICP4DAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.common.auth.ICP4DAuthenticator</span></code></a> class.
-Pass in your username and cluster url into the <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">url</span></code> fields respectively.
-Finally, you may authenticate using either a traditional password or your zen API key by using the <code class="docutils literal notranslate"><span class="pre">password</span></code> or <code class="docutils literal notranslate"><span class="pre">zen_api_key</span></code> fields respectively. Only one of <code class="docutils literal notranslate"><span class="pre">password</span></code> or <code class="docutils literal notranslate"><span class="pre">zen_api_key</span></code> is required.</p>
+<p>For on-premises authentication, you can also use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.auth.ICP4DAuthenticator" title="ibm_watsonx_data_integration.common.auth.ICP4DAuthenticator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.common.auth.ICP4DAuthenticator</span></code></a> class.
+Pass your username and cluster URL to the <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">url</span></code> fields, respectively.
+Finally, you may authenticate using either a traditional password or your Zen API key by using the <code class="docutils literal notranslate"><span class="pre">password</span></code> or <code class="docutils literal notranslate"><span class="pre">zen_api_key</span></code> fields, respectively. Only one of <code class="docutils literal notranslate"><span class="pre">password</span></code> or <code class="docutils literal notranslate"><span class="pre">zen_api_key</span></code> is required.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.common.auth</span><span class="w"> </span><span class="kn">import</span> <span class="n">ICP4DAuthenticator</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Replace with your actual username and password</span>
@@ -405,7 +413,64 @@ Finally, you may authenticate using either a traditional password or your zen AP
 </section>
 <section id="using-the-authenticator">
 <h2>Using the Authenticator<a class="headerlink" href="#using-the-authenticator" title="Link to this heading">#</a></h2>
-<p>Once authenticated with either method, pass the <code class="docutils literal notranslate"><span class="pre">auth</span></code> object to the <a class="reference internal" href="platform.html#getting-started-and-tutorials-platform"><span class="std std-ref">Platform class</span></a> to begin interacting with the SDK.</p>
+<p>Once authenticated, pass the <code class="docutils literal notranslate"><span class="pre">auth</span></code> object to the <a class="reference internal" href="platform.html#getting-started-and-tutorials-platform"><span class="std std-ref">Platform class</span></a> to begin interacting with the SDK.</p>
+</section>
+<section id="regional-endpoints-saas">
+<h2>Regional Endpoints (SaaS)<a class="headerlink" href="#regional-endpoints-saas" title="Link to this heading">#</a></h2>
+<p>When initializing the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform" title="ibm_watsonx_data_integration.platform.Platform"><code class="xref py py-class docutils literal notranslate"><span class="pre">Platform</span></code></a>, you can specify a regional endpoint via the <code class="docutils literal notranslate"><span class="pre">base_api_url</span></code> parameter.
+If not specified, the SDK defaults to the Dallas endpoint.</p>
+<p>The SDK provides an <code class="xref py py-class docutils literal notranslate"><span class="pre">IBMCloudRegion</span></code> enum for convenient access to regional endpoints:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 40.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Region</p></th>
+<th class="head"><p>Enum Value</p></th>
+<th class="head"><p>URL</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Dallas</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IBMCloudRegion.DALLAS</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://api.dataplatform.cloud.ibm.com</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Frankfurt</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IBMCloudRegion.FRANKFURT</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://api.eu-de.dataplatform.cloud.ibm.com</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>London</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IBMCloudRegion.LONDON</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://api.eu-gb.dataplatform.cloud.ibm.com</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Tokyo</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IBMCloudRegion.TOKYO</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://api.jp-tok.dataplatform.cloud.ibm.com</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Sydney</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IBMCloudRegion.SYDNEY</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://api.au-syd.dai.cloud.ibm.com</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Toronto</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">IBMCloudRegion.TORONTO</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">https://api.ca-tor.dai.cloud.ibm.com</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.platform</span><span class="w"> </span><span class="kn">import</span> <span class="n">Platform</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.common.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">IBMCloudRegion</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Connect to the Frankfurt regional endpoint using the enum (recommended)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span> <span class="o">=</span> <span class="n">Platform</span><span class="p">(</span><span class="n">auth</span><span class="p">,</span> <span class="n">base_api_url</span><span class="o">=</span><span class="n">IBMCloudRegion</span><span class="o">.</span><span class="n">FRANKFURT</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Alternatively, you can still use the URL string directly</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span> <span class="o">=</span> <span class="n">Platform</span><span class="p">(</span><span class="n">auth</span><span class="p">,</span> <span class="n">base_api_url</span><span class="o">=</span><span class="s1">&#39;https://api.eu-de.dataplatform.cloud.ibm.com&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For a full list of available endpoints, refer to the <a class="reference external" href="https://cloud.ibm.com/apidocs/data-ai-common-core">IBM Cloud API documentation</a>.</p>
 </section>
 </section>
 
@@ -459,6 +524,7 @@ Finally, you may authenticate using either a traditional password or your zen AP
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zen-api-key-authentication-on-prem">Zen Api Key Authentication (on-prem)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#icp4d-authentication-on-prem">ICP4D Authentication (on-prem)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-authenticator">Using the Authenticator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regional-endpoints-saas">Regional Endpoints (SaaS)</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>&lt;no title&gt; &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
+    <title>&lt;no title&gt; &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../../_static/documentation_options.js?v=051bfb12"></script>
+    <script src="../../../../_static/documentation_options.js?v=db04a367"></script>
     <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -195,10 +195,11 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../batch/index.html">Batch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../batch/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../batch/compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../batch/stages.html">Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../batch/data_definitions.html">Data Definitions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../batch/subflows.html">Subflows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../batch/parameter_sets.html">Parameter Sets</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -208,8 +209,9 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../connections.html">Connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../parameter_sets.html">Parameter Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples.html">Examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -226,6 +228,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../06_access_control/saas_access_control/roles.html">Roles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../06_access_control/aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../06_access_control/aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../06_access_control/aws_access_control/users.html">Users</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../06_access_control/project_collaborators.html">Project Collaborators</a></li>
@@ -335,12 +342,12 @@ document.write(`
 <p>For starters, you can edit a flow’s attributes like <code class="docutils literal notranslate"><span class="pre">name</span></code> or <code class="docutils literal notranslate"><span class="pre">description</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;new description for the flow&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span>
-<span class="go">StreamsetsFlow(name=&#39;My first flow&#39;, description=&#39;new description for the flow&#39;, ...)</span>
+<span class="go">StreamingFlow(name=&#39;My first flow&#39;, description=&#39;new description for the flow&#39;, ...)</span>
 </pre></div>
 </div>
-<p>Also you can edit any flow by editing its stages.
-This can include adding a stage, removing a stage, updating a stage’s configuration or connecting a stage in a different way than before.
-All the operations described are covered in the Stages documentation (see <a class="reference internal" href="../../batch/stages.html#preparing-data-batch-stages"><span class="std std-ref">Batch Stages</span></a> or <a class="reference internal" href="../../streaming/stages.html#preparing-data-streaming-stages"><span class="std std-ref">Streaming Stages</span></a>).</p>
+<p>You can also edit any flow by editing its stages.
+This can include adding a stage, removing a stage, updating a stage’s configuration, or connecting a stage in a different way than before.
+All of these operations are covered in the Stages documentation (see <a class="reference internal" href="../../batch/stages.html#preparing-data-batch-stages"><span class="std std-ref">Batch Stages</span></a> or <a class="reference internal" href="../../streaming/stages.html#preparing-data-streaming-stages"><span class="std std-ref">Streaming Stages</span></a>).</p>
 
 
                 </article>

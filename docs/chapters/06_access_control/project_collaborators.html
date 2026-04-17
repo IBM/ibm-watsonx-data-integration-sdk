@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Project Collaborators &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
+    <title>Project Collaborators &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=051bfb12"></script>
+    <script src="../../_static/documentation_options.js?v=db04a367"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -49,7 +49,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="API Reference" href="../../api/index.html" />
-    <link rel="prev" title="Trusted Profiles" href="saas_access_control/trusted_profiles.html" />
+    <link rel="prev" title="Users" href="aws_access_control/users.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -195,10 +195,11 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/batch/index.html">Batch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/stages.html">Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/data_definitions.html">Data Definitions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/subflows.html">Subflows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/parameter_sets.html">Parameter Sets</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -208,8 +209,9 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/parameter_sets.html">Parameter Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/examples.html">Examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Access Control</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -226,6 +228,11 @@
 <li class="toctree-l3"><a class="reference internal" href="saas_access_control/roles.html">Roles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="saas_access_control/service_ids.html">Service IDs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aws_access_control/users.html">Users</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Project Collaborators</a></li>
@@ -336,8 +343,8 @@ document.write(`
                   
   <section id="project-collaborators">
 <span id="projects-project-collaborators"></span><h1>Project Collaborators<a class="headerlink" href="#project-collaborators" title="Link to this heading">#</a></h1>
-<p>In UI, you can manage access control to a project under the <strong>Manage -&gt; Access Control</strong> tab.
-The SDK provides functionality to interact with the access control API.</p>
+<p>In the UI, you can manage access control for a project under the <strong>Manage -&gt; Access Control</strong> tab.
+The SDK provides functionality for interacting with the access control API.</p>
 <dl class="simple">
 <dt>This includes operations such as:</dt><dd><ul class="simple">
 <li><p>Listing project collaborators</p></li>
@@ -366,7 +373,7 @@ This property returns a <a class="reference internal" href="../../api/models.htm
 </pre></div>
 </div>
 <p>You can also retrieve a specific project collaborator by using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.models.CollectionModel.get" title="ibm_watsonx_data_integration.common.models.CollectionModel.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ProjectCollaborators.get()</span></code></a>
-method and passing in a <code class="docutils literal notranslate"><span class="pre">user_name</span></code>.</p>
+method and passing a <code class="docutils literal notranslate"><span class="pre">user_name</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">collaborators</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">user_name</span><span class="o">=</span><span class="s1">&#39;myuser@ibm.com&#39;</span><span class="p">)</span>
 <span class="go">ProjectCollaborator(user_name=&#39;myuser@ibm.com&#39;, ...)</span>
 </pre></div>
@@ -374,7 +381,7 @@ method and passing in a <code class="docutils literal notranslate"><span class="
 </section>
 <section id="adding-collaborators">
 <span id="projects-project-collaborators-adding-collaborators"></span><h2>Adding Collaborators<a class="headerlink" href="#adding-collaborators" title="Link to this heading">#</a></h2>
-<p>In the UI, to add a collaborator you can press the <strong>Add collaborators</strong> button, where it will prompt you on which type of collaborator
+<p>In the UI, to add a collaborator, click the <strong>Add collaborators</strong> button. You will then be prompted to choose which type of collaborator
 you would like to add.</p>
 <a class="reference internal image-reference" href="../../_images/add_collaborators_1.png"><img alt="Add collaborator 1" class="align-center" src="../../_images/add_collaborators_1.png" style="width: 100%;" />
 </a>
@@ -387,14 +394,14 @@ you would like to add.</p>
 </ul>
 </dd>
 </dl>
-<p>Once you select the type of collaborator you would like to add, you can search for the appropriate collaborators to add.</p>
+<p>After selecting the type of collaborator you want to add, you can search for the appropriate collaborators.</p>
 <a class="reference internal image-reference" href="../../_images/add_collaborators_2.png"><img alt="Add collaborator 2" class="align-center" src="../../_images/add_collaborators_2.png" style="width: 100%;" />
 </a>
-<p>In the SDK, you can add collaborator(s) using either the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.add_collaborator" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.add_collaborator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.add_collaborator()</span></code></a> or
-<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.add_collaborators" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.add_collaborators"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.add_collaborators()</span></code></a> depending on how many collaborators you
-would like to add. These functions accept a variety of collaborator types as well the parameter <code class="docutils literal notranslate"><span class="pre">role</span></code> which specifies their privileges.</p>
+<p>In the SDK, you can add collaborators using either <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.add_collaborator" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.add_collaborator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.add_collaborator()</span></code></a>
+or <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.add_collaborators" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.add_collaborators"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.add_collaborators()</span></code></a>, depending on how many collaborators you
+want to add. These methods accept a variety of collaborator types, as well as the <code class="docutils literal notranslate"><span class="pre">role</span></code> parameter, which specifies their privileges.</p>
 <dl class="simple">
-<dt>You can add the following type of collaborator types:</dt><dd><ul class="simple">
+<dt>You can add the following collaborator types:</dt><dd><ul class="simple">
 <li><p><a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.user_model.UserProfile" title="ibm_watsonx_data_integration.cpd_models.user_model.UserProfile"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserProfile</span></code></a> or <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.user_model_on_prem.UserProfileOnPrem" title="ibm_watsonx_data_integration.cpd_models.user_model_on_prem.UserProfileOnPrem"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserProfileOnPrem</span></code></a></p></li>
 <li><p><a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.access_groups_model.AccessGroup" title="ibm_watsonx_data_integration.cpd_models.access_groups_model.AccessGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">AccessGroup</span></code></a> or <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.access_groups_model_on_prem.AccessGroupOnPrem" title="ibm_watsonx_data_integration.cpd_models.access_groups_model_on_prem.AccessGroupOnPrem"><code class="xref py py-class docutils literal notranslate"><span class="pre">AccessGroupOnPrem</span></code></a></p></li>
 <li><p><a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.service_id_model.ServiceID" title="ibm_watsonx_data_integration.cpd_models.service_id_model.ServiceID"><code class="xref py py-class docutils literal notranslate"><span class="pre">ServiceID</span></code></a> (SaaS only)</p></li>
@@ -421,14 +428,14 @@ would like to add. These functions accept a variety of collaborator types as wel
 </section>
 <section id="updating-project-collaborators-roles">
 <span id="projects-project-collaborators-updating-collaborators"></span><h2>Updating Project Collaborators’ Roles<a class="headerlink" href="#updating-project-collaborators-roles" title="Link to this heading">#</a></h2>
-<p>In the UI, you can edit a collaborator’s role by clicking on the edit icon next to their current role. From here, a modal
-will appear which will allow you to set the new role for the collaborator.</p>
+<p>In the UI, you can edit a collaborator’s role by clicking the edit icon next to their current role. A modal will then appear,
+allowing you to set the collaborator’s new role.</p>
 <a class="reference internal image-reference" href="../../_images/edit_collaborator.png"><img alt="Screenshot of updating a collaborator's role" class="align-center" src="../../_images/edit_collaborator.png" style="width: 100%;" />
 </a>
-<p>In the SDK, you can edit collaborator(s) roles by using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_collaborator_model.ProjectCollaborator.role" title="ibm_watsonx_data_integration.cpd_models.project_collaborator_model.ProjectCollaborator.role"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ProjectCollaborator.role</span></code></a>
-property and then either using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_collaborator" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_collaborator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_collaborator()</span></code></a> or
-<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_collaborators" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_collaborators"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_collaborators()</span></code></a> method depending on how many
-collaborators you would like to update.</p>
+<p>In the SDK, you can edit collaborators’ roles by updating the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_collaborator_model.ProjectCollaborator.role" title="ibm_watsonx_data_integration.cpd_models.project_collaborator_model.ProjectCollaborator.role"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ProjectCollaborator.role</span></code></a>
+property and then calling either <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_collaborator" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_collaborator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_collaborator()</span></code></a> or
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_collaborators" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_collaborators"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_collaborators()</span></code></a>, depending on how many
+collaborators you want to update.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">collaborator</span>
 <span class="go">ProjectCollaborator(...)</span>
 
@@ -451,12 +458,12 @@ collaborators you would like to update.</p>
 </section>
 <section id="removing-project-collaborators">
 <span id="projects-project-collaborators-removing-collaborators"></span><h2>Removing Project Collaborators<a class="headerlink" href="#removing-project-collaborators" title="Link to this heading">#</a></h2>
-<p>In the UI, you can remove a collaborator by pressing the remove icon to the right of their entry in the collaborator table.</p>
+<p>In the UI, you can remove a collaborator by clicking the remove icon to the right of their entry in the collaborator table.</p>
 <a class="reference internal image-reference" href="../../_images/remove_collaborator.png"><img alt="Screenshot of removing a collaborator" class="align-center" src="../../_images/remove_collaborator.png" style="width: 100%;" />
 </a>
-<p>In the SDK, you can remove collaborator(s) using either the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.remove_collaborator" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.remove_collaborator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.remove_collaborator()</span></code></a> or
-<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.remove_collaborators" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.remove_collaborators"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.remove_collaborators()</span></code></a> depending on how many collaborators you
-would like to remove.</p>
+<p>In the SDK, you can remove collaborators using either <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.remove_collaborator" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.remove_collaborator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.remove_collaborator()</span></code></a>
+or <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.remove_collaborators" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.remove_collaborators"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.remove_collaborators()</span></code></a>, depending on how many collaborators you
+want to remove.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">remove_collaborator</span><span class="p">(</span><span class="n">collaborator</span><span class="p">)</span>
 <span class="go">&lt;Response [204]&gt;</span>
 
@@ -479,12 +486,12 @@ would like to remove.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="saas_access_control/trusted_profiles.html"
+       href="aws_access_control/users.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Trusted Profiles</p>
+        <p class="prev-next-title">Users</p>
       </div>
     </a>
     <a class="right-next"

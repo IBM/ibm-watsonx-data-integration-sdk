@@ -7,7 +7,8 @@ Batch
    :maxdepth: 2
 
    flows
+   compilation_mode
    stages
    batch_schemas
+   data_definitions
    subflows
-   parameter_sets

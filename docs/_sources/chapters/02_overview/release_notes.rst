@@ -5,6 +5,25 @@ What's new
 
 Below you will find release notes for each version of the ``ibm-watsonx-data-integration`` SDK as well as highlights of major features and/or fixes included in each release.
 
+1.2.0 (April 2026)
+------------------------
+* Added support for WebSocket tunneling for secure communication.
+
+* Added support for job parameters to enable dynamic job configuration.
+
+* Added support for annotations and comments in batch flows for improved documentation.
+
+* Added support for data definitions in batch flows for better schema management.
+
+* Added stage discovery functionality for both streaming and batch flows.
+
+* Flow topology enhancements.
+
+* Python code generator enhancements and improvements.
+
+* Quality of life improvements and bug fixes.
+
+
 1.1.0 (February 2026)
 ------------------------
 * Added Python 3.14 support.
@@ -36,7 +55,7 @@ Below you will find release notes for each version of the ``ibm-watsonx-data-int
 
 * Added support for BatchFlow compilation modes (ETL/ELT/TETL).
 
-* Added support for generating python code for StreamingFlows and Connections.
+* Added support for generating Python code for StreamingFlows and Connections.
 
 * Added support for BearerToken, ZenApiKeyAuthenticator, and ICP4DAuthenticator authentication methods.
 
@@ -57,7 +76,7 @@ Below you will find release notes for each version of the ``ibm-watsonx-data-int
 
 * Added support for executing batch flows within a job.
 
-* Added python generator support for batch & streaming flows.
+* Added Python generator support for batch and streaming flows.
 
 * Added support for engineless streaming flows.
 
@@ -101,4 +120,4 @@ Below you will find release notes for each version of the ``ibm-watsonx-data-int
 
 * Added support for retrieving Users & Accounts.
 
-* Added the ability to retrieve install script for StreamingFlow Engines.
+* Added the ability to retrieve the install script for StreamingFlow Engines.

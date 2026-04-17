@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Schemas &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
+    <title>Schemas &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=051bfb12"></script>
+    <script src="../../../_static/documentation_options.js?v=db04a367"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -48,7 +48,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/05_preparing_data/batch/batch_schemas';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Subflows" href="subflows.html" />
+    <link rel="next" title="Data Definitions" href="data_definitions.html" />
     <link rel="prev" title="Stages" href="stages.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -195,10 +195,11 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Preparing Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Batch</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="stages.html">Stages</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_definitions.html">Data Definitions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="subflows.html">Subflows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="parameter_sets.html">Parameter Sets</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -208,8 +209,9 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../connections.html">Connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parameter_sets.html">Parameter Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -226,6 +228,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/roles.html">Roles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/aws_access_control/users.html">Users</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../06_access_control/project_collaborators.html">Project Collaborators</a></li>
@@ -321,7 +328,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-a-schema-field">Initializing a Schema Field</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-and-removing-a-schema-field">Editing and Removing a Schema Field</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retreiving-existing-links-and-schemas">Retreiving existing Links and Schemas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-existing-links-and-schemas">Retrieving existing Links and Schemas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-data-definitions">Working with Data Definitions</a></li>
 </ul>
             </nav>
         </div>
@@ -335,8 +343,8 @@ document.write(`
                   
   <section id="schemas">
 <span id="preparing-data-batch-schemas"></span><h1>Schemas<a class="headerlink" href="#schemas" title="Link to this heading">#</a></h1>
-<p>For batch flows, a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema" title="ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema"><code class="xref py py-class docutils literal notranslate"><span class="pre">Schema</span></code></a> is shared in the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a> between two batch stages. A schema defines the structure (columns, data types) of your data.</p>
-<p>To create a schema you must first create a link between two batch stages, which is explained in the <a class="reference internal" href="stages.html#preparing-data-batch-connecting-stages"><span class="std std-ref">Connecting Batch Stages</span></a> section.
+<p>For batch flows, a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema" title="ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema"><code class="xref py py-class docutils literal notranslate"><span class="pre">Schema</span></code></a> is shared on the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a> between two batch stages. A schema defines the structure of your data, including its columns and data types.</p>
+<p>To create a schema, you must first create a link between two batch stages, as explained in the <a class="reference internal" href="stages.html#preparing-data-batch-connecting-stages"><span class="std std-ref">Connecting Batch Stages</span></a> section.
 Then use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.create_schema" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.create_schema"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Link.create_schema()</span></code></a> method to create the schema object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">row_gen</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Row Generator&#39;</span><span class="p">,</span> <span class="s1">&#39;Row_Generator_2&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">peek</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Peek&#39;</span><span class="p">,</span> <span class="s1">&#39;Peek_2&#39;</span><span class="p">)</span>
@@ -347,8 +355,8 @@ Then use the <a class="reference internal" href="../../../api/models.html#ibm_wa
 </div>
 <section id="initializing-a-schema-field">
 <span id="preparing-data-batch-schemas-initializing-a-schema-field"></span><h2>Initializing a Schema Field<a class="headerlink" href="#initializing-a-schema-field" title="Link to this heading">#</a></h2>
-<p>Schemas are populated with fields. To add a field to a schema use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.add_field" title="ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.add_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Schema.add_field()</span></code></a> method which requires an <code class="docutils literal notranslate"><span class="pre">odbc_type</span></code> and a <code class="docutils literal notranslate"><span class="pre">name</span></code>.
-You can also add other desired parameters to the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.add_field" title="ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.add_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Schema.add_field()</span></code></a> method to intialize the field with specific properties.</p>
+<p>Schemas are populated with fields. To add a field to a schema, use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.add_field" title="ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.add_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Schema.add_field()</span></code></a> method, which requires an <code class="docutils literal notranslate"><span class="pre">odbc_type</span></code> and a <code class="docutils literal notranslate"><span class="pre">name</span></code>.
+You can also pass additional parameters to <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.add_field" title="ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.add_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Schema.add_field()</span></code></a> to initialize the field with specific properties.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">field1</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="n">odbc_type</span> <span class="o">=</span> <span class="s1">&#39;CHAR&#39;</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;COLUMN_1&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">field2</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="s1">&#39;CHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;COLUMN_2&#39;</span><span class="p">,</span> <span class="n">length</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -356,15 +364,15 @@ You can also add other desired parameters to the <a class="reference internal" h
 </section>
 <section id="editing-and-removing-a-schema-field">
 <span id="preparing-data-batch-schemas-editing-and-removing-a-schema-field"></span><h2>Editing and Removing a Schema Field<a class="headerlink" href="#editing-and-removing-a-schema-field" title="Link to this heading">#</a></h2>
-<p>To edit an already existing schema field you can directly edit the property you wish to change. To get a list of all properties check the parameters of the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.add_field" title="ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.add_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Schema.add_field()</span></code></a> function. Some properties are dependent on <code class="docutils literal notranslate"><span class="pre">odbc_type</span></code> and may not always be settable.</p>
-<p>To remove a field simply use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.remove_field" title="ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.remove_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Schema.remove_field()</span></code></a> method which takes in the name of the field.</p>
+<p>To edit an existing schema field, directly modify the property you want to change. For a list of all properties, see the parameters of the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.add_field" title="ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.add_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Schema.add_field()</span></code></a> method. Some properties depend on <code class="docutils literal notranslate"><span class="pre">odbc_type</span></code> and may not always be settable.</p>
+<p>To remove a field, use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.remove_field" title="ibm_watsonx_data_integration.services.datastage.models.schema.schema.Schema.remove_field"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Schema.remove_field()</span></code></a> method, which takes the field name.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">field3</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="n">odbc_type</span> <span class="o">=</span> <span class="s1">&#39;CHAR&#39;</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;COLUMN_3&#39;</span><span class="p">,</span> <span class="n">length</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">field3</span><span class="o">.</span><span class="n">nullable</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">schema</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="n">remove_field</span><span class="p">(</span><span class="s1">&#39;COLUMN_3&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Schemas dictate what data is sent between stages. In this example, the schema has two <code class="docutils literal notranslate"><span class="pre">CHAR</span></code> fields called <code class="docutils literal notranslate"><span class="pre">COLUMN_1</span></code> and <code class="docutils literal notranslate"><span class="pre">COLUMN_2</span></code>. As a result, the Row Generator outputs two <code class="docutils literal notranslate"><span class="pre">CHAR</span></code> columns which are sent to the Peek stage.</p>
-<p>All schemas use data fields for the input and output. Each field is defined by a datatype and name, as seen above. The supported datatypes are as follows:</p>
+<p>All schemas use data fields for input and output. Each field is defined by a data type and a name, as shown above. The supported data types are:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;BIGINT&#39;</span><span class="p">,</span> <span class="s1">&#39;BINARY&#39;</span><span class="p">,</span> <span class="s1">&#39;BIT&#39;</span><span class="p">,</span> <span class="s1">&#39;CHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;DATE&#39;</span><span class="p">,</span> <span class="s1">&#39;DECIMAL&#39;</span><span class="p">,</span> <span class="s1">&#39;DOUBLE&#39;</span><span class="p">,</span> <span class="s1">&#39;FLOAT&#39;</span><span class="p">,</span> <span class="s1">&#39;INTEGER&#39;</span><span class="p">,</span>
 <span class="s1">&#39;LONGVARBINARY&#39;</span><span class="p">,</span> <span class="s1">&#39;LONGVARCHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;NUMERIC&#39;</span><span class="p">,</span> <span class="s1">&#39;REAL&#39;</span><span class="p">,</span> <span class="s1">&#39;SMALLINT&#39;</span><span class="p">,</span> <span class="s1">&#39;TIME&#39;</span><span class="p">,</span> <span class="s1">&#39;TIMESTAMP&#39;</span><span class="p">,</span>
 <span class="s1">&#39;TINYINT&#39;</span><span class="p">,</span> <span class="s1">&#39;UNKNOWN&#39;</span><span class="p">,</span> <span class="s1">&#39;VARBINARY&#39;</span><span class="p">,</span> <span class="s1">&#39;VARCHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;NCHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;LONGNVARCHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;NVARCHAR&#39;</span>
@@ -377,19 +385,29 @@ That functionality is replicated in the SDK.
 You should only specify the schemas that you would normally need to specify.</p>
 </div>
 </section>
-<section id="retreiving-existing-links-and-schemas">
-<span id="preparing-data-batch-schemas-retreiving-links-and-schemas"></span><h2>Retreiving existing Links and Schemas<a class="headerlink" href="#retreiving-existing-links-and-schemas" title="Link to this heading">#</a></h2>
-<p>In the SDK, if you wish to retreive an existing schema you must first retreive the link the schema is attached to. One way to do this is to use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.links" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.links"><code class="xref py py-attr docutils literal notranslate"><span class="pre">BatchFlow.links</span></code></a> property to create a <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code> of all the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a> instances in the flow.</p>
+<section id="retrieving-existing-links-and-schemas">
+<span id="preparing-data-batch-schemas-retrieving-links-and-schemas"></span><h2>Retrieving existing Links and Schemas<a class="headerlink" href="#retrieving-existing-links-and-schemas" title="Link to this heading">#</a></h2>
+<p>In the SDK, if you want to retrieve an existing schema, you must first retrieve the link to which the schema is attached. One way to do this is to use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.links" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.links"><code class="xref py py-attr docutils literal notranslate"><span class="pre">BatchFlow.links</span></code></a> property to get a <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code> of all <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a> instances in the flow.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">batch_flow</span><span class="o">.</span><span class="n">links</span>
 <span class="go">[Link_1 (src=&#39;Row_Generator&#39;, dest=&#39;Peek&#39;), Link_2 (src=&#39;Row_Generator_2&#39;, dest=&#39;Peek_2&#39;)]</span>
 </pre></div>
 </div>
-<p>If you already know the <code class="docutils literal notranslate"><span class="pre">name</span></code> of the link you wish to retrieve simply pass the <code class="docutils literal notranslate"><span class="pre">name</span></code> into the <code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchFlow.links.get()</span></code> method. This method will return a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a> instance.</p>
+<p>If you already know the <code class="docutils literal notranslate"><span class="pre">name</span></code> of the link you want to retrieve, simply pass that <code class="docutils literal notranslate"><span class="pre">name</span></code> to the <code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchFlow.links.get()</span></code> method. This method returns a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a> instance.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Link</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Link_1&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Link</span>
 <span class="go">Link_1 (src=&#39;Row_Generator&#39;, dest=&#39;Peek&#39;)</span>
 </pre></div>
 </div>
+</section>
+<section id="working-with-data-definitions">
+<span id="preparing-data-batch-schemas-working-with-data-definitions"></span><h2>Working with Data Definitions<a class="headerlink" href="#working-with-data-definitions" title="Link to this heading">#</a></h2>
+<p>Schemas can import fields from <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.data_definition.DataDefinition" title="ibm_watsonx_data_integration.services.datastage.models.schema.data_definition.DataDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataDefinition</span></code></a> objects, and can also export their fields to create new data definitions. This lets you reuse common data structures across multiple flows.</p>
+<p>For detailed information about importing and exporting data definitions with schemas, see:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="data_definitions.html#preparing-data-data-definitions-importing-to-schema"><span class="std std-ref">Importing Data Definition into a Schema</span></a> - Import reusable data definitions into schemas</p></li>
+<li><p><a class="reference internal" href="data_definitions.html#preparing-data-data-definitions-exporting-from-schema"><span class="std std-ref">Exporting Schema to Data Definition</span></a> - Create data definitions from existing schemas</p></li>
+<li><p><a class="reference internal" href="data_definitions.html#preparing-data-data-definitions"><span class="std std-ref">Data Definitions</span></a> - Complete guide to working with data definitions</p></li>
+</ul>
 </section>
 </section>
 
@@ -414,11 +432,11 @@ You should only specify the schemas that you would normally need to specify.</p>
       </div>
     </a>
     <a class="right-next"
-       href="subflows.html"
+       href="data_definitions.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Subflows</p>
+        <p class="prev-next-title">Data Definitions</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -440,7 +458,8 @@ You should only specify the schemas that you would normally need to specify.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-a-schema-field">Initializing a Schema Field</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-and-removing-a-schema-field">Editing and Removing a Schema Field</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retreiving-existing-links-and-schemas">Retreiving existing Links and Schemas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-existing-links-and-schemas">Retrieving existing Links and Schemas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-data-definitions">Working with Data Definitions</a></li>
 </ul>
   </nav></div>
 

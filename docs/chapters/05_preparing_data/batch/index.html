@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Batch &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
+    <title>Batch &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=051bfb12"></script>
+    <script src="../../../_static/documentation_options.js?v=db04a367"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -195,10 +195,11 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Preparing Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Batch</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="stages.html">Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_definitions.html">Data Definitions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="subflows.html">Subflows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="parameter_sets.html">Parameter Sets</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -208,8 +209,9 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../connections.html">Connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parameter_sets.html">Parameter Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -226,6 +228,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/roles.html">Roles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/aws_access_control/users.html">Users</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../06_access_control/project_collaborators.html">Project Collaborators</a></li>
@@ -333,25 +340,51 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="flows.html#duplicating-a-flow">Duplicating a Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="flows.html#deleting-a-flow">Deleting a Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="flows.html#compiling-a-flow">Compiling a Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flows.html#auto-arranging-a-flow">Auto-Arranging a Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="flows.html#setting-runtime-parameters-of-a-flow">Setting Runtime Parameters of a Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="flows.html#setting-runtime-settings-of-a-flow">Setting Runtime Settings of a Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="flows.html#exporting-flows">Exporting Flows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="flows.html#importing-flows">Importing Flows</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="compilation_mode.html">Compilation Modes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="compilation_mode.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compilation_mode.html#compilation-modes-overview">Compilation Modes Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compilation_mode.html#setting-compilation-mode">Setting Compilation Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compilation_mode.html#changing-compilation-mode-on-existing-flows">Changing Compilation Mode on Existing Flows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compilation_mode.html#elt-materialization-policies">ELT Materialization Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compilation_mode.html#using-elt-with-materialization-policies">Using ELT with Materialization Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compilation_mode.html#choosing-the-right-compilation-mode">Choosing the Right Compilation Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compilation_mode.html#complete-example">Complete Example</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="stages.html">Stages</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="stages.html#listing-and-retreiving-stages-in-a-flow">Listing and retreiving Stages in a Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stages.html#listing-and-retrieving-stages-in-a-flow">Listing and Retrieving Stages in a Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stages.html#adding-a-stage-to-a-flow">Adding a Stage to a Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stages.html#remove-a-stage-from-a-flow">Remove a Stage from a Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stages.html#listing-all-links-connected-to-a-stage">Listing all Links connected to a Stage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stages.html#connecting-stages">Connecting Stages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="stages.html#editing-a-stage-s-configuration">Editing a Stage’s Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stages.html#adding-comments-and-annotations">Adding Comments and Annotations</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="batch_schemas.html">Schemas</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="batch_schemas.html#initializing-a-schema-field">Initializing a Schema Field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch_schemas.html#editing-and-removing-a-schema-field">Editing and Removing a Schema Field</a></li>
-<li class="toctree-l2"><a class="reference internal" href="batch_schemas.html#retreiving-existing-links-and-schemas">Retreiving existing Links and Schemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batch_schemas.html#retrieving-existing-links-and-schemas">Retrieving existing Links and Schemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batch_schemas.html#working-with-data-definitions">Working with Data Definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_definitions.html">Data Definitions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_definitions.html#creating-a-data-definition">Creating a Data Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_definitions.html#adding-fields-to-a-data-definition">Adding Fields to a Data Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_definitions.html#editing-and-removing-fields">Editing and Removing Fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_definitions.html#retrieving-data-definitions">Retrieving Data Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_definitions.html#importing-data-definition-into-a-schema">Importing Data Definition into a Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_definitions.html#exporting-schema-to-data-definition">Exporting Schema to Data Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_definitions.html#duplicating-data-definitions">Duplicating Data Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_definitions.html#updating-and-deleting-data-definitions">Updating and Deleting Data Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_definitions.html#working-with-fields">Working with Fields</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="subflows.html">Subflows</a><ul>
@@ -364,18 +397,6 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="subflows.html#deleting-a-subflow">Deleting a Subflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="subflows.html#using-subflows-in-flows">Using Subflows in Flows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="subflows.html#using-parameter-sets-in-subflows">Using Parameter Sets in Subflows</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="parameter_sets.html">Parameter Sets</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html#creating-a-parameter-set">Creating a Parameter Set</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html#retrieving-an-existing-parameter-set">Retrieving an Existing Parameter Set</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html#updating-a-parameter-set">Updating a Parameter Set</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html#adding-value-sets">Adding Value Sets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html#adding-local-parameters">Adding local Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html#using-local-parameters-and-parameter-sets">Using local parameters and Parameter Sets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html#duplicating-a-parameter-set">Duplicating a Parameter Set</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html#using-projdef">Using PROJDEF</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html#deleting-a-parameter-set">Deleting a Parameter Set</a></li>
 </ul>
 </li>
 </ul>

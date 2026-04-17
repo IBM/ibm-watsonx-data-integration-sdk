@@ -13,5 +13,6 @@ This section covers how to manage flows and their stages, work with datasource t
    streaming/index
    datasources
    connections
-   examples
+   parameter_sets
    files
+   examples

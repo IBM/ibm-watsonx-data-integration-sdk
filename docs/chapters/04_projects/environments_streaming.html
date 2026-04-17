@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Environments (Streaming) &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
+    <title>Environments (Streaming) &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=051bfb12"></script>
+    <script src="../../_static/documentation_options.js?v=db04a367"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -195,10 +195,11 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/batch/index.html">Batch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/stages.html">Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/data_definitions.html">Data Definitions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/subflows.html">Subflows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/parameter_sets.html">Parameter Sets</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -208,8 +209,9 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/parameter_sets.html">Parameter Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/examples.html">Examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -226,6 +228,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/roles.html">Roles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_access_control/aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/aws_access_control/users.html">Users</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_access_control/project_collaborators.html">Project Collaborators</a></li>
@@ -350,10 +357,10 @@ It specifies the engine to be used, the libraries to be installed, and additiona
 This command typically runs a Docker container with the selected engine version, all required libraries, and the specified parameters.</p>
 <section id="creating-an-environment">
 <span id="projects-environments-creating-an-environment"></span><h2>Creating an Environment<a class="headerlink" href="#creating-an-environment" title="Link to this heading">#</a></h2>
-<p>In the UI, you can create a new Environment by navigating to <strong>Manage -&gt; StreamSets -&gt; New environment.</strong></p>
+<p>In the UI, you can create a new Environment by navigating to <strong>Manage -&gt; StreamSets -&gt; New environment</strong>.</p>
 <a class="reference internal image-reference" href="../../_images/create_environment.png"><img alt="Screenshot of the Environment creation form in the UI" class="align-center" src="../../_images/create_environment.png" style="width: 100%;" />
 </a>
-<p>You will be prompted to provide a <strong>Name</strong> and select a <strong>Data Collector engine version</strong>, and other additional configuration options.</p>
+<p>You will be prompted to provide a <strong>Name</strong>, select a <strong>Data Collector engine version</strong>, and configure other additional options.</p>
 <a class="reference internal image-reference" href="../../_images/create_environment2.png"><img alt="Screenshot of the Environment configuration form in the UI" class="align-center" src="../../_images/create_environment2.png" style="width: 100%;" />
 </a>
 <p>In the SDK, you can create an environment from a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> object using the
@@ -390,7 +397,7 @@ This method returns a <a class="reference internal" href="../../api/models.html#
 <p>Environments can be retrieved through a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> object.
 You can access all environments associated with a project using the
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.environments" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.environments"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Project.environments</span></code></a> property.
-You can also retrieve single environment using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.models.CollectionModel.get" title="ibm_watsonx_data_integration.common.models.CollectionModel.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.environments.get()</span></code></a> method,
+You can also retrieve a single environment using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.models.CollectionModel.get" title="ibm_watsonx_data_integration.common.models.CollectionModel.get"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.environments.get()</span></code></a> method,
 which requires the <code class="docutils literal notranslate"><span class="pre">environment_id</span></code> parameter.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get all environments associated with the project</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">environments</span>
@@ -404,13 +411,13 @@ which requires the <code class="docutils literal notranslate"><span class="pre">
 </section>
 <section id="modifying-an-environment">
 <h2>Modifying an Environment<a class="headerlink" href="#modifying-an-environment" title="Link to this heading">#</a></h2>
-<p>In the UI, you can update or delete an existing Environment by navigating to the <strong>Manage -&gt; StreamSets</strong>.</p>
+<p>In the UI, you can update or delete an existing Environment by navigating to <strong>Manage -&gt; StreamSets</strong>.</p>
 <a class="reference internal image-reference" href="../../_images/edit_environment.png"><img alt="Screenshot of the Environment update form in the UI" class="align-center" src="../../_images/edit_environment.png" style="width: 100%;" />
 </a>
 <section id="updating-an-environment">
 <h3>Updating an Environment<a class="headerlink" href="#updating-an-environment" title="Link to this heading">#</a></h3>
-<p>Similar to environment creation, environment can also be updated using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> object.
-First, modify properties of the environment instance, then update it using the
+<p>Similar to environment creation, an environment can also be updated using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> object.
+First, modify the properties of the environment instance, then update it using the
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_environment" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_environment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_environment()</span></code></a> method.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Modify environment settings</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">env</span><span class="o">.</span><span class="n">max_memory_used</span> <span class="o">=</span> <span class="mi">80</span>
@@ -428,11 +435,11 @@ First, modify properties of the environment instance, then update it using the
 </section>
 <section id="retrieving-the-engine-installation-command">
 <span id="projects-environments-retrieving-install-command"></span><h2>Retrieving the Engine Installation Command<a class="headerlink" href="#retrieving-the-engine-installation-command" title="Link to this heading">#</a></h2>
-<p>To start and run the Engine defined by an Environment, you’ll need to retrieve the installation command for that Environment and execute it from the machine where you want the Engine to run.</p>
+<p>To start and run the Engine defined by an Environment, you need to retrieve the installation command for that Environment and execute it on the machine where you want the Engine to run.</p>
 <p>In the UI, you can retrieve the run command by navigating to the <strong>Manage -&gt; StreamSets</strong>.</p>
 <a class="reference internal image-reference" href="../../_images/get_run_command.png"><img alt="Screenshot of the Environment update form in the UI" class="align-center" src="../../_images/get_run_command.png" style="width: 100%;" />
 </a>
-<p>You can retrieve the run command via the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment" title="ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Environment</span></code></a> object by using
+<p>You can retrieve the run command via the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment" title="ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Environment</span></code></a> object by using the
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.get_installation_command" title="ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.get_installation_command"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Environment.get_installation_command()</span></code></a> method.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">env</span><span class="o">.</span><span class="n">get_installation_command</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="c1"># Optional parameters</span>
@@ -444,8 +451,8 @@ First, modify properties of the environment instance, then update it using the
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Please be aware that the installation command you retrieve from the Environment requires the <code class="docutils literal notranslate"><span class="pre">SSET_API_KEY</span></code> environment variable to be set for the user executing the command.
-The environment variable should contain the API key you generated for <a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html#getting-started-and-tutorials-authentication"><span class="std std-ref">authenticating</span></a> with the watsonx.data integration platform.</p>
+<p>Be aware that the installation command you retrieve from the Environment requires the <code class="docutils literal notranslate"><span class="pre">SSET_API_KEY</span></code> environment variable to be set for the user executing the command.
+This environment variable should contain the API key you generated for <a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html#getting-started-and-tutorials-authentication"><span class="std std-ref">authenticating</span></a> with the watsonx.data integration platform.</p>
 </div>
 <section id="deleting-an-environment">
 <h3>Deleting an Environment<a class="headerlink" href="#deleting-an-environment" title="Link to this heading">#</a></h3>
@@ -453,6 +460,12 @@ The environment variable should contain the API key you generated for <a class="
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_environment" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_environment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_environment()</span></code></a> method.
 The delete method returns an API response, which you can inspect to verify the status code.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">delete_environment</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+<p>By default, engines associated with the environment are <strong>not</strong> deleted. If you want to delete all engines
+before deleting the environment, set the <code class="docutils literal notranslate"><span class="pre">delete_engines</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">delete_environment</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">delete_engines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">&lt;Response [200]&gt;</span>
 </pre></div>
 </div>
@@ -465,6 +478,11 @@ This method accepts any number of Environment instances and returns a single HTT
 <span class="go">&lt;Response [200]&gt;</span>
 </pre></div>
 </div>
+<p>Similarly, you can delete all engines associated with the environments by setting <code class="docutils literal notranslate"><span class="pre">delete_engines=True</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">delete_environments</span><span class="p">(</span><span class="n">env1</span><span class="p">,</span> <span class="n">env2</span><span class="p">,</span> <span class="n">delete_engines</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="retrieving-available-engine-versions">
@@ -472,7 +490,7 @@ This method accepts any number of Environment instances and returns a single HTT
 <p>To view the list of available Engine versions, use the
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.available_engine_versions" title="ibm_watsonx_data_integration.platform.Platform.available_engine_versions"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Platform.available_engine_versions</span></code></a> property.
 This returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_version.StreamingEngineVersions" title="ibm_watsonx_data_integration.services.streamsets.models.engine_version.StreamingEngineVersions"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamingEngineVersions</span></code></a> object that can be used to list
-<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_version.StreamingEngineVersion" title="ibm_watsonx_data_integration.services.streamsets.models.engine_version.StreamingEngineVersion"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamingEngineVersion</span></code></a> which can be used when configuring an Environment.</p>
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_version.StreamingEngineVersion" title="ibm_watsonx_data_integration.services.streamsets.models.engine_version.StreamingEngineVersion"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamingEngineVersion</span></code></a> objects, which can be used when configuring an Environment.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">available_engine_versions</span>
 <span class="go">[...StreamingEngineVersion(engine_version_id=&#39;JDK17_6.3.0&#39;, engine_type=&#39;data_collector&#39;, ...)...]</span>
 </pre></div>
@@ -484,8 +502,8 @@ This returns a <a class="reference internal" href="../../api/models.html#ibm_wat
 <a class="reference internal image-reference" href="../../_images/engine_libraries.png"><img alt="Screenshot showing supported libraries for an Engine version in the UI" class="align-center" src="../../_images/engine_libraries.png" style="width: 100%;" />
 </a>
 <p>In the SDK, to retrieve the list of libraries supported by a given Engine version, use the
-<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.available_engine_versions" title="ibm_watsonx_data_integration.platform.Platform.available_engine_versions"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Platform.available_engine_versions</span></code></a> property to list all available engine versions.
-From here, you get a collection of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_version.StreamingEngineVersion" title="ibm_watsonx_data_integration.services.streamsets.models.engine_version.StreamingEngineVersion"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamingEngineVersion</span></code></a> objects which you can inspect further.</p>
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.available_engine_versions" title="ibm_watsonx_data_integration.platform.Platform.available_engine_versions"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Platform.available_engine_versions</span></code></a> property to list all available engine versions.
+From there, you get a collection of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_version.StreamingEngineVersion" title="ibm_watsonx_data_integration.services.streamsets.models.engine_version.StreamingEngineVersion"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamingEngineVersion</span></code></a> objects that you can inspect further.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">available_engine_versions</span>
 <span class="go">[...StreamingEngineVersion(engine_version_id=&#39;JDK17_6.4.0&#39;, engine_type=&#39;data_collector&#39;, ...)...]</span>
 

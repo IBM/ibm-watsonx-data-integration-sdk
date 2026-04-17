@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>HTTP Retry Management &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
+    <title>HTTP Retry Management &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=051bfb12"></script>
+    <script src="../../_static/documentation_options.js?v=db04a367"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -195,10 +195,11 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/batch/index.html">Batch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/stages.html">Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/data_definitions.html">Data Definitions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/subflows.html">Subflows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/parameter_sets.html">Parameter Sets</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -208,8 +209,9 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/parameter_sets.html">Parameter Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/examples.html">Examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -226,6 +228,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/roles.html">Roles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_access_control/aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/aws_access_control/users.html">Users</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_access_control/project_collaborators.html">Project Collaborators</a></li>
@@ -369,7 +376,7 @@ document.write(`
 <div class="versionadded">
 <p><span class="versionmodified added">Added in version 1.1.0.</span></p>
 </div>
-<p>The SDK includes a built-in HTTP retry mechanism to handle transient failures in API requests. This includes automatic retry
+<p>The SDK includes a built-in HTTP retry mechanism to handle transient failures in API requests. This includes automatic retries
 with exponential backoff, jitter, and configurable retry policies for different HTTP status codes.</p>
 <section id="understanding-retry-behavior">
 <h2>Understanding Retry Behavior<a class="headerlink" href="#understanding-retry-behavior" title="Link to this heading">#</a></h2>
@@ -382,7 +389,7 @@ By default, the SDK retries the following HTTP status codes:</p>
 <li><p><strong>503</strong> (Service Unavailable)</p></li>
 <li><p><strong>504</strong> (Gateway Timeout)</p></li>
 </ul>
-<p>Each retry uses exponential backoff with jitter to avoid overwhelming the server and prevent thundering herd problems.</p>
+<p>Each retry uses exponential backoff with jitter to avoid overwhelming the server and to prevent thundering herd problems.</p>
 </section>
 <section id="default-retry-settings">
 <h2>Default Retry Settings<a class="headerlink" href="#default-retry-settings" title="Link to this heading">#</a></h2>
@@ -438,7 +445,7 @@ Status-Specific Settings:
 <h2>Configuring Global Retry Settings<a class="headerlink" href="#configuring-global-retry-settings" title="Link to this heading">#</a></h2>
 <section id="changing-default-settings">
 <h3>Changing Default Settings<a class="headerlink" href="#changing-default-settings" title="Link to this heading">#</a></h3>
-<p>You can change the default retry settings that apply to all retryable status codes using the
+<p>You can change the default retry settings that apply to all retryable status codes by using the
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.retry.RetryConfig.set" title="ibm_watsonx_data_integration.common.retry.RetryConfig.set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.common.retry.RetryConfig.set()</span></code></a> method.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.common.retry</span><span class="w"> </span><span class="kn">import</span> <span class="n">RetryConfig</span><span class="p">,</span> <span class="n">RetrySettings</span>
 
@@ -512,12 +519,12 @@ Use <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_i
 </section>
 <section id="temporary-retry-overrides">
 <h2>Temporary Retry Overrides<a class="headerlink" href="#temporary-retry-overrides" title="Link to this heading">#</a></h2>
-<p>For specific operations, you can temporarily override retry behavior using context managers. These overrides only affect
-the code within the <code class="docutils literal notranslate"><span class="pre">with</span></code> block and don’t change the global configuration.</p>
+<p>For specific operations, you can temporarily override retry behavior by using context managers. These overrides affect only
+the code within the <code class="docutils literal notranslate"><span class="pre">with</span></code> block and do not change the global configuration.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.retry.RetrySettings" title="ibm_watsonx_data_integration.common.retry.RetrySettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.common.retry.RetrySettings</span></code></a> parameter is optional. If not provided, the default retry settings
-will be used for all retryable status codes within the context.</p>
+<p>The <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.retry.RetrySettings" title="ibm_watsonx_data_integration.common.retry.RetrySettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.common.retry.RetrySettings</span></code></a> parameter is optional. If it is not provided, the default retry settings
+are used for all retryable status codes within the context.</p>
 </div>
 <section id="retrying-with-default-settings">
 <h3>Retrying With Default Settings<a class="headerlink" href="#retrying-with-default-settings" title="Link to this heading">#</a></h3>
@@ -526,14 +533,14 @@ will be used for all retryable status codes within the context.</p>
 
 <span class="c1"># Use default retry settings for all errors</span>
 <span class="k">with</span> <span class="n">retry_on_http_error</span><span class="p">():</span>
-    <span class="n">flows</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">flows</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Flow&#39;</span><span class="p">)</span>
+    <span class="n">flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">flows</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Flow&#39;</span><span class="p">)</span>
     <span class="n">project</span><span class="o">.</span><span class="n">delete_flow</span><span class="p">(</span><span class="n">flow</span><span class="o">=</span><span class="n">flow</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="retrying-with-custom-settings">
 <h3>Retrying With Custom Settings<a class="headerlink" href="#retrying-with-custom-settings" title="Link to this heading">#</a></h3>
-<p>To use custom retry settings, provide a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.retry.RetrySettings" title="ibm_watsonx_data_integration.common.retry.RetrySettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.common.retry.RetrySettings</span></code></a> instance as the first parameter.</p>
+<p>To use custom retry settings, provide a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.retry.RetrySettings" title="ibm_watsonx_data_integration.common.retry.RetrySettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.common.retry.RetrySettings</span></code></a> instance as the <code class="docutils literal notranslate"><span class="pre">settings</span></code> parameter.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.common.retry</span><span class="w"> </span><span class="kn">import</span> <span class="n">retry_on_http_error</span><span class="p">,</span> <span class="n">RetrySettings</span>
 
 <span class="c1"># Use custom retry settings for all errors</span>
@@ -578,25 +585,25 @@ context manager with the <code class="docutils literal notranslate"><span class=
 <p>To retry all 4xx and 5xx errors for a specific operation:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retry ALL 4xx and 5xx status codes with custom settings</span>
 <span class="k">with</span> <span class="n">retry_on_http_error</span><span class="p">(</span><span class="n">settings</span><span class="o">=</span><span class="n">RetrySettings</span><span class="p">(</span><span class="n">max_attempts</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">exp_factor</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)):</span>
-    <span class="n">flows</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">flows</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Flow 1&#39;</span><span class="p">)</span>
+    <span class="n">flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">flows</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Flow 1&#39;</span><span class="p">)</span>
     <span class="n">project</span><span class="o">.</span><span class="n">delete_flow</span><span class="p">(</span><span class="n">flow</span><span class="o">=</span><span class="n">flow</span><span class="p">)</span>
 
 <span class="c1"># Retry ALL 4xx and 5xx status codes with default settings</span>
 <span class="k">with</span> <span class="n">retry_on_http_error</span><span class="p">():</span>
-    <span class="n">flows</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">flows</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Flow 2&#39;</span><span class="p">)</span>
+    <span class="n">flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">flows</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Flow 2&#39;</span><span class="p">)</span>
     <span class="n">project</span><span class="o">.</span><span class="n">delete_flow</span><span class="p">(</span><span class="n">flow</span><span class="o">=</span><span class="n">flow</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="disabling-retry-temporarily">
 <h3>Disabling Retry Temporarily<a class="headerlink" href="#disabling-retry-temporarily" title="Link to this heading">#</a></h3>
-<p>To disable retry for a specific operation, use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.retry.no_retry_on_http_error" title="ibm_watsonx_data_integration.common.retry.no_retry_on_http_error"><code class="xref py py-func docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.common.retry.no_retry_on_http_error()</span></code></a> context manager.</p>
+<p>To disable retries for a specific operation, use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.retry.no_retry_on_http_error" title="ibm_watsonx_data_integration.common.retry.no_retry_on_http_error"><code class="xref py py-func docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.common.retry.no_retry_on_http_error()</span></code></a> context manager.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.common.retry</span><span class="w"> </span><span class="kn">import</span> <span class="n">no_retry_on_http_error</span>
 
 <span class="c1"># Disable retry for this operation</span>
 <span class="k">with</span> <span class="n">no_retry_on_http_error</span><span class="p">():</span>
     <span class="n">group_to_delete</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">access_groups</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Access Group&#39;</span><span class="p">)</span>
-    <span class="n">pltaform</span><span class="o">.</span><span class="n">delete_access_group</span><span class="p">(</span><span class="n">access_group</span><span class="o">=</span><span class="n">group_to_delete</span><span class="p">)</span>   <span class="c1"># If HTTPError occurs this will fail immediately without retry.</span>
+    <span class="n">platform</span><span class="o">.</span><span class="n">delete_access_group</span><span class="p">(</span><span class="n">access_group</span><span class="o">=</span><span class="n">group_to_delete</span><span class="p">)</span>   <span class="c1"># If HTTPError occurs this will fail immediately without retry.</span>
 </pre></div>
 </div>
 </section>
@@ -606,7 +613,7 @@ context manager with the <code class="docutils literal notranslate"><span class=
 <section id="disabling-all-retries">
 <h3>Disabling All Retries<a class="headerlink" href="#disabling-all-retries" title="Link to this heading">#</a></h3>
 <p>To disable all HTTP retries globally, use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.common.retry.RetryConfig.disable" title="ibm_watsonx_data_integration.common.retry.RetryConfig.disable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration.common.retry.RetryConfig.disable()</span></code></a> method.
-This saves the current configuration so it can be restored later.</p>
+This saves the current configuration so that it can be restored later.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Disable all retries</span>
 <span class="n">RetryConfig</span><span class="o">.</span><span class="n">disable</span><span class="p">()</span>
 
@@ -692,8 +699,8 @@ This exception contains information about the retry attempts.</p>
 </section>
 <section id="thread-safety">
 <h2>Thread Safety<a class="headerlink" href="#thread-safety" title="Link to this heading">#</a></h2>
-<p>The retry configuration is thread-safe and can be used in multi-threaded applications. Each thread can have its own
-temporary override using context managers without affecting other threads.</p>
+<p>The retry configuration is thread-safe and can be used in multithreaded applications. Each thread can have its own
+temporary override by using context managers without affecting other threads.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">threading</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">worker_thread</span><span class="p">():</span>

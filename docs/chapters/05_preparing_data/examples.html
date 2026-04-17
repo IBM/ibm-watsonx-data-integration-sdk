@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Examples &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
+    <title>Examples &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=051bfb12"></script>
+    <script src="../../_static/documentation_options.js?v=db04a367"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -48,8 +48,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/05_preparing_data/examples';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Files" href="files.html" />
-    <link rel="prev" title="Connections" href="connections.html" />
+    <link rel="next" title="Access Control" href="../06_access_control/index.html" />
+    <link rel="prev" title="Files" href="files.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -195,10 +195,11 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Preparing Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 has-children"><a class="reference internal" href="batch/index.html">Batch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="batch/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batch/compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="batch/stages.html">Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batch/data_definitions.html">Data Definitions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="batch/subflows.html">Subflows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="batch/parameter_sets.html">Parameter Sets</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -208,8 +209,9 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="connections.html">Connections</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html">Parameter Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="files.html">Files</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -226,6 +228,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/roles.html">Roles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_access_control/aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/aws_access_control/users.html">Users</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_access_control/project_collaborators.html">Project Collaborators</a></li>
@@ -321,6 +328,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-running-a-batch-flow">Creating and Running a Batch Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-running-a-streaming-flow">Creating and Running a Streaming Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-streaming-flow-with-parameter-sets">Creating a Streaming Flow with Parameter Sets</a></li>
 </ul>
             </nav>
         </div>
@@ -334,13 +342,23 @@ document.write(`
                   
   <section id="examples">
 <span id="preparing-data-examples"></span><h1>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h1>
+<p>This section provides practical, end-to-end examples demonstrating how to create and run data integration flows using the SDK.
+Each example walks through the complete workflow, from authentication to job execution, helping you understand how different components work together in real-world scenarios.</p>
+<nav class="contents local" id="in-this-section">
+<p class="topic-title">In this section</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#creating-and-running-a-batch-flow" id="id1">Creating and Running a Batch Flow</a></p></li>
+<li><p><a class="reference internal" href="#creating-and-running-a-streaming-flow" id="id2">Creating and Running a Streaming Flow</a></p></li>
+<li><p><a class="reference internal" href="#creating-a-streaming-flow-with-parameter-sets" id="id3">Creating a Streaming Flow with Parameter Sets</a></p></li>
+</ul>
+</nav>
 <section id="creating-and-running-a-batch-flow">
-<span id="preparing-data-examples-batch-flow"></span><h2>Creating and Running a Batch Flow<a class="headerlink" href="#creating-and-running-a-batch-flow" title="Link to this heading">#</a></h2>
-<p>Here is an example of how to create and run a simple batch flow. The flow will contain a Row Generator stage connected to a Peek stage. Here is a picture of what the flow looks like in the UI.</p>
+<span id="preparing-data-examples-batch-flow"></span><h2><a class="toc-backref" href="#id1" role="doc-backlink">Creating and Running a Batch Flow</a><a class="headerlink" href="#creating-and-running-a-batch-flow" title="Link to this heading">#</a></h2>
+<p>Here is an example of how to create and run a simple batch flow. The flow contains a Row Generator stage connected to a Peek stage. The following image shows what the flow looks like in the UI.</p>
 <a class="reference internal image-reference" href="../../_images/rowgen_peek.png"><img alt="Screenshot of the Rowgen Peek flow." class="align-center" src="../../_images/rowgen_peek.png" style="width: 100%;" />
 </a>
 <dl class="simple">
-<dt>This example will cover 4 steps:</dt><dd><ul class="simple">
+<dt>This example covers four steps:</dt><dd><ul class="simple">
 <li><p>Set up authentication</p></li>
 <li><p>Create a new project</p></li>
 <li><p>Create and save a new flow</p></li>
@@ -352,12 +370,12 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration</span><span class="w"> </span><span class="kn">import</span> <span class="n">Platform</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.datastage</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
-<span class="c1"># 1.Set up authentication</span>
+<span class="c1"># 1. Set up authentication</span>
 <span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;API_KEY&#39;</span>
 <span class="n">auth</span> <span class="o">=</span> <span class="n">IAMAuthenticator</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">)</span>
 <span class="n">platform</span> <span class="o">=</span> <span class="n">Platform</span><span class="p">(</span><span class="n">auth</span><span class="p">,</span> <span class="n">base_api_url</span><span class="o">=</span><span class="s1">&#39;https://api.ca-tor.dai.cloud.ibm.com&#39;</span><span class="p">)</span>
 
-<span class="c1"># 2.Create a new project</span>
+<span class="c1"># 2. Create a new project</span>
 <span class="n">project</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">create_project</span><span class="p">(</span>
    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;My first project&#39;</span><span class="p">,</span>
    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Building sample batch flows&#39;</span><span class="p">,</span>
@@ -367,7 +385,7 @@ document.write(`
 <span class="p">)</span>
 <span class="n">project</span>
 
-<span class="c1"># 3.Create and save a new flow</span>
+<span class="c1"># 3. Create and save a new flow</span>
 <span class="c1"># Flow</span>
 <span class="n">flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span>
    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;RowGenPeek&#39;</span><span class="p">,</span>
@@ -381,23 +399,32 @@ document.write(`
 <span class="n">link_1</span> <span class="o">=</span> <span class="n">row_generator</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">peek</span><span class="p">)</span>
 <span class="n">link_1</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Link_1&#39;</span>
 <span class="n">row_generator_schema</span> <span class="o">=</span> <span class="n">link_1</span><span class="o">.</span><span class="n">create_schema</span><span class="p">()</span>
-<span class="n">row_generator_schema</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="s1">&#39;VARCHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;COLUMN_1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">row_generator_schema</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="s1">&#39;VARCHAR&#39;</span><span class="p">,</span> <span class="s1">&#39;COLUMN_1&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 
 <span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">flow</span><span class="p">)</span>
 
-<span class="c1"># 4.Run a job for the flow</span>
+<span class="c1"># 4. Run a job for the flow</span>
 <span class="n">row_gen_peek_job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;RowGenPeek_job&#39;</span><span class="p">,</span> <span class="n">flow</span><span class="o">=</span><span class="n">flow</span><span class="p">)</span>
 <span class="n">job_start</span> <span class="o">=</span> <span class="n">row_gen_peek_job</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;RowGenPeek_job_run&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="admonition note" id="preparing-data-examples-streaming-flow">
+<p class="admonition-title">Note</p>
+<p><strong>Important for all streaming flow examples:</strong> Before any streaming flow can be run, you must retrieve the installation command for the engine of the environment by calling the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.get_installation_command" title="ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.get_installation_command"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Environment.get_installation_command()</span></code></a> method.
+Then, replace the <code class="docutils literal notranslate"><span class="pre">SSET_API_KEY</span></code> variable in the command with your <code class="docutils literal notranslate"><span class="pre">api_key</span></code> and run the command.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Replace the returned command&#39;s SSET_API_KEY with your api_key, then run the command.</span>
+<span class="n">environment</span><span class="o">.</span><span class="n">get_installation_command</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
 </section>
 <section id="creating-and-running-a-streaming-flow">
-<span id="preparing-data-examples-streaming-flow"></span><h2>Creating and Running a Streaming Flow<a class="headerlink" href="#creating-and-running-a-streaming-flow" title="Link to this heading">#</a></h2>
-<p>Here is an example of how to create and run a simple streaming flow. The flow will contain a Dev Raw Data Source connected to a Trash stage. Here is a picture of what the flow looks like in the UI.</p>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Creating and Running a Streaming Flow</a><a class="headerlink" href="#creating-and-running-a-streaming-flow" title="Link to this heading">#</a></h2>
+<p>Here is an example of how to create and run a simple streaming flow. The flow contains a Dev Raw Data Source connected to a Trash stage. The following image shows what the flow looks like in the UI.</p>
 <a class="reference internal image-reference" href="../../_images/devtrash.png"><img alt="Screenshot of the Dev Raw Data Source Trash flow." class="align-center" src="../../_images/devtrash.png" style="width: 100%;" />
 </a>
 <dl class="simple">
-<dt>This example will cover 6 steps:</dt><dd><ul class="simple">
+<dt>This example covers six steps:</dt><dd><ul class="simple">
 <li><p>Set up authentication</p></li>
 <li><p>Create a new project</p></li>
 <li><p>Create a new environment</p></li>
@@ -411,12 +438,12 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration</span><span class="w"> </span><span class="kn">import</span> <span class="n">Platform</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.datastage</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 
-<span class="c1"># 1.Set up authentication</span>
+<span class="c1"># 1. Set up authentication</span>
 <span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;API_KEY&#39;</span>
 <span class="n">auth</span> <span class="o">=</span> <span class="n">IAMAuthenticator</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">)</span>
 <span class="n">platform</span> <span class="o">=</span> <span class="n">Platform</span><span class="p">(</span><span class="n">auth</span><span class="p">,</span> <span class="n">base_api_url</span><span class="o">=</span><span class="s1">&#39;https://api.ca-tor.dai.cloud.ibm.com&#39;</span><span class="p">)</span>
 
-<span class="c1"># 2.Create a new project</span>
+<span class="c1"># 2. Create a new project</span>
 <span class="n">project</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">create_project</span><span class="p">(</span>
    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;My first project&#39;</span><span class="p">,</span>
    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Building sample streaming flows&#39;</span><span class="p">,</span>
@@ -425,13 +452,13 @@ document.write(`
    <span class="n">project_type</span><span class="o">=</span><span class="s1">&#39;wx&#39;</span>
 <span class="p">)</span>
 
-<span class="c1"># 3.Create a new environment</span>
+<span class="c1"># 3. Create a new environment</span>
 <span class="n">environment</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_environment</span><span class="p">(</span>
      <span class="n">name</span><span class="o">=</span><span class="s1">&#39;My first environment&#39;</span><span class="p">,</span>
      <span class="n">engine_version</span><span class="o">=</span><span class="n">platform</span><span class="o">.</span><span class="n">available_engine_versions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
  <span class="p">)</span>
 
-<span class="c1"># 4.Create and save a new flow</span>
+<span class="c1"># 4. Create and save a new flow</span>
 <span class="c1"># Flow</span>
 <span class="n">flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span>
    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;DevRawDataSourceTrash&#39;</span><span class="p">,</span>
@@ -447,15 +474,90 @@ document.write(`
 
 <span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">flow</span><span class="p">)</span>
 
-<span class="c1"># 5.Run a job for the flow</span>
+<span class="c1"># 5. Run a job for the flow</span>
 <span class="n">dev_trash_job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;DevRawDataSourceTrash_job&#39;</span><span class="p">,</span> <span class="n">flow</span><span class="o">=</span><span class="n">flow</span><span class="p">)</span>
 <span class="n">job_start</span> <span class="o">=</span> <span class="n">dev_trash_job</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;DevRawDataSourceTrash_job_run&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Before this flow can be run there is one more step. You must retrieve the installation command for the engine of the environment by calling the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.get_installation_command" title="ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.get_installation_command"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Environment.get_installation_command()</span></code></a> method.
-Then, replace the <code class="docutils literal notranslate"><span class="pre">SSET_API_KEY</span></code> variable in the command with your <code class="docutils literal notranslate"><span class="pre">api_key</span></code> and run the command.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Replace the returned command&#39;s SSET_API_KEY with your api_key and then run the command.</span>
-<span class="n">environment</span><span class="o">.</span><span class="n">get_installation_command</span><span class="p">()</span>
+</section>
+<section id="creating-a-streaming-flow-with-parameter-sets">
+<span id="preparing-data-examples-streaming-flow-with-parameter-sets"></span><h2><a class="toc-backref" href="#id3" role="doc-backlink">Creating a Streaming Flow with Parameter Sets</a><a class="headerlink" href="#creating-a-streaming-flow-with-parameter-sets" title="Link to this heading">#</a></h2>
+<p>Here is an example of how to create a streaming flow that uses parameter sets to make the flow more flexible and reusable. The flow contains a Dev Raw Data Source connected to a Delay stage, which is then connected to a Trash stage. The Dev Raw Data Source stage is configured using multiple parameters from a parameter set.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Parameter sets make your flows more flexible by allowing you to change configuration values without modifying the flow itself.
+For more information about parameter sets, see <a class="reference internal" href="parameter_sets.html#preparing-data-parameter-sets"><span class="std std-ref">Parameter Sets</span></a>.</p>
+</div>
+<dl class="simple">
+<dt>This example covers seven steps:</dt><dd><ul class="simple">
+<li><p>Set up authentication</p></li>
+<li><p>Retrieve an existing project</p></li>
+<li><p>Create a parameter set with multiple parameters</p></li>
+<li><p>Create a new environment</p></li>
+<li><p>Create and save a new flow with a parameter set</p></li>
+<li><p>Configure stages using multiple parameters</p></li>
+<li><p>Create and run a job for the flow</p></li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.common.auth</span><span class="w"> </span><span class="kn">import</span> <span class="n">IAMAuthenticator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration</span><span class="w"> </span><span class="kn">import</span> <span class="n">Platform</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.cpd_models.parameter_set_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">ParameterType</span>
+
+<span class="c1"># 1. Set up authentication</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;API_KEY&#39;</span>
+<span class="n">auth</span> <span class="o">=</span> <span class="n">IAMAuthenticator</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">)</span>
+<span class="n">platform</span> <span class="o">=</span> <span class="n">Platform</span><span class="p">(</span><span class="n">auth</span><span class="p">,</span> <span class="n">base_api_url</span><span class="o">=</span><span class="s1">&#39;https://api.ca-tor.dai.cloud.ibm.com&#39;</span><span class="p">)</span>
+
+<span class="c1"># 2. Retrieve an existing project</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">projects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;My first project&#39;</span><span class="p">)</span>
+
+<span class="c1"># 3. Create a parameter set with multiple parameters</span>
+<span class="n">paramset</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_parameter_set</span><span class="p">(</span><span class="s1">&#39;streaming_config&#39;</span><span class="p">)</span>
+<span class="n">paramset</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="n">parameter_type</span><span class="o">=</span><span class="n">ParameterType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;data_format&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;JSON&#39;</span><span class="p">)</span>
+<span class="n">paramset</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="n">parameter_type</span><span class="o">=</span><span class="n">ParameterType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;number_of_threads&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+<span class="n">paramset</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="n">parameter_type</span><span class="o">=</span><span class="n">ParameterType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;stop_after_first_batch&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;false&#39;</span><span class="p">)</span>
+<span class="n">project</span><span class="o">.</span><span class="n">update_parameter_set</span><span class="p">(</span><span class="n">paramset</span><span class="p">)</span>
+
+<span class="c1"># 4. Create a new environment</span>
+<span class="n">environment</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_environment</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;My parameter set environment&#39;</span><span class="p">,</span>
+    <span class="n">engine_version</span><span class="o">=</span><span class="n">platform</span><span class="o">.</span><span class="n">available_engine_versions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="c1"># 5. Create and save a new flow with parameter set</span>
+<span class="n">flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;DevDelayTrash&#39;</span><span class="p">,</span>
+    <span class="n">environment</span><span class="o">=</span><span class="n">environment</span><span class="p">,</span>
+    <span class="n">flow_type</span><span class="o">=</span><span class="s1">&#39;streaming&#39;</span>
+<span class="p">)</span>
+<span class="n">dev</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Dev Raw Data Source&#39;</span><span class="p">)</span>
+<span class="n">delay</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Delay&#39;</span><span class="p">)</span>
+<span class="n">trash</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>
+<span class="n">dev</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+<span class="n">delay</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">trash</span><span class="p">)</span>
+
+<span class="c1"># 6. Configure stages using multiple parameters</span>
+<span class="n">flow</span><span class="o">.</span><span class="n">use_parameter_set</span><span class="p">(</span><span class="n">paramset</span><span class="p">)</span>
+<span class="n">dev</span><span class="o">.</span><span class="n">data_format</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="si">{streaming_config__data_format}</span><span class="s1">&#39;</span>
+<span class="n">dev</span><span class="o">.</span><span class="n">number_of_threads</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="si">{streaming_config__number_of_threads}</span><span class="s1">&#39;</span>
+<span class="n">dev</span><span class="o">.</span><span class="n">stop_after_first_batch</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="si">{streaming_config__stop_after_first_batch}</span><span class="s1">&#39;</span>
+<span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">flow</span><span class="p">)</span>
+
+<span class="c1"># 7. Create and run a job for the flow</span>
+<span class="n">dev_delay_job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;DevDelayTrash_job&#39;</span><span class="p">,</span> <span class="n">flow</span><span class="o">=</span><span class="n">flow</span><span class="p">)</span>
+<span class="n">job_start</span> <span class="o">=</span> <span class="n">dev_delay_job</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;DevDelayTrash_job_run&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Override parameters at job run level (applies only to this specific run)</span>
+<span class="n">job_start_custom</span> <span class="o">=</span> <span class="n">dev_delay_job</span><span class="o">.</span><span class="n">start</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;DevDelayTrash_job_run_custom&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">runtime_parameters</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;streaming_config.data_format&#39;</span><span class="p">:</span> <span class="s1">&#39;TEXT&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;streaming_config.number_of_threads&#39;</span><span class="p">:</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;streaming_config.stop_after_first_batch&#39;</span><span class="p">:</span> <span class="s1">&#39;true&#39;</span>
+    <span class="p">}</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -473,20 +575,20 @@ Then, replace the <code class="docutils literal notranslate"><span class="pre">S
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="connections.html"
+       href="files.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Connections</p>
+        <p class="prev-next-title">Files</p>
       </div>
     </a>
     <a class="right-next"
-       href="files.html"
+       href="../06_access_control/index.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Files</p>
+        <p class="prev-next-title">Access Control</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -508,6 +610,7 @@ Then, replace the <code class="docutils literal notranslate"><span class="pre">S
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-running-a-batch-flow">Creating and Running a Batch Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-running-a-streaming-flow">Creating and Running a Streaming Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-streaming-flow-with-parameter-sets">Creating a Streaming Flow with Parameter Sets</a></li>
 </ul>
   </nav></div>
 

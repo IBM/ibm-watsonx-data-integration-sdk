@@ -11,9 +11,9 @@ For connections, you can use the
 Example usage
 ~~~~~~~~~~~~~
 
-The example below demonstrates how to regenerate Python SDK code from
+The example below demonstrates how to regenerate Python SDK code from a
 :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.Connection`
-class fetched directly from a project.
+object fetched directly from a project.
 
 .. code-block:: python
 
@@ -35,11 +35,38 @@ class fetched directly from a project.
     >>> generator.save()
     PosixPath('/tmp/output.py')
 
+Generating Jupyter Notebooks
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can also generate code as a Jupyter notebook instead of a Python script. The notebook organizes the code into logical cells:
+
+- **Imports**: All required imports
+- **Authentication**: Setting up the authenticator
+- **Platform Setup**: Creating the Platform instance
+- **Project Setup**: Getting or creating the project
+- **Connection Creation**: Creating the connection with all properties
+
+.. code-block:: python
+
+    >>> from ibm_watsonx_data_integration.codegen.generator import PythonGenerator, PythonGeneratorFormat
+    >>>
+    >>> # Generate as Jupyter notebook
+    >>> generator = PythonGenerator(
+    ...     source=connection,
+    ...     destination='/tmp/output.ipynb',
+    ...     auth=auth,  # pragma: allowlist secret
+    ...     base_api_url='https://api.ca-tor.dai.cloud.ibm.com',
+    ...     output_format=PythonGeneratorFormat.NOTEBOOK
+    ... )
+    >>> generator.save()
+    PosixPath('/tmp/output.ipynb')
+
+The generated notebook can be opened in JupyterLab, Jupyter Notebook, or any compatible notebook environment.
 
 Example Output
 ~~~~~~~~~~~~~~
 
-The following is an example of the output saved to ``/tmp/output.py``
+The following is an example of the output saved to ``/tmp/output.py``:
 
 .. skip: start
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Connections &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
+    <title>Connections &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=051bfb12"></script>
+    <script src="../../_static/documentation_options.js?v=db04a367"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -48,7 +48,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/05_preparing_data/connections';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="next" title="Parameter Sets" href="parameter_sets.html" />
     <link rel="prev" title="Datasource Type" href="datasources.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -195,10 +195,11 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Preparing Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 has-children"><a class="reference internal" href="batch/index.html">Batch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="batch/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batch/compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="batch/stages.html">Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batch/data_definitions.html">Data Definitions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="batch/subflows.html">Subflows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="batch/parameter_sets.html">Parameter Sets</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -208,8 +209,9 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="datasources.html">Datasource Type</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html">Parameter Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -226,6 +228,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/roles.html">Roles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_access_control/aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/aws_access_control/users.html">Users</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_access_control/project_collaborators.html">Project Collaborators</a></li>
@@ -322,7 +329,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-connection">Creating a Connection</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-an-existing-connection">Retrieving an existing Connection</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-connection">Updating a Connection</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-connection-batch-only">Using a Connection (Batch Only)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-connection">Using a Connection</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-local-connection-batch-only">Using a local Connection (Batch Only)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-connection">Deleting a Connection</a></li>
 </ul>
@@ -338,7 +345,7 @@ document.write(`
                   
   <section id="connections">
 <span id="preparing-data-connections"></span><h1>Connections<a class="headerlink" href="#connections" title="Link to this heading">#</a></h1>
-<p>A connection is an object that is used to store connection related data for a single datasource (Kafka, Azure, etc.) like credentials, secrets and urls.
+<p>A connection is an object used to store connection-related data for a single datasource (Kafka, Azure, etc.), such as credentials, secrets, and URLs.
 Each connection is defined by exactly one datasource.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -361,7 +368,7 @@ Each connection is defined by exactly one datasource.</p>
 </a>
 <a class="reference internal image-reference" href="../../_images/create_connection2.png"><img alt="Screenshot of the Connection creation in the UI - Step 2" class="align-center" src="../../_images/create_connection2.png" style="width: 100%;" />
 </a>
-<p>You will need to choose the desired <strong>datasource</strong> from the list</p>
+<p>You will need to choose the desired <strong>datasource</strong> from the list.</p>
 <a class="reference internal image-reference" href="../../_images/create_connection3.png"><img alt="Screenshot of the Connection creation in the UI - Step 3" class="align-center" src="../../_images/create_connection3.png" style="width: 100%;" />
 </a>
 <p>and provide a <strong>Name</strong> and other additional configuration (depending on the selected datasource).</p>
@@ -371,15 +378,15 @@ Each connection is defined by exactly one datasource.</p>
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a>,
 by selecting the appropriate project from the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform" title="ibm_watsonx_data_integration.platform.Platform"><code class="xref py py-class docutils literal notranslate"><span class="pre">Platform</span></code></a> and then using
 the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.create_connection" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.create_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.create_connection()</span></code></a> method to instantiate the connection.</p>
-<p>You must provide a <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">datasource</span></code> type to create a connection.
-<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType" title="ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasourceType</span></code></a> is an object defining the data source for which the connection will be created.</p>
-<p>By default before creating any connection, server will validate it.
-If the connection cannot be established with provided parameters, you will get an error and connection will not be saved.
-To skip validation and create connection anyway set <code class="docutils literal notranslate"><span class="pre">test</span></code> parameter of
+<p>You must provide a <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">datasource_type</span></code> to create a connection.
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType" title="ibm_watsonx_data_integration.cpd_models.connections_model.DatasourceType"><code class="xref py py-class docutils literal notranslate"><span class="pre">DatasourceType</span></code></a> is an object that defines the data source for which the connection will be created.</p>
+<p>By default, the server validates a connection before creating it.
+If the connection cannot be established with the provided parameters, you will get an error and the connection will not be saved.
+To skip validation and create the connection anyway, set the <code class="docutils literal notranslate"><span class="pre">test</span></code> parameter of
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.create_connection" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.create_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.create_connection()</span></code></a> to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>To get available datasources see: <a class="reference internal" href="datasources.html#preparing-data-datasources-retrieving-a-datasourcetype"><span class="std std-ref">Retrieving a DatasourceType</span></a>.</p>
+<p>To see available datasources, refer to <a class="reference internal" href="datasources.html#preparing-data-datasources-retrieving-a-datasourcetype"><span class="std std-ref">Retrieving a DatasourceType</span></a>.</p>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">datasource_type</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">datasources</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;http&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">connection</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span>
@@ -394,21 +401,29 @@ To skip validation and create connection anyway set <code class="docutils litera
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>Each datasource_type defines its own set of required properties.</p>
-<p>To get list of available properties see: <a class="reference internal" href="datasources.html#preparing-data-datasources-retrieving-a-datasourcetype-connection-properties"><span class="std std-ref">Retrieving a DatasourceType connection properties</span></a>.</p>
+<p>Each <code class="docutils literal notranslate"><span class="pre">datasource_type</span></code> defines its own set of required properties.</p>
+<p>To see the list of available properties, refer to <a class="reference internal" href="datasources.html#preparing-data-datasources-retrieving-a-datasourcetype-connection-properties"><span class="std std-ref">Retrieving a DatasourceType connection properties</span></a>.</p>
 </div>
 </section>
 <section id="retrieving-an-existing-connection">
 <span id="preparing-data-connections-retrieving-an-existing-connection"></span><h2>Retrieving an existing Connection<a class="headerlink" href="#retrieving-an-existing-connection" title="Link to this heading">#</a></h2>
-<p>In the UI, you can get all Connections by navigating to <strong>Assets -&gt; Data access -&gt; Connections</strong>.</p>
+<p>In the UI, you can view all Connections by navigating to <strong>Assets -&gt; Data access -&gt; Connections</strong>.</p>
 <a class="reference internal image-reference" href="../../_images/get_connections.png"><img alt="Screenshot of the Connection listing in the UI" class="align-center" src="../../_images/get_connections.png" style="width: 100%;" />
 </a>
-<p>In the SDK, a Connection can be retrieved using <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.connections" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.connections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project.connections</span></code></a> property.
-You can also filter the connections returned based on attributes including
-<code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">context</span></code>, <code class="docutils literal notranslate"><span class="pre">properties</span></code> and <code class="docutils literal notranslate"><span class="pre">datasource_type</span></code>.</p>
+<p>In the SDK, a Connection can be retrieved using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.connections" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.connections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project.connections</span></code></a> property.
+You can also filter the returned connections based on attributes including
+<code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">connection_id</span></code>, <code class="docutils literal notranslate"><span class="pre">context</span></code>, <code class="docutils literal notranslate"><span class="pre">properties</span></code>, and <code class="docutils literal notranslate"><span class="pre">datasource_type</span></code>.</p>
 <p>This property returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.connections_model.Connections" title="ibm_watsonx_data_integration.cpd_models.connections_model.Connections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Connections</span></code></a> object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Returns the first connection matching given `name`</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Connection Name&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">connection</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Connection Name&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">connection</span>
+<span class="go">Connection(name=&#39;Connection Name&#39;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get the connection id</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">connection_id</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">connection_id</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Returns a connection by its connection_id</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">connection_id</span><span class="o">=</span><span class="n">connection_id</span><span class="p">)</span>
 <span class="go">Connection(name=&#39;Connection Name&#39;)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Return a list of all connections that match `properties`</span>
@@ -424,19 +439,19 @@ You can also filter the connections returned based on attributes including
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>For detailed information about parameters and values refer to <a class="reference external" href="https://cloud.ibm.com/apidocs/data-ai-common-core#listconnections">https://cloud.ibm.com/apidocs/data-ai-common-core#listconnections</a>.</p>
+<p>For detailed information about parameters and values refer to <a class="reference external" href="https://cloud.ibm.com/apidocs/data-ai-common-core">https://cloud.ibm.com/apidocs/data-ai-common-core</a> <strong>Connections</strong> section.</p>
 </div>
 </section>
 <section id="updating-a-connection">
 <span id="preparing-data-connections-updating-a-connection"></span><h2>Updating a Connection<a class="headerlink" href="#updating-a-connection" title="Link to this heading">#</a></h2>
 <p>In the UI, you can update a Connection by navigating to <strong>Assets -&gt; Data access -&gt; Connections</strong> and clicking the edit button on the Connection you want to edit.
-This button is visible only when cursor is over the Connection object.</p>
+This button is visible only when the cursor is over the Connection object.</p>
 <a class="reference internal image-reference" href="../../_images/update_connection.png"><img alt="Screenshot of the Connection updating in the UI" class="align-center" src="../../_images/update_connection.png" style="width: 100%;" />
 </a>
-<p>To update a connection in the SDK, we first modify properties of the connection and then
+<p>To update a connection in the SDK, first modify the properties of the connection and then
 pass the instance to the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_connection" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_connection()</span></code></a> method.</p>
 <p>This method returns an HTTP response indicating the status of the update operation.</p>
-<p>Similar to <a class="reference internal" href="#preparing-data-connections-creating-a-connection"><span class="std std-ref">Creating a Connection</span></a> you can skip the validation by setting <code class="docutils literal notranslate"><span class="pre">test</span></code> parameter of
+<p>Similar to <a class="reference internal" href="#preparing-data-connections-creating-a-connection"><span class="std std-ref">Creating a Connection</span></a>, you can skip validation by setting the <code class="docutils literal notranslate"><span class="pre">test</span></code> parameter of
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_connection" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_connection()</span></code></a> to <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">connection</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;New Connection Name&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_connection</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span>
@@ -446,28 +461,39 @@ pass the instance to the <a class="reference internal" href="../../api/models.ht
 </pre></div>
 </div>
 </section>
-<section id="using-a-connection-batch-only">
-<span id="preparing-data-connections-using-a-connection"></span><h2>Using a Connection (Batch Only)<a class="headerlink" href="#using-a-connection-batch-only" title="Link to this heading">#</a></h2>
-<p>In the UI, you can use a Connection in a flow by adding a connector stage and choosing the Connection in the view connection property.</p>
-<a class="reference internal image-reference" href="../../_images/use_connection.png"><img alt="Screenshot of the Connection usage in the UI" class="align-center" src="../../_images/use_connection.png" style="width: 100%;" />
+<section id="using-a-connection">
+<span id="preparing-data-connections-using-a-connection"></span><h2>Using a Connection<a class="headerlink" href="#using-a-connection" title="Link to this heading">#</a></h2>
+<p>In the UI, you can use a Connection in a flow by adding a stage that takes a Connection and choosing the Connection in the view connection or connection property.
+For batch flows, this would be any connector stage.</p>
+<a class="reference internal image-reference" href="../../_images/use_connection_batch.png"><img alt="Screenshot of the batch Connection usage in the UI" class="align-center" src="../../_images/use_connection_batch.png" style="width: 100%;" />
 </a>
-<p>In the SDK to use a Connection instance you can pass it to the <code class="docutils literal notranslate"><span class="pre">use_connection</span></code> method of the connector stage.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;New flow&#39;</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flow_type</span><span class="o">=</span><span class="s1">&#39;batch&#39;</span><span class="p">)</span>
+<p>For streaming flows, this would be select source and target stages.</p>
+<a class="reference internal image-reference" href="../../_images/use_connection_streaming.png"><img alt="Screenshot of the streaming Connection usage in the UI" class="align-center" src="../../_images/use_connection_streaming.png" style="width: 100%;" />
+</a>
+<p>In the SDK, to use a Connection instance for batch flows, you can pass it to the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.use_connection" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.use_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StageNode.use_connection()</span></code></a> method of the connector stage.
+To use a Connection instance for streaming flows, you can pass it to the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.use_connection" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stage.use_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Stage.use_connection()</span></code></a> method of the target or destination stage.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Batch Flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;New flow&#39;</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">flow_type</span><span class="o">=</span><span class="s1">&#39;batch&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">connection</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;New Connection Name&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">connection</span> 
 <span class="go">Connection(name=&#39;New Connection Name&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">http</span> <span class="o">=</span> <span class="n">new_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;HTTP&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;HTTP_Stage_1&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">http</span><span class="o">.</span><span class="n">use_connection</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Streaming Flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">connection_to_use</span>
+<span class="go">Connection(name=&#39;dummy_connection ...&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">origin</span> <span class="o">=</span> <span class="n">flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;JDBC Query Consumer&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">origin</span><span class="o">.</span><span class="n">use_connection</span><span class="p">(</span><span class="n">connection_to_use</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="using-a-local-connection-batch-only">
 <span id="preparing-data-connections-using-a-local-connection"></span><h2>Using a local Connection (Batch Only)<a class="headerlink" href="#using-a-local-connection-batch-only" title="Link to this heading">#</a></h2>
-<p>An alternate way to use a connector stage is by putting connection parameters directly into the stage’s properties. In the UI this can be done under the Connection details section of the stage.</p>
-<p>If you are already <a class="reference internal" href="#preparing-data-connections-using-a-connection"><span class="std std-ref">Using a Connection</span></a> the Connection details section will not be visible.</p>
+<p>An alternative way to use a connector stage is to put connection parameters directly into the stage’s properties. In the UI, this can be done under the <strong>Connection details</strong> section of the stage.</p>
+<p>If you are already <a class="reference internal" href="#preparing-data-connections-using-a-connection"><span class="std std-ref">Using a Connection</span></a>, the <strong>Connection details</strong> section will not be visible.</p>
 <a class="reference internal image-reference" href="../../_images/use_local_connection.png"><img alt="Screenshot of the Local Connection usage in the UI" class="align-center" src="../../_images/use_local_connection.png" style="width: 100%;" />
 </a>
-<p>In the SDK each connector stage’s configuration has a connection property. To use a local connection you can directly edit the desired fields of this connection property.</p>
+<p>In the SDK, each connector stage’s configuration has a connection property. To use a local connection, you can directly edit the desired fields of this connection property.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">http</span> <span class="o">=</span> <span class="n">new_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;HTTP&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;HTTP_Stage_1&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">http</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;yoururl.com&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">http</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">ssl_certificate</span> <span class="o">=</span> <span class="s1">&#39;yoursslcertificate&#39;</span>
@@ -479,7 +505,7 @@ pass the instance to the <a class="reference internal" href="../../api/models.ht
 <p>In the UI, you can delete an existing Connection by navigating to the <strong>Assets -&gt; Data access -&gt; Connections</strong>.</p>
 <a class="reference internal image-reference" href="../../_images/delete_connection.png"><img alt="Screenshot of the Connection deletion in the UI" class="align-center" src="../../_images/delete_connection.png" style="width: 100%;" />
 </a>
-<p>In the SDK to delete a connection instance you can pass it to <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_connection" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_connection()</span></code></a> method.</p>
+<p>In the SDK, to delete a connection instance, you can pass it to the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_connection" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_connection()</span></code></a> method.</p>
 <p>This method returns an HTTP response indicating the status of the delete operation.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">delete_connection</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span>
 <span class="go">&lt;Response [204]&gt;</span>
@@ -509,11 +535,11 @@ pass the instance to the <a class="reference internal" href="../../api/models.ht
       </div>
     </a>
     <a class="right-next"
-       href="examples.html"
+       href="parameter_sets.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Examples</p>
+        <p class="prev-next-title">Parameter Sets</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -536,7 +562,7 @@ pass the instance to the <a class="reference internal" href="../../api/models.ht
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-connection">Creating a Connection</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-an-existing-connection">Retrieving an existing Connection</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-connection">Updating a Connection</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-connection-batch-only">Using a Connection (Batch Only)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-connection">Using a Connection</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-local-connection-batch-only">Using a local Connection (Batch Only)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-connection">Deleting a Connection</a></li>
 </ul>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Stages &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
+    <title>Stages &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=051bfb12"></script>
+    <script src="../../../_static/documentation_options.js?v=db04a367"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -49,7 +49,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Schemas" href="batch_schemas.html" />
-    <link rel="prev" title="Flows" href="flows.html" />
+    <link rel="prev" title="Compilation Modes" href="compilation_mode.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -195,10 +195,11 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Preparing Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Batch</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_definitions.html">Data Definitions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="subflows.html">Subflows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="parameter_sets.html">Parameter Sets</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -208,8 +209,9 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../connections.html">Connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parameter_sets.html">Parameter Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -226,6 +228,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/roles.html">Roles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/aws_access_control/users.html">Users</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../06_access_control/project_collaborators.html">Project Collaborators</a></li>
@@ -319,12 +326,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-and-retreiving-stages-in-a-flow">Listing and retreiving Stages in a Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-and-retrieving-stages-in-a-flow">Listing and Retrieving Stages in a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-stage-to-a-flow">Adding a Stage to a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-a-stage-from-a-flow">Remove a Stage from a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-all-links-connected-to-a-stage">Listing all Links connected to a Stage</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-stages">Connecting Stages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-a-stage-s-configuration">Editing a Stage’s Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-comments-and-annotations">Adding Comments and Annotations</a></li>
 </ul>
             </nav>
         </div>
@@ -338,31 +346,31 @@ document.write(`
                   
   <section id="stages">
 <span id="preparing-data-batch-stages"></span><h1>Stages<a class="headerlink" href="#stages" title="Link to this heading">#</a></h1>
-<p>A stage is a part of a flow responsible for processing the flow’s data in a single, simple way.
-By connecting multiple stages together, you can perform complex tasks.</p>
+<p>A stage is a part of a flow that is responsible for processing the flow’s data in a single, simple way.
+By connecting multiple stages together, you can perform more complex tasks.</p>
 <dl class="simple">
-<dt>The SDK provides many ways to interact between a flow and its stages:</dt><dd><ul class="simple">
+<dt>The SDK provides many ways to interact with a flow and its stages:</dt><dd><ul class="simple">
 <li><p>Adding a stage to a flow</p></li>
 <li><p>Connecting stages</p></li>
 <li><p>Editing a stage’s configuration</p></li>
 </ul>
 </dd>
 </dl>
-<section id="listing-and-retreiving-stages-in-a-flow">
-<span id="preparing-data-batch-listing-stages-in-flow"></span><h2>Listing and retreiving Stages in a Flow<a class="headerlink" href="#listing-and-retreiving-stages-in-a-flow" title="Link to this heading">#</a></h2>
+<section id="listing-and-retrieving-stages-in-a-flow">
+<span id="preparing-data-batch-listing-stages-in-flow"></span><h2>Listing and Retrieving Stages in a Flow<a class="headerlink" href="#listing-and-retrieving-stages-in-a-flow" title="Link to this heading">#</a></h2>
 <p>To list all the stages in a flow, you can use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.stages" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.stages"><code class="xref py py-attr docutils literal notranslate"><span class="pre">BatchFlow.stages</span></code></a> property. This returns a <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code> of <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">StageNode</span></code></a> instances.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">batch_flow</span><span class="o">.</span><span class="n">stages</span>
-<span class="go">[RowGeneratorStage(label=&#39;Row_Generator&#39;), PeekStage(label=&#39;Peek&#39;), RowGeneratorStage(label=&#39;Row_Generator_2&#39;), PeekStage(label=&#39;Peek_2&#39;), GoogleBigqueryStage(label=&#39;BigQuery&#39;)]</span>
+<span class="go">[RowGeneratorStage(label=&#39;Row_Generator&#39;), PeekStage(label=&#39;Peek&#39;), RowGeneratorStage(label=&#39;Row_Generator_2&#39;), PeekStage(label=&#39;Peek_2&#39;)]</span>
 </pre></div>
 </div>
-<p>If you wish to filter these stages using arguments you can use the <code class="xref py py-meth docutils literal notranslate"><span class="pre">Stages.get_all()</span></code> method.
-These arguments can be any of the fields found in the configurations of the stages you want, such as the <code class="docutils literal notranslate"><span class="pre">type</span></code> of the stage or the <code class="docutils literal notranslate"><span class="pre">output_count</span></code> of the stage.</p>
+<p>If you want to filter these stages using arguments, you can use the <code class="xref py py-meth docutils literal notranslate"><span class="pre">Stages.get_all()</span></code> method.
+These arguments can be any of the fields found in the configurations of the stages you want, such as the stage <code class="docutils literal notranslate"><span class="pre">type</span></code> or <code class="docutils literal notranslate"><span class="pre">output_count</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">batch_flow</span><span class="o">.</span><span class="n">stages</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Row Generator&quot;</span><span class="p">)</span>
 <span class="go">[RowGeneratorStage(label=&#39;Row_Generator&#39;), RowGeneratorStage(label=&#39;Row_Generator_2&#39;)]</span>
 </pre></div>
 </div>
-<p>Finally, to retreive a specific stage from a flow use the <code class="xref py py-meth docutils literal notranslate"><span class="pre">Stages.get()</span></code> method.
-The <code class="docutils literal notranslate"><span class="pre">label</span></code> of a stage is a unique identifier so you can pass this value in to find the desired stage.</p>
+<p>Finally, to retrieve a specific stage from a flow, use the <code class="xref py py-meth docutils literal notranslate"><span class="pre">Stages.get()</span></code> method.
+The <code class="docutils literal notranslate"><span class="pre">label</span></code> of a stage is a unique identifier, so you can pass this value to find the desired stage.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">batch_flow</span><span class="o">.</span><span class="n">stages</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Row_Generator&quot;</span><span class="p">)</span>
 <span class="go">RowGeneratorStage(label=&#39;Row_Generator&#39;)</span>
 </pre></div>
@@ -370,40 +378,56 @@ The <code class="docutils literal notranslate"><span class="pre">label</span></c
 </section>
 <section id="adding-a-stage-to-a-flow">
 <span id="preparing-data-batch-add-stage-to-flow"></span><h2>Adding a Stage to a Flow<a class="headerlink" href="#adding-a-stage-to-a-flow" title="Link to this heading">#</a></h2>
-<p>To add stages to a flow in the UI, you can open the dropdown menu on the left of the flow edit page and select the stage you want to add.</p>
+<p>To add stages to a flow in the UI, open the dropdown menu on the left side of the flow edit page and select the stage you want to add.</p>
 <a class="reference internal image-reference" href="../../../_images/add_batch_stage.png"><img alt="Screenshot for adding a stage." class="align-center" src="../../../_images/add_batch_stage.png" style="width: 40%;" />
 </a>
 <p>In the SDK, you can use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.add_stage" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.add_stage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchFlow.add_stage()</span></code></a> method.
-This method takes in the stage’s official <code class="docutils literal notranslate"><span class="pre">type</span></code> and the <code class="docutils literal notranslate"><span class="pre">label</span></code> for that stage. The <code class="docutils literal notranslate"><span class="pre">type</span></code> is the unique identifier for that stage and the <code class="docutils literal notranslate"><span class="pre">label</span></code> is the name you wish to give it.</p>
+This method takes the stage’s official <code class="docutils literal notranslate"><span class="pre">type</span></code> and its <code class="docutils literal notranslate"><span class="pre">label</span></code>. The <code class="docutils literal notranslate"><span class="pre">type</span></code> is the unique identifier for that stage, and the <code class="docutils literal notranslate"><span class="pre">label</span></code> is the name you want to give it.</p>
 <p>This method returns the newly created stage.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">amazon_rds</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="nb">type</span> <span class="o">=</span> <span class="s1">&#39;Amazon RDS for PostgreSQL&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Amazon RDS&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">amazon_rds</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Amazon RDS for PostgreSQL&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Amazon RDS&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">batch_flow</span><span class="p">)</span>
 <span class="go">&lt;Response [201]&gt;</span>
 </pre></div>
 </div>
 <p>You can find a list of all unique identifiers here: <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.add_stage" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.add_stage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchFlow.add_stage()</span></code></a></p>
+<p><strong>Alternative: Using BatchStageInfo</strong></p>
+<p>You can also add stages using a <code class="xref py py-class docutils literal notranslate"><span class="pre">BatchStageInfo</span></code> object from the <code class="xref py py-attr docutils literal notranslate"><span class="pre">BatchFlow.available_stages</span></code> property.
+This approach is useful when you want to discover and add stages programmatically.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get available stages</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">available_stages</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">available_stages</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Find a specific stage by name</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">postgres_stage_info</span> <span class="o">=</span> <span class="n">available_stages</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Amazon RDS for PostgreSQL&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Add the stage using stage_info</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">amazon_rds</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="n">stage_info</span><span class="o">=</span><span class="n">postgres_stage_info</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Amazon RDS&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">batch_flow</span><span class="p">)</span>
+<span class="go">&lt;Response [201]&gt;</span>
+</pre></div>
+</div>
+<p>This approach provides better type safety and allows you to explore available stages before adding them to your flow.</p>
 </section>
 <section id="remove-a-stage-from-a-flow">
 <span id="preparing-data-batch-remove-stage-from-flow"></span><h2>Remove a Stage from a Flow<a class="headerlink" href="#remove-a-stage-from-a-flow" title="Link to this heading">#</a></h2>
-<p>In the UI, you can click on the three dots at the top right of the stage and click on the delete button from the menu.</p>
+<p>In the UI, you can click the three dots at the top right of the stage and then click the delete button in the menu.</p>
 <a class="reference internal image-reference" href="../../../_images/remove_batch_stage.png"><img alt="Screenshot for adding a stage." class="align-center" src="../../../_images/remove_batch_stage.png" style="width: 40%;" />
 </a>
 <p>In the SDK, you can remove a stage from a flow using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.remove_stage" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.remove_stage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchFlow.remove_stage()</span></code></a> method
-and passing an instance of <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">StageNode</span></code></a> to it.</p>
+and passing it an instance of <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">StageNode</span></code></a>.</p>
 <p>All stages connected to this stage will be disconnected by this action.</p>
 <p>This method does not return anything.</p>
-<p>After removing stages you need to call <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_flow" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_flow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_flow()</span></code></a> method to save the changes.</p>
+<p>After removing stages, you need to call the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_flow" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_flow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_flow()</span></code></a> method to save the changes.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">amazon_sqs_consumer</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">stages</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Amazon RDS&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">batch_flow</span><span class="o">.</span><span class="n">remove_stage</span><span class="p">(</span><span class="n">amazon_sqs_consumer</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">flow</span><span class="p">)</span>
-<span class="go">&lt;Response [200]&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">batch_flow</span><span class="p">)</span>
+<span class="go">&lt;Response [201]&gt;</span>
 </pre></div>
 </div>
 </section>
 <section id="listing-all-links-connected-to-a-stage">
 <span id="preparing-data-batch-listing-connected-links"></span><h2>Listing all Links connected to a Stage<a class="headerlink" href="#listing-all-links-connected-to-a-stage" title="Link to this heading">#</a></h2>
-<p>In the SDK, you can list all the links connected to a stage by using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.get_input_links" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.get_input_links"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StageNode.get_input_links()</span></code></a> and <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.get_output_links" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.get_output_links"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StageNode.get_output_links()</span></code></a> methods.
-Batch_flow currently has a <code class="docutils literal notranslate"><span class="pre">Row</span> <span class="pre">Generator</span> <span class="pre">Stage</span></code> connected to a <code class="docutils literal notranslate"><span class="pre">Peek</span> <span class="pre">Stage</span></code>.</p>
+<p>In the SDK, you can list all links connected to a stage by using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.get_input_links" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.get_input_links"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StageNode.get_input_links()</span></code></a> and <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.get_output_links" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.get_output_links"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StageNode.get_output_links()</span></code></a> methods.
+<code class="docutils literal notranslate"><span class="pre">batch_flow</span></code> currently has a <code class="docutils literal notranslate"><span class="pre">Row</span> <span class="pre">Generator</span></code> stage connected to a <code class="docutils literal notranslate"><span class="pre">Peek</span></code> stage.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Row_Generator_Stage</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">stages</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Row_Generator&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Row_Generator_Stage</span><span class="o">.</span><span class="n">get_output_links</span><span class="p">()</span>
 <span class="go">[Link_1 (src=&#39;Row_Generator&#39;, dest=&#39;Peek&#39;)]</span>
@@ -418,8 +442,8 @@ Batch_flow currently has a <code class="docutils literal notranslate"><span clas
 <p>In the UI, to connect stages, you can click on the output of a stage and drag it to another stage.</p>
 <a class="reference internal image-reference" href="../../../_images/connect_batch_stages.png"><img alt="Screenshot for connecting a stage." class="align-center" src="../../../_images/connect_batch_stages.png" style="width: 85%;" />
 </a>
-<p>In the SDK, to connect batch stages to each other we can use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.connect_output_to" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.connect_output_to"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Stage.connect_output_to()</span></code></a> method.
-This method connects two stages and returns the created link between them.</p>
+<p>In the SDK, you can connect batch stages by using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.connect_output_to" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.StageNode.connect_output_to"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Stage.connect_output_to()</span></code></a> method.
+This method connects two stages and returns the link created between them.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">row_gen</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Row Generator&#39;</span><span class="p">,</span> <span class="s1">&#39;Row_Generator&#39;</span><span class="p">)</span> <span class="c1"># a sample origin stage that generates data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">peek</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Peek&#39;</span><span class="p">,</span> <span class="s1">&#39;Peek&#39;</span><span class="p">)</span> <span class="c1"># a sample destination stage that outputs all input to console</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">link</span> <span class="o">=</span> <span class="n">row_gen</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">peek</span><span class="p">)</span>
@@ -428,17 +452,41 @@ This method connects two stages and returns the created link between them.</p>
 </section>
 <section id="editing-a-stage-s-configuration">
 <span id="preparing-data-batch-editing-stage-configuration"></span><h2>Editing a Stage’s Configuration<a class="headerlink" href="#editing-a-stage-s-configuration" title="Link to this heading">#</a></h2>
-<p>All stages have properties which can be configured.
+<p>All stages have configurable properties.
 You can edit a stage’s configuration through its corresponding <code class="docutils literal notranslate"><span class="pre">configuration</span></code> property.
-This property returns an object containing all of that stage’s properties. The configuration object supports both dot and bracket notation for editing.</p>
+This property returns an object containing all of that stage’s properties. The configuration object supports both dot notation and bracket notation for editing.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">row_gen</span><span class="o">.</span><span class="n">configuration</span>
 <span class="go">{</span>
 <span class="go">    &quot;buf_mode&quot;: &quot;default&quot;,</span>
 <span class="go">    &quot;max_mem_buf_size&quot;: 3145728,</span>
 <span class="go">    ...</span>
+<span class="go">    &quot;runtime_column_propagation&quot;: null,</span>
+<span class="go">    ...</span>
+<span class="go">    &quot;records&quot;: 10,</span>
+<span class="go">    ...</span>
 <span class="go">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">row_gen</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">records</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">row_gen</span><span class="o">.</span><span class="n">configuration</span><span class="p">[</span><span class="s2">&quot;runtime_column_propagation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-comments-and-annotations">
+<span id="preparing-data-batch-adding-comments-and-annotations"></span><h2>Adding Comments and Annotations<a class="headerlink" href="#adding-comments-and-annotations" title="Link to this heading">#</a></h2>
+<p>You can add comments and annotations to a flow by using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.add_markdown_comment" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.add_markdown_comment"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchFlow.add_markdown_comment()</span></code></a> and <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.add_annotation" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.add_annotation"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchFlow.add_annotation()</span></code></a> methods.
+A <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.MarkdownComment" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.MarkdownComment"><code class="xref py py-class docutils literal notranslate"><span class="pre">MarkdownComment</span></code></a> can take Markdown strings to customize your text, and an <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Annotation" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Annotation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Annotation</span></code></a> has several configurable fields. These fields include <code class="docutils literal notranslate"><span class="pre">bold</span></code>, <code class="docutils literal notranslate"><span class="pre">italics</span></code>, <code class="docutils literal notranslate"><span class="pre">font</span></code>, <code class="docutils literal notranslate"><span class="pre">text_decoration</span></code>, <code class="docutils literal notranslate"><span class="pre">background_color</span></code>, <code class="docutils literal notranslate"><span class="pre">text_color</span></code>, <code class="docutils literal notranslate"><span class="pre">vertical_align</span></code>, <code class="docutils literal notranslate"><span class="pre">horizontal_align</span></code>, <code class="docutils literal notranslate"><span class="pre">text_size</span></code>, and <code class="docutils literal notranslate"><span class="pre">outline</span></code>.
+You can also connect comments and annotations to stages. When the flow is generated, the stages will be surrounded by their connected comments and annotations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">annotation</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">add_annotation</span><span class="p">(</span><span class="s2">&quot;New Annotation&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">annotation</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">annotation</span><span class="o">.</span><span class="n">italics</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">annotation</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="s2">&quot;font-arial&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">annotation</span><span class="o">.</span><span class="n">text_decoration</span> <span class="o">=</span> <span class="s2">&quot;underline&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">annotation</span><span class="o">.</span><span class="n">background_color</span> <span class="o">=</span> <span class="s2">&quot;#1192E8&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">annotation</span><span class="o">.</span><span class="n">text_color</span> <span class="o">=</span> <span class="s2">&quot;#DA1E28&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">annotation</span><span class="o">.</span><span class="n">horizontal_align</span> <span class="o">=</span> <span class="s2">&quot;align-middle&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">annotation</span><span class="o">.</span><span class="n">vertical_align</span> <span class="o">=</span> <span class="s2">&quot;align-center&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">annotation</span><span class="o">.</span><span class="n">text_size</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">annotation</span><span class="o">.</span><span class="n">connect_to</span><span class="p">(</span><span class="n">row_gen</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">annotation</span><span class="o">.</span><span class="n">connect_to</span><span class="p">(</span><span class="n">peek</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -456,12 +504,12 @@ This property returns an object containing all of that stage’s properties. The
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="flows.html"
+       href="compilation_mode.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Flows</p>
+        <p class="prev-next-title">Compilation Modes</p>
       </div>
     </a>
     <a class="right-next"
@@ -489,12 +537,13 @@ This property returns an object containing all of that stage’s properties. The
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-and-retreiving-stages-in-a-flow">Listing and retreiving Stages in a Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-and-retrieving-stages-in-a-flow">Listing and Retrieving Stages in a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-stage-to-a-flow">Adding a Stage to a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-a-stage-from-a-flow">Remove a Stage from a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-all-links-connected-to-a-stage">Listing all Links connected to a Stage</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-stages">Connecting Stages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-a-stage-s-configuration">Editing a Stage’s Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-comments-and-annotations">Adding Comments and Annotations</a></li>
 </ul>
   </nav></div>
 

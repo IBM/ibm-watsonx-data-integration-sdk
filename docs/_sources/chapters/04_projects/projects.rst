@@ -31,7 +31,7 @@ In the UI, you can create a new project by clicking the **New Project +** button
 To create a new :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object using the SDK, use the :py:meth:`Platform.create_project() <ibm_watsonx_data_integration.platform.Platform.create_project>` method.
 
 You must specify the ``name`` attribute.
-Additionally, you can provide optional parameters such as ``description``, ``tags``, ``public`` and ``project_type``.
+Additionally, you can provide optional parameters such as ``description``, ``tags``, ``public``, and ``project_type``.
 If you do not pass in a ``project_type`` parameter, the SDK will default to ``wx``, effectively creating the project within the ``watsonx`` view.
 
 This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object.
@@ -60,7 +60,7 @@ To list existing projects in the UI, navigate to **View all projects**.
 
 |
 
-Projects can be retrieved using :py:class:`Platform.projects <ibm_watsonx_data_integration.platform.Platform.projects>`.
+Projects can be retrieved via the SDK by using the :py:class:`Platform.projects <ibm_watsonx_data_integration.platform.Platform.projects>` property.
 This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Projects` object.
 You can also filter the projects returned based on attributes including ``name`` and ``project_id``.
 
@@ -69,8 +69,12 @@ You can also filter the projects returned based on attributes including ``name``
     >>> # Returns a list of all projects
     >>> platform.projects
     [...Project(name='Test Project', ...)...]
-    >>> # Returns first project matching given `name`
-    >>> platform.projects.get(name='Test Project')
+    >>> # Returns the first project matching the given `name`
+    >>> test_project = platform.projects.get(name='Test Project')
+    >>> test_project
+    Project(name='Test Project', ...)
+    >>> # Returns the project with the matching project_id
+    >>> platform.projects.get(project_id=test_project.project_id)
     Project(name='Test Project', ...)
     >>> # Returns a list of all projects that match `name`
     >>> platform.projects.get_all(name='Test Project')
@@ -90,7 +94,7 @@ Once you have made the necessary changes, click **Save** to update the project.
 |
 
 To update a project via the SDK, first make the necessary in-memory changes to your :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object.
-Next, pass in this object into the :py:meth:`Platform.update_project() <ibm_watsonx_data_integration.platform.Platform.update_project>` method.
+Next, pass this object to the :py:meth:`Platform.update_project() <ibm_watsonx_data_integration.platform.Platform.update_project>` method.
 
 This method returns an HTTP response indicating the status of the update operation.
 
@@ -107,7 +111,7 @@ Deleting a Project
 ~~~~~~~~~~~~~~~~~~
 
 In the UI, you can delete a project by selecting its title from the projects list.
-To delete a project, click the  **Delete** button in the top bar.
+To delete a project, click the **Delete** button in the top bar.
 
 .. image:: /_static/images/projects/delete_project.png
    :alt: Deleting a project via the UI

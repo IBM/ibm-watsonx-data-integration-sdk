@@ -17,7 +17,7 @@ This includes operations such as:
 Creating roles
 ~~~~~~~~~~~~~~
 
-To create a new role using the SDK, you can call :py:meth:`Platform.create_role_on_prem() <ibm_watsonx_data_integration.platform.Platform.create_role_on_prem>` method with ``name``, ``description`` and ``permissions`` parameters.
+To create a new role using the SDK, call the :py:meth:`Platform.create_role_on_prem() <ibm_watsonx_data_integration.platform.Platform.create_role_on_prem>` method with the ``name``, ``description``, and ``permissions`` parameters.
 
 .. skip: start 'dummy roles values'
 
@@ -38,7 +38,7 @@ To create a new role using the SDK, you can call :py:meth:`Platform.create_role_
 Listing roles
 ~~~~~~~~~~~~~
 
-To retrieve roles you can use the :py:attr:`Platform.roles <ibm_watsonx_data_integration.platform.Platform.roles>` property.
+To retrieve roles, use the :py:attr:`Platform.roles <ibm_watsonx_data_integration.platform.Platform.roles>` property.
 
 .. skip: start 'dummy roles values'
 
@@ -50,8 +50,8 @@ To retrieve roles you can use the :py:attr:`Platform.roles <ibm_watsonx_data_int
 .. skip: end
 
 You can filter roles by using the :py:meth:`get() <ibm_watsonx_data_integration.cpd_models.role_model.Roles.get>` method on the :py:attr:`Platform.roles <ibm_watsonx_data_integration.platform.Platform.roles>` property and providing any of the following arguments:
-    * ``role_id``: The role id.
-    * ``role_name``: Name of the role.
+    * ``role_id``: The role ID.
+    * ``role_name``: The name of the role.
 
 .. skip: start 'dummy roles values'
 
@@ -68,7 +68,7 @@ Updating roles
 ~~~~~~~~~~~~~~
 
 To update a role using the SDK, first retrieve it by using the :py:attr:`Platform.roles <ibm_watsonx_data_integration.platform.Platform.roles>` property.
-Next, make in-memory changes to the object and pass it into the :py:meth:`Platform.update_role() <ibm_watsonx_data_integration.platform.Platform.update_role>` method.
+Next, make in-memory changes to the object and pass it to the :py:meth:`Platform.update_role() <ibm_watsonx_data_integration.platform.Platform.update_role>` method.
 
 .. skip: start 'dummy role values'
 
@@ -90,8 +90,8 @@ Next, make in-memory changes to the object and pass it into the :py:meth:`Platfo
 Deleting roles
 ~~~~~~~~~~~~~~
 
-To delete a role using the SDK, first retrieve it by using :py:attr:`Platform.roles <ibm_watsonx_data_integration.platform.Platform.roles>` property.
-Then, pass the object into the :py:meth:`Platform.delete_role() <ibm_watsonx_data_integration.platform.Platform.delete_role>` method.
+To delete a role using the SDK, first retrieve it by using the :py:attr:`Platform.roles <ibm_watsonx_data_integration.platform.Platform.roles>` property.
+Then, pass the object to the :py:meth:`Platform.delete_role() <ibm_watsonx_data_integration.platform.Platform.delete_role>` method.
 
 .. skip: start 'dummy role values'
 

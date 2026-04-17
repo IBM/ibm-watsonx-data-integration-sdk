@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Get Help &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
+    <title>Get Help &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=051bfb12"></script>
+    <script src="../../_static/documentation_options.js?v=db04a367"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -195,10 +195,11 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/batch/index.html">Batch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/stages.html">Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/data_definitions.html">Data Definitions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/subflows.html">Subflows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/parameter_sets.html">Parameter Sets</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -208,8 +209,9 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/parameter_sets.html">Parameter Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/examples.html">Examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -226,6 +228,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/roles.html">Roles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_access_control/aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/aws_access_control/users.html">Users</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_access_control/project_collaborators.html">Project Collaborators</a></li>
@@ -378,7 +385,7 @@ document.write(`
 </section>
 <section id="how-is-ibm-different-from-competitors-here">
 <h3>6. How is IBM different from competitors here?<a class="headerlink" href="#how-is-ibm-different-from-competitors-here" title="Link to this heading">#</a></h3>
-<p>Unlike Informatica, Matillion, Fivetran or cloud-native tools that provide fragmented APIs, IBM offers a unified SDK that spans multiple integration products, supports hybrid and multi-cloud, and embeds enterprise-grade governance, security, and in the future AI-assisted capabilities.</p>
+<p>Unlike Informatica, Matillion, Fivetran, or cloud-native tools that provide fragmented APIs, IBM offers a unified SDK that spans multiple integration products, supports hybrid and multi-cloud environments, and includes enterprise-grade governance, security, and in the future, AI-assisted capabilities.</p>
 </section>
 <section id="what-is-required-to-adopt-the-sdk">
 <h3>7. What is required to adopt the SDK?<a class="headerlink" href="#what-is-required-to-adopt-the-sdk" title="Link to this heading">#</a></h3>
@@ -390,11 +397,11 @@ document.write(`
 </section>
 <section id="where-can-developers-get-started">
 <h3>9. Where can developers get started?<a class="headerlink" href="#where-can-developers-get-started" title="Link to this heading">#</a></h3>
-<p>Developers will find documentation, tutorials, and code samples in IBM watsonx.data integration documentation <a class="reference internal" href="../01_welcome/prereqs.html"><span class="doc">here</span></a>. Webinars, blogs, and community forums will also showcase use cases, best practices, and how to get started guides. To learn how to build flows, use the Python flow generator to take an existing flow and generate the corresponding SDK code to rebuild the flow to learn syntax and structure of the data integration Python SDK.</p>
+<p>Developers will find documentation, tutorials, and code samples in the IBM watsonx.data integration documentation <a class="reference internal" href="../01_welcome/prereqs.html"><span class="doc">here</span></a>. Webinars, blogs, and community forums will also showcase use cases, best practices, and getting-started guides. To learn how to build flows, use the Python flow generator to take an existing flow and generate the corresponding SDK code. Rebuilding the flow in code is a practical way to learn the syntax and structure of the data integration Python SDK.</p>
 </section>
 <section id="what-are-common-misconceptions-or-limitations">
 <h3>10. What are common misconceptions or limitations?<a class="headerlink" href="#what-are-common-misconceptions-or-limitations" title="Link to this heading">#</a></h3>
-<p>Some may expect the SDK to generate pipelines automatically or use AI to design flows. The SDK focuses on programmatic access and automation of existing capabilities. Designing optimal workflows still requires knowledge of IBM’s watsonx.data integration tools.</p>
+<p>Some may expect the SDK to generate pipelines automatically or use AI to design flows. The SDK focuses on programmatic access and automation of existing capabilities. Designing optimal workflows still requires knowledge of IBM watsonx.data integration tools.</p>
 </section>
 <section id="what-is-the-long-term-vision">
 <h3>11. What is the long-term vision?<a class="headerlink" href="#what-is-the-long-term-vision" title="Link to this heading">#</a></h3>
@@ -402,7 +409,7 @@ document.write(`
 </section>
 <section id="what-data-integration-software-versions-is-this-sdk-compatible-with">
 <h3>12. What data integration software versions is this SDK compatible with?<a class="headerlink" href="#what-data-integration-software-versions-is-this-sdk-compatible-with" title="Link to this heading">#</a></h3>
-<p>See full list of compatible software products <a class="reference internal" href="../01_welcome/supported_products.html"><span class="doc">here</span></a>.</p>
+<p>See the full list of compatible software products <a class="reference internal" href="../01_welcome/supported_products.html"><span class="doc">here</span></a>.</p>
 </section>
 </section>
 <section id="support">

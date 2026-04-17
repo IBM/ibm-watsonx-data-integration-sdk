@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Service IDs &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
+    <title>Service IDs &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=051bfb12"></script>
+    <script src="../../../_static/documentation_options.js?v=db04a367"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -195,10 +195,11 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../05_preparing_data/batch/index.html">Batch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/stages.html">Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/data_definitions.html">Data Definitions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/subflows.html">Subflows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/parameter_sets.html">Parameter Sets</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../05_preparing_data/streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -208,8 +209,9 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../05_preparing_data/connections.html">Connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../05_preparing_data/examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05_preparing_data/parameter_sets.html">Parameter Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../05_preparing_data/files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05_preparing_data/examples.html">Examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Access Control</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -226,6 +228,11 @@
 <li class="toctree-l3"><a class="reference internal" href="roles.html">Roles</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Service IDs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../aws_access_control/users.html">Users</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../project_collaborators.html">Project Collaborators</a></li>
@@ -334,8 +341,8 @@ document.write(`
   <section id="service-ids">
 <span id="access-control-service-ids"></span><h1>Service IDs<a class="headerlink" href="#service-ids" title="Link to this heading">#</a></h1>
 <p>A service ID identifies a service or application similar to how a user ID identifies a user.
-Service ID management is a platform level service in IBM Cloud that enables you to manage service IDs under your account.
-The SDK provides functionality to interact with the access group API.</p>
+Service ID management is a platform-level service in IBM Cloud that enables you to manage service IDs under your account.
+The SDK provides functionality to interact with the service ID API.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The SDK currently only supports retrieving service IDs.</p>
@@ -345,7 +352,7 @@ The SDK provides functionality to interact with the access group API.</p>
 <p>In the UI, you can view all service IDs in the current account by <strong>Top left hamburger menu -&gt; Administration -&gt; Access (IAM) -&gt; Service IDs</strong>.</p>
 <a class="reference internal image-reference" href="../../../_images/service_ids.png"><img alt="Screenshot of viewing Service IDs" class="align-center" src="../../../_images/service_ids.png" style="width: 100%;" />
 </a>
-<p>Service IDs can be retrieved using <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.platform.Platform.service_ids" title="ibm_watsonx_data_integration.platform.Platform.service_ids"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Platform.service_ids</span></code></a> property.
+<p>In the SDK, service IDs can be retrieved using <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.platform.Platform.service_ids" title="ibm_watsonx_data_integration.platform.Platform.service_ids"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Platform.service_ids</span></code></a> property.
 This property returns a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.service_id_model.ServiceIDs" title="ibm_watsonx_data_integration.cpd_models.service_id_model.ServiceIDs"><code class="xref py py-class docutils literal notranslate"><span class="pre">ServiceIDs</span></code></a> object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">service_ids</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
 <span class="go">[...ServiceID(...)...]</span>

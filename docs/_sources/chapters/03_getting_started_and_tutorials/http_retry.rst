@@ -4,7 +4,7 @@ HTTP Retry Management
 
 .. versionadded:: 1.1.0
 
-The SDK includes a built-in HTTP retry mechanism to handle transient failures in API requests. This includes automatic retry
+The SDK includes a built-in HTTP retry mechanism to handle transient failures in API requests. This includes automatic retries
 with exponential backoff, jitter, and configurable retry policies for different HTTP status codes.
 
 Understanding Retry Behavior
@@ -19,7 +19,7 @@ By default, the SDK retries the following HTTP status codes:
 - **503** (Service Unavailable)
 - **504** (Gateway Timeout)
 
-Each retry uses exponential backoff with jitter to avoid overwhelming the server and prevent thundering herd problems.
+Each retry uses exponential backoff with jitter to avoid overwhelming the server and to prevent thundering herd problems.
 
 Default Retry Settings
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -81,7 +81,7 @@ Configuring Global Retry Settings
 Changing Default Settings
 -------------------------
 
-You can change the default retry settings that apply to all retryable status codes using the
+You can change the default retry settings that apply to all retryable status codes by using the
 :py:meth:`ibm_watsonx_data_integration.common.retry.RetryConfig.set` method.
 
 .. code-block:: python
@@ -161,12 +161,12 @@ To completely replace the retry configuration, use the :py:meth:`ibm_watsonx_dat
 Temporary Retry Overrides
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For specific operations, you can temporarily override retry behavior using context managers. These overrides only affect
-the code within the ``with`` block and don't change the global configuration.
+For specific operations, you can temporarily override retry behavior by using context managers. These overrides affect only
+the code within the ``with`` block and do not change the global configuration.
 
 .. note::
-    The :py:class:`ibm_watsonx_data_integration.common.retry.RetrySettings` parameter is optional. If not provided, the default retry settings
-    will be used for all retryable status codes within the context.
+    The :py:class:`ibm_watsonx_data_integration.common.retry.RetrySettings` parameter is optional. If it is not provided, the default retry settings
+    are used for all retryable status codes within the context.
 
 Retrying With Default Settings
 -------------------------------
@@ -179,13 +179,13 @@ To retry with default settings for all 4xx and 5xx errors, simply use the contex
 
     # Use default retry settings for all errors
     with retry_on_http_error():
-        flows = project.flows.get(name='Test Flow')
+        flow = project.flows.get(name='Test Flow')
         project.delete_flow(flow=flow)
 
 Retrying With Custom Settings
 ------------------------------
 
-To use custom retry settings, provide a :py:class:`ibm_watsonx_data_integration.common.retry.RetrySettings` instance as the first parameter.
+To use custom retry settings, provide a :py:class:`ibm_watsonx_data_integration.common.retry.RetrySettings` instance as the ``settings`` parameter.
 
 .. code-block:: python
 
@@ -239,18 +239,18 @@ To retry all 4xx and 5xx errors for a specific operation:
 
     # Retry ALL 4xx and 5xx status codes with custom settings
     with retry_on_http_error(settings=RetrySettings(max_attempts=20, exp_factor=1.5)):
-        flows = project.flows.get(name='Test Flow 1')
+        flow = project.flows.get(name='Test Flow 1')
         project.delete_flow(flow=flow)
 
     # Retry ALL 4xx and 5xx status codes with default settings
     with retry_on_http_error():
-        flows = project.flows.get(name='Test Flow 2')
+        flow = project.flows.get(name='Test Flow 2')
         project.delete_flow(flow=flow)
 
 Disabling Retry Temporarily
 ----------------------------
 
-To disable retry for a specific operation, use the :py:func:`ibm_watsonx_data_integration.common.retry.no_retry_on_http_error` context manager.
+To disable retries for a specific operation, use the :py:func:`ibm_watsonx_data_integration.common.retry.no_retry_on_http_error` context manager.
 
 .. code-block:: python
 
@@ -259,7 +259,7 @@ To disable retry for a specific operation, use the :py:func:`ibm_watsonx_data_in
     # Disable retry for this operation
     with no_retry_on_http_error():
         group_to_delete = platform.access_groups.get(name='Test Access Group')
-        pltaform.delete_access_group(access_group=group_to_delete)   # If HTTPError occurs this will fail immediately without retry.
+        platform.delete_access_group(access_group=group_to_delete)   # If HTTPError occurs this will fail immediately without retry.
 
 Disabling And Enabling Retries Globally
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -268,7 +268,7 @@ Disabling All Retries
 ---------------------
 
 To disable all HTTP retries globally, use the :py:meth:`ibm_watsonx_data_integration.common.retry.RetryConfig.disable` method.
-This saves the current configuration so it can be restored later.
+This saves the current configuration so that it can be restored later.
 
 .. code-block:: python
 
@@ -366,8 +366,8 @@ This exception contains information about the retry attempts.
 Thread Safety
 ~~~~~~~~~~~~~
 
-The retry configuration is thread-safe and can be used in multi-threaded applications. Each thread can have its own
-temporary override using context managers without affecting other threads.
+The retry configuration is thread-safe and can be used in multithreaded applications. Each thread can have its own
+temporary override by using context managers without affecting other threads.
 
 .. code-block:: python
 

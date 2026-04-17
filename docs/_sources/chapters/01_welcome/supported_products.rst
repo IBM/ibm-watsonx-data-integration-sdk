@@ -20,13 +20,20 @@ The SDK is fully supported across all global data centers and regional deploymen
 On-Premise Support
 ~~~~~~~~~~~~~~~~~~
 
-For software deployments, the SDK is compatible with DataStage NextGen on Cloud Pak for Data (CP4D). We currently support the following versions:
+For software deployments, the SDK is compatible with watsonx.data integration and DataStage NextGen on Cloud Pak for Data (CP4D). We currently support the following versions:
 
-* CP4D 5.4 (Latest)
-* CP4D 5.3
-* CP4D 5.2
-* CP4D 5.1
-* CP4D 5.0
+* watsonx.data integration (CP4D 5.3+)
+
+  * Batch (DataStage)
+  * Streaming (StreamSets)
+
+* DataStage NextGen
+
+  * CP4D 5.4 (Latest)
+  * CP4D 5.3
+  * CP4D 5.2
+  * CP4D 5.1
+  * CP4D 5.0
 
 .. note::
    **Connector Availability:** While the core SDK is compatible with all versions listed above, access to specific connectors may be limited on older versions of CP4D. We recommend using the latest version (5.4) to ensure access to the full suite of available data connectors and performance optimizations.

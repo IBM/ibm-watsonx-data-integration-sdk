@@ -10,4 +10,5 @@ This section covers administrative tasks such as managing accounts, users, acces
 
    on_prem_access_control/index
    saas_access_control/index
+   aws_access_control/index
    project_collaborators

@@ -3,8 +3,8 @@
 Project Collaborators
 =====================
 
-In UI, you can manage access control to a project under the **Manage -> Access Control** tab.
-The SDK provides functionality to interact with the access control API.
+In the UI, you can manage access control for a project under the **Manage -> Access Control** tab.
+The SDK provides functionality for interacting with the access control API.
 
 This includes operations such as:
     * Listing project collaborators
@@ -41,7 +41,7 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.proj
     ProjectCollaborator(...)
 
 You can also retrieve a specific project collaborator by using the :py:meth:`ProjectCollaborators.get() <ibm_watsonx_data_integration.common.models.CollectionModel.get>`
-method and passing in a ``user_name``.
+method and passing a ``user_name``.
 
 .. skip: start 'call for non existing username'
 
@@ -57,7 +57,7 @@ method and passing in a ``user_name``.
 Adding Collaborators
 ~~~~~~~~~~~~~~~~~~~~
 
-In the UI, to add a collaborator you can press the **Add collaborators** button, where it will prompt you on which type of collaborator
+In the UI, to add a collaborator, click the **Add collaborators** button. You will then be prompted to choose which type of collaborator
 you would like to add.
 
 .. image:: /_static/images/projects/project_collaborators/add_collaborators_1.png
@@ -73,18 +73,18 @@ There are four types of collaborators you can add to a project:
     * :ref:`Trusted Profiles <access_control__trusted_profiles>` (SaaS only)
 
 
-Once you select the type of collaborator you would like to add, you can search for the appropriate collaborators to add.
+After selecting the type of collaborator you want to add, you can search for the appropriate collaborators.
 
 .. image:: /_static/images/projects/project_collaborators/add_collaborators_2.png
    :alt: Add collaborator 2
    :align: center
    :width: 100%
 
-In the SDK, you can add collaborator(s) using either the :py:meth:`Project.add_collaborator() <ibm_watsonx_data_integration.cpd_models.project_model.Project.add_collaborator>` or
-:py:meth:`Project.add_collaborators() <ibm_watsonx_data_integration.cpd_models.project_model.Project.add_collaborators>` depending on how many collaborators you
-would like to add. These functions accept a variety of collaborator types as well the parameter ``role`` which specifies their privileges.
+In the SDK, you can add collaborators using either :py:meth:`Project.add_collaborator() <ibm_watsonx_data_integration.cpd_models.project_model.Project.add_collaborator>`
+or :py:meth:`Project.add_collaborators() <ibm_watsonx_data_integration.cpd_models.project_model.Project.add_collaborators>`, depending on how many collaborators you
+want to add. These methods accept a variety of collaborator types, as well as the ``role`` parameter, which specifies their privileges.
 
-You can add the following type of collaborator types:
+You can add the following collaborator types:
     * :py:class:`~ibm_watsonx_data_integration.cpd_models.user_model.UserProfile` or :py:class:`~ibm_watsonx_data_integration.cpd_models.user_model_on_prem.UserProfileOnPrem`
     * :py:class:`~ibm_watsonx_data_integration.cpd_models.access_groups_model.AccessGroup` or :py:class:`~ibm_watsonx_data_integration.cpd_models.access_groups_model_on_prem.AccessGroupOnPrem`
     * :py:class:`~ibm_watsonx_data_integration.cpd_models.service_id_model.ServiceID` (SaaS only)
@@ -116,8 +116,8 @@ You can add the following type of collaborator types:
 Updating Project Collaborators' Roles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the UI, you can edit a collaborator's role by clicking on the edit icon next to their current role. From here, a modal
-will appear which will allow you to set the new role for the collaborator.
+In the UI, you can edit a collaborator's role by clicking the edit icon next to their current role. A modal will then appear,
+allowing you to set the collaborator's new role.
 
 .. image:: /_static/images/projects/project_collaborators/edit_collaborator.png
    :alt: Screenshot of updating a collaborator's role
@@ -125,10 +125,10 @@ will appear which will allow you to set the new role for the collaborator.
    :width: 100%
 
 
-In the SDK, you can edit collaborator(s) roles by using the :py:attr:`ProjectCollaborator.role <ibm_watsonx_data_integration.cpd_models.project_collaborator_model.ProjectCollaborator.role>`
-property and then either using the :py:meth:`Project.update_collaborator() <ibm_watsonx_data_integration.cpd_models.project_model.Project.update_collaborator>` or
-:py:meth:`Project.update_collaborators() <ibm_watsonx_data_integration.cpd_models.project_model.Project.update_collaborators>` method depending on how many
-collaborators you would like to update.
+In the SDK, you can edit collaborators' roles by updating the :py:attr:`ProjectCollaborator.role <ibm_watsonx_data_integration.cpd_models.project_collaborator_model.ProjectCollaborator.role>`
+property and then calling either :py:meth:`Project.update_collaborator() <ibm_watsonx_data_integration.cpd_models.project_model.Project.update_collaborator>` or
+:py:meth:`Project.update_collaborators() <ibm_watsonx_data_integration.cpd_models.project_model.Project.update_collaborators>`, depending on how many
+collaborators you want to update.
 
 .. skip: start 'cant create custom user from sdk'
 
@@ -159,16 +159,16 @@ collaborators you would like to update.
 Removing Project Collaborators
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the UI, you can remove a collaborator by pressing the remove icon to the right of their entry in the collaborator table.
+In the UI, you can remove a collaborator by clicking the remove icon to the right of their entry in the collaborator table.
 
 .. image:: /_static/images/projects/project_collaborators/remove_collaborator.png
    :alt: Screenshot of removing a collaborator
    :align: center
    :width: 100%
 
-In the SDK, you can remove collaborator(s) using either the :py:meth:`Project.remove_collaborator() <ibm_watsonx_data_integration.cpd_models.project_model.Project.remove_collaborator>` or
-:py:meth:`Project.remove_collaborators() <ibm_watsonx_data_integration.cpd_models.project_model.Project.remove_collaborators>` depending on how many collaborators you
-would like to remove.
+In the SDK, you can remove collaborators using either :py:meth:`Project.remove_collaborator() <ibm_watsonx_data_integration.cpd_models.project_model.Project.remove_collaborator>`
+or :py:meth:`Project.remove_collaborators() <ibm_watsonx_data_integration.cpd_models.project_model.Project.remove_collaborators>`, depending on how many collaborators you
+want to remove.
 
 .. skip: start 'cant create custom user from sdk'
 

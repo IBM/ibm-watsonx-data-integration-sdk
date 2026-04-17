@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Preparing Data &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
+    <title>Preparing Data &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=051bfb12"></script>
+    <script src="../../_static/documentation_options.js?v=db04a367"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -195,10 +195,11 @@
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Preparing Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="batch/index.html">Batch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="batch/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batch/compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="batch/stages.html">Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batch/data_definitions.html">Data Definitions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="batch/subflows.html">Subflows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="batch/parameter_sets.html">Parameter Sets</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -208,8 +209,9 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="connections.html">Connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html">Parameter Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -226,6 +228,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/roles.html">Roles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_access_control/aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/aws_access_control/users.html">Users</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_access_control/project_collaborators.html">Project Collaborators</a></li>
@@ -329,10 +336,11 @@ This section covers how to manage flows and their stages, work with datasource t
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="batch/index.html">Batch</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="batch/flows.html">Flows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batch/compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch/stages.html">Stages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="batch/data_definitions.html">Data Definitions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch/subflows.html">Subflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="batch/parameter_sets.html">Parameter Sets</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="streaming/index.html">Streaming</a><ul>
@@ -349,20 +357,33 @@ This section covers how to manage flows and their stages, work with datasource t
 <li class="toctree-l2"><a class="reference internal" href="connections.html#creating-a-connection">Creating a Connection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="connections.html#retrieving-an-existing-connection">Retrieving an existing Connection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="connections.html#updating-a-connection">Updating a Connection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="connections.html#using-a-connection-batch-only">Using a Connection (Batch Only)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="connections.html#using-a-connection">Using a Connection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="connections.html#using-a-local-connection-batch-only">Using a local Connection (Batch Only)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="connections.html#deleting-a-connection">Deleting a Connection</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#creating-and-running-a-batch-flow">Creating and Running a Batch Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="examples.html#creating-and-running-a-streaming-flow">Creating and Running a Streaming Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameter_sets.html">Parameter Sets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html#creating-a-parameter-set">Creating a Parameter Set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html#retrieving-an-existing-parameter-set">Retrieving an Existing Parameter Set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html#updating-a-parameter-set">Updating a Parameter Set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html#adding-value-sets">Adding Value Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html#adding-local-parameters">Adding Local Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html#using-local-parameters-and-parameter-sets">Using Local Parameters and Parameter Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html#duplicating-a-parameter-set">Duplicating a Parameter Set</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html#using-projdef">Using PROJDEF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html#deleting-a-parameter-set">Deleting a Parameter Set</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="files.html">Files</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="files.html#uploading-a-file">Uploading a File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="files.html#retrieving-an-existing-file">Retrieving an existing File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="files.html#deleting-a-file">Deleting a File</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#creating-and-running-a-batch-flow">Creating and Running a Batch Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#creating-and-running-a-streaming-flow">Creating and Running a Streaming Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#creating-a-streaming-flow-with-parameter-sets">Creating a Streaming Flow with Parameter Sets</a></li>
 </ul>
 </li>
 </ul>

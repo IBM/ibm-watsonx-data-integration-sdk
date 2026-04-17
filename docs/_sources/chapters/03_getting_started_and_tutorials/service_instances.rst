@@ -1,7 +1,7 @@
 Service Instances
 =================
 
-A service instance is a provisioned instance of a Cloud Pak for Data service, which allows you to execute and manage workloads (such as jobs and flows) through its dedicated compute resources.
+A service instance is a provisioned instance of a Cloud Pak for Data service that allows you to execute and manage workloads, such as jobs and flows, through its dedicated compute resources.
 
 The SDK provides functionality to interact with service instances on the watsonx.data integration platform.
 
@@ -16,7 +16,7 @@ This includes operations such as:
 
 Creating Service Instances
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-To create a new :py:class:`~ibm_watsonx_data_integration.cpd_models.service_model.Service` object within the watsonx.data integration platform, you can use the :py:meth:`Platform.create_service_instance() <ibm_watsonx_data_integration.platform.Platform.create_service_instance>` method to instantiate the service instance.
+To create a new :py:class:`~ibm_watsonx_data_integration.cpd_models.service_model.Service` object within the watsonx.data integration platform, use the :py:meth:`Platform.create_service_instance() <ibm_watsonx_data_integration.platform.Platform.create_service_instance>` method.
 
 You must specify ``instance_type`` and ``name``. Optionally, you can also specify ``target`` and ``tags``.
 
@@ -35,7 +35,7 @@ You must specify ``instance_type`` and ``name``. Optionally, you can also specif
 Retrieving Service Instances
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To retrieve existing service instances, use the :py:attr:`~ibm_watsonx_data_integration.platform.Platform.service_instances` property of the :py:class:`~ibm_watsonx_data_integration.platform.Platform` class. This will return a :py:class:`~ibm_watsonx_data_integration.cpd_models.service_model.Services` object.
+To retrieve existing service instances, use the :py:attr:`~ibm_watsonx_data_integration.platform.Platform.service_instances` property of the :py:class:`~ibm_watsonx_data_integration.platform.Platform` class. This returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.service_model.Services` object.
 
 .. code-block:: python
 
@@ -48,7 +48,7 @@ To retrieve existing service instances, use the :py:attr:`~ibm_watsonx_data_inte
 
 Deleting Service Instances
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
-To delete a service instance, pass the :py:class:`~ibm_watsonx_data_integration.cpd_models.service_model.Service` object you want to delete into the :py:meth:`Platform.delete_service_instance() <ibm_watsonx_data_integration.platform.Platform.delete_service_instance>` method to delete it.
+To delete a service instance, pass the :py:class:`~ibm_watsonx_data_integration.cpd_models.service_model.Service` object you want to delete to the :py:meth:`Platform.delete_service_instance() <ibm_watsonx_data_integration.platform.Platform.delete_service_instance>` method.
 
 This method returns an HTTP response indicating the status of the delete operation.
 

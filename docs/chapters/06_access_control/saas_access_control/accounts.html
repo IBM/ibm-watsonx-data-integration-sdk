@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Accounts &#8212; ibm-watsonx-data-integration 1.1.0 documentation</title>
+    <title>Accounts &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=051bfb12"></script>
+    <script src="../../../_static/documentation_options.js?v=db04a367"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.1.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -195,10 +195,11 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../05_preparing_data/batch/index.html">Batch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/stages.html">Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/data_definitions.html">Data Definitions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/subflows.html">Subflows</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/parameter_sets.html">Parameter Sets</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../05_preparing_data/streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -208,8 +209,9 @@
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../05_preparing_data/connections.html">Connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../05_preparing_data/examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05_preparing_data/parameter_sets.html">Parameter Sets</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../05_preparing_data/files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../05_preparing_data/examples.html">Examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Access Control</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -226,6 +228,11 @@
 <li class="toctree-l3"><a class="reference internal" href="roles.html">Roles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="service_ids.html">Service IDs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../aws_access_control/users.html">Users</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../project_collaborators.html">Project Collaborators</a></li>
@@ -337,8 +344,8 @@ document.write(`
   <section id="accounts">
 <span id="access-control-accounts"></span><h1>Accounts<a class="headerlink" href="#accounts" title="Link to this heading">#</a></h1>
 <p>An account in IBM Cloud is the top-level container for resource grouping, access control, and billing.
-It provides the context under which all Cloud Pak Data integration workloads—projects, jobs, flows, and connections—operate.
-The SDK provides functionality to interact with the accounts on the watsonx.data integration platform.</p>
+It provides the context under which all Cloud Pak for Data integration workloads—projects, jobs, flows, and connections—operate.
+The SDK provides functionality for interacting with accounts on the watsonx.data integration platform.</p>
 <dl class="simple">
 <dt>This includes operations such as:</dt><dd><ul class="simple">
 <li><p>Listing all accessible accounts</p></li>
@@ -353,8 +360,8 @@ The SDK provides functionality to interact with the accounts on the watsonx.data
 <p>In the UI, click your account name in the top-right corner to open the account picker and view all accounts you have access to.</p>
 <a class="reference internal image-reference" href="../../../_images/list_accounts.png"><img alt="Screenshot of the Account lists in the UI" class="align-center" src="../../../_images/list_accounts.png" style="width: 100%;" />
 </a>
-<p>Accounts can be retrieved using <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.platform.Platform.accounts" title="ibm_watsonx_data_integration.platform.Platform.accounts"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Platform.accounts</span></code></a> property.
-This property returns a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.account_model.Accounts" title="ibm_watsonx_data_integration.cpd_models.account_model.Accounts"><code class="xref py py-class docutils literal notranslate"><span class="pre">Accounts</span></code></a> object.</p>
+<p>Accounts can be retrieved using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.platform.Platform.accounts" title="ibm_watsonx_data_integration.platform.Platform.accounts"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Platform.accounts</span></code></a> property.
+This property returns an <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.account_model.Accounts" title="ibm_watsonx_data_integration.cpd_models.account_model.Accounts"><code class="xref py py-class docutils literal notranslate"><span class="pre">Accounts</span></code></a> object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">accounts</span>
 <span class="go">[...Account(...)...]</span>
 </pre></div>
@@ -363,7 +370,7 @@ This property returns a <a class="reference internal" href="../../../api/models.
 <section id="getting-the-current-account">
 <h2>Getting the current account<a class="headerlink" href="#getting-the-current-account" title="Link to this heading">#</a></h2>
 <p>You can use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.platform.Platform.current_account" title="ibm_watsonx_data_integration.platform.Platform.current_account"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Platform.current_account</span></code></a> property to retrieve the account that’s currently in scope for all SDK operations.
-This method returns a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.account_model.Account" title="ibm_watsonx_data_integration.cpd_models.account_model.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object.
+This property returns an <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.account_model.Account" title="ibm_watsonx_data_integration.cpd_models.account_model.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object.
 By default, it is the first account you joined or the first one listed in your account list.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">account</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">current_account</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">account</span>
@@ -373,9 +380,9 @@ By default, it is the first account you joined or the first one listed in your a
 </section>
 <section id="fetching-an-account-by-id">
 <h2>Fetching an account by ID<a class="headerlink" href="#fetching-an-account-by-id" title="Link to this heading">#</a></h2>
-<p>Accounts can be retrieved using <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.platform.Platform.accounts" title="ibm_watsonx_data_integration.platform.Platform.accounts"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Platform.accounts</span></code></a> property.
-You can also filter the account returned based on the <code class="docutils literal notranslate"><span class="pre">account_id</span></code> attribute.
-This property returns a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.account_model.Account" title="ibm_watsonx_data_integration.cpd_models.account_model.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object.</p>
+<p>Accounts can be retrieved using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.platform.Platform.accounts" title="ibm_watsonx_data_integration.platform.Platform.accounts"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Platform.accounts</span></code></a> property.
+You can also filter the returned account using the <code class="docutils literal notranslate"><span class="pre">account_id</span></code> attribute.
+This property returns an <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.account_model.Account" title="ibm_watsonx_data_integration.cpd_models.account_model.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">accounts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">account_id</span><span class="o">=</span><span class="n">platform</span><span class="o">.</span><span class="n">current_account</span><span class="o">.</span><span class="n">account_id</span><span class="p">)</span>
 <span class="go">Account(...)</span>
 </pre></div>
@@ -383,8 +390,7 @@ This property returns a <a class="reference internal" href="../../../api/models.
 </section>
 <section id="setting-the-current-account">
 <h2>Setting the current account<a class="headerlink" href="#setting-the-current-account" title="Link to this heading">#</a></h2>
-<p>You can use the setter for the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.platform.Platform.current_account" title="ibm_watsonx_data_integration.platform.Platform.current_account"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Platform.current_account</span></code></a> to override which account will be used for all subsequent SDK operations.
-Pass in an <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.account_model.Account" title="ibm_watsonx_data_integration.cpd_models.account_model.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object.</p>
+<p>You can set the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.platform.Platform.current_account" title="ibm_watsonx_data_integration.platform.Platform.current_account"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Platform.current_account</span></code></a> property to a new <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.account_model.Account" title="ibm_watsonx_data_integration.cpd_models.account_model.Account"><code class="xref py py-class docutils literal notranslate"><span class="pre">Account</span></code></a> object to override which account is used for all subsequent SDK operations.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">current_account</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">accounts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Second Account&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">current_account</span>
 <span class="go">Account(name=&#39;Second Account&#39;, ...)</span>

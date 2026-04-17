@@ -14,14 +14,14 @@ This command typically runs a Docker container with the selected engine version,
 Creating an Environment
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-In the UI, you can create a new Environment by navigating to **Manage -> StreamSets -> New environment.**
+In the UI, you can create a new Environment by navigating to **Manage -> StreamSets -> New environment**.
 
 .. image:: /_static/images/environment/create_environment.png
    :alt: Screenshot of the Environment creation form in the UI
    :align: center
    :width: 100%
 
-You will be prompted to provide a **Name** and select a **Data Collector engine version**, and other additional configuration options.
+You will be prompted to provide a **Name**, select a **Data Collector engine version**, and configure other additional options.
 
 .. image:: /_static/images/environment/create_environment2.png
    :alt: Screenshot of the Environment configuration form in the UI
@@ -64,7 +64,7 @@ Retrieving an Existing Environment
 Environments can be retrieved through a :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object.
 You can access all environments associated with a project using the
 :py:attr:`Project.environments <ibm_watsonx_data_integration.cpd_models.project_model.Project.environments>` property.
-You can also retrieve single environment using the :py:meth:`Project.environments.get() <ibm_watsonx_data_integration.common.models.CollectionModel.get>` method,
+You can also retrieve a single environment using the :py:meth:`Project.environments.get() <ibm_watsonx_data_integration.common.models.CollectionModel.get>` method,
 which requires the ``environment_id`` parameter.
 
 .. code-block:: python
@@ -81,7 +81,7 @@ which requires the ``environment_id`` parameter.
 Modifying an Environment
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the UI, you can update or delete an existing Environment by navigating to the **Manage -> StreamSets**.
+In the UI, you can update or delete an existing Environment by navigating to **Manage -> StreamSets**.
 
 .. image:: /_static/images/environment/edit_environment.png
    :alt: Screenshot of the Environment update form in the UI
@@ -92,8 +92,8 @@ In the UI, you can update or delete an existing Environment by navigating to the
 Updating an Environment
 -----------------------
 
-Similar to environment creation, environment can also be updated using the :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object.
-First, modify properties of the environment instance, then update it using the
+Similar to environment creation, an environment can also be updated using the :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object.
+First, modify the properties of the environment instance, then update it using the
 :py:meth:`Project.update_environment() <ibm_watsonx_data_integration.cpd_models.project_model.Project.update_environment>` method.
 
 .. code-block:: python
@@ -114,7 +114,7 @@ First, modify properties of the environment instance, then update it using the
 Retrieving the Engine Installation Command
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To start and run the Engine defined by an Environment, you'll need to retrieve the installation command for that Environment and execute it from the machine where you want the Engine to run.
+To start and run the Engine defined by an Environment, you need to retrieve the installation command for that Environment and execute it on the machine where you want the Engine to run.
 
 In the UI, you can retrieve the run command by navigating to the **Manage -> StreamSets**.
 
@@ -123,7 +123,7 @@ In the UI, you can retrieve the run command by navigating to the **Manage -> Str
    :align: center
    :width: 100%
 
-You can retrieve the run command via the :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment` object by using
+You can retrieve the run command via the :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment` object by using the
 :py:meth:`Environment.get_installation_command() <ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.get_installation_command>` method.
 
 .. skip: start 'docker command output in non parsable format'
@@ -140,8 +140,8 @@ You can retrieve the run command via the :py:class:`~ibm_watsonx_data_integratio
 .. skip: end
 
 .. note::
-   Please be aware that the installation command you retrieve from the Environment requires the ``SSET_API_KEY`` environment variable to be set for the user executing the command.
-   The environment variable should contain the API key you generated for :ref:`authenticating <getting_started_and_tutorials__authentication>` with the watsonx.data integration platform.
+   Be aware that the installation command you retrieve from the Environment requires the ``SSET_API_KEY`` environment variable to be set for the user executing the command.
+   This environment variable should contain the API key you generated for :ref:`authenticating <getting_started_and_tutorials__authentication>` with the watsonx.data integration platform.
 
 
 Deleting an Environment
@@ -156,6 +156,18 @@ The delete method returns an API response, which you can inspect to verify the s
     >>> project.delete_environment(env)
     <Response [200]>
 
+.. skip: start 'delete_engines parameter examples'
+
+By default, engines associated with the environment are **not** deleted. If you want to delete all engines
+before deleting the environment, set the ``delete_engines`` parameter to ``True``:
+
+.. code-block:: python
+
+    >>> project.delete_environment(env, delete_engines=True)
+    <Response [200]>
+
+.. skip: end
+
 To remove multiple environments at once, use the
 :py:meth:`Project.delete_environments() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_environments>` method.
 This method accepts any number of Environment instances and returns a single HTTP response.
@@ -167,6 +179,17 @@ This method accepts any number of Environment instances and returns a single HTT
     >>> project.delete_environments(env1, env2)
     <Response [200]>
 
+.. skip: start 'delete_engines parameter examples for bulk delete'
+
+Similarly, you can delete all engines associated with the environments by setting ``delete_engines=True``:
+
+.. code-block:: python
+
+    >>> project.delete_environments(env1, env2, delete_engines=True)
+    <Response [200]>
+
+.. skip: end
+
 .. _retrieving_available_engine_versions:
 
 Retrieving Available Engine Versions
@@ -175,7 +198,7 @@ Retrieving Available Engine Versions
 To view the list of available Engine versions, use the
 :py:attr:`Platform.available_engine_versions <ibm_watsonx_data_integration.platform.Platform.available_engine_versions>` property.
 This returns a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.engine_version.StreamingEngineVersions` object that can be used to list
-:py:class:`~ibm_watsonx_data_integration.services.streamsets.models.engine_version.StreamingEngineVersion` which can be used when configuring an Environment.
+:py:class:`~ibm_watsonx_data_integration.services.streamsets.models.engine_version.StreamingEngineVersion` objects, which can be used when configuring an Environment.
 
 .. code-block:: python
 
@@ -196,8 +219,8 @@ In the UI, you can view the list of libraries supported by a specific Engine ver
     :width: 100%
 
 In the SDK, to retrieve the list of libraries supported by a given Engine version, use the
-:py:meth:`Platform.available_engine_versions <ibm_watsonx_data_integration.platform.Platform.available_engine_versions>` property to list all available engine versions.
-From here, you get a collection of :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.engine_version.StreamingEngineVersion` objects which you can inspect further.
+:py:attr:`Platform.available_engine_versions <ibm_watsonx_data_integration.platform.Platform.available_engine_versions>` property to list all available engine versions.
+From there, you get a collection of :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.engine_version.StreamingEngineVersion` objects that you can inspect further.
 
 .. code-block:: python
 

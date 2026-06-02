@@ -1,0 +1,1026 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
+    <title>Pipeline Components &#8212; ibm-watsonx-data-integration 1.3.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=f8c2f790" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=27de968b"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=30646c52"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/05_preparing_data/pipelines/components';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Datasource Type" href="../datasources.html" />
+    <link rel="prev" title="Pipelines" href="pipelines.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.3.0</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/prereqs.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/supported_products.html">Supported Products</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/release_notes.html">What’s new</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/known_issues_and_limitations.html">Known Issues and Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/faq.html">Get Help</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03_getting_started_and_tutorials/index.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/platform.html">Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_batch.html">Code Generation (Batch)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_streaming.html">Code Generation (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_connections.html">Code Generation for Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/http_retry.html">HTTP Retry Management</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/jobs.html">Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/environments_streaming.html">Environments (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/engines_streaming.html">Engines (Streaming)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Preparing Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../batch/index.html">Batch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../batch/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/compilation_mode.html">Compilation Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/stages.html">Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/data_definitions.html">Data Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/subflows.html">Subflows</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Pipelines</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="pipelines.html">Pipelines</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Pipeline Components</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasources.html">Datasource Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../connections.html">Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parameter_sets.html">Parameter Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/on_prem_access_control/index.html">On-Prem Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/roles.html">Roles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/saas_access_control/index.html">SaaS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/aws_access_control/users.html">Users</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06_access_control/project_collaborators.html">Project Collaborators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../07_mcp_server/index.html">MCP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../07_mcp_server/mcp_server_setup.html">MCP Server Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07_mcp_server/mcp_server_tools.html">MCP Server Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07_mcp_server/mcp_server_skills.html">MCP Server Skills</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html">Models</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pipeline Components</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Section Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-pipeline-components">Listing Pipeline Components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-pipelinecomponentid-enum">Using the PipelineComponentId Enum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-components">Built-in Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-datastage-job">Run DataStage Job</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-pipeline-job">Run Pipeline Job</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-bash-script">Run Bash Script</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#terminate-pipeline">Terminate Pipeline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#terminate-loop">Terminate Loop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loop-in-parallel">Loop in Parallel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loop-in-sequence">Loop in Sequence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wait-for-file">Wait for File</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wait-for-any">Wait for Any</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wait-for-all">Wait for All</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-custom-components">Creating Custom Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overwriting-custom-components">Overwriting Custom Components</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-custom-components">Deleting Custom Components</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="pipeline-components">
+<span id="preparing-data-pipelines-components"></span><h1>Pipeline Components<a class="headerlink" href="#pipeline-components" title="Link to this heading">#</a></h1>
+<p>Pipeline components are reusable building blocks that can be used within pipelines to perform specific tasks. The platform provides built-in components for common operations, and you can also create custom components for specialized functionality.</p>
+<section id="overview">
+<span id="preparing-data-pipelines-components-overview"></span><h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>Pipeline components encapsulate functionality that can be called within a pipeline definition. Each component has:</p>
+<ul class="simple">
+<li><p>A unique component ID</p></li>
+<li><p>Input parameters that define what data the component needs</p></li>
+<li><p>Output parameters that define what data the component produces</p></li>
+</ul>
+<p>Components can be either:</p>
+<ul class="simple">
+<li><p><strong>Built-in components</strong>: Provided by the platform for common tasks</p></li>
+<li><p><strong>Custom components</strong>: Created by users for specialized functionality</p></li>
+</ul>
+</section>
+<section id="listing-pipeline-components">
+<span id="preparing-data-pipelines-components-listing"></span><h2>Listing Pipeline Components<a class="headerlink" href="#listing-pipeline-components" title="Link to this heading">#</a></h2>
+<p>In the SDK, pipeline components can be retrieved through the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.pipeline_components" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.pipeline_components"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Project.pipeline_components</span></code></a> property.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># List only built-in components</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">is_built_in</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">[PipelineComponent(...), ...]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># List only custom components</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">is_built_in</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  
+<span class="go">[PipelineComponent(component_id=&#39;...&#39;, name=&#39;My Custom Component&#39;, description=None, is_built_in=False), ...]</span>
+</pre></div>
+</div>
+</section>
+<section id="using-the-pipelinecomponentid-enum">
+<span id="preparing-data-pipelines-components-using-component-id-enum"></span><h2>Using the PipelineComponentId Enum<a class="headerlink" href="#using-the-pipelinecomponentid-enum" title="Link to this heading">#</a></h2>
+<p>The SDK provides a <code class="xref py py-class docutils literal notranslate"><span class="pre">PipelineComponentId</span></code> enum that contains all built-in component IDs. Using this enum helps prevent typos and makes it easier to discover available components.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineComponentId</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get a component using the enum</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">run_datastage_job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">RUN_DATASTAGE_JOB</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">run_datastage_job</span>
+<span class="go">PipelineComponent(component_id=&#39;run-datastage-job&#39;, name=&#39;Run DataStage job&#39;, description=&#39;Run the DataStage job in the project or deployment space&#39;, is_built_in=True)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get a component by name</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">run_bash</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Run Bash script&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">run_bash</span>
+<span class="go">PipelineComponent(component_id=&#39;run-bash-script&#39;, name=&#39;Run Bash script&#39;, description=&#39;Run Bash script.&#39;, is_built_in=True)</span>
+</pre></div>
+</div>
+</section>
+<section id="built-in-components">
+<span id="preparing-data-pipelines-components-built-in"></span><h2>Built-in Components<a class="headerlink" href="#built-in-components" title="Link to this heading">#</a></h2>
+<p>The following sections describe each built-in component in detail, including what it does, its parameters, and usage examples.</p>
+<section id="run-datastage-job">
+<span id="preparing-data-pipelines-components-run-datastage-job"></span><h3>Run DataStage Job<a class="headerlink" href="#run-datastage-job" title="Link to this heading">#</a></h3>
+<p><strong>Component ID</strong>: <code class="docutils literal notranslate"><span class="pre">PipelineComponentId.RUN_DATASTAGE_JOB</span></code></p>
+<p><strong>Description</strong>: Executes a batch flow job within a pipeline. This component allows you to orchestrate DataStage jobs as part of a larger pipeline workflow.</p>
+<p><strong>Parameters</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">job</span></code> (required): The DataStage job to execute. Can be a Job object or a job reference string.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">job_parameters</span></code> (optional): Dictionary of job parameters to pass to the DataStage job.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">env_variables</span></code> (optional): Dictionary of environment variables to set for the job run.</p></li>
+</ul>
+<p><strong>Outputs</strong>:</p>
+<ul class="simple">
+<li><p>Job run information and status</p></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">kfp</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineComponentId</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Use the batch_flow fixture which already has stages configured</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datastage_job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;My DataStage Job&#39;</span><span class="p">,</span> <span class="n">flow</span><span class="o">=</span><span class="n">batch_flow</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">my_pipeline</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="c1"># Get the component</span>
+<span class="gp">... </span>    <span class="n">run_ds_job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">RUN_DATASTAGE_JOB</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Execute the DataStage job</span>
+<span class="gp">... </span>    <span class="n">run_ds_job</span><span class="p">(</span><span class="n">job</span><span class="o">=</span><span class="n">datastage_job</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_pipeline</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Pipeline with DataStage&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">pipeline_function</span><span class="o">=</span><span class="n">my_pipeline</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example with Parameters</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">my_pipeline_with_params</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">run_ds_job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">RUN_DATASTAGE_JOB</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Execute with job parameters and environment variables</span>
+<span class="gp">... </span>    <span class="n">run_ds_job</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">job</span><span class="o">=</span><span class="n">datastage_job</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="n">job_parameters</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;param1&#39;</span><span class="p">:</span> <span class="s1">&#39;value1&#39;</span><span class="p">,</span> <span class="s1">&#39;param2&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span>
+<span class="gp">... </span>        <span class="n">env_variables</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ENV_VAR1&#39;</span><span class="p">:</span> <span class="s1">&#39;value1&#39;</span><span class="p">,</span> <span class="s1">&#39;ENV_VAR2&#39;</span><span class="p">:</span> <span class="s1">&#39;value2&#39;</span><span class="p">}</span>
+<span class="gp">... </span>    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="run-pipeline-job">
+<span id="preparing-data-pipelines-components-run-pipeline-job"></span><h3>Run Pipeline Job<a class="headerlink" href="#run-pipeline-job" title="Link to this heading">#</a></h3>
+<p><strong>Component ID</strong>: <code class="docutils literal notranslate"><span class="pre">PipelineComponentId.RUN_PIPELINE_JOB</span></code></p>
+<p><strong>Description</strong>: Executes another pipeline job within the current pipeline. This allows you to create hierarchical pipelines where one pipeline can trigger another, enabling modular and reusable pipeline designs.</p>
+<p><strong>Parameters</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">job</span></code> (required): The pipeline job to execute. Can be a Job object or a job reference string.</p></li>
+</ul>
+<p><strong>Outputs</strong>:</p>
+<ul class="simple">
+<li><p>Job run information and status</p></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">kfp</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineComponentId</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a child pipeline first</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@dsl</span><span class="o">.</span><span class="n">component</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">process_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing: </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">child_pipeline</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">process_data</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">child_pipeline_obj</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_pipeline</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Child Pipeline&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">pipeline_function</span><span class="o">=</span><span class="n">child_pipeline</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">child_job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Child Job&#39;</span><span class="p">,</span> <span class="n">flow</span><span class="o">=</span><span class="n">child_pipeline_obj</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create parent pipeline that runs the child</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">parent_pipeline</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">run_pipeline</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">RUN_PIPELINE_JOB</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Execute the child pipeline job</span>
+<span class="gp">... </span>    <span class="n">run_pipeline</span><span class="p">(</span><span class="n">job</span><span class="o">=</span><span class="n">child_job</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parent</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_pipeline</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Parent Pipeline&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">pipeline_function</span><span class="o">=</span><span class="n">parent_pipeline</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="run-bash-script">
+<span id="preparing-data-pipelines-components-run-bash-script"></span><h3>Run Bash Script<a class="headerlink" href="#run-bash-script" title="Link to this heading">#</a></h3>
+<p><strong>Component ID</strong>: <code class="docutils literal notranslate"><span class="pre">PipelineComponentId.RUN_BASH_SCRIPT</span></code></p>
+<p><strong>Description</strong>: Executes a bash script within the pipeline. This component is useful for running shell commands, system operations, or integrating with command-line tools.</p>
+<p><strong>Parameters</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">script</span></code> (required): The bash script to execute as a string.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">error_policy</span></code> (optional): How to handle errors. Options: <code class="docutils literal notranslate"><span class="pre">'fail_on_error'</span></code> (default) or <code class="docutils literal notranslate"><span class="pre">'continue_on_error'</span></code>.</p></li>
+</ul>
+<p><strong>Outputs</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">standard_output</span></code>: The stdout from the script execution</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">standard_error</span></code>: The stderr from the script execution</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">return_value</span></code>: The exit code from the script</p></li>
+</ul>
+<p><strong>Example - Basic Usage</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">kfp</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineComponentId</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">bash_pipeline</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">run_bash</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">RUN_BASH_SCRIPT</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Execute a simple bash command</span>
+<span class="gp">... </span>    <span class="n">run_bash</span><span class="p">(</span><span class="n">script</span><span class="o">=</span><span class="s1">&#39;echo &#39;</span><span class="n">Hello</span> <span class="kn">from</span><span class="w"> </span><span class="nn">pipeline</span><span class="err">!</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_pipeline</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Bash Script Pipeline&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">pipeline_function</span><span class="o">=</span><span class="n">bash_pipeline</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example - Capturing Output</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@dsl</span><span class="o">.</span><span class="n">component</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">process_output</span><span class="p">(</span><span class="n">stdout</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Script output was: </span><span class="si">{</span><span class="n">stdout</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">bash_with_output</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">run_bash</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">RUN_BASH_SCRIPT</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Execute script and capture output</span>
+<span class="gp">... </span>    <span class="n">bash_task</span> <span class="o">=</span> <span class="n">run_bash</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">script</span><span class="o">=</span><span class="s1">&#39;echo &#39;</span><span class="n">Processing</span> <span class="n">complete</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="n">error_policy</span><span class="o">=</span><span class="s1">&#39;continue_on_error&#39;</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Use the output in another component</span>
+<span class="gp">... </span>    <span class="n">process_output</span><span class="p">(</span><span class="n">stdout</span><span class="o">=</span><span class="n">bash_task</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;standard_output&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><strong>Example - Error Handling</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">bash_with_error_handling</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">run_bash</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">RUN_BASH_SCRIPT</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Continue even if script fails</span>
+<span class="gp">... </span>    <span class="n">bash_task</span> <span class="o">=</span> <span class="n">run_bash</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">script</span><span class="o">=</span><span class="s1">&#39;exit 42&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="n">error_policy</span><span class="o">=</span><span class="s1">&#39;continue_on_error&#39;</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Check the return code</span>
+<span class="gp">... </span>    <span class="k">with</span> <span class="n">dsl</span><span class="o">.</span><span class="n">If</span><span class="p">(</span><span class="n">bash_task</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;return_value&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="n">run_bash</span><span class="p">(</span><span class="n">script</span><span class="o">=</span><span class="s1">&#39;echo &#39;</span><span class="n">Script</span> <span class="n">failed</span><span class="err">!</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="terminate-pipeline">
+<span id="preparing-data-pipelines-components-terminate-pipeline"></span><h3>Terminate Pipeline<a class="headerlink" href="#terminate-pipeline" title="Link to this heading">#</a></h3>
+<p><strong>Component ID</strong>: <code class="docutils literal notranslate"><span class="pre">PipelineComponentId.TERMINATE_PIPELINE</span></code></p>
+<p><strong>Description</strong>: Terminates the pipeline execution. This component provides different modes for stopping the pipeline and handling running tasks.</p>
+<p><strong>Parameters</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">terminator_mode</span></code> (required): How to terminate the pipeline. Options:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'stop'</span></code>: Stop the pipeline and cancel all running tasks immediately</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'stop_wait'</span></code>: Stop the pipeline and wait for running tasks to complete</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'abort'</span></code>: Abort the pipeline immediately without waiting</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'abort_wait'</span></code>: Abort the pipeline but wait for running tasks to complete</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">kfp</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineComponentId</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">pipeline_with_termination</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">run_bash</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">RUN_BASH_SCRIPT</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span>    <span class="n">terminate</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">TERMINATE_PIPELINE</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Run a task</span>
+<span class="gp">... </span>    <span class="n">task1</span> <span class="o">=</span> <span class="n">run_bash</span><span class="p">(</span><span class="n">script</span><span class="o">=</span><span class="s1">&#39;echo &#39;</span><span class="n">Task</span> <span class="mi">1</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Terminate the pipeline after task1</span>
+<span class="gp">... </span>    <span class="n">terminate_task</span> <span class="o">=</span> <span class="n">terminate</span><span class="p">(</span><span class="n">terminator_mode</span><span class="o">=</span><span class="s1">&#39;stop_wait&#39;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">terminate_task</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="n">task1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="terminate-loop">
+<span id="preparing-data-pipelines-components-terminate-loop"></span><h3>Terminate Loop<a class="headerlink" href="#terminate-loop" title="Link to this heading">#</a></h3>
+<p><strong>Component ID</strong>: <code class="docutils literal notranslate"><span class="pre">PipelineComponentId.TERMINATE_LOOP</span></code></p>
+<p><strong>Description</strong>: Breaks out of a loop iteration. This component allows you to exit a loop early based on conditions, similar to a <code class="docutils literal notranslate"><span class="pre">break</span></code> statement in programming.</p>
+<p><strong>Parameters</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">loop_status</span></code> (required): The status to set when terminating the loop. Options:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Completed'</span></code>: Mark the loop as completed successfully</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'Failed'</span></code>: Mark the loop as failed</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">kfp</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineComponentId</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">loop_with_break</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">loop_component</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">LOOP_IN_PARALLEL</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span>    <span class="n">terminate_loop</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">TERMINATE_LOOP</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Loop through items</span>
+<span class="gp">... </span>    <span class="k">with</span> <span class="n">loop_component</span><span class="p">(</span><span class="n">over</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">parallelism</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="c1"># Break out of loop with completed status</span>
+<span class="gp">... </span>        <span class="n">terminate_loop</span><span class="p">(</span><span class="n">loop_status</span><span class="o">=</span><span class="s1">&#39;Completed&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="loop-in-parallel">
+<span id="preparing-data-pipelines-components-loop-in-parallel"></span><h3>Loop in Parallel<a class="headerlink" href="#loop-in-parallel" title="Link to this heading">#</a></h3>
+<p><strong>Component ID</strong>: <code class="docutils literal notranslate"><span class="pre">PipelineComponentId.LOOP_IN_PARALLEL</span></code></p>
+<p><strong>Description</strong>: Executes tasks in parallel for each item in a collection. This component creates a parallel loop where multiple iterations can run simultaneously, improving performance for independent tasks.</p>
+<p><strong>Parameters</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">over</span></code> (required): The collection to iterate over (list of items)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">parallelism</span></code> (optional): Maximum number of parallel executions (default: unlimited)</p></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">kfp</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineComponentId</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@dsl</span><span class="o">.</span><span class="n">component</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">process_item</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing: </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">parallel_loop_pipeline</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">loop_component</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">LOOP_IN_PARALLEL</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Process items in parallel (up to 3 at a time)</span>
+<span class="gp">... </span>    <span class="k">with</span> <span class="n">loop_component</span><span class="p">(</span><span class="n">over</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;item1&#39;</span><span class="p">,</span> <span class="s1">&#39;item2&#39;</span><span class="p">,</span> <span class="s1">&#39;item3&#39;</span><span class="p">,</span> <span class="s1">&#39;item4&#39;</span><span class="p">],</span> <span class="n">parallelism</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="k">as</span> <span class="n">item</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">process_item</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_pipeline</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Parallel Loop Pipeline&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">pipeline_function</span><span class="o">=</span><span class="n">parallel_loop_pipeline</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="loop-in-sequence">
+<span id="preparing-data-pipelines-components-loop-in-sequence"></span><h3>Loop in Sequence<a class="headerlink" href="#loop-in-sequence" title="Link to this heading">#</a></h3>
+<p><strong>Component ID</strong>: <code class="docutils literal notranslate"><span class="pre">PipelineComponentId.LOOP_IN_SEQUENCE</span></code></p>
+<p><strong>Description</strong>: Executes tasks sequentially for each item in a collection. Unlike parallel loops, this ensures items are processed one at a time in order.</p>
+<p><strong>Parameters</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">over</span></code> (required): The collection to iterate over (list of items)</p></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">kfp</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineComponentId</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@dsl</span><span class="o">.</span><span class="n">component</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">process_item_sequential</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing in order: </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">sequential_loop_pipeline</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">loop_component</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">LOOP_IN_SEQUENCE</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Process items one at a time in order</span>
+<span class="gp">... </span>    <span class="k">with</span> <span class="n">loop_component</span><span class="p">(</span><span class="n">over</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="s1">&#39;second&#39;</span><span class="p">,</span> <span class="s1">&#39;third&#39;</span><span class="p">])</span> <span class="k">as</span> <span class="n">item</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">process_item_sequential</span><span class="p">(</span><span class="n">item</span><span class="o">=</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="wait-for-file">
+<span id="preparing-data-pipelines-components-wait-for-file"></span><h3>Wait for File<a class="headerlink" href="#wait-for-file" title="Link to this heading">#</a></h3>
+<p><strong>Component ID</strong>: <code class="docutils literal notranslate"><span class="pre">PipelineComponentId.WAIT_FOR_FILE</span></code></p>
+<p><strong>Description</strong>: Waits for a file to exist before proceeding with pipeline execution. This is useful for coordinating with external processes that create files.</p>
+<p><strong>Parameters</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">file</span></code> (required): The file path to wait for</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wait_mode</span></code> (required): How to wait for the file. Options:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'appear'</span></code>: Wait for the file to appear</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'disappear'</span></code>: Wait for the file to disappear</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">timeout_length</span></code> (required): Maximum time to wait in format <code class="docutils literal notranslate"><span class="pre">'HH:MM:SS'</span></code></p></li>
+</ul>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">kfp</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineComponentId</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">wait_for_file_pipeline</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">wait_file</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">WAIT_FOR_FILE</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span>    <span class="n">run_bash</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">RUN_BASH_SCRIPT</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Wait for a file to appear (timeout after 5 minutes)</span>
+<span class="gp">... </span>    <span class="n">wait_task</span> <span class="o">=</span> <span class="n">wait_file</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">file</span><span class="o">=</span><span class="s1">&#39;/path/to/expected/file.txt&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="n">wait_mode</span><span class="o">=</span><span class="s1">&#39;appear&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="n">timeout_length</span><span class="o">=</span><span class="s1">&#39;00:05:00&#39;</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Process the file after it appears</span>
+<span class="gp">... </span>    <span class="n">process_task</span> <span class="o">=</span> <span class="n">run_bash</span><span class="p">(</span><span class="n">script</span><span class="o">=</span><span class="s1">&#39;cat /path/to/expected/file.txt&#39;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">process_task</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="n">wait_task</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="wait-for-any">
+<span id="preparing-data-pipelines-components-wait-for-any"></span><h3>Wait for Any<a class="headerlink" href="#wait-for-any" title="Link to this heading">#</a></h3>
+<p><strong>Component ID</strong>: <code class="docutils literal notranslate"><span class="pre">PipelineComponentId.WAIT_FOR_ANY</span></code></p>
+<p><strong>Description</strong>: Waits for any one of the upstream tasks to complete before proceeding. This is useful when you have multiple parallel tasks and want to continue as soon as the first one finishes.</p>
+<p><strong>Parameters</strong>: None (uses <code class="docutils literal notranslate"><span class="pre">.after()</span></code> to specify upstream tasks)</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">kfp</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineComponentId</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">wait_any_pipeline</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">run_bash</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">RUN_BASH_SCRIPT</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span>    <span class="n">wait_any</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">WAIT_FOR_ANY</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Start two tasks with different durations</span>
+<span class="gp">... </span>    <span class="n">task1</span> <span class="o">=</span> <span class="n">run_bash</span><span class="p">(</span><span class="n">script</span><span class="o">=</span><span class="s1">&#39;sleep 5&#39;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">task2</span> <span class="o">=</span> <span class="n">run_bash</span><span class="p">(</span><span class="n">script</span><span class="o">=</span><span class="s1">&#39;sleep 10&#39;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Wait for any task to complete</span>
+<span class="gp">... </span>    <span class="n">wait_task</span> <span class="o">=</span> <span class="n">wait_any</span><span class="p">()</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="n">task1</span><span class="p">,</span> <span class="n">task2</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Continue after the first task completes</span>
+<span class="gp">... </span>    <span class="n">run_bash</span><span class="p">(</span><span class="n">script</span><span class="o">=</span><span class="s1">&#39;echo &#39;</span><span class="n">First</span> <span class="n">task</span> <span class="n">completed</span><span class="err">!</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="n">wait_task</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="wait-for-all">
+<span id="preparing-data-pipelines-components-wait-for-all"></span><h3>Wait for All<a class="headerlink" href="#wait-for-all" title="Link to this heading">#</a></h3>
+<p><strong>Component ID</strong>: <code class="docutils literal notranslate"><span class="pre">PipelineComponentId.WAIT_FOR_ALL</span></code></p>
+<p><strong>Description</strong>: Waits for all upstream tasks to complete before proceeding. This ensures all parallel tasks finish before continuing with the next step.</p>
+<p><strong>Parameters</strong>: None (uses <code class="docutils literal notranslate"><span class="pre">.after()</span></code> to specify upstream tasks)</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">kfp</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineComponentId</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">wait_all_pipeline</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">run_bash</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">RUN_BASH_SCRIPT</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span>    <span class="n">wait_all</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">WAIT_FOR_ALL</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Start multiple parallel tasks</span>
+<span class="gp">... </span>    <span class="n">task1</span> <span class="o">=</span> <span class="n">run_bash</span><span class="p">(</span><span class="n">script</span><span class="o">=</span><span class="s1">&#39;sleep 5&#39;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">task2</span> <span class="o">=</span> <span class="n">run_bash</span><span class="p">(</span><span class="n">script</span><span class="o">=</span><span class="s1">&#39;sleep 3&#39;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">task3</span> <span class="o">=</span> <span class="n">run_bash</span><span class="p">(</span><span class="n">script</span><span class="o">=</span><span class="s1">&#39;sleep 7&#39;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Wait for all tasks to complete</span>
+<span class="gp">... </span>    <span class="n">wait_task</span> <span class="o">=</span> <span class="n">wait_all</span><span class="p">()</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="n">task1</span><span class="p">,</span> <span class="n">task2</span><span class="p">,</span> <span class="n">task3</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Continue only after all tasks complete</span>
+<span class="gp">... </span>    <span class="n">run_bash</span><span class="p">(</span><span class="n">script</span><span class="o">=</span><span class="s1">&#39;echo &#39;</span><span class="n">All</span> <span class="n">tasks</span> <span class="n">completed</span><span class="err">!</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="n">wait_task</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="creating-custom-components">
+<span id="preparing-data-pipelines-components-creating-custom"></span><h2>Creating Custom Components<a class="headerlink" href="#creating-custom-components" title="Link to this heading">#</a></h2>
+<p>You can create custom pipeline components for specialized functionality using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.create_pipeline_component" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.create_pipeline_component"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.create_pipeline_component()</span></code></a> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">process_data</span><span class="p">(</span><span class="n">input_text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="gp">... </span><span class="w">    </span><span class="sd">&#39;&#39;&#39;Process input text by repeating it.&#39;&#39;&#39;</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing: </span><span class="si">{</span><span class="n">input_text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">result</span> <span class="o">=</span> <span class="n">input_text</span> <span class="o">*</span> <span class="n">multiplier</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">result</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create the custom component</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">custom_component</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_pipeline_component</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Process Data Component&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">function</span><span class="o">=</span><span class="n">process_data</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Processes text by repeating it&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">custom_component</span>
+<span class="go">PipelineComponent(component_id=&#39;...&#39;, name=&#39;Process Data Component&#39;, ...)</span>
+</pre></div>
+</div>
+<p>Once created, you can use your custom component in pipelines just like built-in components:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="gp">... </span><span class="k">def</span><span class="w"> </span><span class="nf">my_pipeline</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="c1"># Get the custom component</span>
+<span class="gp">... </span>    <span class="n">processor</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Process Data Component&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="n">is_built_in</span><span class="o">=</span><span class="kc">False</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">... </span>    <span class="c1"># Use it in the pipeline</span>
+<span class="gp">... </span>    <span class="n">result</span> <span class="o">=</span> <span class="n">processor</span><span class="p">(</span><span class="n">input_text</span><span class="o">=</span><span class="s1">&#39;Hello&#39;</span><span class="p">,</span> <span class="n">multiplier</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_pipeline</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Pipeline with custom component&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">pipeline_function</span><span class="o">=</span><span class="n">my_pipeline</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="overwriting-custom-components">
+<h3>Overwriting Custom Components<a class="headerlink" href="#overwriting-custom-components" title="Link to this heading">#</a></h3>
+<p>If you need to update an existing custom component, you can use the <code class="docutils literal notranslate"><span class="pre">overwrite</span></code> parameter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span><span class="w"> </span><span class="nf">improved_process_data</span><span class="p">(</span><span class="n">input_text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">multiplier</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="gp">... </span><span class="w">    </span><span class="sd">&#39;&#39;&#39;Improved version of the data processor.&#39;&#39;&#39;</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing (v2): </span><span class="si">{</span><span class="n">input_text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">result</span> <span class="o">=</span> <span class="n">input_text</span> <span class="o">*</span> <span class="n">multiplier</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Overwrite the existing component</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">updated_component</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_pipeline_component</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Process Data Component&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">function</span><span class="o">=</span><span class="n">improved_process_data</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Improved data processor&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="deleting-custom-components">
+<span id="preparing-data-pipelines-components-deleting-custom"></span><h2>Deleting Custom Components<a class="headerlink" href="#deleting-custom-components" title="Link to this heading">#</a></h2>
+<p>You can delete custom pipeline components (but not built-in ones) using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_pipeline_component" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_pipeline_component"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_pipeline_component()</span></code></a> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get the custom component (using fixture)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">delete_pipeline_component</span><span class="p">(</span><span class="n">custom_pipeline_component</span><span class="p">)</span>
+<span class="go">&lt;Response [204]&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Built-in pipeline components cannot be deleted. Only custom components created by users can be removed.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Deleting a component that is being used in existing pipelines may cause those pipelines to fail. Ensure the component is not in use before deleting it.</p>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pipelines.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pipelines</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../datasources.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Datasource Type</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Section Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-pipeline-components">Listing Pipeline Components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-pipelinecomponentid-enum">Using the PipelineComponentId Enum</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-components">Built-in Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-datastage-job">Run DataStage Job</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-pipeline-job">Run Pipeline Job</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-bash-script">Run Bash Script</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#terminate-pipeline">Terminate Pipeline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#terminate-loop">Terminate Loop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loop-in-parallel">Loop in Parallel</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loop-in-sequence">Loop in Sequence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wait-for-file">Wait for File</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wait-for-any">Wait for Any</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wait-for-all">Wait for All</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-custom-components">Creating Custom Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overwriting-custom-components">Overwriting Custom Components</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-custom-components">Deleting Custom Components</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, IBM.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

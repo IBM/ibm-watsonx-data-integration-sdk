@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Flows &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
+    <title>Flows &#8212; ibm-watsonx-data-integration 1.3.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=db04a367"></script>
+    <script src="../../../_static/documentation_options.js?v=27de968b"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.3.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -165,7 +165,6 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01_welcome/prereqs.html">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/mcp_server.html">MCP Server Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01_welcome/supported_products.html">Supported Products</a></li>
 </ul>
 </details></li>
@@ -207,6 +206,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../streaming/stages.html">Stages</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../pipelines/index.html">Pipelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/components.html">Pipeline Components</a></li>
+</ul>
+</details></li>
 <li class="toctree-l2"><a class="reference internal" href="../datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../connections.html">Connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../parameter_sets.html">Parameter Sets</a></li>
@@ -236,6 +240,12 @@
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../06_access_control/project_collaborators.html">Project Collaborators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../07_mcp_server/index.html">MCP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../07_mcp_server/mcp_server_setup.html">MCP Server Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07_mcp_server/mcp_server_tools.html">MCP Server Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07_mcp_server/mcp_server_skills.html">MCP Server Skills</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -333,7 +343,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-a-flow">Duplicating a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-flow">Deleting a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compiling-a-flow">Compiling a Flow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#auto-arranging-a-flow">Auto-Arranging a Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#auto-arranging-a-flow">Auto-Arranging a Flow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-arrangement-default-behavior">Automatic Arrangement (Default Behavior)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disabling-automatic-arrangement">Disabling Automatic Arrangement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-arrangement">Manual Arrangement</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-runtime-parameters-of-a-flow">Setting Runtime Parameters of a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-runtime-settings-of-a-flow">Setting Runtime Settings of a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-flows">Exporting Flows</a></li>
@@ -462,18 +477,47 @@ This will return an HTTP response indicating the status of the compile operation
 </section>
 <section id="auto-arranging-a-flow">
 <span id="preparing-data-batch-flows-auto-arranging-a-flow"></span><h2>Auto-Arranging a Flow<a class="headerlink" href="#auto-arranging-a-flow" title="Link to this heading">#</a></h2>
-<p>In the UI, stages in a flow can be manually positioned by dragging them around the canvas. However, when creating flows programmatically or when a flow becomes cluttered, you may want to automatically arrange the stages in a clean, organized layout.
-The SDK provides the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.auto_arrange" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.auto_arrange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchFlow.auto_arrange()</span></code></a> method to automatically position stages based on their connections and dependencies.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a flow and add stages</span>
+<p>In the UI, stages in a flow can be manually positioned by dragging them around the canvas. However, when creating flows programmatically or when a flow becomes cluttered, you may want to automatically arrange the stages in a clean, organized layout.</p>
+<p>By default, flows are automatically arranged when updated. This behavior can be controlled using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.use_auto_arrange" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.use_auto_arrange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchFlow.use_auto_arrange()</span></code></a> method.</p>
+<section id="automatic-arrangement-default-behavior">
+<h3>Automatic Arrangement (Default Behavior)<a class="headerlink" href="#automatic-arrangement-default-behavior" title="Link to this heading">#</a></h3>
+<p>When you create a new flow, automatic arrangement is enabled by default. This means stages will be automatically positioned based on their stages and links whenever the flow is updated:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a flow - auto-arrange is enabled by default</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">batch_flow_auto</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;My auto arranged flow&#39;</span><span class="p">,</span> <span class="n">flow_type</span><span class="o">=</span><span class="s1">&#39;batch&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">batch_flow_auto</span>
-<span class="go">BatchFlow(...)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># ... add stages and connections ...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># ... add stages and links ...</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Auto-arrange the stages</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># When you update, stages are automatically arranged</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">batch_flow_auto</span><span class="p">)</span>
+<span class="go">&lt;Response [201]&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="disabling-automatic-arrangement">
+<h3>Disabling Automatic Arrangement<a class="headerlink" href="#disabling-automatic-arrangement" title="Link to this heading">#</a></h3>
+<p>If you want to preserve the exact positioning of stages in an existing flow, you can disable automatic arrangement. This is useful when you’ve manually positioned stages in the UI and want to maintain that layout when making programmatic changes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get an existing flow and disable auto-arrange</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">batch_flow_auto</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">flows</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;My auto arranged flow&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">batch_flow_auto</span><span class="o">.</span><span class="n">use_auto_arrange</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">BatchFlow(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># ... add stages and links ...</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># When you update, the original stage positions are preserved</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">batch_flow_auto</span><span class="p">)</span>
+<span class="go">&lt;Response [201]&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When auto-arrange is disabled, newly added stages may not be positioned optimally relative to existing stages. You may need to manually position them in the UI or call <code class="docutils literal notranslate"><span class="pre">auto_arrange()</span></code> once to establish a clean layout.</p>
+</div>
+</section>
+<section id="manual-arrangement">
+<h3>Manual Arrangement<a class="headerlink" href="#manual-arrangement" title="Link to this heading">#</a></h3>
+<p>You can also manually trigger arrangement at any time using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.auto_arrange" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.auto_arrange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchFlow.auto_arrange()</span></code></a> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Manually arrange stages at any time</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">batch_flow_auto</span><span class="o">.</span><span class="n">auto_arrange</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Save the flow with the new layout</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Update the flow with the new layout</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">batch_flow_auto</span><span class="p">)</span>
 <span class="go">&lt;Response [201]&gt;</span>
 </pre></div>
@@ -487,8 +531,9 @@ The SDK provides the <a class="reference internal" href="../../../api/models.htm
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The actual layout calculation happens when the flow is saved or visualized. The <code class="docutils literal notranslate"><span class="pre">auto_arrange()</span></code> method only removes existing position data to trigger the automatic arrangement.</p>
+<p>The actual layout calculation happens when the flow is updtaed or visualized. The <code class="docutils literal notranslate"><span class="pre">auto_arrange()</span></code> method removes existing position data to trigger the automatic arrangement, while <code class="docutils literal notranslate"><span class="pre">use_auto_arrange()</span></code> controls whether this happens automatically on every update.</p>
 </div>
+</section>
 </section>
 <section id="setting-runtime-parameters-of-a-flow">
 <span id="preparing-data-batch-flows-setting-runtime-parameters-of-a-flow"></span><h2>Setting Runtime Parameters of a Flow<a class="headerlink" href="#setting-runtime-parameters-of-a-flow" title="Link to this heading">#</a></h2>
@@ -699,7 +744,12 @@ that are returned will only have the <code class="docutils literal notranslate">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-a-flow">Duplicating a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-flow">Deleting a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compiling-a-flow">Compiling a Flow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#auto-arranging-a-flow">Auto-Arranging a Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#auto-arranging-a-flow">Auto-Arranging a Flow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-arrangement-default-behavior">Automatic Arrangement (Default Behavior)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disabling-automatic-arrangement">Disabling Automatic Arrangement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-arrangement">Manual Arrangement</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-runtime-parameters-of-a-flow">Setting Runtime Parameters of a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-runtime-settings-of-a-flow">Setting Runtime Settings of a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-flows">Exporting Flows</a></li>

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Supported Products &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
+    <title>Supported Products &#8212; ibm-watsonx-data-integration 1.3.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=db04a367"></script>
+    <script src="../../_static/documentation_options.js?v=27de968b"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -49,7 +49,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Overview" href="../02_overview/index.html" />
-    <link rel="prev" title="MCP Server Setup" href="mcp_server.html" />
+    <link rel="prev" title="Installation and Versioning" href="installation_and_versioning.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.3.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -165,7 +165,6 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Welcome</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="prereqs.html">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation_and_versioning.html">Installation and Versioning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mcp_server.html">MCP Server Setup</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Supported Products</a></li>
 </ul>
 </details></li>
@@ -207,6 +206,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/stages.html">Stages</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/pipelines/index.html">Pipelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/components.html">Pipeline Components</a></li>
+</ul>
+</details></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/parameter_sets.html">Parameter Sets</a></li>
@@ -236,6 +240,12 @@
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_access_control/project_collaborators.html">Project Collaborators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07_mcp_server/index.html">MCP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07_mcp_server/mcp_server_setup.html">MCP Server Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07_mcp_server/mcp_server_tools.html">MCP Server Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07_mcp_server/mcp_server_skills.html">MCP Server Skills</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -359,7 +369,7 @@ document.write(`
 <h2>On-Premise Support<a class="headerlink" href="#on-premise-support" title="Link to this heading">#</a></h2>
 <p>For software deployments, the SDK is compatible with watsonx.data integration and DataStage NextGen on Cloud Pak for Data (CP4D). We currently support the following versions:</p>
 <ul class="simple">
-<li><p>watsonx.data integration (CP4D 5.3+)</p>
+<li><p>watsonx.data integration (CP4D 5.3.x)</p>
 <ul>
 <li><p>Batch (DataStage)</p></li>
 <li><p>Streaming (StreamSets)</p></li>
@@ -367,7 +377,6 @@ document.write(`
 </li>
 <li><p>DataStage NextGen</p>
 <ul>
-<li><p>CP4D 5.4 (Latest)</p></li>
 <li><p>CP4D 5.3</p></li>
 <li><p>CP4D 5.2</p></li>
 <li><p>CP4D 5.1</p></li>
@@ -377,7 +386,7 @@ document.write(`
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Connector Availability:</strong> While the core SDK is compatible with all versions listed above, access to specific connectors may be limited on older versions of CP4D. We recommend using the latest version (5.4) to ensure access to the full suite of available data connectors and performance optimizations.</p>
+<p><strong>Connector Availability:</strong> While the core SDK is compatible with all versions listed above, access to specific connectors may be limited on older versions of CP4D. We recommend using the latest version (5.3) to ensure access to the full suite of available data connectors and performance optimizations.</p>
 </div>
 </section>
 </section>
@@ -394,12 +403,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="mcp_server.html"
+       href="installation_and_versioning.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">MCP Server Setup</p>
+        <p class="prev-next-title">Installation and Versioning</p>
       </div>
     </a>
     <a class="right-next"

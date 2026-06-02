@@ -32,18 +32,26 @@ To create a new :py:class:`~ibm_watsonx_data_integration.cpd_models.project_mode
 
 You must specify the ``name`` attribute.
 Additionally, you can provide optional parameters such as ``description``, ``tags``, ``public``, and ``project_type``.
-If you do not pass in a ``project_type`` parameter, the SDK will default to ``wx``, effectively creating the project within the ``watsonx`` view.
+
+The ``project_type`` parameter accepts either a :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.ProjectType` enum member or a string literal:
+
+* :py:attr:`~ibm_watsonx_data_integration.cpd_models.project_model.ProjectType.WATSONX_DATA_FABRIC` (default) - Creates a watsonx.data fabric project
+* :py:attr:`~ibm_watsonx_data_integration.cpd_models.project_model.ProjectType.CLOUD_PAK_FOR_DATA` - Creates a classic Cloud Pak for Data project
+
+If you do not pass in a ``project_type`` parameter, the SDK will default to ``ProjectType.WATSONX_DATA_FABRIC``, effectively creating the project within the watsonx view.
 
 This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object.
 
 .. code-block:: python
 
+    >>> from ibm_watsonx_data_integration.cpd_models import ProjectType
+    >>>
     >>> my_project = platform.create_project(
     ...     name='Test Project',
     ...     description='Test Project Description',
     ...     tags=['flow_test_project'],
     ...     public=True,
-    ...     project_type='wx'
+    ...     project_type=ProjectType.WATSONX_DATA_FABRIC
     ... )
     >>> my_project
     Project(name='Test Project', ...)

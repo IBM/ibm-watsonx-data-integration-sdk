@@ -18,5 +18,4 @@ Looking for documentation on the SDK's interfaces and abstractions? See the :ref
 
    prereqs
    installation_and_versioning
-   mcp_server
    supported_products

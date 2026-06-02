@@ -27,7 +27,7 @@ This returns a :py:class:`list` of :py:class:`~ibm_watsonx_data_integration.serv
 .. code-block:: python
 
     >>> flow.stages
-    [DevRawDataSource_01(stage_name='Dev Raw Data Source 1'), Trash_01(stage_name='Trash 1')]
+    [DevRawDataSource_01(name='Dev Raw Data Source 1'), Trash_01(name='Trash 1')]
 
 
 Discovering Available Stages
@@ -157,7 +157,7 @@ After adding stages, you need to call the :py:meth:`Project.update_flow() <ibm_w
 .. code-block:: python
 
     >>> flow.add_stage(label='Amazon SQS Consumer')
-    AmazonSQSConsumer_01(stage_name='Amazon SQS Consumer 1')
+    AmazonSQSConsumer_01(name='Amazon SQS Consumer 1')
     >>> project.update_flow(flow)
     <Response [200]>
 
@@ -226,11 +226,11 @@ For all the methods listed above, we can pass one or more instances of :py:class
     >>> dev_random_source = flow.add_stage('Dev Raw Data Source')  # a sample origin stage that generates random data
     >>> trash = flow.add_stage('Trash')  # a sample destination stage that accepts all input and discards it
     >>> dev_random_source.connect_output_to(trash)  # alternatively, you can call: trash.connect_input_to(dev_random_source)
-    Trash_02(stage_name='Trash 2')
+    Trash_02(name='Trash 2')
     >>> # events are connected in a similar way
     >>> pipeline_finisher = flow.add_stage('Pipeline Finisher Executor')
     >>> dev_random_source.connect_event_to(pipeline_finisher)  # outputs events to pipeline finisher
-    PipelineFinisherExecutor_01(stage_name='Pipeline Finisher Executor 1')
+    PipelineFinisherExecutor_01(name='Pipeline Finisher Executor 1')
     >>> project.update_flow(flow)
     <Response [200]>
 
@@ -280,10 +280,10 @@ or :py:meth:`Stage.connect_input_to() <ibm_watsonx_data_integration.services.str
 .. code-block:: python
 
     >>> stream_selector.connect_output_to(trash, predicate=stream_selector.predicates[0])
-    Trash_02(stage_name='Trash 2')
+    Trash_02(name='Trash 2')
     >>> # alternatively, you can use:
     >>> trash.connect_input_to(stream_selector, predicate=stream_selector.predicates[0])
-    StreamSelector_01(stage_name='Stream Selector 1')
+    StreamSelector_01(name='Stream Selector 1')
 
 .. important::
 
@@ -358,11 +358,11 @@ You can connect to a specific output stream using the ``output_idx`` parameter.
     >>>
     >>> # Connect to the first output stream (index 0)
     >>> record_deduplicator_stage.connect_output_to(renamer, output_idx=0)
-    FieldRenamer_01(stage_name='Field Renamer 1')
+    FieldRenamer_01(name='Field Renamer 1')
     >>>
     >>> # Connect to the second output stream (index 1)
     >>> record_deduplicator_stage.connect_output_to(trash_stage, output_idx=1)
-    Trash_03(stage_name='Trash 3')
+    Trash_03(name='Trash 3')
 
 .. note::
     The ``output_idx`` parameter is zero-based. If not specified, it defaults to 0 (the first output stream).
@@ -386,11 +386,11 @@ All three properties return a :py:class:`list` of :py:class:`~ibm_watsonx_data_i
 .. code-block:: python
 
     >>> dev_random_source.outputs
-    [Trash_02(stage_name='Trash 2')]
+    [Trash_02(name='Trash 2')]
     >>> dev_random_source.events
-    [PipelineFinisherExecutor_01(stage_name='Pipeline Finisher Executor 1')]
+    [PipelineFinisherExecutor_01(name='Pipeline Finisher Executor 1')]
     >>> trash.inputs
-    [DevRawDataSource_02(stage_name='Dev Raw Data Source 2'), StreamSelector_01(stage_name='Stream Selector 1')]
+    [DevRawDataSource_02(name='Dev Raw Data Source 2'), StreamSelector_01(name='Stream Selector 1')]
 
 .. _preparing_data__streaming__disconnecting_stages:
 
@@ -412,9 +412,9 @@ To disconnect stages, we have a similar trio of methods as for connecting:
 .. code-block:: python
 
     >>> dev_random_source.disconnect_output_from(trash)  # alternatively, you can call: trash.disconnect_input_from(dev_random_source)
-    Trash_02(stage_name='Trash 2')
+    Trash_02(name='Trash 2')
     >>> dev_random_source.disconnect_event_from(pipeline_finisher)
-    PipelineFinisherExecutor_01(stage_name='Pipeline Finisher Executor 1')
+    PipelineFinisherExecutor_01(name='Pipeline Finisher Executor 1')
 
 
 .. _preparing_data__streaming__chaining_stage_connect_disconnect:
@@ -430,7 +430,7 @@ Instead of connecting each stage one by one, it is possible to write everything 
     >>> processor = flow.add_stage('Field Remover')
     >>> trash = flow.add_stage('Trash')
     >>> source.connect_output_to(processor).connect_output_to(trash)
-    Trash_04(stage_name='Trash 4')
+    Trash_04(name='Trash 4')
 
 It is also possible to connect multiple stages to the output of a stage with a single call.
 
@@ -440,7 +440,7 @@ It is also possible to connect multiple stages to the output of a stage with a s
     >>> renamer1 = flow.add_stage('Field Renamer')
     >>> renamer2 = flow.add_stage('Field Renamer')
     >>> source.connect_output_to(renamer1, renamer2)
-    [FieldRenamer_02(stage_name='Field Renamer 2'), FieldRenamer_03(stage_name='Field Renamer 3')]
+    [FieldRenamer_02(name='Field Renamer 2'), FieldRenamer_03(name='Field Renamer 3')]
 
 
 .. _preparing_data__streaming__editing_stage_configuration:

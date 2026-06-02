@@ -22,6 +22,7 @@ Retrieving Existing Engines in a Project
 To retrieve existing engines in a project, use the :py:attr:`~ibm_watsonx_data_integration.cpd_models.project_model.Project.engines` property of the
 :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` class.
 This will return a list of :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine` objects.
+You can also retrieve a single engine using the :py:meth:`Project.engines.get() <ibm_watsonx_data_integration.common.models.CollectionModel.get>` method, which takes unique identifiers such as engine_type or engine_id.
 
 .. code-block:: python
 
@@ -29,26 +30,8 @@ This will return a list of :py:class:`~ibm_watsonx_data_integration.services.str
     >>> engines = project.engines
     >>> engines
     [Engine(..., engine_type='data_collector', ...)]
-
-
-Retrieving an Existing Engine in a Project
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To retrieve an existing engine in a project, use the :py:meth:`Project.get_engine() <ibm_watsonx_data_integration.cpd_models.project_model.Project.get_engine>` method of the
-:py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` class. You must specify the ``engine_id`` of the existing engine.
-This will return a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine` object.
-
-In the UI, you can retrieve an Engine ID by navigating to **Manage -> StreamSets -> Environment** and clicking your environment name for details.
-
-.. image:: /_static/images/engine/retrieve_engine_id.png
-   :alt: Screenshot of the Engine id retrieving
-   :align: center
-   :width: 100%
-
-.. code-block:: python
-
-    >>> # Get a single engine by engine_id
-    >>> project.get_engine(engine_id=engines[0].engine_id)
+    >>> engine = project.engines.get(engine_type='data_collector')
+    >>> engine
     Engine(..., engine_type='data_collector', ...)
 
 
@@ -93,7 +76,7 @@ method. This performs a bulk delete operation, which is more efficient than dele
     <Response [200]>
 
     >>> # Delete all engines from an environment
-    >>> environment = project.get_environment('environment-id')
+    >>> environment = project.environments.get(environment_id='environment-id')
     >>> project.delete_engines(*environment.engines.get_all())
     <Response [200]>
 

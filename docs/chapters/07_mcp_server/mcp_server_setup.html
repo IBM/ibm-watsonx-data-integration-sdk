@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>MCP Server Setup &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
+    <title>MCP Server Setup &#8212; ibm-watsonx-data-integration 1.3.0 documentation</title>
   
   
   
@@ -39,17 +39,17 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=db04a367"></script>
+    <script src="../../_static/documentation_options.js?v=27de968b"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=30646c52"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/01_welcome/mcp_server';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/07_mcp_server/mcp_server_setup';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Supported Products" href="supported_products.html" />
-    <link rel="prev" title="Installation and Versioning" href="installation_and_versioning.html" />
+    <link rel="next" title="MCP Server Tools" href="mcp_server_tools.html" />
+    <link rel="prev" title="MCP Server" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.3.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -162,11 +162,10 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Welcome</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="prereqs.html">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="installation_and_versioning.html">Installation and Versioning</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">MCP Server Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="supported_products.html">Supported Products</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_welcome/prereqs.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_welcome/supported_products.html">Supported Products</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -207,6 +206,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/stages.html">Stages</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/pipelines/index.html">Pipelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/components.html">Pipeline Components</a></li>
+</ul>
+</details></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/parameter_sets.html">Parameter Sets</a></li>
@@ -236,6 +240,12 @@
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_access_control/project_collaborators.html">Project Collaborators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">MCP Server</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">MCP Server Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcp_server_tools.html">MCP Server Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcp_server_skills.html">MCP Server Skills</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -338,7 +348,13 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bob-vs-code">Bob (VS Code)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">Authentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-utf-8-configuration">Windows UTF-8 Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">Authentication</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saas-authentication-ibm-cloud">SaaS Authentication (IBM Cloud)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-premises-authentication-cloud-pak-for-data">On-Premises Authentication (Cloud Pak for Data)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-tls-for-on-premises-deployments">Configuring TLS for On-Premises Deployments</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -351,9 +367,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="mcp-server-setup">
-<span id="welcome-mcp-server"></span><h1>MCP Server Setup<a class="headerlink" href="#mcp-server-setup" title="Link to this heading">#</a></h1>
-<p>The <code class="docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration_mcp</span></code> package is an MCP (Model Context Protocol) server for IBM watsonx.data integration.
-It enables AI assistants to interact with your data integration workflows directly, without needing to write SDK code.</p>
+<span id="mcp-server-mcp-server-setup"></span><h1>MCP Server Setup<a class="headerlink" href="#mcp-server-setup" title="Link to this heading">#</a></h1>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -504,13 +518,156 @@ to your <code class="docutils literal notranslate"><span class="pre">claude_desk
 configurations above to your Bob MCP config file.</p>
 </section>
 </section>
+<section id="windows-utf-8-configuration">
+<h2>Windows UTF-8 Configuration<a class="headerlink" href="#windows-utf-8-configuration" title="Link to this heading">#</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Windows users must set the PYTHONUTF8 environment variable</strong> to avoid encoding errors when the server loads skill files.</p>
+</div>
+<p>Due to a limitation in fastmcp 3.2.4, the MCP server requires UTF-8 encoding to properly load skill files that contain
+emoji and special characters. On Windows, the default encoding is cp1252, which cannot decode UTF-8 characters like
+✅, ❌, and → used in the skill documentation.</p>
+<p><strong>Add this to your MCP configuration on Windows:</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;PYTHONUTF8&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_API_KEY&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Why is this needed?</strong></p>
+<ul class="simple">
+<li><p>Windows defaults to cp1252 encoding, which cannot decode UTF-8 emoji in SKILL.md files</p></li>
+<li><p>Setting <code class="docutils literal notranslate"><span class="pre">PYTHONUTF8=1</span></code> forces Python to use UTF-8 encoding for all file operations</p></li>
+<li><p>Without this setting, the server will fail to start on Windows with a <code class="docutils literal notranslate"><span class="pre">UnicodeDecodeError</span></code></p></li>
+</ul>
+<p><strong>This applies to all installation methods</strong> (uvx, uv tool, pip install) when running on Windows.</p>
+</section>
 <section id="authentication">
 <h2>Authentication<a class="headerlink" href="#authentication" title="Link to this heading">#</a></h2>
-<p>Set your <code class="docutils literal notranslate"><span class="pre">WATSONX_API_KEY</span></code> in the <code class="docutils literal notranslate"><span class="pre">env</span></code> block of your MCP client configuration. The server validates this key on startup.</p>
+<p>The server supports both <strong>SaaS</strong> (IBM Cloud) and <strong>On-Premises</strong> (Cloud Pak for Data) authentication. It automatically detects which authentication method to use based on the environment variables you set.</p>
+<section id="saas-authentication-ibm-cloud">
+<h3>SaaS Authentication (IBM Cloud)<a class="headerlink" href="#saas-authentication-ibm-cloud" title="Link to this heading">#</a></h3>
+<p>For SaaS deployments, set the <code class="docutils literal notranslate"><span class="pre">WATSONX_API_KEY</span></code> environment variable in the <code class="docutils literal notranslate"><span class="pre">env</span></code> block of your MCP client configuration:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-ibm-cloud-api-key&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For information on how to generate an IBM Cloud API key, see <a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html#getting-started-and-tutorials-authentication"><span class="std std-ref">Authentication</span></a>.</p>
 </div>
+</section>
+<section id="on-premises-authentication-cloud-pak-for-data">
+<h3>On-Premises Authentication (Cloud Pak for Data)<a class="headerlink" href="#on-premises-authentication-cloud-pak-for-data" title="Link to this heading">#</a></h3>
+<p>For On-Premises deployments, you have two authentication options:</p>
+<p><strong>Option 1: Username + Password</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_USERNAME&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-username&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_PASSWORD&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-password&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_URL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://your-cp4d-cluster.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_DISABLE_SSL_VERIFICATION&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Option 2: Username + Zen API Key</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_USERNAME&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-username&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ZEN_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-zen-api-key&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_URL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://your-cp4d-cluster.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_DISABLE_SSL_VERIFICATION&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>SSL Verification:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CP4D_DISABLE_SSL_VERIFICATION</span></code>: Set to <code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code> to disable SSL certificate verification for On-Premises deployments (useful for self-signed certificates). Default is <code class="docutils literal notranslate"><span class="pre">&quot;false&quot;</span></code>.</p></li>
+</ul>
+</div>
+</section>
+<section id="configuring-tls-for-on-premises-deployments">
+<h3>Configuring TLS for On-Premises Deployments<a class="headerlink" href="#configuring-tls-for-on-premises-deployments" title="Link to this heading">#</a></h3>
+<p>If your On-Premises cluster uses self-signed certificates or custom Certificate Authorities (CA), you may need to configure TLS properly instead of disabling SSL verification. Here’s how to set up TLS:</p>
+<p><strong>Step 1: Log in to your OpenShift cluster</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>oc<span class="w"> </span>login<span class="w"> </span>&lt;CLUSTER_URL&gt;
+</pre></div>
+</div>
+<p><strong>Step 2: Extract the cluster’s CA certificate</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openssl<span class="w"> </span>s_client<span class="w"> </span>-showcerts<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-connect<span class="w"> </span>&lt;CLUSTER&gt;:443<span class="w"> </span>&lt;/dev/null<span class="w"> </span>&gt;<span class="w"> </span>ca.crt
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">&lt;CLUSTER&gt;</span></code> with your cluster hostname (e.g., <code class="docutils literal notranslate"><span class="pre">your-cp4d-cluster.com</span></code>).</p>
+<p><strong>Step 3: Clean up the certificate file</strong></p>
+<p>Open the <code class="docutils literal notranslate"><span class="pre">ca.crt</span></code> file and remove all text except the certificate blocks. The file should only contain lines like:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>-----BEGIN CERTIFICATE-----
+[certificate content]
+-----END CERTIFICATE-----
+</pre></div>
+</div>
+<p>Remove any connection information, verification messages, or other output from the openssl command.</p>
+<p><strong>Step 4: Configure the MCP server to use the CA certificate</strong></p>
+<p>Add the <code class="docutils literal notranslate"><span class="pre">REQUESTS_CA_BUNDLE</span></code> environment variable to your MCP server configuration, pointing to the cleaned <code class="docutils literal notranslate"><span class="pre">ca.crt</span></code> file:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_USERNAME&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-username&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_PASSWORD&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-password&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_URL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://your-cp4d-cluster.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_DISABLE_SSL_VERIFICATION&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;REQUESTS_CA_BUNDLE&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/path/to/ca.crt&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">/path/to/ca.crt</span></code> with the absolute path to your cleaned certificate file.</p>
+<p><strong>Authentication Detection Priority:</strong></p>
+<ol class="arabic simple">
+<li><p>SaaS (IAMAuthenticator) - if <code class="docutils literal notranslate"><span class="pre">WATSONX_API_KEY</span></code> is set</p></li>
+<li><p>On-Premises (ICP4DAuthenticator) - if <code class="docutils literal notranslate"><span class="pre">CP4D_USERNAME</span></code> and <code class="docutils literal notranslate"><span class="pre">CP4D_PASSWORD</span></code> are set</p></li>
+<li><p>On-Premises (ZenApiKeyAuthenticator) - if <code class="docutils literal notranslate"><span class="pre">CP4D_USERNAME</span></code> and <code class="docutils literal notranslate"><span class="pre">ZEN_API_KEY</span></code> are set</p></li>
+</ol>
+<p>The server validates authentication credentials on startup and will display which authentication method was detected.</p>
+</section>
 </section>
 </section>
 
@@ -526,20 +683,20 @@ configurations above to your Bob MCP config file.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="installation_and_versioning.html"
+       href="index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Installation and Versioning</p>
+        <p class="prev-next-title">MCP Server</p>
       </div>
     </a>
     <a class="right-next"
-       href="supported_products.html"
+       href="mcp_server_tools.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Supported Products</p>
+        <p class="prev-next-title">MCP Server Tools</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -571,7 +728,13 @@ configurations above to your Bob MCP config file.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bob-vs-code">Bob (VS Code)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">Authentication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-utf-8-configuration">Windows UTF-8 Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">Authentication</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saas-authentication-ibm-cloud">SaaS Authentication (IBM Cloud)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-premises-authentication-cloud-pak-for-data">On-Premises Authentication (Cloud Pak for Data)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-tls-for-on-premises-deployments">Configuring TLS for On-Premises Deployments</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

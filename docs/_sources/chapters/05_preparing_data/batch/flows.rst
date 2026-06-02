@@ -110,20 +110,55 @@ Auto-Arranging a Flow
 ~~~~~~~~~~~~~~~~~~~~~
 
 In the UI, stages in a flow can be manually positioned by dragging them around the canvas. However, when creating flows programmatically or when a flow becomes cluttered, you may want to automatically arrange the stages in a clean, organized layout.
-The SDK provides the :py:meth:`BatchFlow.auto_arrange() <ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.auto_arrange>` method to automatically position stages based on their connections and dependencies.
+
+By default, flows are automatically arranged when updated. This behavior can be controlled using the :py:meth:`BatchFlow.use_auto_arrange() <ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.use_auto_arrange>` method.
+
+Automatic Arrangement (Default Behavior)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When you create a new flow, automatic arrangement is enabled by default. This means stages will be automatically positioned based on their stages and links whenever the flow is updated:
 
 .. code-block:: python
 
-    >>> # Create a flow and add stages
+    >>> # Create a flow - auto-arrange is enabled by default
     >>> batch_flow_auto = project.create_flow(name='My auto arranged flow', flow_type='batch')
-    >>> batch_flow_auto
-    BatchFlow(...)
-    >>> # ... add stages and connections ...
+    >>> # ... add stages and links ...
     >>>
-    >>> # Auto-arrange the stages
+    >>> # When you update, stages are automatically arranged
+    >>> project.update_flow(batch_flow_auto)
+    <Response [201]>
+
+Disabling Automatic Arrangement
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you want to preserve the exact positioning of stages in an existing flow, you can disable automatic arrangement. This is useful when you've manually positioned stages in the UI and want to maintain that layout when making programmatic changes:
+
+.. code-block:: python
+
+    >>> # Get an existing flow and disable auto-arrange
+    >>> batch_flow_auto = project.flows.get(name='My auto arranged flow')
+    >>> batch_flow_auto.use_auto_arrange(False)
+    BatchFlow(...)
+    >>> # ... add stages and links ...
+    >>>
+    >>> # When you update, the original stage positions are preserved
+    >>> project.update_flow(batch_flow_auto)
+    <Response [201]>
+
+.. note::
+    When auto-arrange is disabled, newly added stages may not be positioned optimally relative to existing stages. You may need to manually position them in the UI or call ``auto_arrange()`` once to establish a clean layout.
+
+Manual Arrangement
+^^^^^^^^^^^^^^^^^^
+
+You can also manually trigger arrangement at any time using the :py:meth:`BatchFlow.auto_arrange() <ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.auto_arrange>` method:
+
+.. code-block:: python
+
+    >>> # Manually arrange stages at any time
     >>> batch_flow_auto.auto_arrange()
     >>>
-    >>> # Save the flow with the new layout
+    >>> # Update the flow with the new layout
     >>> project.update_flow(batch_flow_auto)
     <Response [201]>
 
@@ -135,7 +170,7 @@ This is particularly useful when:
 * Importing flows that may have inconsistent positioning
 
 .. note::
-    The actual layout calculation happens when the flow is saved or visualized. The ``auto_arrange()`` method only removes existing position data to trigger the automatic arrangement.
+    The actual layout calculation happens when the flow is updtaed or visualized. The ``auto_arrange()`` method removes existing position data to trigger the automatic arrangement, while ``use_auto_arrange()`` controls whether this happens automatically on every update.
 
 .. _preparing_data__batch__flows__setting_runtime_parameters_of_a_flow:
 

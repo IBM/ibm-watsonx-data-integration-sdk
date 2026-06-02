@@ -25,6 +25,4 @@ Limitations
 ~~~~~~~~~~~
 * The SDK only partially supports DataStage (batch processing) functionality at this point. DataStage components will be added in future releases.
 
-* Most SDK models use the ``name`` attribute for display names and searching. However, :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.Stages` inconsistently uses ``stage_name`` instead of ``name`` for this purpose.
-
 * Streaming python generator does not support parameter sets.

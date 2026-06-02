@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Jobs &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
+    <title>Jobs &#8212; ibm-watsonx-data-integration 1.3.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=db04a367"></script>
+    <script src="../../_static/documentation_options.js?v=27de968b"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.3.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -165,7 +165,6 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../01_welcome/prereqs.html">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../01_welcome/mcp_server.html">MCP Server Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01_welcome/supported_products.html">Supported Products</a></li>
 </ul>
 </details></li>
@@ -207,6 +206,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/stages.html">Stages</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/pipelines/index.html">Pipelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/components.html">Pipeline Components</a></li>
+</ul>
+</details></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/parameter_sets.html">Parameter Sets</a></li>
@@ -236,6 +240,12 @@
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_access_control/project_collaborators.html">Project Collaborators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07_mcp_server/index.html">MCP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07_mcp_server/mcp_server_setup.html">MCP Server Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07_mcp_server/mcp_server_tools.html">MCP Server Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07_mcp_server/mcp_server_skills.html">MCP Server Skills</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -624,7 +634,7 @@ This method returns an HTTP response indicating the status of the operation.</p>
 </section>
 <section id="retrieving-job-run-logs">
 <h2>Retrieving Job Run Logs<a class="headerlink" href="#retrieving-job-run-logs" title="Link to this heading">#</a></h2>
-<p>Runtime logs for a job run execution are stored in the
+<span class="target" id="projects-jobs-run-logs"></span><p>Runtime logs for a job run execution are stored in the
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobRun.logs" title="ibm_watsonx_data_integration.cpd_models.job_model.JobRun.logs"><code class="xref py py-class docutils literal notranslate"><span class="pre">JobRun.logs</span></code></a> property.
 It returns a list where each entry is a string containing a log message.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job_run</span><span class="o">.</span><span class="n">logs</span>
@@ -648,7 +658,7 @@ containing link and stage metrics for the job run.</p>
 <li><p><strong>Stage Metrics</strong>: Performance data for each stage, including CPU time, memory usage, partition counts, and row counts</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get metrics for a completed batch job run</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span> <span class="o">=</span> <span class="n">job_run</span><span class="o">.</span><span class="n">metrics</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span> <span class="o">=</span> <span class="n">job_run_with_runtime_parameters</span><span class="o">.</span><span class="n">metrics</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span>
 <span class="go">BatchJobRunMetrics(link_metrics=[...], stage_metrics=[...])</span>
 </pre></div>
@@ -659,24 +669,25 @@ containing link and stage metrics for the job run.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">link_metrics</span>
 <span class="go">[</span>
 <span class="go">    {</span>
-<span class="go">        &quot;rows_read&quot;: 1000,</span>
-<span class="go">        &quot;rows_written&quot;: 1000,</span>
-<span class="go">        &quot;source&quot;: &quot;Sequential_File_1&quot;,</span>
-<span class="go">        &quot;dest&quot;: &quot;Transformer_1&quot;,</span>
-<span class="go">        &quot;link_name&quot;: &quot;DSLink3&quot;,</span>
-<span class="go">        &quot;state&quot;: &quot;finished&quot;</span>
-<span class="go">    },</span>
-<span class="go">    ...</span>
+<span class="go">        &quot;start_time&quot;: ...,</span>
+<span class="go">        &quot;rows_read&quot;: 100,</span>
+<span class="go">        &quot;rows_written&quot;: 100,</span>
+<span class="go">        &quot;stop_time&quot;: ...,</span>
+<span class="go">        &quot;source&quot;: &quot;Row_Generator&quot;,</span>
+<span class="go">        &quot;state&quot;: &quot;finished&quot;,</span>
+<span class="go">        &quot;dest&quot;: &quot;Peek&quot;,</span>
+<span class="go">        &quot;link_name&quot;: &quot;Link_1&quot;</span>
+<span class="go">    }</span>
 <span class="go">]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Access specific link metrics by index</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">link</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">link_metrics</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">link</span><span class="o">.</span><span class="n">rows_read</span>
-<span class="go">1000</span>
+<span class="go">100</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">link</span><span class="o">.</span><span class="n">source</span>
-<span class="go">&#39;Sequential_File_1&#39;</span>
+<span class="go">&#39;Row_Generator&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">link</span><span class="o">.</span><span class="n">dest</span>
-<span class="go">&#39;Transformer_1&#39;</span>
+<span class="go">&#39;Peek&#39;</span>
 </pre></div>
 </div>
 <p><strong>Accessing Stage Metrics</strong></p>
@@ -685,52 +696,69 @@ containing link and stage metrics for the job run.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">stage_metrics</span>
 <span class="go">[</span>
 <span class="go">    {</span>
-<span class="go">        &quot;rows_read&quot;: 1000,</span>
-<span class="go">        &quot;rows_written&quot;: 1000,</span>
-<span class="go">        &quot;stage_type&quot;: &quot;PxSequentialFile&quot;,</span>
-<span class="go">        &quot;stage_name&quot;: &quot;Sequential_File_1&quot;,</span>
-<span class="go">        &quot;num_partitions&quot;: 4,</span>
+<span class="go">        &quot;stage_seconds_cpu&quot;: ...,</span>
+<span class="go">        &quot;start_time&quot;: ...,</span>
+<span class="go">        &quot;rows_read&quot;: 0,</span>
+<span class="go">        &quot;rows_written&quot;: 100,</span>
+<span class="go">        &quot;stop_time&quot;: ...,</span>
+<span class="go">        &quot;total_memory&quot;: ...,</span>
+<span class="go">        &quot;stage_type&quot;: &quot;PxRowGenerator&quot;,</span>
+<span class="go">        &quot;stage_name&quot;: &quot;Row_Generator&quot;,</span>
+<span class="go">        &quot;partition_row_counts&quot;: ...,</span>
+<span class="go">        &quot;num_partitions&quot;: 1,</span>
 <span class="go">        &quot;state&quot;: &quot;finished&quot;</span>
 <span class="go">    },</span>
-<span class="go">    ...</span>
+<span class="go">    {</span>
+<span class="go">        &quot;stage_seconds_cpu&quot;: ...,</span>
+<span class="go">        &quot;start_time&quot;: ...,</span>
+<span class="go">        &quot;rows_read&quot;: 100,</span>
+<span class="go">        &quot;rows_written&quot;: 0,</span>
+<span class="go">        &quot;stop_time&quot;: ...,</span>
+<span class="go">        &quot;total_memory&quot;: ...,</span>
+<span class="go">        &quot;stage_type&quot;: &quot;PxPeek&quot;,</span>
+<span class="go">        &quot;stage_name&quot;: &quot;Peek&quot;,</span>
+<span class="go">        &quot;partition_row_counts&quot;: ...,</span>
+<span class="go">        &quot;num_partitions&quot;: 2,</span>
+<span class="go">        &quot;state&quot;: &quot;finished&quot;</span>
+<span class="go">    }</span>
 <span class="go">]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Access specific stage metrics by index</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">stage</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">stage_metrics</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stage</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">stage_metrics</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">stage</span><span class="o">.</span><span class="n">rows_read</span>
-<span class="go">1000</span>
+<span class="go">100</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">stage</span><span class="o">.</span><span class="n">stage_name</span>
-<span class="go">&#39;Sequential_File_1&#39;</span>
+<span class="go">&#39;Peek&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">stage</span><span class="o">.</span><span class="n">num_partitions</span>
-<span class="go">4</span>
+<span class="go">2</span>
 </pre></div>
 </div>
 <p><strong>Filtering Metrics</strong></p>
 <p>The metrics lists support filtering using the <code class="docutils literal notranslate"><span class="pre">get()</span></code> and <code class="docutils literal notranslate"><span class="pre">get_all()</span></code> methods:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get first link from a specific source stage</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">link</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">link_metrics</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;Sequential_File_1&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">link</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">link_metrics</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;Row_Generator&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">link</span><span class="o">.</span><span class="n">rows_read</span>
-<span class="go">1000</span>
+<span class="go">100</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get all links to a specific destination stage</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">links</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">link_metrics</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">dest</span><span class="o">=</span><span class="s1">&#39;Transformer_1&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">links</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">link_metrics</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">dest</span><span class="o">=</span><span class="s1">&#39;Peek&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">links</span><span class="p">)</span>
-<span class="go">2</span>
+<span class="go">1</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get first stage of a specific type</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">stage</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">stage_metrics</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">stage_type</span><span class="o">=</span><span class="s1">&#39;PxSequentialFile&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stage</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">stage_metrics</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">stage_type</span><span class="o">=</span><span class="s1">&#39;PxRowGenerator&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">stage</span><span class="o">.</span><span class="n">stage_name</span>
-<span class="go">&#39;Sequential_File_1&#39;</span>
+<span class="go">&#39;Row_Generator&#39;</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get all stages in finished state</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">finished_stages</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">stage_metrics</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="s1">&#39;finished&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">finished_stages</span><span class="p">)</span>
-<span class="go">5</span>
+<span class="go">2</span>
 </pre></div>
 </div>
 <p><strong>Refreshing Metrics</strong></p>
 <p>You can refresh the metrics of a job run by calling <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobRun.refresh_metrics" title="ibm_watsonx_data_integration.cpd_models.job_model.JobRun.refresh_metrics"><code class="xref py py-meth docutils literal notranslate"><span class="pre">JobRun.refresh_metrics()</span></code></a> to get the latest metrics.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job_run</span><span class="o">.</span><span class="n">refresh_metrics</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job_run_with_runtime_parameters</span><span class="o">.</span><span class="n">refresh_metrics</span><span class="p">()</span>
 <span class="go">&lt;Response [200]&gt;</span>
 </pre></div>
 </div>

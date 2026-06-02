@@ -96,7 +96,6 @@ You can print the configuration and edit it similarly to a :py:class:`dict`.
     True
     >>> new_flow.configuration['retry_pipeline_on_error'] = False
 
-
 .. _preparing_data__streaming__flows__arranging_stages:
 
 Arranging Stages
@@ -113,6 +112,251 @@ This method positions stages based on their input and output lanes.
 
     >>> new_flow.auto_arrange()
     StreamingFlow(name='My streaming flow', ...)
+
+.. _preparing_data__streaming__flows__supported_flow_architectures:
+
+Supported Flow Architectures
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Streaming flows support several common connection patterns. You can combine these patterns within the same flow depending on your processing requirements:
+
+Linear Flows
+^^^^^^^^^^^^
+One stage connects to one downstream stage in sequence:
+
+.. code-block:: python
+
+    >>> linear_flow = project.create_flow(name='Linear flow', description='optional description', environment=environment)
+    >>> source = linear_flow.add_stage('Dev Raw Data Source')
+    >>> processor = linear_flow.add_stage('Field Renamer')
+    >>> destination = linear_flow.add_stage('Trash')
+    >>>
+    >>> # Linear connection: source → processor → destination
+    >>> source.connect_output_to(processor)
+    FieldRenamer_01(name='Field Renamer 1')
+    >>> processor.connect_output_to(destination)
+    Trash_01(name='Trash 1')
+
+This creates a topology like:
+
+.. code-block:: text
+
+    Source ─→ Processor ─→ Destination
+
+Fan-out Flows
+^^^^^^^^^^^^^
+One stage connects to multiple downstream stages:
+
+.. code-block:: python
+
+    >>> fan_out_flow = project.create_flow(name='Fan-out flow', description='optional description', environment=environment)
+    >>> source = fan_out_flow.add_stage('Dev Raw Data Source')
+    >>> dest1 = fan_out_flow.add_stage('Trash')
+    >>> dest2 = fan_out_flow.add_stage('Trash')
+    >>> dest3 = fan_out_flow.add_stage('Trash')
+    >>>
+    >>> # Fan-out: source connects to multiple destinations
+    >>> source.connect_output_to(dest1, dest2, dest3)
+    [Trash_01(name='Trash 1'), Trash_02(name='Trash 2'), Trash_03(name='Trash 3')]
+
+This creates a topology like:
+
+.. code-block:: text
+
+    Source
+      ├─→ Destination 1
+      ├─→ Destination 2
+      └─→ Destination 3
+
+Conditional Routing Flows
+^^^^^^^^^^^^^^^^^^^^^^^^^
+Stages with multiple outputs can route records to different downstream stages based on predicates:
+
+.. code-block:: python
+
+    >>> conditional_flow = project.create_flow(name='Conditional Routing Flow', description='optional description', environment=environment)
+    >>> source = conditional_flow.add_stage('Dev Raw Data Source')
+    >>> stream_selector = conditional_flow.add_stage('Stream Selector')
+    >>> high_value = conditional_flow.add_stage('Trash')
+    >>> low_value = conditional_flow.add_stage('Trash')
+    >>> default_dest = conditional_flow.add_stage('Trash')
+    >>>
+    >>> # Add predicates for conditional routing
+    >>> stream_selector.add_predicates([
+    ...     '${record:value(\'/amount\') > 1000}',
+    ...     '${record:value(\'/amount\') < 100}'
+    ... ])
+    >>>
+    >>> # Connect source to stream selector
+    >>> source.connect_output_to(stream_selector)
+    StreamSelector_01(name='Stream Selector 1')
+    >>>
+    >>> # Route to different destinations based on predicates
+    >>> stream_selector.connect_output_to(high_value, predicate=stream_selector.predicates[0])
+    Trash_01(name='Trash 1')
+    >>> stream_selector.connect_output_to(low_value, predicate=stream_selector.predicates[1])
+    Trash_02(name='Trash 2')
+    >>> stream_selector.connect_output_to(default_dest, predicate=stream_selector.predicates[2])
+    Trash_03(name='Trash 3')
+
+This creates a topology like:
+
+.. code-block:: text
+
+    Source
+      │
+      ▼
+    Stream Selector
+      ├─→ High Value Destination (amount > 1000)
+      ├─→ Low Value Destination (amount < 100)
+      └─→ Default Destination (all others)
+
+Converging Flows (Fan-In)
+^^^^^^^^^^^^^^^^^^^^^^^^^
+Multiple upstream stages connect into a downstream stage:
+
+.. code-block:: python
+
+    >>> converging_flow = project.create_flow(name='Converging Flow', description='optional description', environment=environment)
+    >>> source1 = converging_flow.add_stage('Dev Raw Data Source')
+    >>> source2 = converging_flow.add_stage('Dev Raw Data Source')
+    >>> source3 = converging_flow.add_stage('Dev Raw Data Source')
+    >>> destination = converging_flow.add_stage('Trash')
+    >>>
+    >>> # Converging: multiple sources connect to one destination
+    >>> source1.connect_output_to(destination)
+    Trash_01(name='Trash 1')
+    >>> source2.connect_output_to(destination)
+    Trash_01(name='Trash 1')
+    >>> source3.connect_output_to(destination)
+    Trash_01(name='Trash 1')
+
+This creates a topology like:
+
+.. code-block:: text
+
+    Source 1 ─┐
+              │
+    Source 2 ─┼─→ Destination
+              │
+    Source 3 ─┘
+
+Diamond Flows
+^^^^^^^^^^^^^
+Data splits into multiple branches that later converge back into a single stage, allowing parallel processing paths.
+
+.. code-block:: python
+
+    >>> diamond_flow = project.create_flow(name='Diamond Flow', description='optional description', environment=environment)
+    >>> source = diamond_flow.add_stage('Dev Raw Data Source')
+    >>>
+    >>> # Split into two branches
+    >>> branch1_processor = diamond_flow.add_stage('Field Renamer')
+    >>> branch2_processor = diamond_flow.add_stage('Field Masker')
+    >>>
+    >>> # Converge back to single destination
+    >>> destination = diamond_flow.add_stage('Trash')
+    >>>
+    >>> # Create diamond topology
+    >>> source.connect_output_to(branch1_processor, branch2_processor)
+    [FieldRenamer_01(name='Field Renamer 1'), FieldMasker_01(name='Field Masker 1')]
+    >>> branch1_processor.connect_output_to(destination)
+    Trash_01(name='Trash 1')
+    >>> branch2_processor.connect_output_to(destination)
+    Trash_01(name='Trash 1')
+
+This creates a topology like:
+
+.. code-block:: text
+
+    Source
+      ├─→ Branch 1 Processor ─┐
+      │                       ├─→ Destination
+      └─→ Branch 2 Processor ─┘
+
+Multistage Branching Flows
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Complex flows with multiple levels of branching and processing, where different branches can have their own processing pipelines.
+
+.. code-block:: python
+
+    >>> multistage_flow = project.create_flow(name='Multistage Flow', description='optional description', environment=environment)
+    >>> source = multistage_flow.add_stage('Dev Raw Data Source')
+    >>>
+    >>> # First level branching
+    >>> stream_selector = multistage_flow.add_stage('Stream Selector')
+    >>> stream_selector.add_predicates(['${record:value(\'/type\') == \'A\'}', '${record:value(\'/type\') == \'B\'}'])
+    >>>
+    >>> # Branch A: Multiple processing stages
+    >>> branch_a_processor1 = multistage_flow.add_stage('Field Renamer')
+    >>> branch_a_processor2 = multistage_flow.add_stage('Field Masker')
+    >>> branch_a_dest = multistage_flow.add_stage('Trash')
+    >>>
+    >>> # Branch B: Different processing pipeline
+    >>> branch_b_processor1 = multistage_flow.add_stage('Expression Evaluator')
+    >>> branch_b_processor2 = multistage_flow.add_stage('Field Remover')
+    >>> branch_b_dest = multistage_flow.add_stage('Trash')
+    >>>
+    >>> # Connect source to stream selector
+    >>> source.connect_output_to(stream_selector)
+    StreamSelector_01(name='Stream Selector 1')
+    >>>
+    >>> # Connect Branch A (type == 'A')
+    >>> stream_selector.connect_output_to(branch_a_processor1, predicate=stream_selector.predicates[0])
+    FieldRenamer_01(name='Field Renamer 1')
+    >>> branch_a_processor1.connect_output_to(branch_a_processor2)
+    FieldMasker_01(name='Field Masker 1')
+    >>> branch_a_processor2.connect_output_to(branch_a_dest)
+    Trash_01(name='Trash 1')
+    >>>
+    >>> # Connect Branch B (default)
+    >>> stream_selector.connect_output_to(branch_b_processor1, predicate=stream_selector.predicates[1])
+    ExpressionEvaluator_01(name='Expression Evaluator 1')
+    >>> branch_b_processor1.connect_output_to(branch_b_processor2)
+    FieldRemover_01(name='Field Remover 1')
+    >>> branch_b_processor2.connect_output_to(branch_b_dest)
+    Trash_02(name='Trash 2')
+
+This creates a topology like:
+
+.. code-block:: text
+
+    Source
+      │
+      ▼
+    Stream Selector
+      ├─→ Branch A Processor 1 ─→ Branch A Processor 2 ─→ Branch A Destination
+      │
+      └─→ Branch B Processor 1 ─→ Branch B Processor 2 ─→ Branch B Destination
+
+Event-Driven Side Flows
+^^^^^^^^^^^^^^^^^^^^^^^
+A stage's event output can be connected separately from its data output:
+
+.. code-block:: python
+
+    >>> event_flow = project.create_flow(name='Event Flow', description='optional description', environment=environment)
+    >>> source = event_flow.add_stage('Dev Raw Data Source')
+    >>> destination = event_flow.add_stage('Trash')
+    >>> executor = event_flow.add_stage('Pipeline Finisher Executor')
+    >>>
+    >>> # Connect data output
+    >>> source.connect_output_to(destination)
+    Trash_01(name='Trash 1')
+    >>>
+    >>> # Connect event output separately
+    >>> source.connect_event_to(executor)
+    PipelineFinisherExecutor_01(name='Pipeline Finisher Executor 1')
+
+This creates a topology like:
+
+.. code-block:: text
+
+    Source
+      ├─→ Destination (data output)
+      └─→ Executor (event output)
+
+These architectures are built using the same stage connection APIs described in :ref:`preparing_data__streaming_stages`. For complex topologies with multiple branches, you can also use :py:meth:`StreamingFlow.auto_arrange() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.auto_arrange>` to improve the visual layout after making changes.
 
 .. _preparing_data__streaming__flows__updating_a_flow:
 
@@ -154,7 +398,7 @@ This object contains an ``issues`` attribute with a list of :py:class:`~ibm_wats
 .. code-block:: python
 
     >>> new_flow.add_stage('Trash')
-    Trash_01(stage_name='Trash 1')
+    Trash_01(name='Trash 1')
     >>> project.update_flow(new_flow)
     <Response [200]>
     >>> new_flow.validate()
@@ -268,7 +512,7 @@ You can view the current error stage for a flow at any point using the :py:attr:
 .. code-block:: python
 
     >>> new_flow.error_stage
-    WritetoFile_ErrorStage(stage_name='Error Records - Write to File')
+    WritetoFile_ErrorStage(name='Error Records - Write to File')
 
 .. _preparing_data__streaming__flows__using_parameter_sets:
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>What’s new &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
+    <title>What’s new &#8212; ibm-watsonx-data-integration 1.3.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=db04a367"></script>
+    <script src="../../_static/documentation_options.js?v=27de968b"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.3.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -165,7 +165,6 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../01_welcome/prereqs.html">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../01_welcome/mcp_server.html">MCP Server Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01_welcome/supported_products.html">Supported Products</a></li>
 </ul>
 </details></li>
@@ -207,6 +206,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/stages.html">Stages</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/pipelines/index.html">Pipelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/components.html">Pipeline Components</a></li>
+</ul>
+</details></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/parameter_sets.html">Parameter Sets</a></li>
@@ -236,6 +240,12 @@
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../06_access_control/project_collaborators.html">Project Collaborators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../07_mcp_server/index.html">MCP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07_mcp_server/mcp_server_setup.html">MCP Server Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07_mcp_server/mcp_server_tools.html">MCP Server Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07_mcp_server/mcp_server_skills.html">MCP Server Skills</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -326,6 +336,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#may-2026">1.3.0 (May 2026)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-2026">1.2.0 (April 2026)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#february-2026">1.1.0 (February 2026)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#december-2025">1.0.0 (December 2025)</a></li>
@@ -346,67 +357,149 @@ document.write(`
   <section id="what-s-new">
 <span id="overview-release-notes"></span><h1>What’s new<a class="headerlink" href="#what-s-new" title="Link to this heading">#</a></h1>
 <p>Below you will find release notes for each version of the <code class="docutils literal notranslate"><span class="pre">ibm-watsonx-data-integration</span></code> SDK as well as highlights of major features and/or fixes included in each release.</p>
+<section id="may-2026">
+<h2>1.3.0 (May 2026)<a class="headerlink" href="#may-2026" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Added JobRun.logs and JobRun.metrics support for streaming jobs.</p>
+<p>See <a class="reference internal" href="../04_projects/jobs.html#projects-jobs-run-logs"><span class="std std-ref">JobRun Logs</span></a>.</p>
+</li>
+<li><p>Fixed project asset ownership validation.</p>
+<p>See <a class="reference internal" href="../04_projects/projects.html#projects-projects"><span class="std std-ref">Projects</span></a></p>
+</li>
+<li><p>Python code generator enhancements and improvements.</p>
+<p>See <a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_batch.html#getting-started-and-tutorials-code-generation-batch"><span class="std std-ref">Code Generation (Batch)</span></a>,
+<a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_streaming.html#getting-started-and-tutorials-code-generation-streaming"><span class="std std-ref">Code Generation (Streaming)</span></a>,
+and <a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_connections.html#getting-started-and-tutorials-code-generation-connections"><span class="std std-ref">Code Generation for Connections</span></a>.</p>
+</li>
+<li><p>Quality of life enhancements and bug fixes.</p></li>
+</ul>
+</section>
 <section id="april-2026">
 <h2>1.2.0 (April 2026)<a class="headerlink" href="#april-2026" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Added support for WebSocket tunneling for secure communication.</p></li>
-<li><p>Added support for job parameters to enable dynamic job configuration.</p></li>
-<li><p>Added support for annotations and comments in batch flows for improved documentation.</p></li>
-<li><p>Added support for data definitions in batch flows for better schema management.</p></li>
-<li><p>Added stage discovery functionality for both streaming and batch flows.</p></li>
-<li><p>Flow topology enhancements.</p></li>
-<li><p>Python code generator enhancements and improvements.</p></li>
+<ul>
+<li><p>Added support for WebSocket tunneling for secure communication.</p>
+<p>See <a class="reference internal" href="../03_getting_started_and_tutorials/platform.html#getting-started-and-tutorials-platform"><span class="std std-ref">Platform initialization</span></a> for connection configuration.</p>
+</li>
+<li><p>Added support for job parameters to enable dynamic job configuration.</p>
+<p>See <a class="reference internal" href="../04_projects/jobs.html#projects-jobs"><span class="std std-ref">Creating a Job</span></a> and <a class="reference internal" href="../05_preparing_data/parameter_sets.html#preparing-data-parameter-sets"><span class="std std-ref">Parameter Sets</span></a>.</p>
+</li>
+<li><p>Added support for annotations and comments in batch flows for improved documentation.</p>
+<p>See <a class="reference internal" href="../05_preparing_data/batch/flows.html#preparing-data-batch-flows"><span class="std std-ref">Batch Flows</span></a>.</p>
+</li>
+<li><p>Added support for data definitions in batch flows for better schema management.</p>
+<p>See <a class="reference internal" href="../05_preparing_data/batch/data_definitions.html#preparing-data-data-definitions"><span class="std std-ref">Data Definitions</span></a>.</p>
+</li>
+<li><p>Added stage discovery functionality for both streaming and batch flows.</p>
+<p>See <a class="reference internal" href="../05_preparing_data/batch/stages.html#preparing-data-batch-stages"><span class="std std-ref">Batch Stages</span></a> and <a class="reference internal" href="../05_preparing_data/streaming/stages.html#preparing-data-streaming-stages"><span class="std std-ref">Streaming Stages</span></a>.</p>
+</li>
+<li><p>Flow topology enhancements.</p>
+<p>See <a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_batch.html#getting-started-and-tutorials-code-generation-batch"><span class="std std-ref">Code Generation (Batch)</span></a>.</p>
+</li>
+<li><p>Python code generator enhancements and improvements.</p>
+<p>See <a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_batch.html#getting-started-and-tutorials-code-generation-batch"><span class="std std-ref">Code Generation (Batch)</span></a>,
+<a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_streaming.html#getting-started-and-tutorials-code-generation-streaming"><span class="std std-ref">Code Generation (Streaming)</span></a>,
+and <a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_connections.html#getting-started-and-tutorials-code-generation-connections"><span class="std std-ref">Code Generation for Connections</span></a>.</p>
+</li>
 <li><p>Quality of life improvements and bug fixes.</p></li>
 </ul>
 </section>
 <section id="february-2026">
 <h2>1.1.0 (February 2026)<a class="headerlink" href="#february-2026" title="Link to this heading">#</a></h2>
-<ul class="simple">
+<ul>
 <li><p>Added Python 3.14 support.</p></li>
-<li><p>Added support for proxies, custom SSL certificates, and disabling SSL verification.</p></li>
-<li><p>Fixed UI topology not persisting when editing flows.</p></li>
-<li><p>Python code generator improvements.</p></li>
-<li><p>Improved UX for working with batch stages and links.</p></li>
-<li><p>Added ability to edit job configuration.</p></li>
+<li><p>Added support for proxies, custom SSL certificates, and disabling SSL verification.</p>
+<p>See <a class="reference internal" href="../03_getting_started_and_tutorials/platform.html#getting-started-and-tutorials-platform"><span class="std std-ref">Platform initialization</span></a>.</p>
+</li>
+<li><p>Fixed UI topology not persisting when editing flows.</p>
+<p>See <a class="reference internal" href="../05_preparing_data/batch/flows.html#preparing-data-batch-flows"><span class="std std-ref">Batch Flows</span></a> and <a class="reference internal" href="../05_preparing_data/streaming/flows.html#preparing-data-streaming-flows"><span class="std std-ref">Streaming Flows</span></a>.</p>
+</li>
+<li><p>Python code generator improvements.</p>
+<p>See <a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_batch.html#getting-started-and-tutorials-code-generation-batch"><span class="std std-ref">Code Generation (Batch)</span></a> and
+<a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_streaming.html#getting-started-and-tutorials-code-generation-streaming"><span class="std std-ref">Code Generation (Streaming)</span></a>.</p>
+</li>
+<li><p>Improved UX for working with batch stages and links.</p>
+<p>See <a class="reference internal" href="../05_preparing_data/batch/stages.html#preparing-data-batch-stages"><span class="std std-ref">Batch Stages</span></a>.</p>
+</li>
+<li><p>Added ability to edit job configuration.</p>
+<p>See <a class="reference internal" href="../04_projects/jobs.html#projects-jobs"><span class="std std-ref">Jobs</span></a>.</p>
+</li>
 <li><p>Bug fixes and improvements.</p></li>
 <li><p>Minor updates for enhanced SDK functionality.</p></li>
 </ul>
 </section>
 <section id="december-2025">
 <h2>1.0.0 (December 2025)<a class="headerlink" href="#december-2025" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Added support for retrieving, creating, updating, and deleting ParameterSets.</p></li>
-<li><p>Added support for creating, updating, and deleting ValueSets.</p></li>
-<li><p>Added support for retrieving, creating, updating, and deleting batch flow Subflows.</p></li>
-<li><p>Added support for BatchFlow runtime settings.</p></li>
-<li><p>Added support for BatchFlow compilation modes (ETL/ELT/TETL).</p></li>
-<li><p>Added support for generating Python code for StreamingFlows and Connections.</p></li>
-<li><p>Added support for BearerToken, ZenApiKeyAuthenticator, and ICP4DAuthenticator authentication methods.</p></li>
-<li><p>Added support for retrieving, adding, removing, and updating ProjectCollaborators.</p></li>
-<li><p>Added support for importing and exporting StreamingFlows.</p></li>
-<li><p>Added support for IBM Cloud Pak for Data on-premises.</p></li>
+<ul>
+<li><p>Added support for retrieving, creating, updating, and deleting ParameterSets.</p>
+<p>See <a class="reference internal" href="../05_preparing_data/parameter_sets.html#preparing-data-parameter-sets"><span class="std std-ref">Parameter Sets</span></a>.</p>
+</li>
+<li><p>Added support for creating, updating, and deleting ValueSets.</p>
+<p>See <a class="reference internal" href="../05_preparing_data/parameter_sets.html#preparing-data-parameter-sets"><span class="std std-ref">Parameter Sets</span></a>.</p>
+</li>
+<li><p>Added support for retrieving, creating, updating, and deleting batch flow Subflows.</p>
+<p>See <a class="reference internal" href="../05_preparing_data/batch/subflows.html#preparing-data-subflows"><span class="std std-ref">Subflows</span></a>.</p>
+</li>
+<li><p>Added support for BatchFlow runtime settings.</p>
+<p>See <a class="reference internal" href="../05_preparing_data/batch/flows.html#preparing-data-batch-flows"><span class="std std-ref">Batch Flows</span></a>.</p>
+</li>
+<li><p>Added support for BatchFlow compilation modes (ETL/ELT/TETL).</p>
+<p>See <a class="reference internal" href="../05_preparing_data/batch/compilation_mode.html#preparing-data-batch-compilation-mode"><span class="std std-ref">Compilation Modes</span></a>.</p>
+</li>
+<li><p>Added support for generating Python code for StreamingFlows and Connections.</p>
+<p>See <a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_streaming.html#getting-started-and-tutorials-code-generation-streaming"><span class="std std-ref">Code Generation (Streaming)</span></a> and
+<a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_connections.html#getting-started-and-tutorials-code-generation-connections"><span class="std std-ref">Code Generation for Connections</span></a>.</p>
+</li>
+<li><p>Added support for BearerToken, ZenApiKeyAuthenticator, and ICP4DAuthenticator authentication methods.</p>
+<p>See <a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html#getting-started-and-tutorials-authentication"><span class="std std-ref">Authentication</span></a>.</p>
+</li>
+<li><p>Added support for retrieving, adding, removing, and updating ProjectCollaborators.</p>
+<p>See <a class="reference internal" href="../06_access_control/project_collaborators.html#projects-project-collaborators"><span class="std std-ref">Project Collaborators</span></a>.</p>
+</li>
+<li><p>Added support for importing and exporting StreamingFlows.</p>
+<p>See <a class="reference internal" href="../05_preparing_data/streaming/flows.html#preparing-data-streaming-flows"><span class="std std-ref">Streaming Flows</span></a>.</p>
+</li>
+<li><p>Added support for IBM Cloud Pak for Data on-premises.</p>
+<p>See <a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html#getting-started-and-tutorials-authentication"><span class="std std-ref">Authentication</span></a> and <a class="reference internal" href="../03_getting_started_and_tutorials/platform.html#getting-started-and-tutorials-platform"><span class="std std-ref">Platform initialization</span></a>.</p>
+</li>
 <li><p>Bug fixes and improvements.</p></li>
 <li><p>Minor updates for enhanced SDK functionality.</p></li>
 </ul>
 </section>
 <section id="b-september-2025">
 <h2>1.0.0b (September 2025)<a class="headerlink" href="#b-september-2025" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Added support for retrieving, adding, updating, and removing batch flows.</p></li>
-<li><p>Added support for executing batch flows within a job.</p></li>
-<li><p>Added Python generator support for batch and streaming flows.</p></li>
-<li><p>Added support for engineless streaming flows.</p></li>
-<li><p>Added support for streaming job offsets.</p></li>
-<li><p>Added support for validating streaming flows.</p></li>
+<ul>
+<li><p>Added support for retrieving, adding, updating, and removing batch flows.</p>
+<p>See <a class="reference internal" href="../05_preparing_data/batch/flows.html#preparing-data-batch-flows"><span class="std std-ref">Batch Flows</span></a>.</p>
+</li>
+<li><p>Added support for executing batch flows within a job.</p>
+<p>See <a class="reference internal" href="../04_projects/jobs.html#projects-jobs"><span class="std std-ref">Jobs</span></a>.</p>
+</li>
+<li><p>Added Python generator support for batch and streaming flows.</p>
+<p>See <a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_batch.html#getting-started-and-tutorials-code-generation-batch"><span class="std std-ref">Code Generation (Batch)</span></a> and
+<a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_streaming.html#getting-started-and-tutorials-code-generation-streaming"><span class="std std-ref">Code Generation (Streaming)</span></a>.</p>
+</li>
+<li><p>Added support for engineless streaming flows.</p>
+<p>See <a class="reference internal" href="../05_preparing_data/streaming/flows.html#preparing-data-streaming-flows"><span class="std std-ref">Streaming Flows</span></a>.</p>
+</li>
+<li><p>Added support for streaming job offsets.</p>
+<p>See <a class="reference internal" href="../04_projects/jobs.html#projects-jobs"><span class="std std-ref">Jobs</span></a>.</p>
+</li>
+<li><p>Added support for validating streaming flows.</p>
+<p>See <a class="reference internal" href="../05_preparing_data/streaming/flows.html#preparing-data-streaming-flows"><span class="std std-ref">Streaming Flows</span></a>.</p>
+</li>
 <li><p>Bug fixes and improvements.</p></li>
 <li><p>Minor updates for enhanced SDK functionality.</p></li>
 </ul>
 </section>
 <section id="b-august-2025">
 <h2>0.0.2b (August 2025)<a class="headerlink" href="#b-august-2025" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Added support for retrieving, adding, and removing members from AccessGroups.</p></li>
-<li><p>Engine and Environment API clients &amp; model moved under streaming flows service.</p></li>
+<ul>
+<li><p>Added support for retrieving, adding, and removing members from AccessGroups.</p>
+<p>See <a class="reference internal" href="../06_access_control/index.html#access-control"><span class="std std-ref">Access Control</span></a>.</p>
+</li>
+<li><p>Engine and Environment API clients &amp; model moved under streaming flows service.</p>
+<p>See <a class="reference internal" href="../04_projects/engines_streaming.html#projects-engines"><span class="std std-ref">Streaming Engines</span></a> and <a class="reference internal" href="../04_projects/environments_streaming.html#projects-environments-streaming"><span class="std std-ref">Streaming Environments</span></a>.</p>
+</li>
 <li><p>Access pattern updates for all resource IDs.</p></li>
 <li><p>Bug fixes across the SDK.</p></li>
 <li><p>Minor updates for enhanced SDK functionality.</p></li>
@@ -414,16 +507,34 @@ document.write(`
 </section>
 <section id="b-june-2025">
 <h2>0.0.1b (June 2025)<a class="headerlink" href="#b-june-2025" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Added support for retrieving, creating, updating, deleting and running Jobs.</p></li>
-<li><p>Added support for retrieving, creating, updating, and deleting Projects.</p></li>
-<li><p>Added support for retrieving, creating, updating, and deleting StreamingFlows.</p></li>
-<li><p>Added support for retrieving, creating, updating, and deleting Connections.</p></li>
-<li><p>Added support for retrieving, creating, updating, and deleting StreamingFlow Environments.</p></li>
-<li><p>Added support for retrieving, creating, updating, and deleting AccessGroups.</p></li>
-<li><p>Added support for retrieving, creating, updating, and deleting Roles.</p></li>
-<li><p>Added support for retrieving Users &amp; Accounts.</p></li>
-<li><p>Added the ability to retrieve the install script for StreamingFlow Engines.</p></li>
+<ul>
+<li><p>Added support for retrieving, creating, updating, deleting and running Jobs.</p>
+<p>See <a class="reference internal" href="../04_projects/jobs.html#projects-jobs"><span class="std std-ref">Jobs</span></a>.</p>
+</li>
+<li><p>Added support for retrieving, creating, updating, and deleting Projects.</p>
+<p>See <a class="reference internal" href="../04_projects/projects.html#projects-projects"><span class="std std-ref">Projects</span></a>.</p>
+</li>
+<li><p>Added support for retrieving, creating, updating, and deleting StreamingFlows.</p>
+<p>See <a class="reference internal" href="../05_preparing_data/streaming/flows.html#preparing-data-streaming-flows"><span class="std std-ref">Streaming Flows</span></a>.</p>
+</li>
+<li><p>Added support for retrieving, creating, updating, and deleting Connections.</p>
+<p>See <a class="reference internal" href="../05_preparing_data/connections.html#preparing-data-connections"><span class="std std-ref">Connections</span></a>.</p>
+</li>
+<li><p>Added support for retrieving, creating, updating, and deleting StreamingFlow Environments.</p>
+<p>See <a class="reference internal" href="../04_projects/environments_streaming.html#projects-environments-streaming"><span class="std std-ref">Streaming Environments</span></a>.</p>
+</li>
+<li><p>Added support for retrieving, creating, updating, and deleting AccessGroups.</p>
+<p>See <a class="reference internal" href="../06_access_control/index.html#access-control"><span class="std std-ref">Access Control</span></a>.</p>
+</li>
+<li><p>Added support for retrieving, creating, updating, and deleting Roles.</p>
+<p>See <a class="reference internal" href="../06_access_control/index.html#access-control"><span class="std std-ref">Access Control</span></a>.</p>
+</li>
+<li><p>Added support for retrieving Users &amp; Accounts.</p>
+<p>See <a class="reference internal" href="../06_access_control/index.html#access-control"><span class="std std-ref">Access Control</span></a>.</p>
+</li>
+<li><p>Added the ability to retrieve the install script for StreamingFlow Engines.</p>
+<p>See <a class="reference internal" href="../04_projects/engines_streaming.html#projects-engines"><span class="std std-ref">Streaming Engines</span></a>.</p>
+</li>
 </ul>
 </section>
 </section>
@@ -473,6 +584,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#may-2026">1.3.0 (May 2026)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-2026">1.2.0 (April 2026)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#february-2026">1.1.0 (February 2026)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#december-2025">1.0.0 (December 2025)</a></li>

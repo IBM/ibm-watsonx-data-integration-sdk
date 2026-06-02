@@ -343,16 +343,12 @@ This method returns an HTTP response indicating the status of the operation.
     <Response [200]>
     >>> _ = job_run.cancel() if job_run.state in job_working_states else None
     >>> _ = wait_for_expected_state(job, job_run, job_finished_states) if job_run.state in job_working_states else None
-    >>> job_run_with_runtime_parameters.refresh_status()
-    <Response [200]>
-    >>> _ = job_run_with_runtime_parameters.cancel() if job_run_with_runtime_parameters.state in job_working_states else None
-    >>> _ = wait_for_expected_state(job, job_run_with_runtime_parameters, job_finished_states) if job_run_with_runtime_parameters.state in job_working_states else None
-    >>> project.delete_job(job_with_runtime_parameters)
-    <Response [204]>
 
 
 Retrieving Job Run Logs
 ~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _projects__jobs__run_logs:
 
 .. TODO Add UI screenshot when logs will be visible in UI
 
@@ -386,12 +382,16 @@ The metrics include:
 * **Link Metrics**: Information about data flow between stages, including rows read/written, timing, and state
 * **Stage Metrics**: Performance data for each stage, including CPU time, memory usage, partition counts, and row counts
 
-.. skip: start 'job_run reference streaming run not batch, need to adjust'
+.. invisible-code-block: python
+
+    >>> from tests.integration.test_job import wait_for_expected_state
+    >>> _ = wait_for_expected_state(job_with_runtime_parameters, job_run_with_runtime_parameters, job_finished_states)
+    >>> _ = job_run_with_runtime_parameters.refresh_metrics()
 
 .. code-block:: python
 
     >>> # Get metrics for a completed batch job run
-    >>> metrics = job_run.metrics
+    >>> metrics = job_run_with_runtime_parameters.metrics
     >>> metrics
     BatchJobRunMetrics(link_metrics=[...], stage_metrics=[...])
 
@@ -405,24 +405,25 @@ Link metrics provide information about data transfer between stages:
     >>> metrics.link_metrics
     [
         {
-            "rows_read": 1000,
-            "rows_written": 1000,
-            "source": "Sequential_File_1",
-            "dest": "Transformer_1",
-            "link_name": "DSLink3",
-            "state": "finished"
-        },
-        ...
+            "start_time": ...,
+            "rows_read": 100,
+            "rows_written": 100,
+            "stop_time": ...,
+            "source": "Row_Generator",
+            "state": "finished",
+            "dest": "Peek",
+            "link_name": "Link_1"
+        }
     ]
 
     >>> # Access specific link metrics by index
     >>> link = metrics.link_metrics[0]
     >>> link.rows_read
-    1000
+    100
     >>> link.source
-    'Sequential_File_1'
+    'Row_Generator'
     >>> link.dest
-    'Transformer_1'
+    'Peek'
 
 **Accessing Stage Metrics**
 
@@ -434,24 +435,41 @@ Stage metrics provide performance information for each stage in the flow:
     >>> metrics.stage_metrics
     [
         {
-            "rows_read": 1000,
-            "rows_written": 1000,
-            "stage_type": "PxSequentialFile",
-            "stage_name": "Sequential_File_1",
-            "num_partitions": 4,
+            "stage_seconds_cpu": ...,
+            "start_time": ...,
+            "rows_read": 0,
+            "rows_written": 100,
+            "stop_time": ...,
+            "total_memory": ...,
+            "stage_type": "PxRowGenerator",
+            "stage_name": "Row_Generator",
+            "partition_row_counts": ...,
+            "num_partitions": 1,
             "state": "finished"
         },
-        ...
+        {
+            "stage_seconds_cpu": ...,
+            "start_time": ...,
+            "rows_read": 100,
+            "rows_written": 0,
+            "stop_time": ...,
+            "total_memory": ...,
+            "stage_type": "PxPeek",
+            "stage_name": "Peek",
+            "partition_row_counts": ...,
+            "num_partitions": 2,
+            "state": "finished"
+        }
     ]
 
     >>> # Access specific stage metrics by index
-    >>> stage = metrics.stage_metrics[0]
+    >>> stage = metrics.stage_metrics[1]
     >>> stage.rows_read
-    1000
+    100
     >>> stage.stage_name
-    'Sequential_File_1'
+    'Peek'
     >>> stage.num_partitions
-    4
+    2
 
 **Filtering Metrics**
 
@@ -460,24 +478,24 @@ The metrics lists support filtering using the ``get()`` and ``get_all()`` method
 .. code-block:: python
 
     >>> # Get first link from a specific source stage
-    >>> link = metrics.link_metrics.get(source='Sequential_File_1')
+    >>> link = metrics.link_metrics.get(source='Row_Generator')
     >>> link.rows_read
-    1000
+    100
 
     >>> # Get all links to a specific destination stage
-    >>> links = metrics.link_metrics.get_all(dest='Transformer_1')
+    >>> links = metrics.link_metrics.get_all(dest='Peek')
     >>> len(links)
-    2
+    1
 
     >>> # Get first stage of a specific type
-    >>> stage = metrics.stage_metrics.get(stage_type='PxSequentialFile')
+    >>> stage = metrics.stage_metrics.get(stage_type='PxRowGenerator')
     >>> stage.stage_name
-    'Sequential_File_1'
+    'Row_Generator'
 
     >>> # Get all stages in finished state
     >>> finished_stages = metrics.stage_metrics.get_all(state='finished')
     >>> len(finished_stages)
-    5
+    2
 
 **Refreshing Metrics**
 
@@ -485,10 +503,18 @@ You can refresh the metrics of a job run by calling :py:meth:`JobRun.refresh_met
 
 .. code-block:: python
 
-    >>> job_run.refresh_metrics()
+    >>> job_run_with_runtime_parameters.refresh_metrics()
     <Response [200]>
 
-.. skip: end
+.. invisible-code-block: python
+
+    >>> from tests.integration.test_job import wait_for_expected_state
+    >>> job_run_with_runtime_parameters.refresh_status()
+    <Response [200]>
+    >>> _ = job_run_with_runtime_parameters.cancel() if job_run_with_runtime_parameters.state in job_working_states else None
+    >>> _ = wait_for_expected_state(job_with_runtime_parameters, job_run_with_runtime_parameters, job_finished_states) if job_run_with_runtime_parameters.state in job_working_states else None
+    >>> project.delete_job(job_with_runtime_parameters)
+    <Response [204]>
 
 Deleting a Job
 ~~~~~~~~~~~~~~

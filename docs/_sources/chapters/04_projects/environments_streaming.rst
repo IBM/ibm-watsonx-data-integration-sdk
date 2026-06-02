@@ -203,7 +203,7 @@ This returns a :py:class:`~ibm_watsonx_data_integration.services.streamsets.mode
 .. code-block:: python
 
     >>> platform.available_engine_versions
-    [...StreamingEngineVersion(engine_version_id='JDK17_6.3.0', engine_type='data_collector', ...)...]
+    [...StreamingEngineVersion(engine_version_id='...', engine_type='data_collector', ...)...]
 
 
 .. _retrieving_engine_version_details:
@@ -225,7 +225,7 @@ From there, you get a collection of :py:class:`~ibm_watsonx_data_integration.ser
 .. code-block:: python
 
     >>> platform.available_engine_versions
-    [...StreamingEngineVersion(engine_version_id='JDK17_6.4.0', engine_type='data_collector', ...)...]
+    [...StreamingEngineVersion(engine_version_id='...', engine_type='data_collector', ...)...]
 
     >>> # To see all stage library IDs that can be used in environment.stage_libs
     >>> streaming_engine_version = platform.available_engine_versions[0]

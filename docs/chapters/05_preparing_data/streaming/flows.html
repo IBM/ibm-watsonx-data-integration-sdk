@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Flows &#8212; ibm-watsonx-data-integration 1.2.0 documentation</title>
+    <title>Flows &#8212; ibm-watsonx-data-integration 1.3.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=db04a367"></script>
+    <script src="../../../_static/documentation_options.js?v=27de968b"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.2.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.3.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -165,7 +165,6 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../01_welcome/prereqs.html">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/mcp_server.html">MCP Server Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../01_welcome/supported_products.html">Supported Products</a></li>
 </ul>
 </details></li>
@@ -207,6 +206,11 @@
 <li class="toctree-l3"><a class="reference internal" href="stages.html">Stages</a></li>
 </ul>
 </details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../pipelines/index.html">Pipelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/components.html">Pipeline Components</a></li>
+</ul>
+</details></li>
 <li class="toctree-l2"><a class="reference internal" href="../datasources.html">Datasource Type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../connections.html">Connections</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../parameter_sets.html">Parameter Sets</a></li>
@@ -236,6 +240,12 @@
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../06_access_control/project_collaborators.html">Project Collaborators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../07_mcp_server/index.html">MCP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../07_mcp_server/mcp_server_setup.html">MCP Server Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07_mcp_server/mcp_server_tools.html">MCP Server Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07_mcp_server/mcp_server_skills.html">MCP Server Skills</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -331,6 +341,16 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-flows">Retrieving Flows</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-a-flow">Editing a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arranging-stages">Arranging Stages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-flow-architectures">Supported Flow Architectures</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-flows">Linear Flows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fan-out-flows">Fan-out Flows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-routing-flows">Conditional Routing Flows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converging-flows-fan-in">Converging Flows (Fan-In)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diamond-flows">Diamond Flows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multistage-branching-flows">Multistage Branching Flows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#event-driven-side-flows">Event-Driven Side Flows</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-flow">Updating a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-a-flow">Duplicating a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-flow">Deleting a Flow</a></li>
@@ -456,6 +476,226 @@ This method positions stages based on their input and output lanes.</p>
 </pre></div>
 </div>
 </section>
+<section id="supported-flow-architectures">
+<span id="preparing-data-streaming-flows-supported-flow-architectures"></span><h2>Supported Flow Architectures<a class="headerlink" href="#supported-flow-architectures" title="Link to this heading">#</a></h2>
+<p>Streaming flows support several common connection patterns. You can combine these patterns within the same flow depending on your processing requirements:</p>
+<section id="linear-flows">
+<h3>Linear Flows<a class="headerlink" href="#linear-flows" title="Link to this heading">#</a></h3>
+<p>One stage connects to one downstream stage in sequence:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">linear_flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Linear flow&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;optional description&#39;</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="n">environment</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="n">linear_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Dev Raw Data Source&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span> <span class="o">=</span> <span class="n">linear_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Field Renamer&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">destination</span> <span class="o">=</span> <span class="n">linear_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Linear connection: source → processor → destination</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">processor</span><span class="p">)</span>
+<span class="go">FieldRenamer_01(name=&#39;Field Renamer 1&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">processor</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span>
+<span class="go">Trash_01(name=&#39;Trash 1&#39;)</span>
+</pre></div>
+</div>
+<p>This creates a topology like:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Source ─→ Processor ─→ Destination
+</pre></div>
+</div>
+</section>
+<section id="fan-out-flows">
+<h3>Fan-out Flows<a class="headerlink" href="#fan-out-flows" title="Link to this heading">#</a></h3>
+<p>One stage connects to multiple downstream stages:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fan_out_flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Fan-out flow&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;optional description&#39;</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="n">environment</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="n">fan_out_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Dev Raw Data Source&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dest1</span> <span class="o">=</span> <span class="n">fan_out_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dest2</span> <span class="o">=</span> <span class="n">fan_out_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dest3</span> <span class="o">=</span> <span class="n">fan_out_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Fan-out: source connects to multiple destinations</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">dest1</span><span class="p">,</span> <span class="n">dest2</span><span class="p">,</span> <span class="n">dest3</span><span class="p">)</span>
+<span class="go">[Trash_01(name=&#39;Trash 1&#39;), Trash_02(name=&#39;Trash 2&#39;), Trash_03(name=&#39;Trash 3&#39;)]</span>
+</pre></div>
+</div>
+<p>This creates a topology like:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Source
+  ├─→ Destination 1
+  ├─→ Destination 2
+  └─→ Destination 3
+</pre></div>
+</div>
+</section>
+<section id="conditional-routing-flows">
+<h3>Conditional Routing Flows<a class="headerlink" href="#conditional-routing-flows" title="Link to this heading">#</a></h3>
+<p>Stages with multiple outputs can route records to different downstream stages based on predicates:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">conditional_flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Conditional Routing Flow&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;optional description&#39;</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="n">environment</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="n">conditional_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Dev Raw Data Source&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span> <span class="o">=</span> <span class="n">conditional_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Stream Selector&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">high_value</span> <span class="o">=</span> <span class="n">conditional_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">low_value</span> <span class="o">=</span> <span class="n">conditional_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">default_dest</span> <span class="o">=</span> <span class="n">conditional_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Add predicates for conditional routing</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span><span class="o">.</span><span class="n">add_predicates</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="s1">&#39;${record:value(</span><span class="se">\&#39;</span><span class="s1">/amount</span><span class="se">\&#39;</span><span class="s1">) &gt; 1000}&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s1">&#39;${record:value(</span><span class="se">\&#39;</span><span class="s1">/amount</span><span class="se">\&#39;</span><span class="s1">) &lt; 100}&#39;</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Connect source to stream selector</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">stream_selector</span><span class="p">)</span>
+<span class="go">StreamSelector_01(name=&#39;Stream Selector 1&#39;)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Route to different destinations based on predicates</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">high_value</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="n">stream_selector</span><span class="o">.</span><span class="n">predicates</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">Trash_01(name=&#39;Trash 1&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">low_value</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="n">stream_selector</span><span class="o">.</span><span class="n">predicates</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">Trash_02(name=&#39;Trash 2&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">default_dest</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="n">stream_selector</span><span class="o">.</span><span class="n">predicates</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="go">Trash_03(name=&#39;Trash 3&#39;)</span>
+</pre></div>
+</div>
+<p>This creates a topology like:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Source
+  │
+  ▼
+Stream Selector
+  ├─→ High Value Destination (amount &gt; 1000)
+  ├─→ Low Value Destination (amount &lt; 100)
+  └─→ Default Destination (all others)
+</pre></div>
+</div>
+</section>
+<section id="converging-flows-fan-in">
+<h3>Converging Flows (Fan-In)<a class="headerlink" href="#converging-flows-fan-in" title="Link to this heading">#</a></h3>
+<p>Multiple upstream stages connect into a downstream stage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">converging_flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Converging Flow&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;optional description&#39;</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="n">environment</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source1</span> <span class="o">=</span> <span class="n">converging_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Dev Raw Data Source&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source2</span> <span class="o">=</span> <span class="n">converging_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Dev Raw Data Source&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source3</span> <span class="o">=</span> <span class="n">converging_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Dev Raw Data Source&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">destination</span> <span class="o">=</span> <span class="n">converging_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Converging: multiple sources connect to one destination</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source1</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span>
+<span class="go">Trash_01(name=&#39;Trash 1&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source2</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span>
+<span class="go">Trash_01(name=&#39;Trash 1&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source3</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span>
+<span class="go">Trash_01(name=&#39;Trash 1&#39;)</span>
+</pre></div>
+</div>
+<p>This creates a topology like:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Source 1 ─┐
+          │
+Source 2 ─┼─→ Destination
+          │
+Source 3 ─┘
+</pre></div>
+</div>
+</section>
+<section id="diamond-flows">
+<h3>Diamond Flows<a class="headerlink" href="#diamond-flows" title="Link to this heading">#</a></h3>
+<p>Data splits into multiple branches that later converge back into a single stage, allowing parallel processing paths.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">diamond_flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Diamond Flow&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;optional description&#39;</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="n">environment</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="n">diamond_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Dev Raw Data Source&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Split into two branches</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">branch1_processor</span> <span class="o">=</span> <span class="n">diamond_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Field Renamer&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">branch2_processor</span> <span class="o">=</span> <span class="n">diamond_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Field Masker&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Converge back to single destination</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">destination</span> <span class="o">=</span> <span class="n">diamond_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create diamond topology</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">branch1_processor</span><span class="p">,</span> <span class="n">branch2_processor</span><span class="p">)</span>
+<span class="go">[FieldRenamer_01(name=&#39;Field Renamer 1&#39;), FieldMasker_01(name=&#39;Field Masker 1&#39;)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">branch1_processor</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span>
+<span class="go">Trash_01(name=&#39;Trash 1&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">branch2_processor</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span>
+<span class="go">Trash_01(name=&#39;Trash 1&#39;)</span>
+</pre></div>
+</div>
+<p>This creates a topology like:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Source
+  ├─→ Branch 1 Processor ─┐
+  │                       ├─→ Destination
+  └─→ Branch 2 Processor ─┘
+</pre></div>
+</div>
+</section>
+<section id="multistage-branching-flows">
+<h3>Multistage Branching Flows<a class="headerlink" href="#multistage-branching-flows" title="Link to this heading">#</a></h3>
+<p>Complex flows with multiple levels of branching and processing, where different branches can have their own processing pipelines.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">multistage_flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Multistage Flow&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;optional description&#39;</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="n">environment</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="n">multistage_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Dev Raw Data Source&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># First level branching</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span> <span class="o">=</span> <span class="n">multistage_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Stream Selector&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span><span class="o">.</span><span class="n">add_predicates</span><span class="p">([</span><span class="s1">&#39;${record:value(</span><span class="se">\&#39;</span><span class="s1">/type</span><span class="se">\&#39;</span><span class="s1">) == </span><span class="se">\&#39;</span><span class="s1">A</span><span class="se">\&#39;</span><span class="s1">}&#39;</span><span class="p">,</span> <span class="s1">&#39;${record:value(</span><span class="se">\&#39;</span><span class="s1">/type</span><span class="se">\&#39;</span><span class="s1">) == </span><span class="se">\&#39;</span><span class="s1">B</span><span class="se">\&#39;</span><span class="s1">}&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Branch A: Multiple processing stages</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">branch_a_processor1</span> <span class="o">=</span> <span class="n">multistage_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Field Renamer&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">branch_a_processor2</span> <span class="o">=</span> <span class="n">multistage_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Field Masker&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">branch_a_dest</span> <span class="o">=</span> <span class="n">multistage_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Branch B: Different processing pipeline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">branch_b_processor1</span> <span class="o">=</span> <span class="n">multistage_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Expression Evaluator&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">branch_b_processor2</span> <span class="o">=</span> <span class="n">multistage_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Field Remover&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">branch_b_dest</span> <span class="o">=</span> <span class="n">multistage_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Connect source to stream selector</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">stream_selector</span><span class="p">)</span>
+<span class="go">StreamSelector_01(name=&#39;Stream Selector 1&#39;)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Connect Branch A (type == &#39;A&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">branch_a_processor1</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="n">stream_selector</span><span class="o">.</span><span class="n">predicates</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">FieldRenamer_01(name=&#39;Field Renamer 1&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">branch_a_processor1</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">branch_a_processor2</span><span class="p">)</span>
+<span class="go">FieldMasker_01(name=&#39;Field Masker 1&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">branch_a_processor2</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">branch_a_dest</span><span class="p">)</span>
+<span class="go">Trash_01(name=&#39;Trash 1&#39;)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Connect Branch B (default)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stream_selector</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">branch_b_processor1</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="n">stream_selector</span><span class="o">.</span><span class="n">predicates</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">ExpressionEvaluator_01(name=&#39;Expression Evaluator 1&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">branch_b_processor1</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">branch_b_processor2</span><span class="p">)</span>
+<span class="go">FieldRemover_01(name=&#39;Field Remover 1&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">branch_b_processor2</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">branch_b_dest</span><span class="p">)</span>
+<span class="go">Trash_02(name=&#39;Trash 2&#39;)</span>
+</pre></div>
+</div>
+<p>This creates a topology like:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Source
+  │
+  ▼
+Stream Selector
+  ├─→ Branch A Processor 1 ─→ Branch A Processor 2 ─→ Branch A Destination
+  │
+  └─→ Branch B Processor 1 ─→ Branch B Processor 2 ─→ Branch B Destination
+</pre></div>
+</div>
+</section>
+<section id="event-driven-side-flows">
+<h3>Event-Driven Side Flows<a class="headerlink" href="#event-driven-side-flows" title="Link to this heading">#</a></h3>
+<p>A stage’s event output can be connected separately from its data output:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">event_flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Event Flow&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;optional description&#39;</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="n">environment</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="n">event_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Dev Raw Data Source&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">destination</span> <span class="o">=</span> <span class="n">event_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">executor</span> <span class="o">=</span> <span class="n">event_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Pipeline Finisher Executor&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Connect data output</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">destination</span><span class="p">)</span>
+<span class="go">Trash_01(name=&#39;Trash 1&#39;)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Connect event output separately</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source</span><span class="o">.</span><span class="n">connect_event_to</span><span class="p">(</span><span class="n">executor</span><span class="p">)</span>
+<span class="go">PipelineFinisherExecutor_01(name=&#39;Pipeline Finisher Executor 1&#39;)</span>
+</pre></div>
+</div>
+<p>This creates a topology like:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Source
+  ├─→ Destination (data output)
+  └─→ Executor (event output)
+</pre></div>
+</div>
+<p>These architectures are built using the same stage connection APIs described in <a class="reference internal" href="stages.html#preparing-data-streaming-stages"><span class="std std-ref">Stages</span></a>. For complex topologies with multiple branches, you can also use <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.auto_arrange" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.auto_arrange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StreamingFlow.auto_arrange()</span></code></a> to improve the visual layout after making changes.</p>
+</section>
+</section>
 <section id="updating-a-flow">
 <span id="preparing-data-streaming-flows-updating-a-flow"></span><h2>Updating a Flow<a class="headerlink" href="#updating-a-flow" title="Link to this heading">#</a></h2>
 <p>In the UI, you can update a flow by making changes to it and clicking the <strong>Save</strong> icon.</p>
@@ -505,7 +745,7 @@ along with the <code class="docutils literal notranslate"><span class="pre">name
 This returns a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.ValidationResult" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.ValidationResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValidationResult</span></code></a> object.
 This object contains an <code class="docutils literal notranslate"><span class="pre">issues</span></code> attribute with a list of <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError"><code class="xref py py-class docutils literal notranslate"><span class="pre">FlowValidationError</span></code></a> instances if there are any errors.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>
-<span class="go">Trash_01(stage_name=&#39;Trash 1&#39;)</span>
+<span class="go">Trash_01(name=&#39;Trash 1&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">new_flow</span><span class="p">)</span>
 <span class="go">&lt;Response [200]&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
@@ -611,7 +851,7 @@ You need to pass either the <code class="docutils literal notranslate"><span cla
 </div>
 <p>You can view the current error stage for a flow at any point using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.error_stage" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.error_stage"><code class="xref py py-attr docutils literal notranslate"><span class="pre">StreamingFlow.error_stage</span></code></a> property.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span><span class="o">.</span><span class="n">error_stage</span>
-<span class="go">WritetoFile_ErrorStage(stage_name=&#39;Error Records - Write to File&#39;)</span>
+<span class="go">WritetoFile_ErrorStage(name=&#39;Error Records - Write to File&#39;)</span>
 </pre></div>
 </div>
 </section>
@@ -710,6 +950,16 @@ This method establishes a relationship between the flow and the parameter set, a
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-flows">Retrieving Flows</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-a-flow">Editing a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arranging-stages">Arranging Stages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-flow-architectures">Supported Flow Architectures</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-flows">Linear Flows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fan-out-flows">Fan-out Flows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-routing-flows">Conditional Routing Flows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converging-flows-fan-in">Converging Flows (Fan-In)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diamond-flows">Diamond Flows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multistage-branching-flows">Multistage Branching Flows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#event-driven-side-flows">Event-Driven Side Flows</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-flow">Updating a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-a-flow">Duplicating a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-flow">Deleting a Flow</a></li>

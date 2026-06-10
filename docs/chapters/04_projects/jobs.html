@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Jobs &#8212; ibm-watsonx-data-integration 1.3.0 documentation</title>
+    <title>Jobs &#8212; ibm-watsonx-data-integration 1.3.1 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=27de968b"></script>
+    <script src="../../_static/documentation_options.js?v=9c221496"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.3.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.3.1</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -346,6 +346,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cancelling-a-job-run">Cancelling a Job Run</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-job-run-logs">Retrieving Job Run Logs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-job-run-metrics-batch">Retrieving Job Run metrics (Batch)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-job-run-metrics-streaming">Retrieving Job Run metrics (Streaming)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-job">Deleting a Job</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resetting-an-offset-streaming">Resetting an Offset (Streaming)</a></li>
 </ul>
@@ -637,6 +638,18 @@ This method returns an HTTP response indicating the status of the operation.</p>
 <span class="target" id="projects-jobs-run-logs"></span><p>Runtime logs for a job run execution are stored in the
 <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobRun.logs" title="ibm_watsonx_data_integration.cpd_models.job_model.JobRun.logs"><code class="xref py py-class docutils literal notranslate"><span class="pre">JobRun.logs</span></code></a> property.
 It returns a list where each entry is a string containing a log message.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Streaming job run logs are not stored after the job run reaches a terminal state.
+Fetch them while the job run is still active.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>To properly fetch streaming job run logs, refresh the job run instance after it reaches the
+<code class="docutils literal notranslate"><span class="pre">Running</span></code> state by retrieving it again from
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job.job_runs" title="ibm_watsonx_data_integration.cpd_models.job_model.Job.job_runs"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Job.job_runs</span></code></a>,
+for example with <code class="docutils literal notranslate"><span class="pre">job.job_runs.get(job_run_id=job_run.job_run_id)</span></code>.</p>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job_run</span><span class="o">.</span><span class="n">logs</span>
 <span class="go">[</span>
 <span class="go">    &#39;##I IIS-DSEE-TOSH-00397 2025-05-27 14:27:27(000) Starting job Job for Test flow 1750236869686&#39;,</span>
@@ -763,6 +776,128 @@ containing link and stage metrics for the job run.</p>
 </pre></div>
 </div>
 </section>
+<section id="retrieving-job-run-metrics-streaming">
+<h2>Retrieving Job Run metrics (Streaming)<a class="headerlink" href="#retrieving-job-run-metrics-streaming" title="Link to this heading">#</a></h2>
+<p>Streaming job runs provide performance metrics that can be accessed through the
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobRun.metrics" title="ibm_watsonx_data_integration.cpd_models.job_model.JobRun.metrics"><code class="xref py py-attr docutils literal notranslate"><span class="pre">JobRun.metrics</span></code></a> property.
+This property returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.job_metrics.StreamingJobRunMetrics" title="ibm_watsonx_data_integration.services.streamsets.models.job_metrics.StreamingJobRunMetrics"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamingJobRunMetrics</span></code></a>
+object containing pipeline summary metrics and per-stage metrics for the job run.</p>
+<p>The metrics include:</p>
+<ul class="simple">
+<li><p><strong>Pipeline Summary</strong>: Aggregated pipeline-level information, including input and output record counts, error counts, batch count, runner availability, and processing rates</p></li>
+<li><p><strong>Stage Metrics</strong>: Performance data for each stage, including input and output record counts, error counts, processing rates, and batch processing timing statistics</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Streaming job run metrics are not stored after the job run reaches a terminal state.
+Fetch them while the job run is still active.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>To properly fetch streaming job run metrics, refresh the job run instance after it reaches the
+<code class="docutils literal notranslate"><span class="pre">Running</span></code> state by retrieving it again from
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.Job.job_runs" title="ibm_watsonx_data_integration.cpd_models.job_model.Job.job_runs"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Job.job_runs</span></code></a>,
+for example with <code class="docutils literal notranslate"><span class="pre">job.job_runs.get(job_run_id=job_run.job_run_id)</span></code>.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Make sure that job is running</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">streaming_job_run</span><span class="o">.</span><span class="n">state</span>
+<span class="go">&#39;Running&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Fetch new job run instance then load metrics</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">streaming_job_run</span> <span class="o">=</span> <span class="n">streaming_job</span><span class="o">.</span><span class="n">job_runs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">job_run_id</span><span class="o">=</span><span class="n">streaming_job_run</span><span class="o">.</span><span class="n">job_run_id</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span> <span class="o">=</span> <span class="n">streaming_job_run</span><span class="o">.</span><span class="n">metrics</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span>
+<span class="go">{...}</span>
+</pre></div>
+</div>
+<p><strong>Accessing Pipeline Summary</strong></p>
+<p>Pipeline summary metrics provide an overview of the entire streaming pipeline run:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">pipeline_summary</span>
+<span class="go">{</span>
+<span class="go">    &quot;input_records&quot;: ...,</span>
+<span class="go">    &quot;output_records&quot;: ...,</span>
+<span class="go">    &quot;error_records&quot;: ...,</span>
+<span class="go">    &quot;stage_errors&quot;: ...,</span>
+<span class="go">    &quot;batch_count&quot;: ...,</span>
+<span class="go">    &quot;total_runners&quot;: ...,</span>
+<span class="go">    &quot;available_runners&quot;: ...,</span>
+<span class="go">    &quot;input_rate_per_sec&quot;: ...,</span>
+<span class="go">    &quot;output_rate_per_sec&quot;: ...,</span>
+<span class="go">    &quot;error_rate_per_sec&quot;: ...</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<p><strong>Accessing Stage Metrics</strong></p>
+<p>Stage metrics provide performance information for each stage in the streaming flow:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># View all stage metrics</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">stages</span>
+<span class="go">[{</span>
+<span class="go">    &quot;stage_id&quot;: &quot;DevRawDataSource_01&quot;,</span>
+<span class="go">    &quot;stage_name&quot;: &quot;DevRawDataSource_01&quot;,</span>
+<span class="go">    &quot;input_records&quot;: ...,</span>
+<span class="go">    &quot;output_records&quot;: ...,</span>
+<span class="go">    &quot;error_records&quot;: ...,</span>
+<span class="go">    &quot;stage_errors&quot;: ...,</span>
+<span class="go">    &quot;input_rate_per_sec&quot;: ...,</span>
+<span class="go">    &quot;output_rate_per_sec&quot;: ...,</span>
+<span class="go">    &quot;avg_processing_time_sec&quot;: ...,</span>
+<span class="go">    &quot;min_processing_time_sec&quot;: ...,</span>
+<span class="go">    &quot;max_processing_time_sec&quot;: ...,</span>
+<span class="go">    &quot;p95_processing_time_sec&quot;: ...,</span>
+<span class="go">    &quot;p99_processing_time_sec&quot;: ...,</span>
+<span class="go">    &quot;batch_count&quot;: ...</span>
+<span class="go">}, {</span>
+<span class="go">    &quot;stage_id&quot;: ...,</span>
+<span class="go">    &quot;stage_name&quot;: ...,</span>
+<span class="go">    &quot;input_records&quot;: ...,</span>
+<span class="go">    &quot;output_records&quot;: ...,</span>
+<span class="go">    &quot;error_records&quot;: ...,</span>
+<span class="go">    &quot;stage_errors&quot;: ...,</span>
+<span class="go">    &quot;input_rate_per_sec&quot;: ...,</span>
+<span class="go">    &quot;output_rate_per_sec&quot;: ...,</span>
+<span class="go">    &quot;avg_processing_time_sec&quot;: ...,</span>
+<span class="go">    &quot;min_processing_time_sec&quot;: ...,</span>
+<span class="go">    &quot;max_processing_time_sec&quot;: ...,</span>
+<span class="go">    &quot;p95_processing_time_sec&quot;: ...,</span>
+<span class="go">    &quot;p99_processing_time_sec&quot;: ...,</span>
+<span class="go">    &quot;batch_count&quot;: ...</span>
+<span class="go">}, {</span>
+<span class="go">    &quot;stage_id&quot;: &quot;Trash_01&quot;,</span>
+<span class="go">    &quot;stage_name&quot;: &quot;Trash_01&quot;,</span>
+<span class="go">    &quot;input_records&quot;: ...,</span>
+<span class="go">    &quot;output_records&quot;: ...,</span>
+<span class="go">    &quot;error_records&quot;: ...,</span>
+<span class="go">    &quot;stage_errors&quot;: ...,</span>
+<span class="go">    &quot;input_rate_per_sec&quot;: ...,</span>
+<span class="go">    &quot;output_rate_per_sec&quot;: ...,</span>
+<span class="go">    &quot;avg_processing_time_sec&quot;: ...,</span>
+<span class="go">    &quot;min_processing_time_sec&quot;: ...,</span>
+<span class="go">    &quot;max_processing_time_sec&quot;: ...,</span>
+<span class="go">    &quot;p95_processing_time_sec&quot;: ...,</span>
+<span class="go">    &quot;p99_processing_time_sec&quot;: ...,</span>
+<span class="go">    &quot;batch_count&quot;: ...</span>
+<span class="go">}]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Access specific stage metrics by index</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stage</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">stages</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stage</span><span class="o">.</span><span class="n">stage_name</span>
+<span class="go">&#39;DevRawDataSource_01&#39;</span>
+</pre></div>
+</div>
+<p><strong>Filtering Metrics</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Filtering with <code class="docutils literal notranslate"><span class="pre">get()</span></code> and <code class="docutils literal notranslate"><span class="pre">get_all()</span></code> is not supported yet for streaming stage metrics.
+Treat <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.job_metrics.StreamingJobRunMetrics.stages" title="ibm_watsonx_data_integration.services.streamsets.models.job_metrics.StreamingJobRunMetrics.stages"><code class="xref py py-attr docutils literal notranslate"><span class="pre">StreamingJobRunMetrics.stages</span></code></a>
+as a normal <code class="docutils literal notranslate"><span class="pre">list</span></code> and filter the items manually.</p>
+</div>
+<p><strong>Refreshing Metrics</strong></p>
+<p>You can refresh the metrics of a job run by calling
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.job_model.JobRun.refresh_metrics" title="ibm_watsonx_data_integration.cpd_models.job_model.JobRun.refresh_metrics"><code class="xref py py-meth docutils literal notranslate"><span class="pre">JobRun.refresh_metrics()</span></code></a>
+to get the latest metrics.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">streaming_job_run</span><span class="o">.</span><span class="n">refresh_metrics</span><span class="p">()</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+</section>
 <section id="deleting-a-job">
 <h2>Deleting a Job<a class="headerlink" href="#deleting-a-job" title="Link to this heading">#</a></h2>
 <p>In the UI, you can delete a job by selecting its title from the jobs list.
@@ -857,6 +992,7 @@ method on the job instance.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cancelling-a-job-run">Cancelling a Job Run</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-job-run-logs">Retrieving Job Run Logs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-job-run-metrics-batch">Retrieving Job Run metrics (Batch)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-job-run-metrics-streaming">Retrieving Job Run metrics (Streaming)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-job">Deleting a Job</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resetting-an-offset-streaming">Resetting an Offset (Streaming)</a></li>
 </ul>

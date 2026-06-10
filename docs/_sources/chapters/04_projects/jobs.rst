@@ -356,6 +356,18 @@ Runtime logs for a job run execution are stored in the
 :py:class:`JobRun.logs <ibm_watsonx_data_integration.cpd_models.job_model.JobRun.logs>` property.
 It returns a list where each entry is a string containing a log message.
 
+.. important::
+
+    Streaming job run logs are not stored after the job run reaches a terminal state.
+    Fetch them while the job run is still active.
+
+.. important::
+
+    To properly fetch streaming job run logs, refresh the job run instance after it reaches the
+    ``Running`` state by retrieving it again from
+    :py:attr:`Job.job_runs <ibm_watsonx_data_integration.cpd_models.job_model.Job.job_runs>`,
+    for example with ``job.job_runs.get(job_run_id=job_run.job_run_id)``.
+
 .. skip: start 'not supported for streaming flows'
 
 .. code-block:: python
@@ -514,6 +526,163 @@ You can refresh the metrics of a job run by calling :py:meth:`JobRun.refresh_met
     >>> _ = job_run_with_runtime_parameters.cancel() if job_run_with_runtime_parameters.state in job_working_states else None
     >>> _ = wait_for_expected_state(job_with_runtime_parameters, job_run_with_runtime_parameters, job_finished_states) if job_run_with_runtime_parameters.state in job_working_states else None
     >>> project.delete_job(job_with_runtime_parameters)
+    <Response [204]>
+
+Retrieving Job Run metrics (Streaming)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Streaming job runs provide performance metrics that can be accessed through the
+:py:attr:`JobRun.metrics <ibm_watsonx_data_integration.cpd_models.job_model.JobRun.metrics>` property.
+This property returns a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.job_metrics.StreamingJobRunMetrics`
+object containing pipeline summary metrics and per-stage metrics for the job run.
+
+The metrics include:
+
+* **Pipeline Summary**: Aggregated pipeline-level information, including input and output record counts, error counts, batch count, runner availability, and processing rates
+* **Stage Metrics**: Performance data for each stage, including input and output record counts, error counts, processing rates, and batch processing timing statistics
+
+.. important::
+
+    Streaming job run metrics are not stored after the job run reaches a terminal state.
+    Fetch them while the job run is still active.
+
+.. important::
+
+    To properly fetch streaming job run metrics, refresh the job run instance after it reaches the
+    ``Running`` state by retrieving it again from
+    :py:attr:`Job.job_runs <ibm_watsonx_data_integration.cpd_models.job_model.Job.job_runs>`,
+    for example with ``job.job_runs.get(job_run_id=job_run.job_run_id)``.
+
+.. invisible-code-block: python
+
+    >>> from ibm_watsonx_data_integration.cpd_models.job_model import JobRunState
+    >>> import time
+    >>> streaming_job = project.create_job(
+    ...     flow=flow,
+    ...     name='Streaming Metrics Job',
+    ...     description='Job used for streaming metrics documentation examples',
+    ... )
+    >>> streaming_job_run = streaming_job.start(name='Streaming Metrics Job Run')
+    >>> _ = wait_for_expected_state(streaming_job, streaming_job_run, [JobRunState.Running])
+    >>> streaming_job_run = streaming_job.job_runs.get(job_run_id=streaming_job_run.job_run_id)
+    >>> time.sleep(10)  # Need sometime for backend processing, not ideal should be updated in the future
+
+.. code-block:: python
+
+    >>> # Make sure that job is running
+    >>> streaming_job_run.state
+    'Running'
+    >>> # Fetch new job run instance then load metrics
+    >>> streaming_job_run = streaming_job.job_runs.get(job_run_id=streaming_job_run.job_run_id)
+    >>> metrics = streaming_job_run.metrics
+    >>> metrics
+    {...}
+
+**Accessing Pipeline Summary**
+
+Pipeline summary metrics provide an overview of the entire streaming pipeline run:
+
+.. code-block:: python
+
+    >>> metrics.pipeline_summary
+    {
+        "input_records": ...,
+        "output_records": ...,
+        "error_records": ...,
+        "stage_errors": ...,
+        "batch_count": ...,
+        "total_runners": ...,
+        "available_runners": ...,
+        "input_rate_per_sec": ...,
+        "output_rate_per_sec": ...,
+        "error_rate_per_sec": ...
+    }
+
+**Accessing Stage Metrics**
+
+Stage metrics provide performance information for each stage in the streaming flow:
+
+.. code-block:: python
+
+    >>> # View all stage metrics
+    >>> metrics.stages
+    [{
+        "stage_id": "DevRawDataSource_01",
+        "stage_name": "DevRawDataSource_01",
+        "input_records": ...,
+        "output_records": ...,
+        "error_records": ...,
+        "stage_errors": ...,
+        "input_rate_per_sec": ...,
+        "output_rate_per_sec": ...,
+        "avg_processing_time_sec": ...,
+        "min_processing_time_sec": ...,
+        "max_processing_time_sec": ...,
+        "p95_processing_time_sec": ...,
+        "p99_processing_time_sec": ...,
+        "batch_count": ...
+    }, {
+        "stage_id": ...,
+        "stage_name": ...,
+        "input_records": ...,
+        "output_records": ...,
+        "error_records": ...,
+        "stage_errors": ...,
+        "input_rate_per_sec": ...,
+        "output_rate_per_sec": ...,
+        "avg_processing_time_sec": ...,
+        "min_processing_time_sec": ...,
+        "max_processing_time_sec": ...,
+        "p95_processing_time_sec": ...,
+        "p99_processing_time_sec": ...,
+        "batch_count": ...
+    }, {
+        "stage_id": "Trash_01",
+        "stage_name": "Trash_01",
+        "input_records": ...,
+        "output_records": ...,
+        "error_records": ...,
+        "stage_errors": ...,
+        "input_rate_per_sec": ...,
+        "output_rate_per_sec": ...,
+        "avg_processing_time_sec": ...,
+        "min_processing_time_sec": ...,
+        "max_processing_time_sec": ...,
+        "p95_processing_time_sec": ...,
+        "p99_processing_time_sec": ...,
+        "batch_count": ...
+    }]
+    >>> # Access specific stage metrics by index
+    >>> stage = metrics.stages[0]
+    >>> stage.stage_name
+    'DevRawDataSource_01'
+
+**Filtering Metrics**
+
+.. note::
+
+    Filtering with ``get()`` and ``get_all()`` is not supported yet for streaming stage metrics.
+    Treat :py:attr:`StreamingJobRunMetrics.stages <ibm_watsonx_data_integration.services.streamsets.models.job_metrics.StreamingJobRunMetrics.stages>`
+    as a normal ``list`` and filter the items manually.
+
+**Refreshing Metrics**
+
+You can refresh the metrics of a job run by calling
+:py:meth:`JobRun.refresh_metrics() <ibm_watsonx_data_integration.cpd_models.job_model.JobRun.refresh_metrics>`
+to get the latest metrics.
+
+.. code-block:: python
+
+    >>> streaming_job_run.refresh_metrics()
+    <Response [200]>
+
+.. invisible-code-block: python
+
+    >>> streaming_job_run.refresh_status()
+    <Response [200]>
+    >>> _ = streaming_job_run.cancel() if streaming_job_run.state in job_working_states else None
+    >>> _ = wait_for_expected_state(streaming_job, streaming_job_run, job_finished_states) if streaming_job_run.state in job_working_states else None
+    >>> project.delete_job(streaming_job)
     <Response [204]>
 
 Deleting a Job

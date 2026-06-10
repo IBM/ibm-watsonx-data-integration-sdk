@@ -5,6 +5,10 @@ What's new
 
 Below you will find release notes for each version of the ``ibm-watsonx-data-integration`` SDK as well as highlights of major features and/or fixes included in each release.
 
+1.3.1 (June 2026)
+------------------------
+* Restored ``Stage.stage_name`` property with deprecation warning. Will be removed in next major release. Use ``Stage.name`` instead.
+
 
 1.3.0 (May 2026)
 ------------------------

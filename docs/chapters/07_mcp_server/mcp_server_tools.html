@@ -331,15 +331,30 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-overview">Tools Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-overview">Tools Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-tools">Documentation Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-tools">Version Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource-tools">Resource Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-tools">Execution Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-discovery-tools-streaming">Stage Discovery Tools (Streaming)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-discovery-tools-batch">Stage Discovery Tools (Batch)</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#available-tools">Available Tools</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-docs">list_docs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-doc">read_doc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-sdk-documentation">search_sdk_documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-model-reference">get_model_reference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-mcp-version">get_mcp_version</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-sdk-version">get_sdk_version</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-resources">list_resources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-resource">read_resource</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-script">execute_script</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-available-streaming-stages">list_available_streaming_stages</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-all-available-stage-configurations-streaming">list_all_available_stage_configurations_streaming</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-available-batch-stages">list_available_batch_stages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-all-available-stage-configurations-batch">list_all_available_stage_configurations_batch</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-availability">Tool Availability</a></li>
 </ul>
             </nav>
         </div>
@@ -356,60 +371,274 @@ document.write(`
 <p>The <code class="docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration_mcp</span></code> server provides several tools that enable AI assistants to interact with IBM watsonx.data integration workflows. These tools are automatically used by your AI assistant when needed - you don’t need to call them manually.</p>
 <section id="tools-overview">
 <h2>Tools Overview<a class="headerlink" href="#tools-overview" title="Link to this heading">#</a></h2>
+<section id="documentation-tools">
+<h3>Documentation Tools<a class="headerlink" href="#documentation-tools" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong>list_docs</strong> - Lists all available documentation URIs</p></li>
-<li><p><strong>read_doc</strong> - Reads documentation content by URI</p></li>
-<li><p><strong>execute_script</strong> - Executes Python scripts in a separate subprocess</p></li>
-<li><p><strong>list_available_streaming_stages</strong> - Returns available stage labels for streaming flows</p></li>
-<li><p><strong>list_all_available_stage_configurations_streaming</strong> - Lists stage configurations for streaming flows</p></li>
+<li><p><strong>search_sdk_documentation</strong> - Search SDK documentation using semantic similarity</p></li>
+<li><p><strong>get_model_reference</strong> - Look up exact model definitions, field lists, and enum values</p></li>
 </ul>
+</section>
+<section id="version-tools">
+<h3>Version Tools<a class="headerlink" href="#version-tools" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>get_mcp_version</strong> - Get the current version of the MCP server</p></li>
+<li><p><strong>get_sdk_version</strong> - Get the version of the IBM watsonx.data Integration SDK</p></li>
+</ul>
+</section>
+<section id="resource-tools">
+<h3>Resource Tools<a class="headerlink" href="#resource-tools" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>list_resources</strong> - List all available MCP resources</p></li>
+<li><p><strong>read_resource</strong> - Read a specific resource by URI</p></li>
+</ul>
+</section>
+<section id="execution-tools">
+<h3>Execution Tools<a class="headerlink" href="#execution-tools" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>execute_script</strong> - Execute generated Python scripts for validation (stdio only, requires auth)</p></li>
+</ul>
+</section>
+<section id="stage-discovery-tools-streaming">
+<h3>Stage Discovery Tools (Streaming)<a class="headerlink" href="#stage-discovery-tools-streaming" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>list_available_streaming_stages</strong> - List available streaming stages (stdio only, requires auth)</p></li>
+<li><p><strong>list_all_available_stage_configurations_streaming</strong> - Get streaming stage configurations (stdio only, requires auth)</p></li>
+</ul>
+</section>
+<section id="stage-discovery-tools-batch">
+<h3>Stage Discovery Tools (Batch)<a class="headerlink" href="#stage-discovery-tools-batch" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>list_available_batch_stages</strong> - List available batch stages (stdio only, requires auth)</p></li>
+<li><p><strong>list_all_available_stage_configurations_batch</strong> - Get batch stage configurations (stdio only, requires auth)</p></li>
+</ul>
+</section>
 </section>
 <section id="available-tools">
 <h2>Available Tools<a class="headerlink" href="#available-tools" title="Link to this heading">#</a></h2>
-<section id="list-docs">
-<h3>list_docs<a class="headerlink" href="#list-docs" title="Link to this heading">#</a></h3>
-<p>Lists all available documentation URIs in the SDK, organized by topic including welcome, overview, getting started, projects, data preparation, access control, and API reference.</p>
-</section>
-<section id="read-doc">
-<h3>read_doc<a class="headerlink" href="#read-doc" title="Link to this heading">#</a></h3>
-<p>Reads documentation content by URI. For large documents, the AI assistant can provide a query parameter to retrieve only relevant sections instead of the entire document.</p>
+<section id="search-sdk-documentation">
+<h3>search_sdk_documentation<a class="headerlink" href="#search-sdk-documentation" title="Link to this heading">#</a></h3>
+<p>Searches IBM watsonx.data Integration SDK documentation using semantic similarity. This tool uses vector search to find the most relevant documentation sections across all indexed SDK documentation based on a natural language query.</p>
 <p><strong>Parameters</strong>:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">uri</span></code>: The documentation URI to read</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">query</span></code> (optional): Search query to filter content in large documents</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">query</span></code> (required): Search query describing what to find</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">top_k</span></code> (optional): Number of top results to return (default: 5, max: 20)</p></li>
+</ul>
+<p><strong>Returns</strong>: Relevant documentation sections with source information</p>
+<p><strong>Example queries</strong>:</p>
+<ul class="simple">
+<li><p>“How do I authenticate with the platform?”</p></li>
+<li><p>“Creating a batch flow with PostgreSQL”</p></li>
+<li><p>“Streaming flow configuration options”</p></li>
+<li><p>“Job execution and monitoring”</p></li>
+</ul>
+</section>
+<section id="get-model-reference">
+<h3>get_model_reference<a class="headerlink" href="#get-model-reference" title="Link to this heading">#</a></h3>
+<p>Returns the authoritative field list, enum/Literal values, and method signatures for a named SDK model class. Provides complete field definitions with types and defaults, and strips Pydantic boilerplate methods for clarity. If the class name is not found, provides fuzzy suggestions based on edit distance.</p>
+<p><strong>Parameters</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">class_name</span></code> (required): The exact class name (case-sensitive), e.g. ‘ProjectCollaborator’, ‘JobRun’, ‘BatchFlow’, ‘FlowValidationError’</p></li>
+</ul>
+<p><strong>Returns</strong>: Plain-text reference entry with fields, types, properties, and methods. If class not found, returns error message with suggested similar class names.</p>
+<p><strong>Example class names</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ProjectCollaborator</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">JobRun</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FlowValidationError</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Schedule</span></code></p></li>
+</ul>
+</section>
+<section id="get-mcp-version">
+<h3>get_mcp_version<a class="headerlink" href="#get-mcp-version" title="Link to this heading">#</a></h3>
+<p>Returns the current version of the MCP server.</p>
+<p><strong>Returns</strong>: Version string</p>
+</section>
+<section id="get-sdk-version">
+<h3>get_sdk_version<a class="headerlink" href="#get-sdk-version" title="Link to this heading">#</a></h3>
+<p>Returns the version of the IBM watsonx.data Integration SDK.</p>
+<p><strong>Returns</strong>: SDK version string</p>
+</section>
+<section id="list-resources">
+<h3>list_resources<a class="headerlink" href="#list-resources" title="Link to this heading">#</a></h3>
+<p>Lists all available MCP resources including best practices, intent templates, and skills. Resources are exposed as tools via the ResourcesAsTools transform.</p>
+<p><strong>Returns</strong>: List of available resources with their URIs</p>
+</section>
+<section id="read-resource">
+<h3>read_resource<a class="headerlink" href="#read-resource" title="Link to this heading">#</a></h3>
+<p>Reads a specific resource by URI. Resources include best practices documentation, intent document templates, and skill guides.</p>
+<p><strong>Parameters</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">uri</span></code> (required): The URI of the resource to read</p></li>
+</ul>
+<p><strong>Example URIs</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">watsonx://best_practices</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">intent://batch-flow</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">intent://streaming-flow</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">skill://platform/SKILL.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">skill://project/SKILL.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">skill://batch-flows/SKILL.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">skill://streaming-flows/SKILL.md</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">skill://jobs-and-job-runs/SKILL.md</span></code></p></li>
 </ul>
 </section>
 <section id="execute-script">
 <h3>execute_script<a class="headerlink" href="#execute-script" title="Link to this heading">#</a></h3>
-<p>Executes Python scripts in a separate subprocess with a 30-second timeout. The AI assistant uses this to run SDK code on your behalf, so you don’t have to copy and paste code into your own environment.</p>
+<p>Executes generated Python scripts in an isolated subprocess with a 60-second timeout. The script runs with telemetry headers identifying MCP server usage.</p>
 <p><strong>Parameters</strong>:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">code</span></code>: The Python script to execute</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">code</span></code> (required): The Python script to execute</p></li>
 </ul>
+<p><strong>Returns</strong>: Execution results including return code, stdout, and stderr</p>
+<p><strong>Availability</strong>: Both stdio and SSE transports (can be disabled with <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>)</p>
+<p><strong>Security</strong>: Rejects scripts that access private attributes (patterns matching <code class="docutils literal notranslate"><span class="pre">\._[a-zA-Z]</span></code>)</p>
 </section>
 <section id="list-available-streaming-stages">
 <h3>list_available_streaming_stages<a class="headerlink" href="#list-available-streaming-stages" title="Link to this heading">#</a></h3>
-<p>Returns all available stage labels for a streaming flow, including the stage type (origin, processor, destination, executor) and library name. This requires an engine to be installed in the environment.</p>
+<p>Returns all available stage information for a streaming flow, including stage type (origin, processor, destination, executor) and library name. This requires an engine to be installed in the environment.</p>
 <p><strong>Parameters</strong>:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">project_id</span></code>: The project ID</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">flow_id</span></code>: The flow ID</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">base_api_url</span></code> (optional): The API URL (default: <code class="docutils literal notranslate"><span class="pre">https://api.ca-tor.dai.cloud.ibm.com</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">project_id</span></code> (required): Project ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flow_id</span></code> (required): Flow ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base_api_url</span></code> (optional): The API URL (uses region_name if not provided)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">base_url</span></code> (optional): The base authentication URL (default: <code class="docutils literal notranslate"><span class="pre">https://cloud.ibm.com</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">region_name</span></code> (optional): Region name from IBMCloudRegion enum (e.g., ‘TORONTO’, ‘DALLAS’, ‘FRANKFURT’, ‘LONDON’, ‘TOKYO’, ‘SYDNEY’)</p></li>
 </ul>
+<p><strong>Returns</strong>: List of stage information dictionaries with complete stage metadata (excludes config_definitions)</p>
+<p><strong>Availability</strong>: Both stdio and SSE transports (can be disabled with <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>)</p>
 </section>
 <section id="list-all-available-stage-configurations-streaming">
 <h3>list_all_available_stage_configurations_streaming<a class="headerlink" href="#list-all-available-stage-configurations-streaming" title="Link to this heading">#</a></h3>
-<p>Lists all available stage configurations for a streaming flow, including configuration fields, accepted values, defaults, and whether fields are required or optional. This helps understand what configuration options are available for each stage.</p>
+<p>Returns comprehensive configuration information for specified streaming stage types, including all available properties, their types, default values, accepted values, and whether fields are required or optional.</p>
 <p><strong>Parameters</strong>:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">project_id</span></code>: The project ID</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">flow_id</span></code>: The flow ID</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">base_api_url</span></code> (optional): The API URL (default: <code class="docutils literal notranslate"><span class="pre">https://api.ca-tor.dai.cloud.ibm.com</span></code>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">stage_labels</span></code> (optional): List of specific stage labels to get configurations for</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">project_id</span></code> (required): Project ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flow_id</span></code> (required): Flow ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stage_labels</span></code> (required): List of specific stage labels to get configurations for</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base_api_url</span></code> (optional): The API URL (uses region_name if not provided)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">base_url</span></code> (optional): The base authentication URL (default: <code class="docutils literal notranslate"><span class="pre">https://cloud.ibm.com</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">region_name</span></code> (optional): Region name from IBMCloudRegion enum (e.g., ‘TORONTO’, ‘DALLAS’, ‘FRANKFURT’, ‘LONDON’, ‘TOKYO’, ‘SYDNEY’)</p></li>
 </ul>
+<p><strong>Returns</strong>: Dictionary mapping stage labels to their configuration details, including:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: Configuration field description</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sdk_config_name</span></code>: The actual key used in Stage.configuration</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: Field type</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">required</span></code>: Whether the field is required</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">default</span></code>: Default value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">accepted_values</span></code>: List of accepted values (if applicable)</p></li>
+</ul>
+<p><strong>Availability</strong>: stdio transport only (requires authentication)</p>
 </section>
+<section id="list-available-batch-stages">
+<h3>list_available_batch_stages<a class="headerlink" href="#list-available-batch-stages" title="Link to this heading">#</a></h3>
+<p>Returns all available stage information for a batch flow. Retrieves available stages from a batch flow’s available_stages property and returns complete stage metadata.</p>
+<p><strong>Parameters</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">project_id</span></code> (required): Project ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">flow_id</span></code> (required): Batch flow ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base_api_url</span></code> (optional): The API URL (uses region_name if not provided)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base_url</span></code> (optional): The base authentication URL (default: <code class="docutils literal notranslate"><span class="pre">https://cloud.ibm.com</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">region_name</span></code> (optional): Region name from IBMCloudRegion enum (e.g., ‘TORONTO’, ‘DALLAS’, ‘FRANKFURT’, ‘LONDON’, ‘TOKYO’, ‘SYDNEY’)</p></li>
+</ul>
+<p><strong>Returns</strong>: List of stage information dictionaries with complete stage metadata</p>
+<p><strong>Availability</strong>: Both stdio and SSE transports (can be disabled with <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>)</p>
+</section>
+<section id="list-all-available-stage-configurations-batch">
+<h3>list_all_available_stage_configurations_batch<a class="headerlink" href="#list-all-available-stage-configurations-batch" title="Link to this heading">#</a></h3>
+<p>Returns comprehensive configuration information for specified batch stage types, including all available properties, their types, default values, and enum information. Uses runtime introspection of stage configuration classes to provide accurate, up-to-date information.</p>
+<p><strong>Parameters</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">stage_labels</span></code> (required): List of specific stage labels to get configurations for (e.g., [“Row Generator”, “PostgreSQL”])</p></li>
+</ul>
+<p><strong>Returns</strong>: Dictionary mapping stage labels to their configuration details, including:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">configuration_class</span></code>: Name of the configuration class</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">available_properties</span></code>: Dictionary of properties with:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: Type annotation string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">current_value</span></code>: Current/default value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">value_type</span></code>: Python type name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">description</span></code>: Field description (if available from Pydantic model)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">enum_values</span></code>: Dictionary of enum member names to values (if applicable)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">enum_class</span></code>: Full qualified enum class name (if applicable)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">enum_import</span></code>: Import path for the enum (if applicable)</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Availability</strong>: Both stdio and SSE transports (can be disabled with <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>)</p>
+</section>
+</section>
+<section id="tool-availability">
+<h2>Tool Availability<a class="headerlink" href="#tool-availability" title="Link to this heading">#</a></h2>
+<p>All tools are available in both stdio and SSE transport modes. However, execution and stage discovery tools can be disabled using the <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code> flag:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 15.0%" />
+<col style="width: 45.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Requires Auth</p></th>
+<th class="head"><p>Can Be Disabled</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">search_sdk_documentation</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get_model_reference</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">get_mcp_version</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get_sdk_version</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list_resources</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">read_resource</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">execute_script</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (via <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list_available_streaming_stages</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (via <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list_all_available_stage_configurations_streaming</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (via <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list_available_batch_stages</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (via <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list_all_available_stage_configurations_batch</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (via <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Notes:</strong></p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code> to disable execute_script and stage discovery tools (recommended for remote/untrusted deployments)</p></li>
+<li><p>When execution tools are enabled, authentication is required</p></li>
+<li><p>When execution tools are disabled, authentication is optional</p></li>
+</ul>
+<p>See <a class="reference internal" href="mcp_server_setup.html#mcp-server-mcp-server-setup"><span class="std std-ref">MCP Server Setup</span></a> for more information on configuration and security.</p>
 </section>
 </section>
 
@@ -458,15 +687,30 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-overview">Tools Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-overview">Tools Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation-tools">Documentation Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#version-tools">Version Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource-tools">Resource Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-tools">Execution Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-discovery-tools-streaming">Stage Discovery Tools (Streaming)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-discovery-tools-batch">Stage Discovery Tools (Batch)</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#available-tools">Available Tools</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-docs">list_docs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-doc">read_doc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-sdk-documentation">search_sdk_documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-model-reference">get_model_reference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-mcp-version">get_mcp_version</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-sdk-version">get_sdk_version</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-resources">list_resources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-resource">read_resource</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-script">execute_script</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-available-streaming-stages">list_available_streaming_stages</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-all-available-stage-configurations-streaming">list_all_available_stage_configurations_streaming</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-available-batch-stages">list_available_batch_stages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-all-available-stage-configurations-batch">list_all_available_stage_configurations_batch</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-availability">Tool Availability</a></li>
 </ul>
   </nav></div>
 

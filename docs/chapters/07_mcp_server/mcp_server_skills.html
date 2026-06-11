@@ -334,11 +334,23 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skills-overview">Skills Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#available-skills">Available Skills</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#platform">platform</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project">project</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-flows">batch-flows</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#streaming-flows">streaming-flows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jobs-and-job-runs">jobs-and-job-runs</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-skills-work">How Skills Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-resources">Best Practices Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intent-document-resources">Intent Document Resources</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-intent-documents">What Are Intent Documents?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-intent-documents-are-mandatory">Why Intent Documents Are Mandatory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#available-intent-resources">Available Intent Resources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-for-flow-creation">Workflow for Flow Creation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits-of-intent-documents">Benefits of Intent Documents</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-intent-document-structure">Example Intent Document Structure</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -355,72 +367,262 @@ document.write(`
 <p>The <code class="docutils literal notranslate"><span class="pre">ibm_watsonx_data_integration_mcp</span></code> server provides skill resources that contain domain-specific best practices, workflows, and patterns. These skills are installed server-side and automatically loaded by AI assistants when working on relevant tasks to ensure correct SDK usage.</p>
 <section id="skills-overview">
 <h2>Skills Overview<a class="headerlink" href="#skills-overview" title="Link to this heading">#</a></h2>
+<p>The MCP server includes the following skills:</p>
 <ul class="simple">
-<li><p><strong>platform</strong> - Entry point for all IBM watsonx Data Integration tasks</p></li>
+<li><p><strong>platform</strong> - Entry point for all IBM watsonx.data Integration tasks</p></li>
+<li><p><strong>project</strong> - Project creation, listing, and management</p></li>
 <li><p><strong>batch-flows</strong> - Building, configuring, and running batch flows</p></li>
 <li><p><strong>streaming-flows</strong> - Building, configuring, and running streaming flows</p></li>
+<li><p><strong>jobs-and-job-runs</strong> - Job creation, execution, and monitoring</p></li>
 </ul>
 </section>
 <section id="available-skills">
 <h2>Available Skills<a class="headerlink" href="#available-skills" title="Link to this heading">#</a></h2>
 <section id="platform">
 <h3>platform<a class="headerlink" href="#platform" title="Link to this heading">#</a></h3>
-<p><strong>URI</strong>: <code class="docutils literal notranslate"><span class="pre">skill://platform/</span></code></p>
-<p><strong>When Used</strong>: This is the entry point skill that AI assistants load first for any IBM watsonx Data Integration task.</p>
-<p><strong>What It Helps With</strong>:</p>
+<p><strong>URI</strong>: <code class="docutils literal notranslate"><span class="pre">skill://platform/SKILL.md</span></code></p>
+<p><strong>Description</strong>: Authentication patterns, Platform object initialization, and core SDK sequencing rules for IBM watsonx.data Integration. This is the entry point skill that should be read first for any data integration task.</p>
+<p><strong>What It Covers</strong>:</p>
 <ul class="simple">
-<li><p>Understanding the correct startup sequence (reading documentation before generating code)</p></li>
-<li><p>Using the right collection methods for projects, flows, jobs, engines, and environments</p></li>
-<li><p>Authenticating properly for SaaS and on-premises deployments</p></li>
-<li><p>Managing job lifecycles (creating, running, monitoring, and canceling jobs)</p></li>
+<li><p>Mandatory startup sequence (reading best practices before any code generation)</p></li>
+<li><p>Authentication patterns for SaaS (IAM) and On-Premises (CP4D) deployments</p></li>
+<li><p>Platform object initialization</p></li>
+<li><p>Core SDK sequencing rules and order of operations</p></li>
+<li><p>Collection methods for projects, flows, jobs, engines, and environments</p></li>
+<li><p>Job lifecycle management (creating, running, monitoring, and canceling jobs)</p></li>
 <li><p>Persisting changes correctly</p></li>
-<li><p>Handling errors and configuring error stages</p></li>
+<li><p>Error handling and configuration</p></li>
 </ul>
-<p><strong>Key Guidance</strong>: After reading this skill, the AI assistant will load the appropriate specialized skill (batch-flows or streaming-flows) based on your specific task.</p>
+<p><strong>Key Guidance</strong>: This skill emphasizes that code examples are non-authoritative and serve only to illustrate patterns and ordering. All identifiers (methods, fields, enums, types) must be confirmed via <code class="docutils literal notranslate"><span class="pre">search_sdk_documentation</span></code> (primary) or <code class="docutils literal notranslate"><span class="pre">get_model_reference</span></code> (fallback).</p>
+<p><strong>Typical Usage</strong>: AI assistants load this skill first to understand general SDK patterns, then load the appropriate specialized skill (project, batch-flows, streaming-flows, or jobs-and-job-runs) based on the specific task.</p>
+</section>
+<section id="project">
+<h3>project<a class="headerlink" href="#project" title="Link to this heading">#</a></h3>
+<p><strong>URI</strong>: <code class="docutils literal notranslate"><span class="pre">skill://project/SKILL.md</span></code></p>
+<p><strong>Description</strong>: Project lifecycle management in IBM watsonx.data Integration - creating, listing, retrieving, and deleting projects.</p>
+<p><strong>What It Covers</strong>:</p>
+<ul class="simple">
+<li><p>Project types (watsonx.data Integration vs Cloud Pak for Data)</p></li>
+<li><p>Proper parameter usage (project_id vs id)</p></li>
+<li><p>Creating new projects with required and optional parameters</p></li>
+<li><p>Listing and filtering projects</p></li>
+<li><p>Retrieving specific projects</p></li>
+<li><p>Accessing project resources (flows, jobs, engines, environments)</p></li>
+<li><p>Deleting projects</p></li>
+<li><p>Project collaborator management</p></li>
+</ul>
 </section>
 <section id="batch-flows">
 <h3>batch-flows<a class="headerlink" href="#batch-flows" title="Link to this heading">#</a></h3>
-<p><strong>URI</strong>: <code class="docutils literal notranslate"><span class="pre">skill://batch-flows/</span></code></p>
-<p><strong>When Used</strong>: AI assistants load this skill when you need to build, configure, or run batch flows.</p>
-<p><strong>What It Helps With</strong>:</p>
+<p><strong>URI</strong>: <code class="docutils literal notranslate"><span class="pre">skill://batch-flows/SKILL.md</span></code></p>
+<p><strong>Description</strong>: Complete workflow for creating batch data integration flows including stage configuration, schema creation patterns, link management, and compilation.</p>
+<p><strong>What It Covers</strong>:</p>
 <ul class="simple">
-<li><p>Understanding key differences between batch and streaming flows</p></li>
-<li><p>Following the correct workflow from authentication through job execution</p></li>
+<li><p>Key differences between batch and streaming flows</p></li>
+<li><p>Complete workflow from authentication through job execution</p></li>
 <li><p>Finding the right stage models and configuration enums</p></li>
 <li><p>Working with schemas and column types</p></li>
-<li><p>Knowing which of the 150+ available batch stages to use</p></li>
-<li><p>Configuring stages correctly with accepted values</p></li>
-<li><p>Compiling flows before creating jobs</p></li>
+<li><p>Available batch stages (150+ stages)</p></li>
+<li><p>Stage configuration with accepted values</p></li>
+<li><p>Connecting stages with links</p></li>
+<li><p>Schema definitions and reuse</p></li>
+<li><p>Flow compilation before job creation</p></li>
+<li><p>Job creation and execution</p></li>
 </ul>
-<p><strong>Typical Workflow</strong>: Authenticate → Get project → Create/get flow → Add stages → Configure stages → Connect stages → Define schemas → Update flow → Compile flow → Create job → Start job</p>
 </section>
 <section id="streaming-flows">
 <h3>streaming-flows<a class="headerlink" href="#streaming-flows" title="Link to this heading">#</a></h3>
-<p><strong>URI</strong>: <code class="docutils literal notranslate"><span class="pre">skill://streaming-flows/</span></code></p>
-<p><strong>When Used</strong>: AI assistants load this skill when you need to build, configure, or run streaming flows.</p>
-<p><strong>What It Helps With</strong>:</p>
+<p><strong>URI</strong>: <code class="docutils literal notranslate"><span class="pre">skill://streaming-flows/SKILL.md</span></code></p>
+<p><strong>Description</strong>: Complete workflow, stage discovery, configuration, and connection patterns for streaming flows.</p>
+<p><strong>What It Covers</strong>:</p>
 <ul class="simple">
-<li><p>Checking engine health before starting work</p></li>
-<li><p>Understanding when environments are needed (optional for streaming)</p></li>
-<li><p>Discovering available stages using MCP tools</p></li>
+<li><p>Engine health checks before starting work</p></li>
+<li><p>Environment management (optional for streaming)</p></li>
+<li><p>Stage discovery using MCP tools</p></li>
 <li><p>Getting stage configurations in manageable batches</p></li>
 <li><p>Connecting stages in various patterns (basic, chaining, fan-out, Stream Selector)</p></li>
-<li><p>Validating flows before creating jobs</p></li>
+<li><p>Flow validation before job creation</p></li>
 <li><p>Working in engineless mode when no engine is available</p></li>
+<li><p>Error handling and error stage configuration</p></li>
 </ul>
-<p><strong>Typical Workflow</strong>: Authenticate → Get project → Check engine/environment → Create/get flow → Discover stages → Get configurations → Add stages → Configure stages → Connect stages → Update flow → Validate flow → Create job → Start job</p>
+</section>
+<section id="jobs-and-job-runs">
+<h3>jobs-and-job-runs<a class="headerlink" href="#jobs-and-job-runs" title="Link to this heading">#</a></h3>
+<p><strong>URI</strong>: <code class="docutils literal notranslate"><span class="pre">skill://jobs-and-job-runs/SKILL.md</span></code></p>
+<p><strong>Description</strong>: Creating, managing, and monitoring jobs and job runs in IBM watsonx.data integration.</p>
+<p><strong>What It Covers</strong>:</p>
+<ul class="simple">
+<li><p>Job creation for batch and streaming flows</p></li>
+<li><p>Job configuration and parameters</p></li>
+<li><p>Runtime parameters and parameter sets</p></li>
+<li><p>Starting and stopping jobs</p></li>
+<li><p>Monitoring job execution status</p></li>
+<li><p>Checking job logs and metrics</p></li>
+<li><p>Job run lifecycle management</p></li>
+<li><p>Canceling and deleting jobs</p></li>
+<li><p>Setting retention policies</p></li>
+<li><p>Scheduling jobs</p></li>
+<li><p>Job state management</p></li>
+</ul>
 </section>
 </section>
 <section id="how-skills-work">
 <h2>How Skills Work<a class="headerlink" href="#how-skills-work" title="Link to this heading">#</a></h2>
 <p>Skills are installed server-side and automatically loaded by AI assistants based on the task you’re working on. You don’t need to install or configure skills manually - the AI assistant will:</p>
 <ol class="arabic simple">
-<li><p>Start with the <strong>platform</strong> skill to understand general SDK patterns</p></li>
-<li><p>Load the appropriate specialized skill (<strong>batch-flows</strong> or <strong>streaming-flows</strong>) based on your task</p></li>
+<li><p>Start with the <strong>platform</strong> skill to understand general SDK patterns and mandatory startup sequence</p></li>
+<li><p>Load the appropriate specialized skill (<strong>project</strong>, <strong>batch-flows</strong>, <strong>streaming-flows</strong>, or <strong>jobs-and-job-runs</strong>) based on your task</p></li>
 <li><p>Use the guidance in these skills to generate correct SDK code</p></li>
 <li><p>Follow the recommended workflows and best practices</p></li>
+<li><p>Verify all code against SDK documentation using <code class="docutils literal notranslate"><span class="pre">search_sdk_documentation</span></code> and <code class="docutils literal notranslate"><span class="pre">get_model_reference</span></code> tools</p></li>
 </ol>
 <p>This ensures that the AI assistant uses the SDK correctly and follows established patterns, reducing errors and improving code quality.</p>
+</section>
+<section id="best-practices-resources">
+<h2>Best Practices Resources<a class="headerlink" href="#best-practices-resources" title="Link to this heading">#</a></h2>
+<p>In addition to skills, the MCP server provides best practices resources that contain canonical usage rules and patterns:</p>
+<dl class="simple">
+<dt><strong>watsonx://best_practices</strong></dt><dd><p>Comprehensive best practices for the IBM watsonx.data Integration SDK, including:</p>
+<ul class="simple">
+<li><p>Core concepts and platform-centric architecture</p></li>
+<li><p>Authentication patterns</p></li>
+<li><p>Configuration management</p></li>
+<li><p>Streaming and batch flow best practices</p></li>
+<li><p>Common invalid patterns to avoid</p></li>
+<li><p>Forbidden patterns (never use underscore-prefixed private APIs)</p></li>
+<li><p>Code generation best practices</p></li>
+<li><p>MCP server usage patterns</p></li>
+<li><p>Quick reference and troubleshooting</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="intent-document-resources">
+<h2>Intent Document Resources<a class="headerlink" href="#intent-document-resources" title="Link to this heading">#</a></h2>
+<p>The MCP server provides intent document templates that enable a structured, requirements-first approach to flow creation. Intent documents are <strong>MANDATORY</strong> when creating batch or streaming flows - they must be generated and approved before any code is written.</p>
+<section id="what-are-intent-documents">
+<h3>What Are Intent Documents?<a class="headerlink" href="#what-are-intent-documents" title="Link to this heading">#</a></h3>
+<p>Intent documents are structured specifications that capture all requirements, configurations, and design decisions before generating code for data integration flows. They serve as a contract between you and the AI assistant, ensuring complete understanding of what needs to be built.</p>
+<p>An intent document includes:</p>
+<ul class="simple">
+<li><p><strong>Flow Overview</strong>: Business purpose and high-level description</p></li>
+<li><p><strong>Flow Topology Diagram</strong>: A Mermaid diagram showing all stages and their connections (MANDATORY)</p></li>
+<li><p><strong>Source/Destination Schemas</strong>: Complete data structure definitions</p></li>
+<li><p><strong>Transformation Logic</strong>: Detailed description of data transformations</p></li>
+<li><p><strong>Stage Configurations</strong>: All configuration parameters for each stage</p></li>
+<li><p><strong>Connection Map</strong>: How stages are connected (for streaming flows)</p></li>
+<li><p><strong>Error Handling</strong>: Error handling strategy and configuration</p></li>
+<li><p><strong>Validation Checklist</strong>: Verification steps before code generation</p></li>
+</ul>
+</section>
+<section id="why-intent-documents-are-mandatory">
+<h3>Why Intent Documents Are Mandatory<a class="headerlink" href="#why-intent-documents-are-mandatory" title="Link to this heading">#</a></h3>
+<p>Intent documents prevent the most common causes of code generation failures:</p>
+<ol class="arabic simple">
+<li><p><strong>Incomplete Requirements</strong>: Forces capture of all necessary information upfront</p></li>
+<li><p><strong>Configuration Errors</strong>: Validates stage configurations against available options before code generation</p></li>
+<li><p><strong>Schema Mismatches</strong>: Ensures schemas are defined and compatible across all stages</p></li>
+<li><p><strong>Missing Connections</strong>: Visualizes the complete flow topology to catch missing or incorrect connections</p></li>
+<li><p><strong>Unclear Transformations</strong>: Documents transformation logic explicitly</p></li>
+</ol>
+<p><strong>Statistics</strong>: Intent documents prevent 80%+ of code generation errors by catching issues during the planning phase rather than during execution.</p>
+</section>
+<section id="available-intent-resources">
+<h3>Available Intent Resources<a class="headerlink" href="#available-intent-resources" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">intent://overview</span></code></dt><dd><p>Overview of the mandatory intent document generation approach for all flow creation. Explains the workflow, benefits, and requirements.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">intent://batch-flow</span></code></dt><dd><p>Template and instructions for batch flow intent documents. Includes:</p>
+<ul class="simple">
+<li><p>Flow overview and business purpose</p></li>
+<li><p>Complete data source schemas</p></li>
+<li><p>Transformation logic</p></li>
+<li><p>Destination configurations</p></li>
+<li><p>Stage-by-stage configuration details</p></li>
+<li><p>Schema mappings for all links</p></li>
+<li><p>Validation checklist</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">intent://streaming-flow</span></code></dt><dd><p>Template and instructions for streaming flow intent documents. Includes:</p>
+<ul class="simple">
+<li><p>Flow overview and business purpose</p></li>
+<li><p>Engine and environment pre-flight check</p></li>
+<li><p>Stage discovery results (from MCP tools)</p></li>
+<li><p>Complete stage configurations with accepted values</p></li>
+<li><p>Connection map for all stage connections</p></li>
+<li><p>Error handling configuration</p></li>
+<li><p>Validation strategy</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="workflow-for-flow-creation">
+<h3>Workflow for Flow Creation<a class="headerlink" href="#workflow-for-flow-creation" title="Link to this heading">#</a></h3>
+<p>The intent document workflow is <strong>NON-NEGOTIABLE</strong> for all flow creation:</p>
+<ol class="arabic simple">
+<li><p><strong>Read Intent Resource</strong>: AI assistant reads the appropriate intent resource (<code class="docutils literal notranslate"><span class="pre">intent://batch-flow</span></code> or <code class="docutils literal notranslate"><span class="pre">intent://streaming-flow</span></code>)</p></li>
+<li><p><strong>Generate Intent Document</strong>: AI assistant generates a complete intent document following the template</p></li>
+<li><p><strong>Include Mermaid Diagram</strong>: Every intent document MUST include a Mermaid diagram showing the complete flow topology (this is MANDATORY)</p></li>
+<li><p><strong>Present for Review</strong>: AI assistant presents the intent document to you for review and approval</p></li>
+<li><p><strong>Get Approval</strong>: You review and approve the intent document (or request changes)</p></li>
+<li><p><strong>Generate Code</strong>: Only after approval, the AI assistant generates and executes the Python code</p></li>
+</ol>
+<p><strong>The Mermaid diagram is MANDATORY and NON-NEGOTIABLE</strong>. It must show all stages and connections. Failure to follow these steps will result in incorrect code generation.</p>
+</section>
+<section id="benefits-of-intent-documents">
+<h3>Benefits of Intent Documents<a class="headerlink" href="#benefits-of-intent-documents" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Prevents Errors</strong>: Catches configuration and schema issues before code generation</p></li>
+<li><p><strong>Ensures Completeness</strong>: Forces capture of all requirements upfront</p></li>
+<li><p><strong>Provides Documentation</strong>: Creates a reviewable specification of the flow design</p></li>
+<li><p><strong>Enables Better Code</strong>: AI assistants generate more accurate code from complete specifications</p></li>
+<li><p><strong>Saves Time</strong>: Reduces debugging and rework by getting requirements right the first time</p></li>
+<li><p><strong>Facilitates Review</strong>: Provides a clear, visual representation of the flow for stakeholder review</p></li>
+</ul>
+</section>
+<section id="example-intent-document-structure">
+<h3>Example Intent Document Structure<a class="headerlink" href="#example-intent-document-structure" title="Link to this heading">#</a></h3>
+<p>A typical batch flow intent document includes:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># Batch Flow Intent Document
+
+## Flow Overview
+- **Purpose**: Migrate customer data from PostgreSQL to Snowflake
+- **Type**: Batch ETL pipeline
+- **Frequency**: Daily at 2 AM
+
+## Flow Topology
+```mermaid
+graph LR
+    A[PostgreSQL Source] --&gt; B[Filter Active Customers]
+    B --&gt; C[Transform Data]
+    C --&gt; D[Snowflake Destination]
+```
+
+## Source Schema
+- Table: customers
+- Columns: id (int), name (string), email (string), status (string), created_at (timestamp)
+
+## Transformation Logic
+- Filter: status = &#39;active&#39;
+- Transform: Convert created_at to ISO 8601 format
+- Map: id → customer_id, name → full_name
+
+## Destination Schema
+- Table: active_customers
+- Columns: customer_id (int), full_name (string), email (string), registration_date (timestamp)
+
+## Stage Configurations
+[Detailed configuration for each stage]
+
+## Validation Checklist
+- [ ] All source columns mapped
+- [ ] Transformation logic verified
+- [ ] Destination schema matches
+- [ ] Error handling configured
+</pre></div>
+</div>
+<p>This structured approach ensures that all requirements are captured and validated before any code is generated, resulting in more reliable and maintainable data integration flows.</p>
+</section>
 </section>
 </section>
 
@@ -472,11 +674,23 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#skills-overview">Skills Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#available-skills">Available Skills</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#platform">platform</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project">project</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-flows">batch-flows</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#streaming-flows">streaming-flows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#jobs-and-job-runs">jobs-and-job-runs</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-skills-work">How Skills Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#best-practices-resources">Best Practices Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intent-document-resources">Intent Document Resources</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-intent-documents">What Are Intent Documents?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-intent-documents-are-mandatory">Why Intent Documents Are Mandatory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#available-intent-resources">Available Intent Resources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-for-flow-creation">Workflow for Flow Creation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits-of-intent-documents">Benefits of Intent Documents</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-intent-document-structure">Example Intent Document Structure</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

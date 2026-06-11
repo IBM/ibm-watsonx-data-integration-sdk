@@ -6,7 +6,7 @@ MCP Server Setup
 Requirements
 ------------
 
-- **Python**: 3.12
+- **Python**: 3.11-3.12 (3.12 recommended)
 
 Installation
 ------------
@@ -34,13 +34,22 @@ You should see output similar to:
 
 .. code-block:: text
 
-    usage: data-intg-mcp [-h] [--clear-cache]
+    usage: data-intg-mcp [-h] [--clear-cache] [--disable-execution-tools]
+                         [--transport {stdio,sse}] [--host HOST] [--port PORT]
+                         [--use-local-docs]
 
     MCP Server for IBM watsonx.data Integration
 
     options:
-      -h, --help     show this help message and exit
-      --clear-cache  Clear all cached documentation before starting (resources_cache/ and docs/)
+      -h, --help            show this help message and exit
+      --clear-cache         Clear all cached documentation before starting
+      --disable-execution-tools
+                            Disable execute_script and stage discovery tools
+      --transport {stdio,sse}
+                            Transport protocol to use (default: stdio)
+      --host HOST           Host to bind to when using SSE transport (default: 0.0.0.0)
+      --port PORT           Port to bind to when using SSE transport (default: 8000)
+      --use-local-docs      Use bundled local HTML docs instead of live documentation
 
 **MCP server configuration:**
 
@@ -89,13 +98,22 @@ You should see output similar to:
 
 .. code-block:: text
 
-    usage: data-intg-mcp [-h] [--clear-cache]
+    usage: data-intg-mcp [-h] [--clear-cache] [--disable-execution-tools]
+                         [--transport {stdio,sse}] [--host HOST] [--port PORT]
+                         [--use-local-docs]
 
     MCP Server for IBM watsonx.data Integration
 
     options:
-      -h, --help     show this help message and exit
-      --clear-cache  Clear all cached documentation before starting (resources_cache/ and docs/)
+      -h, --help            show this help message and exit
+      --clear-cache         Clear all cached documentation before starting
+      --disable-execution-tools
+                            Disable execute_script and stage discovery tools
+      --transport {stdio,sse}
+                            Transport protocol to use (default: stdio)
+      --host HOST           Host to bind to when using SSE transport (default: 0.0.0.0)
+      --port PORT           Port to bind to when using SSE transport (default: 8000)
+      --use-local-docs      Use bundled local HTML docs instead of live documentation
 
 **MCP server configuration:**
 
@@ -138,13 +156,22 @@ You should see output similar to:
 
 .. code-block:: text
 
-    usage: data-intg-mcp [-h] [--clear-cache]
+    usage: data-intg-mcp [-h] [--clear-cache] [--disable-execution-tools]
+                         [--transport {stdio,sse}] [--host HOST] [--port PORT]
+                         [--use-local-docs]
 
     MCP Server for IBM watsonx.data Integration
 
     options:
-      -h, --help     show this help message and exit
-      --clear-cache  Clear all cached documentation before starting (resources_cache/ and docs/)
+      -h, --help            show this help message and exit
+      --clear-cache         Clear all cached documentation before starting
+      --disable-execution-tools
+                            Disable execute_script and stage discovery tools
+      --transport {stdio,sse}
+                            Transport protocol to use (default: stdio)
+      --host HOST           Host to bind to when using SSE transport (default: 0.0.0.0)
+      --port PORT           Port to bind to when using SSE transport (default: 8000)
+      --use-local-docs      Use bundled local HTML docs instead of live documentation
 
 **MCP server configuration:**
 
@@ -201,8 +228,8 @@ emoji and special characters. On Windows, the default encoding is cp1252, which 
     {
       "mcpServers": {
         "data-intg-mcp": {
-          "command": "...",
-          "args": [...],
+          "command": "uvx",
+          "args": ["--python", "3.12", "--from", "ibm_watsonx_data_integration_mcp", "data-intg-mcp"],
           "env": {
             "PYTHONUTF8": "1",
             "WATSONX_API_KEY": "YOUR_API_KEY"
@@ -234,8 +261,8 @@ For SaaS deployments, set the ``WATSONX_API_KEY`` environment variable in the ``
     {
       "mcpServers": {
         "data-intg-mcp": {
-          "command": "...",
-          "args": [...],
+          "command": "uvx",
+          "args": ["--python", "3.12", "--from", "ibm_watsonx_data_integration_mcp", "data-intg-mcp"],
           "env": {
             "WATSONX_API_KEY": "your-ibm-cloud-api-key"
           }
@@ -245,6 +272,19 @@ For SaaS deployments, set the ``WATSONX_API_KEY`` environment variable in the ``
 
 .. note::
    For information on how to generate an IBM Cloud API key, see :ref:`getting_started_and_tutorials__authentication`.
+
+**Region Selection:**
+
+When using SaaS authentication, the server defaults to the Toronto region. The AI assistant can ask you to specify a different IBM Cloud region when needed. Available regions (from the ``IBMCloudRegion`` enum):
+
+- ``TORONTO`` - Toronto, Canada (default)
+- ``DALLAS`` - Dallas, USA
+- ``FRANKFURT`` - Frankfurt, Germany
+- ``LONDON`` - London, United Kingdom
+- ``TOKYO`` - Tokyo, Japan
+- ``SYDNEY`` - Sydney, Australia
+
+The region is passed as a parameter to the tools that require it, ensuring you're connecting to the correct regional endpoint.
 
 On-Premises Authentication (Cloud Pak for Data)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -258,8 +298,8 @@ For On-Premises deployments, you have two authentication options:
     {
       "mcpServers": {
         "data-intg-mcp": {
-          "command": "...",
-          "args": [...],
+          "command": "uvx",
+          "args": ["--python", "3.12", "--from", "ibm_watsonx_data_integration_mcp", "data-intg-mcp"],
           "env": {
             "CP4D_USERNAME": "your-username",
             "CP4D_PASSWORD": "your-password",
@@ -277,8 +317,8 @@ For On-Premises deployments, you have two authentication options:
     {
       "mcpServers": {
         "data-intg-mcp": {
-          "command": "...",
-          "args": [...],
+          "command": "uvx",
+          "args": ["--python", "3.12", "--from", "ibm_watsonx_data_integration_mcp", "data-intg-mcp"],
           "env": {
             "CP4D_USERNAME": "your-username",
             "ZEN_API_KEY": "your-zen-api-key",
@@ -335,8 +375,8 @@ Add the ``REQUESTS_CA_BUNDLE`` environment variable to your MCP server configura
     {
       "mcpServers": {
         "data-intg-mcp": {
-          "command": "...",
-          "args": [...],
+          "command": "uvx",
+          "args": ["--python", "3.12", "--from", "ibm_watsonx_data_integration_mcp", "data-intg-mcp"],
           "env": {
             "CP4D_USERNAME": "your-username",
             "CP4D_PASSWORD": "your-password",
@@ -357,3 +397,90 @@ Replace ``/path/to/ca.crt`` with the absolute path to your cleaned certificate f
 3. On-Premises (ZenApiKeyAuthenticator) - if ``CP4D_USERNAME`` and ``ZEN_API_KEY`` are set
 
 The server validates authentication credentials on startup and will display which authentication method was detected.
+
+Advanced Usage
+--------------
+
+Offline Documentation Mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If your environment cannot access GitHub Pages, start the server with ``--use-local-docs``. In this mode, the server reads packaged HTML files from the bundled documentation, converts them into cached markdown files, and then builds the LanceDB index in the normal runtime cache.
+
+Example:
+
+.. code-block:: bash
+
+    data-intg-mcp --use-local-docs
+
+.. important::
+   - Offline docs may not be the most up to date because they do not use the live documentation site.
+   - Refresh the packaged docs periodically before publishing or deploying if you want the bundled copy to stay current.
+
+Cache Management
+~~~~~~~~~~~~~~~~
+
+The server caches documentation and creates a vector database for efficient retrieval. To clear all cached data:
+
+.. code-block:: bash
+
+    data-intg-mcp --clear-cache
+
+This removes:
+
+- ``resources_cache/`` - Cached documentation files
+- ``raw_resource_html/`` - Raw HTML files
+- ``lance_db/`` - Vector database (LanceDB)
+
+Use this command when you need to refresh the documentation cache or troubleshoot issues with the vector database.
+
+HTTP/SSE Transport
+~~~~~~~~~~~~~~~~~~
+
+By default, the MCP server runs over stdio transport (for local MCP clients like Claude Desktop or Bob). You can also run it as an HTTP server using Server-Sent Events (SSE) transport for remote access:
+
+.. code-block:: bash
+
+    # Run as HTTP/SSE server (API key is optional for SSE)
+    data-intg-mcp --transport sse --host 0.0.0.0 --port 8000
+
+    # If you need SDK operations that require authentication, set the API key:
+    export WATSONX_API_KEY="your-api-key"
+    data-intg-mcp --transport sse --host 0.0.0.0 --port 8000
+
+.. include:: _tool_availability.rst
+
+.. important::
+   **Security and Authentication Notes:**
+
+   - Use ``--disable-execution-tools`` to disable execute_script and stage discovery tools (recommended for remote/untrusted deployments)
+   - When execution tools are enabled, authentication is required (``WATSONX_API_KEY`` or CP4D credentials)
+   - When execution tools are disabled, authentication is optional
+   - The SSE server allows remote connections, so ensure proper network security measures are in place
+   - Environment variables must be set on the server side, not in the client configuration
+   - Consider using authentication/authorization mechanisms when exposing the server over HTTP
+
+**MCP Client Configuration for SSE:**
+
+For remote MCP clients, configure the server URL:
+
+.. code-block:: json
+
+    {
+      "mcpServers": {
+        "data-intg-mcp-remote": {
+          "url": "http://127.0.0.1:8000/sse"
+        }
+      }
+    }
+
+.. note::
+   Unlike stdio transport, environment variables cannot be passed from the client config when using SSE. They must be set in the server's environment before starting the server.
+
+**Command Line Options:**
+
+- ``--transport``: Choose ``stdio`` (default) or ``sse``
+- ``--host``: Host to bind to for SSE (default: 0.0.0.0, ignored for stdio)
+- ``--port``: Port to bind to for SSE (default: 8000, ignored for stdio)
+- ``--disable-execution-tools``: Disable execute_script and stage discovery tools (recommended for remote deployments)
+- ``--clear-cache``: Clear all cached documentation before starting
+- ``--use-local-docs``: Use bundled local HTML docs instead of retrieving documentation live

@@ -350,6 +350,13 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-tls-for-on-premises-deployments">Configuring TLS for On-Premises Deployments</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-usage">Advanced Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#offline-documentation-mode">Offline Documentation Mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cache-management">Cache Management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#http-sse-transport">HTTP/SSE Transport</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-availability">Tool Availability</a></li>
 </ul>
             </nav>
         </div>
@@ -366,7 +373,7 @@ document.write(`
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><strong>Python</strong>: 3.12</p></li>
+<li><p><strong>Python</strong>: 3.11-3.12 (3.12 recommended)</p></li>
 </ul>
 </section>
 <section id="installation">
@@ -384,13 +391,22 @@ document.write(`
 </pre></div>
 </div>
 <p>You should see output similar to:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: data-intg-mcp [-h] [--clear-cache]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: data-intg-mcp [-h] [--clear-cache] [--disable-execution-tools]
+                     [--transport {stdio,sse}] [--host HOST] [--port PORT]
+                     [--use-local-docs]
 
 MCP Server for IBM watsonx.data Integration
 
 options:
-  -h, --help     show this help message and exit
-  --clear-cache  Clear all cached documentation before starting (resources_cache/ and docs/)
+  -h, --help            show this help message and exit
+  --clear-cache         Clear all cached documentation before starting
+  --disable-execution-tools
+                        Disable execute_script and stage discovery tools
+  --transport {stdio,sse}
+                        Transport protocol to use (default: stdio)
+  --host HOST           Host to bind to when using SSE transport (default: 0.0.0.0)
+  --port PORT           Port to bind to when using SSE transport (default: 8000)
+  --use-local-docs      Use bundled local HTML docs instead of live documentation
 </pre></div>
 </div>
 <p><strong>MCP server configuration:</strong></p>
@@ -429,13 +445,22 @@ options:
 </pre></div>
 </div>
 <p>You should see output similar to:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: data-intg-mcp [-h] [--clear-cache]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: data-intg-mcp [-h] [--clear-cache] [--disable-execution-tools]
+                     [--transport {stdio,sse}] [--host HOST] [--port PORT]
+                     [--use-local-docs]
 
 MCP Server for IBM watsonx.data Integration
 
 options:
-  -h, --help     show this help message and exit
-  --clear-cache  Clear all cached documentation before starting (resources_cache/ and docs/)
+  -h, --help            show this help message and exit
+  --clear-cache         Clear all cached documentation before starting
+  --disable-execution-tools
+                        Disable execute_script and stage discovery tools
+  --transport {stdio,sse}
+                        Transport protocol to use (default: stdio)
+  --host HOST           Host to bind to when using SSE transport (default: 0.0.0.0)
+  --port PORT           Port to bind to when using SSE transport (default: 8000)
+  --use-local-docs      Use bundled local HTML docs instead of live documentation
 </pre></div>
 </div>
 <p><strong>MCP server configuration:</strong></p>
@@ -470,13 +495,22 @@ pip<span class="w"> </span>install<span class="w"> </span>ibm_watsonx_data_integ
 </pre></div>
 </div>
 <p>You should see output similar to:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: data-intg-mcp [-h] [--clear-cache]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: data-intg-mcp [-h] [--clear-cache] [--disable-execution-tools]
+                     [--transport {stdio,sse}] [--host HOST] [--port PORT]
+                     [--use-local-docs]
 
 MCP Server for IBM watsonx.data Integration
 
 options:
-  -h, --help     show this help message and exit
-  --clear-cache  Clear all cached documentation before starting (resources_cache/ and docs/)
+  -h, --help            show this help message and exit
+  --clear-cache         Clear all cached documentation before starting
+  --disable-execution-tools
+                        Disable execute_script and stage discovery tools
+  --transport {stdio,sse}
+                        Transport protocol to use (default: stdio)
+  --host HOST           Host to bind to when using SSE transport (default: 0.0.0.0)
+  --port PORT           Port to bind to when using SSE transport (default: 8000)
+  --use-local-docs      Use bundled local HTML docs instead of live documentation
 </pre></div>
 </div>
 <p><strong>MCP server configuration:</strong></p>
@@ -526,8 +560,8 @@ emoji and special characters. On Windows, the default encoding is cp1252, which 
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;--python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;3.12&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--from&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ibm_watsonx_data_integration_mcp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;data-intg-mcp&quot;</span><span class="p">],</span>
 <span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;PYTHONUTF8&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_API_KEY&quot;</span>
@@ -554,8 +588,8 @@ emoji and special characters. On Windows, the default encoding is cp1252, which 
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;--python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;3.12&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--from&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ibm_watsonx_data_integration_mcp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;data-intg-mcp&quot;</span><span class="p">],</span>
 <span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-ibm-cloud-api-key&quot;</span>
 <span class="w">      </span><span class="p">}</span>
@@ -568,6 +602,17 @@ emoji and special characters. On Windows, the default encoding is cp1252, which 
 <p class="admonition-title">Note</p>
 <p>For information on how to generate an IBM Cloud API key, see <a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html#getting-started-and-tutorials-authentication"><span class="std std-ref">Authentication</span></a>.</p>
 </div>
+<p><strong>Region Selection:</strong></p>
+<p>When using SaaS authentication, the server defaults to the Toronto region. The AI assistant can ask you to specify a different IBM Cloud region when needed. Available regions (from the <code class="docutils literal notranslate"><span class="pre">IBMCloudRegion</span></code> enum):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TORONTO</span></code> - Toronto, Canada (default)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DALLAS</span></code> - Dallas, USA</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FRANKFURT</span></code> - Frankfurt, Germany</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LONDON</span></code> - London, United Kingdom</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TOKYO</span></code> - Tokyo, Japan</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SYDNEY</span></code> - Sydney, Australia</p></li>
+</ul>
+<p>The region is passed as a parameter to the tools that require it, ensuring you’re connecting to the correct regional endpoint.</p>
 </section>
 <section id="on-premises-authentication-cloud-pak-for-data">
 <h3>On-Premises Authentication (Cloud Pak for Data)<a class="headerlink" href="#on-premises-authentication-cloud-pak-for-data" title="Link to this heading">#</a></h3>
@@ -576,8 +621,8 @@ emoji and special characters. On Windows, the default encoding is cp1252, which 
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;--python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;3.12&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--from&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ibm_watsonx_data_integration_mcp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;data-intg-mcp&quot;</span><span class="p">],</span>
 <span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;CP4D_USERNAME&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-username&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;CP4D_PASSWORD&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-password&quot;</span><span class="p">,</span>
@@ -593,8 +638,8 @@ emoji and special characters. On Windows, the default encoding is cp1252, which 
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;--python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;3.12&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--from&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ibm_watsonx_data_integration_mcp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;data-intg-mcp&quot;</span><span class="p">],</span>
 <span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;CP4D_USERNAME&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-username&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;ZEN_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-zen-api-key&quot;</span><span class="p">,</span>
@@ -640,8 +685,8 @@ emoji and special characters. On Windows, the default encoding is cp1252, which 
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;--python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;3.12&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--from&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ibm_watsonx_data_integration_mcp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;data-intg-mcp&quot;</span><span class="p">],</span>
 <span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">&quot;CP4D_USERNAME&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-username&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">&quot;CP4D_PASSWORD&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-password&quot;</span><span class="p">,</span>
@@ -663,6 +708,156 @@ emoji and special characters. On Windows, the default encoding is cp1252, which 
 </ol>
 <p>The server validates authentication credentials on startup and will display which authentication method was detected.</p>
 </section>
+</section>
+<section id="advanced-usage">
+<h2>Advanced Usage<a class="headerlink" href="#advanced-usage" title="Link to this heading">#</a></h2>
+<section id="offline-documentation-mode">
+<h3>Offline Documentation Mode<a class="headerlink" href="#offline-documentation-mode" title="Link to this heading">#</a></h3>
+<p>If your environment cannot access GitHub Pages, start the server with <code class="docutils literal notranslate"><span class="pre">--use-local-docs</span></code>. In this mode, the server reads packaged HTML files from the bundled documentation, converts them into cached markdown files, and then builds the LanceDB index in the normal runtime cache.</p>
+<p>Example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>data-intg-mcp<span class="w"> </span>--use-local-docs
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul class="simple">
+<li><p>Offline docs may not be the most up to date because they do not use the live documentation site.</p></li>
+<li><p>Refresh the packaged docs periodically before publishing or deploying if you want the bundled copy to stay current.</p></li>
+</ul>
+</div>
+</section>
+<section id="cache-management">
+<h3>Cache Management<a class="headerlink" href="#cache-management" title="Link to this heading">#</a></h3>
+<p>The server caches documentation and creates a vector database for efficient retrieval. To clear all cached data:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>data-intg-mcp<span class="w"> </span>--clear-cache
+</pre></div>
+</div>
+<p>This removes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">resources_cache/</span></code> - Cached documentation files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">raw_resource_html/</span></code> - Raw HTML files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lance_db/</span></code> - Vector database (LanceDB)</p></li>
+</ul>
+<p>Use this command when you need to refresh the documentation cache or troubleshoot issues with the vector database.</p>
+</section>
+<section id="http-sse-transport">
+<h3>HTTP/SSE Transport<a class="headerlink" href="#http-sse-transport" title="Link to this heading">#</a></h3>
+<p>By default, the MCP server runs over stdio transport (for local MCP clients like Claude Desktop or Bob). You can also run it as an HTTP server using Server-Sent Events (SSE) transport for remote access:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run as HTTP/SSE server (API key is optional for SSE)</span>
+data-intg-mcp<span class="w"> </span>--transport<span class="w"> </span>sse<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">8000</span>
+
+<span class="c1"># If you need SDK operations that require authentication, set the API key:</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">WATSONX_API_KEY</span><span class="o">=</span><span class="s2">&quot;your-api-key&quot;</span>
+data-intg-mcp<span class="w"> </span>--transport<span class="w"> </span>sse<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">8000</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="tool-availability">
+<h2>Tool Availability<a class="headerlink" href="#tool-availability" title="Link to this heading">#</a></h2>
+<p>All tools are available in both stdio and SSE transport modes. However, execution and stage discovery tools can be disabled using the <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code> flag:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 15.0%" />
+<col style="width: 45.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Requires Auth</p></th>
+<th class="head"><p>Can Be Disabled</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">search_sdk_documentation</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get_model_reference</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">get_mcp_version</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get_sdk_version</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list_resources</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">read_resource</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">execute_script</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (via <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list_available_streaming_stages</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (via <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list_all_available_stage_configurations_streaming</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (via <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list_available_batch_stages</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (via <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list_all_available_stage_configurations_batch</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (via <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Notes:</strong></p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code> to disable execute_script and stage discovery tools (recommended for remote/untrusted deployments)</p></li>
+<li><p>When execution tools are enabled, authentication is required</p></li>
+<li><p>When execution tools are disabled, authentication is optional</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Security and Authentication Notes:</strong></p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code> to disable execute_script and stage discovery tools (recommended for remote/untrusted deployments)</p></li>
+<li><p>When execution tools are enabled, authentication is required (<code class="docutils literal notranslate"><span class="pre">WATSONX_API_KEY</span></code> or CP4D credentials)</p></li>
+<li><p>When execution tools are disabled, authentication is optional</p></li>
+<li><p>The SSE server allows remote connections, so ensure proper network security measures are in place</p></li>
+<li><p>Environment variables must be set on the server side, not in the client configuration</p></li>
+<li><p>Consider using authentication/authorization mechanisms when exposing the server over HTTP</p></li>
+</ul>
+</div>
+<p><strong>MCP Client Configuration for SSE:</strong></p>
+<p>For remote MCP clients, configure the server URL:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp-remote&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://127.0.0.1:8000/sse&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unlike stdio transport, environment variables cannot be passed from the client config when using SSE. They must be set in the server’s environment before starting the server.</p>
+</div>
+<p><strong>Command Line Options:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--transport</span></code>: Choose <code class="docutils literal notranslate"><span class="pre">stdio</span></code> (default) or <code class="docutils literal notranslate"><span class="pre">sse</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--host</span></code>: Host to bind to for SSE (default: 0.0.0.0, ignored for stdio)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--port</span></code>: Port to bind to for SSE (default: 8000, ignored for stdio)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>: Disable execute_script and stage discovery tools (recommended for remote deployments)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--clear-cache</span></code>: Clear all cached documentation before starting</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--use-local-docs</span></code>: Use bundled local HTML docs instead of retrieving documentation live</p></li>
+</ul>
 </section>
 </section>
 
@@ -730,6 +925,13 @@ emoji and special characters. On Windows, the default encoding is cp1252, which 
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-tls-for-on-premises-deployments">Configuring TLS for On-Premises Deployments</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-usage">Advanced Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#offline-documentation-mode">Offline Documentation Mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cache-management">Cache Management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#http-sse-transport">HTTP/SSE Transport</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-availability">Tool Availability</a></li>
 </ul>
   </nav></div>
 

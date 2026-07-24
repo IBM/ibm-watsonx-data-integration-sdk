@@ -170,7 +170,7 @@ This is particularly useful when:
 * Importing flows that may have inconsistent positioning
 
 .. note::
-    The actual layout calculation happens when the flow is updtaed or visualized. The ``auto_arrange()`` method removes existing position data to trigger the automatic arrangement, while ``use_auto_arrange()`` controls whether this happens automatically on every update.
+    The actual layout calculation happens when the flow is updated or visualized. The ``auto_arrange()`` method removes existing position data to trigger the automatic arrangement, while ``use_auto_arrange()`` controls whether this happens automatically on every update.
 
 .. _preparing_data__batch__flows__setting_runtime_parameters_of_a_flow:
 

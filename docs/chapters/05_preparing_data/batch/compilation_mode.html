@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Compilation Modes &#8212; ibm-watsonx-data-integration 1.3.1 documentation</title>
+    <title>Compilation Modes &#8212; ibm-watsonx-data-integration 2.0.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=9c221496"></script>
+    <script src="../../../_static/documentation_options.js?v=ce394494"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.3.1</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.0.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -196,14 +196,22 @@
 <li class="toctree-l3"><a class="reference internal" href="flows.html">Flows</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="stages.html">Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wrapped_stages.html">Wrapped Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="link_partitioning.html">Link Partitioning</a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_definitions.html">Data Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="schema_libraries.html">XML Schema Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hierarchical_data.html">Hierarchical Data Stage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="subflows.html">Subflows</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../streaming/flows.html">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../udi/index.html">UDI (Unstructured Data Integration)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../udi/flows.html">Flows</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../datasources.html">Datasource Type</a></li>
@@ -337,6 +345,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-compilation-mode-on-existing-flows">Changing Compilation Mode on Existing Flows</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elt-materialization-policies">ELT Materialization Policies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-elt-with-materialization-policies">Using ELT with Materialization Policies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flight-service-connector-library-on-premises-only">Flight Service Connector Library (On-Premises Only)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-flight-service">Enabling Flight Service</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-right-compilation-mode">Choosing the Right Compilation Mode</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-example">Complete Example</a></li>
 </ul>
@@ -450,6 +462,40 @@ document.write(`
 </pre></div>
 </div>
 </section>
+<section id="flight-service-connector-library-on-premises-only">
+<span id="preparing-data-batch-compilation-mode-flight-service"></span><h2>Flight Service Connector Library (On-Premises Only)<a class="headerlink" href="#flight-service-connector-library-on-premises-only" title="Link to this heading">#</a></h2>
+<p>When using <strong>ETL mode</strong> on on-premises deployments, you can enable the Flight service connector library to improve performance for certain data transfer operations. This feature uses Apache Arrow Flight for high-performance data streaming.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<dl class="simple">
+<dt>The Flight service feature is <strong>only available</strong>:</dt><dd><ul class="simple">
+<li><p>On <strong>on-premises</strong> deployments (not available on IBM Cloud)</p></li>
+<li><p>When the flow’s <code class="docutils literal notranslate"><span class="pre">compile_mode</span></code> is <code class="docutils literal notranslate"><span class="pre">CompileMode.ETL</span></code></p></li>
+<li><p>Attempting to enable this feature on IBM Cloud or in non-ETL modes will raise a <code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<section id="enabling-flight-service">
+<span id="preparing-data-batch-compilation-mode-enabling-flight-service"></span><h3>Enabling Flight Service<a class="headerlink" href="#enabling-flight-service" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Enable Flight service on an ETL flow (on-premises only)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flight_flow</span><span class="o">.</span><span class="n">compile_mode</span> <span class="o">=</span> <span class="n">CompileMode</span><span class="o">.</span><span class="n">ETL</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flight_flow</span><span class="o">.</span><span class="n">enable_flight_service</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">flight_flow</span><span class="p">)</span>
+<span class="go">&lt;Response [201]&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Check if Flight service is enabled</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flight_flow</span><span class="o">.</span><span class="n">enable_flight_service</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Disable Flight service</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flight_flow</span><span class="o">.</span><span class="n">enable_flight_service</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">flight_flow</span><span class="p">)</span>
+<span class="go">&lt;Response [201]&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
 <section id="choosing-the-right-compilation-mode">
 <span id="preparing-data-batch-compilation-mode-choosing"></span><h2>Choosing the Right Compilation Mode<a class="headerlink" href="#choosing-the-right-compilation-mode" title="Link to this heading">#</a></h2>
 <p>Consider these factors when selecting a compilation mode:</p>
@@ -459,6 +505,7 @@ document.write(`
 <li><p>Data sources and targets are heterogeneous.</p></li>
 <li><p>Complex transformations require DataStage-specific features.</p></li>
 <li><p>This is the default and most widely compatible mode.</p></li>
+<li><p>On on-premises deployments, you can enable the Flight service connector library for improved data transfer performance.</p></li>
 </ul>
 </dd>
 <dt><strong>Use TETL mode when:</strong></dt><dd><ul class="simple">
@@ -558,6 +605,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-compilation-mode-on-existing-flows">Changing Compilation Mode on Existing Flows</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#elt-materialization-policies">ELT Materialization Policies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-elt-with-materialization-policies">Using ELT with Materialization Policies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flight-service-connector-library-on-premises-only">Flight Service Connector Library (On-Premises Only)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enabling-flight-service">Enabling Flight Service</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-the-right-compilation-mode">Choosing the Right Compilation Mode</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-example">Complete Example</a></li>
 </ul>
@@ -580,7 +631,7 @@ document.write(`
 
   <p class="copyright">
     
-      © Copyright 2025, IBM.
+      © Copyright 2026, IBM.
       <br/>
     
   </p>

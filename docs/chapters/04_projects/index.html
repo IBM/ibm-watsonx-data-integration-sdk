@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Integration Assets &#8212; ibm-watsonx-data-integration 1.3.1 documentation</title>
+    <title>Integration Assets &#8212; ibm-watsonx-data-integration 2.0.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=9c221496"></script>
+    <script src="../../_static/documentation_options.js?v=ce394494"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.3.1</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.0.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -196,14 +196,22 @@
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/flows.html">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/stages.html">Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/wrapped_stages.html">Wrapped Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/link_partitioning.html">Link Partitioning</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/data_definitions.html">Data Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/schema_libraries.html">XML Schema Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/hierarchical_data.html">Hierarchical Data Stage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/subflows.html">Subflows</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/flows.html">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/udi/index.html">UDI (Unstructured Data Integration)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/udi/flows.html">Flows</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
@@ -341,8 +349,13 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="projects.html#creating-a-project">Creating a Project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="projects.html#retrieving-existing-projects">Retrieving Existing Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html#retrieving-project-assets">Retrieving Project Assets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html#importing-a-project">Importing a Project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="projects.html#updating-a-project">Updating a Project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="projects.html#deleting-a-project">Deleting a Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html#associating-a-service-with-a-project">Associating a Service with a Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html#viewing-services-associated-with-a-project">Viewing Services Associated with a Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html#dissociating-a-service-from-a-project">Dissociating a Service from a Project</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="jobs.html">Jobs</a><ul>
@@ -374,6 +387,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="engines_streaming.html#creating-an-engine">Creating an Engine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="engines_streaming.html#retrieving-existing-engines-in-a-project">Retrieving Existing Engines in a Project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="engines_streaming.html#retrieving-existing-engines-in-an-environment">Retrieving Existing Engines in an Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="engines_streaming.html#engine-commands">Engine Commands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="engines_streaming.html#deleting-an-existing-engine">Deleting an Existing Engine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="engines_streaming.html#deleting-multiple-engines">Deleting Multiple Engines</a></li>
 </ul>
@@ -433,7 +447,7 @@ document.write(`
 
   <p class="copyright">
     
-      © Copyright 2025, IBM.
+      © Copyright 2026, IBM.
       <br/>
     
   </p>

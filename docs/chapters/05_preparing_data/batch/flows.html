@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Flows &#8212; ibm-watsonx-data-integration 1.3.1 documentation</title>
+    <title>Flows &#8212; ibm-watsonx-data-integration 2.0.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=9c221496"></script>
+    <script src="../../../_static/documentation_options.js?v=ce394494"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.3.1</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.0.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -196,14 +196,22 @@
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="stages.html">Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wrapped_stages.html">Wrapped Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="link_partitioning.html">Link Partitioning</a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_definitions.html">Data Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="schema_libraries.html">XML Schema Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hierarchical_data.html">Hierarchical Data Stage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="subflows.html">Subflows</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../streaming/flows.html">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../udi/index.html">UDI (Unstructured Data Integration)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../udi/flows.html">Flows</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../datasources.html">Datasource Type</a></li>
@@ -526,7 +534,7 @@ This will return an HTTP response indicating the status of the compile operation
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The actual layout calculation happens when the flow is updtaed or visualized. The <code class="docutils literal notranslate"><span class="pre">auto_arrange()</span></code> method removes existing position data to trigger the automatic arrangement, while <code class="docutils literal notranslate"><span class="pre">use_auto_arrange()</span></code> controls whether this happens automatically on every update.</p>
+<p>The actual layout calculation happens when the flow is updated or visualized. The <code class="docutils literal notranslate"><span class="pre">auto_arrange()</span></code> method removes existing position data to trigger the automatic arrangement, while <code class="docutils literal notranslate"><span class="pre">use_auto_arrange()</span></code> controls whether this happens automatically on every update.</p>
 </div>
 </section>
 </section>
@@ -557,7 +565,7 @@ In this tab, you can choose which value set to use for your parameter sets or ch
 <span id="preparing-data-batch-flows-setting-runtime-settings-of-a-flow"></span><h2>Setting Runtime Settings of a Flow<a class="headerlink" href="#setting-runtime-settings-of-a-flow" title="Link to this heading">#</a></h2>
 <p>In the same settings window mentioned in the previous section, there is another tab called Run. In this tab there are runtime settings that you can change for a flow. There is also an NLS and Format tab but these are not implemented in the SDK yet.
 These settings include the environment for the flow, the warning limit, and the max job retention. These settings (along with the runtime parameters) can also be changed per job, which is explained in this section: <a class="reference internal" href="../../04_projects/jobs.html#projects-jobs-editing-a-batch-job"><span class="std std-ref">Editing Runtime Settings</span></a>.</p>
-<a class="reference internal image-reference" href="../../../_images/runtime_settings1.png"><img alt="Screenshot of the runtime settings tab." class="align-center" src="../../../_images/runtime_settings1.png" style="width: 100%;" />
+<a class="reference internal image-reference" href="../../../_images/runtime_settings.png"><img alt="Screenshot of the runtime settings tab." class="align-center" src="../../../_images/runtime_settings.png" style="width: 100%;" />
 </a>
 <p>In the SDK, you can change the runtime settings of a flow by directly editing the <code class="docutils literal notranslate"><span class="pre">configuration</span></code> property of a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchFlow</span></code></a>. There are four different fields you can change.</p>
 <ul class="simple">
@@ -618,16 +626,16 @@ must specify the <code class="docutils literal notranslate"><span class="pre">so
 <p>You can also specify the following parameters to configure the import to better fit your needs:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">'on_failure'</span></code> – Option for error handling during import. See <code class="xref py py-class docutils literal notranslate"><span class="pre">BatchImportOnFailure</span></code> for available options.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">'conflict_resolution'</span></code> – Option for handling conflict resolutions during import. See <code class="xref py py-class docutils literal notranslate"><span class="pre">BatchImportConflictResolution</span></code> for available options.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'on_failure'</span></code> – Option for error handling during import. See <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportOnFailure" title="ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportOnFailure"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchImportOnFailure</span></code></a> for available options.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'conflict_resolution'</span></code> – Option for handling conflict resolutions during import. See <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportConflictResolution" title="ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportConflictResolution"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchImportConflictResolution</span></code></a> for available options.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">'import_only'</span></code> – If true, will only import the batch flows and will not compile them.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">'include_dependencies'</span></code> – If true, will not also import dependencies that the flow(s) have in the import file.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">'replace_mode'</span></code> – Option for replace mode method when conflict resolution is set to <code class="docutils literal notranslate"><span class="pre">'replace'</span></code>. See <code class="xref py py-class docutils literal notranslate"><span class="pre">BatchImportReplaceMode</span></code> for available options.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'replace_mode'</span></code> – Option for replace mode method when conflict resolution is set to <code class="docutils literal notranslate"><span class="pre">'replace'</span></code>. See <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportReplaceMode" title="ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportReplaceMode"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchImportReplaceMode</span></code></a> for available options.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">'import_binaries'</span></code> – If set to true, will also import compiled binaries found in the zip file.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">'wait'</span></code> – Specified wait period. See below for more details.</p></li>
 </ul>
 </div></blockquote>
-<p>The function will return a <code class="xref py py-class docutils literal notranslate"><span class="pre">BatchImportResponse</span></code>
+<p>The function will return a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportResponse" title="ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchImportResponse</span></code></a>
 object which will contain information about the import request. It is important to note that importing batch flows is an
 asynchronous action, meaning that once you have received the response object the import might not be finished. The <code class="docutils literal notranslate"><span class="pre">wait</span></code>
 parameter allows you to manage this in different ways depending on its value:</p>
@@ -769,7 +777,7 @@ that are returned will only have the <code class="docutils literal notranslate">
 
   <p class="copyright">
     
-      © Copyright 2025, IBM.
+      © Copyright 2026, IBM.
       <br/>
     
   </p>

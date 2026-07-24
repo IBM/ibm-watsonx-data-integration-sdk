@@ -34,6 +34,22 @@ At a minimum, you must provide the ``name`` parameter.
 All other parameters are optional and will be populated with default values if not specified.
 This method returns a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment` object.
 
+**Engine Types**
+
+The SDK supports two engine types for streaming environments:
+
+* **DataCollector** (default): The traditional streaming engine with support for Docker, Podman, and Kubernetes container providers. Requires only basic configuration parameters.
+* **Jetstream**: A cloud-native streaming engine optimized for scalability. Requires two additional connections:
+
+  * **Cluster Connection**: Connection to your Kubernetes or container orchestration cluster
+  * **Artifact Location Connection**: Connection to object storage (e.g., IBM Cloud Object Storage, S3) for storing engine artifacts
+
+  Jetstream supports Docker and Podman container providers, but not Kubernetes directly (uses cluster connection instead).
+
+By default, environments are created with the DataCollector engine type.
+
+**DataCollector Environment Example**
+
 .. code-block:: python
 
     >>> env = project.create_environment(
@@ -50,6 +66,33 @@ This method returns a :py:class:`~ibm_watsonx_data_integration.services.streamse
     ... )
     >>> env
     Environment(name='Sample', description='Basic env.', ...)
+
+**Jetstream Environment Example**
+
+Jetstream environments require two additional connections:
+
+.. skip: start 'Jetstream example requires specific connections'
+
+.. code-block:: python
+
+    >>> # Get required connections for Jetstream
+    >>> cluster_conn = project.connections.get(name='my-k8s-cluster')
+    >>> storage_conn = project.connections.get(name='my-object-storage')
+    >>>
+    >>> # Create Jetstream environment
+    >>> jetstream_env = project.create_environment(
+    ...     name='Jetstream Production',
+    ...     description='Production Jetstream environment',
+    ...     engine_type='jetstream',
+    ...     cluster_connection=cluster_conn,
+    ...     artifact_location_connection=storage_conn,
+    ...     container_provider='docker'  # or 'podman'
+    ... )
+    >>> jetstream_env
+    Environment(name='Jetstream Production', environment_id='...', engine_type='jetstream')
+
+.. skip: end
+
 
 
 .. note::
@@ -76,6 +119,10 @@ which requires the ``environment_id`` parameter.
     >>> # Get a single environment by its id
     >>> project.environments.get(environment_id=env.environment_id)
     Environment(name='Sample', description='Basic env.', ...)
+
+    >>> # Filter environments by engine type
+    >>> datacollector_envs = project.environments.get_all(engine_type='data_collector')
+    >>> jetstream_envs = project.environments.get_all(engine_type='jetstream')
 
 
 Modifying an Environment

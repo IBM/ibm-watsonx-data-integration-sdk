@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Roles &#8212; ibm-watsonx-data-integration 1.3.1 documentation</title>
+    <title>Roles &#8212; ibm-watsonx-data-integration 2.0.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=9c221496"></script>
+    <script src="../../../_static/documentation_options.js?v=ce394494"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.3.1</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.0.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -196,14 +196,22 @@
 <li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/flows.html">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/stages.html">Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/wrapped_stages.html">Wrapped Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/link_partitioning.html">Link Partitioning</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/data_definitions.html">Data Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/schema_libraries.html">XML Schema Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/hierarchical_data.html">Hierarchical Data Stage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/batch/subflows.html">Subflows</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../../05_preparing_data/streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/streaming/flows.html">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../05_preparing_data/udi/index.html">UDI (Unstructured Data Integration)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../05_preparing_data/udi/flows.html">Flows</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../../05_preparing_data/datasources.html">Datasource Type</a></li>
@@ -389,7 +397,7 @@ For more information about roles and actions, see <a class="reference external" 
 </div>
 </section>
 <section id="listing-roles">
-<h2>Listing roles<a class="headerlink" href="#listing-roles" title="Link to this heading">#</a></h2>
+<span id="access-control-roles-listing-roles"></span><h2>Listing roles<a class="headerlink" href="#listing-roles" title="Link to this heading">#</a></h2>
 <p>To retrieve system, service, and custom roles, use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.platform.Platform.roles" title="ibm_watsonx_data_integration.platform.Platform.roles"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Platform.roles</span></code></a> property.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">roles</span>
 <span class="go">[..., Role(display_name=&#39;New Role&#39;, role_type=&#39;custom_role&#39;, actions=[&#39;iam-groups.groups.update&#39;])...]</span>
@@ -397,7 +405,6 @@ For more information about roles and actions, see <a class="reference external" 
 </div>
 <dl class="simple">
 <dt>You can filter roles by using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.common.models.CollectionModel.get_all" title="ibm_watsonx_data_integration.common.models.CollectionModel.get_all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Platform.roles.get_all()</span></code></a> method on the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.platform.Platform.roles" title="ibm_watsonx_data_integration.platform.Platform.roles"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Platform.roles</span></code></a> property and providing any of the following arguments:</dt><dd><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">role_id</span></code>: The role ID.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">service_name</span></code>: The name of the IAM-enabled service.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">source_service_name</span></code>: The name of the source IAM-enabled service.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">policy_type</span></code>: The type of policy.</p></li>
@@ -407,7 +414,13 @@ For more information about roles and actions, see <a class="reference external" 
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">roles</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">role_type</span><span class="o">=</span><span class="s1">&#39;custom_role&#39;</span><span class="p">)</span>
 <span class="go">[...Role(display_name=&#39;New Role&#39;, role_type=&#39;custom_role&#39;, actions=[&#39;iam-groups.groups.update&#39;])]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">roles</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">display_name</span><span class="o">=</span><span class="s1">&#39;New Role&#39;</span><span class="p">)</span>
+<span class="go">Role(display_name=&#39;New Role&#39;, role_type=&#39;custom_role&#39;, actions=[&#39;iam-groups.groups.update&#39;])</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are trying to retrieve a single role, please use <code class="docutils literal notranslate"><span class="pre">display_name</span></code> instead of passing <code class="docutils literal notranslate"><span class="pre">role_id</span></code>.</p>
 </div>
 </section>
 <section id="updating-custom-roles">
@@ -417,13 +430,12 @@ For more information about roles and actions, see <a class="reference external" 
 </a>
 <p>To update a role using the SDK, first retrieve it by using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.platform.Platform.roles" title="ibm_watsonx_data_integration.platform.Platform.roles"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Platform.roles</span></code></a> property.
 Next, make in-memory changes to the object and pass it to the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.platform.Platform.update_role" title="ibm_watsonx_data_integration.platform.Platform.update_role"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Platform.update_role()</span></code></a> method.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_role</span><span class="o">.</span><span class="n">display_name</span><span class="o">=</span><span class="s1">&#39;updated display name&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">new_role</span><span class="o">.</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;updated description&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">new_role</span><span class="o">.</span><span class="n">actions</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;iam-groups.groups.create&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">update_role</span><span class="p">(</span><span class="n">new_role</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">role_to_update</span><span class="o">.</span><span class="n">display_name</span><span class="o">=</span><span class="s1">&#39;updated display name&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">role_to_update</span><span class="o">.</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;updated description&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">role_to_update</span><span class="o">.</span><span class="n">actions</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;iam-groups.groups.create&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">update_role</span><span class="p">(</span><span class="n">role_to_update</span><span class="p">)</span>
 <span class="go">&lt;Response [200]&gt;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">updated_role</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">roles</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">role_id</span><span class="o">=</span><span class="n">new_role</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">updated_role</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">role_to_update</span>
 <span class="go">Role(display_name=&#39;updated display name&#39;, role_type=&#39;custom_role&#39;, actions=[&#39;iam-groups.groups.create&#39;])</span>
 </pre></div>
 </div>
@@ -443,7 +455,7 @@ Next, make in-memory changes to the object and pass it to the <a class="referenc
 </a>
 <p>To delete a role using the SDK, first retrieve it by using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.platform.Platform.roles" title="ibm_watsonx_data_integration.platform.Platform.roles"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Platform.roles</span></code></a> property.
 Then, pass the object to the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.platform.Platform.delete_role" title="ibm_watsonx_data_integration.platform.Platform.delete_role"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Platform.delete_role()</span></code></a> method.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">delete_role</span><span class="p">(</span><span class="n">updated_role</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">delete_role</span><span class="p">(</span><span class="n">role_to_delete</span><span class="p">)</span>
 <span class="go">&lt;Response [204]&gt;</span>
 </pre></div>
 </div>
@@ -519,7 +531,7 @@ Then, pass the object to the <a class="reference internal" href="../../../api/mo
 
   <p class="copyright">
     
-      © Copyright 2025, IBM.
+      © Copyright 2026, IBM.
       <br/>
     
   </p>

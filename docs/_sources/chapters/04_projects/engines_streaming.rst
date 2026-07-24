@@ -48,6 +48,71 @@ To retrieve existing engines in an Environment, use the :py:attr:`Environment.en
     [Engine(..., engine_type='data_collector', ...)]
 
 
+.. _projects__engines__engine_commands:
+
+Engine Commands
+~~~~~~~~~~~~~~~
+The SDK supports restart and shutdown commands for an engine at three places:
+
+* On the :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine`
+  through :py:meth:`Engine.restart() <ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine.restart>` and
+  :py:meth:`Engine.shutdown() <ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine.shutdown>`.
+* In an :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment`
+  through :py:meth:`Environment.restart_all_engines() <ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.restart_all_engines>` and
+  :py:meth:`Environment.shutdown_all_engines() <ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment.shutdown_all_engines>`.
+* In a :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project`
+  through :py:meth:`Project.restart_streaming_engines() <ibm_watsonx_data_integration.cpd_models.project_model.Project.restart_streaming_engines>` and
+  :py:meth:`Project.shutdown_streaming_engines() <ibm_watsonx_data_integration.cpd_models.project_model.Project.shutdown_streaming_engines>`.
+
+Restarting and Shutting Down a Single Engine
+--------------------------------------------
+Use the engine instance directly when you want to target one engine.
+
+.. skip: start 'engine is required for other tests'
+
+.. code-block:: python
+
+    >>> engine = environment.engines[0]
+    >>> engine.restart()
+    <Response [200]>
+    >>> engine.shutdown()
+    <Response [200]>
+
+.. skip: end
+
+Restarting and Shutting Down All Engines in an Environment
+----------------------------------------------------------
+Use the environment-level commands when you want to operate on every engine associated with one environment.
+
+.. skip: start 'engine is required for other tests'
+
+.. code-block:: python
+
+    >>> environment.restart_all_engines()
+    <Response [200]>
+    >>> environment.shutdown_all_engines()
+    <Response [200]>
+
+.. skip: end
+
+Restarting and Shutting Down Engines from a Project
+---------------------------------------------------
+Use the project-level commands when you want to restart or shut down one or more specific engines in the project.
+
+.. skip: start 'engine is required for other tests'
+
+.. code-block:: python
+
+    >>> engine = environment.engines[0]
+    >>> project.restart_streaming_engines(engine)
+    <Response [200]>
+    >>> project.shutdown_streaming_engines(engine)
+    <Response [200]>
+
+.. skip: end
+
+The project-level command methods require at least one engine argument. Passing no engines raises :py:class:`ValueError`.
+
 Deleting an Existing Engine
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To delete a single engine instance, pass the :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine` object you want to
@@ -63,7 +128,7 @@ delete into the :py:meth:`Project.delete_engine() <ibm_watsonx_data_integration.
 .. skip: end
 
 Deleting Multiple Engines
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
 To delete multiple engines at once, use the :py:meth:`Project.delete_engines() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_engines>`
 method. This performs a bulk delete operation, which is more efficient than deleting engines individually.
 

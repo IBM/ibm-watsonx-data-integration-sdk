@@ -137,6 +137,46 @@ Using ELT with Materialization Policies
     >>> project.update_flow(elt_flow)
     <Response [201]>
 
+.. _preparing_data__batch__compilation_mode__flight_service:
+
+Flight Service Connector Library (On-Premises Only)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When using **ETL mode** on on-premises deployments, you can enable the Flight service connector library to improve performance for certain data transfer operations. This feature uses Apache Arrow Flight for high-performance data streaming.
+
+.. note::
+
+   The Flight service feature is **only available**:
+       - On **on-premises** deployments (not available on IBM Cloud)
+       - When the flow's ``compile_mode`` is ``CompileMode.ETL``
+       - Attempting to enable this feature on IBM Cloud or in non-ETL modes will raise a ``RuntimeError``
+
+.. _preparing_data__batch__compilation_mode__enabling_flight_service:
+
+Enabling Flight Service
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. skip: start 'Flight service is on-premises only'
+
+.. code-block:: python
+
+    >>> # Enable Flight service on an ETL flow (on-premises only)
+    >>> flight_flow.compile_mode = CompileMode.ETL
+    >>> flight_flow.enable_flight_service = True
+    >>> project.update_flow(flight_flow)
+    <Response [201]>
+
+    >>> # Check if Flight service is enabled
+    >>> flight_flow.enable_flight_service
+    True
+
+    >>> # Disable Flight service
+    >>> flight_flow.enable_flight_service = False
+    >>> project.update_flow(flight_flow)
+    <Response [201]>
+
+.. skip: end
+
 .. _preparing_data__batch__compilation_mode__choosing:
 
 Choosing the Right Compilation Mode
@@ -149,6 +189,7 @@ Consider these factors when selecting a compilation mode:
     - Data sources and targets are heterogeneous.
     - Complex transformations require DataStage-specific features.
     - This is the default and most widely compatible mode.
+    - On on-premises deployments, you can enable the Flight service connector library for improved data transfer performance.
 
 **Use TETL mode when:**
     - You need additional transformation flexibility.

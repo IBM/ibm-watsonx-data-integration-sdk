@@ -5,6 +5,49 @@ What's new
 
 Below you will find release notes for each version of the ``ibm-watsonx-data-integration`` SDK as well as highlights of major features and/or fixes included in each release.
 
+2.0.0 (July 2026)
+------------------------
+* Added support for XML schema libraries in batch flows.
+
+  See :ref:`XML Schema Libraries <preparing_data__schema_libraries>`.
+
+* Added support for hierarchical data stages in batch flows.
+
+  See :ref:`Hierarchical Data Stage <preparing_data__hierarchical_data>`.
+
+* Added support for wrapped stages in batch flows.
+
+  See :ref:`Wrapped Stages <preparing_data__batch__wrapped_stages>`.
+
+* Added support for link partitioning in batch flows.
+
+  See :ref:`Link Partitioning <preparing_data__batch__link_partitioning>`.
+
+* Added support for unstructured data integration flows.
+
+  See :ref:`UDI <preparing_data__udi__flows>`.
+
+* Added support for engine manager commands.
+
+  See :ref:`Engine Commands <projects__engines__engine_commands>`.
+
+* Added support for JetStream engines.
+
+  See :ref:`Streaming Environments <projects__environments_streaming>`.
+
+* Accessing SaaS roles should be done using ``display_name`` instead of ``role_id``.
+
+  See :ref:`SaaS Roles <access_control__roles__listing_roles>`.
+
+* Added support for CP4D 5.4.0.
+
+* ``Stage.stage_name`` property for streaming stages has been changed to ``Stage.name``.
+
+* Fixed a bug where created projects might not show up in the Data Fabric context.
+
+* Quality of life enhancements and bug fixes.
+
+
 1.3.1 (June 2026)
 ------------------------
 * Restored ``Stage.stage_name`` property with deprecation warning. Will be removed in next major release. Use ``Stage.name`` instead.

@@ -257,7 +257,7 @@ or just ``"parameter_name"`` for local parameters:
     ...     name='Test Job Run with Custom Parameters',
     ...     description='Run with overridden parameter values',
     ...     runtime_parameters={
-    ...         'myparamset.param1': "value",
+    ...         'myparamset.param1': 'value',
     ...         'localparam1': 'override_value'
     ...     }
     ... )
@@ -485,7 +485,7 @@ Stage metrics provide performance information for each stage in the flow:
 
 **Filtering Metrics**
 
-The metrics lists support filtering using the ``get()`` and ``get_all()`` methods:
+The metrics :py:class:`~ibm_watsonx_data_integration.common.utils.SeekableList` supports filtering using the ``get()`` and ``get_all()`` methods:
 
 .. code-block:: python
 
@@ -566,17 +566,20 @@ The metrics include:
     >>> _ = wait_for_expected_state(streaming_job, streaming_job_run, [JobRunState.Running])
     >>> streaming_job_run = streaming_job.job_runs.get(job_run_id=streaming_job_run.job_run_id)
     >>> time.sleep(10)  # Need sometime for backend processing, not ideal should be updated in the future
+    >>> streaming_job_run = streaming_job.job_runs.get(job_run_id=streaming_job_run.job_run_id)
+    >>> metrics = streaming_job_run.metrics
+
+.. skip: start 'metrics state depends on timing'
 
 .. code-block:: python
 
     >>> # Make sure that job is running
     >>> streaming_job_run.state
     'Running'
-    >>> # Fetch new job run instance then load metrics
-    >>> streaming_job_run = streaming_job.job_runs.get(job_run_id=streaming_job_run.job_run_id)
-    >>> metrics = streaming_job_run.metrics
     >>> metrics
-    {...}
+    StreamingJobRunMetrics(pipeline_summary={...}, stages=[...])
+
+.. skip: end
 
 **Accessing Pipeline Summary**
 
@@ -606,52 +609,56 @@ Stage metrics provide performance information for each stage in the streaming fl
 
     >>> # View all stage metrics
     >>> metrics.stages
-    [{
-        "stage_id": "DevRawDataSource_01",
-        "stage_name": "DevRawDataSource_01",
-        "input_records": ...,
-        "output_records": ...,
-        "error_records": ...,
-        "stage_errors": ...,
-        "input_rate_per_sec": ...,
-        "output_rate_per_sec": ...,
-        "avg_processing_time_sec": ...,
-        "min_processing_time_sec": ...,
-        "max_processing_time_sec": ...,
-        "p95_processing_time_sec": ...,
-        "p99_processing_time_sec": ...,
-        "batch_count": ...
-    }, {
-        "stage_id": ...,
-        "stage_name": ...,
-        "input_records": ...,
-        "output_records": ...,
-        "error_records": ...,
-        "stage_errors": ...,
-        "input_rate_per_sec": ...,
-        "output_rate_per_sec": ...,
-        "avg_processing_time_sec": ...,
-        "min_processing_time_sec": ...,
-        "max_processing_time_sec": ...,
-        "p95_processing_time_sec": ...,
-        "p99_processing_time_sec": ...,
-        "batch_count": ...
-    }, {
-        "stage_id": "Trash_01",
-        "stage_name": "Trash_01",
-        "input_records": ...,
-        "output_records": ...,
-        "error_records": ...,
-        "stage_errors": ...,
-        "input_rate_per_sec": ...,
-        "output_rate_per_sec": ...,
-        "avg_processing_time_sec": ...,
-        "min_processing_time_sec": ...,
-        "max_processing_time_sec": ...,
-        "p95_processing_time_sec": ...,
-        "p99_processing_time_sec": ...,
-        "batch_count": ...
-    }]
+    [
+        {
+            "stage_id": "DevRawDataSource_01",
+            "stage_name": "DevRawDataSource_01",
+            "input_records": ...,
+            "output_records": ...,
+            "error_records": ...,
+            "stage_errors": ...,
+            "input_rate_per_sec": ...,
+            "output_rate_per_sec": ...,
+            "avg_processing_time_sec": ...,
+            "min_processing_time_sec": ...,
+            "max_processing_time_sec": ...,
+            "p95_processing_time_sec": ...,
+            "p99_processing_time_sec": ...,
+            "batch_count": ...
+        },
+        {
+            "stage_id": ...,
+            "stage_name": ...,
+            "input_records": ...,
+            "output_records": ...,
+            "error_records": ...,
+            "stage_errors": ...,
+            "input_rate_per_sec": ...,
+            "output_rate_per_sec": ...,
+            "avg_processing_time_sec": ...,
+            "min_processing_time_sec": ...,
+            "max_processing_time_sec": ...,
+            "p95_processing_time_sec": ...,
+            "p99_processing_time_sec": ...,
+            "batch_count": ...
+        },
+        {
+            "stage_id": "Trash_01",
+            "stage_name": "Trash_01",
+            "input_records": ...,
+            "output_records": ...,
+            "error_records": ...,
+            "stage_errors": ...,
+            "input_rate_per_sec": ...,
+            "output_rate_per_sec": ...,
+            "avg_processing_time_sec": ...,
+            "min_processing_time_sec": ...,
+            "max_processing_time_sec": ...,
+            "p95_processing_time_sec": ...,
+            "p99_processing_time_sec": ...,
+            "batch_count": ...
+        }
+    ]
     >>> # Access specific stage metrics by index
     >>> stage = metrics.stages[0]
     >>> stage.stage_name
@@ -659,11 +666,21 @@ Stage metrics provide performance information for each stage in the streaming fl
 
 **Filtering Metrics**
 
-.. note::
+The
+:py:attr:`~ibm_watsonx_data_integration.services.streamsets.models.job_metrics.StreamingJobRunMetrics.stages`
+:py:class:`~ibm_watsonx_data_integration.common.utils.SeekableList` supports filtering using the ``get()`` and ``get_all()`` methods:
 
-    Filtering with ``get()`` and ``get_all()`` is not supported yet for streaming stage metrics.
-    Treat :py:attr:`StreamingJobRunMetrics.stages <ibm_watsonx_data_integration.services.streamsets.models.job_metrics.StreamingJobRunMetrics.stages>`
-    as a normal ``list`` and filter the items manually.
+.. code-block:: python
+
+    >>> # Get metrics for a specific stage by name
+    >>> stage = metrics.stages.get(stage_name='DevRawDataSource_01')
+    >>> stage.stage_name
+    'DevRawDataSource_01'
+
+    >>> # Get all stages matching a specific name
+    >>> stages = metrics.stages.get_all(stage_name='Trash_01')
+    >>> len(stages)
+    1
 
 **Refreshing Metrics**
 

@@ -51,6 +51,8 @@ For more information about roles and actions, see `IAM roles and actions <https:
     This method may raise a ``requests.exceptions.HTTPError`` with status code 409 if a role with the same ``name`` or ``display_name``, or an identical set of ``actions``, already exists.
 
 
+.. _access_control__roles__listing_roles:
+
 Listing roles
 ~~~~~~~~~~~~~
 
@@ -62,7 +64,6 @@ To retrieve system, service, and custom roles, use the :py:attr:`Platform.roles 
     [..., Role(display_name='New Role', role_type='custom_role', actions=['iam-groups.groups.update'])...]
 
 You can filter roles by using the :py:meth:`Platform.roles.get_all() <ibm_watsonx_data_integration.common.models.CollectionModel.get_all>` method on the :py:attr:`Platform.roles <ibm_watsonx_data_integration.platform.Platform.roles>` property and providing any of the following arguments:
-    * ``role_id``: The role ID.
     * ``service_name``: The name of the IAM-enabled service.
     * ``source_service_name``: The name of the source IAM-enabled service.
     * ``policy_type``: The type of policy.
@@ -72,6 +73,13 @@ You can filter roles by using the :py:meth:`Platform.roles.get_all() <ibm_watson
 
     >>> platform.roles.get_all(role_type='custom_role')
     [...Role(display_name='New Role', role_type='custom_role', actions=['iam-groups.groups.update'])]
+    >>> platform.roles.get(display_name='New Role')
+    Role(display_name='New Role', role_type='custom_role', actions=['iam-groups.groups.update'])
+
+
+.. note ::
+    If you are trying to retrieve a single role, please use ``display_name`` instead of passing ``role_id``.
+
 
 Updating custom roles
 ~~~~~~~~~~~~~~~~~~~~~
@@ -86,15 +94,18 @@ In the UI, you can update a custom role by clicking the three dots next to it an
 To update a role using the SDK, first retrieve it by using the :py:attr:`Platform.roles <ibm_watsonx_data_integration.platform.Platform.roles>` property.
 Next, make in-memory changes to the object and pass it to the :py:meth:`Platform.update_role() <ibm_watsonx_data_integration.platform.Platform.update_role>` method.
 
+.. invisible-code-block: python
+
+    >>> role_to_update = platform.roles.get(display_name='New Role')
+
 .. code-block:: python
 
-    >>> new_role.display_name='updated display name'
-    >>> new_role.description='updated description'
-    >>> new_role.actions=['iam-groups.groups.create']
-    >>> platform.update_role(new_role)
+    >>> role_to_update.display_name='updated display name'
+    >>> role_to_update.description='updated description'
+    >>> role_to_update.actions=['iam-groups.groups.create']
+    >>> platform.update_role(role_to_update)
     <Response [200]>
-    >>> updated_role = platform.roles.get(role_id=new_role.id)
-    >>> updated_role
+    >>> role_to_update
     Role(display_name='updated display name', role_type='custom_role', actions=['iam-groups.groups.create'])
 
 .. note::
@@ -117,7 +128,11 @@ In the UI, you can delete a custom role by clicking the three dots next to it an
 To delete a role using the SDK, first retrieve it by using the :py:attr:`Platform.roles <ibm_watsonx_data_integration.platform.Platform.roles>` property.
 Then, pass the object to the :py:meth:`Platform.delete_role() <ibm_watsonx_data_integration.platform.Platform.delete_role>` method.
 
+.. invisible-code-block: python
+
+    >>> role_to_delete = platform.roles.get(display_name='updated display name')
+
 .. code-block:: python
 
-    >>> platform.delete_role(updated_role)
+    >>> platform.delete_role(role_to_delete)
     <Response [204]>

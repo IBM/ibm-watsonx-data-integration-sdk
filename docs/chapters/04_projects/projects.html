@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Projects &#8212; ibm-watsonx-data-integration 1.3.1 documentation</title>
+    <title>Projects &#8212; ibm-watsonx-data-integration 2.0.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=9c221496"></script>
+    <script src="../../_static/documentation_options.js?v=ce394494"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.3.1</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.0.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -196,14 +196,22 @@
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/flows.html">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/stages.html">Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/wrapped_stages.html">Wrapped Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/link_partitioning.html">Link Partitioning</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/data_definitions.html">Data Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/schema_libraries.html">XML Schema Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/hierarchical_data.html">Hierarchical Data Stage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/subflows.html">Subflows</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/flows.html">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/udi/index.html">UDI (Unstructured Data Integration)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/udi/flows.html">Flows</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
@@ -333,8 +341,13 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-project">Creating a Project</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-existing-projects">Retrieving Existing Projects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-project-assets">Retrieving Project Assets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-a-project">Importing a Project</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-project">Updating a Project</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-project">Deleting a Project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#associating-a-service-with-a-project">Associating a Service with a Project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-services-associated-with-a-project">Viewing Services Associated with a Project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dissociating-a-service-from-a-project">Dissociating a Service from a Project</a></li>
 </ul>
             </nav>
         </div>
@@ -355,6 +368,7 @@ document.write(`
 <dt>This includes operations such as:</dt><dd><ul class="simple">
 <li><p>Creating a project</p></li>
 <li><p>Retrieving existing projects</p></li>
+<li><p>Importing a project from a zip file</p></li>
 <li><p>Updating a project</p></li>
 <li><p>Deleting a project</p></li>
 </ul>
@@ -367,21 +381,25 @@ document.write(`
 </a>
 <p>To create a new <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> object using the SDK, use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.create_project" title="ibm_watsonx_data_integration.platform.Platform.create_project"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Platform.create_project()</span></code></a> method.</p>
 <p>You must specify the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute.
-Additionally, you can provide optional parameters such as <code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">tags</span></code>, <code class="docutils literal notranslate"><span class="pre">public</span></code>, and <code class="docutils literal notranslate"><span class="pre">project_type</span></code>.</p>
+Additionally, you can provide optional parameters such as <code class="docutils literal notranslate"><span class="pre">description</span></code>, <code class="docutils literal notranslate"><span class="pre">tags</span></code>, <code class="docutils literal notranslate"><span class="pre">public</span></code>, <code class="docutils literal notranslate"><span class="pre">project_context</span></code>  and <code class="docutils literal notranslate"><span class="pre">project_type</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">project_context</span></code> parameter accepts either a <code class="xref py py-class docutils literal notranslate"><span class="pre">ProjectContext</span></code> enum member or a string literal.</p>
+<p>By default, the <code class="docutils literal notranslate"><span class="pre">project_context</span></code> parameter points to <code class="xref py py-attr docutils literal notranslate"><span class="pre">DATA_FABRIC</span></code>.
+Projects created in the Data Fabric context are visible in Data Fabric and WatsonX contexts, this is not true the other way round.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">project_type</span></code> parameter accepts either a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.ProjectType" title="ibm_watsonx_data_integration.cpd_models.project_model.ProjectType"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProjectType</span></code></a> enum member or a string literal:</p>
 <ul class="simple">
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">WATSONX_DATA_FABRIC</span></code> (default) - Creates a watsonx.data fabric project</p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">WATSONX_DATA_FABRIC</span></code> (default) - Creates a WatsonX project, used in WatsonX context and Data Fabric context.</p></li>
 <li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">CLOUD_PAK_FOR_DATA</span></code> - Creates a classic Cloud Pak for Data project</p></li>
 </ul>
 <p>If you do not pass in a <code class="docutils literal notranslate"><span class="pre">project_type</span></code> parameter, the SDK will default to <code class="docutils literal notranslate"><span class="pre">ProjectType.WATSONX_DATA_FABRIC</span></code>, effectively creating the project within the watsonx view.</p>
 <p>This method returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> object.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.cpd_models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProjectType</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.cpd_models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ProjectType</span><span class="p">,</span> <span class="n">ProjectContext</span>
 <span class="gp">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">my_project</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">create_project</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Project&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Test Project Description&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;flow_test_project&#39;</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="n">public</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">project_context</span><span class="o">=</span><span class="n">ProjectContext</span><span class="o">.</span><span class="n">DATA_FABRIC</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">project_type</span><span class="o">=</span><span class="n">ProjectType</span><span class="o">.</span><span class="n">WATSONX_DATA_FABRIC</span>
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">my_project</span>
@@ -413,6 +431,102 @@ You can also filter the projects returned based on attributes including <code cl
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Returns a list of all projects that match `name`</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">projects</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Project&#39;</span><span class="p">)</span>
 <span class="go">[Project(name=&#39;Test Project&#39;, ...)]</span>
+</pre></div>
+</div>
+</section>
+<section id="retrieving-project-assets">
+<h2>Retrieving Project Assets<a class="headerlink" href="#retrieving-project-assets" title="Link to this heading">#</a></h2>
+<p>Projects contain various types of assets such as data assets, connections, parameter sets, jobs, and flows.
+You can retrieve and filter these assets using the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.assets" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.assets"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Project.assets</span></code></a> property.</p>
+<p>This property returns an <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.asset_model.Assets" title="ibm_watsonx_data_integration.cpd_models.asset_model.Assets"><code class="xref py py-class docutils literal notranslate"><span class="pre">Assets</span></code></a> collection that supports filtering by asset type.</p>
+<p><strong>Getting All Assets</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get all assets in the project</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">projects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Project&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">all_assets</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">all_assets</span>
+<span class="go">[Asset(name=&#39;my_data_asset&#39;, asset_type=&#39;data_asset&#39;, ...), Asset(name=&#39;my_connection&#39;, asset_type=&#39;connection&#39;, ...)]</span>
+</pre></div>
+</div>
+<p><strong>Filtering by Asset Type</strong></p>
+<p>You can filter assets by type using either the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.asset_model.AssetType" title="ibm_watsonx_data_integration.cpd_models.asset_model.AssetType"><code class="xref py py-class docutils literal notranslate"><span class="pre">AssetType</span></code></a> enum or a string value:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.cpd_models.asset_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">AssetType</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get only data assets using enum</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_assets</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">asset_type</span><span class="o">=</span><span class="n">AssetType</span><span class="o">.</span><span class="n">DATA_ASSET</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_assets</span>
+<span class="go">[Asset(name=&#39;my_data_asset&#39;, asset_type=&#39;data_asset&#39;, ...)]</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get only parameter sets using string</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">param_sets</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">asset_type</span><span class="o">=</span><span class="s1">&#39;parameter_set&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">param_sets</span>
+<span class="go">[Asset(name=&#39;my_param_set&#39;, asset_type=&#39;parameter_set&#39;, ...)]</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get only connections</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">connections</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">asset_type</span><span class="o">=</span><span class="n">AssetType</span><span class="o">.</span><span class="n">CONNECTION</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">connections</span>
+<span class="go">[Asset(name=&#39;my_connection&#39;, asset_type=&#39;connection&#39;, ...)]</span>
+</pre></div>
+</div>
+<p><strong>Getting a Specific Asset by ID</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get a specific asset by its ID</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asset</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">asset_id</span><span class="o">=</span><span class="s1">&#39;asset-123-456&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">asset</span>
+<span class="go">Asset(name=&#39;my_asset&#39;, asset_id=&#39;asset-123-456&#39;, ...)</span>
+</pre></div>
+</div>
+<p><strong>Iterating Over Assets</strong></p>
+<p>The <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.asset_model.Assets" title="ibm_watsonx_data_integration.cpd_models.asset_model.Assets"><code class="xref py py-class docutils literal notranslate"><span class="pre">Assets</span></code></a> collection supports iteration:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Iterate over all assets</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">asset</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">assets</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">asset</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">asset</span><span class="o">.</span><span class="n">asset_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">my_data_asset: data_asset</span>
+<span class="go">my_connection: connection</span>
+<span class="go">my_param_set: parameter_set</span>
+</pre></div>
+</div>
+<p><strong>Advanced Filtering with Lucene Queries</strong></p>
+<p>For more complex filtering, you can use Lucene query syntax:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Find assets with names starting with &#39;test_&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">test_assets</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="s1">&#39;asset.name:test_*&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Combine asset_type filter with custom query</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filtered_assets</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">asset_type</span><span class="o">=</span><span class="n">AssetType</span><span class="o">.</span><span class="n">DATA_ASSET</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">query</span><span class="o">=</span><span class="s1">&#39;asset.name:prod_*&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">limit</span><span class="o">=</span><span class="mi">50</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Available Asset Types</strong></p>
+<p>The <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.asset_model.AssetType" title="ibm_watsonx_data_integration.cpd_models.asset_model.AssetType"><code class="xref py py-class docutils literal notranslate"><span class="pre">AssetType</span></code></a> enum includes over 200 asset types, including:</p>
+<ul class="simple">
+<li><p>Core types: <code class="docutils literal notranslate"><span class="pre">DATA_ASSET</span></code>, <code class="docutils literal notranslate"><span class="pre">CONNECTION</span></code>, <code class="docutils literal notranslate"><span class="pre">PARAMETER_SET</span></code>, <code class="docutils literal notranslate"><span class="pre">JOB</span></code>, <code class="docutils literal notranslate"><span class="pre">JOB_RUN</span></code></p></li>
+<li><p>Data integration: <code class="docutils literal notranslate"><span class="pre">DATA_INTG_FLOW</span></code>, <code class="docutils literal notranslate"><span class="pre">DATA_INTG_SUBFLOW</span></code>, <code class="docutils literal notranslate"><span class="pre">DATA_INTEGRATION_JOB</span></code></p></li>
+<li><p>Machine learning: <code class="docutils literal notranslate"><span class="pre">WML_MODEL</span></code>, <code class="docutils literal notranslate"><span class="pre">WML_DEPLOYMENT</span></code>, <code class="docutils literal notranslate"><span class="pre">AI_EXPERIMENT</span></code></p></li>
+<li><p>Notebooks: <code class="docutils literal notranslate"><span class="pre">NOTEBOOK</span></code>, <code class="docutils literal notranslate"><span class="pre">SCRIPT</span></code></p></li>
+<li><p>And many more…</p></li>
+</ul>
+<p>See the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.asset_model.AssetType" title="ibm_watsonx_data_integration.cpd_models.asset_model.AssetType"><code class="xref py py-class docutils literal notranslate"><span class="pre">AssetType</span></code></a> enum documentation for the complete list.</p>
+</section>
+<section id="importing-a-project">
+<h2>Importing a Project<a class="headerlink" href="#importing-a-project" title="Link to this heading">#</a></h2>
+<p>You can import assets from a zip file into a project using the
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.import_project" title="ibm_watsonx_data_integration.platform.Platform.import_project"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Platform.import_project()</span></code></a> method.</p>
+<p>If a project with the given name already exists it is reused; otherwise a new one is created automatically.</p>
+<p>This method returns the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> with assets imported.</p>
+<p>You can also control the polling behaviour using the optional <code class="docutils literal notranslate"><span class="pre">interval</span></code> and <code class="docutils literal notranslate"><span class="pre">timeout</span></code> parameters:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">import_project</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;My Project&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">zip_path</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;tests/resources/cpd_models/data/project_import.zip&#39;</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">Project(name=&#39;My Project&#39;, ...)</span>
+</pre></div>
+</div>
+<p>If you already have a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> instance and want to
+import assets into it directly, use <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.import_assets" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.import_assets"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.import_assets()</span></code></a> instead:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">import_project</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">projects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;My Project&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">import_project</span><span class="o">.</span><span class="n">import_assets</span><span class="p">(</span><span class="n">zip_path</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;tests/resources/cpd_models/data/project_import.zip&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </section>
@@ -449,6 +563,68 @@ To delete a project, click the <strong>Delete</strong> button in the top bar.</p
 This method returns an HTTP response indicating the status of the delete operation.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">delete_project</span><span class="p">(</span><span class="n">my_project</span><span class="p">)</span>
 <span class="go">&lt;Response [204]&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="associating-a-service-with-a-project">
+<h2>Associating a Service with a Project<a class="headerlink" href="#associating-a-service-with-a-project" title="Link to this heading">#</a></h2>
+<p>In the UI, you can associate a service with a project by navigating to you project -&gt; Manage -&gt; Services &amp; integrations -&gt; Associate service.</p>
+<p>To associate a service with a project via the SDK, use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.associate_service" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.associate_service"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.associate_service()</span></code></a> method.</p>
+<p>This method accepts a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Service" title="ibm_watsonx_data_integration.cpd_models.service_model.Service"><code class="xref py py-class docutils literal notranslate"><span class="pre">Service</span></code></a> instance and an optional <code class="docutils literal notranslate"><span class="pre">compute_type</span></code> parameter.
+If <code class="docutils literal notranslate"><span class="pre">compute_type</span></code> is not provided, the SDK infers it automatically from the service CRN.
+For unknown service types, the SDK defaults to <code class="xref py py-attr docutils literal notranslate"><span class="pre">WATSON</span></code>.
+This method returns an HTTP response, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if the service is already associated with the project.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">service</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">service_instances</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;watsonx.ai Runtime-hv&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_project</span><span class="o">.</span><span class="n">associate_service</span><span class="p">(</span><span class="n">service</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Or pass compute_type explicitly</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.cpd_models.service_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">ComputeType</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_project</span><span class="o">.</span><span class="n">associate_service</span><span class="p">(</span><span class="n">service</span><span class="p">,</span> <span class="n">compute_type</span><span class="o">=</span><span class="n">ComputeType</span><span class="o">.</span><span class="n">MACHINE_LEARNING</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="viewing-services-associated-with-a-project">
+<h2>Viewing Services Associated with a Project<a class="headerlink" href="#viewing-services-associated-with-a-project" title="Link to this heading">#</a></h2>
+<p>Services already associated with a project are available via the
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.associated_services" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.associated_services"><code class="xref py py-attr docutils literal notranslate"><span class="pre">associated_services</span></code></a> property.
+It returns an <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.AssociatedServices" title="ibm_watsonx_data_integration.cpd_models.project_model.AssociatedServices"><code class="xref py py-class docutils literal notranslate"><span class="pre">AssociatedServices</span></code></a> collection
+of <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Compute" title="ibm_watsonx_data_integration.cpd_models.project_model.Compute"><code class="xref py py-class docutils literal notranslate"><span class="pre">Compute</span></code></a> instances, supporting <code class="docutils literal notranslate"><span class="pre">.get()</span></code> and <code class="docutils literal notranslate"><span class="pre">.get_all()</span></code>.</p>
+<p>Each <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Compute" title="ibm_watsonx_data_integration.cpd_models.project_model.Compute"><code class="xref py py-class docutils literal notranslate"><span class="pre">Compute</span></code></a> instance has attributes
+<code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">guid</span></code>, <code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">crn</span></code>, and <code class="docutils literal notranslate"><span class="pre">credentials</span></code>, and exposes a
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Compute.get_service" title="ibm_watsonx_data_integration.cpd_models.project_model.Compute.get_service"><code class="xref py py-meth docutils literal notranslate"><span class="pre">get_service()</span></code></a> method to retrieve
+the full <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Service" title="ibm_watsonx_data_integration.cpd_models.service_model.Service"><code class="xref py py-class docutils literal notranslate"><span class="pre">Service</span></code></a> object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Iterate over all associated services</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">service</span> <span class="ow">in</span> <span class="n">my_project</span><span class="o">.</span><span class="n">associated_services</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">service</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">service</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>
+<span class="go">watsonx.ai Runtime-hv machine_learning</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get a specific service resource by name</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">service</span> <span class="o">=</span> <span class="n">my_project</span><span class="o">.</span><span class="n">associated_services</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;watsonx.ai Runtime-hv&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">service</span><span class="o">.</span><span class="n">type</span>
+<span class="go">&#39;machine_learning&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Retrieve the full Service object</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">service</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">get_service</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">service</span>
+<span class="go">Service(service_instance_id=&#39;...&#39;, name=&#39;watsonx.ai Runtime-hv&#39;)</span>
+</pre></div>
+</div>
+</section>
+<section id="dissociating-a-service-from-a-project">
+<h2>Dissociating a Service from a Project<a class="headerlink" href="#dissociating-a-service-from-a-project" title="Link to this heading">#</a></h2>
+<p>To remove a service from a project, use the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.dissociate_service" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.dissociate_service"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.dissociate_service()</span></code></a> method.
+It accepts either a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.service_model.Service" title="ibm_watsonx_data_integration.cpd_models.service_model.Service"><code class="xref py py-class docutils literal notranslate"><span class="pre">Service</span></code></a> or a
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Compute" title="ibm_watsonx_data_integration.cpd_models.project_model.Compute"><code class="xref py py-class docutils literal notranslate"><span class="pre">Compute</span></code></a> instance.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Dissociate directly from associated_services</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">compute</span> <span class="o">=</span> <span class="n">my_project</span><span class="o">.</span><span class="n">associated_services</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;watsonx.ai Runtime-hv&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_project</span><span class="o">.</span><span class="n">dissociate_service</span><span class="p">(</span><span class="n">compute</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Or dissociate by Service object</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">service</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">service_instances</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;watsonx.ai Runtime-hv&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_project</span><span class="o">.</span><span class="n">dissociate_service</span><span class="p">(</span><span class="n">service</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
 </pre></div>
 </div>
 </section>
@@ -501,8 +677,13 @@ This method returns an HTTP response indicating the status of the delete operati
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-project">Creating a Project</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-existing-projects">Retrieving Existing Projects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-project-assets">Retrieving Project Assets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-a-project">Importing a Project</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-project">Updating a Project</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-project">Deleting a Project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#associating-a-service-with-a-project">Associating a Service with a Project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viewing-services-associated-with-a-project">Viewing Services Associated with a Project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dissociating-a-service-from-a-project">Dissociating a Service from a Project</a></li>
 </ul>
   </nav></div>
 
@@ -523,7 +704,7 @@ This method returns an HTTP response indicating the status of the delete operati
 
   <p class="copyright">
     
-      © Copyright 2025, IBM.
+      © Copyright 2026, IBM.
       <br/>
     
   </p>

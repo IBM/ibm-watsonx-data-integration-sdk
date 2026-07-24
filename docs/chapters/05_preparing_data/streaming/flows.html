@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Flows &#8212; ibm-watsonx-data-integration 1.3.1 documentation</title>
+    <title>Flows &#8212; ibm-watsonx-data-integration 2.0.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=9c221496"></script>
+    <script src="../../../_static/documentation_options.js?v=ce394494"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.3.1</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.0.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -196,14 +196,22 @@
 <li class="toctree-l3"><a class="reference internal" href="../batch/flows.html">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../batch/compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../batch/stages.html">Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/wrapped_stages.html">Wrapped Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/link_partitioning.html">Link Partitioning</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../batch/data_definitions.html">Data Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/schema_libraries.html">XML Schema Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/hierarchical_data.html">Hierarchical Data Stage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../batch/subflows.html">Subflows</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Streaming</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../udi/index.html">UDI (Unstructured Data Integration)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../udi/flows.html">Flows</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../datasources.html">Datasource Type</a></li>
@@ -335,7 +343,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-flow">Creating a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-flows">Retrieving Flows</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-a-flow">Editing a Flow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arranging-stages">Arranging Stages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arranging-stages">Arranging Stages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-arrangement-default-behavior">Automatic Arrangement (Default Behavior)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disabling-automatic-arrangement">Disabling Automatic Arrangement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-arrangement">Manual Arrangement</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-flow-architectures">Supported Flow Architectures</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-flows">Linear Flows</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fan-out-flows">Fan-out Flows</a></li>
@@ -422,6 +435,10 @@ This method returns a <a class="reference internal" href="../../../api/models.ht
 <span class="go">StreamingFlow(name=&#39;My streaming flow&#39;, description=&#39;optional description&#39;, flow_id=..., engine_version=...)</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Stage names and availability may differ depending on the engine type (DataCollector or Jetstream) used by your environment. Ensure you reference the correct stage names for your specific engine type when building flows.</p>
+</div>
 </section>
 <section id="retrieving-flows">
 <span id="preparing-data-streaming-flows-retrieving-a-flow"></span><h2>Retrieving Flows<a class="headerlink" href="#retrieving-flows" title="Link to this heading">#</a></h2>
@@ -461,15 +478,64 @@ You can print the configuration and edit it similarly to a <code class="xref py 
 </section>
 <section id="arranging-stages">
 <span id="preparing-data-streaming-flows-arranging-stages"></span><h2>Arranging Stages<a class="headerlink" href="#arranging-stages" title="Link to this heading">#</a></h2>
-<p>When you add stages to a streaming flow programmatically, they are positioned in a simple left-to-right layout by default.
-For complex flows with multiple branches and connections, you may want to automatically arrange the stages for better visualization.</p>
-<p>In the UI, there is an ‘Auto Arrange’ button that organizes stages based on their connections.
-In the SDK, you can achieve a similar result by calling the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.auto_arrange" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.auto_arrange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StreamingFlow.auto_arrange()</span></code></a> method.
-This method positions stages based on their input and output lanes.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span><span class="o">.</span><span class="n">auto_arrange</span><span class="p">()</span>
-<span class="go">StreamingFlow(name=&#39;My streaming flow&#39;, ...)</span>
+<p>In the UI, stages in a flow can be manually positioned by dragging them around the canvas. However, when creating flows programmatically or when a flow becomes cluttered, you may want to automatically arrange the stages in a clean, organized layout.</p>
+<p>By default, flows are automatically arranged when updated. This behavior can be controlled using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.use_auto_arrange" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.use_auto_arrange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StreamingFlow.use_auto_arrange()</span></code></a> method.</p>
+<section id="automatic-arrangement-default-behavior">
+<h3>Automatic Arrangement (Default Behavior)<a class="headerlink" href="#automatic-arrangement-default-behavior" title="Link to this heading">#</a></h3>
+<p>When you create a new flow, automatic arrangement is enabled by default. This means stages will be automatically positioned based on their stages and links whenever the flow is updated:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a flow - auto-arrange is enabled by default</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">streaming_flow_auto</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;My auto arranged flow&#39;</span><span class="p">,</span> <span class="n">environment</span><span class="o">=</span><span class="n">environment</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># ... add stages and connections ...</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># When you update, stages are automatically arranged</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">streaming_flow_auto</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
 </pre></div>
 </div>
+</section>
+<section id="disabling-automatic-arrangement">
+<h3>Disabling Automatic Arrangement<a class="headerlink" href="#disabling-automatic-arrangement" title="Link to this heading">#</a></h3>
+<p>If you want to preserve the exact positioning of stages in an existing flow, you can disable automatic arrangement. This is useful when you’ve manually positioned stages in the UI and want to maintain that layout when making programmatic changes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get an existing flow and disable auto-arrange</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">streaming_flow_auto</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">flows</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;My auto arranged flow&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">streaming_flow_auto</span><span class="o">.</span><span class="n">use_auto_arrange</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">StreamingFlow(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># ... add stages and connections ...</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># When you update, the original stage positions are preserved</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">streaming_flow_auto</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When auto-arrange is disabled, newly added stages may not be positioned optimally relative to existing stages. You may need to manually position them in the UI or call <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.auto_arrange" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.auto_arrange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StreamingFlow.auto_arrange()</span></code></a> once to establish a clean layout.</p>
+</div>
+</section>
+<section id="manual-arrangement">
+<h3>Manual Arrangement<a class="headerlink" href="#manual-arrangement" title="Link to this heading">#</a></h3>
+<p>You can also manually trigger arrangement at any time using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.auto_arrange" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.auto_arrange"><code class="xref py py-meth docutils literal notranslate"><span class="pre">StreamingFlow.auto_arrange()</span></code></a> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Manually arrange stages at any time</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">streaming_flow_auto</span><span class="o">.</span><span class="n">auto_arrange</span><span class="p">()</span>
+<span class="go">StreamingFlow(name=&#39;My auto arranged flow&#39;, ...)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Update the flow with the new layout</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">streaming_flow_auto</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+<p>This is particularly useful when:</p>
+<ul class="simple">
+<li><p>Creating flows programmatically where manual positioning is not practical</p></li>
+<li><p>Cleaning up flows that have become cluttered over time</p></li>
+<li><p>Standardizing the layout of multiple similar flows</p></li>
+<li><p>Importing flows that may have inconsistent positioning</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The actual layout calculation happens when the flow is updated or visualized. The <code class="docutils literal notranslate"><span class="pre">auto_arrange()</span></code> method removes existing position data to trigger the automatic arrangement, while <code class="docutils literal notranslate"><span class="pre">use_auto_arrange()</span></code> controls whether this happens automatically on every update.</p>
+</div>
+</section>
 </section>
 <section id="supported-flow-architectures">
 <span id="preparing-data-streaming-flows-supported-flow-architectures"></span><h2>Supported Flow Architectures<a class="headerlink" href="#supported-flow-architectures" title="Link to this heading">#</a></h2>
@@ -738,13 +804,17 @@ along with the <code class="docutils literal notranslate"><span class="pre">name
 </a>
 <p>To validate a streaming flow via the SDK, first update the flow and then call the <code class="xref py py-meth docutils literal notranslate"><span class="pre">StreamingFlow.validate()</span></code> method.
 This returns a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.ValidationResult" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.ValidationResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValidationResult</span></code></a> object.
-This object contains an <code class="docutils literal notranslate"><span class="pre">issues</span></code> attribute with a list of <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError"><code class="xref py py-class docutils literal notranslate"><span class="pre">FlowValidationError</span></code></a> instances if there are any errors.</p>
+The <code class="docutils literal notranslate"><span class="pre">issues</span></code> attribute contains a list of validation errors. There are two types:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError"><code class="xref py py-class docutils literal notranslate"><span class="pre">FlowValidationError</span></code></a> — stage and pipeline issues reported by the SDC engine (e.g. missing input stream, disconnected stage).</p></li>
+<li><p><a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowstoreIssue" title="ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowstoreIssue"><code class="xref py py-class docutils literal notranslate"><span class="pre">FlowstoreIssue</span></code></a> — connection-validation issues reported by the Flowstore API (e.g. a connection ID referenced in the flow is not found in CAMS or is not defined for the project).</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Trash&#39;</span><span class="p">)</span>
 <span class="go">Trash_01(name=&#39;Trash 1&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">new_flow</span><span class="p">)</span>
 <span class="go">&lt;Response [200]&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
-<span class="go">ValidationResult(success=False, issues=[FlowValidationError(type=&#39;stageIssues&#39;, instanceName=&#39;Trash_01&#39;, humanReadableMessage=&#39;The first stage must be an origin&#39;), FlowValidationError(type=&#39;stageIssues&#39;, instanceName=&#39;Trash_01&#39;, humanReadableMessage=&#39;Target must have input streams&#39;)], message=&#39;Validation Failed&#39;)</span>
+<span class="go">ValidationResult(success=False, issues=[FlowValidationError(type=&#39;stageIssues&#39;, instance_name=&#39;Trash_01&#39;, human_readable_message=&#39;The first stage must be an origin&#39;), FlowValidationError(type=&#39;stageIssues&#39;, instance_name=&#39;Trash_01&#39;, human_readable_message=&#39;Target must have input streams&#39;)], message=&#39;Validation Failed&#39;)</span>
 </pre></div>
 </div>
 </section>
@@ -944,7 +1014,12 @@ This method establishes a relationship between the flow and the parameter set, a
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-flow">Creating a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-flows">Retrieving Flows</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-a-flow">Editing a Flow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arranging-stages">Arranging Stages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arranging-stages">Arranging Stages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-arrangement-default-behavior">Automatic Arrangement (Default Behavior)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disabling-automatic-arrangement">Disabling Automatic Arrangement</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-arrangement">Manual Arrangement</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-flow-architectures">Supported Flow Architectures</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-flows">Linear Flows</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fan-out-flows">Fan-out Flows</a></li>
@@ -984,7 +1059,7 @@ This method establishes a relationship between the flow and the parameter set, a
 
   <p class="copyright">
     
-      © Copyright 2025, IBM.
+      © Copyright 2026, IBM.
       <br/>
     
   </p>

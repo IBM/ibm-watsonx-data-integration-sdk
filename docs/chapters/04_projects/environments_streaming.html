@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Environments (Streaming) &#8212; ibm-watsonx-data-integration 1.3.1 documentation</title>
+    <title>Environments (Streaming) &#8212; ibm-watsonx-data-integration 2.0.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=9c221496"></script>
+    <script src="../../_static/documentation_options.js?v=ce394494"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.3.1</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.0.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -196,14 +196,22 @@
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/flows.html">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/stages.html">Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/wrapped_stages.html">Wrapped Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/link_partitioning.html">Link Partitioning</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/data_definitions.html">Data Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/schema_libraries.html">XML Schema Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/hierarchical_data.html">Hierarchical Data Stage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/subflows.html">Subflows</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/flows.html">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/udi/index.html">UDI (Unstructured Data Integration)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/udi/flows.html">Flows</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
@@ -373,6 +381,20 @@ This command typically runs a Docker container with the selected engine version,
 At a minimum, you must provide the <code class="docutils literal notranslate"><span class="pre">name</span></code> parameter.
 All other parameters are optional and will be populated with default values if not specified.
 This method returns a <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment" title="ibm_watsonx_data_integration.services.streamsets.models.environment_model.Environment"><code class="xref py py-class docutils literal notranslate"><span class="pre">Environment</span></code></a> object.</p>
+<p><strong>Engine Types</strong></p>
+<p>The SDK supports two engine types for streaming environments:</p>
+<ul>
+<li><p><strong>DataCollector</strong> (default): The traditional streaming engine with support for Docker, Podman, and Kubernetes container providers. Requires only basic configuration parameters.</p></li>
+<li><p><strong>Jetstream</strong>: A cloud-native streaming engine optimized for scalability. Requires two additional connections:</p>
+<ul class="simple">
+<li><p><strong>Cluster Connection</strong>: Connection to your Kubernetes or container orchestration cluster</p></li>
+<li><p><strong>Artifact Location Connection</strong>: Connection to object storage (e.g., IBM Cloud Object Storage, S3) for storing engine artifacts</p></li>
+</ul>
+<p>Jetstream supports Docker and Podman container providers, but not Kubernetes directly (uses cluster connection instead).</p>
+</li>
+</ul>
+<p>By default, environments are created with the DataCollector engine type.</p>
+<p><strong>DataCollector Environment Example</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">env</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_environment</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Sample&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="c1"># Optional parameters - see API Reference for more optional parameters</span>
@@ -387,6 +409,25 @@ This method returns a <a class="reference internal" href="../../api/models.html#
 <span class="gp">... </span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">env</span>
 <span class="go">Environment(name=&#39;Sample&#39;, description=&#39;Basic env.&#39;, ...)</span>
+</pre></div>
+</div>
+<p><strong>Jetstream Environment Example</strong></p>
+<p>Jetstream environments require two additional connections:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get required connections for Jetstream</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cluster_conn</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;my-k8s-cluster&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">storage_conn</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">connections</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;my-object-storage&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create Jetstream environment</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jetstream_env</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_environment</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Jetstream Production&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Production Jetstream environment&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">engine_type</span><span class="o">=</span><span class="s1">&#39;jetstream&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">cluster_connection</span><span class="o">=</span><span class="n">cluster_conn</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">artifact_location_connection</span><span class="o">=</span><span class="n">storage_conn</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">container_provider</span><span class="o">=</span><span class="s1">&#39;docker&#39;</span>  <span class="c1"># or &#39;podman&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jetstream_env</span>
+<span class="go">Environment(name=&#39;Jetstream Production&#39;, environment_id=&#39;...&#39;, engine_type=&#39;jetstream&#39;)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -411,6 +452,10 @@ which requires the <code class="docutils literal notranslate"><span class="pre">
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get a single environment by its id</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">environment_id</span><span class="o">=</span><span class="n">env</span><span class="o">.</span><span class="n">environment_id</span><span class="p">)</span>
 <span class="go">Environment(name=&#39;Sample&#39;, description=&#39;Basic env.&#39;, ...)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Filter environments by engine type</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datacollector_envs</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">engine_type</span><span class="o">=</span><span class="s1">&#39;data_collector&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">jetstream_envs</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">environments</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">engine_type</span><span class="o">=</span><span class="s1">&#39;jetstream&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -598,7 +643,7 @@ From there, you get a collection of <a class="reference internal" href="../../ap
 
   <p class="copyright">
     
-      © Copyright 2025, IBM.
+      © Copyright 2026, IBM.
       <br/>
     
   </p>

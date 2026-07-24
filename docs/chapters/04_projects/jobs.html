@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Jobs &#8212; ibm-watsonx-data-integration 1.3.1 documentation</title>
+    <title>Jobs &#8212; ibm-watsonx-data-integration 2.0.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=9c221496"></script>
+    <script src="../../_static/documentation_options.js?v=ce394494"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.3.1</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.0.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -196,14 +196,22 @@
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/flows.html">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/stages.html">Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/wrapped_stages.html">Wrapped Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/link_partitioning.html">Link Partitioning</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/data_definitions.html">Data Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/schema_libraries.html">XML Schema Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/hierarchical_data.html">Hierarchical Data Stage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/subflows.html">Subflows</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/flows.html">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/udi/index.html">UDI (Unstructured Data Integration)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/udi/flows.html">Flows</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
@@ -497,7 +505,7 @@ Batch flows include additional settings.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<a class="reference internal image-reference" href="../../_images/runtime_settings.png"><img alt="Screenshot of the Runtime Settings page" class="align-center" src="../../_images/runtime_settings.png" style="width: 100%;" />
+<a class="reference internal image-reference" href="../../_images/runtime_settings1.png"><img alt="Screenshot of the Runtime Settings page" class="align-center" src="../../_images/runtime_settings1.png" style="width: 100%;" />
 </a>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -569,7 +577,7 @@ or just <code class="docutils literal notranslate"><span class="pre">&quot;param
 <span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Test Job Run with Custom Parameters&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Run with overridden parameter values&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">runtime_parameters</span><span class="o">=</span><span class="p">{</span>
-<span class="gp">... </span>        <span class="s1">&#39;myparamset.param1&#39;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;myparamset.param1&#39;</span><span class="p">:</span> <span class="s1">&#39;value&#39;</span><span class="p">,</span>
 <span class="gp">... </span>        <span class="s1">&#39;localparam1&#39;</span><span class="p">:</span> <span class="s1">&#39;override_value&#39;</span>
 <span class="gp">... </span>    <span class="p">}</span>
 <span class="gp">... </span><span class="p">)</span>
@@ -742,7 +750,7 @@ containing link and stage metrics for the job run.</p>
 </pre></div>
 </div>
 <p><strong>Filtering Metrics</strong></p>
-<p>The metrics lists support filtering using the <code class="docutils literal notranslate"><span class="pre">get()</span></code> and <code class="docutils literal notranslate"><span class="pre">get_all()</span></code> methods:</p>
+<p>The metrics <code class="xref py py-class docutils literal notranslate"><span class="pre">SeekableList</span></code> supports filtering using the <code class="docutils literal notranslate"><span class="pre">get()</span></code> and <code class="docutils literal notranslate"><span class="pre">get_all()</span></code> methods:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get first link from a specific source stage</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">link</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">link_metrics</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s1">&#39;Row_Generator&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">link</span><span class="o">.</span><span class="n">rows_read</span>
@@ -797,11 +805,8 @@ for example with <code class="docutils literal notranslate"><span class="pre">jo
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Make sure that job is running</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">streaming_job_run</span><span class="o">.</span><span class="n">state</span>
 <span class="go">&#39;Running&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Fetch new job run instance then load metrics</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">streaming_job_run</span> <span class="o">=</span> <span class="n">streaming_job</span><span class="o">.</span><span class="n">job_runs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">job_run_id</span><span class="o">=</span><span class="n">streaming_job_run</span><span class="o">.</span><span class="n">job_run_id</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span> <span class="o">=</span> <span class="n">streaming_job_run</span><span class="o">.</span><span class="n">metrics</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span>
-<span class="go">{...}</span>
+<span class="go">StreamingJobRunMetrics(pipeline_summary={...}, stages=[...])</span>
 </pre></div>
 </div>
 <p><strong>Accessing Pipeline Summary</strong></p>
@@ -825,52 +830,56 @@ for example with <code class="docutils literal notranslate"><span class="pre">jo
 <p>Stage metrics provide performance information for each stage in the streaming flow:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># View all stage metrics</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">metrics</span><span class="o">.</span><span class="n">stages</span>
-<span class="go">[{</span>
-<span class="go">    &quot;stage_id&quot;: &quot;DevRawDataSource_01&quot;,</span>
-<span class="go">    &quot;stage_name&quot;: &quot;DevRawDataSource_01&quot;,</span>
-<span class="go">    &quot;input_records&quot;: ...,</span>
-<span class="go">    &quot;output_records&quot;: ...,</span>
-<span class="go">    &quot;error_records&quot;: ...,</span>
-<span class="go">    &quot;stage_errors&quot;: ...,</span>
-<span class="go">    &quot;input_rate_per_sec&quot;: ...,</span>
-<span class="go">    &quot;output_rate_per_sec&quot;: ...,</span>
-<span class="go">    &quot;avg_processing_time_sec&quot;: ...,</span>
-<span class="go">    &quot;min_processing_time_sec&quot;: ...,</span>
-<span class="go">    &quot;max_processing_time_sec&quot;: ...,</span>
-<span class="go">    &quot;p95_processing_time_sec&quot;: ...,</span>
-<span class="go">    &quot;p99_processing_time_sec&quot;: ...,</span>
-<span class="go">    &quot;batch_count&quot;: ...</span>
-<span class="go">}, {</span>
-<span class="go">    &quot;stage_id&quot;: ...,</span>
-<span class="go">    &quot;stage_name&quot;: ...,</span>
-<span class="go">    &quot;input_records&quot;: ...,</span>
-<span class="go">    &quot;output_records&quot;: ...,</span>
-<span class="go">    &quot;error_records&quot;: ...,</span>
-<span class="go">    &quot;stage_errors&quot;: ...,</span>
-<span class="go">    &quot;input_rate_per_sec&quot;: ...,</span>
-<span class="go">    &quot;output_rate_per_sec&quot;: ...,</span>
-<span class="go">    &quot;avg_processing_time_sec&quot;: ...,</span>
-<span class="go">    &quot;min_processing_time_sec&quot;: ...,</span>
-<span class="go">    &quot;max_processing_time_sec&quot;: ...,</span>
-<span class="go">    &quot;p95_processing_time_sec&quot;: ...,</span>
-<span class="go">    &quot;p99_processing_time_sec&quot;: ...,</span>
-<span class="go">    &quot;batch_count&quot;: ...</span>
-<span class="go">}, {</span>
-<span class="go">    &quot;stage_id&quot;: &quot;Trash_01&quot;,</span>
-<span class="go">    &quot;stage_name&quot;: &quot;Trash_01&quot;,</span>
-<span class="go">    &quot;input_records&quot;: ...,</span>
-<span class="go">    &quot;output_records&quot;: ...,</span>
-<span class="go">    &quot;error_records&quot;: ...,</span>
-<span class="go">    &quot;stage_errors&quot;: ...,</span>
-<span class="go">    &quot;input_rate_per_sec&quot;: ...,</span>
-<span class="go">    &quot;output_rate_per_sec&quot;: ...,</span>
-<span class="go">    &quot;avg_processing_time_sec&quot;: ...,</span>
-<span class="go">    &quot;min_processing_time_sec&quot;: ...,</span>
-<span class="go">    &quot;max_processing_time_sec&quot;: ...,</span>
-<span class="go">    &quot;p95_processing_time_sec&quot;: ...,</span>
-<span class="go">    &quot;p99_processing_time_sec&quot;: ...,</span>
-<span class="go">    &quot;batch_count&quot;: ...</span>
-<span class="go">}]</span>
+<span class="go">[</span>
+<span class="go">    {</span>
+<span class="go">        &quot;stage_id&quot;: &quot;DevRawDataSource_01&quot;,</span>
+<span class="go">        &quot;stage_name&quot;: &quot;DevRawDataSource_01&quot;,</span>
+<span class="go">        &quot;input_records&quot;: ...,</span>
+<span class="go">        &quot;output_records&quot;: ...,</span>
+<span class="go">        &quot;error_records&quot;: ...,</span>
+<span class="go">        &quot;stage_errors&quot;: ...,</span>
+<span class="go">        &quot;input_rate_per_sec&quot;: ...,</span>
+<span class="go">        &quot;output_rate_per_sec&quot;: ...,</span>
+<span class="go">        &quot;avg_processing_time_sec&quot;: ...,</span>
+<span class="go">        &quot;min_processing_time_sec&quot;: ...,</span>
+<span class="go">        &quot;max_processing_time_sec&quot;: ...,</span>
+<span class="go">        &quot;p95_processing_time_sec&quot;: ...,</span>
+<span class="go">        &quot;p99_processing_time_sec&quot;: ...,</span>
+<span class="go">        &quot;batch_count&quot;: ...</span>
+<span class="go">    },</span>
+<span class="go">    {</span>
+<span class="go">        &quot;stage_id&quot;: ...,</span>
+<span class="go">        &quot;stage_name&quot;: ...,</span>
+<span class="go">        &quot;input_records&quot;: ...,</span>
+<span class="go">        &quot;output_records&quot;: ...,</span>
+<span class="go">        &quot;error_records&quot;: ...,</span>
+<span class="go">        &quot;stage_errors&quot;: ...,</span>
+<span class="go">        &quot;input_rate_per_sec&quot;: ...,</span>
+<span class="go">        &quot;output_rate_per_sec&quot;: ...,</span>
+<span class="go">        &quot;avg_processing_time_sec&quot;: ...,</span>
+<span class="go">        &quot;min_processing_time_sec&quot;: ...,</span>
+<span class="go">        &quot;max_processing_time_sec&quot;: ...,</span>
+<span class="go">        &quot;p95_processing_time_sec&quot;: ...,</span>
+<span class="go">        &quot;p99_processing_time_sec&quot;: ...,</span>
+<span class="go">        &quot;batch_count&quot;: ...</span>
+<span class="go">    },</span>
+<span class="go">    {</span>
+<span class="go">        &quot;stage_id&quot;: &quot;Trash_01&quot;,</span>
+<span class="go">        &quot;stage_name&quot;: &quot;Trash_01&quot;,</span>
+<span class="go">        &quot;input_records&quot;: ...,</span>
+<span class="go">        &quot;output_records&quot;: ...,</span>
+<span class="go">        &quot;error_records&quot;: ...,</span>
+<span class="go">        &quot;stage_errors&quot;: ...,</span>
+<span class="go">        &quot;input_rate_per_sec&quot;: ...,</span>
+<span class="go">        &quot;output_rate_per_sec&quot;: ...,</span>
+<span class="go">        &quot;avg_processing_time_sec&quot;: ...,</span>
+<span class="go">        &quot;min_processing_time_sec&quot;: ...,</span>
+<span class="go">        &quot;max_processing_time_sec&quot;: ...,</span>
+<span class="go">        &quot;p95_processing_time_sec&quot;: ...,</span>
+<span class="go">        &quot;p99_processing_time_sec&quot;: ...,</span>
+<span class="go">        &quot;batch_count&quot;: ...</span>
+<span class="go">    }</span>
+<span class="go">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Access specific stage metrics by index</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">stage</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">stages</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">stage</span><span class="o">.</span><span class="n">stage_name</span>
@@ -878,11 +887,19 @@ for example with <code class="docutils literal notranslate"><span class="pre">jo
 </pre></div>
 </div>
 <p><strong>Filtering Metrics</strong></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Filtering with <code class="docutils literal notranslate"><span class="pre">get()</span></code> and <code class="docutils literal notranslate"><span class="pre">get_all()</span></code> is not supported yet for streaming stage metrics.
-Treat <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.job_metrics.StreamingJobRunMetrics.stages" title="ibm_watsonx_data_integration.services.streamsets.models.job_metrics.StreamingJobRunMetrics.stages"><code class="xref py py-attr docutils literal notranslate"><span class="pre">StreamingJobRunMetrics.stages</span></code></a>
-as a normal <code class="docutils literal notranslate"><span class="pre">list</span></code> and filter the items manually.</p>
+<p>The
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.job_metrics.StreamingJobRunMetrics.stages" title="ibm_watsonx_data_integration.services.streamsets.models.job_metrics.StreamingJobRunMetrics.stages"><code class="xref py py-attr docutils literal notranslate"><span class="pre">stages</span></code></a>
+<code class="xref py py-class docutils literal notranslate"><span class="pre">SeekableList</span></code> supports filtering using the <code class="docutils literal notranslate"><span class="pre">get()</span></code> and <code class="docutils literal notranslate"><span class="pre">get_all()</span></code> methods:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get metrics for a specific stage by name</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stage</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">stages</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">stage_name</span><span class="o">=</span><span class="s1">&#39;DevRawDataSource_01&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stage</span><span class="o">.</span><span class="n">stage_name</span>
+<span class="go">&#39;DevRawDataSource_01&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get all stages matching a specific name</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stages</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">stages</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">stage_name</span><span class="o">=</span><span class="s1">&#39;Trash_01&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">stages</span><span class="p">)</span>
+<span class="go">1</span>
+</pre></div>
 </div>
 <p><strong>Refreshing Metrics</strong></p>
 <p>You can refresh the metrics of a job run by calling
@@ -1010,7 +1027,7 @@ method on the job instance.</p>
 
   <p class="copyright">
     
-      © Copyright 2025, IBM.
+      © Copyright 2026, IBM.
       <br/>
     
   </p>

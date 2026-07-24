@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Batch &#8212; ibm-watsonx-data-integration 1.3.1 documentation</title>
+    <title>Batch &#8212; ibm-watsonx-data-integration 2.0.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=9c221496"></script>
+    <script src="../../../_static/documentation_options.js?v=ce394494"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 1.3.1</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.0.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -196,14 +196,22 @@
 <li class="toctree-l3"><a class="reference internal" href="flows.html">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="compilation_mode.html">Compilation Modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="stages.html">Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wrapped_stages.html">Wrapped Stages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="link_partitioning.html">Link Partitioning</a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_definitions.html">Data Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="schema_libraries.html">XML Schema Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hierarchical_data.html">Hierarchical Data Stage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="subflows.html">Subflows</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../streaming/flows.html">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../udi/index.html">UDI (Unstructured Data Integration)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../udi/flows.html">Flows</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2"><a class="reference internal" href="../datasources.html">Datasource Type</a></li>
@@ -359,6 +367,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="compilation_mode.html#changing-compilation-mode-on-existing-flows">Changing Compilation Mode on Existing Flows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compilation_mode.html#elt-materialization-policies">ELT Materialization Policies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compilation_mode.html#using-elt-with-materialization-policies">Using ELT with Materialization Policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compilation_mode.html#flight-service-connector-library-on-premises-only">Flight Service Connector Library (On-Premises Only)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compilation_mode.html#choosing-the-right-compilation-mode">Choosing the Right Compilation Mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compilation_mode.html#complete-example">Complete Example</a></li>
 </ul>
@@ -373,11 +382,32 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="stages.html#adding-comments-and-annotations">Adding Comments and Annotations</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="wrapped_stages.html">Wrapped Stages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="wrapped_stages.html#creating-a-wrapped-stage">Creating a Wrapped Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wrapped_stages.html#listing-and-retrieving-wrapped-stages">Listing and Retrieving Wrapped Stages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wrapped_stages.html#configuring-a-wrapped-stage">Configuring a Wrapped Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wrapped_stages.html#adding-inputs-and-outputs">Adding Inputs and Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wrapped_stages.html#adding-properties">Adding Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wrapped_stages.html#adding-environment-variables">Adding Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wrapped_stages.html#configuring-exit-codes">Configuring Exit Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wrapped_stages.html#generating-a-wrapped-stage">Generating a Wrapped Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wrapped_stages.html#using-a-wrapped-stage-in-a-batch-flow">Using a Wrapped Stage in a Batch Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wrapped_stages.html#duplicating-a-wrapped-stage">Duplicating a Wrapped Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wrapped_stages.html#deleting-a-wrapped-stage">Deleting a Wrapped Stage</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="batch_schemas.html">Schemas</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="batch_schemas.html#initializing-a-schema-field">Initializing a Schema Field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch_schemas.html#editing-and-removing-a-schema-field">Editing and Removing a Schema Field</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch_schemas.html#retrieving-existing-links-and-schemas">Retrieving existing Links and Schemas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="batch_schemas.html#working-with-data-definitions">Working with Data Definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="link_partitioning.html">Link Partitioning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="link_partitioning.html#setting-partitioning">Setting Partitioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="link_partitioning.html#adding-partition-keys">Adding Partition Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="link_partitioning.html#removing-partition-keys">Removing Partition Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="link_partitioning.html#inspecting-partitioning-configuration">Inspecting Partitioning Configuration</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="data_definitions.html">Data Definitions</a><ul>
@@ -390,6 +420,23 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="data_definitions.html#duplicating-data-definitions">Duplicating Data Definitions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_definitions.html#updating-and-deleting-data-definitions">Updating and Deleting Data Definitions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_definitions.html#working-with-fields">Working with Fields</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="schema_libraries.html">XML Schema Libraries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="schema_libraries.html#creating-a-schema-library">Creating a Schema Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="schema_libraries.html#uploading-a-schema-file">Uploading a Schema File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="schema_libraries.html#attaching-a-schema-library-to-a-stage">Attaching a Schema Library to a Stage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="schema_libraries.html#retrieving-schema-libraries">Retrieving Schema Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="schema_libraries.html#deleting-a-schema-library">Deleting a Schema Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hierarchical_data.html">Hierarchical Data Stage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hierarchical_data.html#the-assembly">The Assembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hierarchical_data.html#adding-steps-to-the-assembly">Adding Steps to the Assembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hierarchical_data.html#propagating-columns-to-the-output-step">Propagating Columns to the Output Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hierarchical_data.html#finalizing-the-assembly">Finalizing the Assembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hierarchical_data.html#available-step-types">Available Step Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hierarchical_data.html#attaching-a-schema-library">Attaching a Schema Library</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="subflows.html">Subflows</a><ul>
@@ -459,7 +506,7 @@ document.write(`
 
   <p class="copyright">
     
-      © Copyright 2025, IBM.
+      © Copyright 2026, IBM.
       <br/>
     
   </p>

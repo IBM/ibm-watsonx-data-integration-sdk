@@ -60,6 +60,9 @@ This method returns a :py:class:`~ibm_watsonx_data_integration.services.streamse
     >>> new_flow
     StreamingFlow(name='My streaming flow', description='optional description', flow_id=..., engine_version=...)
 
+.. note::
+    Stage names and availability may differ depending on the engine type (DataCollector or Jetstream) used by your environment. Ensure you reference the correct stage names for your specific engine type when building flows.
+
 .. _preparing_data__streaming__flows__retrieving_a_flow:
 
 Retrieving Flows
@@ -101,17 +104,69 @@ You can print the configuration and edit it similarly to a :py:class:`dict`.
 Arranging Stages
 ~~~~~~~~~~~~~~~~
 
-When you add stages to a streaming flow programmatically, they are positioned in a simple left-to-right layout by default.
-For complex flows with multiple branches and connections, you may want to automatically arrange the stages for better visualization.
+In the UI, stages in a flow can be manually positioned by dragging them around the canvas. However, when creating flows programmatically or when a flow becomes cluttered, you may want to automatically arrange the stages in a clean, organized layout.
 
-In the UI, there is an 'Auto Arrange' button that organizes stages based on their connections.
-In the SDK, you can achieve a similar result by calling the :py:meth:`StreamingFlow.auto_arrange() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.auto_arrange>` method.
-This method positions stages based on their input and output lanes.
+By default, flows are automatically arranged when updated. This behavior can be controlled using the :py:meth:`StreamingFlow.use_auto_arrange() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.use_auto_arrange>` method.
+
+Automatic Arrangement (Default Behavior)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When you create a new flow, automatic arrangement is enabled by default. This means stages will be automatically positioned based on their stages and links whenever the flow is updated:
 
 .. code-block:: python
 
-    >>> new_flow.auto_arrange()
-    StreamingFlow(name='My streaming flow', ...)
+    >>> # Create a flow - auto-arrange is enabled by default
+    >>> streaming_flow_auto = project.create_flow(name='My auto arranged flow', environment=environment)
+    >>> # ... add stages and connections ...
+    >>>
+    >>> # When you update, stages are automatically arranged
+    >>> project.update_flow(streaming_flow_auto)
+    <Response [200]>
+
+Disabling Automatic Arrangement
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you want to preserve the exact positioning of stages in an existing flow, you can disable automatic arrangement. This is useful when you've manually positioned stages in the UI and want to maintain that layout when making programmatic changes:
+
+.. code-block:: python
+
+    >>> # Get an existing flow and disable auto-arrange
+    >>> streaming_flow_auto = project.flows.get(name='My auto arranged flow')
+    >>> streaming_flow_auto.use_auto_arrange(False)
+    StreamingFlow(...)
+    >>> # ... add stages and connections ...
+    >>>
+    >>> # When you update, the original stage positions are preserved
+    >>> project.update_flow(streaming_flow_auto)
+    <Response [200]>
+
+.. note::
+    When auto-arrange is disabled, newly added stages may not be positioned optimally relative to existing stages. You may need to manually position them in the UI or call :py:meth:`StreamingFlow.auto_arrange() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.auto_arrange>` once to establish a clean layout.
+
+Manual Arrangement
+^^^^^^^^^^^^^^^^^^
+
+You can also manually trigger arrangement at any time using the :py:meth:`StreamingFlow.auto_arrange() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.auto_arrange>` method:
+
+.. code-block:: python
+
+    >>> # Manually arrange stages at any time
+    >>> streaming_flow_auto.auto_arrange()
+    StreamingFlow(name='My auto arranged flow', ...)
+    >>>
+    >>> # Update the flow with the new layout
+    >>> project.update_flow(streaming_flow_auto)
+    <Response [200]>
+
+This is particularly useful when:
+
+* Creating flows programmatically where manual positioning is not practical
+* Cleaning up flows that have become cluttered over time
+* Standardizing the layout of multiple similar flows
+* Importing flows that may have inconsistent positioning
+
+.. note::
+    The actual layout calculation happens when the flow is updated or visualized. The ``auto_arrange()`` method removes existing position data to trigger the automatic arrangement, while ``use_auto_arrange()`` controls whether this happens automatically on every update.
 
 .. _preparing_data__streaming__flows__supported_flow_architectures:
 
@@ -393,7 +448,11 @@ In the UI, you can validate a streaming flow by making changes to the flow and c
 
 To validate a streaming flow via the SDK, first update the flow and then call the :py:meth:`StreamingFlow.validate() <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow.validate>` method.
 This returns a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.ValidationResult` object.
-This object contains an ``issues`` attribute with a list of :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError` instances if there are any errors.
+The ``issues`` attribute contains a list of validation errors. There are two types:
+
+* :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowValidationError` — stage and pipeline issues reported by the SDC engine (e.g. missing input stream, disconnected stage).
+* :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.FlowstoreIssue` — connection-validation issues reported by the Flowstore API (e.g. a connection ID referenced in the flow is not found in CAMS or is not defined for the project).
+
 
 .. code-block:: python
 
@@ -402,7 +461,7 @@ This object contains an ``issues`` attribute with a list of :py:class:`~ibm_wats
     >>> project.update_flow(new_flow)
     <Response [200]>
     >>> new_flow.validate()
-    ValidationResult(success=False, issues=[FlowValidationError(type='stageIssues', instanceName='Trash_01', humanReadableMessage='The first stage must be an origin'), FlowValidationError(type='stageIssues', instanceName='Trash_01', humanReadableMessage='Target must have input streams')], message='Validation Failed')
+    ValidationResult(success=False, issues=[FlowValidationError(type='stageIssues', instance_name='Trash_01', human_readable_message='The first stage must be an origin'), FlowValidationError(type='stageIssues', instance_name='Trash_01', human_readable_message='Target must have input streams')], message='Validation Failed')
 
 .. _preparing_data__streaming__flows__previewing_a_flow:
 

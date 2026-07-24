@@ -73,6 +73,90 @@ This example covers four steps:
    job_start = row_gen_peek_job.start(name='RowGenPeek_job_run', description='')
 
 
+.. _preparing_data__examples__hierarchical_data_flow:
+
+Creating and Running a Hierarchical Data Flow with XML Parsing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Here is an example of how to create and run a batch flow that uses the Hierarchical Data stage to parse an XML file using an XSD schema library.
+The flow has no upstream source stage — the Hierarchical Data stage acts as the source via its XML Parser step — and writes the parsed records to a Sequential File stage.
+
+.. note::
+   Before running this example you need:
+
+   * A schema library with an uploaded XSD file. See :ref:`XML Schema Libraries <preparing_data__schema_libraries>` for how to create one and upload a schema file.
+   * The XML data file uploaded to your project's file storage and accessible by name (e.g. ``plant_collection.xml``).
+
+This example covers four steps:
+   * Set up authentication
+   * Retrieve an existing project and schema library
+   * Create and save the flow with an XML Parser assembly
+   * Create and run a job for the flow
+
+.. code-block:: python
+
+   from ibm_watsonx_data_integration.common.auth import IAMAuthenticator
+   from ibm_watsonx_data_integration import Platform
+   from ibm_watsonx_data_integration.services.datastage import *
+   from ibm_watsonx_data_integration.services.datastage.models.hierarchical.steps import XMLParserStep
+
+   # 1. Set up authentication
+   api_key = 'API_KEY'
+   auth = IAMAuthenticator(api_key=api_key)
+   platform = Platform(auth, base_api_url='https://api.ca-tor.dai.cloud.ibm.com')
+
+   # 2. Retrieve an existing project
+   project = platform.projects.get(name='My first project')
+
+
+   # 3. Create and save the flow
+   flow = project.create_flow(
+      name='XMLParserFlow',
+      environment=None,
+      flow_type='batch'
+   )
+
+   # Hierarchical Data acts as the source — no upstream stage needed
+   hierarchical_data = flow.add_stage('Hierarchical Data', 'Hierarchical_Data')
+   seq_file = flow.add_stage('Sequential File', 'Sequential_File')
+   seq_file.configuration.file = ['output.csv']
+   seq_file.configuration.data_asset_name = 'output.csv'
+   seq_file.configuration.create_data_asset = True
+   seq_file.configuration.file_update_mode = 'overwrite'
+
+   link_out = hierarchical_data.connect_output_to(seq_file)
+   link_out.name = 'Link_out'
+
+   # Assembly configuration
+   assembly = hierarchical_data.assembly
+
+   xml_parser = assembly.add_step('XMLParser', 'XML_Parser')
+   xml_parser.configuration.xml_source = 'singleFile'
+   xml_parser.configuration.xml_file = 'plant_collection.xml'
+   xml_parser.configuration.set_validation_preset('minimal')
+
+   # Retrieve and add schema library
+   hierarchical_data.add_schema_library(plant_lib)
+   plant_lib = project.schema_libraries.get(name='PlantCollection')
+   # Bind the XSD schema from the library — sets the document root and schema data
+   xml_parser.configuration.set_doc_root_from_library(plant_lib, 'plant_collection')
+
+   assembly.input_step.disconnect_output_from(assembly.output_step)
+   link_in = assembly.input_step.connect_output_to(xml_parser)
+   link_in.name = 'Link_in'
+   link_parsed = xml_parser.connect_output_to(assembly.output_step)
+   link_parsed.name = 'Link_parsed'
+
+   # Propagate leaf fields from the parser schema to the output step.
+   assembly.output_step.propagate(xml_parser)
+
+   project.update_flow(flow)
+
+   # 4. Run a job for the flow
+   job = project.create_job(name='XMLParserFlow_job', flow=flow)
+   job_start = job.start(name='XMLParserFlow_job_run', description='')
+
+
 .. _preparing_data__examples__streaming_flow:
 
 .. note::

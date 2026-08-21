@@ -5,6 +5,23 @@ What's new
 
 Below you will find release notes for each version of the ``ibm-watsonx-data-integration`` SDK as well as highlights of major features and/or fixes included in each release.
 
+2.1.0 (August 2026)
+------------------------
+* Added support for importing batch flows from ISX files.
+
+  See :ref:`Importing Batch Flows from ISX <preparing_data__batch__flows__importing_flows_from_isx>`.
+
+* Added support for IBM Orchestration Pipelines.
+
+  See :ref:`Orchestration Pipelines <preparing_data__pipelines__index>`.
+
+* Added support for platform-level connections.
+
+  See :ref:`Platform Connections <preparing_data__connections__platform_connections>`.
+
+* Quality of life enhancements and bug fixes.
+
+
 2.0.0 (July 2026)
 ------------------------
 * Added support for XML schema libraries in batch flows.

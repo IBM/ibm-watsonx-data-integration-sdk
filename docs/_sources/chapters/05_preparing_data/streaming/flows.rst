@@ -78,7 +78,7 @@ You can also retrieve a single flow using the :py:meth:`Project.flows.get() <ibm
     >>> project.flows  # a list of all flows
     [StreamingFlow(...), StreamingFlow(...)...]
     >>> project.flows.get_all(flow_type='streaming')
-    [..., StreamingFlow(name='My streaming flow', description='optional description', ...)...]
+    [...StreamingFlow(name='My streaming flow', description='optional description', ...)...]
     >>> project.flows.get(name='My streaming flow')
     StreamingFlow(name='My streaming flow', description='optional description', ...)
 
@@ -500,13 +500,21 @@ Importing Flows
 ~~~~~~~~~~~~~~~
 
 To import a flow via the SDK, call the :py:meth:`Project.import_flows() <ibm_watsonx_data_integration.cpd_models.project_model.Project.import_flows>` method and
-specify the ``source`` parameter, which is the path to the ZIP file containing the JSON file or files for the streaming flow or flows to be imported, along with the ``type`` parameter, which should be
+specify the ``source`` parameter, which is the path to the ZIP file containing the JSON file or files for the streaming flow or flows to be imported, along with the ``flow_type`` parameter set to
 ``'streaming'``.
 
 You must also set the ``conflict_resolution`` parameter, which determines how to handle an attempted import of a duplicate flow that already exists in the project. The options for ``conflict_resolution`` are listed below:
     * ``'skip'`` – skip this particular flow and move to the next flow to be imported.
     * ``'replace'`` - replace the existing flow with the flow to be imported.
     * ``'rename'`` - keep the existing flow and rename the flow that is being imported.
+
+You can optionally import a flow's associated jobs and connections alongside the flow itself using the
+``import_dependencies`` parameter. Pass a list of
+:py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingImportDependency`
+values to control which dependency types are included:
+
+* :py:attr:`StreamingImportDependency.JOB <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingImportDependency.JOB>` — re-creates jobs that were associated with the exported flow.
+* :py:attr:`StreamingImportDependency.CONNECTION <ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingImportDependency.CONNECTION>` — re-creates connections that were referenced by the exported flow.
 
 The function returns either an imported :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow`
 or a list of imported :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.flow_model.StreamingFlow` objects.
@@ -515,7 +523,14 @@ or a list of imported :py:class:`~ibm_watsonx_data_integration.services.streamse
 
 .. code-block:: python
 
-    >>> project.import_flows(type='streaming', source='flows_to_import.zip', conflict_resolution='skip')
+    >>> from ibm_watsonx_data_integration.services.streamsets.models.flow_model import StreamingImportDependency
+    >>>
+    >>> project.import_flows(
+    ...     flow_type='streaming',
+    ...     source='flows_to_import.zip',
+    ...     conflict_resolution='replace',
+    ...     import_dependencies=[StreamingImportDependency.JOB, StreamingImportDependency.CONNECTION],
+    ... )
     StreamingFlow(name='dummy_flow', description='dummy_description', flow_id='...', engine_version='...')
 
 .. skip: end

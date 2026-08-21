@@ -113,6 +113,97 @@ Use the project-level commands when you want to restart or shut down one or more
 
 The project-level command methods require at least one engine argument. Passing no engines raises :py:class:`ValueError`.
 
+
+.. _projects__engines__communication_mode:
+
+Engine Communication Mode
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The SDK supports two modes for communicating with a streaming engine:
+
+* **Tunneling** — traffic is routed through IBM Cloud. No direct network access to the engine is required.
+* **Direct** — the SDK talks directly to the engine's URL over HTTPS.
+
+To read the current mode, access the
+:py:attr:`~ibm_watsonx_data_integration.platform.Platform.streaming_engine_communication`
+property. To change it, assign one of the :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.engine_model.EngineCommunication`
+enum values.
+
+.. warning::
+
+    Before changing the communication mode, delete all engines in your account.
+    After making the change, retrieve the installation command from each StreamSets environment and run it to recreate the engines.
+
+.. skip: start 'dont switch methods mid test'
+
+.. code-block:: python
+
+    >>> from ibm_watsonx_data_integration.services.streamsets.models.engine_model import EngineCommunication
+    >>> # Read the current mode
+    >>> platform.streaming_engine_communication
+    'tunneling'
+    >>> # Switch to direct communication
+    >>> platform.streaming_engine_communication = EngineCommunication.DIRECT.value
+
+.. skip: end
+
+.. _projects__engines__ssl_verification:
+
+SSL Verification for Direct Communication
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When communicating with an engine in **direct mode**, the SDK must verify the engine's TLS certificate.
+The :py:attr:`~ibm_watsonx_data_integration.platform.Platform.streaming_engine_verify_ssl`
+property controls this behaviour. It defaults to ``True``.
+
+.. note::
+
+    This setting only applies in **direct** mode. When tunneling is active the SDK always uses
+    ``True`` regardless of this property, because traffic goes through IBM Cloud rather than
+    directly to the engine.
+
+The property accepts three types of value:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 80
+
+   * - Value
+     - Behaviour
+   * - ``True`` (default)
+     - Verify the engine certificate using the system trust store.
+   * - ``'/path/to/cert.pem'``
+     - Verify the engine certificate using the certificate at the given absolute path.
+   * - ``False``
+     - Disable certificate verification entirely (insecure — use only for development/testing).
+
+**Choosing the right value**
+
+* **Tunneling mode** — leave the property at its default (``True``); it has no effect.
+* **Direct mode, certificate trusted by the system trust store** — leave the property at its default
+  (``True``).
+* **Direct mode, certificate *not* in the system trust store** — set the property to the absolute
+  path of the CA/certificate file so the SDK can verify the engine.
+* **Direct mode, no valid certificate or as a last resort** — set the property to ``False`` to skip
+  verification. This disables TLS validation and should only be used when no other option is available.
+
+.. skip: start 'dont change verify property mid-run'
+
+.. code-block:: python
+
+    >>> # Default — verify using the system trust store (suitable for tunneling and direct with trusted certs)
+    >>> platform.streaming_engine_verify_ssl
+    True
+
+    >>> # Direct mode — provide the path to a custom certificate
+    >>> platform.streaming_engine_verify_ssl = '/absolute/path/to/ca-bundle.pem'
+
+    >>> # Direct mode — disable verification (insecure fallback)
+    >>> platform.streaming_engine_verify_ssl = False
+
+.. skip: end
+
+
 Deleting an Existing Engine
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 To delete a single engine instance, pass the :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine` object you want to

@@ -11,6 +11,7 @@ This section covers how to manage flows and their stages, orchestrate workflows 
 
    batch/index
    streaming/index
+   pipelines/index
    udi/index
    datasources
    connections

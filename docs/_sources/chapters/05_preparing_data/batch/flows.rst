@@ -275,9 +275,16 @@ object which will contain information about the import request. It is important 
 asynchronous action, meaning that once you have received the response object the import might not be finished. The ``wait``
 parameter allows you to manage this in different ways depending on its value:
 
-    * ``-1``: The default option, which will wait until the import is complete.
+    * ``-1``: The default option, which will wait until the import reaches a terminal status
+      (:py:attr:`~ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportStatus.COMPLETED`
+      or :py:attr:`~ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportStatus.CANCELLED`).
     * ``>0``: Time, in seconds, to wait for the import to finish.
     * ``None`` or ``0``: No wait time, will return immediately.
+
+.. note::
+    When using ``wait=-1``, always check ``response.status`` after the call returns — a ``CANCELLED`` status indicates
+    the import service terminated the import autonomously (for example, due to resource constraints). Only a ``COMPLETED``
+    status guarantees all flows were processed.
 
 
 .. skip: start 'Do not actually import a flow'
@@ -342,3 +349,50 @@ that are returned will only have the ``flow_id`` and ``name`` fields populated.
     <list_iterator object at 0x107385960>
 
 .. skip: end
+
+.. _preparing_data__batch__flows__importing_flows_from_isx:
+
+Importing Flows from an ISX File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In addition to zip files, batch flows can be imported from a legacy ISX export file. ISX is the legacy format
+used for exporting DataStage assets. The same
+:py:meth:`Project.import_flows() <ibm_watsonx_data_integration.cpd_models.project_model.Project.import_flows>` method is
+used: when the ``source`` file has an ``.isx`` extension, the file is uploaded to the DataStage migration service, which
+converts the legacy job designs into batch flows in your project. The conversion happens entirely on the server, so the
+same result is produced as when uploading the ISX file through the UI.
+
+.. note::
+    Make sure that the ISX file export includes any dependencies, such as parameter sets and table definitions.
+
+The ``on_failure``, ``conflict_resolution``, ``import_only``, and ``wait`` parameters behave the same as for zip
+imports. The ``include_dependencies``, ``replace_mode``, and ``import_binaries`` parameters only apply to zip imports
+and are ignored for ISX imports.
+
+Additional migration options can be provided through the ``isx_options`` parameter using an
+:py:class:`~ibm_watsonx_data_integration.services.datastage.models.import_response_model.IsxImportOptions` object.
+Any option left unset is omitted from the request, in which case the migration service default is used.
+
+.. skip: start 'Do not actually import a flow'
+
+.. code-block:: python
+
+    >>> # wait until the migration has completed
+    >>> response = project.import_flows(type='batch', source='legacy_jobs.isx', wait=-1)
+    >>> response.status
+    BatchImportStatus.COMPLETED
+
+    >>> # provide additional migration options
+    >>> from ibm_watsonx_data_integration.services.datastage.models.import_response_model import IsxImportOptions
+    >>> options = IsxImportOptions(create_missing_parameters=True, enable_platform_connection=True)
+    >>> response = project.import_flows(type='batch', source='legacy_jobs.isx', isx_options=options, wait=-1)
+
+.. skip: end
+
+The returned :py:class:`~ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportResponse`
+behaves the same as for zip imports: use
+:py:meth:`BatchImportResponse.refresh() <~ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportResponse.refresh>`
+to poll the migration status and
+:py:meth:`BatchImportResponse.imported_flows() <~ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportResponse.imported_flows>`
+to retrieve the converted flows. An in-progress ISX import can also be cancelled with
+:py:meth:`BatchImportResponse.cancel() <~ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportResponse.cancel>`.

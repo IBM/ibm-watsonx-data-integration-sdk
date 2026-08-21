@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Link Partitioning &#8212; ibm-watsonx-data-integration 2.0.0 documentation</title>
+    <title>Link Partitioning &#8212; ibm-watsonx-data-integration 2.1.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=ce394494"></script>
+    <script src="../../../_static/documentation_options.js?v=32e37178"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.0.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.1.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -208,6 +208,13 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../streaming/flows.html">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../pipelines/index.html">Pipelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/components.html">Pipeline Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/settings.html">Pipeline Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/examples.html">Pipeline Examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../udi/index.html">UDI (Unstructured Data Integration)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -343,6 +350,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-partition-keys">Adding Partition Keys</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-partition-keys">Removing Partition Keys</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-partitioning-configuration">Inspecting Partitioning Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-execution-mode">Sequential Execution Mode</a></li>
 </ul>
             </nav>
         </div>
@@ -357,13 +365,22 @@ document.write(`
   <section id="link-partitioning">
 <span id="preparing-data-batch-link-partitioning"></span><h1>Link Partitioning<a class="headerlink" href="#link-partitioning" title="Link to this heading">#</a></h1>
 <p>Link partitioning controls how data is distributed across parallel processing nodes in DataStage batch flows. The SDK provides methods to configure partitioning on <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a> objects between stages.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If a stage is configured to run in sequential execution mode (<code class="docutils literal notranslate"><span class="pre">execmode='seq'</span></code>), the available partitioning options are different. See <a class="reference internal" href="#preparing-data-batch-link-partitioning-sequential-mode"><span class="std std-ref">Sequential Execution Mode</span></a>.</p>
+</div>
 <section id="setting-partitioning">
 <span id="preparing-data-batch-link-partitioning-setting-partitioning"></span><h2>Setting Partitioning<a class="headerlink" href="#setting-partitioning" title="Link to this heading">#</a></h2>
 <p>To configure partitioning on a link, use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.set_partitioning" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link.set_partitioning"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Link.set_partitioning()</span></code></a> method. You must specify a <code class="docutils literal notranslate"><span class="pre">part_type</span></code> parameter, and can optionally provide <code class="docutils literal notranslate"><span class="pre">perform_sort</span></code>, <code class="docutils literal notranslate"><span class="pre">part_stable</span></code>, and <code class="docutils literal notranslate"><span class="pre">part_unique</span></code> parameters. This method returns the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link" title="ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a> object for method chaining.</p>
 <p>Valid <code class="docutils literal notranslate"><span class="pre">part_type</span></code> values are: <code class="docutils literal notranslate"><span class="pre">'auto'</span></code>, <code class="docutils literal notranslate"><span class="pre">'hash'</span></code>, <code class="docutils literal notranslate"><span class="pre">'modulus'</span></code>, <code class="docutils literal notranslate"><span class="pre">'range'</span></code>, <code class="docutils literal notranslate"><span class="pre">'roundrobin'</span></code>, <code class="docutils literal notranslate"><span class="pre">'entire'</span></code>, <code class="docutils literal notranslate"><span class="pre">'same'</span></code>, and <code class="docutils literal notranslate"><span class="pre">'random'</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure the destination stage has <code class="docutils literal notranslate"><span class="pre">execmode='par'</span></code> set (some stages use <code class="docutils literal notranslate"><span class="pre">execution_mode</span></code> instead).</p>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">batch_flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Partitioning Example&#39;</span><span class="p">,</span> <span class="n">flow_type</span><span class="o">=</span><span class="s1">&#39;batch&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Row Generator&#39;</span><span class="p">,</span> <span class="s1">&#39;Source&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">target</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Peek&#39;</span><span class="p">,</span> <span class="s1">&#39;Target&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">target</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">execmode</span> <span class="o">=</span> <span class="s1">&#39;par&#39;</span>  <span class="c1"># not needed if stage defaults to it</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">link</span> <span class="o">=</span> <span class="n">source</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">link</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Link_1&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">link</span><span class="o">.</span><span class="n">set_partitioning</span><span class="p">(</span><span class="n">part_type</span><span class="o">=</span><span class="s1">&#39;hash&#39;</span><span class="p">,</span> <span class="n">perform_sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -412,6 +429,24 @@ document.write(`
 <span class="go">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">link</span><span class="o">.</span><span class="n">key_cols_part</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">{&#39;keyCol&#39;: &#39;CUSTOMER_ID&#39;, &#39;partitioning&#39;: True, &#39;sorting&#39;: True, &#39;ci-cs&#39;: &#39;cs&#39;, &#39;asc-desc&#39;: &#39;asc&#39;}</span>
+</pre></div>
+</div>
+</section>
+<section id="sequential-execution-mode">
+<span id="preparing-data-batch-link-partitioning-sequential-mode"></span><h2>Sequential Execution Mode<a class="headerlink" href="#sequential-execution-mode" title="Link to this heading">#</a></h2>
+<p>When a stage runs in sequential execution mode (<code class="docutils literal notranslate"><span class="pre">execmode='seq'</span></code>), it processes all data on a single node — no partitioning is applied. However, you can still control how incoming data arrives by setting <code class="docutils literal notranslate"><span class="pre">part_type='sequential'</span></code> together with sort keys, giving you ordering guarantees without distributing the data. Adding and removing partition keys works the same way as in <a class="reference internal" href="#preparing-data-batch-link-partitioning-adding-partition-keys"><span class="std std-ref">Adding Partition Keys</span></a> and <a class="reference internal" href="#preparing-data-batch-link-partitioning-removing-partition-keys"><span class="std std-ref">Removing Partition Keys</span></a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">batch_flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Sequential Example&#39;</span><span class="p">,</span> <span class="n">flow_type</span><span class="o">=</span><span class="s1">&#39;batch&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">row_gen</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Row Generator&#39;</span><span class="p">,</span> <span class="s1">&#39;Row_Gen&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remove_dups</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Remove Duplicates&#39;</span><span class="p">,</span> <span class="s1">&#39;Remove_Dups&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">peek</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span><span class="s1">&#39;Peek&#39;</span><span class="p">,</span> <span class="s1">&#39;Peek&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">remove_dups</span><span class="o">.</span><span class="n">configuration</span><span class="o">.</span><span class="n">execmode</span> <span class="o">=</span> <span class="s1">&#39;seq&#39;</span>  <span class="c1"># some stages use execution_mode instead</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">link_1</span> <span class="o">=</span> <span class="n">row_gen</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">remove_dups</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">link_1</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Link_1&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">link_2</span> <span class="o">=</span> <span class="n">remove_dups</span><span class="o">.</span><span class="n">connect_output_to</span><span class="p">(</span><span class="n">peek</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">link_1</span><span class="o">.</span><span class="n">set_partitioning</span><span class="p">(</span><span class="n">part_type</span><span class="o">=</span><span class="s1">&#39;sequential&#39;</span><span class="p">,</span> <span class="n">perform_sort</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">part_stable</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">part_unique</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">Link_1 (src=&#39;Row_Gen&#39;, dest=&#39;Remove_Dups&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">link_1</span><span class="o">.</span><span class="n">add_partition_key</span><span class="p">(</span><span class="s1">&#39;CUSTOMER_ID&#39;</span><span class="p">,</span> <span class="n">sort_order</span><span class="o">=</span><span class="s1">&#39;asc&#39;</span><span class="p">)</span>
+<span class="go">Link_1 (src=&#39;Row_Gen&#39;, dest=&#39;Remove_Dups&#39;)</span>
 </pre></div>
 </div>
 </section>
@@ -466,6 +501,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-partition-keys">Adding Partition Keys</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-partition-keys">Removing Partition Keys</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-partitioning-configuration">Inspecting Partitioning Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-execution-mode">Sequential Execution Mode</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Flows &#8212; ibm-watsonx-data-integration 2.0.0 documentation</title>
+    <title>Flows &#8212; ibm-watsonx-data-integration 2.1.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=ce394494"></script>
+    <script src="../../../_static/documentation_options.js?v=32e37178"></script>
     <script src="../../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.0.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.1.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -208,6 +208,13 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../streaming/flows.html">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../pipelines/index.html">Pipelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/components.html">Pipeline Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/settings.html">Pipeline Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/examples.html">Pipeline Examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../udi/index.html">UDI (Unstructured Data Integration)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -356,6 +363,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-runtime-settings-of-a-flow">Setting Runtime Settings of a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-flows">Exporting Flows</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-flows">Importing Flows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-flows-from-an-isx-file">Importing Flows from an ISX File</a></li>
 </ul>
             </nav>
         </div>
@@ -565,7 +573,7 @@ In this tab, you can choose which value set to use for your parameter sets or ch
 <span id="preparing-data-batch-flows-setting-runtime-settings-of-a-flow"></span><h2>Setting Runtime Settings of a Flow<a class="headerlink" href="#setting-runtime-settings-of-a-flow" title="Link to this heading">#</a></h2>
 <p>In the same settings window mentioned in the previous section, there is another tab called Run. In this tab there are runtime settings that you can change for a flow. There is also an NLS and Format tab but these are not implemented in the SDK yet.
 These settings include the environment for the flow, the warning limit, and the max job retention. These settings (along with the runtime parameters) can also be changed per job, which is explained in this section: <a class="reference internal" href="../../04_projects/jobs.html#projects-jobs-editing-a-batch-job"><span class="std std-ref">Editing Runtime Settings</span></a>.</p>
-<a class="reference internal image-reference" href="../../../_images/runtime_settings.png"><img alt="Screenshot of the runtime settings tab." class="align-center" src="../../../_images/runtime_settings.png" style="width: 100%;" />
+<a class="reference internal image-reference" href="../../../_images/runtime_settings1.png"><img alt="Screenshot of the runtime settings tab." class="align-center" src="../../../_images/runtime_settings1.png" style="width: 100%;" />
 </a>
 <p>In the SDK, you can change the runtime settings of a flow by directly editing the <code class="docutils literal notranslate"><span class="pre">configuration</span></code> property of a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchFlow</span></code></a>. There are four different fields you can change.</p>
 <ul class="simple">
@@ -641,11 +649,19 @@ asynchronous action, meaning that once you have received the response object the
 parameter allows you to manage this in different ways depending on its value:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">-1</span></code>: The default option, which will wait until the import is complete.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-1</span></code>: The default option, which will wait until the import reaches a terminal status
+(<code class="xref py py-attr docutils literal notranslate"><span class="pre">COMPLETED</span></code>
+or <code class="xref py py-attr docutils literal notranslate"><span class="pre">CANCELLED</span></code>).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&gt;0</span></code>: Time, in seconds, to wait for the import to finish.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">None</span></code> or <code class="docutils literal notranslate"><span class="pre">0</span></code>: No wait time, will return immediately.</p></li>
 </ul>
 </div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using <code class="docutils literal notranslate"><span class="pre">wait=-1</span></code>, always check <code class="docutils literal notranslate"><span class="pre">response.status</span></code> after the call returns — a <code class="docutils literal notranslate"><span class="pre">CANCELLED</span></code> status indicates
+the import service terminated the import autonomously (for example, due to resource constraints). Only a <code class="docutils literal notranslate"><span class="pre">COMPLETED</span></code>
+status guarantees all flows were processed.</p>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># wait until import has completed</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">import_flows</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;batch&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s1">&#39;flows_to_import.zip&#39;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">status</span>
@@ -692,6 +708,43 @@ that are returned will only have the <code class="docutils literal notranslate">
 <span class="go">&lt;list_iterator object at 0x107385960&gt;</span>
 </pre></div>
 </div>
+</section>
+<section id="importing-flows-from-an-isx-file">
+<span id="preparing-data-batch-flows-importing-flows-from-isx"></span><h2>Importing Flows from an ISX File<a class="headerlink" href="#importing-flows-from-an-isx-file" title="Link to this heading">#</a></h2>
+<p>In addition to zip files, batch flows can be imported from a legacy ISX export file. ISX is the legacy format
+used for exporting DataStage assets. The same
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.import_flows" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.import_flows"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.import_flows()</span></code></a> method is
+used: when the <code class="docutils literal notranslate"><span class="pre">source</span></code> file has an <code class="docutils literal notranslate"><span class="pre">.isx</span></code> extension, the file is uploaded to the DataStage migration service, which
+converts the legacy job designs into batch flows in your project. The conversion happens entirely on the server, so the
+same result is produced as when uploading the ISX file through the UI.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure that the ISX file export includes any dependencies, such as parameter sets and table definitions.</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">on_failure</span></code>, <code class="docutils literal notranslate"><span class="pre">conflict_resolution</span></code>, <code class="docutils literal notranslate"><span class="pre">import_only</span></code>, and <code class="docutils literal notranslate"><span class="pre">wait</span></code> parameters behave the same as for zip
+imports. The <code class="docutils literal notranslate"><span class="pre">include_dependencies</span></code>, <code class="docutils literal notranslate"><span class="pre">replace_mode</span></code>, and <code class="docutils literal notranslate"><span class="pre">import_binaries</span></code> parameters only apply to zip imports
+and are ignored for ISX imports.</p>
+<p>Additional migration options can be provided through the <code class="docutils literal notranslate"><span class="pre">isx_options</span></code> parameter using an
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.import_response_model.IsxImportOptions" title="ibm_watsonx_data_integration.services.datastage.models.import_response_model.IsxImportOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">IsxImportOptions</span></code></a> object.
+Any option left unset is omitted from the request, in which case the migration service default is used.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># wait until the migration has completed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">import_flows</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;batch&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s1">&#39;legacy_jobs.isx&#39;</span><span class="p">,</span> <span class="n">wait</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">status</span>
+<span class="go">BatchImportStatus.COMPLETED</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># provide additional migration options</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.datastage.models.import_response_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">IsxImportOptions</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">options</span> <span class="o">=</span> <span class="n">IsxImportOptions</span><span class="p">(</span><span class="n">create_missing_parameters</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">enable_platform_connection</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">import_flows</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;batch&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s1">&#39;legacy_jobs.isx&#39;</span><span class="p">,</span> <span class="n">isx_options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span> <span class="n">wait</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The returned <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportResponse" title="ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchImportResponse</span></code></a>
+behaves the same as for zip imports: use
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchImportResponse.refresh()</span></code>
+to poll the migration status and
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchImportResponse.imported_flows()</span></code>
+to retrieve the converted flows. An in-progress ISX import can also be cancelled with
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchImportResponse.cancel()</span></code>.</p>
 </section>
 </section>
 
@@ -757,6 +810,7 @@ that are returned will only have the <code class="docutils literal notranslate">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-runtime-settings-of-a-flow">Setting Runtime Settings of a Flow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-flows">Exporting Flows</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-flows">Importing Flows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-flows-from-an-isx-file">Importing Flows from an ISX File</a></li>
 </ul>
   </nav></div>
 

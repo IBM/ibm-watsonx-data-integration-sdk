@@ -5,6 +5,9 @@ Link Partitioning
 
 Link partitioning controls how data is distributed across parallel processing nodes in DataStage batch flows. The SDK provides methods to configure partitioning on :py:class:`~ibm_watsonx_data_integration.services.datastage.models.flow.dag.Link` objects between stages.
 
+.. note::
+    If a stage is configured to run in sequential execution mode (``execmode='seq'``), the available partitioning options are different. See :ref:`preparing_data__batch__link_partitioning__sequential_mode`.
+
 .. _preparing_data__batch__link_partitioning__setting_partitioning:
 
 Setting Partitioning
@@ -14,11 +17,15 @@ To configure partitioning on a link, use the :py:meth:`Link.set_partitioning() <
 
 Valid ``part_type`` values are: ``'auto'``, ``'hash'``, ``'modulus'``, ``'range'``, ``'roundrobin'``, ``'entire'``, ``'same'``, and ``'random'``.
 
+.. note::
+    Make sure the destination stage has ``execmode='par'`` set (some stages use ``execution_mode`` instead).
+
 .. code-block:: python
 
     >>> batch_flow = project.create_flow(name='Partitioning Example', flow_type='batch')
     >>> source = batch_flow.add_stage('Row Generator', 'Source')
     >>> target = batch_flow.add_stage('Peek', 'Target')
+    >>> target.configuration.execmode = 'par'  # not needed if stage defaults to it
     >>> link = source.connect_output_to(target)
     >>> link.name = 'Link_1'
     >>> link.set_partitioning(part_type='hash', perform_sort=True)
@@ -88,3 +95,25 @@ You can inspect the partitioning configuration of a link by accessing its ``part
     2
     >>> link.key_cols_part[0]
     {'keyCol': 'CUSTOMER_ID', 'partitioning': True, 'sorting': True, 'ci-cs': 'cs', 'asc-desc': 'asc'}
+
+.. _preparing_data__batch__link_partitioning__sequential_mode:
+
+Sequential Execution Mode
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When a stage runs in sequential execution mode (``execmode='seq'``), it processes all data on a single node — no partitioning is applied. However, you can still control how incoming data arrives by setting ``part_type='sequential'`` together with sort keys, giving you ordering guarantees without distributing the data. Adding and removing partition keys works the same way as in :ref:`preparing_data__batch__link_partitioning__adding_partition_keys` and :ref:`preparing_data__batch__link_partitioning__removing_partition_keys`.
+
+.. code-block:: python
+
+    >>> batch_flow = project.create_flow(name='Sequential Example', flow_type='batch')
+    >>> row_gen = batch_flow.add_stage('Row Generator', 'Row_Gen')
+    >>> remove_dups = batch_flow.add_stage('Remove Duplicates', 'Remove_Dups')
+    >>> peek = batch_flow.add_stage('Peek', 'Peek')
+    >>> remove_dups.configuration.execmode = 'seq'  # some stages use execution_mode instead
+    >>> link_1 = row_gen.connect_output_to(remove_dups)
+    >>> link_1.name = 'Link_1'
+    >>> link_2 = remove_dups.connect_output_to(peek)
+    >>> link_1.set_partitioning(part_type='sequential', perform_sort=True, part_stable=False, part_unique=False)
+    Link_1 (src='Row_Gen', dest='Remove_Dups')
+    >>> link_1.add_partition_key('CUSTOMER_ID', sort_order='asc')
+    Link_1 (src='Row_Gen', dest='Remove_Dups')

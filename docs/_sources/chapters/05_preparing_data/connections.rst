@@ -16,6 +16,11 @@ This includes operations such as:
     * Retrieving connection(s)
     * Updating a connection
     * Deleting a connection
+    * Creating a platform-level connection
+    * Retrieving platform connection(s)
+    * Importing a platform connection into a project
+    * Updating a platform connection
+    * Deleting a platform connection
 
 .. _preparing_data__connections__creating_a_connection:
 
@@ -246,4 +251,147 @@ This method returns an HTTP response indicating the status of the delete operati
 .. code-block:: python
 
     >>> project.delete_connection(connection)
+    <Response [204]>
+
+
+.. _preparing_data__connections__platform_connections:
+
+Platform Connections
+~~~~~~~~~~~~~~~~~~~~
+
+Connections can also exist at the **platform** level, independently of any project.
+This is useful when a single connection needs to be shared across multiple projects.
+
+.. _preparing_data__connections__creating_a_platform_connection:
+
+Creating a Platform Connection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use :py:meth:`Platform.create_connection() <ibm_watsonx_data_integration.platform.Platform.create_connection>` to create a connection at the platform level.
+The signature is the same as :py:meth:`Project.create_connection() <ibm_watsonx_data_integration.cpd_models.project_model.Project.create_connection>` — provide a ``name``, ``datasource_type``, and any optional ``description``, ``properties``, or ``test`` flag.
+
+
+.. note::
+
+    To see available datasources, refer to :ref:`Retrieving a DatasourceType <preparing_data__datasources__retrieving_a_datasourcetype>`.
+
+.. code-block:: python
+
+    >>> datasource_type = platform.datasources.get(name='http')
+    >>> catalog_connection = platform.create_connection(
+    ...     name='Platform Connection Name',
+    ...     datasource_type=datasource_type,
+    ...     description='Description ...',
+    ...     properties={'url': 'https://my/connection/url'},
+    ... )
+    >>> catalog_connection
+    Connection(name='Platform Connection Name')
+
+.. important::
+
+    Platform connections will be automatically placed into your default catalog. Make sure you have at least one catalog created on your account.
+    This feature has not been implemented in the SDK yet and must be done in the UI.
+
+    Each ``datasource_type`` defines its own set of required properties.
+
+    To see the list of available properties, refer to :ref:`Retrieving a DatasourceType connection properties <preparing_data__datasources__retrieving_a_datasourcetype_connection_properties>`.
+
+.. _preparing_data__connections__retrieving_platform_connections:
+
+Retrieving Platform Connections
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use the :py:attr:`Platform.connections <ibm_watsonx_data_integration.platform.Platform.connections>` property to access connections at the platform level.
+It returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.connections_model.PlatformConnections` collection that supports the same ``get`` and ``get_all`` filtering as project connections.
+
+.. code-block:: python
+
+    >>> # Retrieve a platform connection by name
+    >>> catalog_connection = platform.connections.get(name='Platform Connection Name')
+    >>> catalog_connection
+    Connection(name='Platform Connection Name')
+
+    >>> # Retrieve a platform connection by its ID
+    >>> platform.connections.get(connection_id=catalog_connection.connection_id)
+    Connection(name='Platform Connection Name')
+
+    >>> # Return a list of all platform connections
+    >>> list(platform.connections) # doctest: +SKIP
+    [Connection(name='Platform Connection Name')]
+
+.. tip::
+
+    For detailed information about parameters and values refer to https://cloud.ibm.com/apidocs/data-ai-common-core **Connections** section.
+
+.. _preparing_data__connections__importing_a_platform_connection:
+
+Importing a Platform Connection into a Project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Once a platform connection exists, it can be brought into any project using
+:py:meth:`Project.import_platform_connection() <ibm_watsonx_data_integration.cpd_models.project_model.Project.import_platform_connection>`.
+The imported connection references the platform connection for its credentials — no credentials are re-validated by default.
+
+.. code-block:: python
+
+    >>> catalog_connection = platform.connections.get(name='Platform Connection Name')
+    >>> project_connection = project.import_platform_connection(catalog_connection)
+    >>> project_connection
+    Connection(name='Platform Connection Name')
+
+The project connection can then be used in flows exactly like any other project-scoped connection.
+
+.. note::
+
+    An imported connection remains linked to the original platform connection — it does not hold its own credentials.
+    Because of this, the imported project connection **cannot** be updated directly via
+    :py:meth:`Project.update_connection() <ibm_watsonx_data_integration.cpd_models.project_model.Project.update_connection>`.
+    To change the connection's properties, update the platform connection itself using
+    :py:meth:`Platform.update_connection() <ibm_watsonx_data_integration.platform.Platform.update_connection>`
+    (see :ref:`Updating a Platform Connection <preparing_data__connections__updating_a_platform_connection>`).
+
+.. tip::
+
+    By default, ``import_platform_connection`` sets ``test=False`` to avoid re-validating credentials that are held in the referenced platform connection.
+    Pass ``test=True`` explicitly if you want the server to verify connectivity at import time.
+
+    .. code-block:: python
+
+        >>> project.import_platform_connection(catalog_connection, test=True) # doctest: +SKIP
+        Connection(name='Platform Connection Name')
+
+
+.. _preparing_data__connections__updating_a_platform_connection:
+
+Updating a Platform Connection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To update a platform-level connection, first modify the desired properties on the connection object and then pass it to
+:py:meth:`Platform.update_connection() <ibm_watsonx_data_integration.platform.Platform.update_connection>`.
+
+This method returns an HTTP response indicating the status of the update operation.
+
+Similar to :ref:`Updating a Connection <preparing_data__connections__updating_a_connection>`, you can skip validation by setting the ``test`` parameter to ``False``.
+
+.. code-block:: python
+
+    >>> catalog_connection.name = 'Updated Platform Connection Name'
+    >>> platform.update_connection(catalog_connection)
+    <Response [200]>
+    >>> platform.connections.get(name='Updated Platform Connection Name') # doctest: +SKIP
+    Connection(name='Updated Platform Connection Name')
+
+
+.. _preparing_data__connections__deleting_a_platform_connection:
+
+Deleting a Platform Connection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To delete a platform-level connection, pass it to
+:py:meth:`Platform.delete_connection() <ibm_watsonx_data_integration.platform.Platform.delete_connection>`.
+This method returns an HTTP response indicating the status of the delete operation.
+
+.. code-block:: python
+
+    >>> platform.delete_connection(catalog_connection)
     <Response [204]>

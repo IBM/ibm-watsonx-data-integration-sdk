@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>What’s new &#8212; ibm-watsonx-data-integration 2.0.0 documentation</title>
+    <title>What’s new &#8212; ibm-watsonx-data-integration 2.1.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=ce394494"></script>
+    <script src="../../_static/documentation_options.js?v=32e37178"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.0.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.1.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -208,6 +208,13 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/flows.html">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/pipelines/index.html">Pipelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/components.html">Pipeline Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/settings.html">Pipeline Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/examples.html">Pipeline Examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/udi/index.html">UDI (Unstructured Data Integration)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -339,6 +346,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#august-2026">2.1.0 (August 2026)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#july-2026">2.0.0 (July 2026)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#june-2026">1.3.1 (June 2026)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#may-2026">1.3.0 (May 2026)</a></li>
@@ -362,6 +370,21 @@ document.write(`
   <section id="what-s-new">
 <span id="overview-release-notes"></span><h1>What’s new<a class="headerlink" href="#what-s-new" title="Link to this heading">#</a></h1>
 <p>Below you will find release notes for each version of the <code class="docutils literal notranslate"><span class="pre">ibm-watsonx-data-integration</span></code> SDK as well as highlights of major features and/or fixes included in each release.</p>
+<section id="august-2026">
+<h2>2.1.0 (August 2026)<a class="headerlink" href="#august-2026" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Added support for importing batch flows from ISX files.</p>
+<p>See <a class="reference internal" href="../05_preparing_data/batch/flows.html#preparing-data-batch-flows-importing-flows-from-isx"><span class="std std-ref">Importing Batch Flows from ISX</span></a>.</p>
+</li>
+<li><p>Added support for IBM Orchestration Pipelines.</p>
+<p>See <a class="reference internal" href="../05_preparing_data/pipelines/index.html#preparing-data-pipelines-index"><span class="std std-ref">Orchestration Pipelines</span></a>.</p>
+</li>
+<li><p>Added support for platform-level connections.</p>
+<p>See <a class="reference internal" href="../05_preparing_data/connections.html#preparing-data-connections-platform-connections"><span class="std std-ref">Platform Connections</span></a>.</p>
+</li>
+<li><p>Quality of life enhancements and bug fixes.</p></li>
+</ul>
+</section>
 <section id="july-2026">
 <h2>2.0.0 (July 2026)<a class="headerlink" href="#july-2026" title="Link to this heading">#</a></h2>
 <ul>
@@ -628,6 +651,7 @@ and <a class="reference internal" href="../03_getting_started_and_tutorials/code
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#august-2026">2.1.0 (August 2026)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#july-2026">2.0.0 (July 2026)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#june-2026">1.3.1 (June 2026)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#may-2026">1.3.0 (May 2026)</a></li>

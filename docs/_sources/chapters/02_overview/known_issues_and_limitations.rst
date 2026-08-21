@@ -26,3 +26,7 @@ Limitations
 * The SDK only partially supports DataStage (batch processing) functionality at this point. DataStage components will be added in future releases.
 
 * Streaming python generator does not support parameter sets.
+
+* When creating a Run Python Script component using ``dsl.component``, only the first two packages specified in the ``packages_to_install`` parameter will be installed. Any additional packages in the list are silently dropped.
+
+* Orchestration Pipelines that target the Optimized Runner require compilation before execution. The SDK does not trigger compilation automatically, so pipelines created via the SDK will fail at runtime unless compiled separately through another means (for example, via the UI).

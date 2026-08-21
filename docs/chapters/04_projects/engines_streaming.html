@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
-    <title>Engines (Streaming) &#8212; ibm-watsonx-data-integration 2.0.0 documentation</title>
+    <title>Engines (Streaming) &#8212; ibm-watsonx-data-integration 2.1.0 documentation</title>
   
   
   
@@ -39,7 +39,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=ce394494"></script>
+    <script src="../../_static/documentation_options.js?v=32e37178"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -145,7 +145,7 @@
     <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
   
   
-    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.0.0</p>
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.1.0</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -208,6 +208,13 @@
 <li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/flows.html">Flows</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/pipelines/index.html">Pipelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/components.html">Pipeline Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/settings.html">Pipeline Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/examples.html">Pipeline Examples</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/udi/index.html">UDI (Unstructured Data Integration)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -348,6 +355,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#restarting-and-shutting-down-engines-from-a-project">Restarting and Shutting Down Engines from a Project</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#engine-communication-mode">Engine Communication Mode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssl-verification-for-direct-communication">SSL Verification for Direct Communication</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-an-existing-engine">Deleting an Existing Engine</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-multiple-engines">Deleting Multiple Engines</a></li>
 </ul>
@@ -447,6 +456,88 @@ through <a class="reference internal" href="../../api/models.html#ibm_watsonx_da
 <p>The project-level command methods require at least one engine argument. Passing no engines raises <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
 </section>
 </section>
+<section id="engine-communication-mode">
+<span id="projects-engines-communication-mode"></span><h2>Engine Communication Mode<a class="headerlink" href="#engine-communication-mode" title="Link to this heading">#</a></h2>
+<p>The SDK supports two modes for communicating with a streaming engine:</p>
+<ul class="simple">
+<li><p><strong>Tunneling</strong> — traffic is routed through IBM Cloud. No direct network access to the engine is required.</p></li>
+<li><p><strong>Direct</strong> — the SDK talks directly to the engine’s URL over HTTPS.</p></li>
+</ul>
+<p>To read the current mode, access the
+<a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.streaming_engine_communication" title="ibm_watsonx_data_integration.platform.Platform.streaming_engine_communication"><code class="xref py py-attr docutils literal notranslate"><span class="pre">streaming_engine_communication</span></code></a>
+property. To change it, assign one of the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_model.EngineCommunication" title="ibm_watsonx_data_integration.services.streamsets.models.engine_model.EngineCommunication"><code class="xref py py-class docutils literal notranslate"><span class="pre">EngineCommunication</span></code></a>
+enum values.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Before changing the communication mode, delete all engines in your account.
+After making the change, retrieve the installation command from each StreamSets environment and run it to recreate the engines.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.streamsets.models.engine_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">EngineCommunication</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Read the current mode</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">streaming_engine_communication</span>
+<span class="go">&#39;tunneling&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Switch to direct communication</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">streaming_engine_communication</span> <span class="o">=</span> <span class="n">EngineCommunication</span><span class="o">.</span><span class="n">DIRECT</span><span class="o">.</span><span class="n">value</span>
+</pre></div>
+</div>
+</section>
+<section id="ssl-verification-for-direct-communication">
+<span id="projects-engines-ssl-verification"></span><h2>SSL Verification for Direct Communication<a class="headerlink" href="#ssl-verification-for-direct-communication" title="Link to this heading">#</a></h2>
+<p>When communicating with an engine in <strong>direct mode</strong>, the SDK must verify the engine’s TLS certificate.
+The <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.platform.Platform.streaming_engine_verify_ssl" title="ibm_watsonx_data_integration.platform.Platform.streaming_engine_verify_ssl"><code class="xref py py-attr docutils literal notranslate"><span class="pre">streaming_engine_verify_ssl</span></code></a>
+property controls this behaviour. It defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This setting only applies in <strong>direct</strong> mode. When tunneling is active the SDK always uses
+<code class="docutils literal notranslate"><span class="pre">True</span></code> regardless of this property, because traffic goes through IBM Cloud rather than
+directly to the engine.</p>
+</div>
+<p>The property accepts three types of value:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Behaviour</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">True</span></code> (default)</p></td>
+<td><p>Verify the engine certificate using the system trust store.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'/path/to/cert.pem'</span></code></p></td>
+<td><p>Verify the engine certificate using the certificate at the given absolute path.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p>Disable certificate verification entirely (insecure — use only for development/testing).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Choosing the right value</strong></p>
+<ul class="simple">
+<li><p><strong>Tunneling mode</strong> — leave the property at its default (<code class="docutils literal notranslate"><span class="pre">True</span></code>); it has no effect.</p></li>
+<li><p><strong>Direct mode, certificate trusted by the system trust store</strong> — leave the property at its default
+(<code class="docutils literal notranslate"><span class="pre">True</span></code>).</p></li>
+<li><p><strong>Direct mode, certificate *not* in the system trust store</strong> — set the property to the absolute
+path of the CA/certificate file so the SDK can verify the engine.</p></li>
+<li><p><strong>Direct mode, no valid certificate or as a last resort</strong> — set the property to <code class="docutils literal notranslate"><span class="pre">False</span></code> to skip
+verification. This disables TLS validation and should only be used when no other option is available.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Default — verify using the system trust store (suitable for tunneling and direct with trusted certs)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">streaming_engine_verify_ssl</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Direct mode — provide the path to a custom certificate</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">streaming_engine_verify_ssl</span> <span class="o">=</span> <span class="s1">&#39;/absolute/path/to/ca-bundle.pem&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Direct mode — disable verification (insecure fallback)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">platform</span><span class="o">.</span><span class="n">streaming_engine_verify_ssl</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
 <section id="deleting-an-existing-engine">
 <h2>Deleting an Existing Engine<a class="headerlink" href="#deleting-an-existing-engine" title="Link to this heading">#</a></h2>
 <p>To delete a single engine instance, pass the <a class="reference internal" href="../../api/models.html#ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine" title="ibm_watsonx_data_integration.services.streamsets.models.engine_model.Engine"><code class="xref py py-class docutils literal notranslate"><span class="pre">Engine</span></code></a> object you want to
@@ -527,6 +618,8 @@ method. This performs a bulk delete operation, which is more efficient than dele
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#restarting-and-shutting-down-engines-from-a-project">Restarting and Shutting Down Engines from a Project</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#engine-communication-mode">Engine Communication Mode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssl-verification-for-direct-communication">SSL Verification for Direct Communication</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-an-existing-engine">Deleting an Existing Engine</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-multiple-engines">Deleting Multiple Engines</a></li>
 </ul>

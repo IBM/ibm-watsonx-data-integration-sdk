@@ -3,15 +3,18 @@
 Preparing Data
 ==============
 
-Flows and stages are essential building blocks of the watsonx.data integration platform.
-This section covers how to manage flows and their stages, work with datasource types, create and maintain connections, enabling full control over your data integration pipelines.
+Flows, stages, and pipelines are essential building blocks of the watsonx.data integration platform.
+This section covers how to manage flows and their stages, orchestrate workflows with pipelines, work with datasource types, create and maintain connections, enabling full control over your data integration pipelines.
 
 .. toctree::
    :maxdepth: 2
 
    batch/index
    streaming/index
+   pipelines/index
+   udi/index
    datasources
    connections
-   examples
+   parameter_sets
    files
+   examples

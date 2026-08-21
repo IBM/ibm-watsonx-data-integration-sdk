@@ -39,7 +39,7 @@ The SDK reduces time-to-deploy by automating routine tasks, eliminating manual e
 6. How is IBM different from competitors here?
 -----------------------------------------------
 
-Unlike Informatica, Matillion, Fivetran or cloud-native tools that provide fragmented APIs, IBM offers a unified SDK that spans multiple integration products, supports hybrid and multi-cloud, and embeds enterprise-grade governance, security, and in the future AI-assisted capabilities.
+Unlike Informatica, Matillion, Fivetran, or cloud-native tools that provide fragmented APIs, IBM offers a unified SDK that spans multiple integration products, supports hybrid and multi-cloud environments, and includes enterprise-grade governance, security, and in the future, AI-assisted capabilities.
 
 7. What is required to adopt the SDK?
 --------------------------------------
@@ -54,12 +54,12 @@ The SDK is included at no additional cost for customers licensed for the underly
 9. Where can developers get started?
 --------------------------------------
 
-Developers will find documentation, tutorials, and code samples in IBM watsonx.data integration documentation :doc:`here <../01_welcome/prereqs>`. Webinars, blogs, and community forums will also showcase use cases, best practices, and how to get started guides. To learn how to build flows, use the Python flow generator to take an existing flow and generate the corresponding SDK code to rebuild the flow to learn syntax and structure of the data integration Python SDK.
+Developers will find documentation, tutorials, and code samples in the IBM watsonx.data integration documentation :doc:`here <../01_welcome/prereqs>`. Webinars, blogs, and community forums will also showcase use cases, best practices, and getting-started guides. To learn how to build flows, use the Python flow generator to take an existing flow and generate the corresponding SDK code. Rebuilding the flow in code is a practical way to learn the syntax and structure of the data integration Python SDK.
 
 10. What are common misconceptions or limitations?
 ---------------------------------------------------
 
-Some may expect the SDK to generate pipelines automatically or use AI to design flows. The SDK focuses on programmatic access and automation of existing capabilities. Designing optimal workflows still requires knowledge of IBM's watsonx.data integration tools.
+Some may expect the SDK to generate pipelines automatically or use AI to design flows. The SDK focuses on programmatic access and automation of existing capabilities. Designing optimal workflows still requires knowledge of IBM watsonx.data integration tools.
 
 11. What is the long-term vision?
 ----------------------------------
@@ -69,7 +69,7 @@ The SDK will evolve into the unified developer interface for IBM’s full data i
 12. What data integration software versions is this SDK compatible with?
 ------------------------------------------------------------------------
 
-See full list of compatible software products :doc:`here <../01_welcome/supported_products>`.
+See the full list of compatible software products :doc:`here <../01_welcome/supported_products>`.
 
 Support
 ~~~~~~~

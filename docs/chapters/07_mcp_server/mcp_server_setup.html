@@ -1,0 +1,1341 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
+    <title>MCP Server Setup &#8212; ibm-watsonx-data-integration 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=f8c2f790" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=30646c52"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/07_mcp_server/mcp_server_setup';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="MCP Server Tools" href="mcp_server_tools.html" />
+    <link rel="prev" title="MCP Server" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.1.0</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01_welcome/prereqs.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01_welcome/supported_products.html">Supported Products</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02_overview/release_notes.html">What’s new</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_overview/known_issues_and_limitations.html">Known Issues and Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02_overview/faq.html">Get Help</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03_getting_started_and_tutorials/index.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/platform.html">Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_batch.html">Code Generation (Batch)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_streaming.html">Code Generation (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/code_generation_connections.html">Code Generation for Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03_getting_started_and_tutorials/http_retry.html">HTTP Retry Management</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04_projects/projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_projects/jobs.html">Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_projects/environments_streaming.html">Environments (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04_projects/engines_streaming.html">Engines (Streaming)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05_preparing_data/index.html">Preparing Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/batch/index.html">Batch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/compilation_mode.html">Compilation Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/stages.html">Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/wrapped_stages.html">Wrapped Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/link_partitioning.html">Link Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/data_definitions.html">Data Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/schema_libraries.html">XML Schema Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/hierarchical_data.html">Hierarchical Data Stage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/batch/subflows.html">Subflows</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/pipelines/index.html">Pipelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/components.html">Pipeline Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/settings.html">Pipeline Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/pipelines/examples.html">Pipeline Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../05_preparing_data/udi/index.html">UDI (Unstructured Data Integration)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05_preparing_data/udi/flows.html">Flows</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/datasources.html">Datasource Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/connections.html">Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/parameter_sets.html">Parameter Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05_preparing_data/examples.html">Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_access_control/on_prem_access_control/index.html">On-Prem Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/on_prem_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/on_prem_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/on_prem_access_control/roles.html">Roles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_access_control/saas_access_control/index.html">SaaS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../06_access_control/aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06_access_control/aws_access_control/users.html">Users</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../06_access_control/project_collaborators.html">Project Collaborators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">MCP Server</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">MCP Server Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcp_server_tools.html">MCP Server Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcp_server_skills.html">MCP Server Skills</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/models.html">Models</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>MCP Server Setup</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Section Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-install-the-mcp-server">Step 1 — Install the MCP Server</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-a-uvx-recommended-no-installation-required">Method A — <code class="docutils literal notranslate"><span class="pre">uvx</span></code> (Recommended, no installation required)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-b-uv-tool-install-persistent-global-install">Method B — <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tool</span> <span class="pre">install</span></code> (Persistent global install)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-c-pip-with-a-virtual-environment">Method C — <code class="docutils literal notranslate"><span class="pre">pip</span></code> with a Virtual Environment</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-reference">Configuration Reference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stdio-configurations-local-clients">stdio Configurations (local clients)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sse-configuration-remote-http-transport">SSE Configuration (remote/HTTP transport)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-required-utf-8-setting">Windows — Required UTF-8 Setting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-register-with-your-ai-client">Step 2 — Register with Your AI Client</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bob-vs-code">Bob (VS Code)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#claude-desktop">Claude Desktop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codex-openai">Codex (OpenAI)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-copilot-in-visual-studio-code">GitHub Copilot in Visual Studio Code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confirming-the-server-started">Confirming the Server Started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">Authentication</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saas-authentication-ibm-cloud">SaaS Authentication (IBM Cloud)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-premises-authentication-cloud-pak-for-data">On-Premises Authentication (Cloud Pak for Data)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-tls-for-on-premises-deployments">Configuring TLS for On-Premises Deployments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-usage">Advanced Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#offline-documentation-mode">Offline Documentation Mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cache-management">Cache Management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#http-sse-transport">HTTP/SSE Transport</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-availability">Tool Availability</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="mcp-server-setup">
+<span id="mcp-server-mcp-server-setup"></span><h1>MCP Server Setup<a class="headerlink" href="#mcp-server-setup" title="Link to this heading">#</a></h1>
+<p>This page walks you through every step needed to get the <code class="docutils literal notranslate"><span class="pre">data-intg-mcp</span></code> server
+running inside your AI coding assistant. The process has two independent parts:</p>
+<ol class="arabic simple">
+<li><p><strong>Install</strong> the server binary on your machine (pick one method).</p></li>
+<li><p><strong>Register</strong> the server with your AI client (each client has its own workflow).</p></li>
+</ol>
+<nav class="contents local" id="on-this-page">
+<p class="topic-title">On this page</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#requirements" id="id2">Requirements</a></p></li>
+<li><p><a class="reference internal" href="#step-1-install-the-mcp-server" id="id3">Step 1 — Install the MCP Server</a></p>
+<ul>
+<li><p><a class="reference internal" href="#method-a-uvx-recommended-no-installation-required" id="id4">Method A — <code class="docutils literal notranslate"><span class="pre">uvx</span></code> (Recommended, no installation required)</a></p></li>
+<li><p><a class="reference internal" href="#method-b-uv-tool-install-persistent-global-install" id="id5">Method B — <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tool</span> <span class="pre">install</span></code> (Persistent global install)</a></p></li>
+<li><p><a class="reference internal" href="#method-c-pip-with-a-virtual-environment" id="id6">Method C — <code class="docutils literal notranslate"><span class="pre">pip</span></code> with a Virtual Environment</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#configuration-reference" id="id7">Configuration Reference</a></p>
+<ul>
+<li><p><a class="reference internal" href="#stdio-configurations-local-clients" id="id8">stdio Configurations (local clients)</a></p></li>
+<li><p><a class="reference internal" href="#sse-configuration-remote-http-transport" id="id9">SSE Configuration (remote/HTTP transport)</a></p></li>
+<li><p><a class="reference internal" href="#windows-required-utf-8-setting" id="id10">Windows — Required UTF-8 Setting</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#step-2-register-with-your-ai-client" id="id11">Step 2 — Register with Your AI Client</a></p>
+<ul>
+<li><p><a class="reference internal" href="#bob-vs-code" id="id12">Bob (VS Code)</a></p></li>
+<li><p><a class="reference internal" href="#claude-desktop" id="id13">Claude Desktop</a></p></li>
+<li><p><a class="reference internal" href="#codex-openai" id="id14">Codex (OpenAI)</a></p></li>
+<li><p><a class="reference internal" href="#github-copilot-in-visual-studio-code" id="id15">GitHub Copilot in Visual Studio Code</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#confirming-the-server-started" id="id16">Confirming the Server Started</a></p></li>
+<li><p><a class="reference internal" href="#authentication" id="id17">Authentication</a></p>
+<ul>
+<li><p><a class="reference internal" href="#saas-authentication-ibm-cloud" id="id18">SaaS Authentication (IBM Cloud)</a></p></li>
+<li><p><a class="reference internal" href="#on-premises-authentication-cloud-pak-for-data" id="id19">On-Premises Authentication (Cloud Pak for Data)</a></p></li>
+<li><p><a class="reference internal" href="#configuring-tls-for-on-premises-deployments" id="id20">Configuring TLS for On-Premises Deployments</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#advanced-usage" id="id21">Advanced Usage</a></p>
+<ul>
+<li><p><a class="reference internal" href="#offline-documentation-mode" id="id22">Offline Documentation Mode</a></p></li>
+<li><p><a class="reference internal" href="#cache-management" id="id23">Cache Management</a></p></li>
+<li><p><a class="reference internal" href="#http-sse-transport" id="id24">HTTP/SSE Transport</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#tool-availability" id="id25">Tool Availability</a></p></li>
+</ul>
+</nav>
+<hr class="docutils" />
+<section id="requirements">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Requirements</a><a class="headerlink" href="#requirements" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Python</strong>: 3.11–3.12 (3.12 recommended)</p></li>
+<li><p><strong>uv</strong> (recommended) <em>or</em> any Python 3.11/3.12 virtual environment</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="step-1-install-the-mcp-server">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Step 1 — Install the MCP Server</a><a class="headerlink" href="#step-1-install-the-mcp-server" title="Link to this heading">#</a></h2>
+<p>Choose <strong>one</strong> of the three methods below. You only need to do this once per machine.</p>
+<section id="method-a-uvx-recommended-no-installation-required">
+<span id="install-uvx"></span><h3><a class="toc-backref" href="#id4" role="doc-backlink">Method A — <code class="docutils literal notranslate"><span class="pre">uvx</span></code> (Recommended, no installation required)</a><a class="headerlink" href="#method-a-uvx-recommended-no-installation-required" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">uvx</span></code> runs the package directly from PyPI without a permanent install. It is the
+simplest option and keeps your global Python environment clean.</p>
+<p><strong>Install uv/uvx</strong> (skip if already installed):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>uv
+</pre></div>
+</div>
+<p><strong>Verify the server starts correctly</strong> (downloads all dependencies on first run):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uvx<span class="w"> </span>--python<span class="w"> </span><span class="m">3</span>.12<span class="w"> </span>--from<span class="w"> </span>ibm_watsonx_data_integration_mcp<span class="w"> </span>data-intg-mcp<span class="w"> </span>--help
+</pre></div>
+</div>
+</section>
+<section id="method-b-uv-tool-install-persistent-global-install">
+<span id="install-uv-tool"></span><h3><a class="toc-backref" href="#id5" role="doc-backlink">Method B — <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tool</span> <span class="pre">install</span></code> (Persistent global install)</a><a class="headerlink" href="#method-b-uv-tool-install-persistent-global-install" title="Link to this heading">#</a></h3>
+<p>This installs <code class="docutils literal notranslate"><span class="pre">data-intg-mcp</span></code> as a globally available command that your shell can
+find at any time, which some clients require.</p>
+<p><strong>Install uv</strong> (skip if already installed):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>uv
+</pre></div>
+</div>
+<p><strong>Install the server:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>tool<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="m">3</span>.12<span class="w"> </span>ibm_watsonx_data_integration_mcp
+</pre></div>
+</div>
+<p><strong>Verify:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>data-intg-mcp<span class="w"> </span>--help
+</pre></div>
+</div>
+</section>
+<section id="method-c-pip-with-a-virtual-environment">
+<span id="install-pip-venv"></span><h3><a class="toc-backref" href="#id6" role="doc-backlink">Method C — <code class="docutils literal notranslate"><span class="pre">pip</span></code> with a Virtual Environment</a><a class="headerlink" href="#method-c-pip-with-a-virtual-environment" title="Link to this heading">#</a></h3>
+<p>Use this method if you prefer traditional virtual environments or cannot use <code class="docutils literal notranslate"><span class="pre">uv</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3.12<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate<span class="w">          </span><span class="c1"># Windows: .venv\Scripts\activate</span>
+pip<span class="w"> </span>install<span class="w"> </span>ibm_watsonx_data_integration_mcp
+</pre></div>
+</div>
+<p><strong>Note the full path</strong> to the installed binary — you will need it when configuring
+your client:</p>
+<ul class="simple">
+<li><p><strong>macOS / Linux</strong>: <code class="docutils literal notranslate"><span class="pre">&lt;path-to-venv&gt;/bin/data-intg-mcp</span></code></p></li>
+<li><p><strong>Windows</strong>: <code class="docutils literal notranslate"><span class="pre">&lt;path-to-venv&gt;\\Scripts\\data-intg-mcp.exe</span></code></p></li>
+</ul>
+<p><strong>Verify:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>data-intg-mcp<span class="w"> </span>--help
+</pre></div>
+</div>
+<p>You should see the following output regardless of which install method you used:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: data-intg-mcp [-h] [--clear-cache] [--disable-execution-tools]
+                     [--transport {stdio,sse}] [--host HOST] [--port PORT]
+                     [--use-local-docs]
+
+MCP Server for IBM watsonx.data Integration
+
+options:
+  -h, --help            show this help message and exit
+  --clear-cache         Clear all cached documentation before starting
+  --disable-execution-tools
+                        Disable execute_script and stage discovery tools
+  --transport {stdio,sse}
+                        Transport protocol to use (default: stdio)
+  --host HOST           Host to bind to when using SSE transport (default: 0.0.0.0)
+  --port PORT           Port to bind to when using SSE transport (default: 8000)
+  --use-local-docs      Use bundled local HTML docs instead of live documentation
+</pre></div>
+</div>
+<hr class="docutils" />
+</section>
+</section>
+<section id="configuration-reference">
+<span id="mcp-config-reference"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink">Configuration Reference</a><a class="headerlink" href="#configuration-reference" title="Link to this heading">#</a></h2>
+<p>This section contains ready-to-use JSON blocks for every combination of install
+method and authentication type. Copy the block that matches your choices when
+following the client-specific instructions in <a class="reference internal" href="#step2-client-setup"><span class="std std-ref">Step 2</span></a>.</p>
+<section id="stdio-configurations-local-clients">
+<span id="config-blocks-stdio"></span><h3><a class="toc-backref" href="#id8" role="doc-backlink">stdio Configurations (local clients)</a><a class="headerlink" href="#stdio-configurations-local-clients" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">stdio</span></code> transport is used by all local desktop clients (Bob, Claude Desktop,
+Codex, Copilot). The client launches the server as a child process.</p>
+<p><strong>uvx + SaaS (IBM Cloud API Key)</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;--python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;3.12&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;--from&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ibm_watsonx_data_integration_mcp&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;data-intg-mcp&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_API_KEY&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>uvx + On-Premises (CP4D username + password)</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;--python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;3.12&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;--from&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ibm_watsonx_data_integration_mcp&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;data-intg-mcp&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_USERNAME&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-username&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_PASSWORD&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-password&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_URL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://your-cp4d-cluster.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_DISABLE_SSL_VERIFICATION&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>uvx + On-Premises (CP4D username + Zen API Key)</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;--python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;3.12&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;--from&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ibm_watsonx_data_integration_mcp&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;data-intg-mcp&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_USERNAME&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-username&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;ZEN_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-zen-api-key&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_URL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://your-cp4d-cluster.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_DISABLE_SSL_VERIFICATION&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>uv tool + SaaS</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uv&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;tool&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;data-intg-mcp&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_API_KEY&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>uv tool + On-Premises (username + password)</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uv&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;tool&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;data-intg-mcp&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_USERNAME&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-username&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_PASSWORD&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-password&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_URL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://your-cp4d-cluster.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_DISABLE_SSL_VERIFICATION&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>pip venv + SaaS</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;path-to-venv&gt;/bin/data-intg-mcp&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_API_KEY&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On Windows replace <code class="docutils literal notranslate"><span class="pre">/bin/</span></code> with <code class="docutils literal notranslate"><span class="pre">\\Scripts\\</span></code> and append <code class="docutils literal notranslate"><span class="pre">.exe</span></code> to the
+command name.</p>
+</div>
+</section>
+<section id="sse-configuration-remote-http-transport">
+<span id="config-blocks-sse"></span><h3><a class="toc-backref" href="#id9" role="doc-backlink">SSE Configuration (remote/HTTP transport)</a><a class="headerlink" href="#sse-configuration-remote-http-transport" title="Link to this heading">#</a></h3>
+<p>Use SSE only when the server is running as a standalone HTTP process (e.g., in a
+shared team environment). See <a class="reference internal" href="#http-sse-transport"><span class="std std-ref">HTTP/SSE Transport</span></a> for full details.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp-remote&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://127.0.0.1:8000/sse&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Environment variables <strong>cannot</strong> be passed from the client config when using
+SSE. Set them in the server’s environment before starting the server.</p>
+</div>
+</section>
+<section id="windows-required-utf-8-setting">
+<span id="config-windows"></span><h3><a class="toc-backref" href="#id10" role="doc-backlink">Windows — Required UTF-8 Setting</a><a class="headerlink" href="#windows-required-utf-8-setting" title="Link to this heading">#</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Windows users must add</strong> <code class="docutils literal notranslate"><span class="pre">&quot;PYTHONUTF8&quot;:</span> <span class="pre">&quot;1&quot;</span></code> <strong>to every</strong> <code class="docutils literal notranslate"><span class="pre">env</span></code> <strong>block.</strong></p>
+</div>
+<p>Windows defaults to cp1252 encoding. Without this setting the server fails on
+startup with a <code class="docutils literal notranslate"><span class="pre">UnicodeDecodeError</span></code> when reading skill files that contain emoji
+and special characters (✅, ❌, →). Add the variable to any configuration block
+above:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;--python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;3.12&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;--from&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ibm_watsonx_data_integration_mcp&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;data-intg-mcp&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;PYTHONUTF8&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_API_KEY&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This applies to all install methods (uvx, uv tool, pip venv).</p>
+<hr class="docutils" />
+</section>
+</section>
+<section id="step-2-register-with-your-ai-client">
+<span id="step2-client-setup"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">Step 2 — Register with Your AI Client</a><a class="headerlink" href="#step-2-register-with-your-ai-client" title="Link to this heading">#</a></h2>
+<p>Each AI client has a different mechanism for registering MCP servers. Follow the
+section that matches your client.</p>
+<section id="bob-vs-code">
+<span id="client-bob"></span><h3><a class="toc-backref" href="#id12" role="doc-backlink">Bob (VS Code)</a><a class="headerlink" href="#bob-vs-code" title="Link to this heading">#</a></h3>
+<p>Bob is the IBM AI coding assistant that runs inside Visual Studio Code. MCP servers
+are managed from the <strong>MCP</strong> section of Bob’s settings panel.</p>
+<p><strong>Steps:</strong></p>
+<ol class="arabic simple">
+<li><p>Open VS Code and click the <strong>Bob</strong> icon in the activity bar.</p></li>
+<li><p>Click the <strong>Settings</strong> (⚙️ gear icon) to open Bob’s settings.</p></li>
+<li><p>Scroll to the <strong>MCP</strong> section.</p></li>
+<li><p>Click the <strong>+</strong> (plus) button in the bottom-right of the MCP server list to add a
+new server.</p></li>
+<li><p>Bob will prompt you to select a <strong>configuration scope</strong> — choose either:</p>
+<ul class="simple">
+<li><p><strong>Global</strong> — applies to all workspaces on this machine.</p></li>
+<li><p><strong>Workspace</strong> — applies only to the current project folder.</p></li>
+</ul>
+</li>
+<li><p>Bob opens the corresponding <code class="docutils literal notranslate"><span class="pre">mcp.json</span></code> file for that scope.</p></li>
+<li><p>Add your chosen server entry from <a class="reference internal" href="#config-blocks-stdio"><span class="std std-ref">stdio Configurations (local clients)</span></a> into the
+<code class="docutils literal notranslate"><span class="pre">&quot;mcpServers&quot;</span></code> object and <strong>save</strong> the file.</p></li>
+<li><p>Click the <strong>↺</strong> (refresh) button next to the <strong>+</strong> to reload the server list.
+The new server should appear immediately — no VS Code restart required.</p></li>
+</ol>
+<p><strong>Example</strong> <code class="docutils literal notranslate"><span class="pre">mcp.json</span></code> <strong>after edit:</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;--python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;3.12&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;--from&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ibm_watsonx_data_integration_mcp&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;data-intg-mcp&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_API_KEY&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Verify:</strong> The server name <code class="docutils literal notranslate"><span class="pre">data-intg-mcp</span></code> should appear in the MCP server list
+in Bob’s settings. You can use the <strong>Search MCP servers</strong> box to confirm it is
+registered and the toggle next to it is enabled.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use the <strong>All</strong> scope dropdown in the MCP panel to filter between global and
+workspace servers if you have both configured.</p>
+</div>
+</section>
+<section id="claude-desktop">
+<span id="client-claude"></span><h3><a class="toc-backref" href="#id13" role="doc-backlink">Claude Desktop</a><a class="headerlink" href="#claude-desktop" title="Link to this heading">#</a></h3>
+<p><strong>Steps:</strong></p>
+<ol class="arabic simple">
+<li><p>Open Claude Desktop and go to <strong>Claude → Settings → Developer → Edit Config</strong>.
+This opens <code class="docutils literal notranslate"><span class="pre">claude_desktop_config.json</span></code> directly in your default text editor.</p></li>
+<li><p>Add your chosen server entry from <a class="reference internal" href="#config-blocks-stdio"><span class="std std-ref">stdio Configurations (local clients)</span></a> into the
+<code class="docutils literal notranslate"><span class="pre">&quot;mcpServers&quot;</span></code> object and <strong>save</strong> the file.</p></li>
+<li><p><strong>Quit and restart</strong> Claude Desktop completely (⌘Q / Alt+F4, then reopen).</p></li>
+</ol>
+<p><strong>Example</strong> <code class="docutils literal notranslate"><span class="pre">claude_desktop_config.json</span></code> <strong>after edit:</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;--python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;3.12&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;--from&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ibm_watsonx_data_integration_mcp&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;data-intg-mcp&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_API_KEY&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the file already contains a <code class="docutils literal notranslate"><span class="pre">&quot;mcpServers&quot;</span></code> key, add the new entry <strong>inside</strong>
+the existing object — do not create a second <code class="docutils literal notranslate"><span class="pre">&quot;mcpServers&quot;</span></code> key.</p>
+</div>
+<p><strong>Verify:</strong> After restarting, open a new Claude conversation. Click the <strong>+</strong> button
+next to the message input, then select <strong>Connectors</strong>. <code class="docutils literal notranslate"><span class="pre">data-intg-mcp</span></code> should
+appear in the connectors list with a toggle to enable it.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Claude Desktop requires a full restart — toggling the window is not enough.
+Use the system menu or tray to fully quit, then reopen.</p>
+</div>
+</section>
+<section id="codex-openai">
+<span id="client-codex"></span><h3><a class="toc-backref" href="#id14" role="doc-backlink">Codex (OpenAI)</a><a class="headerlink" href="#codex-openai" title="Link to this heading">#</a></h3>
+<p>Codex uses a graphical form to register MCP servers — there is no JSON file to edit.</p>
+<p><strong>Steps:</strong></p>
+<ol class="arabic">
+<li><p>Open Codex and go to <strong>Settings → Plugins → MCPs</strong> tab.</p></li>
+<li><p>Click <strong>+ Add server</strong>.</p></li>
+<li><p>Fill in the <strong>Connect to a custom MCP</strong> form:</p>
+<ul>
+<li><p><strong>Name</strong>: <code class="docutils literal notranslate"><span class="pre">data-intg-mcp</span></code></p></li>
+<li><p><strong>Type</strong>: <code class="docutils literal notranslate"><span class="pre">STDIO</span></code></p></li>
+<li><p><strong>Command to launch</strong>: <code class="docutils literal notranslate"><span class="pre">uvx</span></code></p></li>
+<li><p><strong>Arguments</strong> (add each one separately using <strong>+ Add argument</strong>):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>--python
+3.12
+--from
+ibm_watsonx_data_integration_mcp
+data-intg-mcp
+</pre></div>
+</div>
+</li>
+<li><p><strong>Environment variables</strong> (add using <strong>+ Add environment variable</strong>):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">WATSONX_API_KEY</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">your-ibm-cloud-api-key</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</li>
+<li><p>Click <strong>Save</strong>.</p></li>
+</ol>
+<p><strong>Verify:</strong> The server appears in the <strong>Servers</strong> list on the MCPs tab with a toggle
+to enable or disable it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For On-Premises authentication, add <code class="docutils literal notranslate"><span class="pre">CP4D_USERNAME</span></code>, <code class="docutils literal notranslate"><span class="pre">CP4D_PASSWORD</span></code> (or
+<code class="docutils literal notranslate"><span class="pre">ZEN_API_KEY</span></code>), and <code class="docutils literal notranslate"><span class="pre">CP4D_URL</span></code> as additional environment variable rows instead
+of <code class="docutils literal notranslate"><span class="pre">WATSONX_API_KEY</span></code>. See <a class="reference internal" href="#mcp-config-reference"><span class="std std-ref">Configuration Reference</span></a> for the full variable list.</p>
+</div>
+</section>
+<section id="github-copilot-in-visual-studio-code">
+<span id="client-copilot"></span><h3><a class="toc-backref" href="#id15" role="doc-backlink">GitHub Copilot in Visual Studio Code</a><a class="headerlink" href="#github-copilot-in-visual-studio-code" title="Link to this heading">#</a></h3>
+<p>VS Code supports MCP servers natively from version 1.99 onward.</p>
+<p><strong>Steps:</strong></p>
+<ol class="arabic">
+<li><p>Open VS Code and open the <strong>GitHub Copilot</strong> panel (<code class="docutils literal notranslate"><span class="pre">⌃⌘I</span></code> / <code class="docutils literal notranslate"><span class="pre">Ctrl+Alt+I</span></code>).</p></li>
+<li><p>Click the <strong>Settings</strong> (⚙️ gear icon) in the Copilot panel header.</p></li>
+<li><p>Go to the <strong>MCP Servers</strong> tab.</p></li>
+<li><p>Click the <strong>+</strong> button to add a new server.</p></li>
+<li><p>In the <strong>Command</strong> field that appears, enter the full <code class="docutils literal notranslate"><span class="pre">uvx</span></code> launch command:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>uvx --python 3.12 --from ibm_watsonx_data_integration_mcp data-intg-mcp
+</pre></div>
+</div>
+</li>
+<li><p>Confirm — VS Code registers the server but <strong>does not yet let you add environment
+variables</strong> through this form. The server will fail to start until you add your
+credentials in the next step.</p></li>
+<li><p><strong>Right-click</strong> the newly added <code class="docutils literal notranslate"><span class="pre">data-intg-mcp</span></code> entry in the list and choose
+<strong>Show Configuration (JSON)</strong>.</p></li>
+<li><p>VS Code opens the underlying JSON config. Add the <code class="docutils literal notranslate"><span class="pre">&quot;env&quot;</span></code> block with your
+credentials and <strong>save</strong>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;servers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stdio&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;--python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;3.12&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;--from&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ibm_watsonx_data_integration_mcp&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;data-intg-mcp&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;WATSONX_API_KEY&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_API_KEY&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Right-click the server entry again and choose <strong>Start Server</strong> (or <strong>Restart
+Server</strong> if it attempted to start already).</p></li>
+</ol>
+<p><strong>Verify:</strong> Switch to <strong>Agent</strong> mode in the Copilot chat and click the
+<strong>Select Tools</strong> (🔧) button — the server’s tools should be listed and enabled.</p>
+<p class="rubric">Workspace-level config</p>
+<p>For a per-project setup, create <code class="docutils literal notranslate"><span class="pre">.vscode/mcp.json</span></code> at the project root with the
+same JSON structure shown in step 8 above (the <code class="docutils literal notranslate"><span class="pre">&quot;servers&quot;</span></code> key is at the root,
+with no outer <code class="docutils literal notranslate"><span class="pre">&quot;mcp&quot;</span></code> wrapper).</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="confirming-the-server-started">
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">Confirming the Server Started</a><a class="headerlink" href="#confirming-the-server-started" title="Link to this heading">#</a></h2>
+<p>Regardless of which client you use, the server logs the following line when it has
+finished initialising and is ready to accept requests:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[INFO] Documentation bootstrap complete
+</pre></div>
+</div>
+<p>If you do not see this message, check the client’s MCP logs or developer console for
+error output.</p>
+</section>
+<hr class="docutils" />
+<section id="authentication">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">Authentication</a><a class="headerlink" href="#authentication" title="Link to this heading">#</a></h2>
+<p>The server automatically detects which authentication method to use based on the
+environment variables present in your configuration.</p>
+<p><strong>Detection priority:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>SaaS</strong> (IAMAuthenticator) — detected when <code class="docutils literal notranslate"><span class="pre">WATSONX_API_KEY</span></code> is set.</p></li>
+<li><p><strong>On-Premises password</strong> (ICP4DAuthenticator) — detected when <code class="docutils literal notranslate"><span class="pre">CP4D_USERNAME</span></code>
+and <code class="docutils literal notranslate"><span class="pre">CP4D_PASSWORD</span></code> are set.</p></li>
+<li><p><strong>On-Premises Zen API Key</strong> (ZenApiKeyAuthenticator) — detected when
+<code class="docutils literal notranslate"><span class="pre">CP4D_USERNAME</span></code> and <code class="docutils literal notranslate"><span class="pre">ZEN_API_KEY</span></code> are set.</p></li>
+</ol>
+<p>The server validates credentials on startup and logs which method was detected.</p>
+<section id="saas-authentication-ibm-cloud">
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">SaaS Authentication (IBM Cloud)</a><a class="headerlink" href="#saas-authentication-ibm-cloud" title="Link to this heading">#</a></h3>
+<p>Set <code class="docutils literal notranslate"><span class="pre">WATSONX_API_KEY</span></code> in the <code class="docutils literal notranslate"><span class="pre">env</span></code> block of your client config. See the
+configuration blocks in <a class="reference internal" href="#config-blocks-stdio"><span class="std std-ref">stdio Configurations (local clients)</span></a> for examples.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For information on how to generate an IBM Cloud API key, see
+<a class="reference internal" href="../03_getting_started_and_tutorials/authentication.html#getting-started-and-tutorials-authentication"><span class="std std-ref">Authentication</span></a>.</p>
+</div>
+<p><strong>Region selection:</strong></p>
+<p>The server defaults to the Toronto region. The AI assistant can ask you to specify
+a different region when needed. Available regions (<code class="docutils literal notranslate"><span class="pre">IBMCloudRegion</span></code> enum):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Region</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TORONTO</span></code></p></td>
+<td><p>Toronto, Canada <em>(default)</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DALLAS</span></code></p></td>
+<td><p>Dallas, USA</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">FRANKFURT</span></code></p></td>
+<td><p>Frankfurt, Germany</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">LONDON</span></code></p></td>
+<td><p>London, United Kingdom</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TOKYO</span></code></p></td>
+<td><p>Tokyo, Japan</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SYDNEY</span></code></p></td>
+<td><p>Sydney, Australia</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The region is passed as a parameter to tools that require it.</p>
+</section>
+<section id="on-premises-authentication-cloud-pak-for-data">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">On-Premises Authentication (Cloud Pak for Data)</a><a class="headerlink" href="#on-premises-authentication-cloud-pak-for-data" title="Link to this heading">#</a></h3>
+<p>Set the CP4D variables in the <code class="docutils literal notranslate"><span class="pre">env</span></code> block. Two options are supported:</p>
+<p><strong>Option 1: Username + Password</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>CP4D_USERNAME=your-username
+CP4D_PASSWORD=your-password
+CP4D_URL=https://your-cp4d-cluster.com
+CP4D_DISABLE_SSL_VERIFICATION=false
+</pre></div>
+</div>
+<p><strong>Option 2: Username + Zen API Key</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>CP4D_USERNAME=your-username
+ZEN_API_KEY=your-zen-api-key
+CP4D_URL=https://your-cp4d-cluster.com
+CP4D_DISABLE_SSL_VERIFICATION=false
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Set <code class="docutils literal notranslate"><span class="pre">CP4D_DISABLE_SSL_VERIFICATION</span></code> to <code class="docutils literal notranslate"><span class="pre">&quot;true&quot;</span></code> to disable SSL certificate
+verification for self-signed certificates.</p>
+</div>
+</section>
+<section id="configuring-tls-for-on-premises-deployments">
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">Configuring TLS for On-Premises Deployments</a><a class="headerlink" href="#configuring-tls-for-on-premises-deployments" title="Link to this heading">#</a></h3>
+<p>If your On-Premises cluster uses a custom Certificate Authority (CA), configure TLS
+properly instead of disabling SSL verification.</p>
+<p><strong>Step 1 — Log in to your OpenShift cluster:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>oc<span class="w"> </span>login<span class="w"> </span>&lt;CLUSTER_URL&gt;
+</pre></div>
+</div>
+<p><strong>Step 2 — Extract the CA certificate:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openssl<span class="w"> </span>s_client<span class="w"> </span>-showcerts<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-connect<span class="w"> </span>&lt;CLUSTER&gt;:443<span class="w"> </span>&lt;/dev/null<span class="w"> </span>&gt;<span class="w"> </span>ca.crt
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">&lt;CLUSTER&gt;</span></code> with your cluster hostname (e.g., <code class="docutils literal notranslate"><span class="pre">your-cp4d-cluster.com</span></code>).</p>
+<p><strong>Step 3 — Clean the certificate file:</strong></p>
+<p>Open <code class="docutils literal notranslate"><span class="pre">ca.crt</span></code> and remove everything except the certificate blocks:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>-----BEGIN CERTIFICATE-----
+[certificate content]
+-----END CERTIFICATE-----
+</pre></div>
+</div>
+<p><strong>Step 4 — Add</strong> <code class="docutils literal notranslate"><span class="pre">REQUESTS_CA_BUNDLE</span></code> <strong>to your MCP config:</strong></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;--python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;3.12&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;--from&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ibm_watsonx_data_integration_mcp&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;data-intg-mcp&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_USERNAME&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-username&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_PASSWORD&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-password&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_URL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://your-cp4d-cluster.com&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;CP4D_DISABLE_SSL_VERIFICATION&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;REQUESTS_CA_BUNDLE&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/path/to/ca.crt&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">/path/to/ca.crt</span></code> with the absolute path to your certificate file.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="advanced-usage">
+<h2><a class="toc-backref" href="#id21" role="doc-backlink">Advanced Usage</a><a class="headerlink" href="#advanced-usage" title="Link to this heading">#</a></h2>
+<section id="offline-documentation-mode">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Offline Documentation Mode</a><a class="headerlink" href="#offline-documentation-mode" title="Link to this heading">#</a></h3>
+<p>If your environment cannot reach GitHub Pages, start the server with
+<code class="docutils literal notranslate"><span class="pre">--use-local-docs</span></code>. The server reads bundled HTML files, converts them to cached
+markdown, and builds a LanceDB index locally.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>data-intg-mcp<span class="w"> </span>--use-local-docs
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Bundled docs may lag behind the live site. Re-publish the package periodically
+to keep the bundled copy current.</p>
+</div>
+</section>
+<section id="cache-management">
+<h3><a class="toc-backref" href="#id23" role="doc-backlink">Cache Management</a><a class="headerlink" href="#cache-management" title="Link to this heading">#</a></h3>
+<p>The server caches documentation in a local vector database. Clear the cache when you
+need to refresh documentation or troubleshoot retrieval issues:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>data-intg-mcp<span class="w"> </span>--clear-cache
+</pre></div>
+</div>
+<p>Directories removed:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">resources_cache/</span></code> — Cached documentation files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">raw_resource_html/</span></code> — Raw HTML files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lance_db/</span></code> — LanceDB vector database</p></li>
+</ul>
+</section>
+<section id="http-sse-transport">
+<span id="id1"></span><h3><a class="toc-backref" href="#id24" role="doc-backlink">HTTP/SSE Transport</a><a class="headerlink" href="#http-sse-transport" title="Link to this heading">#</a></h3>
+<p>The default <code class="docutils literal notranslate"><span class="pre">stdio</span></code> transport starts the server as a child process of your client.
+Use <code class="docutils literal notranslate"><span class="pre">sse</span></code> transport to run the server as a standalone HTTP service accessible over
+the network:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic — no authentication required for doc-only tools</span>
+data-intg-mcp<span class="w"> </span>--transport<span class="w"> </span>sse<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">8000</span>
+
+<span class="c1"># With SDK authentication</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">WATSONX_API_KEY</span><span class="o">=</span><span class="s2">&quot;your-api-key&quot;</span>
+data-intg-mcp<span class="w"> </span>--transport<span class="w"> </span>sse<span class="w"> </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span>--port<span class="w"> </span><span class="m">8000</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="tool-availability">
+<h2><a class="toc-backref" href="#id25" role="doc-backlink">Tool Availability</a><a class="headerlink" href="#tool-availability" title="Link to this heading">#</a></h2>
+<p>All tools are available in both stdio and SSE transport modes. However, execution and stage discovery tools can be disabled using the <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code> flag:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 15.0%" />
+<col style="width: 45.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Requires Auth</p></th>
+<th class="head"><p>Can Be Disabled</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">search_sdk_documentation</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get_model_reference</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">get_mcp_version</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get_sdk_version</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list_resources</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">read_resource</span></code></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">execute_script</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (via <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list_available_streaming_stages</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (via <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list_all_available_stage_configurations_streaming</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (via <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">list_available_batch_stages</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (via <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">list_all_available_stage_configurations_batch</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes (via <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Notes:</strong></p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code> to disable execute_script and stage discovery tools (recommended for remote/untrusted deployments)</p></li>
+<li><p>When execution tools are enabled, authentication is required</p></li>
+<li><p>When execution tools are disabled, authentication is optional</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Security notes for SSE deployments:</strong></p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code> to disable execute_script and stage discovery
+tools (strongly recommended for shared or untrusted environments).</p></li>
+<li><p>When execution tools are enabled, authentication is required.</p></li>
+<li><p>When execution tools are disabled, authentication is optional.</p></li>
+<li><p>Environment variables must be set on the server host, not in client config.</p></li>
+<li><p>Apply network-level access controls when exposing the server over HTTP.</p></li>
+</ul>
+</div>
+<p>Configure a remote MCP client to connect to the SSE server:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;data-intg-mcp-remote&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://127.0.0.1:8000/sse&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Command-line options reference:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Flag</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--transport</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">stdio</span></code> (default) or <code class="docutils literal notranslate"><span class="pre">sse</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--host</span></code></p></td>
+<td><p>Host to bind (SSE only, default: <code class="docutils literal notranslate"><span class="pre">0.0.0.0</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--port</span></code></p></td>
+<td><p>Port to bind (SSE only, default: <code class="docutils literal notranslate"><span class="pre">8000</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--disable-execution-tools</span></code></p></td>
+<td><p>Disable <code class="docutils literal notranslate"><span class="pre">execute_script</span></code> and stage discovery tools</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--clear-cache</span></code></p></td>
+<td><p>Clear all cached documentation before starting</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--use-local-docs</span></code></p></td>
+<td><p>Use bundled local HTML docs instead of live documentation</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MCP Server</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="mcp_server_tools.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">MCP Server Tools</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Section Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">Requirements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-install-the-mcp-server">Step 1 — Install the MCP Server</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-a-uvx-recommended-no-installation-required">Method A — <code class="docutils literal notranslate"><span class="pre">uvx</span></code> (Recommended, no installation required)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-b-uv-tool-install-persistent-global-install">Method B — <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">tool</span> <span class="pre">install</span></code> (Persistent global install)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-c-pip-with-a-virtual-environment">Method C — <code class="docutils literal notranslate"><span class="pre">pip</span></code> with a Virtual Environment</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration-reference">Configuration Reference</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stdio-configurations-local-clients">stdio Configurations (local clients)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sse-configuration-remote-http-transport">SSE Configuration (remote/HTTP transport)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-required-utf-8-setting">Windows — Required UTF-8 Setting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-register-with-your-ai-client">Step 2 — Register with Your AI Client</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bob-vs-code">Bob (VS Code)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#claude-desktop">Claude Desktop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codex-openai">Codex (OpenAI)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-copilot-in-visual-studio-code">GitHub Copilot in Visual Studio Code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confirming-the-server-started">Confirming the Server Started</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">Authentication</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#saas-authentication-ibm-cloud">SaaS Authentication (IBM Cloud)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-premises-authentication-cloud-pak-for-data">On-Premises Authentication (Cloud Pak for Data)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-tls-for-on-premises-deployments">Configuring TLS for On-Premises Deployments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-usage">Advanced Usage</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#offline-documentation-mode">Offline Documentation Mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cache-management">Cache Management</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#http-sse-transport">HTTP/SSE Transport</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-availability">Tool Availability</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026, IBM.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

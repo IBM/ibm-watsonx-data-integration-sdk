@@ -1,0 +1,756 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
+    <title>Wrapped Stages &#8212; ibm-watsonx-data-integration 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=f8c2f790" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=30646c52"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/05_preparing_data/batch/wrapped_stages';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Schemas" href="batch_schemas.html" />
+    <link rel="prev" title="Stages" href="stages.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.1.0</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/prereqs.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/supported_products.html">Supported Products</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/release_notes.html">What’s new</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/known_issues_and_limitations.html">Known Issues and Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/faq.html">Get Help</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03_getting_started_and_tutorials/index.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/platform.html">Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_batch.html">Code Generation (Batch)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_streaming.html">Code Generation (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_connections.html">Code Generation for Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/http_retry.html">HTTP Retry Management</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/jobs.html">Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/environments_streaming.html">Environments (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/engines_streaming.html">Engines (Streaming)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Preparing Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Batch</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compilation_mode.html">Compilation Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stages.html">Stages</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Wrapped Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="link_partitioning.html">Link Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_definitions.html">Data Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="schema_libraries.html">XML Schema Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hierarchical_data.html">Hierarchical Data Stage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="subflows.html">Subflows</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../pipelines/index.html">Pipelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/components.html">Pipeline Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/settings.html">Pipeline Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/examples.html">Pipeline Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../udi/index.html">UDI (Unstructured Data Integration)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../udi/flows.html">Flows</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasources.html">Datasource Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../connections.html">Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parameter_sets.html">Parameter Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/on_prem_access_control/index.html">On-Prem Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/roles.html">Roles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/saas_access_control/index.html">SaaS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/aws_access_control/users.html">Users</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06_access_control/project_collaborators.html">Project Collaborators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../07_mcp_server/index.html">MCP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../07_mcp_server/mcp_server_setup.html">MCP Server Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07_mcp_server/mcp_server_tools.html">MCP Server Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07_mcp_server/mcp_server_skills.html">MCP Server Skills</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html">Models</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Wrapped Stages</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Section Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-wrapped-stage">Creating a Wrapped Stage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-and-retrieving-wrapped-stages">Listing and Retrieving Wrapped Stages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-a-wrapped-stage">Configuring a Wrapped Stage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-inputs-and-outputs">Adding Inputs and Outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-properties">Adding Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-environment-variables">Adding Environment Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-exit-codes">Configuring Exit Codes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-a-wrapped-stage">Generating a Wrapped Stage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-wrapped-stage-in-a-batch-flow">Using a Wrapped Stage in a Batch Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-a-wrapped-stage">Duplicating a Wrapped Stage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-wrapped-stage">Deleting a Wrapped Stage</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="wrapped-stages">
+<span id="preparing-data-batch-wrapped-stages"></span><h1>Wrapped Stages<a class="headerlink" href="#wrapped-stages" title="Link to this heading">#</a></h1>
+<p>A <strong>wrapped stage</strong> is a reusable project asset that encapsulates an external executable command into a DataStage stage.
+Once created and configured, a wrapped stage appears in the batch flow editor just like any built-in stage, letting you
+invoke custom scripts or binaries as part of a flow.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Wrapped stages are an on-premises feature and require the platform to be configured for an
+on-premises deployment. Calling any wrapped stage method from a SaaS or AWS deployment
+raises a <code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code>.</p>
+</div>
+<p>Wrapped stage management follows a two-step process:</p>
+<ol class="arabic simple">
+<li><p><strong>Define the asset</strong> — create and configure the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.components.wrapped_stage.WrappedStage" title="ibm_watsonx_data_integration.services.datastage.models.components.wrapped_stage.WrappedStage"><code class="xref py py-class docutils literal notranslate"><span class="pre">WrappedStage</span></code></a> asset in the project (command, inputs, outputs, properties, environment variables, exit codes).</p></li>
+<li><p><strong>Use it in a flow</strong> — add the asset to a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">BatchFlow</span></code></a> as a stage node using <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.add_stage" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.add_stage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchFlow.add_stage()</span></code></a>.</p></li>
+</ol>
+<section id="creating-a-wrapped-stage">
+<span id="preparing-data-batch-wrapped-stages-creating"></span><h2>Creating a Wrapped Stage<a class="headerlink" href="#creating-a-wrapped-stage" title="Link to this heading">#</a></h2>
+<p>Use <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.create_wrapped_stage" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.create_wrapped_stage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.create_wrapped_stage()</span></code></a> to create a new wrapped stage asset in the project.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_stage</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_wrapped_stage</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;My Custom Stage&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Executes a custom post-processing script&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="listing-and-retrieving-wrapped-stages">
+<span id="preparing-data-batch-wrapped-stages-listing-and-retrieving"></span><h2>Listing and Retrieving Wrapped Stages<a class="headerlink" href="#listing-and-retrieving-wrapped-stages" title="Link to this heading">#</a></h2>
+<p>Access wrapped stages through the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.wrapped_stages" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.wrapped_stages"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Project.wrapped_stages</span></code></a> property,
+which returns a <code class="xref py py-class docutils literal notranslate"><span class="pre">WrappedStages</span></code> collection.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># List all wrapped stages</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">wrapped_stages</span>
+<span class="go">[WrappedStage(...)]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Filter by name</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stages</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">wrapped_stages</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;My Custom Stage&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get a single stage by name</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_stage</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">wrapped_stages</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;My Custom Stage&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get the total count</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">wrapped_stages</span><span class="p">)</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+</section>
+<section id="configuring-a-wrapped-stage">
+<span id="preparing-data-batch-wrapped-stages-configuring"></span><h2>Configuring a Wrapped Stage<a class="headerlink" href="#configuring-a-wrapped-stage" title="Link to this heading">#</a></h2>
+<p>A wrapped stage asset has several configurable properties. After modifying any of them, call
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_wrapped_stage" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_wrapped_stage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_wrapped_stage()</span></code></a> to persist the changes.</p>
+<p><strong>Name and description</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_stage</span><span class="o">.</span><span class="n">command</span> <span class="o">=</span> <span class="s1">&#39;/opt/scripts/my_script.sh&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_stage</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;Executes a custom post-processing script with configurable options&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_wrapped_stage</span><span class="p">(</span><span class="n">wrapped_stage</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+<p><strong>Execution mode</strong></p>
+<p>The <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.components.wrapped_stage.WrappedStage.execution_mode" title="ibm_watsonx_data_integration.services.datastage.models.components.wrapped_stage.WrappedStage.execution_mode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">execution_mode</span></code></a> property controls whether the stage runs
+in parallel (<code class="docutils literal notranslate"><span class="pre">'par'</span></code>) or sequential (<code class="docutils literal notranslate"><span class="pre">'seq'</span></code>) mode. The default is <code class="docutils literal notranslate"><span class="pre">'par'</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_stage</span><span class="o">.</span><span class="n">execution_mode</span> <span class="o">=</span> <span class="s1">&#39;seq&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_wrapped_stage</span><span class="p">(</span><span class="n">wrapped_stage</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-inputs-and-outputs">
+<span id="preparing-data-batch-wrapped-stages-inputs-outputs"></span><h2>Adding Inputs and Outputs<a class="headerlink" href="#adding-inputs-and-outputs" title="Link to this heading">#</a></h2>
+<p>Use <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.components.wrapped_stage.WrappedStage.add_input" title="ibm_watsonx_data_integration.services.datastage.models.components.wrapped_stage.WrappedStage.add_input"><code class="xref py py-meth docutils literal notranslate"><span class="pre">WrappedStage.add_input()</span></code></a>
+and <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.components.wrapped_stage.WrappedStage.add_output" title="ibm_watsonx_data_integration.services.datastage.models.components.wrapped_stage.WrappedStage.add_output"><code class="xref py py-meth docutils literal notranslate"><span class="pre">WrappedStage.add_output()</span></code></a>
+to define the stage’s data interfaces.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">stream</span></code> parameter determines how data is passed between DataStage and the executable:</p>
+<ul class="simple">
+<li><p>Pass a <code class="xref py py-class docutils literal notranslate"><span class="pre">FileDescriptor</span></code> enum value (<code class="docutils literal notranslate"><span class="pre">STDIN</span></code>, <code class="docutils literal notranslate"><span class="pre">STDOUT</span></code>, or <code class="docutils literal notranslate"><span class="pre">STDERR</span></code>) for <strong>stream-based</strong> links, where data is piped directly through standard file descriptors.</p></li>
+<li><p>Pass a plain <strong>string</strong> for <strong>non-stream</strong> links, where the string is the name of the argument or variable used to pass the file path to the executable. Use the <code class="docutils literal notranslate"><span class="pre">is_command_line</span></code> parameter to specify how the name is passed:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_command_line=True</span></code> (the default) — the name is passed as a <strong>command-line argument</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is_command_line=False</span></code> — the name is passed as an <strong>environment variable</strong>.</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.datastage.models.components.wrapped_stage</span><span class="w"> </span><span class="kn">import</span> <span class="n">FileDescriptor</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Stream-based: data piped via stdin</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_stage</span><span class="o">.</span><span class="n">add_input</span><span class="p">(</span><span class="s1">&#39;input1&#39;</span><span class="p">,</span> <span class="n">FileDescriptor</span><span class="o">.</span><span class="n">STDIN</span><span class="p">)</span>
+<span class="go">WrappedStage(...)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Stream-based: data piped via stdout</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_stage</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s1">&#39;output1&#39;</span><span class="p">,</span> <span class="n">FileDescriptor</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">)</span>
+<span class="go">WrappedStage(...)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Non-stream: file path passed as a command-line argument named OUTPUT_FILE</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_stage</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s1">&#39;output2&#39;</span><span class="p">,</span> <span class="s1">&#39;OUTPUT_FILE&#39;</span><span class="p">,</span> <span class="n">is_command_line</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">WrappedStage(...)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Non-stream: file path passed as an environment variable named INPUT_PATH</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_stage</span><span class="o">.</span><span class="n">add_input</span><span class="p">(</span><span class="s1">&#39;input2&#39;</span><span class="p">,</span> <span class="s1">&#39;INPUT_PATH&#39;</span><span class="p">,</span> <span class="n">named_pipe</span><span class="o">=</span><span class="s2">&quot;my_pipe_name&quot;</span><span class="p">,</span> <span class="n">is_command_line</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">WrappedStage(...)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_wrapped_stage</span><span class="p">(</span><span class="n">wrapped_stage</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">is_command_line</span></code> and <code class="docutils literal notranslate"><span class="pre">named_pipe</span></code> are only valid when <code class="docutils literal notranslate"><span class="pre">stream</span></code> is a plain string. Passing them
+alongside a <code class="xref py py-class docutils literal notranslate"><span class="pre">FileDescriptor</span></code>
+value raises a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
+</div>
+<p>You can optionally attach a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.schema.data_definition.DataDefinition" title="ibm_watsonx_data_integration.services.datastage.models.schema.data_definition.DataDefinition"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataDefinition</span></code></a>
+to associate a schema with the link.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data_def</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">data_definitions</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;data_definition_1&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_stage</span><span class="o">.</span><span class="n">add_output</span><span class="p">(</span><span class="s1">&#39;output_with_schema&#39;</span><span class="p">,</span> <span class="n">FileDescriptor</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span> <span class="n">data_definition</span><span class="o">=</span><span class="n">data_def</span><span class="p">)</span>
+<span class="go">WrappedStage(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_wrapped_stage</span><span class="p">(</span><span class="n">wrapped_stage</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-properties">
+<span id="preparing-data-batch-wrapped-stages-properties"></span><h2>Adding Properties<a class="headerlink" href="#adding-properties" title="Link to this heading">#</a></h2>
+<p>Properties let users supply runtime configuration values to the wrapped stage.
+Use <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.components.wrapped_stage.WrappedStage.add_property" title="ibm_watsonx_data_integration.services.datastage.models.components.wrapped_stage.WrappedStage.add_property"><code class="xref py py-meth docutils literal notranslate"><span class="pre">WrappedStage.add_property()</span></code></a> to add a property.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.datastage.models.components.wrapped_stage</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataType</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_stage</span><span class="o">.</span><span class="n">add_property</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;output_path&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">data_type</span><span class="o">=</span><span class="n">DataType</span><span class="o">.</span><span class="n">PATHNAME</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;Output file path&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">default_value</span><span class="o">=</span><span class="s1">&#39;/tmp/output&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">WrappedStage(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_stage</span><span class="o">.</span><span class="n">add_property</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;record_count&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">data_type</span><span class="o">=</span><span class="n">DataType</span><span class="o">.</span><span class="n">INTEGER</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;Number of records to process&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">default_value</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">WrappedStage(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_stage</span><span class="o">.</span><span class="n">add_property</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;mode&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">data_type</span><span class="o">=</span><span class="n">DataType</span><span class="o">.</span><span class="n">LIST</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">prompt</span><span class="o">=</span><span class="s1">&#39;Processing mode&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">list_values</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;fast&#39;</span><span class="p">,</span> <span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="s1">&#39;safe&#39;</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">WrappedStage(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_wrapped_stage</span><span class="p">(</span><span class="n">wrapped_stage</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+<p>Available <code class="xref py py-class docutils literal notranslate"><span class="pre">DataType</span></code> values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DataType.STRING</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DataType.INTEGER</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DataType.FLOAT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DataType.PATHNAME</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DataType.LIST</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DataType.INPUTCOLUMN</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DataType.BOOLEAN</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using <code class="docutils literal notranslate"><span class="pre">DataType.LIST</span></code>, the <code class="docutils literal notranslate"><span class="pre">list_values</span></code> parameter is required and must be a list of strings.
+If no <code class="docutils literal notranslate"><span class="pre">default_value</span></code> is provided, the first item in <code class="docutils literal notranslate"><span class="pre">list_values</span></code> is used as the default.</p>
+</div>
+</section>
+<section id="adding-environment-variables">
+<span id="preparing-data-batch-wrapped-stages-environment-variables"></span><h2>Adding Environment Variables<a class="headerlink" href="#adding-environment-variables" title="Link to this heading">#</a></h2>
+<p>Use <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.components.wrapped_stage.WrappedStage.add_environment_variable" title="ibm_watsonx_data_integration.services.datastage.models.components.wrapped_stage.WrappedStage.add_environment_variable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">WrappedStage.add_environment_variable()</span></code></a>
+to declare environment variables that are set in the executable’s environment at runtime.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_stage</span><span class="o">.</span><span class="n">add_environment_variable</span><span class="p">(</span><span class="s1">&#39;LOG_LEVEL&#39;</span><span class="p">,</span> <span class="s1">&#39;INFO&#39;</span><span class="p">)</span>
+<span class="go">WrappedStage(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_stage</span><span class="o">.</span><span class="n">add_environment_variable</span><span class="p">(</span><span class="s1">&#39;TEMP_DIR&#39;</span><span class="p">,</span> <span class="s1">&#39;/tmp&#39;</span><span class="p">)</span>
+<span class="go">WrappedStage(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_wrapped_stage</span><span class="p">(</span><span class="n">wrapped_stage</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="configuring-exit-codes">
+<span id="preparing-data-batch-wrapped-stages-exit-codes"></span><h2>Configuring Exit Codes<a class="headerlink" href="#configuring-exit-codes" title="Link to this heading">#</a></h2>
+<p>You can add failure and success codes to the wrapped stage as well but you cannot add both at the same time. If <code class="docutils literal notranslate"><span class="pre">all_exit_codes_successful</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> (the default), use <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.components.wrapped_stage.WrappedStage.add_failure_code" title="ibm_watsonx_data_integration.services.datastage.models.components.wrapped_stage.WrappedStage.add_failure_code"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_failure_code()</span></code></a>.
+If it is <code class="docutils literal notranslate"><span class="pre">False</span></code>, use <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.components.wrapped_stage.WrappedStage.add_success_code" title="ibm_watsonx_data_integration.services.datastage.models.components.wrapped_stage.WrappedStage.add_success_code"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_success_code()</span></code></a>.</p>
+<p><strong>Failure codes</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_stage</span><span class="o">.</span><span class="n">add_failure_code</span><span class="p">(</span><span class="s1">&#39;CODE_NAME_1&#39;</span><span class="p">)</span>
+<span class="go">WrappedStage(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_stage</span><span class="o">.</span><span class="n">add_failure_code</span><span class="p">(</span><span class="s1">&#39;255&#39;</span><span class="p">)</span>
+<span class="go">WrappedStage(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_wrapped_stage</span><span class="p">(</span><span class="n">wrapped_stage</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+<p><strong>Success codes</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_stage</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="n">wrapped</span><span class="o">.</span><span class="n">environment</span><span class="o">.</span><span class="n">exit_codes</span><span class="o">.</span><span class="n">all_exit_codes_successful</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wrapped_stage</span><span class="o">.</span><span class="n">add_success_code</span><span class="p">(</span><span class="s1">&#39;SUCCESS_CODE_1&#39;</span><span class="p">)</span>
+<span class="go">WrappedStage(...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_wrapped_stage</span><span class="p">(</span><span class="n">wrapped_stage</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="generating-a-wrapped-stage">
+<span id="preparing-data-batch-wrapped-stages-generating"></span><h2>Generating a Wrapped Stage<a class="headerlink" href="#generating-a-wrapped-stage" title="Link to this heading">#</a></h2>
+<p>Before a wrapped stage can be used in a batch flow, it must be <strong>generated</strong>. Generation compiles the stage’s
+configuration into a usable DataStage stage type that the flow editor recognises. This is a separate step
+from saving — updating the asset persists the configuration, but generation is what makes the stage
+available for use in flows.</p>
+<p>In the UI, these are two distinct buttons on the wrapped stage editor:</p>
+<ul class="simple">
+<li><p><strong>Save</strong> — persists changes to the asset (equivalent to
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_wrapped_stage" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_wrapped_stage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_wrapped_stage()</span></code></a>).</p></li>
+<li><p><strong>Generate</strong> — compiles the saved configuration into a usable stage type (equivalent to
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.generate_wrapped_stage" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.generate_wrapped_stage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.generate_wrapped_stage()</span></code></a>).</p></li>
+</ul>
+<img alt="The Save and Generate buttons in the wrapped stage editor" src="../../../_images/generate_wrapped_stage.png" />
+<p>In the SDK, call <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.generate_wrapped_stage" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.generate_wrapped_stage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">generate_wrapped_stage()</span></code></a>
+after saving your changes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_wrapped_stage</span><span class="p">(</span><span class="n">wrapped_stage</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">generate_wrapped_stage</span><span class="p">(</span><span class="n">wrapped_stage</span><span class="p">)</span>
+<span class="go">&lt;Response [204]&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>You must generate a wrapped stage at least once before adding it to a flow. Re-generate after any
+configuration changes so that the flow editor picks up the latest definition.</p></li>
+<li><p>The UI provides a <strong>Replace</strong> button that swaps the current wrapped stage asset with a different one.
+This operation is not yet implemented in the SDK.</p></li>
+</ul>
+</div>
+</section>
+<section id="using-a-wrapped-stage-in-a-batch-flow">
+<span id="preparing-data-batch-wrapped-stages-using-in-flow"></span><h2>Using a Wrapped Stage in a Batch Flow<a class="headerlink" href="#using-a-wrapped-stage-in-a-batch-flow" title="Link to this heading">#</a></h2>
+<p>Once a wrapped stage asset exists in the project, add it to any batch flow using
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.add_stage" title="ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.add_stage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BatchFlow.add_stage()</span></code></a>
+with <code class="docutils literal notranslate"><span class="pre">type='Wrapped</span> <span class="pre">Stage'</span></code> and the <code class="docutils literal notranslate"><span class="pre">wrapped_stage_name</span></code> parameter set to the asset’s name.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stage_node</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Wrapped Stage&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">wrapped_stage_name</span><span class="o">=</span><span class="s1">&#39;My Custom Stage&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">batch_flow</span><span class="p">)</span>
+<span class="go">&lt;Response [201]&gt;</span>
+</pre></div>
+</div>
+<p>You can also supply a custom <code class="docutils literal notranslate"><span class="pre">label</span></code> for the stage node within the flow:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stage_node</span> <span class="o">=</span> <span class="n">batch_flow</span><span class="o">.</span><span class="n">add_stage</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Wrapped Stage&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Pre-processing Step&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">wrapped_stage_name</span><span class="o">=</span><span class="s1">&#39;My Custom Stage&#39;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">batch_flow</span><span class="p">)</span>
+<span class="go">&lt;Response [201]&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="duplicating-a-wrapped-stage">
+<span id="preparing-data-batch-wrapped-stages-duplicating"></span><h2>Duplicating a Wrapped Stage<a class="headerlink" href="#duplicating-a-wrapped-stage" title="Link to this heading">#</a></h2>
+<p>Use <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.duplicate_wrapped_stage" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.duplicate_wrapped_stage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.duplicate_wrapped_stage()</span></code></a>
+to create a copy of an existing wrapped stage asset. If no <code class="docutils literal notranslate"><span class="pre">name</span></code> is provided, the copy is named <code class="docutils literal notranslate"><span class="pre">&quot;&lt;original</span> <span class="pre">name&gt;</span> <span class="pre">cloned&quot;</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cloned</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">duplicate_wrapped_stage</span><span class="p">(</span><span class="n">wrapped_stage</span><span class="o">=</span><span class="n">wrapped_stage</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;My Custom Stage v2&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cloned</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;My Custom Stage v2&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="deleting-a-wrapped-stage">
+<span id="preparing-data-batch-wrapped-stages-deleting"></span><h2>Deleting a Wrapped Stage<a class="headerlink" href="#deleting-a-wrapped-stage" title="Link to this heading">#</a></h2>
+<p>Use <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_wrapped_stage" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_wrapped_stage"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_wrapped_stage()</span></code></a>
+to permanently remove a wrapped stage asset from the project.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">delete_wrapped_stage</span><span class="p">(</span><span class="n">cloned</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="stages.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Stages</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="batch_schemas.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Schemas</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Section Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-wrapped-stage">Creating a Wrapped Stage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-and-retrieving-wrapped-stages">Listing and Retrieving Wrapped Stages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-a-wrapped-stage">Configuring a Wrapped Stage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-inputs-and-outputs">Adding Inputs and Outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-properties">Adding Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-environment-variables">Adding Environment Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-exit-codes">Configuring Exit Codes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-a-wrapped-stage">Generating a Wrapped Stage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-wrapped-stage-in-a-batch-flow">Using a Wrapped Stage in a Batch Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-a-wrapped-stage">Duplicating a Wrapped Stage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-wrapped-stage">Deleting a Wrapped Stage</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026, IBM.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

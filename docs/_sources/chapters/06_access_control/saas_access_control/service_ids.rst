@@ -4,8 +4,8 @@ Service IDs
 ===========
 
 A service ID identifies a service or application similar to how a user ID identifies a user.
-Service ID management is a platform level service in IBM Cloud that enables you to manage service IDs under your account.
-The SDK provides functionality to interact with the access group API.
+Service ID management is a platform-level service in IBM Cloud that enables you to manage service IDs under your account.
+The SDK provides functionality to interact with the service ID API.
 
 .. note::
     The SDK currently only supports retrieving service IDs.
@@ -23,7 +23,7 @@ In the UI, you can view all service IDs in the current account by **Top left ham
    :width: 100%
 
 
-Service IDs can be retrieved using :py:attr:`Platform.service_ids <ibm_watsonx_data_integration.platform.Platform.service_ids>` property.
+In the SDK, service IDs can be retrieved using :py:attr:`Platform.service_ids <ibm_watsonx_data_integration.platform.Platform.service_ids>` property.
 This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.service_id_model.ServiceIDs` object.
 
 .. code-block:: python

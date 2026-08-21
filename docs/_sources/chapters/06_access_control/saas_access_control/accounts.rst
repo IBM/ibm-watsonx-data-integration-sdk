@@ -4,8 +4,8 @@ Accounts
 ========
 
 An account in IBM Cloud is the top-level container for resource grouping, access control, and billing.
-It provides the context under which all Cloud Pak Data integration workloads—projects, jobs, flows, and connections—operate.
-The SDK provides functionality to interact with the accounts on the watsonx.data integration platform.
+It provides the context under which all Cloud Pak for Data integration workloads—projects, jobs, flows, and connections—operate.
+The SDK provides functionality for interacting with accounts on the watsonx.data integration platform.
 
 This includes operations such as:
     * Listing all accessible accounts
@@ -23,8 +23,8 @@ In the UI, click your account name in the top-right corner to open the account p
    :align: center
    :width: 100%
 
-Accounts can be retrieved using :py:attr:`Platform.accounts <ibm_watsonx_data_integration.platform.Platform.accounts>` property.
-This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.account_model.Accounts` object.
+Accounts can be retrieved using the :py:attr:`Platform.accounts <ibm_watsonx_data_integration.platform.Platform.accounts>` property.
+This property returns an :py:class:`~ibm_watsonx_data_integration.cpd_models.account_model.Accounts` object.
 
 .. code-block:: python
 
@@ -35,7 +35,7 @@ Getting the current account
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can use the :py:attr:`Platform.current_account <ibm_watsonx_data_integration.platform.Platform.current_account>` property to retrieve the account that’s currently in scope for all SDK operations.
-This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.account_model.Account` object.
+This property returns an :py:class:`~ibm_watsonx_data_integration.cpd_models.account_model.Account` object.
 By default, it is the first account you joined or the first one listed in your account list.
 
 .. code-block:: python
@@ -47,9 +47,9 @@ By default, it is the first account you joined or the first one listed in your a
 Fetching an account by ID
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Accounts can be retrieved using :py:attr:`Platform.accounts <ibm_watsonx_data_integration.platform.Platform.accounts>` property.
-You can also filter the account returned based on the ``account_id`` attribute.
-This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.account_model.Account` object.
+Accounts can be retrieved using the :py:attr:`Platform.accounts <ibm_watsonx_data_integration.platform.Platform.accounts>` property.
+You can also filter the returned account using the ``account_id`` attribute.
+This property returns an :py:class:`~ibm_watsonx_data_integration.cpd_models.account_model.Account` object.
 
 .. code-block:: python
 
@@ -59,8 +59,7 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.acco
 Setting the current account
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can use the setter for the :py:attr:`Platform.current_account <ibm_watsonx_data_integration.platform.Platform.current_account>` to override which account will be used for all subsequent SDK operations.
-Pass in an :py:class:`~ibm_watsonx_data_integration.cpd_models.account_model.Account` object.
+You can set the :py:attr:`Platform.current_account <ibm_watsonx_data_integration.platform.Platform.current_account>` property to a new :py:class:`~ibm_watsonx_data_integration.cpd_models.account_model.Account` object to override which account is used for all subsequent SDK operations.
 
 .. skip: start 'only one account available'
 

@@ -26,7 +26,7 @@ In the UI, you can view all users in the current account by navigating to **Top 
    :align: center
    :width: 100%
 
-Users can be retrieved using :py:attr:`Platform.users <ibm_watsonx_data_integration.platform.Platform.users>` property.
+In the SDK, users can be retrieved using the :py:attr:`Platform.users <ibm_watsonx_data_integration.platform.Platform.users>` property.
 This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.user_model.UserProfiles` object.
 
 .. code-block:: python
@@ -37,15 +37,15 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.user
 Getting user details using the IAM ID or User ID
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To view the user details, you can click on the empty area within the row where the user name is displayed.
+In the UI, to view user details, click the empty area within the row where the user name is displayed.
 
 .. image:: /_static/images/users/get_user_details.png
    :alt: Screenshot of the User details in the UI
    :align: center
    :width: 100%
 
-Users can be retrieved using :py:attr:`Platform.users <ibm_watsonx_data_integration.platform.Platform.users>` property.
-You can also further filter the users returned based on the ``iam_id`` or ``user_id`` attribute, but not both.
+In the SDK, users can be retrieved using the :py:attr:`Platform.users <ibm_watsonx_data_integration.platform.Platform.users>` property.
+You can also filter the returned users using either the ``iam_id`` or ``user_id`` attribute, but not both.
 This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.user_model.UserProfile` object.
 
 .. skip: start 'unable to create test user'

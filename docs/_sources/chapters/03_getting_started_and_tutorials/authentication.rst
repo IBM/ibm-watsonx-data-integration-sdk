@@ -75,9 +75,9 @@ Pass in your username and Zen API key into the ``username`` and ``zen_api_key`` 
 ICP4D Authentication (on-prem)
 ------------------------------
 
-For on-premises authentication, alternatively you can also use the :py:class:`ibm_watsonx_data_integration.common.auth.ICP4DAuthenticator` class.
-Pass in your username and cluster url into the ``username`` and ``url`` fields respectively.
-Finally, you may authenticate using either a traditional password or your zen API key by using the ``password`` or ``zen_api_key`` fields respectively. Only one of ``password`` or ``zen_api_key`` is required.
+For on-premises authentication, you can also use the :py:class:`ibm_watsonx_data_integration.common.auth.ICP4DAuthenticator` class.
+Pass your username and cluster URL to the ``username`` and ``url`` fields, respectively.
+Finally, you may authenticate using either a traditional password or your Zen API key by using the ``password`` or ``zen_api_key`` fields, respectively. Only one of ``password`` or ``zen_api_key`` is required.
 
 .. skip: start 'dummy authentication values'
 
@@ -98,4 +98,55 @@ Finally, you may authenticate using either a traditional password or your zen AP
 Using the Authenticator
 -----------------------
 
-Once authenticated with either method, pass the ``auth`` object to the :ref:`Platform class<getting_started_and_tutorials__platform>` to begin interacting with the SDK.
+Once authenticated, pass the ``auth`` object to the :ref:`Platform class <getting_started_and_tutorials__platform>` to begin interacting with the SDK.
+
+Regional Endpoints (SaaS)
+--------------------------
+
+When initializing the :py:class:`~ibm_watsonx_data_integration.platform.Platform`, you can specify a regional endpoint via the ``base_api_url`` parameter.
+If not specified, the SDK defaults to the Dallas endpoint.
+
+The SDK provides an :py:class:`~ibm_watsonx_data_integration.common.constants.IBMCloudRegion` enum for convenient access to regional endpoints:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 40 40
+
+   * - Region
+     - Enum Value
+     - URL
+   * - Dallas
+     - ``IBMCloudRegion.DALLAS``
+     - ``https://api.dataplatform.cloud.ibm.com``
+   * - Frankfurt
+     - ``IBMCloudRegion.FRANKFURT``
+     - ``https://api.eu-de.dataplatform.cloud.ibm.com``
+   * - London
+     - ``IBMCloudRegion.LONDON``
+     - ``https://api.eu-gb.dataplatform.cloud.ibm.com``
+   * - Tokyo
+     - ``IBMCloudRegion.TOKYO``
+     - ``https://api.jp-tok.dataplatform.cloud.ibm.com``
+   * - Sydney
+     - ``IBMCloudRegion.SYDNEY``
+     - ``https://api.au-syd.dai.cloud.ibm.com``
+   * - Toronto
+     - ``IBMCloudRegion.TORONTO``
+     - ``https://api.ca-tor.dai.cloud.ibm.com``
+
+.. skip: start 'production url usage'
+
+.. code-block:: python
+
+    >>> from ibm_watsonx_data_integration.platform import Platform
+    >>> from ibm_watsonx_data_integration.common.constants import IBMCloudRegion
+    >>>
+    >>> # Connect to the Frankfurt regional endpoint using the enum (recommended)
+    >>> platform = Platform(auth, base_api_url=IBMCloudRegion.FRANKFURT)
+    >>>
+    >>> # Alternatively, you can still use the URL string directly
+    >>> platform = Platform(auth, base_api_url='https://api.eu-de.dataplatform.cloud.ibm.com')
+
+.. skip: end
+
+For a full list of available endpoints, refer to the `IBM Cloud API documentation <https://cloud.ibm.com/apidocs/data-ai-common-core>`_.

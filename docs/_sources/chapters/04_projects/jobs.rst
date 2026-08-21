@@ -17,7 +17,7 @@ This includes operations such as:
     * Editing runtime settings of a batch job
     * Starting a job
     * Retrieving a job run
-    * Refreshing a job run state
+    * Refreshing a job run's state
     * Cancelling a job run
     * Retrieving logs from a job run
     * Deleting a job
@@ -26,7 +26,7 @@ This includes operations such as:
 Creating a Job
 ~~~~~~~~~~~~~~
 
-In the UI, you can create and run a new job directly from flow canvas by clicking **Run** button.
+In the UI, you can create and run a new job directly from the flow canvas by clicking the **Run** button.
 
 .. image:: /_static/images/jobs/create_job.png
    :alt: Screenshot of the Job creation in the UI
@@ -41,7 +41,7 @@ first select the appropriate project from the :py:class:`~ibm_watsonx_data_integ
 then use the :py:meth:`Project.create_job() <ibm_watsonx_data_integration.cpd_models.project_model.Project.create_job>`
 method to instantiate the job.
 
-You must specify a reference to :py:class:`~ibm_watsonx_data_integration.cpd_models.flow_model.Flow` object.
+You must specify a reference to a :py:class:`~ibm_watsonx_data_integration.cpd_models.flow_model.Flow` object.
 Additionally, you can provide optional configuration such as environment variables, schedules, retention policies, and runtime parameters.
 The ``runtime_parameters`` parameter accepts either a dictionary or a :py:class:`~ibm_watsonx_data_integration.cpd_models.parameter_set_model.ParameterSet` object.
 This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_model.Job` object.
@@ -50,7 +50,7 @@ This method returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_mo
 
     >>> # Create a job without runtime parameters
     >>> job = project.create_job(
-    ...     flow=flow,
+    ...     flow=batch_flow,
     ...     name='Test Job',
     ...     description='...',
     ... )
@@ -64,17 +64,16 @@ or just ``"parameter_name"`` for local parameters:
 .. code-block:: python
 
     >>> # Create a job with runtime parameters to override parameter set values
-    >>> job = project.create_job(
-    ...     flow=flow,
+    >>> job_with_runtime_parameters = project.create_job(
+    ...     flow=batch_flow_with_parameters,
     ...     name='Test Job with Parameters',
     ...     description='Job with custom parameter values',
     ...     runtime_parameters={
-    ...         'my_paramset.database_name': 'production_db',
-    ...         'my_paramset.batch_size': 1000,
-    ...         'local_param': 'custom_value'
+    ...         'myparamset.param1': 'production_db',
+    ...         'localparam1': 'custom_value'
     ...     }
     ... )
-    >>> job
+    >>> job_with_runtime_parameters
     Job(name='Test Job with Parameters', ...)
 
 
@@ -90,20 +89,20 @@ To list existing jobs in the UI, navigate to the **Jobs** tab in project view.
 
 |
 
-Jobs can be retrieved using the :py:class:`Project.jobs <ibm_watsonx_data_integration.cpd_models.project_model.Project.jobs>` property.
-You can also filter the jobs returned based on attributes including
-``space_id``, ``job_id``, ``job_type`` and ``run_id``.
+In the SDK, jobs can be retrieved using the :py:class:`Project.jobs <ibm_watsonx_data_integration.cpd_models.project_model.Project.jobs>` property.
+You can also filter the returned jobs based on attributes including
+``space_id``, ``job_id``, ``job_type``, and ``run_id``.
 This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_model.Jobs` object.
 
 .. code-block:: python
 
     >>> # Returns all jobs
     >>> project.jobs
-    [Job(name='Test Job', ...)]
-    >>> # Returns first job matching given `name`
+    [Job(...), ...]
+    >>> # Returns the first job matching the given `name`
     >>> project.jobs.get(name='Test Job')
     Job(name='Test Job', ...)
-    >>> # Return a list of all jobs that match given `name`
+    >>> # Returns a list of all jobs that match the given `name`
     >>> project.jobs.get_all(name='Test Job')
     [Job(name='Test Job', ...)]
 
@@ -122,7 +121,7 @@ To update a job, click the pencil icon in the top bar.
 
 |
 
-Updating a job is also possible via your :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` instance.
+In the SDK, updating a job is possible via your :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` instance.
 First, modify the properties of the existing job, then update it using the
 :py:meth:`~ibm_watsonx_data_integration.cpd_models.project_model.Project.update_job` method.
 You can modify properties and ``configuration`` fields of the :py:class:`~ibm_watsonx_data_integration.cpd_models.job_model.Job` object.
@@ -154,7 +153,7 @@ You can display the properties of a job by calling the :py:meth:`Job.print_json(
 
 
 .. note::
-    Most of the fields other than metadata and configuration are runtime settings for batch jobs. These settings can only be set by a special method. This is explained in the next section.
+    Most fields other than metadata and configuration are runtime settings for batch jobs. These settings can be set only by a dedicated method. This is explained in the next section.
 
 .. _projects__jobs__editing_a_batch_job:
 
@@ -162,7 +161,7 @@ Editing runtime settings (Batch)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Batch flow jobs have runtime settings you can edit per job.
-In the UI, you can change runtime settings in the same location you :ref:`update a job<projects__jobs__updating_a_job>`.
+In the UI, you can change runtime settings in the same location where you :ref:`update a job<projects__jobs__updating_a_job>`.
 Batch flows include additional settings.
 
 .. image:: /_static/images/jobs/job_details_page_update_job.jpeg
@@ -179,9 +178,9 @@ Batch flows include additional settings.
 
 |
 
-In the SDK, you can call the :py:meth:`~ibm_watsonx_data_integration.cpd_models.job_model.Job.edit_configuration` method on the job instance. Here are all the different settings you can change:
+In the SDK, you can call the :py:meth:`~ibm_watsonx_data_integration.cpd_models.job_model.Job.edit_configuration` method on the job instance. The following settings can be changed:
 
-* ``environment``: The internal name of the batch environment to use. To find the internal name of a batch environment you can either list all internal names with :py:meth:`Project.list_batch_environments() <ibm_watsonx_data_integration.cpd_models.project_model.Project.list_batch_environments>` or call :py:meth:`Project.get_batch_environment() <ibm_watsonx_data_integration.cpd_models.project_model.Project.get_batch_environment>` with the display name.
+* ``environment``: The internal name of the batch environment to use. To find the internal name of a batch environment, you can either list all internal names with :py:meth:`Project.list_batch_environments() <ibm_watsonx_data_integration.cpd_models.project_model.Project.list_batch_environments>` or call :py:meth:`Project.get_batch_environment() <ibm_watsonx_data_integration.cpd_models.project_model.Project.get_batch_environment>` with the display name.
 
 
 .. code-block:: python
@@ -192,12 +191,12 @@ In the SDK, you can call the :py:meth:`~ibm_watsonx_data_integration.cpd_models.
     'default_datastage_px'
 
 
-* ``warn_limit``: The number of warnings before the stages are stopped. Takes an ``int`` greater than 0 or None for no limit.
-* ``retention_days``: The number of days to keep a job run. Cannot be set if ``retention_amount`` is also set. Takes an ``int`` greater than 0 or None for no limit.
-* ``retention_amount``: The number of job runs to keep in total. Cannot be set if ``retention_days`` is also set. Takes an ``int`` greater than 0 or None for no limit.
+* ``warn_limit``: The number of warnings allowed before the stages are stopped. Takes an ``int`` greater than 0 or ``None`` for no limit.
+* ``retention_days``: The number of days to keep a job run. Cannot be set if ``retention_amount`` is also set. Takes an ``int`` greater than 0 or ``None`` for no limit.
+* ``retention_amount``: The number of job runs to keep in total. Cannot be set if ``retention_days`` is also set. Takes an ``int`` greater than 0 or ``None`` for no limit.
 * ``parameter_value_sets``: The value sets to use in this job. Takes a ``list`` of ``tuples`` where the first value is the name of the parameter set and the second value is the value set to use for that parameter set.
-* ``job_parameters``: The values you want to use for the external and local parameters in this job. Takes a ``list`` of ``tuples`` where the first value is the name of the parameter and the second value is the value to use for that parameter. For external parameters make sure the name of the parameter set is in front of the name of the parameter: ``parameter_set.parameter``.
-* ``schedule``: The schedule you wish to run the job on. Takes a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_model.Schedule` object or None for no schedule.
+* ``job_parameters``: The values to use for the external and local parameters in this job. Takes a ``list`` of ``tuples`` where the first value is the name of the parameter and the second value is the value to use for that parameter. For external parameters, make sure the name of the parameter set comes before the name of the parameter: ``parameter_set.parameter``.
+* ``schedule``: The schedule on which to run the job. Takes a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_model.Schedule` object or ``None`` for no schedule.
 * ``notify_success``: Takes a ``boolean`` indicating whether to notify on success.
 * ``notify_warning``: Takes a ``boolean`` indicating whether to notify on warning.
 * ``notify_failure``: Takes a ``boolean`` indicating whether to notify on failure.
@@ -254,17 +253,16 @@ or just ``"parameter_name"`` for local parameters:
 .. code-block:: python
 
     >>> # Start a job run with runtime parameters to override values
-    >>> job_run = job.start(
+    >>> job_run_with_runtime_parameters = job_with_runtime_parameters.start(
     ...     name='Test Job Run with Custom Parameters',
     ...     description='Run with overridden parameter values',
     ...     runtime_parameters={
-    ...         'my_paramset.rows': 30,
-    ...         'my_paramset.database_name': 'test_db',
-    ...         'local_param': 'override_value'
+    ...         'myparamset.param1': 'value',
+    ...         'localparam1': 'override_value'
     ...     }
     ... )
-    >>> job_run
-    JobRun(...job_name='Test Job Run with Custom Parameters'...)
+    >>> job_run_with_runtime_parameters
+    JobRun(...job_name='Test Job with Parameters'...)
 
 Retrieving a Job Run
 ~~~~~~~~~~~~~~~~~~~~
@@ -278,7 +276,7 @@ To view job runs in the UI, go to the **Jobs** tab, select a job, and open the *
 
 |
 
-Job runs can be retrieved using the :py:class:`~ibm_watsonx_data_integration.cpd_models.job_model.Job.job_runs` property.
+In the SDK, job runs can be retrieved using the :py:class:`~ibm_watsonx_data_integration.cpd_models.job_model.Job.job_runs` property.
 You can filter the returned jobs by ``space_id`` and ``state`` attributes.
 This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_model.JobRuns` object.
 
@@ -287,22 +285,22 @@ This property returns a :py:class:`~ibm_watsonx_data_integration.cpd_models.job_
     >>> # Returns a list of all job runs for given job
     >>> job.job_runs
     [JobRun(...job_name='New name'...)]
-    >>> # Returns a list of all job runs which job_type is `streamsets_flow`
-    >>> job.job_runs.get_all(job_type='streamsets_flow')
+    >>> # Returns a list of all job runs
+    >>> job.job_runs.get_all()
     [JobRun(...job_name='New name'...)]
 
 
-Refreshing a Job Run state
+Refreshing a Job Run State
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the UI, you can refresh a job status by clicking the 3 dots next to a job and then 'Refresh status'.
+In the UI, you can refresh a job's status by clicking the three dots next to a job and then selecting **Refresh status**.
 
 .. image:: /_static/images/jobs/job_run_refresh_status.png
    :alt: Screenshot of the refresh job status button
    :align: center
    :width: 100%
 
-To refresh a job run using the SDK you need to call the :py:meth:`JobRun.refresh_status() <ibm_watsonx_data_integration.cpd_models.job_model.JobRun.refresh_status>` method.
+To refresh a job run using the SDK, call the :py:meth:`JobRun.refresh_status() <ibm_watsonx_data_integration.cpd_models.job_model.JobRun.refresh_status>` method.
 It updates the :py:attr:`JobRun.state <ibm_watsonx_data_integration.cpd_models.job_model.JobRun.state>` property.
 
 .. code-block:: python
@@ -341,20 +339,34 @@ This method returns an HTTP response indicating the status of the operation.
 .. invisible-code-block: python
 
     >>> from tests.integration.test_job import wait_for_expected_state
-    >>> if job_run.state in job_working_states:
-    ...     job_run.cancel()
-    ...     wait_for_expected_state(job, job_run, job_finished_states)
-    <Response [204]>
+    >>> job_run.refresh_status()
+    <Response [200]>
+    >>> _ = job_run.cancel() if job_run.state in job_working_states else None
+    >>> _ = wait_for_expected_state(job, job_run, job_finished_states) if job_run.state in job_working_states else None
 
 
-Retrieving a Job Run logs
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Retrieving Job Run Logs
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _projects__jobs__run_logs:
 
 .. TODO Add UI screenshot when logs will be visible in UI
 
 Runtime logs for a job run execution are stored in the
 :py:class:`JobRun.logs <ibm_watsonx_data_integration.cpd_models.job_model.JobRun.logs>` property.
 It returns a list where each entry is a string containing a log message.
+
+.. important::
+
+    Streaming job run logs are not stored after the job run reaches a terminal state.
+    Fetch them while the job run is still active.
+
+.. important::
+
+    To properly fetch streaming job run logs, refresh the job run instance after it reaches the
+    ``Running`` state by retrieving it again from
+    :py:attr:`Job.job_runs <ibm_watsonx_data_integration.cpd_models.job_model.Job.job_runs>`,
+    for example with ``job.job_runs.get(job_run_id=job_run.job_run_id)``.
 
 .. skip: start 'not supported for streaming flows'
 
@@ -369,6 +381,327 @@ It returns a list where each entry is a string containing a log message.
 
 .. skip: end
 
+Retrieving Job Run metrics (Batch)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Batch job runs provide detailed performance metrics that can be accessed through the
+:py:attr:`JobRun.metrics <ibm_watsonx_data_integration.cpd_models.job_model.JobRun.metrics>` property.
+This property returns a :py:class:`~ibm_watsonx_data_integration.services.datastage.models.job_metrics.BatchJobRunMetrics` object
+containing link and stage metrics for the job run.
+
+The metrics include:
+
+* **Link Metrics**: Information about data flow between stages, including rows read/written, timing, and state
+* **Stage Metrics**: Performance data for each stage, including CPU time, memory usage, partition counts, and row counts
+
+.. invisible-code-block: python
+
+    >>> from tests.integration.test_job import wait_for_expected_state
+    >>> _ = wait_for_expected_state(job_with_runtime_parameters, job_run_with_runtime_parameters, job_finished_states)
+    >>> _ = job_run_with_runtime_parameters.refresh_metrics()
+
+.. code-block:: python
+
+    >>> # Get metrics for a completed batch job run
+    >>> metrics = job_run_with_runtime_parameters.metrics
+    >>> metrics
+    BatchJobRunMetrics(link_metrics=[...], stage_metrics=[...])
+
+**Accessing Link Metrics**
+
+Link metrics provide information about data transfer between stages:
+
+.. code-block:: python
+
+    >>> # View all link metrics
+    >>> metrics.link_metrics
+    [
+        {
+            "start_time": ...,
+            "rows_read": 100,
+            "rows_written": 100,
+            "stop_time": ...,
+            "source": "Row_Generator",
+            "state": "finished",
+            "dest": "Peek",
+            "link_name": "Link_1"
+        }
+    ]
+
+    >>> # Access specific link metrics by index
+    >>> link = metrics.link_metrics[0]
+    >>> link.rows_read
+    100
+    >>> link.source
+    'Row_Generator'
+    >>> link.dest
+    'Peek'
+
+**Accessing Stage Metrics**
+
+Stage metrics provide performance information for each stage in the flow:
+
+.. code-block:: python
+
+    >>> # View all stage metrics
+    >>> metrics.stage_metrics
+    [
+        {
+            "stage_seconds_cpu": ...,
+            "start_time": ...,
+            "rows_read": 0,
+            "rows_written": 100,
+            "stop_time": ...,
+            "total_memory": ...,
+            "stage_type": "PxRowGenerator",
+            "stage_name": "Row_Generator",
+            "partition_row_counts": ...,
+            "num_partitions": 1,
+            "state": "finished"
+        },
+        {
+            "stage_seconds_cpu": ...,
+            "start_time": ...,
+            "rows_read": 100,
+            "rows_written": 0,
+            "stop_time": ...,
+            "total_memory": ...,
+            "stage_type": "PxPeek",
+            "stage_name": "Peek",
+            "partition_row_counts": ...,
+            "num_partitions": 2,
+            "state": "finished"
+        }
+    ]
+
+    >>> # Access specific stage metrics by index
+    >>> stage = metrics.stage_metrics[1]
+    >>> stage.rows_read
+    100
+    >>> stage.stage_name
+    'Peek'
+    >>> stage.num_partitions
+    2
+
+**Filtering Metrics**
+
+The metrics :py:class:`~ibm_watsonx_data_integration.common.utils.SeekableList` supports filtering using the ``get()`` and ``get_all()`` methods:
+
+.. code-block:: python
+
+    >>> # Get first link from a specific source stage
+    >>> link = metrics.link_metrics.get(source='Row_Generator')
+    >>> link.rows_read
+    100
+
+    >>> # Get all links to a specific destination stage
+    >>> links = metrics.link_metrics.get_all(dest='Peek')
+    >>> len(links)
+    1
+
+    >>> # Get first stage of a specific type
+    >>> stage = metrics.stage_metrics.get(stage_type='PxRowGenerator')
+    >>> stage.stage_name
+    'Row_Generator'
+
+    >>> # Get all stages in finished state
+    >>> finished_stages = metrics.stage_metrics.get_all(state='finished')
+    >>> len(finished_stages)
+    2
+
+**Refreshing Metrics**
+
+You can refresh the metrics of a job run by calling :py:meth:`JobRun.refresh_metrics() <ibm_watsonx_data_integration.cpd_models.job_model.JobRun.refresh_metrics>` to get the latest metrics.
+
+.. code-block:: python
+
+    >>> job_run_with_runtime_parameters.refresh_metrics()
+    <Response [200]>
+
+.. invisible-code-block: python
+
+    >>> from tests.integration.test_job import wait_for_expected_state
+    >>> job_run_with_runtime_parameters.refresh_status()
+    <Response [200]>
+    >>> _ = job_run_with_runtime_parameters.cancel() if job_run_with_runtime_parameters.state in job_working_states else None
+    >>> _ = wait_for_expected_state(job_with_runtime_parameters, job_run_with_runtime_parameters, job_finished_states) if job_run_with_runtime_parameters.state in job_working_states else None
+    >>> project.delete_job(job_with_runtime_parameters)
+    <Response [204]>
+
+Retrieving Job Run metrics (Streaming)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Streaming job runs provide performance metrics that can be accessed through the
+:py:attr:`JobRun.metrics <ibm_watsonx_data_integration.cpd_models.job_model.JobRun.metrics>` property.
+This property returns a :py:class:`~ibm_watsonx_data_integration.services.streamsets.models.job_metrics.StreamingJobRunMetrics`
+object containing pipeline summary metrics and per-stage metrics for the job run.
+
+The metrics include:
+
+* **Pipeline Summary**: Aggregated pipeline-level information, including input and output record counts, error counts, batch count, runner availability, and processing rates
+* **Stage Metrics**: Performance data for each stage, including input and output record counts, error counts, processing rates, and batch processing timing statistics
+
+.. important::
+
+    Streaming job run metrics are not stored after the job run reaches a terminal state.
+    Fetch them while the job run is still active.
+
+.. important::
+
+    To properly fetch streaming job run metrics, refresh the job run instance after it reaches the
+    ``Running`` state by retrieving it again from
+    :py:attr:`Job.job_runs <ibm_watsonx_data_integration.cpd_models.job_model.Job.job_runs>`,
+    for example with ``job.job_runs.get(job_run_id=job_run.job_run_id)``.
+
+.. invisible-code-block: python
+
+    >>> from ibm_watsonx_data_integration.cpd_models.job_model import JobRunState
+    >>> import time
+    >>> streaming_job = project.create_job(
+    ...     flow=flow,
+    ...     name='Streaming Metrics Job',
+    ...     description='Job used for streaming metrics documentation examples',
+    ... )
+    >>> streaming_job_run = streaming_job.start(name='Streaming Metrics Job Run')
+    >>> _ = wait_for_expected_state(streaming_job, streaming_job_run, [JobRunState.Running])
+    >>> streaming_job_run = streaming_job.job_runs.get(job_run_id=streaming_job_run.job_run_id)
+    >>> time.sleep(10)  # Need sometime for backend processing, not ideal should be updated in the future
+    >>> streaming_job_run = streaming_job.job_runs.get(job_run_id=streaming_job_run.job_run_id)
+    >>> metrics = streaming_job_run.metrics
+
+.. skip: start 'metrics state depends on timing'
+
+.. code-block:: python
+
+    >>> # Make sure that job is running
+    >>> streaming_job_run.state
+    'Running'
+    >>> metrics
+    StreamingJobRunMetrics(pipeline_summary={...}, stages=[...])
+
+.. skip: end
+
+**Accessing Pipeline Summary**
+
+Pipeline summary metrics provide an overview of the entire streaming pipeline run:
+
+.. code-block:: python
+
+    >>> metrics.pipeline_summary
+    {
+        "input_records": ...,
+        "output_records": ...,
+        "error_records": ...,
+        "stage_errors": ...,
+        "batch_count": ...,
+        "total_runners": ...,
+        "available_runners": ...,
+        "input_rate_per_sec": ...,
+        "output_rate_per_sec": ...,
+        "error_rate_per_sec": ...
+    }
+
+**Accessing Stage Metrics**
+
+Stage metrics provide performance information for each stage in the streaming flow:
+
+.. code-block:: python
+
+    >>> # View all stage metrics
+    >>> metrics.stages
+    [
+        {
+            "stage_id": "DevRawDataSource_01",
+            "stage_name": "DevRawDataSource_01",
+            "input_records": ...,
+            "output_records": ...,
+            "error_records": ...,
+            "stage_errors": ...,
+            "input_rate_per_sec": ...,
+            "output_rate_per_sec": ...,
+            "avg_processing_time_sec": ...,
+            "min_processing_time_sec": ...,
+            "max_processing_time_sec": ...,
+            "p95_processing_time_sec": ...,
+            "p99_processing_time_sec": ...,
+            "batch_count": ...
+        },
+        {
+            "stage_id": ...,
+            "stage_name": ...,
+            "input_records": ...,
+            "output_records": ...,
+            "error_records": ...,
+            "stage_errors": ...,
+            "input_rate_per_sec": ...,
+            "output_rate_per_sec": ...,
+            "avg_processing_time_sec": ...,
+            "min_processing_time_sec": ...,
+            "max_processing_time_sec": ...,
+            "p95_processing_time_sec": ...,
+            "p99_processing_time_sec": ...,
+            "batch_count": ...
+        },
+        {
+            "stage_id": "Trash_01",
+            "stage_name": "Trash_01",
+            "input_records": ...,
+            "output_records": ...,
+            "error_records": ...,
+            "stage_errors": ...,
+            "input_rate_per_sec": ...,
+            "output_rate_per_sec": ...,
+            "avg_processing_time_sec": ...,
+            "min_processing_time_sec": ...,
+            "max_processing_time_sec": ...,
+            "p95_processing_time_sec": ...,
+            "p99_processing_time_sec": ...,
+            "batch_count": ...
+        }
+    ]
+    >>> # Access specific stage metrics by index
+    >>> stage = metrics.stages[0]
+    >>> stage.stage_name
+    'DevRawDataSource_01'
+
+**Filtering Metrics**
+
+The
+:py:attr:`~ibm_watsonx_data_integration.services.streamsets.models.job_metrics.StreamingJobRunMetrics.stages`
+:py:class:`~ibm_watsonx_data_integration.common.utils.SeekableList` supports filtering using the ``get()`` and ``get_all()`` methods:
+
+.. code-block:: python
+
+    >>> # Get metrics for a specific stage by name
+    >>> stage = metrics.stages.get(stage_name='DevRawDataSource_01')
+    >>> stage.stage_name
+    'DevRawDataSource_01'
+
+    >>> # Get all stages matching a specific name
+    >>> stages = metrics.stages.get_all(stage_name='Trash_01')
+    >>> len(stages)
+    1
+
+**Refreshing Metrics**
+
+You can refresh the metrics of a job run by calling
+:py:meth:`JobRun.refresh_metrics() <ibm_watsonx_data_integration.cpd_models.job_model.JobRun.refresh_metrics>`
+to get the latest metrics.
+
+.. code-block:: python
+
+    >>> streaming_job_run.refresh_metrics()
+    <Response [200]>
+
+.. invisible-code-block: python
+
+    >>> streaming_job_run.refresh_status()
+    <Response [200]>
+    >>> _ = streaming_job_run.cancel() if streaming_job_run.state in job_working_states else None
+    >>> _ = wait_for_expected_state(streaming_job, streaming_job_run, job_finished_states) if streaming_job_run.state in job_working_states else None
+    >>> project.delete_job(streaming_job)
+    <Response [204]>
+
 Deleting a Job
 ~~~~~~~~~~~~~~
 
@@ -382,7 +715,7 @@ To delete a job, click the trash icon in the top bar.
 
 |
 
-To delete a job, you can pass the job instance to the :py:meth:`Project.delete_job() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_job>` method.
+In the SDK, to delete a job you can pass the job instance to the :py:meth:`Project.delete_job() <ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_job>` method.
 This method returns an HTTP response indicating the status of the delete operation.
 
 .. code-block:: python
@@ -395,9 +728,9 @@ Resetting an Offset (Streaming)
 .. warning::
    This method doesn't work on batch jobs.
 
-Jobs use offsets to track the last processed data before they were completed or canceled.
+Jobs use offsets to track the last processed data before they were completed or cancelled.
 In certain cases, it may be necessary to reset a job’s offset to reprocess data.
-To reset the job offset in the UI select **Restart from initial offset** from edit job screen.
+To reset the job offset in the UI, select **Restart from initial offset** from the edit job screen.
 
 .. image:: /_static/images/jobs/reset_job_offsets.jpeg
     :alt: Screenshot of resetting Job offsets

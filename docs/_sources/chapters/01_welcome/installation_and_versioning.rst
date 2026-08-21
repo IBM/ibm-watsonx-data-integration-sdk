@@ -3,7 +3,7 @@
 Installation and Versioning
 ===========================
 
-Installation of the ``ibm-watsonx-data-integration`` SDK for Python is managed through pip.
+The ``ibm-watsonx-data-integration`` SDK for Python is installed using pip.
 
 The SDK package itself can be found in our project on `PyPI <https://pypi.org/project/ibm-watsonx-data-integration>`_.
 

@@ -13,13 +13,14 @@ The SDK provides the following functionality to interact with batch flows:
     * Duplicating a flow
     * Deleting a flow
     * Compiling a flow
+    * Auto-arranging a flow
 
 .. _preparing_data__batch__flows__creating_a_flow:
 
 Creating a Flow
 ~~~~~~~~~~~~~~~
 
-In the UI, you can create a flow by navigating to **Assets -> New asset -> Transform and integrate data with DataStage**.
+In the UI, you can create a flow by navigating to **Assets -> New asset -> Transform and integrate data with Batch**.
 
 .. image:: /_static/images/flows/create_batch_flow.png
     :alt: Screenshot of the flow creation page.
@@ -38,9 +39,6 @@ This method returns a :py:class:`~ibm_watsonx_data_integration.services.datastag
     >>> new_flow
     BatchFlow(..., name='My batch flow', description='optional description', flow_id=...)
 
-.. invisible-code-block: python
-    project.create_flow(name='My streaming flow', description='optional description', environment=environment)
-
 .. _preparing_data__batch__flows__retrieving_a_flow:
 
 Retrieving Flows
@@ -49,13 +47,13 @@ Retrieving Flows
 Flows can be retrieved through a :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object using the
 :py:attr:`Project.flows <ibm_watsonx_data_integration.cpd_models.project_model.Project.flows>` property.
 If you wish to only retrieve batch flows use the :py:meth:`Project.flows.get_all() <ibm_watsonx_data_integration.common.models.CollectionModel.get_all>` method to filter by ``flow_type``.
-You can also retrieve a single flow using the :py:meth:`Project.flows.get() <ibm_watsonx_data_integration.common.models.CollectionModel.get>` method which requires the ``flow_id`` parameter.
+You can also retrieve a single flow using the :py:meth:`Project.flows.get() <ibm_watsonx_data_integration.common.models.CollectionModel.get>` method which takes in unique identifiers such as the ``flow_id`` or ``name``.
 
 
 .. code-block:: python
 
     >>> project.flows  # a list of all the flows
-    [StreamingFlow(name='example flow', ...), ...BatchFlow(..., name='example batch flow', ...)...]
+    [StreamingFlow(...), ...BatchFlow(...)...]
     >>> project.flows.get_all(flow_type='batch')
     [...BatchFlow(..., name='example batch flow', ...)...]
     >>> project.flows.get(name='My batch flow')
@@ -102,17 +100,85 @@ Compiling is required before running a flow, so pressing the 'Run' icon in the U
    :align: center
    :width: 100%
 
-Because of this UI behavior, in the SDK, making a job out of a Batch flow will **automatically compile** the flow for you.
+Because of this UI behavior, in the SDK, creating a job from a batch flow will **automatically compile** the flow for you.
 However, if you wish to just compile a flow without creating or running a job for it, you can still call the :py:meth:`BatchFlow.compile() <ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.compile>` method.
 This will return an HTTP response indicating the status of the compile operation.
+
+.. _preparing_data__batch__flows__auto_arranging_a_flow:
+
+Auto-Arranging a Flow
+~~~~~~~~~~~~~~~~~~~~~
+
+In the UI, stages in a flow can be manually positioned by dragging them around the canvas. However, when creating flows programmatically or when a flow becomes cluttered, you may want to automatically arrange the stages in a clean, organized layout.
+
+By default, flows are automatically arranged when updated. This behavior can be controlled using the :py:meth:`BatchFlow.use_auto_arrange() <ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.use_auto_arrange>` method.
+
+Automatic Arrangement (Default Behavior)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When you create a new flow, automatic arrangement is enabled by default. This means stages will be automatically positioned based on their stages and links whenever the flow is updated:
+
+.. code-block:: python
+
+    >>> # Create a flow - auto-arrange is enabled by default
+    >>> batch_flow_auto = project.create_flow(name='My auto arranged flow', flow_type='batch')
+    >>> # ... add stages and links ...
+    >>>
+    >>> # When you update, stages are automatically arranged
+    >>> project.update_flow(batch_flow_auto)
+    <Response [201]>
+
+Disabling Automatic Arrangement
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you want to preserve the exact positioning of stages in an existing flow, you can disable automatic arrangement. This is useful when you've manually positioned stages in the UI and want to maintain that layout when making programmatic changes:
+
+.. code-block:: python
+
+    >>> # Get an existing flow and disable auto-arrange
+    >>> batch_flow_auto = project.flows.get(name='My auto arranged flow')
+    >>> batch_flow_auto.use_auto_arrange(False)
+    BatchFlow(...)
+    >>> # ... add stages and links ...
+    >>>
+    >>> # When you update, the original stage positions are preserved
+    >>> project.update_flow(batch_flow_auto)
+    <Response [201]>
+
+.. note::
+    When auto-arrange is disabled, newly added stages may not be positioned optimally relative to existing stages. You may need to manually position them in the UI or call ``auto_arrange()`` once to establish a clean layout.
+
+Manual Arrangement
+^^^^^^^^^^^^^^^^^^
+
+You can also manually trigger arrangement at any time using the :py:meth:`BatchFlow.auto_arrange() <ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.auto_arrange>` method:
+
+.. code-block:: python
+
+    >>> # Manually arrange stages at any time
+    >>> batch_flow_auto.auto_arrange()
+    >>>
+    >>> # Update the flow with the new layout
+    >>> project.update_flow(batch_flow_auto)
+    <Response [201]>
+
+This is particularly useful when:
+
+* Creating flows programmatically where manual positioning is not practical
+* Cleaning up flows that have become cluttered over time
+* Standardizing the layout of multiple similar flows
+* Importing flows that may have inconsistent positioning
+
+.. note::
+    The actual layout calculation happens when the flow is updated or visualized. The ``auto_arrange()`` method removes existing position data to trigger the automatic arrangement, while ``use_auto_arrange()`` controls whether this happens automatically on every update.
 
 .. _preparing_data__batch__flows__setting_runtime_parameters_of_a_flow:
 
 Setting Runtime Parameters of a Flow
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the UI, you can set the runtime parameters of a flow by clicking the settings button and going to the runtime parameters tab. This tab will only show up if the flow has a local parameter or is using a parameter set.
-In this tab you can choose what value set you want to use for your parameter sets or change the values of specific parameters.
+In the UI, you can set the runtime parameters of a flow by clicking the settings button and going to the runtime parameters tab. This tab appears only if the flow has a local parameter or is using a parameter set.
+In this tab, you can choose which value set to use for your parameter sets or change the values of specific parameters.
 
 .. image:: /_static/images/flows/open_flow_settings.png
    :alt: Screenshot of the settings button.
@@ -144,7 +210,7 @@ In the SDK, there are a few different methods for changing runtime parameters.
 .. skip: end
 
 .. warning::
-   Changes to runtime parameters may not show up in the UI. If you are strictly using the SDK this will not be a problem.
+   Changes to runtime parameters may not appear in the UI. If you are strictly using the SDK, this will not be a problem.
 
 .. _preparing_data__batch__flows__setting_runtime_settings_of_a_flow:
 
@@ -160,7 +226,7 @@ These settings include the environment for the flow, the warning limit, and the 
    :width: 100%
 
 
-In the SDK, you can change the runtime settings of a flow by directly editing the ``configuration`` property of a :py:class:`~ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow`. There are 4 different fields you can change.
+In the SDK, you can change the runtime settings of a flow by directly editing the ``configuration`` property of a :py:class:`~ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow`. There are four different fields you can change.
 
 * ``environment``: The internal name of the batch environment to use. To find the internal name of a batch environment you can either list all internal names with :py:meth:`~ibm_watsonx_data_integration.cpd_models.project_model.Project.list_batch_environments` or call :py:meth:`~ibm_watsonx_data_integration.cpd_models.project_model.Project.get_batch_environment` with the display name.
 * ``warn_limit``: The number of warnings before the stages are stopped. Takes an ``int`` greater than 0 or None for no limit.
@@ -174,7 +240,7 @@ In the SDK, you can change the runtime settings of a flow by directly editing th
     >>> batch_flow.configuration.retention_days=15
 
 .. warning::
-   Changes to runtime settings may not show up in the UI. If you are strictly using the SDK this will not be a problem.
+   Changes to runtime settings may not appear in the UI. If you are strictly using the SDK, this will not be a problem.
 
 
 .. _preparing_data__batch__flows__exporting_a_flow:
@@ -186,8 +252,11 @@ In the SDK, you can change the runtime settings of a flow by directly editing th
 Importing Flows
 ~~~~~~~~~~~~~~~
 
+.. note::
+    Importing flows is only supported for batch flows.
+
 To import a flow via the SDK using a zip file, you need to call the :py:meth:`Project.import_flows() <ibm_watsonx_data_integration.cpd_models.project_model.Project.import_flows>` method and you
-must specify the ``source`` parameter, which is the Path to the zip file containing the json(s) of the batch flow(s) to be imported and the ``type`` parameter, which should be
+must specify the ``source`` parameter, which is the path to the ZIP file containing the JSON file or files for the batch flow or flows to be imported, and the ``type`` parameter, which should be
 ``'batch'``.
 
 You can also specify the following parameters to configure the import to better fit your needs:
@@ -206,9 +275,16 @@ object which will contain information about the import request. It is important 
 asynchronous action, meaning that once you have received the response object the import might not be finished. The ``wait``
 parameter allows you to manage this in different ways depending on its value:
 
-    * ``-1``: The default option, which will wait until the import is complete.
-    * ``0>``: Time, in seconds, to wait for the import to finish.
+    * ``-1``: The default option, which will wait until the import reaches a terminal status
+      (:py:attr:`~ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportStatus.COMPLETED`
+      or :py:attr:`~ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportStatus.CANCELLED`).
+    * ``>0``: Time, in seconds, to wait for the import to finish.
     * ``None`` or ``0``: No wait time, will return immediately.
+
+.. note::
+    When using ``wait=-1``, always check ``response.status`` after the call returns — a ``CANCELLED`` status indicates
+    the import service terminated the import autonomously (for example, due to resource constraints). Only a ``COMPLETED``
+    status guarantees all flows were processed.
 
 
 .. skip: start 'Do not actually import a flow'
@@ -216,17 +292,17 @@ parameter allows you to manage this in different ways depending on its value:
 .. code-block:: python
 
     >>> # wait until import has completed
-    >>> resonse = project.import_flows(type='batch', source='flows_to_import.zip', wait=-1)
+    >>> response = project.import_flows(type='batch', source='flows_to_import.zip', wait=-1)
     >>> response.status
     BatchImportStatus.COMPLETED
 
     >>> # no wait time
-    >>> resonse = project.import_flows(type='batch', source='flows_to_import.zip', wait=None)
+    >>> response = project.import_flows(type='batch', source='flows_to_import.zip', wait=None)
     >>> response.status
     BatchImportStatus.STARTED
 
     >>> # wait for 10 seconds
-    >>> resonse = project.import_flows(type='batch', source='flows_to_import.zip', wait=10)
+    >>> response = project.import_flows(type='batch', source='flows_to_import.zip', wait=10)
     >>> response.status
     BatchImportStatus.IN_PROGRESS
 
@@ -242,13 +318,13 @@ method.
 .. code-block:: python
 
     >>> # no wait time
-    >>> resonse = project.import_flows(type='batch', source='flows_to_import.zip', wait=None)
+    >>> response = project.import_flows(type='batch', source='flows_to_import.zip', wait=None)
     >>> response.status
     BatchImportStatus.STARTED
 
-    >> time.sleep(100) # with the assumption the import will be complete
-    >> response = response.refresh()
-    >> response.status
+    >>> time.sleep(100) # with the assumption the import will be complete
+    >>> response = response.refresh()
+    >>> response.status
     BatchImportStatus.COMPLETED
 
 .. skip: end
@@ -265,7 +341,7 @@ that are returned will only have the ``flow_id`` and ``name`` fields populated.
 .. code-block:: python
 
     >>> # no wait time
-    >>> resonse = project.import_flows(type='batch', source='flows_to_import.zip', wait=-1)
+    >>> response = project.import_flows(type='batch', source='flows_to_import.zip', wait=-1)
     >>> response.status
     BatchImportStatus.STARTED
 
@@ -273,3 +349,50 @@ that are returned will only have the ``flow_id`` and ``name`` fields populated.
     <list_iterator object at 0x107385960>
 
 .. skip: end
+
+.. _preparing_data__batch__flows__importing_flows_from_isx:
+
+Importing Flows from an ISX File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In addition to zip files, batch flows can be imported from a legacy ISX export file. ISX is the legacy format
+used for exporting DataStage assets. The same
+:py:meth:`Project.import_flows() <ibm_watsonx_data_integration.cpd_models.project_model.Project.import_flows>` method is
+used: when the ``source`` file has an ``.isx`` extension, the file is uploaded to the DataStage migration service, which
+converts the legacy job designs into batch flows in your project. The conversion happens entirely on the server, so the
+same result is produced as when uploading the ISX file through the UI.
+
+.. note::
+    Make sure that the ISX file export includes any dependencies, such as parameter sets and table definitions.
+
+The ``on_failure``, ``conflict_resolution``, ``import_only``, and ``wait`` parameters behave the same as for zip
+imports. The ``include_dependencies``, ``replace_mode``, and ``import_binaries`` parameters only apply to zip imports
+and are ignored for ISX imports.
+
+Additional migration options can be provided through the ``isx_options`` parameter using an
+:py:class:`~ibm_watsonx_data_integration.services.datastage.models.import_response_model.IsxImportOptions` object.
+Any option left unset is omitted from the request, in which case the migration service default is used.
+
+.. skip: start 'Do not actually import a flow'
+
+.. code-block:: python
+
+    >>> # wait until the migration has completed
+    >>> response = project.import_flows(type='batch', source='legacy_jobs.isx', wait=-1)
+    >>> response.status
+    BatchImportStatus.COMPLETED
+
+    >>> # provide additional migration options
+    >>> from ibm_watsonx_data_integration.services.datastage.models.import_response_model import IsxImportOptions
+    >>> options = IsxImportOptions(create_missing_parameters=True, enable_platform_connection=True)
+    >>> response = project.import_flows(type='batch', source='legacy_jobs.isx', isx_options=options, wait=-1)
+
+.. skip: end
+
+The returned :py:class:`~ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportResponse`
+behaves the same as for zip imports: use
+:py:meth:`BatchImportResponse.refresh() <~ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportResponse.refresh>`
+to poll the migration status and
+:py:meth:`BatchImportResponse.imported_flows() <~ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportResponse.imported_flows>`
+to retrieve the converted flows. An in-progress ISX import can also be cancelled with
+:py:meth:`BatchImportResponse.cancel() <~ibm_watsonx_data_integration.services.datastage.models.import_response_model.BatchImportResponse.cancel>`.

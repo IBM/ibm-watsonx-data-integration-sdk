@@ -1,0 +1,1045 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
+    <title>Flows &#8212; ibm-watsonx-data-integration 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=f8c2f790" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=30646c52"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/05_preparing_data/udi/flows';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Datasource Type" href="../datasources.html" />
+    <link rel="prev" title="UDI (Unstructured Data Integration)" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.1.0</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/prereqs.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/supported_products.html">Supported Products</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/release_notes.html">What’s new</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/known_issues_and_limitations.html">Known Issues and Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/faq.html">Get Help</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03_getting_started_and_tutorials/index.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/platform.html">Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_batch.html">Code Generation (Batch)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_streaming.html">Code Generation (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_connections.html">Code Generation for Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/http_retry.html">HTTP Retry Management</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/jobs.html">Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/environments_streaming.html">Environments (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/engines_streaming.html">Engines (Streaming)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Preparing Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../batch/index.html">Batch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../batch/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/compilation_mode.html">Compilation Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/stages.html">Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/wrapped_stages.html">Wrapped Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/link_partitioning.html">Link Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/data_definitions.html">Data Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/schema_libraries.html">XML Schema Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/hierarchical_data.html">Hierarchical Data Stage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/subflows.html">Subflows</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../pipelines/index.html">Pipelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/components.html">Pipeline Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/settings.html">Pipeline Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/examples.html">Pipeline Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">UDI (Unstructured Data Integration)</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Flows</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasources.html">Datasource Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../connections.html">Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parameter_sets.html">Parameter Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/on_prem_access_control/index.html">On-Prem Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/roles.html">Roles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/saas_access_control/index.html">SaaS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/aws_access_control/users.html">Users</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06_access_control/project_collaborators.html">Project Collaborators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../07_mcp_server/index.html">MCP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../07_mcp_server/mcp_server_setup.html">MCP Server Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07_mcp_server/mcp_server_tools.html">MCP Server Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07_mcp_server/mcp_server_skills.html">MCP Server Skills</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html">Models</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Flows</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Section Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-flow">Creating a Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-flows">Retrieving Flows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-flow">Updating a Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-a-flow">Duplicating a Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-flow">Deleting a Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-jobs">Running Jobs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discovering-available-operators">Discovering Available Operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-operators">Custom Operators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-custom-operators">Listing Custom Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uploading-custom-operators">Uploading Custom Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-custom-operators">Deleting Custom Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-custom-operators">Using Custom Operators</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment-spaces">Deployment Spaces</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-available-spaces">Listing Available Spaces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promoting-to-a-space">Promoting to a Space</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-in-a-space">Running in a Space</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-logs">Execution Logs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branching-and-merging">Branching and Merging</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-branching-operator">Creating a Branching Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-branches">Adding Branches</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-branches">Merging Branches</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-branching">Nested Branching</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-branching-example">Complete Branching Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-sets-and-local-parameters">Parameter Sets and Local Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attaching-a-parameter-set-to-a-flow">Attaching a Parameter Set to a Flow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-a-default-value-set">Selecting a Default Value Set</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overriding-a-parameter-set-value-at-the-flow-level">Overriding a Parameter Set Value at the Flow Level</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-local-parameters">Adding Local Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overriding-a-local-parameter-value-at-run-time">Overriding a Local Parameter Value at Run Time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#per-run-overrides-via-job-start">Per-Run Overrides via Job Start</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-operators">Pipeline Operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-reference">API Reference</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="flows">
+<span id="preparing-data-udi-flows"></span><h1>Flows<a class="headerlink" href="#flows" title="Link to this heading">#</a></h1>
+<p>UDI (Unstructured Data Integration) flows provide a Python-based orchestration framework for data integration pipelines.
+Unlike traditional batch or streaming flows, UDI flows use a declarative pipeline definition with operators that are executed by a Python orchestrator.</p>
+<dl class="simple">
+<dt>The SDK provides the following functionality to interact with UDI flows:</dt><dd><ul class="simple">
+<li><p>Creating a flow</p></li>
+<li><p>Retrieving flows</p></li>
+<li><p>Updating a flow</p></li>
+<li><p>Duplicating a flow</p></li>
+<li><p>Deleting a flow</p></li>
+<li><p>Running jobs</p></li>
+</ul>
+</dd>
+</dl>
+<section id="creating-a-flow">
+<span id="preparing-data-udi-flows-creating-a-flow"></span><h2>Creating a Flow<a class="headerlink" href="#creating-a-flow" title="Link to this heading">#</a></h2>
+<p>UDI flows are created by first creating an empty flow, then adding operators using the
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.add_operator" title="ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.add_operator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UDIFlow.add_operator()</span></code></a> method.</p>
+<p>In the SDK, you can create a UDI flow from a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> object using the
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.create_flow" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.create_flow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.create_flow()</span></code></a> method.
+You must specify <code class="docutils literal notranslate"><span class="pre">flow_type='udi'</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;My UDI flow&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;optional description&#39;</span><span class="p">,</span> <span class="n">flow_type</span><span class="o">=</span><span class="s1">&#39;udi&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span>
+<span class="go">UDIFlow(name=&#39;My UDI flow&#39;, description=&#39;optional description&#39;, flow_id=..., pipeline_details=...)</span>
+</pre></div>
+</div>
+<p>After creating a flow, you can add operators to build your data integration pipeline.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To add operators that require data assets (like <code class="docutils literal notranslate"><span class="pre">ingest_cpd_assets</span></code>), you first need to upload assets to your project.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After adding operators, you must call <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_flow" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_flow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_flow()</span></code></a>
+to save the changes to the server.</p>
+</div>
+</section>
+<section id="retrieving-flows">
+<span id="preparing-data-udi-flows-retrieving-flows"></span><h2>Retrieving Flows<a class="headerlink" href="#retrieving-flows" title="Link to this heading">#</a></h2>
+<p>UDI flows can be retrieved through a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project" title="ibm_watsonx_data_integration.cpd_models.project_model.Project"><code class="xref py py-class docutils literal notranslate"><span class="pre">Project</span></code></a> object using the
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.flows" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.flows"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Project.flows</span></code></a> property.
+To retrieve only UDI flows, use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.common.models.CollectionModel.get_all" title="ibm_watsonx_data_integration.common.models.CollectionModel.get_all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.flows.get_all()</span></code></a> method with <code class="docutils literal notranslate"><span class="pre">flow_type='udi'</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">flows</span>
+<span class="go">[...]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">udi_flows</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">flows</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="n">flow_type</span><span class="o">=</span><span class="s1">&#39;udi&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">udi_flows</span>
+<span class="go">[..., UDIFlow(name=&#39;My UDI flow&#39;, description=&#39;optional description&#39;, flow_id=..., pipeline_details=...), ...]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">flows</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;My UDI flow&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_flow</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;My UDI flow&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="updating-a-flow">
+<span id="preparing-data-udi-flows-updating-a-flow"></span><h2>Updating a Flow<a class="headerlink" href="#updating-a-flow" title="Link to this heading">#</a></h2>
+<p>You can update a UDI flow’s name and description using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.update_flow" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.update_flow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.update_flow()</span></code></a> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Updated UDI Flow Name&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_flow</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;Updated description&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">new_flow</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span>
+<span class="go">200</span>
+</pre></div>
+</div>
+</section>
+<section id="duplicating-a-flow">
+<span id="preparing-data-udi-flows-duplicating-a-flow"></span><h2>Duplicating a Flow<a class="headerlink" href="#duplicating-a-flow" title="Link to this heading">#</a></h2>
+<p>You can create a copy of an existing UDI flow using the project’s <code class="docutils literal notranslate"><span class="pre">duplicate_flow()</span></code> method.
+This creates a new flow with the same pipeline definition but with a new name and description.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">udi_flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">flows</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;My UDI flow&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">duplicated_flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">duplicate_flow</span><span class="p">(</span><span class="n">udi_flow</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Copy of My Flow&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Duplicated flow for testing&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">duplicated_flow</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Copy of My Flow&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">delete_flow</span><span class="p">(</span><span class="n">duplicated_flow</span><span class="p">)</span>
+<span class="go">&lt;Response [...]&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">duplicate_flow()</span></code> method creates a copy of the flow by fetching its complete definition from the API and creating a new flow with the same configuration.</p>
+</div>
+</section>
+<section id="deleting-a-flow">
+<span id="preparing-data-udi-flows-deleting-a-flow"></span><h2>Deleting a Flow<a class="headerlink" href="#deleting-a-flow" title="Link to this heading">#</a></h2>
+<p>To delete a UDI flow, use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_flow" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_flow"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_flow()</span></code></a> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">response</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">delete_flow</span><span class="p">(</span><span class="n">new_flow</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">204</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</section>
+<section id="running-jobs">
+<span id="preparing-data-udi-flows-running-jobs"></span><h2>Running Jobs<a class="headerlink" href="#running-jobs" title="Link to this heading">#</a></h2>
+<p>UDI flows can be executed as jobs. Create and run a job using the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.create_job" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.create_job"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.create_job()</span></code></a> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span><span class="n">flow</span><span class="o">=</span><span class="n">new_flow</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;My UDI Job&#39;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Process data with UDI pipeline&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job</span>
+<span class="go">Job(..., name=&#39;My UDI Job&#39;, job_id=...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job_run</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job_run</span><span class="o">.</span><span class="n">state</span>
+<span class="go">&#39;...&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">delete_job</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+<span class="go">&lt;Response [...]&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="discovering-available-operators">
+<span id="preparing-data-udi-flows-discovering-operators"></span><h2>Discovering Available Operators<a class="headerlink" href="#discovering-available-operators" title="Link to this heading">#</a></h2>
+<p>To discover all available operators and their parameters, use the
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.operators_metadata" title="ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.operators_metadata"><code class="xref py py-attr docutils literal notranslate"><span class="pre">UDIFlow.operators_metadata</span></code></a> property.
+This returns a collection of <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.udi.models.operator_model.OperatorMetadata" title="ibm_watsonx_data_integration.services.udi.models.operator_model.OperatorMetadata"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorMetadata</span></code></a> entries,
+each describing an operator type including required and optional parameters, parameter types, descriptions, and default values.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get metadata for all available operators</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">all_metadata</span> <span class="o">=</span> <span class="n">new_flow</span><span class="o">.</span><span class="n">operators_metadata</span><span class="o">.</span><span class="n">get_all</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">all_metadata</span>
+<span class="go">[..., OperatorMetadata(operator_type=&#39;ingest_cpd_assets&#39;, category=..., attributes=..., features=...), ...]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># View all available operator types</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">operator_types</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="o">.</span><span class="n">operator_type</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">all_metadata</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;ingest_cpd_assets&#39;</span> <span class="ow">in</span> <span class="n">operator_types</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get metadata for a specific operator type</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ingest_metadata</span> <span class="o">=</span> <span class="n">new_flow</span><span class="o">.</span><span class="n">operators_metadata</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">operator_type</span><span class="o">=</span><span class="s1">&#39;ingest_cpd_assets&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ingest_metadata</span><span class="o">.</span><span class="n">operator_type</span>
+<span class="go">&#39;ingest_cpd_assets&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-operators">
+<span id="preparing-data-udi-flows-custom-operators"></span><h2>Custom Operators<a class="headerlink" href="#custom-operators" title="Link to this heading">#</a></h2>
+<p>UDI flows support custom operators that extend the built-in functionality with user-defined Python code.
+Custom operators are stored in the project settings and can be listed, uploaded, and used in flows.</p>
+<section id="listing-custom-operators">
+<h3>Listing Custom Operators<a class="headerlink" href="#listing-custom-operators" title="Link to this heading">#</a></h3>
+<p>Custom operators are project-level resources that can be used across multiple flows.
+To list all custom operators registered in your project, use the
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.custom_operators" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.custom_operators"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Project.custom_operators</span></code></a> property:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># List all custom operators in the project</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">project</span><span class="o">.</span><span class="n">custom_operators</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">op</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">hello_world</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.udi.models.custom_operator_model.CustomOperators" title="ibm_watsonx_data_integration.services.udi.models.custom_operator_model.CustomOperators"><code class="xref py py-class docutils literal notranslate"><span class="pre">CustomOperators</span></code></a>
+collection provides access to all custom operators with support for filtering and iteration.</p>
+</section>
+<section id="uploading-custom-operators">
+<h3>Uploading Custom Operators<a class="headerlink" href="#uploading-custom-operators" title="Link to this heading">#</a></h3>
+<p>To upload a custom operator to your project, use the
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.upload_custom_operator" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.upload_custom_operator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.upload_custom_operator()</span></code></a> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Upload a custom operator file (requires actual file)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">custom_op</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">upload_custom_operator</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_custom_operator&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">file_path</span><span class="o">=</span><span class="s1">&#39;/path/to/operator.py&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">dependency</span><span class="o">=</span><span class="s1">&#39;/path/to/dependencies.tar.gz&#39;</span>  <span class="c1"># Optional</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">custom_op</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;my_custom_operator&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="deleting-custom-operators">
+<h3>Deleting Custom Operators<a class="headerlink" href="#deleting-custom-operators" title="Link to this heading">#</a></h3>
+<p>To delete a custom operator from your project, use the
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_custom_operator" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.delete_custom_operator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.delete_custom_operator()</span></code></a> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Delete a custom operator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">custom_op</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">custom_operators</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_custom_operator&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">delete_custom_operator</span><span class="p">(</span><span class="n">custom_op</span><span class="p">)</span>
+<span class="go">{&#39;status_code&#39;: 200}</span>
+</pre></div>
+</div>
+</section>
+<section id="using-custom-operators">
+<h3>Using Custom Operators<a class="headerlink" href="#using-custom-operators" title="Link to this heading">#</a></h3>
+<p>Once a custom operator is uploaded to your project, you can use it in your flow like any built-in operator:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Add a custom operator to your flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">custom_op</span> <span class="o">=</span> <span class="n">my_flow</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;my_custom_operator&#39;</span><span class="p">,</span> <span class="n">param1</span><span class="o">=</span><span class="s1">&#39;value1&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">custom_op</span>
+<span class="go">&lt;BaseOperator(type=&#39;my_custom_operator&#39;, ...)&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="deployment-spaces">
+<span id="preparing-data-udi-flows-deployment-spaces"></span><h2>Deployment Spaces<a class="headerlink" href="#deployment-spaces" title="Link to this heading">#</a></h2>
+<p>UDI flows can be promoted from projects to deployment spaces for production use.</p>
+<section id="listing-available-spaces">
+<h3>Listing Available Spaces<a class="headerlink" href="#listing-available-spaces" title="Link to this heading">#</a></h3>
+<p>Spaces are platform-level resources (similar to projects) that serve as deployment targets for flows.
+To list all available deployment spaces, use the
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.platform.Platform.spaces" title="ibm_watsonx_data_integration.platform.Platform.spaces"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Platform.spaces</span></code></a> property:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># List all available deployment spaces</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">space</span> <span class="ow">in</span> <span class="n">platform</span><span class="o">.</span><span class="n">spaces</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">space</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">space</span><span class="o">.</span><span class="n">space_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">Production Space: 12345-abcde-67890</span>
+<span class="go">Development Space: 98765-fghij-43210</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get specific space by ID</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prod_space</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">spaces</span><span class="p">[</span><span class="s1">&#39;12345-abcde-67890&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="promoting-to-a-space">
+<h3>Promoting to a Space<a class="headerlink" href="#promoting-to-a-space" title="Link to this heading">#</a></h3>
+<p>To promote a flow from a project to a deployment space, use the
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.promote_to_space" title="ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.promote_to_space"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UDIFlow.promote_to_space()</span></code></a> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Promote flow to a deployment space</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">promotion_response</span> <span class="o">=</span> <span class="n">my_flow</span><span class="o">.</span><span class="n">promote_to_space</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">target_space_id</span><span class="o">=</span><span class="s1">&#39;12345-abcde-67890&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">flow_name</span><span class="o">=</span><span class="s1">&#39;Production Flow&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Flow promoted to production&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">duplicate_action</span><span class="o">=</span><span class="s1">&#39;REPLACE&#39;</span>  <span class="c1"># or &#39;IGNORE&#39; to skip if exists</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">promotion_response</span><span class="p">[</span><span class="s1">&#39;flow_id&#39;</span><span class="p">]</span>
+<span class="go">&#39;promoted-flow-id-123&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="running-in-a-space">
+<h3>Running in a Space<a class="headerlink" href="#running-in-a-space" title="Link to this heading">#</a></h3>
+<p>After promoting a flow to a space, you need to work with the space directly to create and run jobs.
+The promotion response contains the <code class="docutils literal notranslate"><span class="pre">flow_id</span></code> and <code class="docutils literal notranslate"><span class="pre">space_id</span></code> needed to interact with the space-based flow.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Space-based jobs are managed separately from project-based jobs. You should use the space’s job management
+APIs directly rather than mixing project and space contexts.</p>
+</div>
+</section>
+</section>
+<section id="execution-logs">
+<span id="preparing-data-udi-flows-execution-logs"></span><h2>Execution Logs<a class="headerlink" href="#execution-logs" title="Link to this heading">#</a></h2>
+<p>To retrieve execution logs for a flow run, use the
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.get_execution_logs" title="ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.get_execution_logs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UDIFlow.get_execution_logs()</span></code></a> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get logs for a specific job run</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">logs</span> <span class="o">=</span> <span class="n">my_flow</span><span class="o">.</span><span class="n">get_execution_logs</span><span class="p">(</span><span class="n">run_id</span><span class="o">=</span><span class="s1">&#39;job-run-id-123&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">log_entry</span> <span class="ow">in</span> <span class="n">logs</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">log_entry</span><span class="p">)</span>
+<span class="go">[INFO] Starting flow execution...</span>
+<span class="go">[INFO] Processing operator: ingest_cpd_assets</span>
+<span class="go">[INFO] Flow execution completed successfully</span>
+</pre></div>
+</div>
+</section>
+<section id="branching-and-merging">
+<span id="preparing-data-udi-flows-branching-and-merging"></span><h2>Branching and Merging<a class="headerlink" href="#branching-and-merging" title="Link to this heading">#</a></h2>
+<p>UDI flows support conditional branching and merging, allowing you to create complex data processing pipelines
+that route data through different processing paths based on conditions.</p>
+<section id="creating-a-branching-operator">
+<h3>Creating a Branching Operator<a class="headerlink" href="#creating-a-branching-operator" title="Link to this heading">#</a></h3>
+<p>To create a branching operator, use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.add_operator" title="ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.add_operator"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UDIFlow.add_operator()</span></code></a>
+method with <code class="docutils literal notranslate"><span class="pre">operator_type='branching'</span></code>. This returns a <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.udi.models.branch_model.BranchingOperator" title="ibm_watsonx_data_integration.services.udi.models.branch_model.BranchingOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">BranchingOperator</span></code></a>
+instance that allows you to add conditional branches.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a branching operator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quality_branch</span> <span class="o">=</span> <span class="n">my_flow</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;branching&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Quality-Based Processing&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quality_branch</span>
+<span class="go">BranchingOperator(name=&#39;Quality-Based Processing&#39;, branches=0)</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-branches">
+<h3>Adding Branches<a class="headerlink" href="#adding-branches" title="Link to this heading">#</a></h3>
+<p>Use the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.udi.models.branch_model.BranchingOperator.add_branch" title="ibm_watsonx_data_integration.services.udi.models.branch_model.BranchingOperator.add_branch"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BranchingOperator.add_branch()</span></code></a>
+method to add conditional branches. Each branch requires a condition expression and can optionally have a label and merge link name.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Add a high quality branch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">high_quality</span> <span class="o">=</span> <span class="n">quality_branch</span><span class="o">.</span><span class="n">add_branch</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;docq_total_words &gt;= 100&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;High Quality&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">merge_link_name</span><span class="o">=</span><span class="s1">&#39;high_quality_link&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Add operators to the high quality branch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">high_quality</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;chunker&#39;</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="go">&lt;BaseOperator(type=&#39;chunker&#39;, ...)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">high_quality</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;embeddings&#39;</span><span class="p">)</span>
+<span class="go">&lt;BaseOperator(type=&#39;embeddings&#39;, ...)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Add a low quality branch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">low_quality</span> <span class="o">=</span> <span class="n">quality_branch</span><span class="o">.</span><span class="n">add_branch</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;docq_total_words &lt; 100&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Low Quality&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">merge_link_name</span><span class="o">=</span><span class="s1">&#39;low_quality_link&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Add operators to the low quality branch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">low_quality</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;doc_quality&#39;</span><span class="p">)</span>
+<span class="go">&lt;BaseOperator(type=&#39;doc_quality&#39;, ...)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">low_quality</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;chunker&#39;</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="go">&lt;BaseOperator(type=&#39;chunker&#39;, ...)&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="merging-branches">
+<h3>Merging Branches<a class="headerlink" href="#merging-branches" title="Link to this heading">#</a></h3>
+<p>After branching, you can merge the branches back together using a merge operator. The merge operator combines
+data from multiple branches into a single stream.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Add a merge operator to combine branches</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">merge_op</span> <span class="o">=</span> <span class="n">my_flow</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;merge&#39;</span><span class="p">,</span> <span class="n">merge_type</span><span class="o">=</span><span class="s1">&#39;rows&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">merge_op</span>
+<span class="go">&lt;BaseOperator(type=&#39;merge&#39;, ...)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Continue processing after merge</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_flow</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;milvusdb_cp4d&#39;</span><span class="p">,</span> <span class="n">connection</span><span class="o">=</span><span class="n">milvus_conn</span><span class="p">,</span> <span class="n">collection_name</span><span class="o">=</span><span class="s1">&#39;documents&#39;</span><span class="p">)</span>
+<span class="go">&lt;BaseOperator(type=&#39;milvusdb_cp4d&#39;, ...)&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="nested-branching">
+<h3>Nested Branching<a class="headerlink" href="#nested-branching" title="Link to this heading">#</a></h3>
+<p>Branches can contain nested branching operators, allowing for complex multi-level conditional logic.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create main branching operator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">main_branch</span> <span class="o">=</span> <span class="n">my_flow</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;branching&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Main Quality Branch&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Add high quality branch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">high_quality</span> <span class="o">=</span> <span class="n">main_branch</span><span class="o">.</span><span class="n">add_branch</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="s1">&#39;quality_score &gt;= 0.8&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;High Quality&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">high_quality</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;chunker&#39;</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="go">&lt;BaseOperator(type=&#39;chunker&#39;, ...)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Add nested branching within high quality branch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">content_type_branch</span> <span class="o">=</span> <span class="n">high_quality</span><span class="o">.</span><span class="n">add_branching</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Content Type Branch&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expense_branch</span> <span class="o">=</span> <span class="n">content_type_branch</span><span class="o">.</span><span class="n">add_branch</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="s1">&#39;type == </span><span class="se">\&#39;</span><span class="s1">expense</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">expense_branch</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;embeddings&#39;</span><span class="p">)</span>
+<span class="go">&lt;BaseOperator(type=&#39;embeddings&#39;, ...)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice_branch</span> <span class="o">=</span> <span class="n">content_type_branch</span><span class="o">.</span><span class="n">add_branch</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="s1">&#39;type == </span><span class="se">\&#39;</span><span class="s1">invoice</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">invoice_branch</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;doc_quality&#39;</span><span class="p">)</span>
+<span class="go">&lt;BaseOperator(type=&#39;doc_quality&#39;, ...)&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="complete-branching-example">
+<h3>Complete Branching Example<a class="headerlink" href="#complete-branching-example" title="Link to this heading">#</a></h3>
+<p>Here’s a complete example showing a UDI flow with branching and merging:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">branching_flow</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_flow</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Branching Flow&#39;</span><span class="p">,</span> <span class="n">flow_type</span><span class="o">=</span><span class="s1">&#39;udi&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Add initial operators</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ingest_op</span> <span class="o">=</span> <span class="n">branching_flow</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;ingest_cpd_assets&#39;</span><span class="p">,</span> <span class="n">data_assets</span><span class="o">=</span><span class="n">asset_ids</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">extract_op</span> <span class="o">=</span> <span class="n">branching_flow</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;extract_cpd&#39;</span><span class="p">,</span> <span class="n">ocr_mode</span><span class="o">=</span><span class="s1">&#39;disabled&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">doc_quality_op</span> <span class="o">=</span> <span class="n">branching_flow</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;doc_quality&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create branching operator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quality_branch</span> <span class="o">=</span> <span class="n">branching_flow</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;branching&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Quality-Based Processing&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># High quality branch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">high_quality</span> <span class="o">=</span> <span class="n">quality_branch</span><span class="o">.</span><span class="n">add_branch</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;docq_total_words &gt;= 100&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;High Quality&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">merge_link_name</span><span class="o">=</span><span class="s1">&#39;high_quality_link&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">high_quality</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;chunker&#39;</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">chunk_type</span><span class="o">=</span><span class="s1">&#39;watsonx&#39;</span><span class="p">)</span>
+<span class="go">&lt;BaseOperator(type=&#39;chunker&#39;, ...)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">high_quality</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;embeddings&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;High Quality Embeddings&#39;</span><span class="p">)</span>
+<span class="go">&lt;BaseOperator(type=&#39;embeddings&#39;, ...)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Low quality branch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">low_quality</span> <span class="o">=</span> <span class="n">quality_branch</span><span class="o">.</span><span class="n">add_branch</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">condition</span><span class="o">=</span><span class="s1">&#39;docq_total_words &lt; 100&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Low Quality&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">merge_link_name</span><span class="o">=</span><span class="s1">&#39;low_quality_link&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">low_quality</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;doc_quality&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Re-check Quality&#39;</span><span class="p">)</span>
+<span class="go">&lt;BaseOperator(type=&#39;doc_quality&#39;, ...)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">low_quality</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;chunker&#39;</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">chunk_overlap</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="go">&lt;BaseOperator(type=&#39;chunker&#39;, ...)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">low_quality</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;embeddings&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Low Quality Embeddings&#39;</span><span class="p">)</span>
+<span class="go">&lt;BaseOperator(type=&#39;embeddings&#39;, ...)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Merge branches</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">merge_op</span> <span class="o">=</span> <span class="n">branching_flow</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;merge&#39;</span><span class="p">,</span> <span class="n">merge_type</span><span class="o">=</span><span class="s1">&#39;rows&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Save the flow</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">branching_flow</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Clean up</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">delete_flow</span><span class="p">(</span><span class="n">branching_flow</span><span class="p">)</span>
+<span class="go">&lt;Response [...]&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Branch conditions use feature names from upstream operators (e.g., <code class="docutils literal notranslate"><span class="pre">docq_total_words</span></code> from <code class="docutils literal notranslate"><span class="pre">doc_quality</span></code> operator)</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">merge_link_name</span></code> parameter helps identify which branch data came from when merging</p></li>
+<li><p>Branches are evaluated in the order they are added</p></li>
+<li><p>Each branch can have its own sequence of operators</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="parameter-sets-and-local-parameters">
+<span id="preparing-data-udi-flows-parameter-sets"></span><h2>Parameter Sets and Local Parameters<a class="headerlink" href="#parameter-sets-and-local-parameters" title="Link to this heading">#</a></h2>
+<p>UDI flows support parameter sets and local parameters — letting you pass values into
+operator fields at run time rather than hardcoding them into the flow definition.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Parameter sets are project-level assets shared across flows.
+See <a class="reference internal" href="../parameter_sets.html#preparing-data-parameter-sets"><span class="std std-ref">Parameter Sets</span></a> for how to create and manage them.</p>
+</div>
+<section id="attaching-a-parameter-set-to-a-flow">
+<h3>Attaching a Parameter Set to a Flow<a class="headerlink" href="#attaching-a-parameter-set-to-a-flow" title="Link to this heading">#</a></h3>
+<p>Once you have a parameter set, attach it to a UDI flow with
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.use_parameter_set" title="ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.use_parameter_set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UDIFlow.use_parameter_set()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.cpd_models.parameter_set_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">ParameterType</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paramset</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_parameter_set</span><span class="p">(</span><span class="s1">&#39;udi_params&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paramset</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span><span class="n">parameter_type</span><span class="o">=</span><span class="n">ParameterType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;collection_name&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;my_collection&#39;</span><span class="p">)</span>
+<span class="go">ParameterSet(name=&#39;udi_params&#39;, ...)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_parameter_set</span><span class="p">(</span><span class="n">paramset</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_flow</span><span class="o">.</span><span class="n">use_parameter_set</span><span class="p">(</span><span class="n">paramset</span><span class="p">)</span>
+<span class="go">UDIFlow(...)</span>
+</pre></div>
+</div>
+<p>To reference the parameter value inside an operator field, use the <code class="docutils literal notranslate"><span class="pre">#ParameterSetName.parameter_name#</span></code> notation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">milvus_op</span> <span class="o">=</span> <span class="n">my_flow</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;milvusdb_cp4d&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">milvus_op</span><span class="o">.</span><span class="n">collection_name</span> <span class="o">=</span> <span class="s1">&#39;#udi_params.collection_name#&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">my_flow</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="selecting-a-default-value-set">
+<h3>Selecting a Default Value Set<a class="headerlink" href="#selecting-a-default-value-set" title="Link to this heading">#</a></h3>
+<p>If your parameter set has multiple value sets, set which one the flow uses by default with
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.set_runtime_value_set" title="ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.set_runtime_value_set"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UDIFlow.set_runtime_value_set()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_flow</span><span class="o">.</span><span class="n">set_runtime_value_set</span><span class="p">(</span><span class="n">parameter_set_name</span><span class="o">=</span><span class="s1">&#39;udi_params&#39;</span><span class="p">,</span> <span class="n">value_set_name</span><span class="o">=</span><span class="s1">&#39;production&#39;</span><span class="p">)</span>
+<span class="go">UDIFlow(...)</span>
+</pre></div>
+</div>
+</section>
+<section id="overriding-a-parameter-set-value-at-the-flow-level">
+<h3>Overriding a Parameter Set Value at the Flow Level<a class="headerlink" href="#overriding-a-parameter-set-value-at-the-flow-level" title="Link to this heading">#</a></h3>
+<p>To override a specific parameter value as a flow-level default (affects all jobs created from this flow),
+use <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.set_runtime_parameter_value" title="ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.set_runtime_parameter_value"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UDIFlow.set_runtime_parameter_value()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_flow</span><span class="o">.</span><span class="n">set_runtime_parameter_value</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">parameter_set_name</span><span class="o">=</span><span class="s1">&#39;udi_params&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">parameter_name</span><span class="o">=</span><span class="s1">&#39;collection_name&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;staging_collection&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">UDIFlow(...)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To override parameter values for a specific job or job run only, pass <code class="docutils literal notranslate"><span class="pre">runtime_parameters</span></code>
+to <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.create_job" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.create_job"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.create_job()</span></code></a>
+or <code class="xref py py-meth docutils literal notranslate"><span class="pre">Job.start()</span></code>
+instead. See <a class="reference internal" href="#per-run-overrides-via-job-start">Per-Run Overrides via Job Start</a> below.</p>
+</div>
+</section>
+<section id="adding-local-parameters">
+<h3>Adding Local Parameters<a class="headerlink" href="#adding-local-parameters" title="Link to this heading">#</a></h3>
+<p>Local parameters are flow-scoped — they exist only within a single flow and do not require a
+parameter set asset. Add one with
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.add_local_parameter" title="ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.add_local_parameter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UDIFlow.add_local_parameter()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_flow</span><span class="o">.</span><span class="n">add_local_parameter</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">parameter_type</span><span class="o">=</span><span class="n">ParameterType</span><span class="o">.</span><span class="n">String</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;chunk_size&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;1000&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Default chunk size for chunker operators&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">UDIFlow(...)</span>
+</pre></div>
+</div>
+<p>Pass the parameter’s default value directly when adding the operator.
+The engine uses <code class="docutils literal notranslate"><span class="pre">configuration.parameters.local_parameters</span></code> to override the value
+at run time — no token placeholder is stored in the operator field:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">chunker_op</span> <span class="o">=</span> <span class="n">my_flow</span><span class="o">.</span><span class="n">add_operator</span><span class="p">(</span><span class="s1">&#39;chunker&#39;</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="s1">&#39;1000&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">project</span><span class="o">.</span><span class="n">update_flow</span><span class="p">(</span><span class="n">my_flow</span><span class="p">)</span>
+<span class="go">&lt;Response [200]&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="overriding-a-local-parameter-value-at-run-time">
+<h3>Overriding a Local Parameter Value at Run Time<a class="headerlink" href="#overriding-a-local-parameter-value-at-run-time" title="Link to this heading">#</a></h3>
+<p>Use
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.set_runtime_local_parameter" title="ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.set_runtime_local_parameter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">UDIFlow.set_runtime_local_parameter()</span></code></a>
+to change a local parameter value for all subsequent job runs on this flow instance:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_flow</span><span class="o">.</span><span class="n">set_runtime_local_parameter</span><span class="p">(</span><span class="n">local_parameter_name</span><span class="o">=</span><span class="s1">&#39;chunk_size&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;500&#39;</span><span class="p">)</span>
+<span class="go">UDIFlow(...)</span>
+</pre></div>
+</div>
+</section>
+<section id="per-run-overrides-via-job-start">
+<h3>Per-Run Overrides via Job Start<a class="headerlink" href="#per-run-overrides-via-job-start" title="Link to this heading">#</a></h3>
+<p>To override parameter values at the job level (all runs of that job) or for a single run only,
+pass <code class="docutils literal notranslate"><span class="pre">runtime_parameters</span></code> to
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.create_job" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.create_job"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.create_job()</span></code></a>
+or <code class="xref py py-meth docutils literal notranslate"><span class="pre">Job.start()</span></code>.
+This follows the same pattern used by batch and streaming flows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Override at job level — applies to all runs of this job</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">create_job</span><span class="p">(</span><span class="n">flow</span><span class="o">=</span><span class="n">my_flow</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;UDI Run&#39;</span><span class="p">,</span> <span class="n">runtime_parameters</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;udi_params.collection_name&#39;</span><span class="p">:</span> <span class="s1">&#39;prod_collection&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Override at run level — applies to this run only</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job_run</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">runtime_parameters</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;udi_params.collection_name&#39;</span><span class="p">:</span> <span class="s1">&#39;override_collection&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Override a local parameter: bare name</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">job_run</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">runtime_parameters</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;chunk_size&#39;</span><span class="p">:</span> <span class="s1">&#39;2000&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="pipeline-operators">
+<span id="preparing-data-udi-flows-pipeline-operators"></span><h2>Pipeline Operators<a class="headerlink" href="#pipeline-operators" title="Link to this heading">#</a></h2>
+<p>UDI flows support various operators for data processing:</p>
+<ul class="simple">
+<li><p><strong>ingest_cpd_assets</strong>: Ingest assets from Cloud Pak for Data</p></li>
+<li><p><strong>extract_cpd</strong>: Extract data from CPD assets</p></li>
+<li><p><strong>chunker</strong>: Split data into chunks for processing</p></li>
+<li><p><strong>pii_and_hap_extract_redact</strong>: Detect and redact PII/HAP</p></li>
+<li><p><strong>embeddings</strong>: Generate embeddings for text data</p></li>
+<li><p><strong>milvusdb_cp4d</strong>: Store data in Milvus vector database</p></li>
+<li><p><strong>branching</strong>: Create conditional branches for routing data based on conditions</p></li>
+<li><p><strong>merge</strong>: Merge multiple branches back into a single stream</p></li>
+</ul>
+<p>Use <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.operators_metadata" title="ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow.operators_metadata"><code class="xref py py-attr docutils literal notranslate"><span class="pre">UDIFlow.operators_metadata</span></code></a>
+to discover all available operators and their parameters dynamically.</p>
+<p>For detailed information about branching and merging, see <a class="reference internal" href="#preparing-data-udi-flows-branching-and-merging"><span class="std std-ref">Branching and Merging</span></a>.</p>
+</section>
+<section id="api-reference">
+<span id="preparing-data-udi-flows-api-reference"></span><h2>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">#</a></h2>
+<p>For detailed API documentation, see:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow" title="ibm_watsonx_data_integration.services.udi.models.flow_model.UDIFlow"><code class="xref py py-class docutils literal notranslate"><span class="pre">UDIFlow</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.udi.api.flow_api.UDIFlowApiClient" title="ibm_watsonx_data_integration.services.udi.api.flow_api.UDIFlowApiClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">UDIFlowApiClient</span></code></a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">UDI (Unstructured Data Integration)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../datasources.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Datasource Type</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Section Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-flow">Creating a Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieving-flows">Retrieving Flows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#updating-a-flow">Updating a Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicating-a-flow">Duplicating a Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-a-flow">Deleting a Flow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-jobs">Running Jobs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discovering-available-operators">Discovering Available Operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-operators">Custom Operators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-custom-operators">Listing Custom Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uploading-custom-operators">Uploading Custom Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-custom-operators">Deleting Custom Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-custom-operators">Using Custom Operators</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment-spaces">Deployment Spaces</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-available-spaces">Listing Available Spaces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#promoting-to-a-space">Promoting to a Space</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-in-a-space">Running in a Space</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execution-logs">Execution Logs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#branching-and-merging">Branching and Merging</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-branching-operator">Creating a Branching Operator</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-branches">Adding Branches</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-branches">Merging Branches</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-branching">Nested Branching</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-branching-example">Complete Branching Example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-sets-and-local-parameters">Parameter Sets and Local Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attaching-a-parameter-set-to-a-flow">Attaching a Parameter Set to a Flow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-a-default-value-set">Selecting a Default Value Set</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overriding-a-parameter-set-value-at-the-flow-level">Overriding a Parameter Set Value at the Flow Level</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-local-parameters">Adding Local Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overriding-a-local-parameter-value-at-run-time">Overriding a Local Parameter Value at Run Time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#per-run-overrides-via-job-start">Per-Run Overrides via Job Start</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipeline-operators">Pipeline Operators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-reference">API Reference</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026, IBM.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

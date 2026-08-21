@@ -1,0 +1,739 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../../_static/images/favicon.ico" rel="icon" type="image/x-icon">
+    <title>Pipeline Examples &#8212; ibm-watsonx-data-integration 2.1.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=f8c2f790" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=30646c52"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/05_preparing_data/pipelines/examples';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="UDI (Unstructured Data Integration)" href="../udi/index.html" />
+    <link rel="prev" title="Pipeline Settings" href="settings.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-light" alt=""/>
+    <script>document.write(`<img src="../../../_static/watsonxDataIntegration_icon.svg" class="logo__image only-dark" alt=""/>`);</script>
+  
+  
+    <p class="title logo__title">ibm-watsonx-data-integration SDK for Python Version 2.1.0</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01_welcome/index.html">Welcome</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/prereqs.html">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/installation_and_versioning.html">Installation and Versioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01_welcome/supported_products.html">Supported Products</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02_overview/index.html">Overview</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/release_notes.html">What’s new</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/known_issues_and_limitations.html">Known Issues and Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02_overview/faq.html">Get Help</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03_getting_started_and_tutorials/index.html">Getting Started</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/authentication.html">Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/platform.html">Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/service_instances.html">Service Instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_batch.html">Code Generation (Batch)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_streaming.html">Code Generation (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/code_generation_connections.html">Code Generation for Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03_getting_started_and_tutorials/http_retry.html">HTTP Retry Management</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04_projects/index.html">Integration Assets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/jobs.html">Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/environments_streaming.html">Environments (Streaming)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04_projects/engines_streaming.html">Engines (Streaming)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Preparing Data</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../batch/index.html">Batch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../batch/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/compilation_mode.html">Compilation Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/stages.html">Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/wrapped_stages.html">Wrapped Stages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/batch_schemas.html">Schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/link_partitioning.html">Link Partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/data_definitions.html">Data Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/schema_libraries.html">XML Schema Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/hierarchical_data.html">Hierarchical Data Stage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batch/subflows.html">Subflows</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../streaming/index.html">Streaming</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/flows.html">Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../streaming/stages.html">Stages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Pipelines</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="pipelines.html">Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="components.html">Pipeline Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings.html">Pipeline Settings</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Pipeline Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../udi/index.html">UDI (Unstructured Data Integration)</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../udi/flows.html">Flows</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasources.html">Datasource Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../connections.html">Connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../parameter_sets.html">Parameter Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../06_access_control/index.html">Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/on_prem_access_control/index.html">On-Prem Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/on_prem_access_control/roles.html">Roles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/saas_access_control/index.html">SaaS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/users.html">Users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/access_groups.html">Access Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/roles.html">Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/service_ids.html">Service IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/saas_access_control/trusted_profiles.html">Trusted Profiles</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../06_access_control/aws_access_control/index.html">AWS Access Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/aws_access_control/accounts.html">Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../06_access_control/aws_access_control/users.html">Users</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../06_access_control/project_collaborators.html">Project Collaborators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../07_mcp_server/index.html">MCP Server</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../07_mcp_server/mcp_server_setup.html">MCP Server Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07_mcp_server/mcp_server_tools.html">MCP Server Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../07_mcp_server/mcp_server_skills.html">MCP Server Skills</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../api/index.html">API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/models.html">Models</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pipeline Examples</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Section Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cel-expressions">CEL Expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-variables-via-set-user-variable-component">User Variables via Set User Variable Component</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-else-conditions">If / Else Conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-variables-in-bash-scripts">Environment Variables in Bash Scripts</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="pipeline-examples">
+<span id="preparing-data-pipelines-examples"></span><h1>Pipeline Examples<a class="headerlink" href="#pipeline-examples" title="Link to this heading">#</a></h1>
+<p>This section provides practical examples demonstrating key pipeline capabilities. Each example focuses on a single topic so you can see exactly how each feature works and combine them in your own workflows.</p>
+<nav class="contents local" id="in-this-section">
+<p class="topic-title">In this section</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#cel-expressions" id="id1">CEL Expressions</a></p></li>
+<li><p><a class="reference internal" href="#user-variables-via-set-user-variable-component" id="id2">User Variables via Set User Variable Component</a></p></li>
+<li><p><a class="reference internal" href="#if-else-conditions" id="id3">If / Else Conditions</a></p></li>
+<li><p><a class="reference internal" href="#environment-variables-in-bash-scripts" id="id4">Environment Variables in Bash Scripts</a></p></li>
+</ul>
+</nav>
+<section id="cel-expressions">
+<span id="preparing-data-pipelines-examples-cel-expressions"></span><h2><a class="toc-backref" href="#id1" role="doc-backlink">CEL Expressions</a><a class="headerlink" href="#cel-expressions" title="Link to this heading">#</a></h2>
+<p>CEL (<em>Common Expression Language</em>) expressions let you perform runtime computations inside a pipeline — arithmetic, comparisons, string operations, and more — without writing a custom Python component.</p>
+<p>Use <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.pipelines.cel.CEL" title="ibm_watsonx_data_integration.services.pipelines.cel.CEL"><code class="xref py py-class docutils literal notranslate"><span class="pre">CEL</span></code></a> to build expressions:
+<a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.pipelines.cel.CEL.literal" title="ibm_watsonx_data_integration.services.pipelines.cel.CEL.literal"><code class="xref py py-meth docutils literal notranslate"><span class="pre">literal()</span></code></a> for fixed values you already know (a string prefix, a constant number),
+and <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.pipelines.cel.CEL.expr" title="ibm_watsonx_data_integration.services.pipelines.cel.CEL.expr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">expr()</span></code></a> for values that come from user variables or task outputs at runtime.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.cel</span><span class="w"> </span><span class="kn">import</span> <span class="n">CEL</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">UserVariable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kfp</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsl</span>
+
+
+<span class="c1"># Access a user variable at runtime</span>
+<span class="n">table_var</span> <span class="o">=</span> <span class="n">UserVariable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;table_name&#39;</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="s1">&#39;orders&#39;</span><span class="p">)</span>
+<span class="n">table_expr</span> <span class="o">=</span> <span class="n">CEL</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s1">&#39;vars.table_name&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+
+<span class="c1"># Use CEL.expr to build an expression from a user variable</span>
+<span class="n">retry_var</span> <span class="o">=</span> <span class="n">UserVariable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;retry_count&#39;</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">retry_exceeded</span> <span class="o">=</span> <span class="n">CEL</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s1">&#39;vars.retry_count&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span>
+
+<span class="c1"># Use CEL.literal for a static value combined with a user variable</span>
+<span class="n">prefixed_table</span> <span class="o">=</span> <span class="p">(</span><span class="n">CEL</span><span class="o">.</span><span class="n">literal</span><span class="p">(</span><span class="s1">&#39;processing_&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">CEL</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s1">&#39;vars.table_name&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">))</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Always call <code class="docutils literal notranslate"><span class="pre">.evaluate()</span></code> on a CEL expression before passing it to a component or a <code class="docutils literal notranslate"><span class="pre">dsl.If</span></code> condition.</p>
+</div>
+<p>For the full list of avialabe methods see the <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.pipelines.cel.CELExpression" title="ibm_watsonx_data_integration.services.pipelines.cel.CELExpression"><code class="xref py py-class docutils literal notranslate"><span class="pre">CELExpression</span></code></a> API reference.</p>
+</section>
+<section id="user-variables-via-set-user-variable-component">
+<span id="preparing-data-pipelines-examples-user-variables"></span><h2><a class="toc-backref" href="#id2" role="doc-backlink">User Variables via Set User Variable Component</a><a class="headerlink" href="#user-variables-via-set-user-variable-component" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.pipelines.models.pipeline_component_model.UserVariable" title="ibm_watsonx_data_integration.services.pipelines.models.pipeline_component_model.UserVariable"><code class="xref py py-class docutils literal notranslate"><span class="pre">UserVariable</span></code></a>
+objects hold pipeline-scoped state that persists across stages. They must be:</p>
+<ol class="arabic simple">
+<li><p>Declared <strong>outside</strong> the <code class="docutils literal notranslate"><span class="pre">&#64;dsl.pipeline</span></code> function.</p></li>
+<li><p>Passed to <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.cpd_models.project_model.Project.create_pipeline" title="ibm_watsonx_data_integration.cpd_models.project_model.Project.create_pipeline"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Project.create_pipeline()</span></code></a>
+via the <code class="docutils literal notranslate"><span class="pre">user_variables</span></code> list.</p></li>
+<li><p>Updated inside the pipeline using the <code class="docutils literal notranslate"><span class="pre">set_user_variable</span></code> component.</p></li>
+<li><p>Read inside another component using <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.pipelines.cel.CEL.expr" title="ibm_watsonx_data_integration.services.pipelines.cel.CEL.expr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">expr()</span></code></a>
+with the <code class="docutils literal notranslate"><span class="pre">vars.&lt;name&gt;</span></code> path.</p></li>
+</ol>
+<p><strong>Declaring and setting user variables</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.cel</span><span class="w"> </span><span class="kn">import</span> <span class="n">CEL</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineComponentId</span><span class="p">,</span> <span class="n">UserVariable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kfp</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsl</span>
+
+
+<span class="n">run_bash</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">RUN_BASH_SCRIPT</span><span class="p">)</span>
+<span class="n">run_datastage_job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">RUN_DATASTAGE_JOB</span><span class="p">)</span>
+<span class="n">set_user_variables</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">SET_USER_VARIABLE</span><span class="p">)</span>
+
+<span class="c1"># Declare variables, name must be a unique string identifier</span>
+<span class="n">table_var</span> <span class="o">=</span> <span class="n">UserVariable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;table_name&#39;</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="s1">&#39;orders&#39;</span><span class="p">)</span>
+<span class="n">counter_var</span> <span class="o">=</span> <span class="n">UserVariable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;run_counter&#39;</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pipeline_result</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ds_job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">jobs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Load Table Job&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pipeline_with_user_vars</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># Set the table name to process</span>
+    <span class="n">set_user_variables</span><span class="p">(</span>
+        <span class="n">variables</span><span class="o">=</span><span class="p">{</span><span class="n">table_var</span><span class="p">:</span> <span class="s1">&#39;customers&#39;</span><span class="p">,</span> <span class="n">counter_var</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+        <span class="n">outputs</span><span class="o">=</span><span class="p">{},</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Read the variable and pass it to the DataStage job</span>
+    <span class="n">run_datastage_job</span><span class="p">(</span>
+        <span class="n">job</span><span class="o">=</span><span class="n">ds_job</span><span class="p">,</span>
+        <span class="n">job_parameters</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;TABLE_NAME&#39;</span><span class="p">:</span> <span class="n">CEL</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s1">&#39;vars.table_name&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(),</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+
+<span class="n">project</span><span class="o">.</span><span class="n">create_pipeline</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Pipeline with User Variables&#39;</span><span class="p">,</span>
+    <span class="n">pipeline_function</span><span class="o">=</span><span class="n">pipeline_with_user_vars</span><span class="p">,</span>
+    <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">user_variables</span><span class="o">=</span><span class="p">[</span><span class="n">table_var</span><span class="p">,</span> <span class="n">counter_var</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Variables marked with <code class="docutils literal notranslate"><span class="pre">pipeline_result=True</span></code> are surfaced as pipeline outputs
+and can be inspected after the job run completes.</p>
+</div>
+</section>
+<section id="if-else-conditions">
+<span id="preparing-data-pipelines-examples-if-else"></span><h2><a class="toc-backref" href="#id3" role="doc-backlink">If / Else Conditions</a><a class="headerlink" href="#if-else-conditions" title="Link to this heading">#</a></h2>
+<p>Use the Kubeflow <code class="docutils literal notranslate"><span class="pre">dsl.If</span></code> / <code class="docutils literal notranslate"><span class="pre">dsl.Else</span></code> context managers to branch pipeline execution based
+on the value of a task output or a CEL expression.</p>
+<p><strong>Branching on a bash script exit code</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineComponentId</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kfp</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsl</span>
+
+
+<span class="n">run_bash</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">RUN_BASH_SCRIPT</span><span class="p">)</span>
+
+
+<span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">branch_on_exit_code</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># Run a validation script (allow it to fail without stopping the pipeline)</span>
+    <span class="n">validate</span> <span class="o">=</span> <span class="n">run_bash</span><span class="p">(</span>
+        <span class="n">script</span><span class="o">=</span><span class="s1">&#39;test -f /data/input.csv &amp;&amp; echo </span><span class="se">\&#39;</span><span class="s1">ok</span><span class="se">\&#39;</span><span class="s1"> || exit 1&#39;</span><span class="p">,</span>
+        <span class="n">error_policy</span><span class="o">=</span><span class="s1">&#39;continue_on_error&#39;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Branch based on the exit code</span>
+    <span class="k">with</span> <span class="n">dsl</span><span class="o">.</span><span class="n">If</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">validate</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s1">&#39;return_value&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">run_bash</span><span class="p">(</span><span class="n">script</span><span class="o">=</span><span class="s1">&#39;echo </span><span class="se">\&#39;</span><span class="s1">File found — starting pipeline.</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">dsl</span><span class="o">.</span><span class="n">Else</span><span class="p">():</span>
+        <span class="n">run_bash</span><span class="p">(</span><span class="n">script</span><span class="o">=</span><span class="s1">&#39;echo </span><span class="se">\&#39;</span><span class="s1">File missing — skipping pipeline.</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">project</span><span class="o">.</span><span class="n">create_pipeline</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Branch on Exit Code&#39;</span><span class="p">,</span>
+    <span class="n">pipeline_function</span><span class="o">=</span><span class="n">branch_on_exit_code</span><span class="p">,</span>
+    <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Branching on a CEL expression derived from a user variable</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.cel</span><span class="w"> </span><span class="kn">import</span> <span class="n">CEL</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineComponentId</span><span class="p">,</span> <span class="n">UserVariable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kfp</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsl</span>
+
+
+<span class="n">run_bash</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">RUN_BASH_SCRIPT</span><span class="p">)</span>
+<span class="n">set_user_variables</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">SET_USER_VARIABLE</span><span class="p">)</span>
+<span class="n">terminate_pipeline</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">TERMINATE_PIPELINE</span><span class="p">)</span>
+
+<span class="c1"># Declare a user variable that controls which environment to target</span>
+<span class="n">environment_var</span> <span class="o">=</span> <span class="n">UserVariable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;environment&#39;</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="s1">&#39;dev&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">branch_on_environment</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">set_user_variables</span><span class="p">(</span><span class="n">variables</span><span class="o">=</span><span class="p">{</span><span class="n">environment_var</span><span class="p">:</span> <span class="s1">&#39;prod&#39;</span><span class="p">},</span> <span class="n">outputs</span><span class="o">=</span><span class="p">{})</span>
+
+    <span class="c1"># Run different jobs per environment</span>
+    <span class="n">env_expr</span> <span class="o">=</span> <span class="n">CEL</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s1">&#39;vars.environment&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">dsl</span><span class="o">.</span><span class="n">If</span><span class="p">(</span><span class="n">condition</span><span class="o">=</span><span class="n">env_expr</span> <span class="o">==</span> <span class="s1">&#39;prod&#39;</span><span class="p">):</span>
+        <span class="n">run_bash</span><span class="p">(</span><span class="n">script</span><span class="o">=</span><span class="s1">&#39;echo </span><span class="se">\&#39;</span><span class="s1">Running production pipeline</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">dsl</span><span class="o">.</span><span class="n">Else</span><span class="p">():</span>
+        <span class="n">run_bash</span><span class="p">(</span><span class="n">script</span><span class="o">=</span><span class="s1">&#39;echo </span><span class="se">\&#39;</span><span class="s1">Running development pipeline</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">project</span><span class="o">.</span><span class="n">create_pipeline</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Branch on Environment&#39;</span><span class="p">,</span>
+    <span class="n">pipeline_function</span><span class="o">=</span><span class="n">branch_on_environment</span><span class="p">,</span>
+    <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">user_variables</span><span class="o">=</span><span class="p">[</span><span class="n">environment_var</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="environment-variables-in-bash-scripts">
+<span id="preparing-data-pipelines-examples-env-variables-bash"></span><h2><a class="toc-backref" href="#id4" role="doc-backlink">Environment Variables in Bash Scripts</a><a class="headerlink" href="#environment-variables-in-bash-scripts" title="Link to this heading">#</a></h2>
+<p>Both the <a class="reference internal" href="components.html#preparing-data-pipelines-components-run-bash-script"><span class="std std-ref">Run Bash Script</span></a> and
+<a class="reference internal" href="components.html#preparing-data-pipelines-components-run-datastage-job"><span class="std std-ref">Run DataStage Job</span></a> components
+accept an <code class="docutils literal notranslate"><span class="pre">env_variables</span></code> dictionary. Values are available as standard shell environment
+variables (<code class="docutils literal notranslate"><span class="pre">$VAR_NAME</span></code>) inside the script body.</p>
+<p><strong>Passing static environment variables</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineComponentId</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kfp</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsl</span>
+
+
+<span class="n">run_bash</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">RUN_BASH_SCRIPT</span><span class="p">)</span>
+
+
+<span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bash_with_env_vars</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">script</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s1">&#39;echo </span><span class="se">\&#39;</span><span class="s1">$</span><span class="si">{ENV_VAR_SET_BY_SDK}</span><span class="se">\&#39;\n</span><span class="s1">&#39;</span>
+        <span class="s1">&#39;echo </span><span class="se">\&#39;</span><span class="s1">$</span><span class="si">{INT_VAR}</span><span class="se">\&#39;\n</span><span class="s1">&#39;</span>
+        <span class="s1">&#39;echo </span><span class="se">\&#39;</span><span class="s1">$</span><span class="si">{FLOAT_VAR}</span><span class="se">\&#39;</span><span class="s1">&#39;</span>
+    <span class="p">)</span>
+    <span class="n">run_bash</span><span class="p">(</span>
+        <span class="n">script</span><span class="o">=</span><span class="n">script</span><span class="p">,</span>
+        <span class="n">env_variables</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;ENV_VAR_SET_BY_SDK&#39;</span><span class="p">:</span> <span class="s1">&#39;test string value&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;INT_VAR&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+            <span class="s1">&#39;FLOAT_VAR&#39;</span><span class="p">:</span> <span class="mf">67.56</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+
+
+<span class="n">project</span><span class="o">.</span><span class="n">create_pipeline</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Bash with Env Vars&#39;</span><span class="p">,</span>
+    <span class="n">pipeline_function</span><span class="o">=</span><span class="n">bash_with_env_vars</span><span class="p">,</span>
+    <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Passing a dynamic value from a user variable via CEL</strong></p>
+<p>Use <a class="reference internal" href="../../../api/models.html#ibm_watsonx_data_integration.services.pipelines.cel.CEL.expr" title="ibm_watsonx_data_integration.services.pipelines.cel.CEL.expr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">expr()</span></code></a> to read a
+user variable at runtime and forward it as an environment variable.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.cel</span><span class="w"> </span><span class="kn">import</span> <span class="n">CEL</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineComponentId</span><span class="p">,</span> <span class="n">UserVariable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kfp</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsl</span>
+
+
+<span class="n">run_bash</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">RUN_BASH_SCRIPT</span><span class="p">)</span>
+<span class="n">set_user_variables</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">SET_USER_VARIABLE</span><span class="p">)</span>
+
+<span class="n">region_var</span> <span class="o">=</span> <span class="n">UserVariable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;target_region&#39;</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="s1">&#39;us-south&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bash_with_dynamic_env</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># Update the variable earlier in the pipeline if needed</span>
+    <span class="n">set_user_variables</span><span class="p">(</span><span class="n">variables</span><span class="o">=</span><span class="p">{</span><span class="n">region_var</span><span class="p">:</span> <span class="s1">&#39;eu-de&#39;</span><span class="p">},</span> <span class="n">outputs</span><span class="o">=</span><span class="p">{})</span>
+
+    <span class="n">run_bash</span><span class="p">(</span>
+        <span class="n">script</span><span class="o">=</span><span class="s1">&#39;echo </span><span class="se">\&#39;</span><span class="s1">Deploying to $</span><span class="si">{TARGET_REGION}</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="n">env_variables</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;TARGET_REGION&#39;</span><span class="p">:</span> <span class="n">CEL</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s1">&#39;vars.target_region&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(),</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+
+<span class="n">project</span><span class="o">.</span><span class="n">create_pipeline</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Bash with Dynamic Env&#39;</span><span class="p">,</span>
+    <span class="n">pipeline_function</span><span class="o">=</span><span class="n">bash_with_dynamic_env</span><span class="p">,</span>
+    <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">user_variables</span><span class="o">=</span><span class="p">[</span><span class="n">region_var</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Passing environment variables to a DataStage job</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.cel</span><span class="w"> </span><span class="kn">import</span> <span class="n">CEL</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ibm_watsonx_data_integration.services.pipelines.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">PipelineComponentId</span><span class="p">,</span> <span class="n">UserVariable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">kfp</span><span class="w"> </span><span class="kn">import</span> <span class="n">dsl</span>
+
+
+<span class="n">run_datastage_job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">RUN_DATASTAGE_JOB</span><span class="p">)</span>
+<span class="n">set_user_variables</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">pipeline_components</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">component_id</span><span class="o">=</span><span class="n">PipelineComponentId</span><span class="o">.</span><span class="n">SET_USER_VARIABLE</span><span class="p">)</span>
+
+<span class="n">schema_var</span> <span class="o">=</span> <span class="n">UserVariable</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;db_schema&#39;</span><span class="p">,</span> <span class="n">default_value</span><span class="o">=</span><span class="s1">&#39;PUBLIC&#39;</span><span class="p">)</span>
+<span class="n">ds_job</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">jobs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Load Orders Job&#39;</span><span class="p">)</span>
+
+
+<span class="nd">@dsl</span><span class="o">.</span><span class="n">pipeline</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">datastage_with_env</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">set_user_variables</span><span class="p">(</span><span class="n">variables</span><span class="o">=</span><span class="p">{</span><span class="n">schema_var</span><span class="p">:</span> <span class="s1">&#39;SALES&#39;</span><span class="p">},</span> <span class="n">outputs</span><span class="o">=</span><span class="p">{})</span>
+
+    <span class="n">run_datastage_job</span><span class="p">(</span>
+        <span class="n">job</span><span class="o">=</span><span class="n">ds_job</span><span class="p">,</span>
+        <span class="n">env_variables</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;DB_SCHEMA&#39;</span><span class="p">:</span> <span class="n">CEL</span><span class="o">.</span><span class="n">expr</span><span class="p">(</span><span class="s1">&#39;vars.db_schema&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(),</span>
+            <span class="s1">&#39;BATCH_DATE&#39;</span><span class="p">:</span> <span class="s1">&#39;2024-01-15&#39;</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+
+<span class="n">project</span><span class="o">.</span><span class="n">create_pipeline</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;DataStage with Env Variables&#39;</span><span class="p">,</span>
+    <span class="n">pipeline_function</span><span class="o">=</span><span class="n">datastage_with_env</span><span class="p">,</span>
+    <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">user_variables</span><span class="o">=</span><span class="p">[</span><span class="n">schema_var</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="settings.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pipeline Settings</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../udi/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">UDI (Unstructured Data Integration)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Section Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cel-expressions">CEL Expressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user-variables-via-set-user-variable-component">User Variables via Set User Variable Component</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-else-conditions">If / Else Conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-variables-in-bash-scripts">Environment Variables in Bash Scripts</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026, IBM.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

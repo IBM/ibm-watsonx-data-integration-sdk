@@ -8,7 +8,7 @@ understand and/or act as a reusable component by other data flows.
 
 There are two primary types of subflows:
     * Local Subflow: A subflow that is local to the data flow you are working on. It is not its own asset and cannot be used by other flows.
-    * (Global) Subflow: A subflow that that can be reused by other data flows in the project. It is not local to any specific data flow.
+    * (Global) Subflow: A subflow that can be reused by other data flows in the project. It is not local to any specific data flow.
 
 .. note::
     In the documentation, global subflow assets are referred to as 'subflows', while local subflows will always be explicitly referred to as 'local subflows'.
@@ -27,15 +27,15 @@ The SDK provides the following functionality to interact with subflows:
 Prerequisites
 ~~~~~~~~~~~~~
 
-To create a subflow using the SDK, please make sure you have done the following steps:
+To create a subflow using the SDK, make sure you have completed the following steps:
     * :ref:`Created a project<projects__projects__creating_a_project>`.
 
-To create a local subflow using the SDK, please make sure you have done the following steps:
+To create a local subflow using the SDK, make sure you have completed the following steps:
     * :ref:`Created a project<projects__projects__creating_a_project>`.
     * :ref:`Created a flow<preparing_data__batch__flows__creating_a_flow>`.
 
 .. note::
-    Subflows are a BatchFlow only feature.
+    Subflows are a BatchFlow-only feature.
 
 .. _preparing_data__subflows__creating_a_subflow:
 
@@ -46,9 +46,9 @@ Creating a Subflow
 
 Creating a Subflow
 ^^^^^^^^^^^^^^^^^^
-In the UI, you can create a flow by navigating to **Assets -> New asset -> Create reusable DataStage components -> Subflow**.
+In the UI, you can create a subflow by navigating to **Assets -> New asset -> Create reusable DataStage components -> Subflow**.
 
-Here, you will be required to choose a name for your subflow along with a name and description.
+Here, you are required to choose a name and description for your subflow.
 
 .. image:: /_static/images/subflows/create_subflow.png
    :alt: Screenshot of the subflow creation page.
@@ -87,7 +87,7 @@ This creates a local subflow with the nodes you have selected.
 
 In the SDK, you can create a local subflow from a :py:class:`~ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow` object using the
 :py:meth:`BatchFlow.create_subflow() <ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.create_subflow>` method.
-You are required to supply a ``label`` and an optional set of ``nodes`` to create the subflow from.
+You are required to supply a ``label`` and, optionally, a set of ``nodes`` from which to create the subflow.
 This method will return a :py:class:`~ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow` instance.
 
 .. skip: start 'dummy subflow'
@@ -107,14 +107,14 @@ Retrieving Subflows
 
 Subflows can be retrieved through a :py:class:`~ibm_watsonx_data_integration.cpd_models.project_model.Project` object using the
 :py:attr:`Project.subflows <ibm_watsonx_data_integration.cpd_models.project_model.Project.subflows>` property.
-You can also retrieve a single subflow using the :py:meth:`Project.subflows.get() <ibm_watsonx_data_integration.common.models.CollectionModel.get>` method
-which takes key word arguments and finds the first subflow match.
+You can also retrieve a single subflow using the :py:meth:`Project.subflows.get() <ibm_watsonx_data_integration.common.models.CollectionModel.get>` method,
+which takes keyword arguments and returns the first matching subflow.
 
 .. skip: start 'dummy subflow'
 
 .. code-block:: python
 
-    >>> project.subflows # a list of all the flows
+    >>> project.subflows  # a list of all subflows
     [...Subflow(name='My first subflow', description='optional description')...]
 
     >>> project.subflows.get(name='My first subflow') # get a subflow with the name 'My first subflow'
@@ -146,9 +146,9 @@ You can edit a subflow's attributes like ``name`` or ``description``.
 
 .. skip: end
 
-Finally, you can edit a flow by editing its stages.
-This can include adding a stage, removing a stage, updating a stage's configuration or connecting a stage in a different way than before.
-Most of the operations described are covered in :ref:`Stage <preparing_data__batch_stages>` documentation.
+Finally, you can edit a subflow by editing its stages.
+This can include adding a stage, removing a stage, updating a stage's configuration, or connecting a stage in a different way than before.
+Most of these operations are covered in the :ref:`Stage <preparing_data__batch_stages>` documentation.
 
 .. _preparing_data__subflows__editing_a_subflow__unique_stages_to_subflows:
 
@@ -165,7 +165,7 @@ There are two stages that are unique to subflows:
    :width: 50%
 
 
-Subflows cannot be utilized within a parent flow without entry and exit nodes. A subflow has no limit to the amount of entry or exit nodes
+Subflows cannot be used within a parent flow without entry and exit nodes. A subflow has no limit to the number of entry or exit nodes
 it can have. To add an entry or exit node to a subflow, you can use the
 :py:meth:`Subflow.add_entry_node() <ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow.add_entry_node>`
 or :py:meth:`Subflow.add_exit_node() <ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow.add_exit_node>`
@@ -191,7 +191,7 @@ Updating a Subflow
 
 Updating a Subflow
 ^^^^^^^^^^^^^^^^^^
-In the UI, you can update a flow by making changes to the subflow and hitting the 'Save' icon to update the flow.
+In the UI, you can update a subflow by making changes to it and clicking the **Save** icon.
 
 .. image:: /_static/images/subflows/save_subflow.png
    :alt: Saving a subflow.
@@ -199,16 +199,16 @@ In the UI, you can update a flow by making changes to the subflow and hitting th
    :width: 100%
 
 
-In the SDK, you can make any changes to a :py:class:`~ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow` instance
-in memory and update it by passing this object to :py:meth:`Project.update_subflow() <ibm_watsonx_data_integration.cpd_models.project_model.Project.update_subflow>` method.
+In the SDK, you can make changes to a :py:class:`~ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow` instance
+in memory and update it by passing that object to the :py:meth:`Project.update_subflow() <ibm_watsonx_data_integration.cpd_models.project_model.Project.update_subflow>` method.
 
 .. _preparing_data__subflows__updating_a_subflow__updating_a_local_subflow:
 
 Updating a Local Subflow
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the UI, you can update a local subflow by making changes to the subflow and saving the parent flow. For more information
-on this, please refer to :ref:`Updating a Flow<preparing_data__batch__flows__updating_a_flow>`.
+In the UI, you can update a local subflow by making changes to it and saving the parent flow. For more information,
+see :ref:`Updating a Flow<preparing_data__batch__flows__updating_a_flow>`.
 
 .. _preparing_data__subflows__duplicating_a_subflow:
 
@@ -221,10 +221,10 @@ Duplicating a Subflow
 ^^^^^^^^^^^^^^^^^^^^^
 
 To duplicate a subflow using the SDK, you need to pass a :py:class:`~ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow` instance
-to the :py:meth:`Project.duplicate_subflow() <ibm_watsonx_data_integration.cpd_models.project_model.Project.duplicate_subflow>` method
-along with the ``name`` parameter for the name of the new flow and an optional ``description`` parameter.
+to the :py:meth:`Project.duplicate_subflow() <ibm_watsonx_data_integration.cpd_models.project_model.Project.duplicate_subflow>` method,
+along with the ``name`` parameter for the new subflow and an optional ``description`` parameter.
 
-This will duplicate a flow and return a new instance of :py:class:`~ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow`.
+This duplicates the subflow and returns a new instance of :py:class:`~ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow`.
 
 .. skip: start 'dummy subflow'
 
@@ -242,7 +242,7 @@ Duplicating a Local Subflow
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To duplicate a local subflow, you need to pass a :py:class:`~ibm_watsonx_data_integration.services.datastage.models.flow.subflow.Subflow` instance
-to the  :py:meth:`BatchFlow.duplicate_subflow() <ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.duplicate_subflow>` method
+to the :py:meth:`BatchFlow.duplicate_subflow() <ibm_watsonx_data_integration.services.datastage.models.flow.batch_flow.BatchFlow.duplicate_subflow>` method,
 along with the ``name`` parameter.
 
 .. skip: start 'dummy subflow'
@@ -378,12 +378,12 @@ The following code shows how to create the above subflow and flow:
         link_2_2 = entry_node_2.connect_output_to(peek_1)
         link_2_2.name = 'Link_2'
         entry_node_2_schema = link_2_2.create_schema()
-        entry_node_2_schema.add_field('CHAR', 'COLUMN_1').length(100)
+        entry_node_2_schema.add_field('CHAR', 'COLUMN_1', length=100)
 
         link_3_2 = peek_1.connect_output_to(exit_node_2)
         link_3_2.name = 'Link_3'
         peek_1_schema = link_3_2.create_schema()
-        peek_1_schema.add_field('CHAR', 'COLUMN_1').source('Link_2.COLUMN_1').length(100)
+        peek_1_schema.add_field('CHAR', 'COLUMN_1', source='Link_2.COLUMN_1', length=100)
 
         project.update_subflow(sf)
 
@@ -399,13 +399,13 @@ The following code shows how to create the above subflow and flow:
     link_2 = row_generator_1.connect_output_to(middle_codegen).map_to_link('Link_2')
     link_2.name = 'Link_2'
     row_generator_1_schema = link_2.create_schema()
-    row_generator_1_schema.add_field('CHAR', 'COLUMN_1').length(100)
+    row_generator_1_schema.add_field('CHAR', 'COLUMN_1', length=100)
 
 
     link_3 = middle_codegen.connect_output_to(peek_2).map_from_link('Link_3')
     link_3.name = 'Link_3'
     middle_codegen_1_schema = link_3.create_schema()
-    middle_codegen_1_schema.add_field('CHAR', 'COLUMN_1').source('Link_2.COLUMN_1').length(100)
+    middle_codegen_1_schema.add_field('CHAR', 'COLUMN_1', source='Link_2.COLUMN_1', length=100)
 
 
     project.update_flow(flow)
@@ -450,12 +450,12 @@ Just like in a flow this method requires a ``parameter_type`` and a ``name``. Op
         link_2_2 = entry_node_2.connect_output_to(peek_1)
         link_2_2.name = 'Link_2'
         entry_node_2_schema = link_2_2.create_schema()
-        entry_node_2_schema.add_field('CHAR', 'COLUMN_1').length(100)
+        entry_node_2_schema.add_field('CHAR', 'COLUMN_1', length=100)
 
         link_3_2 = peek_1.connect_output_to(exit_node_2)
         link_3_2.name = 'Link_3'
         peek_1_schema = link_3_2.create_schema()
-        peek_1_schema.add_field('CHAR', 'COLUMN_1').source('Link_2.COLUMN_1').length(100)
+        peek_1_schema.add_field('CHAR', 'COLUMN_1', source='Link_2.COLUMN_1', length=100)
 
         sf.add_local_parameter(parameter_type='string', name='make', value='toyota', description='')
         sf.add_local_parameter('integer', 'num', 13)
